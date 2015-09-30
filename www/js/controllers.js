@@ -216,7 +216,7 @@ angular.module('mycdc.controllers', [])
         }
     };
 })
-.controller('HACtrl', function($scope, $ionicPlatform, $stateParams, $sce, HealthArticlesData) {
+.controller('HealthArticleCtrl', function($scope, $ionicPlatform, $stateParams, $sce, HealthArticlesData) {
     $scope.article = {};
     $scope.article = HealthArticlesData.get($stateParams.healtharticleId);
 
