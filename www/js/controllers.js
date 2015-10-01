@@ -315,31 +315,32 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HealthArticleCtrl', function($scope, $stateParams, $sce, HealthArticlesData) {
+.controller('HealthArticleCtrl', function($scope, $stateParams, $sce, $ionicLoading, $cordovaFileTransfer, HealthArticlesData) {
+    $scope.loading = $ionicLoading.show({
+        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+        showBackdrop: false,
+        showDelay: 100
+    });
     $scope.article = HealthArticlesData.get($stateParams.articleIdx);
-    $scope.frameUrl = $sce.trustAsResourceUrl(HealthArticlesData.getSourceUrl($stateParams.articleIdx));
 
-    // $scope.loading = $ionicLoading.show({
-    //     template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-    //     showBackdrop: false,
-    //     showDelay: 100
-    // });
+    if (window.cordova) {
+        var url = HealthArticlesData.getSourceUrl($stateParams.articleIdx),
+            filename = url.split('/').pop(),
+            newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
+            nochromeurl = url.replace(filename, newfilename),
+            targetPath = cordova.file.documentsDirectory + "tmp.html",
+            trustHosts = true,
+            options = {};
 
-    // $scope.article = HealthArticlesData.get($stateParams.articleIdx);
-    // $scope.id = HealthArticlesData.getId($stateParams.articleIdx);
-
-    // HealthArticlesContent.getContent($scope.id).then(
-    //     function(resp) {
-    //         console.log(resp);
-    //         $scope.content = resp.data.results.content;
-    //         $ionicLoading.hide();
-    //     },
-    //     function() {
-    //         alert('Could not load Content');
-    //         $ionicLoading.hide();
-    //     },
-    //     function() {}
-    // );
+        $cordovaFileTransfer.download(nochromeurl, targetPath, options, trustHosts)
+            .then(function(result) {
+                $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
+                $ionicLoading.hide();
+            }, function(err) {
+                $scope.frameUrl = $sce.trustAsResourceUrl(url);
+                $ionicLoading.hide();
+            });
+    }
 })
 
 /**

@@ -128,7 +128,7 @@ angular.module('mycdc.data', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.factory('HealthArticlesData', function($http, $q, HealthArticlesStorage) {
+.factory('HealthArticlesData', function($http, $q, HealthArticlesStorage, $cordovaFileTransfer) {
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
@@ -167,41 +167,10 @@ angular.module('mycdc.data', [])
     };
 
     service.getSourceUrl = function(idx) {
-        var nocontent = '_nocontent',
-            sourceurl = data[idx].sourceUrl,
-            extension = sourceurl.split('.').pop(),
-            newurl = sourceurl.split('.' + extension)[0] + nocontent + '.' + extension;
-
-$http.get(newurl).then(
-    function(response) {
-        console.log('1: ',response)
-    },
-    function(data) {
-        console.log('data1', data);
-        $http.get(sourceurl).then(
-            function(response) {
-                console.log('2: ',response)
-            },
-            function(data) {
-                console.log('data2', data);
-            });
-    });
-
-
-
         return data[idx].sourceUrl;
     }
 
     return service;
-})
-
-.factory('HealthArticlesContent', function($http, $q, HealthArticlesStorage){
-    $q.all([
-        $http.get('/someUrl1'),
-        $http.get('/someUrl2')
-    ]).then(function(results) {
-        console.log(results);
-    });
 })
 
 /**
