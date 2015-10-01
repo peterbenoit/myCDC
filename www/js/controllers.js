@@ -138,10 +138,9 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('DiseaseCtrl', function($scope, $ionicPlatform, $stateParams, $sce, DotwData) {
-    $scope.article = {};
+.controller('DiseaseCtrl', function($scope, $stateParams, $sce, DotwData) {
     $scope.article = DotwData.get($stateParams.articleIdx);
-    $scope.content = $sce.trustAsHtml($scope.article.description);
+    $scope.frameUrl = $sce.trustAsResourceUrl(DotwData.getSourceUrl($stateParams.articleIdx));
 })
 
 /**
@@ -218,10 +217,27 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('FluViewCtrl', function($scope, $ionicPlatform, $stateParams, $sce, FluViewData) {
-    $scope.article = {};
+.controller('FluViewCtrl', function($scope, $stateParams, $sce, FluViewData, FluViewContent) {
+    $scope.loading = $ionicLoading.show({
+        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+        showBackdrop: false,
+        showDelay: 100
+    });
+
     $scope.article = FluViewData.get($stateParams.articleIdx);
-    $scope.content = $sce.trustAsHtml($scope.article.description);
+    $scope.id = FluViewData.getId($stateParams.articleIdx);
+
+    FluViewContent.getContent($scope.id).then(
+        function(resp) {
+            $scope.content = resp.data.results.content;
+            $ionicLoading.hide();
+        },
+        function() {
+            alert('Could not load URL');
+            $ionicLoading.hide();
+        },
+        function() {}
+    );
 })
 
 /**
@@ -299,29 +315,31 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HealthArticleCtrl', function($scope, $ionicPlatform, $ionicLoading, $stateParams, $sce, HealthArticlesData, HealthArticlesContent) {
-    $scope.article = {};
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
-    });
-
+.controller('HealthArticleCtrl', function($scope, $stateParams, $sce, HealthArticlesData) {
     $scope.article = HealthArticlesData.get($stateParams.articleIdx);
-    $scope.id = HealthArticlesData.getId($stateParams.articleIdx);
+    $scope.frameUrl = $sce.trustAsResourceUrl(HealthArticlesData.getSourceUrl($stateParams.articleIdx));
 
-    HealthArticlesContent.getContent($scope.id).then(
-        function(resp) {
-            console.log(resp);
-            $scope.content = resp.data.results.content;
-            $ionicLoading.hide();
-        },
-        function() {
-            alert('Could not load Content');
-            $ionicLoading.hide();
-        },
-        function() {}
-    );
+    // $scope.loading = $ionicLoading.show({
+    //     template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+    //     showBackdrop: false,
+    //     showDelay: 100
+    // });
+
+    // $scope.article = HealthArticlesData.get($stateParams.articleIdx);
+    // $scope.id = HealthArticlesData.getId($stateParams.articleIdx);
+
+    // HealthArticlesContent.getContent($scope.id).then(
+    //     function(resp) {
+    //         console.log(resp);
+    //         $scope.content = resp.data.results.content;
+    //         $ionicLoading.hide();
+    //     },
+    //     function() {
+    //         alert('Could not load Content');
+    //         $ionicLoading.hide();
+    //     },
+    //     function() {}
+    // );
 })
 
 /**

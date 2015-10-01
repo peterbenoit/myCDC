@@ -327,7 +327,7 @@
 			"file": "www/js/data.js",
 			"settings":
 			{
-				"buffer_size": 6446,
+				"buffer_size": 6331,
 				"line_ending": "Unix"
 			}
 		},
@@ -335,7 +335,32 @@
 			"file": "www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 13133,
+				"buffer_size": 14180,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/templates/embed.html",
+			"settings":
+			{
+				"buffer_size": 265,
+				"line_ending": "Unix",
+				"name": "source.html"
+			}
+		},
+		{
+			"file": "www/js/app.js",
+			"settings":
+			{
+				"buffer_size": 5522,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/css/style.css",
+			"settings":
+			{
+				"buffer_size": 1177,
 				"line_ending": "Unix"
 			}
 		}
@@ -408,6 +433,7 @@
 	},
 	"file_history":
 	[
+		"/Users/peterbenoit/DEV/myCDC/platforms/ios/build/device/myCDC.app/_CodeSignature/CodeResources",
 		"/Users/peterbenoit/DEV/mobionic/www/js/data.js",
 		"/Users/peterbenoit/DEV/myCDC/www/js/app.js",
 		"/Users/peterbenoit/DEV/myCDC/www/js/controllers.js",
@@ -534,8 +560,7 @@
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/a1.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/basic.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/css/jquery.nailthumb.1.1.min.css",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/blog.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/ftellipsis.min.js"
+		"/Users/peterbenoit/DEV/GeneralApp/www/templates/blog.html"
 	],
 	"find":
 	{
@@ -546,6 +571,8 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"<project>",
+			"/Users/peterbenoit/DEV/myCDC/",
 			"/Users/peterbenoit/DEV/myCDC/www/js",
 			"/Users/peterbenoit/DEV/myCDC/www",
 			"/Users/peterbenoit/DEV/myCDC/www/js",
@@ -676,6 +703,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"plist",
+			"bitcode",
+			"getcontent",
+			"HealthArticles",
+			"FluViewData",
+			"HealthArticlesData",
 			"catch",
 			"trying",
 			"async",
@@ -797,13 +830,7 @@
 			"\"url\"",
 			"readonly",
 			"url",
-			"note",
-			"icon",
-			"title",
-			"peterbenoit",
-			"cordovaDevice",
-			"MenuStorage",
-			"sorting"
+			"note"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -869,7 +896,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -877,15 +904,15 @@
 					"file": "www/js/data.js",
 					"settings":
 					{
-						"buffer_size": 6446,
+						"buffer_size": 6331,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3532,
-								3532
+								2397,
+								2407
 							]
 						],
 						"settings":
@@ -943,7 +970,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 220.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -953,15 +980,15 @@
 					"file": "www/js/controllers.js",
 					"settings":
 					{
-						"buffer_size": 13133,
+						"buffer_size": 14180,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8104,
-								8104
+								6097,
+								6097
 							]
 						],
 						"settings":
@@ -1019,7 +1046,234 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1223.0,
+						"translation.y": 386.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "www/templates/embed.html",
+					"settings":
+					{
+						"buffer_size": 265,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								209,
+								209
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_name": "source.html",
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "www/js/app.js",
+					"settings":
+					{
+						"buffer_size": 5522,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2317,
+								2317
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1330.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "www/css/style.css",
+					"settings":
+					{
+						"buffer_size": 1177,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								930,
+								930
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 277.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1069,12 +1323,12 @@
 		"selected_items":
 		[
 			[
-				"app.js",
-				"myCDC/www/js/app.js"
+				"app",
+				"www/js/app.js"
 			],
 			[
-				"app",
-				"myCDC/platforms/wp8/App.xaml"
+				"app.js",
+				"myCDC/www/js/app.js"
 			],
 			[
 				"data",

@@ -8,8 +8,15 @@ angular.module('mycdc', [
     'mycdc.directives',
     'mycdc.filters',
     'mycdc.services',
-    'mycdc.storage'
+    'mycdc.storage',
+    'ngCordova'
     ])
+/*
+add to body class: platform-android
+add to body class: platform-browser
+add to body class: platform-ios
+add to body class: platform-wp8
+*/
 
 /**
  * @param  {[type]}
@@ -77,7 +84,7 @@ angular.module('mycdc', [
         url: '/disease/:articleIdx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/article.html',
+                templateUrl: 'templates/embed.html',
                 controller: 'DiseaseCtrl'
             }
         }
@@ -115,7 +122,7 @@ angular.module('mycdc', [
         url: '/healtharticle/:articleIdx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/article.html',
+                templateUrl: 'templates/embed.html',
                 controller: 'HealthArticleCtrl'
             }
         }

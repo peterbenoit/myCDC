@@ -1,5 +1,4 @@
 /**
  *
  */
-
 angular.module('mycdc.services', [])

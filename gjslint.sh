@@ -1,0 +1,1 @@
+ gjslint -r www/js

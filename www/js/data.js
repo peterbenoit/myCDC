@@ -59,6 +59,10 @@ angular.module('mycdc.data', [])
         return data[idx];
     };
 
+    service.getSourceUrl = function(idx) {
+        return data[idx].sourceUrl;
+    }
+
     return service;
 })
 
@@ -104,6 +108,20 @@ angular.module('mycdc.data', [])
 
     return service;
 })
+
+/**
+ * Content is an additional query for data, either by sourceUrl or syndicateUrl
+ * @param  {[type]} $http
+ * @return {[type]}
+ */
+.factory('FluViewContent', function($http){
+    return {
+        getContent: function(id) {
+            return $http.get('json/content/' + id + '.json');
+        }
+    }
+})
+
 /**
  * @param  {[type]}
  * @param  {[type]}
@@ -148,20 +166,42 @@ angular.module('mycdc.data', [])
         return data[idx].id;
     };
 
+    service.getSourceUrl = function(idx) {
+        var nocontent = '_nocontent',
+            sourceurl = data[idx].sourceUrl,
+            extension = sourceurl.split('.').pop(),
+            newurl = sourceurl.split('.' + extension)[0] + nocontent + '.' + extension;
+
+$http.get(newurl).then(
+    function(response) {
+        console.log('1: ',response)
+    },
+    function(data) {
+        console.log('data1', data);
+        $http.get(sourceurl).then(
+            function(response) {
+                console.log('2: ',response)
+            },
+            function(data) {
+                console.log('data2', data);
+            });
+    });
+
+
+
+        return data[idx].sourceUrl;
+    }
+
     return service;
 })
 
-/**
- * Content is an additional query for data, either by sourceUrl or syndicateUrl
- * @param  {[type]} $http
- * @return {[type]}
- */
-.factory('HealthArticlesContent', function($http){
-    return {
-        getContent: function(id) {
-            return $http.get('json/content/' + id + '.json');
-        }
-    }
+.factory('HealthArticlesContent', function($http, $q, HealthArticlesStorage){
+    $q.all([
+        $http.get('/someUrl1'),
+        $http.get('/someUrl2')
+    ]).then(function(results) {
+        console.log(results);
+    });
 })
 
 /**
