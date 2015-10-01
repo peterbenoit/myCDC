@@ -1,5 +1,6 @@
-//myCDC
-
+/**
+ *  myCDC
+ */
 angular.module('mycdc', [
     'ionic',
     'mycdc.controllers',
@@ -10,6 +11,11 @@ angular.module('mycdc', [
     'mycdc.storage'
     ])
 
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .run(function($ionicPlatform, $rootScope) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -26,6 +32,11 @@ angular.module('mycdc', [
     });
 })
 
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .config(function($stateProvider, $urlRouterProvider) {
 
     $stateProvider
@@ -47,10 +58,10 @@ angular.module('mycdc', [
         }
     })
 
-// Ideally, these would all be dynamic, based off config.json
-    // source stream
-        // content item view from Id
-
+/**
+ * Source States
+ * Ideally, these would all be dynamic, based off config.json
+ */
 
     // Disease of the Week
     .state('app.DOTW', {

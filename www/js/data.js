@@ -1,9 +1,30 @@
+/**
+ *
+ */
 angular.module('mycdc.data', [])
 
-// methods for getting data for a source
-
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .factory('AppData', function($http, $q, AppStorage) {})
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .factory('MenuData', function($http, $q, MenuStorage) {})
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .factory('DotwData', function($http, $q, DotwStorage) {
     var deferred = $q.defer(),
         promise = deferred.promise,
@@ -17,8 +38,7 @@ angular.module('mycdc.data', [])
             timeout: 5000
         }).
         then(function(d) {
-            result = d;
-            data = result.data.results;
+            data = d.data.results;
             DotwStorage.save(data);
             deferred.resolve();
         }).
@@ -40,6 +60,13 @@ angular.module('mycdc.data', [])
 
     return service;
 })
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .factory('FluViewData', function($http, $q, FluViewStorage) {
     var deferred = $q.defer(),
         promise = deferred.promise,
@@ -53,8 +80,7 @@ angular.module('mycdc.data', [])
             timeout: 5000
         }).
         then(function(d) {
-            result = d;
-            data = result.data.results;
+            data = d.data.results;
             FluViewStorage.save(data);
             deferred.resolve();
         }).
@@ -76,12 +102,16 @@ angular.module('mycdc.data', [])
 
     return service;
 })
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .factory('HealthArticlesData', function($http, $q, HealthArticlesStorage) {
     var deferred = $q.defer(),
-        deferred2 = $q.defer(),
         promise = deferred.promise,
-        promise2 = deferred2.promise,
-        data = [], content = '',
+        data = [],
         service = {};
 
     service.async = function() {
@@ -91,8 +121,7 @@ angular.module('mycdc.data', [])
             timeout: 5000
         }).
         then(function(d) {
-            result = d;
-            data = result.data.results;
+            data = d.data.results;
             HealthArticlesStorage.save(data);
             deferred.resolve();
         }).
@@ -103,29 +132,6 @@ angular.module('mycdc.data', [])
 
         return promise;
     };
-
-    service.getContentSource = function(id) {
-        $http({
-            method: 'GET',
-            url: 'json/content/' + id + '.json',
-            timeout: 5000
-        }).
-        then(function(d) {
-            content = d.data.results.content;
-            deferred2.resolve();
-        }).
-        catch(function(e) {
-            console.log(e);
-            deferred2.reject();
-        }).
-        finally(function() {});
-
-        return promise2;
-    };
-
-    service.getContent = function() {
-        return content;
-    }
 
     service.getAll = function() {
         return data;
@@ -141,6 +147,50 @@ angular.module('mycdc.data', [])
 
     return service;
 })
+
+/**
+ * Content is an additional query for data, either by sourceUrl or syndicateUrl
+ * @param  {[type]} $http
+ * @param  {[type]} $q
+ * @return {[type]}
+ */
+.factory('HealthArticlesContent', function($http, $q){
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        service = {};
+
+    service.async = function(id) {
+        $http({
+            method: 'GET',
+            url: 'json/content/' + id + '.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d.data.results;
+            console.log(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            deferred.reject();
+        });
+
+        return promise;
+    };
+
+    service.getContent = function() {
+        return data.content;
+    }
+
+    return service;
+})
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .factory('VitalSignsData', function($http, $q, VitalSignsStorage) {
     var deferred = $q.defer(),
         promise = deferred.promise,
@@ -154,7 +204,6 @@ angular.module('mycdc.data', [])
             timeout: 5000
         }).
         then(function(d) {
-            result = d;
             data = d.data.results;
             VitalSignsStorage.save(data);
             deferred.resolve();
@@ -195,6 +244,13 @@ angular.module('mycdc.data', [])
 
     return service;
 })
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .factory('FastStatsData', function($http, $q, FastStatsStorage) {
     var deferred = $q.defer(),
         promise = deferred.promise,
@@ -208,8 +264,7 @@ angular.module('mycdc.data', [])
             timeout: 5000
         }).
         then(function(d) {
-            result = d;
-            data = result.data.results;
+            data = d.data.results;
             FastStatsStorage.save(data);
             deferred.resolve();
         }).
@@ -231,8 +286,29 @@ angular.module('mycdc.data', [])
 
     return service;
 })
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .factory('CDCDirectorBlogData', function($http, $q, CDCDirectorBlogStorage) {})
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .factory('CDCWorksforYou247BlogData', function($http, $q, CDCWorksforYou247BlogStorage) {})
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .factory('PublicHealthMattersBlogData', function($http, $q, PublicHealthMattersBlogStorage) {})
 
 

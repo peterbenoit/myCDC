@@ -1,1 +1,4 @@
+/**
+ *
+ */
 angular.module('mycdc.filters', [])

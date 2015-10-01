@@ -1,5 +1,14 @@
+/**
+ *
+ */
 angular.module('mycdc.controllers', [])
 
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
     // With the new view caching in Ionic, Controllers are only called
@@ -10,7 +19,11 @@ angular.module('mycdc.controllers', [])
     //});
 })
 
-// home stream controller
+/**
+ * Home Controller
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('HomeCtrl', function($scope) {
 
     // app sources, should be maintained by config.json
@@ -48,6 +61,17 @@ angular.module('mycdc.controllers', [])
         id: 8
     }];
 })
+
+/**
+ * Disease of the Week Controller
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('DotwCtrl', function($scope, $location, $ionicLoading, DotwData, DotwStorage) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
@@ -104,11 +128,31 @@ angular.module('mycdc.controllers', [])
         }
     };
 })
+
+/**
+ * Specific Disease Controller
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {Object}
+ * @return {[type]}
+ */
 .controller('DiseaseCtrl', function($scope, $ionicPlatform, $stateParams, $sce, DotwData) {
     $scope.article = {};
     $scope.article = DotwData.get($stateParams.articleIdx);
     $scope.content = $sce.trustAsHtml($scope.article.description);
 })
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('FluViewsCtrl', function($scope, $location, $ionicLoading, FluViewData, FluViewStorage) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
@@ -165,11 +209,30 @@ angular.module('mycdc.controllers', [])
         }
     };
 })
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {Object}
+ * @return {[type]}
+ */
 .controller('FluViewCtrl', function($scope, $ionicPlatform, $stateParams, $sce, FluViewData) {
     $scope.article = {};
     $scope.article = FluViewData.get($stateParams.articleIdx);
     $scope.content = $sce.trustAsHtml($scope.article.description);
 })
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('HealthArticlesCtrl', function($scope, $location, $ionicLoading, HealthArticlesData, HealthArticlesStorage) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
@@ -184,20 +247,17 @@ angular.module('mycdc.controllers', [])
 
     var getData = function() {
         HealthArticlesData.async().then(
-            // successCallback
             function() {
                 $scope.datas = HealthArticlesData.getAll();
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
             },
-            // errorCallback
             function() {
                 $scope.datas = HealthArticlesStorage.all();
                 $scope.storage = 'Data from local storage';
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
             },
-            // notifyCallback
             function() {}
         );
     };
@@ -226,27 +286,47 @@ angular.module('mycdc.controllers', [])
         }
     };
 })
-.controller('HealthArticleCtrl', function($scope, $ionicPlatform, $ionicLoading, $stateParams, $sce, HealthArticlesData) {
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {Object}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('HealthArticleCtrl', function($scope, $ionicPlatform, $ionicLoading, $stateParams, $sce, HealthArticlesData, HealthArticlesContent) {
     $scope.article = {};
     $scope.article = HealthArticlesData.get($stateParams.articleIdx);
 
     var id = HealthArticlesData.getId($stateParams.articleIdx);
+    $scope.id = id;
 
-    HealthArticlesData.getContentSource(id).then(
-        // successCallback
+    HealthArticlesContent.async(id).then(
         function() {
-            console.log('success')
-            $scope.content = $sce.trustAsHtml(HealthArticlesData.getContent());
+            $scope.content = $sce.trustAsHtml(HealthArticlesContent.getContent());
             $ionicLoading.hide();
         },
-        // errorCallback
         function() {
             alert('Error trying to retrieve content');
         },
-        // notifyCallback
         function() {}
     );
 })
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('VitalSignsCtrl', function($scope, $location, $ionicLoading, VitalSignsData, VitalSignsStorage) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
@@ -261,20 +341,17 @@ angular.module('mycdc.controllers', [])
 
     var getData = function() {
         VitalSignsData.async().then(
-            // successCallback
             function() {
                 $scope.datas = VitalSignsData.getAll();
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
             },
-            // errorCallback
             function() {
                 $scope.datas = VitalSignsStorage.all();
                 $scope.storage = 'Data from local storage';
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
             },
-            // notifyCallback
             function() {}
         );
     };
@@ -303,6 +380,16 @@ angular.module('mycdc.controllers', [])
         }
     };
 })
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {Object}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('VitalSignCtrl', function($scope, $ionicPlatform, $stateParams, $sce, VitalSignsData) {
     $scope.article = {};
     $scope.article = VitalSignsData.get($stateParams.articleIdx);
@@ -313,6 +400,16 @@ angular.module('mycdc.controllers', [])
 
     $scope.content = $sce.trustAsHtml($scope.article.description);
 })
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('FastStatsCtrl', function($scope, $location, $ionicLoading, FastStatsData, FastStatsStorage) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
@@ -370,24 +467,47 @@ angular.module('mycdc.controllers', [])
 })
 
 
-// other..................
+/**
+ * Other non-source Controllers
+ */
 
 
-// generic stream controller
+/**
+ * Generic Stream Controller
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('StreamCtrl', function($scope, $location, $ionicLoading) {
     var source = $location.$$url.split('/').pop();
         console.log('StreamCtrl source: ', source);
 })
 
-// generic blog controller
+/**
+ * Generic Blog Controller
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('BlogCtrl', function($scope, $stateParams) {})
 
-// generic article controller
+/**
+ * Generic Article Controller
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('ArticleCtrl', function($scope, $stateParams) {
 
 })
 
-// generic data controller
+/**
+ * Generic Data Controller
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .controller('DataCtrl', function($scope, $stateParams) {})
 
 

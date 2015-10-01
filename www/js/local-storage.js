@@ -1,5 +1,11 @@
+/**
+ *
+ */
 angular.module('mycdc.storage', [])
 
+/**
+ * @return {[type]}
+ */
 .factory('AppStorage', function() {
     return {
         all: function() {
@@ -18,6 +24,9 @@ angular.module('mycdc.storage', [])
     };
 })
 
+/**
+ * @return {[type]}
+ */
 .factory('MenuStorage', function() {
     return {
         all: function() {
@@ -37,7 +46,13 @@ angular.module('mycdc.storage', [])
     };
 })
 
-// keeping each source in individual source storage
+/**
+ * Keeping each source in individual source storage
+ */
+
+/**
+ * @return {[type]}
+ */
 .factory('DotwStorage', function() {
     return {
         all: function() {
@@ -55,6 +70,10 @@ angular.module('mycdc.storage', [])
         }
     };
 })
+
+/**
+ * @return {[type]}
+ */
 .factory('FluViewStorage', function() {
     return {
         all: function() {
@@ -72,6 +91,10 @@ angular.module('mycdc.storage', [])
         }
     };
 })
+
+/**
+ * @return {[type]}
+ */
 .factory('HealthArticlesStorage', function() {
     return {
         all: function() {
@@ -89,6 +112,10 @@ angular.module('mycdc.storage', [])
         }
     };
 })
+
+/**
+ * @return {[type]}
+ */
 .factory('VitalSignsStorage', function() {
     return {
         all: function() {
@@ -106,6 +133,10 @@ angular.module('mycdc.storage', [])
         }
     };
 })
+
+/**
+ * @return {[type]}
+ */
 .factory('CDCDirectorBlogStorage', function() {
     return {
         all: function() {
@@ -123,6 +154,10 @@ angular.module('mycdc.storage', [])
         }
     };
 })
+
+/**
+ * @return {[type]}
+ */
 .factory('CDCWorksforYou247BlogStorage', function() {
     return {
         all: function() {
@@ -140,6 +175,10 @@ angular.module('mycdc.storage', [])
         }
     };
 })
+
+/**
+ * @return {[type]}
+ */
 .factory('FastStatsStorage', function() {
     return {
         all: function() {
@@ -157,6 +196,10 @@ angular.module('mycdc.storage', [])
         }
     };
 })
+
+/**
+ * @return {[type]}
+ */
 .factory('FastStatsStorage', function() {
     return {
         all: function() {
