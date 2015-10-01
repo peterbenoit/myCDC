@@ -43,7 +43,7 @@ angular.module('mycdc.controllers', [])
         href: '#/app/PHMblogs',
         id: 7
     }, {
-        title: 'FastStats',
+        title: 'FastStats -',
         href: '#/app/FastStats',
         id: 8
     }];
@@ -52,6 +52,7 @@ angular.module('mycdc.controllers', [])
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
+    $scope.url = '#/app/disease/';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -64,7 +65,6 @@ angular.module('mycdc.controllers', [])
             // successCallback
             function() {
                 $scope.datas = DotwData.getAll();
-                console.log($scope.datas)
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
             },
@@ -104,10 +104,16 @@ angular.module('mycdc.controllers', [])
         }
     };
 })
-.controller('FluViewCtrl', function($scope, $location, $ionicLoading, FluViewData, FluViewStorage) {
+.controller('DiseaseCtrl', function($scope, $ionicPlatform, $stateParams, $sce, DotwData) {
+    $scope.article = {};
+    $scope.article = DotwData.get($stateParams.articleIdx);
+    $scope.content = $sce.trustAsHtml($scope.article.description);
+})
+.controller('FluViewsCtrl', function($scope, $location, $ionicLoading, FluViewData, FluViewStorage) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
+    $scope.url = '#/app/fluview/';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -120,7 +126,6 @@ angular.module('mycdc.controllers', [])
             // successCallback
             function() {
                 $scope.datas = FluViewData.getAll();
-                console.log($scope.datas)
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
             },
@@ -160,10 +165,16 @@ angular.module('mycdc.controllers', [])
         }
     };
 })
+.controller('FluViewCtrl', function($scope, $ionicPlatform, $stateParams, $sce, FluViewData) {
+    $scope.article = {};
+    $scope.article = FluViewData.get($stateParams.articleIdx);
+    $scope.content = $sce.trustAsHtml($scope.article.description);
+})
 .controller('HealthArticlesCtrl', function($scope, $location, $ionicLoading, HealthArticlesData, HealthArticlesStorage) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
+    $scope.url = '#/app/healtharticle/';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -176,7 +187,6 @@ angular.module('mycdc.controllers', [])
             // successCallback
             function() {
                 $scope.datas = HealthArticlesData.getAll();
-                console.log($scope.datas)
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
             },
@@ -216,18 +226,32 @@ angular.module('mycdc.controllers', [])
         }
     };
 })
-.controller('HealthArticleCtrl', function($scope, $ionicPlatform, $stateParams, $sce, HealthArticlesData) {
+.controller('HealthArticleCtrl', function($scope, $ionicPlatform, $ionicLoading, $stateParams, $sce, HealthArticlesData) {
     $scope.article = {};
-    $scope.article = HealthArticlesData.get($stateParams.healtharticleId);
+    $scope.article = HealthArticlesData.get($stateParams.articleIdx);
 
-    console.log($scope.article);
+    var id = HealthArticlesData.getId($stateParams.articleIdx);
 
-    $scope.content = $sce.trustAsHtml($scope.article.description);
+    HealthArticlesData.getContentSource(id).then(
+        // successCallback
+        function() {
+            console.log('success')
+            $scope.content = $sce.trustAsHtml(HealthArticlesData.getContent());
+            $ionicLoading.hide();
+        },
+        // errorCallback
+        function() {
+            alert('Error trying to retrieve content');
+        },
+        // notifyCallback
+        function() {}
+    );
 })
 .controller('VitalSignsCtrl', function($scope, $location, $ionicLoading, VitalSignsData, VitalSignsStorage) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
+    $scope.url = '#/app/vitalsign/';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -240,7 +264,6 @@ angular.module('mycdc.controllers', [])
             // successCallback
             function() {
                 $scope.datas = VitalSignsData.getAll();
-                console.log($scope.datas)
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
             },
@@ -280,6 +303,16 @@ angular.module('mycdc.controllers', [])
         }
     };
 })
+.controller('VitalSignCtrl', function($scope, $ionicPlatform, $stateParams, $sce, VitalSignsData) {
+    $scope.article = {};
+    $scope.article = VitalSignsData.get($stateParams.articleIdx);
+
+    var tmp, id;
+        id = VitalSignsData.getId($stateParams.articleIdx);
+        tmp = VitalSignsData.getContent(id);
+
+    $scope.content = $sce.trustAsHtml($scope.article.description);
+})
 .controller('FastStatsCtrl', function($scope, $location, $ionicLoading, FastStatsData, FastStatsStorage) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
@@ -296,7 +329,6 @@ angular.module('mycdc.controllers', [])
             // successCallback
             function() {
                 $scope.datas = FastStatsData.getAll();
-                console.log($scope.datas)
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
             },
@@ -337,10 +369,14 @@ angular.module('mycdc.controllers', [])
     };
 })
 
+
+// other..................
+
+
 // generic stream controller
 .controller('StreamCtrl', function($scope, $location, $ionicLoading) {
     var source = $location.$$url.split('/').pop();
-        console.log(source)
+        console.log('StreamCtrl source: ', source);
 })
 
 // generic blog controller

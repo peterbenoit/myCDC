@@ -34,8 +34,8 @@ angular.module('mycdc.data', [])
         return data;
     };
 
-    service.get = function(newId) {
-        return data[newId];
+    service.get = function(idx) {
+        return data[idx];
     };
 
     return service;
@@ -70,16 +70,18 @@ angular.module('mycdc.data', [])
         return data;
     };
 
-    service.get = function(newId) {
-        return data[newId];
+    service.get = function(idx) {
+        return data[idx];
     };
 
     return service;
 })
 .factory('HealthArticlesData', function($http, $q, HealthArticlesStorage) {
     var deferred = $q.defer(),
+        deferred2 = $q.defer(),
         promise = deferred.promise,
-        data = [],
+        promise2 = deferred2.promise,
+        data = [], content = '',
         service = {};
 
     service.async = function() {
@@ -102,12 +104,39 @@ angular.module('mycdc.data', [])
         return promise;
     };
 
+    service.getContentSource = function(id) {
+        $http({
+            method: 'GET',
+            url: 'json/content/' + id + '.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            content = d.data.results.content;
+            deferred2.resolve();
+        }).
+        catch(function(e) {
+            console.log(e);
+            deferred2.reject();
+        }).
+        finally(function() {});
+
+        return promise2;
+    };
+
+    service.getContent = function() {
+        return content;
+    }
+
     service.getAll = function() {
         return data;
     };
 
-    service.get = function(newId) {
-        return data[newId];
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    service.getId = function(idx) {
+        return data[idx].id;
     };
 
     return service;
@@ -126,7 +155,7 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             result = d;
-            data = result.data.results;
+            data = d.data.results;
             VitalSignsStorage.save(data);
             deferred.resolve();
         }).
@@ -138,12 +167,30 @@ angular.module('mycdc.data', [])
         return promise;
     };
 
+    service.getContent = function(id) {
+        $http({
+            method: 'GET',
+            url: 'json/content/' + id + '.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            return d.data.results.content;
+        }).
+        catch(function() {
+            alert('Could not get content');
+        });
+    };
+
     service.getAll = function() {
         return data;
     };
 
-    service.get = function(newId) {
-        return data[newId];
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    service.getId = function(idx) {
+        return data[idx].id;
     };
 
     return service;
@@ -178,8 +225,8 @@ angular.module('mycdc.data', [])
         return data;
     };
 
-    service.get = function(newId) {
-        return data[newId];
+    service.get = function(idx) {
+        return data[idx];
     };
 
     return service;

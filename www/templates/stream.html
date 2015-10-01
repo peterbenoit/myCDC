@@ -2,7 +2,7 @@
   <ion-content>
 
     <ion-list>
-      <ion-item ng-repeat="data in datas" href="#/app/healtharticle/{{data.id}}">
+      <ion-item ng-repeat="data in datas" href="{{url}}{{$index}}">
         {{data.name}}
       </ion-item>
     </ion-list>

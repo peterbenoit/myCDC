@@ -1,1 +1,10 @@
 /* Empty. Add your own CSS if you like */
+
+
+.article h1 {
+	display: none;
+}
+
+.article img:first-child {
+	float: left!important;
+}

@@ -24,10 +24,6 @@ angular.module('mycdc', [
             StatusBar.styleDefault();
         }
     });
-
-    $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
-        console.log(error);
-    });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -67,11 +63,11 @@ angular.module('mycdc', [
         }
     })
     .state('app.disease', {
-        url: '/disease:diseaseId',
+        url: '/disease/:articleIdx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/article.html',
-                controller: 'ArticleCtrl'
+                controller: 'DiseaseCtrl'
             }
         }
     })
@@ -81,16 +77,16 @@ angular.module('mycdc', [
         views: {
             'menuContent': {
                 templateUrl: 'templates/stream.html',
-                controller: 'FluViewCtrl'
+                controller: 'FluViewsCtrl'
             }
         }
     })
     .state('app.fluview', {
-        url: '/fluview:fluviewId',
+        url: '/fluview/:articleIdx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/article.html',
-                controller: 'ArticleCtrl'
+                controller: 'FluViewCtrl'
             }
         }
     })
@@ -105,7 +101,7 @@ angular.module('mycdc', [
         }
     })
     .state('app.healtharticle', {
-        url: '/healtharticle:healtharticleId',
+        url: '/healtharticle/:articleIdx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/article.html',
@@ -124,11 +120,11 @@ angular.module('mycdc', [
         }
     })
     .state('app.vitalsign', {
-        url: '/vitalsign:vitalsignId',
+        url: '/vitalsign/:articleIdx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/article.html',
-                controller: 'ArticleCtrl'
+                controller: 'VitalSignCtrl'
             }
         }
     })
@@ -143,7 +139,7 @@ angular.module('mycdc', [
         }
     })
     .state('app.cdcdirectorblog', {
-        url: '/cdcdirectorblog:cdcdirectorblogId',
+        url: '/cdcdirectorblog/:blogId',
         views: {
             'menuContent': {
                 templateUrl: 'templates/blog.html',
@@ -162,7 +158,7 @@ angular.module('mycdc', [
         }
     })
     .state('app.247blog', {
-        url: '/247blog:247blogId',
+        url: '/247blog/:blogId',
         views: {
             'menuContent': {
                 templateUrl: 'templates/blog.html',
@@ -181,7 +177,7 @@ angular.module('mycdc', [
         }
     })
     .state('app.PHMblog', {
-        url: '/PHMblog:PHMblogId',
+        url: '/PHMblog/:blogId',
         views: {
             'menuContent': {
                 templateUrl: 'templates/blog.html',
@@ -200,7 +196,7 @@ angular.module('mycdc', [
         }
     })
     .state('app.FastStat', {
-        url: '/FastStat:FastStatId',
+        url: '/FastStat/:dataId',
         views: {
             'menuContent': {
                 templateUrl: 'templates/data.html',
