@@ -301,18 +301,24 @@ angular.module('mycdc.controllers', [])
  */
 .controller('HealthArticleCtrl', function($scope, $ionicPlatform, $ionicLoading, $stateParams, $sce, HealthArticlesData, HealthArticlesContent) {
     $scope.article = {};
+    $scope.loading = $ionicLoading.show({
+        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+        showBackdrop: false,
+        showDelay: 100
+    });
+
     $scope.article = HealthArticlesData.get($stateParams.articleIdx);
+    $scope.id = HealthArticlesData.getId($stateParams.articleIdx);
 
-    var id = HealthArticlesData.getId($stateParams.articleIdx);
-    $scope.id = id;
-
-    HealthArticlesContent.async(id).then(
-        function() {
-            $scope.content = $sce.trustAsHtml(HealthArticlesContent.getContent());
+    HealthArticlesContent.getContent($scope.id).then(
+        function(resp) {
+            console.log(resp);
+            $scope.content = resp.data.results.content;
             $ionicLoading.hide();
         },
         function() {
-            alert('Error trying to retrieve content');
+            alert('Could not load Content');
+            $ionicLoading.hide();
         },
         function() {}
     );
@@ -390,15 +396,29 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('VitalSignCtrl', function($scope, $ionicPlatform, $stateParams, $sce, VitalSignsData) {
+.controller('VitalSignCtrl', function($scope, $ionicPlatform, $ionicLoading, $stateParams, $sce, VitalSignsData, VitalSignsContent) {
     $scope.article = {};
+    $scope.loading = $ionicLoading.show({
+        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+        showBackdrop: false,
+        showDelay: 100
+    });
+
     $scope.article = VitalSignsData.get($stateParams.articleIdx);
+    $scope.id = VitalSignsData.getId($stateParams.articleIdx);
 
-    var tmp, id;
-        id = VitalSignsData.getId($stateParams.articleIdx);
-        tmp = VitalSignsData.getContent(id);
-
-    $scope.content = $sce.trustAsHtml($scope.article.description);
+    VitalSignsContent.getContent($scope.id).then(
+        function(resp) {
+            console.log(resp);
+            $scope.content = resp.data.results.content;
+            $ionicLoading.hide();
+        },
+        function() {
+            alert('Could not load Content');
+            $ionicLoading.hide();
+        },
+        function() {}
+    );
 })
 
 /**

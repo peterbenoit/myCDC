@@ -45,7 +45,8 @@ angular.module('mycdc.data', [])
         catch(function() {
             data = DotwStorage.all();
             deferred.reject();
-        });
+        }).
+        finally(function() {});
 
         return promise;
     };
@@ -87,7 +88,8 @@ angular.module('mycdc.data', [])
         catch(function() {
             data = FluViewStorage.all();
             deferred.reject();
-        });
+        }).
+        finally(function() {});
 
         return promise;
     };
@@ -128,7 +130,8 @@ angular.module('mycdc.data', [])
         catch(function() {
             data = HealthArticlesStorage.all();
             deferred.reject();
-        });
+        }).
+        finally(function() {});
 
         return promise;
     };
@@ -151,38 +154,14 @@ angular.module('mycdc.data', [])
 /**
  * Content is an additional query for data, either by sourceUrl or syndicateUrl
  * @param  {[type]} $http
- * @param  {[type]} $q
  * @return {[type]}
  */
-.factory('HealthArticlesContent', function($http, $q){
-    var deferred = $q.defer(),
-        promise = deferred.promise,
-        data = [],
-        service = {};
-
-    service.async = function(id) {
-        $http({
-            method: 'GET',
-            url: 'json/content/' + id + '.json',
-            timeout: 5000
-        }).
-        then(function(d) {
-            data = d.data.results;
-            console.log(data);
-            deferred.resolve();
-        }).
-        catch(function() {
-            deferred.reject();
-        });
-
-        return promise;
-    };
-
-    service.getContent = function() {
-        return data.content;
+.factory('HealthArticlesContent', function($http){
+    return {
+        getContent: function(id) {
+            return $http.get('json/content/' + id + '.json');
+        }
     }
-
-    return service;
 })
 
 /**
@@ -211,23 +190,10 @@ angular.module('mycdc.data', [])
         catch(function() {
             data = VitalSignsStorage.all();
             deferred.reject();
-        });
+        }).
+        finally(function() {});
 
         return promise;
-    };
-
-    service.getContent = function(id) {
-        $http({
-            method: 'GET',
-            url: 'json/content/' + id + '.json',
-            timeout: 5000
-        }).
-        then(function(d) {
-            return d.data.results.content;
-        }).
-        catch(function() {
-            alert('Could not get content');
-        });
     };
 
     service.getAll = function() {
@@ -245,6 +211,18 @@ angular.module('mycdc.data', [])
     return service;
 })
 
+/**
+ * Content is an additional query for data, either by sourceUrl or syndicateUrl
+ * @param  {[type]} $http
+ * @return {[type]}
+ */
+.factory('VitalSignsContent', function($http){
+    return {
+        getContent: function(id) {
+            return $http.get('json/content/' + id + '.json');
+        }
+    }
+})
 /**
  * @param  {[type]}
  * @param  {[type]}
@@ -271,7 +249,8 @@ angular.module('mycdc.data', [])
         catch(function() {
             data = FastStatsStorage.all();
             deferred.reject();
-        });
+        }).
+        finally(function() {});
 
         return promise;
     };
