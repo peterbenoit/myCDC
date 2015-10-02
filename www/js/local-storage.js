@@ -137,7 +137,7 @@ angular.module('mycdc.storage', [])
 /**
  * @return {[type]}
  */
-.factory('CDCDirectorBlogStorage', function() {
+.factory('DirectorsBlogStorage', function() {
     return {
         all: function() {
             var cdcdirectorsblog = window.localStorage['cdcdirectorsblog'];

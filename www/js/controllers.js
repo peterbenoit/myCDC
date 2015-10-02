@@ -77,6 +77,7 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/disease/';
+    $scope.title = 'Disease of the Week';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -157,6 +158,7 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/fluview/';
+    $scope.title = 'FluView Weekly Summary';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -254,6 +256,7 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/healtharticle/';
+    $scope.title = 'Health Articles';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -315,7 +318,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HealthArticleCtrl', function($scope, $stateParams, $sce, $ionicLoading, $cordovaFileTransfer, HealthArticlesData) {
+.controller('HealthArticleCtrl', function($scope, $stateParams, $sce, $ionicLoading, $cordovaFileTransfer, HealthArticlesData, HealthArticlesContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -323,24 +326,27 @@ angular.module('mycdc.controllers', [])
     });
     $scope.article = HealthArticlesData.get($stateParams.articleIdx);
 
-    if (window.cordova) {
-        var url = HealthArticlesData.getSourceUrl($stateParams.articleIdx),
-            filename = url.split('/').pop(),
-            newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
-            nochromeurl = url.replace(filename, newfilename),
-            targetPath = cordova.file.documentsDirectory + "tmp.html",
-            trustHosts = true,
-            options = {};
+    var sourceurl = HealthArticlesData.getSourceUrl($stateParams.articleIdx),
+        filename = sourceurl.split('/').pop(),
+        newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
+        nochromeurl = sourceurl.replace(filename, newfilename);
 
-        $cordovaFileTransfer.download(nochromeurl, targetPath, options, trustHosts)
-            .then(function(result) {
+    HealthArticlesContent.getStatus(nochromeurl).then(
+        function(resp) {
+            if(resp.data.status === 200) {
                 $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
-                $ionicLoading.hide();
-            }, function(err) {
-                $scope.frameUrl = $sce.trustAsResourceUrl(url);
-                $ionicLoading.hide();
-            });
-    }
+            }
+            else {
+                $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
+            }
+            $ionicLoading.hide();
+        },
+        function() {
+            $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
+            $ionicLoading.hide();
+        },
+        function() {}
+    );
 })
 
 /**
@@ -357,6 +363,7 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/vitalsign/';
+    $scope.title = 'Vital Signs';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -453,6 +460,7 @@ angular.module('mycdc.controllers', [])
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
+    $scope.title = 'FastStats';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -505,6 +513,104 @@ angular.module('mycdc.controllers', [])
     };
 })
 
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('DirectorsBlogCtrl', function($scope, $location, $ionicLoading, DirectorsBlogData, DirectorsBlogStorage) {
+    var source = $location.$$url.split('/').pop();
+    $scope.datas = [];
+    $scope.storage = '';
+    $scope.url = '#/app/directorblog/';
+    $scope.title = 'CDC Directors Blog';
+
+    $scope.loading = $ionicLoading.show({
+        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+        showBackdrop: false,
+        showDelay: 100
+    });
+
+    var getData = function() {
+        DirectorsBlogData.async().then(
+            function() {
+                $scope.datas = DirectorsBlogData.getAll();
+                $ionicLoading.hide();
+                $scope.$broadcast('scroll.refreshComplete');
+            },
+            function() {
+                $scope.datas = DirectorsBlogStorage.all();
+                $scope.storage = 'Data from local storage';
+                $ionicLoading.hide();
+                $scope.$broadcast('scroll.refreshComplete');
+            },
+            function() {}
+        );
+    };
+
+    getData();
+
+    var page = 1,
+        pageSize = 6;
+
+    $scope.doRefresh = function() {
+        getData();
+    };
+
+    $scope.paginationLimit = function(data) {
+        return pageSize * page;
+    };
+
+    $scope.hasMoreItems = function() {
+        return page < ($scope.datas.length / pageSize);
+    };
+
+    $scope.showMoreItems = function() {
+        page = page + 1;
+        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+            $scope.$apply();
+        }
+    };
+})
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {Object}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('VitalSignCtrl', function($scope, $ionicPlatform, $ionicLoading, $stateParams, $sce, VitalSignsData, VitalSignsContent) {
+    $scope.article = {};
+    $scope.loading = $ionicLoading.show({
+        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+        showBackdrop: false,
+        showDelay: 100
+    });
+
+    $scope.article = VitalSignsData.get($stateParams.articleIdx);
+    $scope.id = VitalSignsData.getId($stateParams.articleIdx);
+
+    VitalSignsContent.getContent($scope.id).then(
+        function(resp) {
+            console.log(resp);
+            $scope.content = resp.data.results.content;
+            $ionicLoading.hide();
+        },
+        function() {
+            alert('Could not load Content');
+            $ionicLoading.hide();
+        },
+        function() {}
+    );
+})
 
 /**
  * Other non-source Controllers

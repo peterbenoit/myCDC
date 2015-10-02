@@ -173,6 +173,14 @@ angular.module('mycdc.data', [])
     return service;
 })
 
+.factory('HealthArticlesContent', function($http){
+    return {
+        getStatus: function(url) {
+            return $http.get('http://peterbenoit.com/dev/exists.php?url=' + url);
+        }
+    }
+})
+
 /**
  * @param  {[type]}
  * @param  {[type]}
@@ -232,6 +240,7 @@ angular.module('mycdc.data', [])
         }
     }
 })
+
 /**
  * @param  {[type]}
  * @param  {[type]}
@@ -281,7 +290,46 @@ angular.module('mycdc.data', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.factory('CDCDirectorBlogData', function($http, $q, CDCDirectorBlogStorage) {})
+.factory('DirectorsBlogData', function($http, $q, DirectorsBlogStorage) {
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        service = {};
+
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/sources/Blogs.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d.data.results;
+            DirectorsBlogStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = DirectorsBlogStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {});
+
+        return promise;
+    };
+
+    service.getAll = function() {
+        return data;
+    };
+
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    service.getId = function(idx) {
+        return data[idx].id;
+    };
+
+    return service;
+})
 
 /**
  * @param  {[type]}

@@ -152,16 +152,16 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: 'templates/stream.html',
-                controller: 'StreamCtrl'
+                controller: 'DirectorsBlogCtrl'
             }
         }
     })
-    .state('app.cdcdirectorblog', {
-        url: '/cdcdirectorblog/:blogId',
+    .state('app.directorblog', {
+        url: '/directorblog/:blogId',
         views: {
             'menuContent': {
                 templateUrl: 'templates/blog.html',
-                controller: 'BlogCtrl'
+                controller: 'DirectorsBlogCtrl'
             }
         }
     })
