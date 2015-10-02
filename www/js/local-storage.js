@@ -134,6 +134,28 @@ angular.module('mycdc.storage', [])
     };
 })
 
+
+/**
+ * @return {[type]}
+ */
+.factory('WeeklyCaseCountsStorage', function() {
+    return {
+        all: function() {
+            var weeklycasecounts = window.localStorage['weeklycasecounts'];
+            if (weeklycasecounts) {
+                return angular.fromJson(weeklycasecounts);
+            }
+            return {};
+        },
+        save: function(weeklycasecounts) {
+            window.localStorage['weeklycasecounts'] = angular.toJson(weeklycasecounts);
+        },
+        clear: function() {
+            window.localStorage.removeItem('weeklycasecounts');
+        }
+    };
+})
+
 /**
  * @return {[type]}
  */
@@ -200,20 +222,168 @@ angular.module('mycdc.storage', [])
 /**
  * @return {[type]}
  */
-.factory('FastStatsStorage', function() {
+.factory('DidYouKnowStorage', function() {
     return {
         all: function() {
-            var faststats = window.localStorage['faststats'];
-            if (faststats) {
-                return angular.fromJson(faststats);
+            var dyk = window.localStorage['dyk'];
+            if (dyk) {
+                return angular.fromJson(dyk);
             }
             return {};
         },
-        save: function(faststats) {
-            window.localStorage['faststats'] = angular.toJson(faststats);
+        save: function(dyk) {
+            window.localStorage['dyk'] = angular.toJson(dyk);
         },
         clear: function() {
-            window.localStorage.removeItem('faststats');
+            window.localStorage.removeItem('dyk');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('FactoftheWeekStorage', function() {
+    return {
+        all: function() {
+            var fotw = window.localStorage['fotw'];
+            if (fotw) {
+                return angular.fromJson(fotw);
+            }
+            return {};
+        },
+        save: function(fotw) {
+            window.localStorage['fotw'] = angular.toJson(fotw);
+        },
+        clear: function() {
+            window.localStorage.removeItem('fotw');
+        }
+    };
+})
+
+
+/**
+ * @return {[type]}
+ */
+.factory('EIDsStorage', function() {
+    return {
+        all: function() {
+            var eid = window.localStorage['eid'];
+            if (eid) {
+                return angular.fromJson(eid);
+            }
+            return {};
+        },
+        save: function(eid) {
+            window.localStorage['eid'] = angular.toJson(eid);
+        },
+        clear: function() {
+            window.localStorage.removeItem('eid');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('MMWRsStorage', function() {
+    return {
+        all: function() {
+            var mmwr = window.localStorage['mmwr'];
+            if (mmwr) {
+                return angular.fromJson(mmwr);
+            }
+            return {};
+        },
+        save: function(mmwr) {
+            window.localStorage['mmwr'] = angular.toJson(mmwr);
+        },
+        clear: function() {
+            window.localStorage.removeItem('mmwr');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('PCDsStorage', function() {
+    return {
+        all: function() {
+            var pcd = window.localStorage['pcd'];
+            if (pcd) {
+                return angular.fromJson(pcd);
+            }
+            return {};
+        },
+        save: function(pcd) {
+            window.localStorage['pcd'] = angular.toJson(pcd);
+        },
+        clear: function() {
+            window.localStorage.removeItem('pcd');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('NewsroomsStorage', function() {
+    return {
+        all: function() {
+            var nr = window.localStorage['nr'];
+            if (nr) {
+                return angular.fromJson(nr);
+            }
+            return {};
+        },
+        save: function(nr) {
+            window.localStorage['nr'] = angular.toJson(nr);
+        },
+        clear: function() {
+            window.localStorage.removeItem('nr');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('OutbreaksStorage', function() {
+    return {
+        all: function() {
+            var ob = window.localStorage['ob'];
+            if (ob) {
+                return angular.fromJson(ob);
+            }
+            return {};
+        },
+        save: function(ob) {
+            window.localStorage['ob'] = angular.toJson(ob);
+        },
+        clear: function() {
+            window.localStorage.removeItem('ob');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('TravelNoticesStorage', function() {
+    return {
+        all: function() {
+            var tn = window.localStorage['tn'];
+            if (tn) {
+                return angular.fromJson(tn);
+            }
+            return {};
+        },
+        save: function(tn) {
+            window.localStorage['tn'] = angular.toJson(tn);
+        },
+        clear: function() {
+            window.localStorage.removeItem('tn');
         }
     };
 })

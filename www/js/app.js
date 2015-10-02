@@ -52,7 +52,8 @@ add to body class: platform-wp8
         url: '/app',
         abstract: true,
         templateUrl: 'templates/menu.html',
-        controller: 'AppCtrl'
+        controller: 'HomeCtrl'
+        // controller: 'AppCtrl'
     })
 
     .state('app.home', {
@@ -67,10 +68,11 @@ add to body class: platform-wp8
 
 /**
  * Source States
- * Ideally, these would all be dynamic, based off config.json
+ * Ideally, these would all be dynamic, based off some config file. But I don't know if Angular works that way - yet .
  */
-
+    // *******************************************************************************************
     // Disease of the Week
+    // *******************************************************************************************
     .state('app.DOTW', {
         url: '/dotw',
         views: {
@@ -81,7 +83,7 @@ add to body class: platform-wp8
         }
     })
     .state('app.disease', {
-        url: '/disease/:articleIdx',
+        url: '/disease/:idx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/embed.html',
@@ -89,7 +91,9 @@ add to body class: platform-wp8
             }
         }
     })
+    // *******************************************************************************************
     // FluView Weekly Summary
+    // *******************************************************************************************
     .state('app.fluviews', {
         url: '/fluviews',
         views: {
@@ -100,7 +104,7 @@ add to body class: platform-wp8
         }
     })
     .state('app.fluview', {
-        url: '/fluview/:articleIdx',
+        url: '/fluview/:idx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/article.html',
@@ -108,7 +112,9 @@ add to body class: platform-wp8
             }
         }
     })
+    // *******************************************************************************************
     // Health Articles
+    // *******************************************************************************************
     .state('app.healtharticles', {
         url: '/healtharticles',
         views: {
@@ -119,7 +125,7 @@ add to body class: platform-wp8
         }
     })
     .state('app.healtharticle', {
-        url: '/healtharticle/:articleIdx',
+        url: '/healtharticle/:idx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/embed.html',
@@ -127,7 +133,9 @@ add to body class: platform-wp8
             }
         }
     })
+    // *******************************************************************************************
     // Vital Signs
+    // *******************************************************************************************
     .state('app.vitalsigns', {
         url: '/vitalsigns',
         views: {
@@ -138,7 +146,7 @@ add to body class: platform-wp8
         }
     })
     .state('app.vitalsign', {
-        url: '/vitalsign/:articleIdx',
+        url: '/vitalsign/:idx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/article.html',
@@ -146,7 +154,9 @@ add to body class: platform-wp8
             }
         }
     })
+    // *******************************************************************************************
     // CDC Director Blog
+    // *******************************************************************************************
     .state('app.cdcdirectorsblog', {
         url: '/cdcdirectorsblog',
         views: {
@@ -157,7 +167,7 @@ add to body class: platform-wp8
         }
     })
     .state('app.directorblog', {
-        url: '/directorblog/:blogId',
+        url: '/directorblog/:idx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/blog.html',
@@ -165,7 +175,9 @@ add to body class: platform-wp8
             }
         }
     })
+    // *******************************************************************************************
     // CDC Works for You 24/7 Blog
+    // *******************************************************************************************
     .state('app.247blogs', {
         url: '/247blogs',
         views: {
@@ -176,7 +188,7 @@ add to body class: platform-wp8
         }
     })
     .state('app.247blog', {
-        url: '/247blog/:blogId',
+        url: '/247blog/:idx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/blog.html',
@@ -184,7 +196,9 @@ add to body class: platform-wp8
             }
         }
     })
+    // *******************************************************************************************
     // Public Health Matters Blog
+    // *******************************************************************************************
     .state('app.PHMblogs', {
         url: '/PHMblogs',
         views: {
@@ -195,7 +209,7 @@ add to body class: platform-wp8
         }
     })
     .state('app.PHMblog', {
-        url: '/PHMblog/:blogId',
+        url: '/PHMblog/:idx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/blog.html',
@@ -203,7 +217,9 @@ add to body class: platform-wp8
             }
         }
     })
+    // *******************************************************************************************
     // FastStats
+    // *******************************************************************************************
     .state('app.FastStats', {
         url: '/FastStats',
         views: {
@@ -214,14 +230,308 @@ add to body class: platform-wp8
         }
     })
     .state('app.FastStat', {
-        url: '/FastStat/:dataId',
+        url: '/FastStat/:idx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/data.html',
-                controller: 'DataCtrl'
+                controller: 'FastStatCtrl'
             }
         }
-    });
+    })
+    // *******************************************************************************************
+    // Weekly Disease Case Counts
+    // *******************************************************************************************
+    .state('app.WeeklyDiseaseCaseCounts', {
+        url: '/WeeklyDiseaseCaseCounts',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/stream.html',
+                controller: 'WeeklyDiseaseCaseCountsCtrl'
+            }
+        }
+    })
+    .state('app.WeeklyDiseaseCaseCount', {
+        url: '/WeeklyDiseaseCaseCount/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/data.html',
+                controller: 'WeeklyDiseaseCaseCountCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Did You Know
+    // *******************************************************************************************
+    .state('app.DidYouKnow', {
+        url: '/DidYouKnow',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/stream.html',
+                controller: 'DidYouKnowCtrl'
+            }
+        }
+    })
+    .state('app.DYK', {
+        url: '/DYK/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/fact.html',
+                controller: 'DYKCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Fact of the Week
+    // *******************************************************************************************
+    .state('app.FactoftheWeek', {
+        url: '/FactoftheWeek',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/stream.html',
+                controller: 'FactoftheWeekCtrl'
+            }
+        }
+    })
+    .state('app.Fact', {
+        url: '/Fact/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/fact.html',
+                controller: 'FOTWCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Emerging Infectious Disease (EID)
+    // *******************************************************************************************
+    .state('app.EIDS', {
+        url: '/EIDS',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/stream.html',
+                controller: 'EIDsCtrl'
+            }
+        }
+    })
+    .state('app.EIDx', {
+        url: '/EID/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/journal.html',
+                controller: 'EIDCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Morbidity and Mortality Weekly Report (MMWR)
+    // *******************************************************************************************
+    .state('app.MMWRS', {
+        url: '/MMWRS',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/stream.html',
+                controller: 'MMWRsCtrl'
+            }
+        }
+    })
+    .state('app.MMWR', {
+        url: '/MMWR/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/journal.html',
+                controller: 'JournalCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Preventing Chronic Disease (PCD)
+    // *******************************************************************************************
+    .state('app.PCDS', {
+        url: '/PCDS',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/stream.html',
+                controller: 'PCDsCtrl'
+            }
+        }
+    })
+    .state('app.PCD', {
+        url: '/PCD/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/journal.html',
+                controller: 'JournalCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Newsroom
+    // *******************************************************************************************
+    .state('app.Newsrooms', {
+        url: '/Newsrooms',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/stream.html',
+                controller: 'NewsroomsCtrl'
+            }
+        }
+    })
+    .state('app.Newsroom', {
+        url: '/Newsroom/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/embed.html',
+                controller: 'NewsroomCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Outbreaks
+    // *******************************************************************************************
+    .state('app.Outbreaks', {
+        url: '/Outbreaks',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/stream.html',
+                controller: 'OutbreaksCtrl'
+            }
+        }
+    })
+    .state('app.Outbreak', {
+        url: '/Outbreak/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/embed.html',
+                controller: 'OutbreakCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Travel Notices
+    // *******************************************************************************************
+    .state('app.TravelNotices', {
+        url: '/TravelNotices',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/stream.html',
+                controller: 'TravelNoticesCtrl'
+            }
+        }
+    })
+    .state('app.TravelNotice', {
+        url: '/TravelNotice/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/embed.html',
+                controller: 'TravelNoticeCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Image Library
+    // *******************************************************************************************
+    .state('app.ImageLibrarys', {
+        url: '/ImageLibrarys',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/images.html',
+                controller: 'ImageLibrarysCtrl'
+            }
+        }
+    })
+    .state('app.ImageLibrary', {
+        url: '/ImageLibrary/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/image.html',
+                controller: 'ImageCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Instagram
+    // *******************************************************************************************
+    .state('app.Instagrams', {
+        url: '/Instagrams',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/images.html',
+                controller: 'InstagramCtrl'
+            }
+        }
+    })
+    .state('app.Instagram', {
+        url: '/Instagram/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/image.html',
+                controller: 'ImageCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Flickr
+    // *******************************************************************************************
+    .state('app.Flickrs', {
+        url: '/Flickrs',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/images.html',
+                controller: 'FlickrCtrl'
+            }
+        }
+    })
+    .state('app.Flickr', {
+        url: '/Flickr/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/image.html',
+                controller: 'ImageCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // Podcasts
+    // *******************************************************************************************
+    .state('app.Podcasts', {
+        url: '/Podcasts',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/audios.html',
+                controller: 'PodcastsCtrl'
+            }
+        }
+    })
+    .state('app.Podcast', {
+        url: '/Podcast/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/audio.html',
+                controller: 'AudioCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
+    // YouTube
+    // *******************************************************************************************
+    .state('app.YouTubes', {
+        url: '/YouTubes',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/videos.html',
+                controller: 'YouTubeCtrl'
+            }
+        }
+    })
+    .state('app.YouTube', {
+        url: '/YouTube/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/video.html',
+                controller: 'VideoCtrl'
+            }
+        }
+    })
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');

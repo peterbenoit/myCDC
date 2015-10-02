@@ -327,7 +327,7 @@
 			"file": "www/js/data.js",
 			"settings":
 			{
-				"buffer_size": 6331,
+				"buffer_size": 7376,
 				"line_ending": "Unix"
 			}
 		},
@@ -335,7 +335,7 @@
 			"file": "www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 14180,
+				"buffer_size": 17248,
 				"line_ending": "Unix"
 			}
 		},
@@ -343,7 +343,7 @@
 			"file": "www/templates/embed.html",
 			"settings":
 			{
-				"buffer_size": 265,
+				"buffer_size": 214,
 				"line_ending": "Unix",
 				"name": "source.html"
 			}
@@ -352,7 +352,7 @@
 			"file": "www/js/app.js",
 			"settings":
 			{
-				"buffer_size": 5522,
+				"buffer_size": 5691,
 				"line_ending": "Unix"
 			}
 		},
@@ -360,7 +360,7 @@
 			"file": "www/css/style.css",
 			"settings":
 			{
-				"buffer_size": 1177,
+				"buffer_size": 1170,
 				"line_ending": "Unix"
 			}
 		}
@@ -368,11 +368,11 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 127.0,
+		"height": 107.0,
 		"selected_items":
 		[
 			[
-				"instal",
+				"install",
 				"Package Control: Install Package"
 			],
 			[
@@ -380,7 +380,7 @@
 				"Package Control: List Packages"
 			],
 			[
-				"install",
+				"instal",
 				"Package Control: Install Package"
 			],
 			[
@@ -568,7 +568,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"<project>",
@@ -896,7 +896,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -904,15 +904,15 @@
 					"file": "www/js/data.js",
 					"settings":
 					{
-						"buffer_size": 6331,
+						"buffer_size": 7376,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2397,
-								2407
+								2955,
+								2955
 							]
 						],
 						"settings":
@@ -980,15 +980,15 @@
 					"file": "www/js/controllers.js",
 					"settings":
 					{
-						"buffer_size": 14180,
+						"buffer_size": 17248,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6097,
-								6097
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1046,7 +1046,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 386.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1056,15 +1056,15 @@
 					"file": "www/templates/embed.html",
 					"settings":
 					{
-						"buffer_size": 265,
+						"buffer_size": 214,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								209,
-								209
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1131,15 +1131,15 @@
 					"file": "www/js/app.js",
 					"settings":
 					{
-						"buffer_size": 5522,
+						"buffer_size": 5691,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2317,
-								2317
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1207,15 +1207,15 @@
 					"file": "www/css/style.css",
 					"settings":
 					{
-						"buffer_size": 1177,
+						"buffer_size": 1170,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								930,
-								930
+								0,
+								0
 							]
 						],
 						"settings":
