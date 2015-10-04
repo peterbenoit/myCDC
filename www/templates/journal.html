@@ -1,1 +1,22 @@
-journal.html
+<ion-view>
+
+    <ion-content class="has-header">
+
+    <!-- <img src="{{data.enclosures[0].resourceUrl}}"> -->
+
+    <div class="padding data journal">
+        <h2 class="title">{{data.name}}</h2>
+
+        <div style="padding:0 0 20px 0;">
+        Published {{data.datePublished | date:'fullDate'}}
+        </div>
+
+        <p ng-bind-html="content"></p>
+
+        <p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+        <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC</button></p>
+
+    </div>
+
+    </ion-content>
+</ion-view>

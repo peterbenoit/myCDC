@@ -1,1 +1,397 @@
-{"meta":{"status":200,"message":[],"resultSet":{"id":"ad7134b2-bb2a-4955-a15c-f1b564060bbd"},"pagination":{"total":15,"count":15,"max":100,"offset":0,"pageNum":1,"totalPages":1,"sort":"-datepublished,mediaid","previousUrl":"","currentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=director videos&fields=id,name,description,mediatype,thumbnailurl,syndicateurl,embedurl,contenturl,alternateimages,tags,sourceurl,targeturl,status,enclosures&max=100&pagenum=1","nextUrl":""}},"results":[{"id":345154,"name":"Recetas de analgésicos opioides. El sitio en donde vive puede influir entre recibirlas o no","description":"Recetas de analgésicos opioides. El sitio en donde vive puede influir entre recibirlas o no","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=PYaaMnQgFog","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345154/syndicate.json","datePublished":"2014-07-01T17:22:12Z","dateModified":"2015-09-22T15:47:37Z","enclosures":[]},{"id":345153,"name":"Opioid Painkiller Prescribing: Where You Live Makes a Difference","description":"Opioid Painkiller Prescribing: Where You Live Makes a Difference","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=8TmPEy94TYI","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345153/syndicate.json","datePublished":"2014-07-01T17:22:12Z","dateModified":"2015-09-22T15:46:52Z","enclosures":[]},{"id":345156,"name":"Preventing Norovirus Outbreaks","description":"Preventing Norovirus Outbreaks","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=p7KoIJMOufs","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345156/syndicate.json","datePublished":"2014-06-03T17:02:57Z","dateModified":"2015-09-22T15:47:47Z","enclosures":[]},{"id":345155,"name":"Preventing Pregnancies in Younger Teens","description":"Preventing Pregnancies in Younger Teens","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=3YaU2NH-II0","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345155/syndicate.json","datePublished":"2014-04-08T17:10:59Z","dateModified":"2015-09-22T15:47:42Z","enclosures":[]},{"id":345157,"name":"Prevención de embarazos en las adolescentes de 15 a 17 años","description":"Prevención de embarazos en las adolescentes de 15 a 17 años","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=PBzfHFVeOK8","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345157/syndicate.json","datePublished":"2014-04-08T17:10:03Z","dateModified":"2015-09-22T15:47:50Z","enclosures":[]},{"id":345158,"name":"Making Health Care Safer. Antibiotic prescribing in hospitals: use caution","description":"Making Health Care Safer. Antibiotic prescribing in hospitals: use caution","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=FlyDpM753Bs","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345158/syndicate.json","datePublished":"2014-03-06T15:15:13Z","dateModified":"2015-09-22T15:47:54Z","enclosures":[]},{"id":345159,"name":"World AIDS Day: Closer Than Ever to an AIDS-Free Generation","description":"World AIDS Day: Closer Than Ever to an AIDS-Free Generation","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=bpRTPxo_390","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345159/syndicate.json","datePublished":"2013-12-01T14:32:58Z","dateModified":"2015-09-22T15:47:57Z","enclosures":[]},{"id":345161,"name":"Sesión informativa del director: Prevención del cáncer colorrectal","description":"Sesión informativa del director: Prevención del cáncer colorrectal","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=CgSzp9CH5sQ","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345161/syndicate.json","datePublished":"2013-11-05T17:58:49Z","dateModified":"2015-09-22T15:48:04Z","enclosures":[]},{"id":345160,"name":"Director's Briefing: Testing to Prevent Colon Cancer","description":"Director's Briefing: Testing to Prevent Colon Cancer","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=dKvAg9wKv9E","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345160/syndicate.json","datePublished":"2013-11-05T17:58:38Z","dateModified":"2015-09-22T15:48:01Z","enclosures":[]},{"id":345162,"name":"Dr. Tom Frieden Speaks at National Press Club: \"The Cough Heard 'Round the World\"","description":"Dr. Tom Frieden Speaks at National Press Club: \"The Cough Heard 'Round the World\"","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=n8g24t6cMi8","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345162/syndicate.json","datePublished":"2013-09-17T19:30:40Z","dateModified":"2015-09-22T15:48:08Z","enclosures":[]},{"id":345163,"name":"Director's Briefing: Serious Health Threat of Antibiotic-Resistant Germs","description":"Director's Briefing: Serious Health Threat of Antibiotic-Resistant Germs","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=uZt6q2uwM2g","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345163/syndicate.json","datePublished":"2013-09-16T15:51:33Z","dateModified":"2015-09-22T15:48:11Z","enclosures":[]},{"id":345164,"name":"Director's Briefing: Impact of Tips from Former Smokers Campaign","description":"Director's Briefing: Impact of Tips from Former Smokers Campaign","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=atqKTqD0oxg","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345164/syndicate.json","datePublished":"2013-09-09T19:00:41Z","dateModified":"2015-09-22T15:48:14Z","enclosures":[]},{"id":345166,"name":"Sesión informativa del director: Enfermedades cardiacas y derrames cerebrales","description":"Sesión informativa del director: Enfermedades cardiacas y derrames cerebrales","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=hsVshj2UO0E","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345166/syndicate.json","datePublished":"2013-09-03T15:30:01Z","dateModified":"2015-09-22T15:48:21Z","enclosures":[]},{"id":345165,"name":"Director's Briefing: Heart Disease and Stroke","description":"Director's Briefing: Heart Disease and Stroke","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=UOn0lKH5JS0","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345165/syndicate.json","datePublished":"2013-09-03T15:29:36Z","dateModified":"2015-09-22T15:48:17Z","enclosures":[]},{"id":345167,"name":"Director's Briefing: Talk to Your Doc About Quitting Smoking","description":"Director's Briefing: Talk to Your Doc About Quitting Smoking","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25389,"name":"CDC Social Media","language":"English","type":"Topic"},{"id":35041,"name":"Director Videos","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.youtube.com/watch?v=xScOu6GPsMw","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345167/syndicate.json","datePublished":"2013-05-22T13:29:55Z","dateModified":"2015-09-22T15:48:24Z","enclosures":[]}]}
+{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "ad7134b2-bb2a-4955-a15c-f1b564060bbd"
+        },
+        "pagination": {
+            "total": 15,
+            "count": 15,
+            "max": 100,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 1,
+            "sort": "-datepublished,mediaid",
+            "previousUrl": "",
+            "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=director videos&fields=id,name,description,mediatype,thumbnailurl,syndicateurl,embedurl,contenturl,alternateimages,tags,sourceurl,targeturl,status,enclosures&max=100&pagenum=1",
+            "nextUrl": ""
+        }
+    },
+    "results": [{
+        "id": 345154,
+        "name": "Recetas de analgésicos opioides. El sitio en donde vive puede influir entre recibirlas o no",
+        "description": "Recetas de analgésicos opioides. El sitio en donde vive puede influir entre recibirlas o no",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=PYaaMnQgFog",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345154/syndicate.json",
+        "datePublished": "2014-07-01T17:22:12Z",
+        "dateModified": "2015-09-22T15:47:37Z",
+        "enclosures": []
+    }, {
+        "id": 345153,
+        "name": "Opioid Painkiller Prescribing: Where You Live Makes a Difference",
+        "description": "Opioid Painkiller Prescribing: Where You Live Makes a Difference",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=8TmPEy94TYI",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345153/syndicate.json",
+        "datePublished": "2014-07-01T17:22:12Z",
+        "dateModified": "2015-09-22T15:46:52Z",
+        "enclosures": []
+    }, {
+        "id": 345156,
+        "name": "Preventing Norovirus Outbreaks",
+        "description": "Preventing Norovirus Outbreaks",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=p7KoIJMOufs",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345156/syndicate.json",
+        "datePublished": "2014-06-03T17:02:57Z",
+        "dateModified": "2015-09-22T15:47:47Z",
+        "enclosures": []
+    }, {
+        "id": 345155,
+        "name": "Preventing Pregnancies in Younger Teens",
+        "description": "Preventing Pregnancies in Younger Teens",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=3YaU2NH-II0",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345155/syndicate.json",
+        "datePublished": "2014-04-08T17:10:59Z",
+        "dateModified": "2015-09-22T15:47:42Z",
+        "enclosures": []
+    }, {
+        "id": 345157,
+        "name": "Prevención de embarazos en las adolescentes de 15 a 17 años",
+        "description": "Prevención de embarazos en las adolescentes de 15 a 17 años",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=PBzfHFVeOK8",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345157/syndicate.json",
+        "datePublished": "2014-04-08T17:10:03Z",
+        "dateModified": "2015-09-22T15:47:50Z",
+        "enclosures": []
+    }, {
+        "id": 345158,
+        "name": "Making Health Care Safer. Antibiotic prescribing in hospitals: use caution",
+        "description": "Making Health Care Safer. Antibiotic prescribing in hospitals: use caution",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=FlyDpM753Bs",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345158/syndicate.json",
+        "datePublished": "2014-03-06T15:15:13Z",
+        "dateModified": "2015-09-22T15:47:54Z",
+        "enclosures": []
+    }, {
+        "id": 345159,
+        "name": "World AIDS Day: Closer Than Ever to an AIDS-Free Generation",
+        "description": "World AIDS Day: Closer Than Ever to an AIDS-Free Generation",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=bpRTPxo_390",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345159/syndicate.json",
+        "datePublished": "2013-12-01T14:32:58Z",
+        "dateModified": "2015-09-22T15:47:57Z",
+        "enclosures": []
+    }, {
+        "id": 345161,
+        "name": "Sesión informativa del director: Prevención del cáncer colorrectal",
+        "description": "Sesión informativa del director: Prevención del cáncer colorrectal",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=CgSzp9CH5sQ",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345161/syndicate.json",
+        "datePublished": "2013-11-05T17:58:49Z",
+        "dateModified": "2015-09-22T15:48:04Z",
+        "enclosures": []
+    }, {
+        "id": 345160,
+        "name": "Director's Briefing: Testing to Prevent Colon Cancer",
+        "description": "Director's Briefing: Testing to Prevent Colon Cancer",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=dKvAg9wKv9E",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345160/syndicate.json",
+        "datePublished": "2013-11-05T17:58:38Z",
+        "dateModified": "2015-09-22T15:48:01Z",
+        "enclosures": []
+    }, {
+        "id": 345162,
+        "name": "Dr. Tom Frieden Speaks at National Press Club: \"The Cough Heard 'Round the World\"",
+        "description": "Dr. Tom Frieden Speaks at National Press Club: \"The Cough Heard 'Round the World\"",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=n8g24t6cMi8",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345162/syndicate.json",
+        "datePublished": "2013-09-17T19:30:40Z",
+        "dateModified": "2015-09-22T15:48:08Z",
+        "enclosures": []
+    }, {
+        "id": 345163,
+        "name": "Director's Briefing: Serious Health Threat of Antibiotic-Resistant Germs",
+        "description": "Director's Briefing: Serious Health Threat of Antibiotic-Resistant Germs",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=uZt6q2uwM2g",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345163/syndicate.json",
+        "datePublished": "2013-09-16T15:51:33Z",
+        "dateModified": "2015-09-22T15:48:11Z",
+        "enclosures": []
+    }, {
+        "id": 345164,
+        "name": "Director's Briefing: Impact of Tips from Former Smokers Campaign",
+        "description": "Director's Briefing: Impact of Tips from Former Smokers Campaign",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=atqKTqD0oxg",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345164/syndicate.json",
+        "datePublished": "2013-09-09T19:00:41Z",
+        "dateModified": "2015-09-22T15:48:14Z",
+        "enclosures": []
+    }, {
+        "id": 345166,
+        "name": "Sesión informativa del director: Enfermedades cardiacas y derrames cerebrales",
+        "description": "Sesión informativa del director: Enfermedades cardiacas y derrames cerebrales",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=hsVshj2UO0E",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345166/syndicate.json",
+        "datePublished": "2013-09-03T15:30:01Z",
+        "dateModified": "2015-09-22T15:48:21Z",
+        "enclosures": []
+    }, {
+        "id": 345165,
+        "name": "Director's Briefing: Heart Disease and Stroke",
+        "description": "Director's Briefing: Heart Disease and Stroke",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=UOn0lKH5JS0",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345165/syndicate.json",
+        "datePublished": "2013-09-03T15:29:36Z",
+        "dateModified": "2015-09-22T15:48:17Z",
+        "enclosures": []
+    }, {
+        "id": 345167,
+        "name": "Director's Briefing: Talk to Your Doc About Quitting Smoking",
+        "description": "Director's Briefing: Talk to Your Doc About Quitting Smoking",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35041,
+            "name": "Director Videos",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=xScOu6GPsMw",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345167/syndicate.json",
+        "datePublished": "2013-05-22T13:29:55Z",
+        "dateModified": "2015-09-22T15:48:24Z",
+        "enclosures": []
+    }]
+}

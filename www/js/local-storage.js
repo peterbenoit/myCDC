@@ -201,20 +201,41 @@ angular.module('mycdc.storage', [])
 /**
  * @return {[type]}
  */
-.factory('FastStatsStorage', function() {
+.factory('PHMblogsStorage', function() {
     return {
         all: function() {
-            var phmblog = window.localStorage['phmblog'];
-            if (phmblog) {
-                return angular.fromJson(phmblog);
+            var phm = window.localStorage['phm'];
+            if (phm) {
+                return angular.fromJson(phm);
             }
             return {};
         },
-        save: function(phmblog) {
-            window.localStorage['phmblog'] = angular.toJson(phmblog);
+        save: function(phm) {
+            window.localStorage['phm'] = angular.toJson(phm);
         },
         clear: function() {
-            window.localStorage.removeItem('phmblog');
+            window.localStorage.removeItem('phm');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('FastStatsStorage', function() {
+    return {
+        all: function() {
+            var fast = window.localStorage['fast'];
+            if (fast) {
+                return angular.fromJson(fast);
+            }
+            return {};
+        },
+        save: function(fast) {
+            window.localStorage['fast'] = angular.toJson(fast);
+        },
+        clear: function() {
+            window.localStorage.removeItem('fast');
         }
     };
 })
@@ -387,6 +408,28 @@ angular.module('mycdc.storage', [])
         }
     };
 })
+
+/**
+ * @return {[type]}
+ */
+.factory('PodcastsStorage', function() {
+    return {
+        all: function() {
+            var pod = window.localStorage['pod'];
+            if (pod) {
+                return angular.fromJson(pod);
+            }
+            return {};
+        },
+        save: function(pod) {
+            window.localStorage['pod'] = angular.toJson(pod);
+        },
+        clear: function() {
+            window.localStorage.removeItem('pod');
+        }
+    };
+})
+
 
 
 ;

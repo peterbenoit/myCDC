@@ -1,1 +1,352 @@
-{"meta":{"status":200,"message":[],"resultSet":{"id":"b0e30b78-ff19-44cb-9ab6-5699746434e2"},"pagination":{"total":11,"count":11,"max":100,"offset":0,"pageNum":1,"totalPages":1,"sort":"-datepublished,mediaid","previousUrl":"","currentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=mmwr 2016&fields=id,name,description,mediatype,thumbnailurl,syndicateurl,embedurl,contenturl,alternateimages,tags,sourceurl,targeturl,status,enclosures&max=100&pagenum=1","nextUrl":""}},"results":[{"id":344713,"name":"Influenza Vaccination Coverage Among Health Care Personnel — United States, 2014–15 Influenza Season","description":"The Advisory Committee on Immunization Practices recommends annual influenza vaccination for all health care personnel (HCP) to reduce influenza-related morbidity and mortality among both HCP and their patients and to decrease absenteeism among HCP (1–5). To estimate influenza vaccination coverage among U.S. HCP for the 2014–15 influenza season, CDC conducted an opt-in Internet panel survey of 1,914 HCP during March 31–April 15, 2015. Overall, 77.3% of HCP survey participants reported receiving an influenza vaccination during the 2014–15 season, similar to the 75.2% coverage among HCP reported for the 2013–14 season (6). Vaccination coverage was highest among HCP working in hospitals (90.4%) and lowest among HCP working in long-term care (LTC) settings (63.9%). By occupation, coverage was highest among pharmacists (95.3%) and lowest among assistants and aides (64.4%). Influenza vaccination coverage was highest among HCP who were required by their employer to be vaccinated (96.0%). Among HCP without an employer requirement for vaccination, coverage was higher for HCP working in settings where vaccination was offered on-site at no cost for 1 day (73.6%) or multiple days (83.9%) and lowest among HCP working in settings where vaccine was neither required, promoted, nor offered on-site (44.0%). Comprehensive vaccination strategies that include making vaccine available at no cost at the workplace along with active promotion of vaccination might help increase vaccination coverage among HCP and reduce the risk for influenza to HCP and their patients (1,6,7).","mediaType":"Feed Item","tags":[{"id":25910,"name":"MMWR","language":"English","type":"Topic"},{"id":34519,"name":"MMWR 2016","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a1.htm","targetUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a1.htm","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344713/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344713/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344713/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344713/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1568,"resourceUrl":"http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Influenza_Vaccination_Coverage_Among_Health_Care_Personnel.jpg","contentType":"image/jpeg","size":7966}]},{"id":344714,"name":"Influenza Vaccination Coverage Among Pregnant Women — United States, 2014–15 Influenza Season","description":"Pregnant women and infants are at increased risk for influenza-related complications and hospitalization. Influenza vaccination can reduce the risk for influenza-related illness among pregnant women and their infants (1). Since 2004, the Advisory Committee on Immunization Practices (ACIP) and the American College of Obstetricians and Gynecologists (ACOG) have recommended influenza vaccination for all women who are or will be pregnant during the influenza season, regardless of trimester of pregnancy (1,2). To assess influenza vaccination coverage among pregnant women during the 2014–15 influenza season, CDC analyzed data from an Internet panel survey conducted during March 31–April 6, 2015. Among 1,702 survey respondents who were pregnant at any time during October 2014–January 2015, 50.3% reported receiving influenza vaccination before or during pregnancy, similar to the reported coverage in the preceding season (3). Overall, 64.9% of respondents reported receiving a provider offer of influenza vaccination, 14.8% received a recommendation but no offer, and 20.3% received no recommendation. Vaccination coverage among these groups of women was 67.9%, 33.5%, and 8.5%, respectively. Reminder systems and standing orders that allow health care personnel other than the attending provider to assess vaccination status and administer vaccination, can help to ensure that influenza vaccination is recommended and offered to a pregnant woman at each provider visit to increase pregnant women's vaccination coverage (4,5).","mediaType":"Feed Item","tags":[{"id":25910,"name":"MMWR","language":"English","type":"Topic"},{"id":34519,"name":"MMWR 2016","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a2.htm","targetUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a2.htm","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344714/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344714/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344714/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344714/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1569,"resourceUrl":"http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Influenza_Vaccination_Coverage_Among_Pregnant_Women.jpg","contentType":"image/jpeg","size":10464}]},{"id":344715,"name":"Clinical Inquiries Received by CDC Regarding Suspected Ebola Virus Disease in Children — United States, July 9, 2014–January 4, 2015","description":"The 2014–2015 Ebola virus disease (Ebola) epidemic is the largest in history and represents the first time Ebola has been diagnosed in the United States (1,2). On July 9, 2014, CDC activated its Emergency Operations Center and established an Ebola clinical consultation service to assist U.S. state and local public health officials and health care providers with the evaluation of suspected cases. CDC reviewed all 89 inquiries received by the consultation service during July 9, 2014–January 4, 2015, about children (persons aged =18 years). Most (56 [63%]) children had no identifiable epidemiologic risk factors for Ebola; among the 33 (37%) who did have an epidemiologic risk factor, in every case this was travel from an Ebola-affected country. Thirty-two of these children met criteria for a person under investigation (PUI) because of clinical signs or symptoms (3,4). Fifteen PUIs had blood samples tested for Ebola virus RNA by reverse transcription–polymerase chain reaction; all tested negative. Febrile children who have recently traveled from an Ebola-affected country can be expected to have other common diagnoses, such as malaria and influenza, and in the absence of epidemiologic risk factors for Ebola, the likelihood of Ebola is extremely low. Delaying evaluation and treatment for these other more common illnesses might lead to poorer clinical outcomes. Additionally, many health care providers expressed concerns about whether and how parents should be allowed in the isolation room. While maintaining an appropriate level of vigilance for Ebola, public health officials and health care providers should ensure that pediatric PUIs receive timely triage, diagnosis, and treatment of other more common illnesses, and care reflecting best practices in supporting children's psychosocial needs (5).","mediaType":"Feed Item","tags":[{"id":25910,"name":"MMWR","language":"English","type":"Topic"},{"id":34519,"name":"MMWR 2016","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a3.htm","targetUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a3.htm","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344715/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344715/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344715/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344715/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1570,"resourceUrl":"http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Clinical_Inquiries_Received_by_CDC_Regarding_Suspected_Ebola.jpg","contentType":"image/jpeg","size":13488}]},{"id":344716,"name":"Update: Influenza Activity — United States and Worldwide, May 24–September 5, 2015","description":"The Advisory Committee on Immunization Practices recommends annual influenza vaccination for all health care personnel (HCP) to reduce influenza-related morbidity and mortality among both HCP and their patients and to decrease absenteeism among HCP (1–5). To estimate influenza vaccination coverage among U.S. HCP for the 2014–15 influenza season, CDC conducted an opt-in Internet panel survey of 1,914 HCP during March 31–April 15, 2015. Overall, 77.3% of HCP survey participants reported receiving an influenza vaccination during the 2014–15 season, similar to the 75.2% coverage among HCP reported for the 2013–14 season (6). Vaccination coverage was highest among HCP working in hospitals (90.4%) and lowest among HCP working in long-term care (LTC) settings (63.9%). By occupation, coverage was highest among pharmacists (95.3%) and lowest among assistants and aides (64.4%). Influenza vaccination coverage was highest among HCP who were required by their employer to be vaccinated (96.0%). Among HCP without an employer requirement for vaccination, coverage was higher for HCP working in settings where vaccination was offered on-site at no cost for 1 day (73.6%) or multiple days (83.9%) and lowest among HCP working in settings where vaccine was neither required, promoted, nor offered on-site (44.0%). Comprehensive vaccination strategies that include making vaccine available at no cost at the workplace along with active promotion of vaccination might help increase vaccination coverage among HCP and reduce the risk for influenza to HCP and their patients (1,6,7).","mediaType":"Feed Item","tags":[{"id":25910,"name":"MMWR","language":"English","type":"Topic"},{"id":34519,"name":"MMWR 2016","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a4.htm","targetUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a4.htm","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344716/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344716/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344716/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344716/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1571,"resourceUrl":"http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Influenza_Activity_United_States_and_Worldwide.jpg","contentType":"image/jpeg","size":7798}]},{"id":344717,"name":"National Preparedness Month — September 2015","description":"Throughout September, CDC and more than 3,000 organizations (including national, regional, and local governments, as well as private and public institutions) will support emergency preparedness efforts and encourage U.S. residents to take action to become more prepared for emergencies. For Preparedness Month 2015 (1), CDC's Office of Public Health Preparedness and Response plans to focus on the importance of community resilience.","mediaType":"Feed Item","tags":[{"id":25910,"name":"MMWR","language":"English","type":"Topic"},{"id":34519,"name":"MMWR 2016","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a1.htm","targetUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a1.htm","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344717/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344717/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344717/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344717/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1572,"resourceUrl":"http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/National_Preparedness_Month.jpg","contentType":"image/jpeg","size":12437}]},{"id":344718,"name":"Household Disaster Preparedness: Influences of Preparedness Knowledge and Beliefs","description":"In response to concern about strengthening the nation's ability to protect its population and way of life (i.e., security) and ability to adapt and recover from emergencies (i.e., resilience), the President of the United States issued Presidential Policy Directive 8: National Preparedness (PPD-8) (1). Signed on March 30, 2011, PPD-8 is a directive for the U.S. Department of Homeland Security to coordinate a comprehensive campaign across government, private and nonprofit sectors, and individuals to build and sustain national preparedness. Despite efforts by the Federal Emergency Management Agency (FEMA) and other organizations to educate U.S. residents on becoming prepared, growth in specific preparedness behaviors, including actions taken in advance of a disaster to be better prepared to respond to and recover, has been limited (2). In 2012, only 52% of U.S. residents surveyed by FEMA reported having supplies for a disaster (2), a decline from 57% who reported having such supplies in 2009 (3). It is believed that knowledge influences behavior, and that attitudes and beliefs, which are correlated with knowledge, might also influence behavior (4). To determine the association between knowledge and beliefs and household preparedness, CDC analyzed baseline data from Ready CDC, a personal disaster preparedness intervention piloted among Atlanta- and Morgantown-based CDC staff members during 2013–2015. Compared with persons with basic preparedness knowledge, persons with advanced knowledge were more likely to have assembled an emergency kit (44% versus 17%), developed a written household disaster plan (9% versus 4%), and received county emergency alert notifications (63% versus 41%). Similarly, differences in household preparedness behaviors were correlated with beliefs about preparedness. Persons identified as having strong beliefs in the effectiveness of disaster preparedness engaged in preparedness behaviors at levels 7%–30% higher than those with weaker preparedness beliefs. Understanding the influences of knowledge and beliefs on household disaster preparedness might provide an opportunity to inform messages promoting household preparedness.","mediaType":"Feed Item","tags":[{"id":25910,"name":"MMWR","language":"English","type":"Topic"},{"id":34519,"name":"MMWR 2016","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a2.htm","targetUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a2.htm","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344718/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344718/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344718/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344718/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1573,"resourceUrl":"http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Household_Disaster_Preparedness.jpg","contentType":"image/jpeg","size":14413}]},{"id":344719,"name":"CDC Grand Rounds: Addressing Preparedness Challenges for Children in Public Health Emergencies","description":"Recent public health emergencies including Hurricane Katrina (2005), the influenza H1N1 pandemic (2009), and the Ebola virus disease outbreak in West Africa (2014–2015) have demonstrated the importance of multiple-level emergency planning and response. An effective response requires integrating coordinated contributions from community-based health care providers, regional health care coalitions, state and local health departments, and federal agency initiatives. This is especially important when planning for the needs of children, who make up 23% of the U.S. population (1) and have unique needs that require unique planning strategies.","mediaType":"Feed Item","tags":[{"id":25910,"name":"MMWR","language":"English","type":"Topic"},{"id":34519,"name":"MMWR 2016","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a3.htm","targetUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a3.htm","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344719/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344719/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344719/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344719/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1574,"resourceUrl":"http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Addressing_Preparedness_Challenges_Children.jpg","contentType":"image/jpeg","size":8532}]},{"id":344720,"name":"Injuries and Traumatic Psychological Exposures Associated with the South Napa Earthquake — California, 2014","description":"On August 24, 2014, at 3:20 a.m., a magnitude 6.0 earthquake struck California, with its epicenter in Napa County (1). The earthquake was the largest to affect the San Francisco Bay area in 25 years and caused significant damage in Napa and Solano counties, including widespread power outages, five residential fires, and damage to roadways, waterlines, and 1,600 buildings (2). Two deaths resulted (2). On August 25, Napa County Public Health asked the California Department of Public Health (CDPH) for assistance in assessing postdisaster health effects, including earthquake-related injuries and effects on mental health. On September 23, Solano County Public Health requested similar assistance. A household-level Community Assessment for Public Health Emergency Response (CASPER) was conducted for these counties in two cities (Napa, 3 weeks after the earthquake, and Vallejo, 6 weeks after the earthquake). Among households reporting injuries, a substantial proportion (48% in Napa and 37% in western Vallejo) reported that the injuries occurred during the cleanup period, suggesting that increased messaging on safety precautions after a disaster might be needed. One fifth of respondents overall (27% in Napa and 9% in western Vallejo) reported one or more traumatic psychological exposures in their households. These findings were used by Napa County Mental Health to guide immediate-term mental health resource allocations and to conduct public training sessions and education campaigns to support persons with mental health risks following the earthquake. In addition, to promote community resilience and future earthquake preparedness, Napa County Public Health subsequently conducted community events on the earthquake anniversary and provided outreach workers with psychological first aid training.","mediaType":"Feed Item","tags":[{"id":25910,"name":"MMWR","language":"English","type":"Topic"},{"id":34519,"name":"MMWR 2016","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a4.htm","targetUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a4.htm","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344720/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344720/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344720/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344720/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1575,"resourceUrl":"http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Injuries_and_Traumatic_Psychological_Exposures.jpg","contentType":"image/jpeg","size":9295}]},{"id":344721,"name":"Elimination of Ebola Virus Transmission in Liberia — September 3, 2015","description":"Following 42 days since the last Ebola virus disease (Ebola) patient was discharged from a Liberian Ebola treatment unit (ETU), September 3, 2015, marks the second time in a 4-month period that the World Health Organization (WHO) has declared Liberia free of Ebola virus transmission (1). The first confirmed Ebola cases in West Africa were identified in southeastern Guinea on March 23, 2014, and within 1 week, cases were identified and confirmed in Liberia (1). Since then, Liberia has reported 5,036 confirmed and probable Ebola cases and 4,808 Ebola-related deaths. The epidemic in Liberia peaked in late summer and early fall of 2014, when more than 200 confirmed and probable cases were reported each week (Figure).","mediaType":"Feed Item","tags":[{"id":25910,"name":"MMWR","language":"English","type":"Topic"},{"id":34519,"name":"MMWR 2016","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a5.htm","targetUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a5.htm","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344721/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344721/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344721/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344721/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1576,"resourceUrl":"http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Elimination_Ebola_Virus_Transmission_Liberia.jpg","contentType":"image/jpeg","size":10358}]},{"id":344722,"name":"Ebola Virus Disease — Sierra Leone and Guinea, August 2015","description":"The Ebola virus disease (Ebola) outbreak in West Africa began in late 2013 in Guinea (1) and spread unchecked during early 2014. By mid-2014, it had become the first Ebola epidemic ever documented. Transmission was occurring in multiple districts of Guinea, Liberia, and Sierra Leone, and for the first time, in capital cities (2). On August 8, 2014, the World Health Organization (WHO) declared the outbreak to be a Public Health Emergency of International Concern (3). Ministries of Health, with assistance from multinational collaborators, have reduced Ebola transmission, and the number of cases is now declining. While Liberia has not reported a case since July 12, 2015, transmission has continued in Guinea and Sierra Leone, although the numbers of cases reported are at the lowest point in a year. In August 2015, Guinea and Sierra Leone reported 10 and four confirmed cases, respectively, compared with a peak of 526 (Guinea) and 1,997 (Sierra Leone) in November 2014. This report details the current situation in Guinea and Sierra Leone, outlines strategies to interrupt transmission, and highlights the need to maintain public health response capacity and vigilance for new cases at this critical time to end the outbreak.","mediaType":"Feed Item","tags":[{"id":25910,"name":"MMWR","language":"English","type":"Topic"},{"id":34519,"name":"MMWR 2016","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a6.htm","targetUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a6.htm","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344722/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344722/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344722/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344722/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1577,"resourceUrl":"http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Ebola_Virus_Disease_Sierra_Leone_and_Guine.jpg","contentType":"image/jpeg","size":14251}]},{"id":344723,"name":"Notes from the Field: Pneumonia Associated with an Influenza A H3 Outbreak at a Skilled Nursing Facility — Florida, 2014","description":"In December 2014, the Florida Department of Health, Bureau of Epidemiology, was notified that 18 of 95 (19%) residents at a skilled nursing facility had radiographic evidence of pneumonia and were being treated with antibiotics. Two residents were hospitalized, one of whom died. A second resident died at the facility. The Florida Department of Health conducted an outbreak investigation to ascertain all cases through active case finding, identify the etiology, provide infection control guidance, and recommend treatment or prophylaxis, if indicated.","mediaType":"Feed Item","tags":[{"id":25910,"name":"MMWR","language":"English","type":"Topic"},{"id":34519,"name":"MMWR 2016","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a7.htm","targetUrl":"http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a7.htm","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344723/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344723/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344723/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344723/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1578,"resourceUrl":"http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Pneumonia_Associated_with_an_Influenza_A_H3.jpg","contentType":"image/jpeg","size":12587}]}]}
+{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "5d7d7e41-fd37-43ef-b903-245a8dd004cc"
+        },
+        "pagination": {
+            "total": 11,
+            "count": 11,
+            "max": 100,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 1,
+            "sort": "-datepublished,mediaid",
+            "previousUrl": "",
+            "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=mmwr 2016&fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=100&pagenum=1",
+            "nextUrl": ""
+        }
+    },
+    "results": [{
+        "id": 344713,
+        "name": "Influenza Vaccination Coverage Among Health Care Personnel — United States, 2014–15 Influenza Season",
+        "description": "The Advisory Committee on Immunization Practices recommends annual influenza vaccination for all health care personnel (HCP) to reduce influenza-related morbidity and mortality among both HCP and their patients and to decrease absenteeism among HCP (1–5). To estimate influenza vaccination coverage among U.S. HCP for the 2014–15 influenza season, CDC conducted an opt-in Internet panel survey of 1,914 HCP during March 31–April 15, 2015. Overall, 77.3% of HCP survey participants reported receiving an influenza vaccination during the 2014–15 season, similar to the 75.2% coverage among HCP reported for the 2013–14 season (6). Vaccination coverage was highest among HCP working in hospitals (90.4%) and lowest among HCP working in long-term care (LTC) settings (63.9%). By occupation, coverage was highest among pharmacists (95.3%) and lowest among assistants and aides (64.4%). Influenza vaccination coverage was highest among HCP who were required by their employer to be vaccinated (96.0%). Among HCP without an employer requirement for vaccination, coverage was higher for HCP working in settings where vaccination was offered on-site at no cost for 1 day (73.6%) or multiple days (83.9%) and lowest among HCP working in settings where vaccine was neither required, promoted, nor offered on-site (44.0%). Comprehensive vaccination strategies that include making vaccine available at no cost at the workplace along with active promotion of vaccination might help increase vaccination coverage among HCP and reduce the risk for influenza to HCP and their patients (1,6,7).",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25910,
+            "name": "MMWR",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34519,
+            "name": "MMWR 2016",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a1.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344713/syndicate.json",
+        "datePublished": "2015-09-17T12:03:00Z",
+        "dateModified": "2015-09-21T14:11:10Z",
+        "enclosures": [{
+            "id": 1568,
+            "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Influenza_Vaccination_Coverage_Among_Health_Care_Personnel.jpg",
+            "contentType": "image/jpeg",
+            "size": 7966
+        }]
+    }, {
+        "id": 344714,
+        "name": "Influenza Vaccination Coverage Among Pregnant Women — United States, 2014–15 Influenza Season",
+        "description": "Pregnant women and infants are at increased risk for influenza-related complications and hospitalization. Influenza vaccination can reduce the risk for influenza-related illness among pregnant women and their infants (1). Since 2004, the Advisory Committee on Immunization Practices (ACIP) and the American College of Obstetricians and Gynecologists (ACOG) have recommended influenza vaccination for all women who are or will be pregnant during the influenza season, regardless of trimester of pregnancy (1,2). To assess influenza vaccination coverage among pregnant women during the 2014–15 influenza season, CDC analyzed data from an Internet panel survey conducted during March 31–April 6, 2015. Among 1,702 survey respondents who were pregnant at any time during October 2014–January 2015, 50.3% reported receiving influenza vaccination before or during pregnancy, similar to the reported coverage in the preceding season (3). Overall, 64.9% of respondents reported receiving a provider offer of influenza vaccination, 14.8% received a recommendation but no offer, and 20.3% received no recommendation. Vaccination coverage among these groups of women was 67.9%, 33.5%, and 8.5%, respectively. Reminder systems and standing orders that allow health care personnel other than the attending provider to assess vaccination status and administer vaccination, can help to ensure that influenza vaccination is recommended and offered to a pregnant woman at each provider visit to increase pregnant women's vaccination coverage (4,5).",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25910,
+            "name": "MMWR",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34519,
+            "name": "MMWR 2016",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a2.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344714/syndicate.json",
+        "datePublished": "2015-09-17T12:02:00Z",
+        "dateModified": "2015-09-21T14:11:14Z",
+        "enclosures": [{
+            "id": 1569,
+            "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Influenza_Vaccination_Coverage_Among_Pregnant_Women.jpg",
+            "contentType": "image/jpeg",
+            "size": 10464
+        }]
+    }, {
+        "id": 344715,
+        "name": "Clinical Inquiries Received by CDC Regarding Suspected Ebola Virus Disease in Children — United States, July 9, 2014–January 4, 2015",
+        "description": "The 2014–2015 Ebola virus disease (Ebola) epidemic is the largest in history and represents the first time Ebola has been diagnosed in the United States (1,2). On July 9, 2014, CDC activated its Emergency Operations Center and established an Ebola clinical consultation service to assist U.S. state and local public health officials and health care providers with the evaluation of suspected cases. CDC reviewed all 89 inquiries received by the consultation service during July 9, 2014–January 4, 2015, about children (persons aged =18 years). Most (56 [63%]) children had no identifiable epidemiologic risk factors for Ebola; among the 33 (37%) who did have an epidemiologic risk factor, in every case this was travel from an Ebola-affected country. Thirty-two of these children met criteria for a person under investigation (PUI) because of clinical signs or symptoms (3,4). Fifteen PUIs had blood samples tested for Ebola virus RNA by reverse transcription–polymerase chain reaction; all tested negative. Febrile children who have recently traveled from an Ebola-affected country can be expected to have other common diagnoses, such as malaria and influenza, and in the absence of epidemiologic risk factors for Ebola, the likelihood of Ebola is extremely low. Delaying evaluation and treatment for these other more common illnesses might lead to poorer clinical outcomes. Additionally, many health care providers expressed concerns about whether and how parents should be allowed in the isolation room. While maintaining an appropriate level of vigilance for Ebola, public health officials and health care providers should ensure that pediatric PUIs receive timely triage, diagnosis, and treatment of other more common illnesses, and care reflecting best practices in supporting children's psychosocial needs (5).",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25910,
+            "name": "MMWR",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34519,
+            "name": "MMWR 2016",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a3.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344715/syndicate.json",
+        "datePublished": "2015-09-17T12:01:00Z",
+        "dateModified": "2015-09-21T14:11:16Z",
+        "enclosures": [{
+            "id": 1570,
+            "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Clinical_Inquiries_Received_by_CDC_Regarding_Suspected_Ebola.jpg",
+            "contentType": "image/jpeg",
+            "size": 13488
+        }]
+    }, {
+        "id": 344716,
+        "name": "Update: Influenza Activity — United States and Worldwide, May 24–September 5, 2015",
+        "description": "The Advisory Committee on Immunization Practices recommends annual influenza vaccination for all health care personnel (HCP) to reduce influenza-related morbidity and mortality among both HCP and their patients and to decrease absenteeism among HCP (1–5). To estimate influenza vaccination coverage among U.S. HCP for the 2014–15 influenza season, CDC conducted an opt-in Internet panel survey of 1,914 HCP during March 31–April 15, 2015. Overall, 77.3% of HCP survey participants reported receiving an influenza vaccination during the 2014–15 season, similar to the 75.2% coverage among HCP reported for the 2013–14 season (6). Vaccination coverage was highest among HCP working in hospitals (90.4%) and lowest among HCP working in long-term care (LTC) settings (63.9%). By occupation, coverage was highest among pharmacists (95.3%) and lowest among assistants and aides (64.4%). Influenza vaccination coverage was highest among HCP who were required by their employer to be vaccinated (96.0%). Among HCP without an employer requirement for vaccination, coverage was higher for HCP working in settings where vaccination was offered on-site at no cost for 1 day (73.6%) or multiple days (83.9%) and lowest among HCP working in settings where vaccine was neither required, promoted, nor offered on-site (44.0%). Comprehensive vaccination strategies that include making vaccine available at no cost at the workplace along with active promotion of vaccination might help increase vaccination coverage among HCP and reduce the risk for influenza to HCP and their patients (1,6,7).",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25910,
+            "name": "MMWR",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34519,
+            "name": "MMWR 2016",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a4.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344716/syndicate.json",
+        "datePublished": "2015-09-17T12:00:00Z",
+        "dateModified": "2015-09-21T14:11:18Z",
+        "enclosures": [{
+            "id": 1571,
+            "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Influenza_Activity_United_States_and_Worldwide.jpg",
+            "contentType": "image/jpeg",
+            "size": 7798
+        }]
+    }, {
+        "id": 344717,
+        "name": "National Preparedness Month — September 2015",
+        "description": "Throughout September, CDC and more than 3,000 organizations (including national, regional, and local governments, as well as private and public institutions) will support emergency preparedness efforts and encourage U.S. residents to take action to become more prepared for emergencies. For Preparedness Month 2015 (1), CDC's Office of Public Health Preparedness and Response plans to focus on the importance of community resilience.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25910,
+            "name": "MMWR",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34519,
+            "name": "MMWR 2016",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a1.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344717/syndicate.json",
+        "datePublished": "2015-09-10T12:06:00Z",
+        "dateModified": "2015-09-21T14:11:20Z",
+        "enclosures": [{
+            "id": 1572,
+            "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/National_Preparedness_Month.jpg",
+            "contentType": "image/jpeg",
+            "size": 12437
+        }]
+    }, {
+        "id": 344718,
+        "name": "Household Disaster Preparedness: Influences of Preparedness Knowledge and Beliefs",
+        "description": "In response to concern about strengthening the nation's ability to protect its population and way of life (i.e., security) and ability to adapt and recover from emergencies (i.e., resilience), the President of the United States issued Presidential Policy Directive 8: National Preparedness (PPD-8) (1). Signed on March 30, 2011, PPD-8 is a directive for the U.S. Department of Homeland Security to coordinate a comprehensive campaign across government, private and nonprofit sectors, and individuals to build and sustain national preparedness. Despite efforts by the Federal Emergency Management Agency (FEMA) and other organizations to educate U.S. residents on becoming prepared, growth in specific preparedness behaviors, including actions taken in advance of a disaster to be better prepared to respond to and recover, has been limited (2). In 2012, only 52% of U.S. residents surveyed by FEMA reported having supplies for a disaster (2), a decline from 57% who reported having such supplies in 2009 (3). It is believed that knowledge influences behavior, and that attitudes and beliefs, which are correlated with knowledge, might also influence behavior (4). To determine the association between knowledge and beliefs and household preparedness, CDC analyzed baseline data from Ready CDC, a personal disaster preparedness intervention piloted among Atlanta- and Morgantown-based CDC staff members during 2013–2015. Compared with persons with basic preparedness knowledge, persons with advanced knowledge were more likely to have assembled an emergency kit (44% versus 17%), developed a written household disaster plan (9% versus 4%), and received county emergency alert notifications (63% versus 41%). Similarly, differences in household preparedness behaviors were correlated with beliefs about preparedness. Persons identified as having strong beliefs in the effectiveness of disaster preparedness engaged in preparedness behaviors at levels 7%–30% higher than those with weaker preparedness beliefs. Understanding the influences of knowledge and beliefs on household disaster preparedness might provide an opportunity to inform messages promoting household preparedness.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25910,
+            "name": "MMWR",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34519,
+            "name": "MMWR 2016",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a2.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344718/syndicate.json",
+        "datePublished": "2015-09-10T12:05:00Z",
+        "dateModified": "2015-09-21T14:11:22Z",
+        "enclosures": [{
+            "id": 1573,
+            "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Household_Disaster_Preparedness.jpg",
+            "contentType": "image/jpeg",
+            "size": 14413
+        }]
+    }, {
+        "id": 344719,
+        "name": "CDC Grand Rounds: Addressing Preparedness Challenges for Children in Public Health Emergencies",
+        "description": "Recent public health emergencies including Hurricane Katrina (2005), the influenza H1N1 pandemic (2009), and the Ebola virus disease outbreak in West Africa (2014–2015) have demonstrated the importance of multiple-level emergency planning and response. An effective response requires integrating coordinated contributions from community-based health care providers, regional health care coalitions, state and local health departments, and federal agency initiatives. This is especially important when planning for the needs of children, who make up 23% of the U.S. population (1) and have unique needs that require unique planning strategies.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25910,
+            "name": "MMWR",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34519,
+            "name": "MMWR 2016",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a3.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344719/syndicate.json",
+        "datePublished": "2015-09-10T12:04:00Z",
+        "dateModified": "2015-09-21T14:11:25Z",
+        "enclosures": [{
+            "id": 1574,
+            "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Addressing_Preparedness_Challenges_Children.jpg",
+            "contentType": "image/jpeg",
+            "size": 8532
+        }]
+    }, {
+        "id": 344720,
+        "name": "Injuries and Traumatic Psychological Exposures Associated with the South Napa Earthquake — California, 2014",
+        "description": "On August 24, 2014, at 3:20 a.m., a magnitude 6.0 earthquake struck California, with its epicenter in Napa County (1). The earthquake was the largest to affect the San Francisco Bay area in 25 years and caused significant damage in Napa and Solano counties, including widespread power outages, five residential fires, and damage to roadways, waterlines, and 1,600 buildings (2). Two deaths resulted (2). On August 25, Napa County Public Health asked the California Department of Public Health (CDPH) for assistance in assessing postdisaster health effects, including earthquake-related injuries and effects on mental health. On September 23, Solano County Public Health requested similar assistance. A household-level Community Assessment for Public Health Emergency Response (CASPER) was conducted for these counties in two cities (Napa, 3 weeks after the earthquake, and Vallejo, 6 weeks after the earthquake). Among households reporting injuries, a substantial proportion (48% in Napa and 37% in western Vallejo) reported that the injuries occurred during the cleanup period, suggesting that increased messaging on safety precautions after a disaster might be needed. One fifth of respondents overall (27% in Napa and 9% in western Vallejo) reported one or more traumatic psychological exposures in their households. These findings were used by Napa County Mental Health to guide immediate-term mental health resource allocations and to conduct public training sessions and education campaigns to support persons with mental health risks following the earthquake. In addition, to promote community resilience and future earthquake preparedness, Napa County Public Health subsequently conducted community events on the earthquake anniversary and provided outreach workers with psychological first aid training.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25910,
+            "name": "MMWR",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34519,
+            "name": "MMWR 2016",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a4.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344720/syndicate.json",
+        "datePublished": "2015-09-10T12:03:00Z",
+        "dateModified": "2015-09-21T14:11:27Z",
+        "enclosures": [{
+            "id": 1575,
+            "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Injuries_and_Traumatic_Psychological_Exposures.jpg",
+            "contentType": "image/jpeg",
+            "size": 9295
+        }]
+    }, {
+        "id": 344721,
+        "name": "Elimination of Ebola Virus Transmission in Liberia — September 3, 2015",
+        "description": "Following 42 days since the last Ebola virus disease (Ebola) patient was discharged from a Liberian Ebola treatment unit (ETU), September 3, 2015, marks the second time in a 4-month period that the World Health Organization (WHO) has declared Liberia free of Ebola virus transmission (1). The first confirmed Ebola cases in West Africa were identified in southeastern Guinea on March 23, 2014, and within 1 week, cases were identified and confirmed in Liberia (1). Since then, Liberia has reported 5,036 confirmed and probable Ebola cases and 4,808 Ebola-related deaths. The epidemic in Liberia peaked in late summer and early fall of 2014, when more than 200 confirmed and probable cases were reported each week (Figure).",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25910,
+            "name": "MMWR",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34519,
+            "name": "MMWR 2016",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a5.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344721/syndicate.json",
+        "datePublished": "2015-09-10T12:02:00Z",
+        "dateModified": "2015-09-21T14:11:29Z",
+        "enclosures": [{
+            "id": 1576,
+            "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Elimination_Ebola_Virus_Transmission_Liberia.jpg",
+            "contentType": "image/jpeg",
+            "size": 10358
+        }]
+    }, {
+        "id": 344722,
+        "name": "Ebola Virus Disease — Sierra Leone and Guinea, August 2015",
+        "description": "The Ebola virus disease (Ebola) outbreak in West Africa began in late 2013 in Guinea (1) and spread unchecked during early 2014. By mid-2014, it had become the first Ebola epidemic ever documented. Transmission was occurring in multiple districts of Guinea, Liberia, and Sierra Leone, and for the first time, in capital cities (2). On August 8, 2014, the World Health Organization (WHO) declared the outbreak to be a Public Health Emergency of International Concern (3). Ministries of Health, with assistance from multinational collaborators, have reduced Ebola transmission, and the number of cases is now declining. While Liberia has not reported a case since July 12, 2015, transmission has continued in Guinea and Sierra Leone, although the numbers of cases reported are at the lowest point in a year. In August 2015, Guinea and Sierra Leone reported 10 and four confirmed cases, respectively, compared with a peak of 526 (Guinea) and 1,997 (Sierra Leone) in November 2014. This report details the current situation in Guinea and Sierra Leone, outlines strategies to interrupt transmission, and highlights the need to maintain public health response capacity and vigilance for new cases at this critical time to end the outbreak.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25910,
+            "name": "MMWR",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34519,
+            "name": "MMWR 2016",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a6.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344722/syndicate.json",
+        "datePublished": "2015-09-10T12:01:00Z",
+        "dateModified": "2015-09-21T14:11:31Z",
+        "enclosures": [{
+            "id": 1577,
+            "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Ebola_Virus_Disease_Sierra_Leone_and_Guine.jpg",
+            "contentType": "image/jpeg",
+            "size": 14251
+        }]
+    }, {
+        "id": 344723,
+        "name": "Notes from the Field: Pneumonia Associated with an Influenza A H3 Outbreak at a Skilled Nursing Facility — Florida, 2014",
+        "description": "In December 2014, the Florida Department of Health, Bureau of Epidemiology, was notified that 18 of 95 (19%) residents at a skilled nursing facility had radiographic evidence of pneumonia and were being treated with antibiotics. Two residents were hospitalized, one of whom died. A second resident died at the facility. The Florida Department of Health conducted an outbreak investigation to ascertain all cases through active case finding, identify the etiology, provide infection control guidance, and recommend treatment or prophylaxis, if indicated.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25910,
+            "name": "MMWR",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34519,
+            "name": "MMWR 2016",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a7.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344723/syndicate.json",
+        "datePublished": "2015-09-10T12:00:00Z",
+        "dateModified": "2015-09-21T14:11:33Z",
+        "enclosures": [{
+            "id": 1578,
+            "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Pneumonia_Associated_with_an_Influenza_A_H3.jpg",
+            "contentType": "image/jpeg",
+            "size": 12587
+        }]
+    }]
+}

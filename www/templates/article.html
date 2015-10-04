@@ -1,19 +1,19 @@
-<ion-view title="{{article.name}}">
+<ion-view>
 
 	<ion-content class="has-header">
 
-	<!-- <img src="{{article.enclosures[0].resourceUrl}}"> -->
+	<!-- <img src="{{data.enclosures[0].resourceUrl}}"> -->
 
-	<div class="padding article">
-		<h2 class="title">{{article.name}} - {{id}}</h2>
+	<div class="padding data">
+		<h2 class="title">{{data.name}}</h2>
 
 		<div style="padding:0 0 20px 0;">
-		Published {{article.datePublished | date:'fullDate'}}
+		Published {{data.datePublished | date:'fullDate'}}
 		</div>
 
 		<p ng-bind-html="content"></p>
 
-		<p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareArticle()">Share</button>
+		<p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
 		<button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC</button></p>
 
 	</div>

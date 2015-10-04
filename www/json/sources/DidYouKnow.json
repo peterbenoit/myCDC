@@ -1,1 +1,42 @@
-{"meta":{"status":200,"message":[],"resultSet":{"id":"60e351a4-78fb-49ab-acc2-21b4affbf684"},"pagination":{"total":1,"count":1,"max":100,"offset":0,"pageNum":1,"totalPages":1,"sort":"-datepublished,mediaid","previousUrl":"","currentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=did you know&fields=id,name,description,mediatype,thumbnailurl,syndicateurl,embedurl,contenturl,alternateimages,tags,sourceurl,targeturl,status,enclosures&max=100&pagenum=1","nextUrl":""}},"results":[{"id":343983,"name":"Did You Know from the Office for State, Tribal, Local and Territorial Support","description":"Did You Know?","mediaType":"Feed Item","tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"}],"sourceUrl":"http://www.cdc.gov/stltpublichealth/didyouknow/index.html","targetUrl":"http://www.cdc.gov/stltpublichealth/didyouknow/index.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343983/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343983/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343983/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343983/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]}]}
+{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "60e351a4-78fb-49ab-acc2-21b4affbf684"
+        },
+        "pagination": {
+            "total": 1,
+            "count": 1,
+            "max": 100,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 1,
+            "sort": "-datepublished,mediaid",
+            "previousUrl": "",
+            "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=did you know&fields=id,name,description,mediatype,thumbnailurl,syndicateurl,embedurl,contenturl,alternateimages,tags,sourceurl,targeturl,status,enclosures&max=100&pagenum=1",
+            "nextUrl": ""
+        }
+    },
+    "results": [{
+        "id": 343983,
+        "name": "Did You Know from the Office for State, Tribal, Local and Territorial Support",
+        "description": "Did You Know?",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }],
+        "sourceUrl": "http://www.cdc.gov/stltpublichealth/didyouknow/index.html",
+        "targetUrl": "http://www.cdc.gov/stltpublichealth/didyouknow/index.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343983/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343983/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343983/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343983/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }]
+}

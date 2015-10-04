@@ -24,11 +24,10 @@
         </ion-item>
 
       <ion-item ng-repeat="source in sources" nav-clear menu-close href="{{source.href}}">
-            {{source.title}}
+            <i class="icon {{source.icon}}"></i> {{source.title}}
       </ion-item>
 
       </ion-list>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
-

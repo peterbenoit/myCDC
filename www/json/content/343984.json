@@ -1,0 +1,30 @@
+{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "a22afcf0-36fa-4113-9423-bc9180537854"
+        },
+        "pagination": {
+            "total": 1,
+            "count": 1,
+            "max": 1,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 1,
+            "sort": null,
+            "previousUrl": "",
+            "currentUrl": "http://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343984/syndicate.json",
+            "nextUrl": ""
+        }
+    },
+    "results": {
+        "mediaId": 343984,
+        "mediaType": "Feed Item",
+        "name": "FastStats - Access to Health Care",
+        "description": "new description 635792721141209679",
+        "sourceUrl": "http://www.cdc.gov/nchs/fastats/access-to-health-care.htm",
+        "targetUrl": "http://www.cdc.gov/nchs/fastats/access-to-health-care.htm",
+        "content": "<div class=\"syndicate\" xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"mSyndicate\"><h1>Access to Health Care</h1></div></div><div class=\"syndicate\" xmlns=\"http://www.w3.org/1999/xhtml\"><p>Data are for the U.S.</p><div class=\"stat-wrapper\"><ul><li>Percent of persons who failed to obtain needed medical care due to cost: 5.3%</li><li>Percent of persons with a usual place to go for medical care: 87.9%</li></ul><p class=\"stat-source\">Source: \r\n\r\n<a href=\"http://www.cdc.gov/nchs/data/nhis/earlyrelease/earlyrelease201506.pdf\" target=\"_blank\">Early release of selected estimates based on data from the 2014 National Health Interview Survey, data tables for figures 2.2 and 3.2 [PDF - 933 KB]</a></p></div><h2>More data</h2><ul><li><a href=\"http://www.cdc.gov/nchs/data/databriefs/db29.PDF\" target=\"_blank\">Access to and Utilization of Medical Care for Young Adults Aged 20-29 Years: United States, 2008 [PDF - 1.1 MB]</a></li><li><a href=\"http://www.cdc.gov/nchs/data/nhis/earlyrelease/financial_burden_of_medical_care_032012.pdf#x2013;June 2011 [PDF - 124 KB]</a> \" target=\"_blank\">Financial Burden of Medical Care: Early Release of Estimates from the National Health Interview Survey, January–June 2011 [PDF - 124 KB]</a></li><li><a href=\"http://www.cdc.gov/nchs/data/databriefs/db83.htm#x2013;2010</a> \" target=\"_blank\">Health and Access to Care Among Employed and Unemployed Adults: United States, 2009–2010</a></li><li><a href=\"http://www.cdc.gov/nchs/data/databriefs/db208.htm\" target=\"_blank\">Health Care Access and Utilization Among Adults Aged 18–64, by Race and Hispanic Origin: United States, 2013 and 2014</a></li><li><a href=\"http://www.cdc.gov/nchs/data/nhis/earlyrelease/Young_Adults_Health_Access_052012.pdf#x2013;25: Early Release of Estimates From the National Health Interview Survey, January–September 2011 [PDF - 152 KB]</a> \" target=\"_blank\">Health Care Access and Utilization Among Young Adults Aged 19–25: Early Release of Estimates From the National Health Interview Survey, January–September 2011 [PDF - 152 KB]</a></li><li><a href=\"http://www.cdc.gov/nchs/hdi.htm\" target=\"_blank\">Health Data Interactive</a></li><li><a href=\"http://www.cdc.gov/nchs/fastats/health-insurance.htm\" target=\"_blank\">Health insurance coverage</a></li><li><a href=\"http://www.cdc.gov/nchs/data/databriefs/db138.htm\" target=\"_blank\">Health Insurance Coverage and Adverse Experiences With Physician Availability: United States, 2012</a></li><li><a href=\"http://www.cdc.gov/nchs/data/databriefs/db28.htm\" target=\"_blank\">Impact of Type of Insurance Plan on Access and Utilization of Health Care Services for Adults Aged 18-64 Years With Private Health Insurance: United States, 2007</a></li><li>No usual source of health care among children under 18 years of age, by selected characteristics \r\n\r\n<a href=\"http://www.cdc.gov/nchs/data/hus/hus14.pdf#067\" target=\"_blank\">Health, United States, 2014, table 67 [PDF - 9.8 MB]</a></li><li>No usual source of health care among adults 18-64 years of age, by selected characteristics \r\n\r\n<a href=\"http://www.cdc.gov/nchs/data/hus/hus14.pdf#068\" target=\"_blank\">Health, United States, 2014, table 68 [PDF - 9.8 MB]</a></li><li>Reduced access to medical care, dental care, prescription drugs during the past 12 months due to cost, by selected characteristics \r\n\r\n<a href=\"http://www.cdc.gov/nchs/data/hus/hus14.pdf#069\" target=\"_blank\">Health, United States, 2014, table 69 [PDF - 9.8 MB]</a></li><li><a href=\"http://www.cdc.gov/nchs/data/series/sr_10/sr10_260.pdf\" target=\"_blank\">Summary Health Statistics for U.S. Adults: National Health Interview Survey, 2012 [PDF - 1.3 MB]</a></li><li><a href=\"http://www.cdc.gov/nchs/data/series/sr_10/sr10_258.pdf\" target=\"_blank\">Summary Health Statistics for U.S. Children: National Health Interview Survey, 2012 [PDF - 697 KB]</a></li><li><a href=\"http://www.cdc.gov/nchs/data/series/sr_10/sr10_259.pdf\" target=\"_blank\">Summary Health Statistics for the U.S. Population: National Health Interview Survey, 2012 [PDF - 979 KB]</a></li><li><a href=\"http://www.cdc.gov/nchs/health_policy/access_to_care.htm\" target=\"_blank\">Trends in health insurance and access to care from 1997 to 2008</a></li><li><a href=\"http://www.cdc.gov/nchs/data/databriefs/db55.pdf\" target=\"_blank\">Young Adults Seeking Medical Care: Do Race and Ethnicity Matter? [PDF - 515 KB]</a></li></ul></div>"
+    }
+}

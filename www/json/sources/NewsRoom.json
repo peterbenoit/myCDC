@@ -1,1 +1,1377 @@
-{"meta":{"status":200,"message":[],"resultSet":{"id":"d9109c05-082d-4e76-974b-ff7ba2e3b54f"},"pagination":{"total":50,"count":50,"max":100,"offset":0,"pageNum":1,"totalPages":1,"sort":"-datepublished,mediaid","previousUrl":"","currentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=newsroom&fields=id,name,description,mediatype,thumbnailurl,syndicateurl,embedurl,contenturl,alternateimages,tags,sourceurl,targeturl,status,enclosures&max=100&pagenum=1","nextUrl":""}},"results":[{"id":344929,"name":"2014 CDC Maps now available detailing adult obesity prevalence in the US - Media Advisory","description":"The latest CDC maps detailing the prevalence of adult obesity in the United States based on 2014 Behavioral Risk Factor Surveillance System (BRFSS) state and territory-specific data are now available.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0921-adult-obesity.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0921-adult-obesity.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344929/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344929/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344929/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344929/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344930,"name":"Enhanced Airport Entry Screening To End for Travelers from Liberia to the United States - Media Statement","description":"On September 21, 2015, the Centers for Disease Control and Prevention (CDC) and the Department of Homeland Security (DHS) will remove Liberia from the list of nations affected by Ebola that are subject to enhanced visa and port-of-entry screening.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/s0918-liberia-travel.html","targetUrl":"http://www.cdc.gov/media/releases/2015/s0918-liberia-travel.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344930/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344930/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344930/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344930/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344931,"name":"CDC Director, Medical Experts Address 2015-2016 Flu Outlook at NFID News Conference - Media Advisory","description":"Tom Frieden, M.D., M.P.H., director of the Centers for Disease Control and Prevention, joined by other leading medical and public health experts, will discuss preparing the public for the coming flu season at a news conference presented by the National Foundation for Infectious Diseases (NFID). Dr. Frieden will announce final influenza vaccination coverage estimates for the 2014-2015 season.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0917-nfid.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0917-nfid.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344931/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344931/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344931/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344931/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344932,"name":"Return Home from Work Safely and with Dignity - Digital Press Kit","description":"The National Institute for Occupational Safety and Health (NIOSH) has released a series of illustrated communication products for organizations that serve Spanish-speaking immigrant workers. The ","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/dpk/2015/dpk-niosh.html","targetUrl":"http://www.cdc.gov/media/dpk/2015/dpk-niosh.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344932/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344932/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344932/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344932/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1708,"resourceUrl":"http://www.cdc.gov/media/images/dpk/2015/dpk-niosh/niosh-dpk-300x200px.jpg","contentType":"image/jpeg","size":48671}]},{"id":344933,"name":"New NIOSH materials for organizations serving immigrant workers - Media Advisory","description":"In anticipation of Hispanic Heritage Month, the National Institute for Occupational Safety and Health (NIOSH) has released a series of illustrated communication products for organizations that serve Spanish-speaking immigrant workers. The family of products, Protéjase en el trabajo (Protect yourself at work), encourages workers to know and exercise their rights to workplace safety.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0915-niosh-materials.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0915-niosh-materials.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344933/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344933/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344933/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344933/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344934,"name":"Stephan Monroe Named CDC Associate Director for Laboratory Science and Safety - Media Statement","description":"Stephan Monroe, PhD, has been appointed CDC’s first associate director for laboratory science and safety. He has served as acting associate director for laboratory science and safety since May 2015. Reporting to the CDC director, he will lead agency-wide laboratory science and safety initiatives and improvement efforts, including high-level oversight and coordination of critical laboratory policies and operations that emphasize laboratory safety and quality management.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/s0915-stephan-monroe.html","targetUrl":"http://www.cdc.gov/media/releases/2015/s0915-stephan-monroe.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344934/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344934/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344934/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344934/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344935,"name":"CDC Recommends All Nursing Homes Implement Core Elements to Improve Antibiotic Use - Press Release","description":"New recommendations from the Centers for Disease Control and Prevention (CDC) advise all nursing homes to improve antibiotic prescribing practices and reduce their inappropriate use to protect residents from the consequences of antibiotic-resistant infections, such as C. difficile.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0915-nursing-home-antibiotics.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0915-nursing-home-antibiotics.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344935/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344935/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344935/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344935/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1709,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0915-nursing-home-antibiotics-300x200px.jpg","contentType":"image/jpeg","size":38296}]},{"id":344936,"name":"CDC funding helps states combat prescription drug overdose epidemic - Press Release","description":"Today, the Centers for Disease Control and Prevention (CDC) announced the launch of Prescription Drug Overdose: Prevention for States, a new program to help states end the ongoing prescription drug overdose epidemic.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0904-cdc-funding.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0904-cdc-funding.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344936/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344936/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344936/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344936/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344937,"name":"Liberia Travel Alert Revised from Level 2 to Level 1: \"Practice Usual Precautions\" - Media Statement","description":"Effective Sept. 3, 2015, CDC has downgraded the travel notice for Ebola in Liberia to a Watch Level 1, which means CDC recommends U.S. residents practice usual precautions when traveling to Liberia. Travel notices are designed to inform travelers and clinicians about current health issues related to specific destinations.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/s0903-Liberia-travel.html","targetUrl":"http://www.cdc.gov/media/releases/2015/s0903-Liberia-travel.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344937/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344937/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344937/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344937/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344938,"name":"High school athletes using smokeless tobacco more than non-athletes - Press Release","description":"High school athletes who play on sports teams smoke tobacco products at a lower rate than non-athletes, but use smokeless tobacco at a higher rate, according to a study published by the Centers for Disease Control and Prevention in today’s Morbidity and Mortality Weekly Report (MMWR).","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0903-athlete-tobacco.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0903-athlete-tobacco.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344938/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344938/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344938/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344938/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1710,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0903-athlete-tobacco-300x200px.jpg","contentType":"image/jpeg","size":68276}]},{"id":344939,"name":"Early flu treatment reduces hospitalization time, disability risk in older people - Press Release","description":"Early treatment of flu-hospitalized people 65 and older with flu antiviral medications cuts the duration of their hospital stay and reduces their risk of needing extended care after discharge, a new CDC study finds.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0902-early-flu-treatment.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0902-early-flu-treatment.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344939/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344939/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344939/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344939/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344940,"name":"Transcript for CDC Telebriefing: Most Americans' hearts are older than their age - Transcript","description":"Transcript for CDC Telebriefing:Most Americans' hearts are older than their age","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/t0901-heart-age.html","targetUrl":"http://www.cdc.gov/media/releases/2015/t0901-heart-age.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344940/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344940/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344940/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344940/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344941,"name":"Analyzing America’s Heart Age - Digital Press Kit","description":"A majority of U.S. adults have a heart age that is older than their chronological age—evidence that they could be at greater risk for heart attacks and stroke. ","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/dpk/2015/dpk-vs-heart-age.html","targetUrl":"http://www.cdc.gov/media/dpk/2015/dpk-vs-heart-age.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344941/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344941/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344941/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344941/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1711,"resourceUrl":"http://www.cdc.gov/media/images/dpk/2015/dpk-vs-heart-age/heart-age-300x200px.jpg","contentType":"image/jpeg","size":56271}]},{"id":344942,"name":"Most Americans' hearts are older than their age - Press Release","description":"Your heart may be older than you are – and that’s not good. According to a new CDC Vital Signs report, 3 out of 4 U.S. adults have a predicted heart age that is older than their actual age. This means they are at higher risk for heart attacks and stroke.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0901-heart-age.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0901-heart-age.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344942/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344942/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344942/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344942/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1712,"resourceUrl":"http://www.cdc.gov/media/images/dpk/2015/dpk-vs-heart-age/heart-age-300x200px.jpg","contentType":"image/jpeg","size":56271}]},{"id":344943,"name":"CDC Telebriefing: New Vital Signs Report - Heart age: Is your heart older than you? - Media Advisory","description":"Your heart may be older than you are – and that’s not good. This new CDC Vital Signs report shows that heart age varies by race/ethnicity, gender, region, and other sociodemographic characteristics.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0831-heart-age.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0831-heart-age.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344943/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344943/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344943/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344943/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344944,"name":"Transcript for CDC Telebriefing: CDC officials to discuss vaccine exemption levels and infant vaccination coverage","description":"CDC hosted a media telebriefing to discuss estimates of vaccine exemption levels among children entering kindergarten for the 2014-2015 school year. The telebriefing also covered data from the 2014 National Immunization Survey, which details vaccination coverage estimates among children ages 19 through 35 months.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/t0827-vaccination.html","targetUrl":"http://www.cdc.gov/media/releases/2015/t0827-vaccination.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344944/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344944/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344944/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344944/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344946,"name":"America’s schools make positive changes to create healthier school meals - Press Release","description":"Most schools in the U.S. are implementing healthy practices to help meet federal school meal standards by offering whole grains, more fruits and vegetables, and reducing sodium content, according to data published today in the Centers for Disease Control and Prevention’s (CDC) Morbidity and Mortality Weekly Report.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0827-school-meals.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0827-school-meals.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344946/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344946/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344946/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344946/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1714,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0827-school-meals-300x200px.jpg","contentType":"image/jpeg","size":84878}]},{"id":344945,"name":"State exemption levels low, national vaccination rates high - Press Release","description":"Vaccine exemption levels for kindergarteners are low for most states and infant vaccination rates are high nationally, according to data from two reports published in this week’s Morbidity and Mortality Weekly Report (MMWR).","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0827-vaccination-rates.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0827-vaccination-rates.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344945/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344945/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344945/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344945/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1713,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0827-vaccination-rates-300x200px.jpg","contentType":"image/jpeg","size":97040}]},{"id":344947,"name":"CDC Telebriefing: CDC officials to discuss vaccine exemption levels and infant vaccination coverage - Media Advisory","description":"CDC will host a media telebriefing to discuss estimates of vaccine exemption levels among children entering kindergarten for the 2014-2015 school year.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0826-vaccination.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0826-vaccination.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344947/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344947/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344947/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344947/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344948,"name":"Nearly all contact lens wearers in national survey report risky eye care behaviors that can lead to eye infections - Press Release","description":"Almost all of the 41 million estimated contact lens wearers in the United States may be engaging in at least one behavior known to increase their risk of eye infections, according to a report published today by the Centers for Disease Control and Prevention.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0820-contact-lens.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0820-contact-lens.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344948/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344948/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344948/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344948/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1715,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0820-contact-lens-300x200px.jpg","contentType":"image/jpeg","size":43471}]},{"id":344949,"name":"Emerging Infectious Diseases Conference to Draw Scientists to Atlanta - Media Advisory","description":"Since 1998, ICEID has brought together international scientists and public health professionals to foster an exchange of innovative research and ideas on emerging infectious disease topics.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0820-eid-conference.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0820-eid-conference.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344949/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344949/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344949/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344949/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344950,"name":"New CDC tool illustrates changes in antibiotic resistance - Media Advisory","description":"CDC is unveiling an interactive tool that makes it quicker and easier to see how antibiotic resistance for four bacteria transmitted commonly through food—Campylobacter, E. coli O157, Salmonella, and Shigella—has changed during the past 18 years.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0819-antibiotic-resistance.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0819-antibiotic-resistance.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344950/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344950/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344950/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344950/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344951,"name":"Make all Public Places 100% Smoke-free to Protect Public Health - Press Release","description":"Smoke-free environments are crucial for protecting the public from the harms of secondhand smoke, and there is very strong public support for making public places smoke-free in China. Strong laws are needed – and where they exist and are rigorously enforced, they work. These are the key findings from the results of the China City Adult Tobacco Survey, released in Beijing today.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0818-china-smoking.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0818-china-smoking.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344951/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344951/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344951/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344951/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1716,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0818-china-smoking-300x200px.jpg","contentType":"image/jpeg","size":84350}]},{"id":344952,"name":"Million Hearts launches annual blood pressure control challenge - Press Release","description":"The U.S. Department of Health and Human Services today launched an annual challenge designed to identify and honor clinicians and health care teams that have helped their patients control high blood pressure and prevent heart attacks and strokes.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0818-million-hearts.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0818-million-hearts.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344952/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344952/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344952/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344952/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1717,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0818-million-hearts-300x200px.jpg","contentType":"image/jpeg","size":105863}]},{"id":344953,"name":"Class is In: Essential Tips before going back to school - Digital Press Kit","description":"It’s that time again! This is an exciting time of year for students and families. As students go back to school, it is important that parents and students recognize key health and safety information that will help ensure a great start to the school year.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/dpk/2015/dpk-back-to-school.html","targetUrl":"http://www.cdc.gov/media/dpk/2015/dpk-back-to-school.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344953/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344953/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344953/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344953/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1718,"resourceUrl":"http://www.cdc.gov/media/images/dpk/2015/dpk-back-to-school/back-to-school-300x200px.jpg","contentType":"image/jpeg","size":120198}]},{"id":344954,"name":"Most US middle and high schools start the school day too early - Press Release","description":"Fewer than 1 in 5 middle and high schools in the U.S. began the school day at the recommended 8:30 AM start time or later during the 2011-2012 school year, according to data published today in the Centers for Disease Control and Prevention’s Morbidity and Mortality Weekly Report.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0806-school-sleep.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0806-school-sleep.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344954/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344954/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344954/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344954/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1719,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0806-school-sleep-300x200px.jpg","contentType":"image/jpeg","size":90047}]},{"id":344955,"name":"Transcript for CDC Telebriefing: With improved infection control, how many antibiotic-resistant related infections and deaths does CDC predict could be averted in 5 years? - Transcript","description":"The latest CDC Vital Signs report includes mathematical modeling showing that the spread of drug-resistant infections and Clostridium difficile (C. difficile) will increase without immediate improvements in infection control and antibiotic prescribing.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/t0804-hai-control.html","targetUrl":"http://www.cdc.gov/media/releases/2015/t0804-hai-control.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344955/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344955/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344955/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344955/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344956,"name":"CDC modeling projects growth of drug-resistant infections and C. difficile  - Press Release","description":"The latest CDC Vital Signs includes mathematical modeling that projects increases in drug-resistant infections and Clostridium difficile (C. difficile) without immediate, nationwide improvements in infection control and antibiotic prescribing.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0804-hai-modeling.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0804-hai-modeling.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344956/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344956/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344956/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344956/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344957,"name":"CDC Modeling Predicts Growth of Drug-resistant Infections and C. difficile - Digital Press Kit","description":"The latest CDC Vital Signs includes mathematical modeling that predicts increases in drug-resistant infections and Clostridium difficile (C. difficile) without immediate, nationwide improvements in infection control and antibiotic prescribing.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/dpk/2015/dpk-vs-hai.html","targetUrl":"http://www.cdc.gov/media/dpk/2015/dpk-vs-hai.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344957/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344957/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344957/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344957/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1720,"resourceUrl":"http://www.cdc.gov/media/images/dpk/2015/dpk-vs-hai/hai-300x200px.jpg","contentType":"image/jpeg","size":42522}]},{"id":344958,"name":"CDC Telebriefing: New Vital Signs Report - With improved infection control, how many antibiotic-resistant related infections and deaths does CDC predict could be averted in 5 years? - Media Advisory","description":"We’re at a tipping point: an increasing number of germs no longer respond to the drugs designed to kill them. The latest CDC Vital Signs report includes mathematical modeling showing that the spread of drug-resistant infections and Clostridium difficile (C. difficile) will increase without immediate improvements in infection control and antibiotic prescribing. ","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0803-hai-control.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0803-hai-control.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344958/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344958/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344958/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344958/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344959,"name":"CDC funding helps states address infectious disease threats  - Press Release","description":"The Centers for Disease Control and Prevention (CDC) today announced awards of nearly $110 million to help states and communities strengthen their capacity to track and respond to infectious diseases. The awards represent an increase of about $13 million over fiscal year 2014 funding, with increases going to vaccine-preventable-disease surveillance, foodborne-disease prevention and advanced molecular detection, among other projects.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0803-cdc-funding.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0803-cdc-funding.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344959/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344959/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344959/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344959/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344960,"name":"Many adolescents still not getting HPV vaccine - Press Release","description":"The number of 13- to 17-year-old boys and girls getting the human papillomavirus (HPV) vaccine increased slightly for the second year in a row, according to data from CDC’s 2014 National Immunization Survey-Teen (NIS-Teen), published in this week’s Morbidity and Mortality Weekly Report (MMWR).","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0730-hpv.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0730-hpv.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344960/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344960/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344960/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344960/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1721,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0730-hpv-300x200px.jpg","contentType":"image/jpeg","size":74552}]},{"id":344961,"name":"CDC: 53 million adults in the US live with a disability - Press Release","description":"In the United States, one out of every five adults has a disability, according to a new study published by the Centers for Disease Control and Prevention. The most common functional disability type was a mobility limitation – defined as serious difficulty walking or climbing stairs -- reported by one in eight adults, followed by disability in thinking and/or memory, independent living, vision, and self-care.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0730-us-disability.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0730-us-disability.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344961/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344961/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344961/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344961/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1722,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0730-us-disability-300x200px.jpg","contentType":"image/jpeg","size":93422}]},{"id":344962,"name":"CDC Telebriefing: CDC officials to discuss National Immunization Survey-Teen results - Media Advisory","description":"CDC will host a media telebriefing to discuss the latest coverage rate estimates for vaccines recommended for adolescents in the United States.\n","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0730-nis.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0730-nis.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344962/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344962/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344962/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344962/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344963,"name":"Severe Weather Can Threaten Summer Fun, Safety and Health - Digital Press Kit","description":"Extreme weather in the summer can include soaring temperatures, thunderstorms, and dry conditions. Extreme weather poses serious health risks, causing illnesses, injuries and sometimes death.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/dpk/2015/dpk-summer-weather.html","targetUrl":"http://www.cdc.gov/media/dpk/2015/dpk-summer-weather.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344963/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344963/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344963/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344963/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1723,"resourceUrl":"http://www.cdc.gov/media/images/dpk/2015/dpk-summer-weather/dpk-summer-weather-300x200px.jpg","contentType":"image/jpeg","size":65795}]},{"id":344964,"name":"New CDC study highlights burden of pneumonia hospitalizations among US adults - Press Release","description":"When U.S. adults are hospitalized with pneumonia, viruses are more often to blame than bacteria.  However, despite current diagnostic tests, neither viruses nor bacteria are detected in the majority of these patients according to a study by the Centers for Disease Control and Prevention (CDC) released today in the New England Journal of Medicine.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0714-pneumonia-hospitalizations.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0714-pneumonia-hospitalizations.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344964/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344964/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344964/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344964/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344965,"name":"Sodium Overload - Digital Press Kit","description":"Americans consume too much sodium. In fact, the average daily intake among individuals aged 2 years and older in the U.S. is 3,500 mg per day, significantly higher than the recommended daily maximum of 2,300 mg – and that doesn’t even include salt at the table.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/dpk/2015/dpk-sodium-overload.html","targetUrl":"http://www.cdc.gov/media/dpk/2015/dpk-sodium-overload.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344965/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344965/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344965/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344965/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1724,"resourceUrl":"http://www.cdc.gov/media/images/dpk/2015/dpk-sodium-overload/sodium-overload-300x200px.jpg","contentType":"image/jpeg","size":82617}]},{"id":344966,"name":"CDC Releases 2016 Edition of the Yellow Book - Media Advisory","description":"The Centers for Disease Control and Prevention has released the 2016 edition of “CDC Health Information for International Travel,” commonly known as the Yellow Book.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0710-yellow-book.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0710-yellow-book.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344966/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344966/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344966/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344966/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344967,"name":"CDC versus Ebola: The Road to Zero - Press Release","description":"The Ebola epidemic that began in West Africa in early 2014 continues today. With more than 27,000 reported Ebola cases and more than 11,000 deaths, the scope has been unprecedented. Equally extraordinary is the scale and duration of the response by the Centers for Disease Control and Prevention and partners.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0709-cdc-vs-ebola.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0709-cdc-vs-ebola.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344967/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344967/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344967/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344967/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344968,"name":"Transcript for CDC Telebriefing: New research reveals the trends and risk factors behind America’s growing heroin epidemic - Transcript","description":"Transcript for new Vital Signs report: Today’s Heroin Epidemic","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/t0707-heroin-epidemic.html","targetUrl":"http://www.cdc.gov/media/releases/2015/t0707-heroin-epidemic.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344968/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344968/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344968/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344968/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344969,"name":"Three out of 4 American adults favor making 21 the minimum age of sale for tobacco products - Press Release","description":"Three out of 4 American adults—including 7 in 10 cigarette smokers—favor raising the minimum age of sale for all tobacco products to 21, according to an article by CDC published in the American Journal of Preventive Medicine. ","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0707-tobacco-age.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0707-tobacco-age.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344969/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344969/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344969/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344969/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1725,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0707-tobacco-age-330x200px.jpg","contentType":"image/jpeg","size":75621}]},{"id":344970,"name":"Heroin Epidemic - Digital Press Kit","description":"Most demographic groups are increasingly using heroin and other drugs. During the past decade, heroin use has increased across the United States among men and women, most age groups, and all income levels, with some of the greatest increases occurring in demographic groups that have had historically lower rates of heroin use, according to a new Vital Signs report.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/dpk/2015/dpk-vs-heroin-epidemic.html","targetUrl":"http://www.cdc.gov/media/dpk/2015/dpk-vs-heroin-epidemic.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344970/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344970/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344970/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344970/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1726,"resourceUrl":"http://www.cdc.gov/media/images/dpk/2015/dpk-vs-heroin-epidemic/dpk-heroin-300x200px.jpg","contentType":"image/jpeg","size":87013}]},{"id":344971,"name":"New research reveals the trends and risk factors behind America’s growing heroin epidemic - Press Release","description":"Heroin use has increased across the United States among men and women, most age groups, and all income levels. The greatest increases have occurred in groups with historically lower rates of heroin use, including women and people with private insurance and higher incomes.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0707-heroin-epidemic.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0707-heroin-epidemic.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344971/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344971/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344971/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344971/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1727,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/p0707-heroin-epidemic-300x200px.jpg","contentType":"image/jpeg","size":69192}]},{"id":344972,"name":"CDC Telebriefing: New Vital Signs Report - What are the risk factors and trends behind today's heroin epidemic? - Media Advisory","description":"Heroin use has increased across the US among men and women, most age groups, and all income levels. The greatest increases occurred in demographic groups with historically lower rates of heroin use: doubling among women and more than doubling among non-Hispanic whites. According to CDC’s latest Vital Signs report, nearly all people who used heroin in the past year also used at least one other drug.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0707-heroin.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0707-heroin.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344972/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344972/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344972/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344972/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344973,"name":"CDC awards $216 million to community-based organizations to deliver the most effective HIV prevention strategies to those in greatest need - Press Release","description":"The Centers for Disease Control and Prevention announced today that it has awarded $216 million over five years to 90 community-based organizations (CBOs) nationwide to deliver effective HIV prevention strategies to those at greatest risk, including people of color, men who have sex with men (MSM), transgender individuals, and people who inject drugs.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/nchhstp/newsroom/2015/CBO-FOA-Awards-2015-Press-Release.html","targetUrl":"http://www.cdc.gov/nchhstp/newsroom/2015/CBO-FOA-Awards-2015-Press-Release.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344973/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344973/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344973/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344973/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344974,"name":"New CDC Museum Exhibition Examines Georgia’s Refugee Communities - Media Advisory","description":"The new CDC museum exhibit, Resettling in America: Georgia’s Refugee Communities, explores the challenges of resettlement and the resiliency of refugees living in metropolitan Atlanta as they build new lives, identities, and a sense of community. ","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0626-cdc-museum.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0626-cdc-museum.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344974/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344974/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344974/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344974/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[{"id":1728,"resourceUrl":"http://www.cdc.gov/media/images/releases/2015/a0626-cdc-museum-300x200.jpg","contentType":"image/jpeg","size":114625}]},{"id":344975,"name":"Prevention and early treatment of RMSF in Arizona may save millions by preventing premature death and disability  - Press Release","description":"The mounting costs of an epidemic of Rocky Mountain spotted fever (RMSF) among several American Indian tribes in Arizona suggests that prevention and control efforts would be cost effective.  A recent study released by experts at the Centers for Disease Control and Prevention (CDC) and the Indian Health Service (IHS), in partnership with Arizona tribes, describes an estimated $13.2 million in losses linked to the epidemic of RMSF between 2002 and 2011, on two Indian reservations.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/p0619-RMSF.html","targetUrl":"http://www.cdc.gov/media/releases/2015/p0619-RMSF.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344975/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344975/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344975/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344975/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344976,"name":"CDC Foundation’s New Business Pulse Focuses on Food Safety","description":"Business Pulse: Food Safety, launched today by the CDC Foundation, focuses on how the Centers for Disease Control and Prevention (CDC) fights foodborne diseases to protect American consumers and businesses from contaminated foods.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0617-cdc-foundation-food-safety.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0617-cdc-foundation-food-safety.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344976/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344976/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344976/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344976/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344977,"name":"New Entry Screening and Monitoring Guidelines for Travelers Entering the United States from Liberia - Media Statement","description":"The United States government is modifying its enhanced Ebola entry screening and monitoring program for travelers from Liberia.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/s0612-new-entry-screening.html","targetUrl":"http://www.cdc.gov/media/releases/2015/s0612-new-entry-screening.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344977/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344977/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344977/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344977/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]},{"id":344978,"name":"New report shows increase in reported adverse health effects from synthetic cannabinoid use - Media Advisory","description":"The June 12, 2015, Morbidity and Mortality Weekly Report (MMWR) includes an article that discusses the increase and the adverse health effects associated with their use.","mediaType":"Feed Item","tags":[{"id":25386,"name":"CDC Newsroom","language":"English","type":"Topic"},{"id":34516,"name":"Newsroom","language":"English","type":"ContentGroup"}],"sourceUrl":"http://www.cdc.gov/media/releases/2015/a0611-cannabinoid-use.html","targetUrl":"http://www.cdc.gov/media/releases/2015/a0611-cannabinoid-use.html","embedUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344978/embed.json","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344978/syndicate.json","contentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344978/content.html","thumbnailUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344978/thumbnail.png","alternateImages":[],"status":"Published","enclosures":[]}]}
+{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "d9109c05-082d-4e76-974b-ff7ba2e3b54f"
+        },
+        "pagination": {
+            "total": 50,
+            "count": 50,
+            "max": 100,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 1,
+            "sort": "-datepublished,mediaid",
+            "previousUrl": "",
+            "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=newsroom&fields=id,name,description,mediatype,thumbnailurl,syndicateurl,embedurl,contenturl,alternateimages,tags,sourceurl,targeturl,status,enclosures&max=100&pagenum=1",
+            "nextUrl": ""
+        }
+    },
+    "results": [{
+        "id": 344929,
+        "name": "2014 CDC Maps now available detailing adult obesity prevalence in the US - Media Advisory",
+        "description": "The latest CDC maps detailing the prevalence of adult obesity in the United States based on 2014 Behavioral Risk Factor Surveillance System (BRFSS) state and territory-specific data are now available.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0921-adult-obesity.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0921-adult-obesity.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344929/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344929/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344929/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344929/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344930,
+        "name": "Enhanced Airport Entry Screening To End for Travelers from Liberia to the United States - Media Statement",
+        "description": "On September 21, 2015, the Centers for Disease Control and Prevention (CDC) and the Department of Homeland Security (DHS) will remove Liberia from the list of nations affected by Ebola that are subject to enhanced visa and port-of-entry screening.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/s0918-liberia-travel.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/s0918-liberia-travel.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344930/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344930/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344930/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344930/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344931,
+        "name": "CDC Director, Medical Experts Address 2015-2016 Flu Outlook at NFID News Conference - Media Advisory",
+        "description": "Tom Frieden, M.D., M.P.H., director of the Centers for Disease Control and Prevention, joined by other leading medical and public health experts, will discuss preparing the public for the coming flu season at a news conference presented by the National Foundation for Infectious Diseases (NFID). Dr. Frieden will announce final influenza vaccination coverage estimates for the 2014-2015 season.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0917-nfid.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0917-nfid.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344931/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344931/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344931/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344931/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344932,
+        "name": "Return Home from Work Safely and with Dignity - Digital Press Kit",
+        "description": "The National Institute for Occupational Safety and Health (NIOSH) has released a series of illustrated communication products for organizations that serve Spanish-speaking immigrant workers. The ",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/dpk/2015/dpk-niosh.html",
+        "targetUrl": "http://www.cdc.gov/media/dpk/2015/dpk-niosh.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344932/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344932/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344932/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344932/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1708,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-niosh/niosh-dpk-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 48671
+        }]
+    }, {
+        "id": 344933,
+        "name": "New NIOSH materials for organizations serving immigrant workers - Media Advisory",
+        "description": "In anticipation of Hispanic Heritage Month, the National Institute for Occupational Safety and Health (NIOSH) has released a series of illustrated communication products for organizations that serve Spanish-speaking immigrant workers. The family of products, Protéjase en el trabajo (Protect yourself at work), encourages workers to know and exercise their rights to workplace safety.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0915-niosh-materials.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0915-niosh-materials.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344933/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344933/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344933/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344933/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344934,
+        "name": "Stephan Monroe Named CDC Associate Director for Laboratory Science and Safety - Media Statement",
+        "description": "Stephan Monroe, PhD, has been appointed CDC’s first associate director for laboratory science and safety. He has served as acting associate director for laboratory science and safety since May 2015. Reporting to the CDC director, he will lead agency-wide laboratory science and safety initiatives and improvement efforts, including high-level oversight and coordination of critical laboratory policies and operations that emphasize laboratory safety and quality management.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/s0915-stephan-monroe.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/s0915-stephan-monroe.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344934/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344934/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344934/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344934/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344935,
+        "name": "CDC Recommends All Nursing Homes Implement Core Elements to Improve Antibiotic Use - Press Release",
+        "description": "New recommendations from the Centers for Disease Control and Prevention (CDC) advise all nursing homes to improve antibiotic prescribing practices and reduce their inappropriate use to protect residents from the consequences of antibiotic-resistant infections, such as C. difficile.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0915-nursing-home-antibiotics.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0915-nursing-home-antibiotics.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344935/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344935/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344935/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344935/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1709,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0915-nursing-home-antibiotics-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 38296
+        }]
+    }, {
+        "id": 344936,
+        "name": "CDC funding helps states combat prescription drug overdose epidemic - Press Release",
+        "description": "Today, the Centers for Disease Control and Prevention (CDC) announced the launch of Prescription Drug Overdose: Prevention for States, a new program to help states end the ongoing prescription drug overdose epidemic.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0904-cdc-funding.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0904-cdc-funding.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344936/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344936/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344936/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344936/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344937,
+        "name": "Liberia Travel Alert Revised from Level 2 to Level 1: \"Practice Usual Precautions\" - Media Statement",
+        "description": "Effective Sept. 3, 2015, CDC has downgraded the travel notice for Ebola in Liberia to a Watch Level 1, which means CDC recommends U.S. residents practice usual precautions when traveling to Liberia. Travel notices are designed to inform travelers and clinicians about current health issues related to specific destinations.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/s0903-Liberia-travel.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/s0903-Liberia-travel.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344937/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344937/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344937/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344937/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344938,
+        "name": "High school athletes using smokeless tobacco more than non-athletes - Press Release",
+        "description": "High school athletes who play on sports teams smoke tobacco products at a lower rate than non-athletes, but use smokeless tobacco at a higher rate, according to a study published by the Centers for Disease Control and Prevention in today’s Morbidity and Mortality Weekly Report (MMWR).",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0903-athlete-tobacco.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0903-athlete-tobacco.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344938/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344938/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344938/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344938/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1710,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0903-athlete-tobacco-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 68276
+        }]
+    }, {
+        "id": 344939,
+        "name": "Early flu treatment reduces hospitalization time, disability risk in older people - Press Release",
+        "description": "Early treatment of flu-hospitalized people 65 and older with flu antiviral medications cuts the duration of their hospital stay and reduces their risk of needing extended care after discharge, a new CDC study finds.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0902-early-flu-treatment.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0902-early-flu-treatment.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344939/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344939/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344939/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344939/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344940,
+        "name": "Transcript for CDC Telebriefing: Most Americans' hearts are older than their age - Transcript",
+        "description": "Transcript for CDC Telebriefing:Most Americans' hearts are older than their age",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/t0901-heart-age.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/t0901-heart-age.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344940/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344940/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344940/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344940/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344941,
+        "name": "Analyzing America’s Heart Age - Digital Press Kit",
+        "description": "A majority of U.S. adults have a heart age that is older than their chronological age—evidence that they could be at greater risk for heart attacks and stroke. ",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/dpk/2015/dpk-vs-heart-age.html",
+        "targetUrl": "http://www.cdc.gov/media/dpk/2015/dpk-vs-heart-age.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344941/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344941/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344941/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344941/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1711,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-vs-heart-age/heart-age-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 56271
+        }]
+    }, {
+        "id": 344942,
+        "name": "Most Americans' hearts are older than their age - Press Release",
+        "description": "Your heart may be older than you are – and that’s not good. According to a new CDC Vital Signs report, 3 out of 4 U.S. adults have a predicted heart age that is older than their actual age. This means they are at higher risk for heart attacks and stroke.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0901-heart-age.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0901-heart-age.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344942/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344942/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344942/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344942/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1712,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-vs-heart-age/heart-age-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 56271
+        }]
+    }, {
+        "id": 344943,
+        "name": "CDC Telebriefing: New Vital Signs Report - Heart age: Is your heart older than you? - Media Advisory",
+        "description": "Your heart may be older than you are – and that’s not good. This new CDC Vital Signs report shows that heart age varies by race/ethnicity, gender, region, and other sociodemographic characteristics.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0831-heart-age.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0831-heart-age.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344943/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344943/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344943/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344943/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344944,
+        "name": "Transcript for CDC Telebriefing: CDC officials to discuss vaccine exemption levels and infant vaccination coverage",
+        "description": "CDC hosted a media telebriefing to discuss estimates of vaccine exemption levels among children entering kindergarten for the 2014-2015 school year. The telebriefing also covered data from the 2014 National Immunization Survey, which details vaccination coverage estimates among children ages 19 through 35 months.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/t0827-vaccination.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/t0827-vaccination.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344944/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344944/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344944/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344944/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344946,
+        "name": "America’s schools make positive changes to create healthier school meals - Press Release",
+        "description": "Most schools in the U.S. are implementing healthy practices to help meet federal school meal standards by offering whole grains, more fruits and vegetables, and reducing sodium content, according to data published today in the Centers for Disease Control and Prevention’s (CDC) Morbidity and Mortality Weekly Report.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0827-school-meals.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0827-school-meals.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344946/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344946/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344946/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344946/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1714,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0827-school-meals-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 84878
+        }]
+    }, {
+        "id": 344945,
+        "name": "State exemption levels low, national vaccination rates high - Press Release",
+        "description": "Vaccine exemption levels for kindergarteners are low for most states and infant vaccination rates are high nationally, according to data from two reports published in this week’s Morbidity and Mortality Weekly Report (MMWR).",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0827-vaccination-rates.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0827-vaccination-rates.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344945/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344945/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344945/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344945/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1713,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0827-vaccination-rates-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 97040
+        }]
+    }, {
+        "id": 344947,
+        "name": "CDC Telebriefing: CDC officials to discuss vaccine exemption levels and infant vaccination coverage - Media Advisory",
+        "description": "CDC will host a media telebriefing to discuss estimates of vaccine exemption levels among children entering kindergarten for the 2014-2015 school year.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0826-vaccination.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0826-vaccination.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344947/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344947/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344947/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344947/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344948,
+        "name": "Nearly all contact lens wearers in national survey report risky eye care behaviors that can lead to eye infections - Press Release",
+        "description": "Almost all of the 41 million estimated contact lens wearers in the United States may be engaging in at least one behavior known to increase their risk of eye infections, according to a report published today by the Centers for Disease Control and Prevention.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0820-contact-lens.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0820-contact-lens.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344948/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344948/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344948/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344948/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1715,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0820-contact-lens-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 43471
+        }]
+    }, {
+        "id": 344949,
+        "name": "Emerging Infectious Diseases Conference to Draw Scientists to Atlanta - Media Advisory",
+        "description": "Since 1998, ICEID has brought together international scientists and public health professionals to foster an exchange of innovative research and ideas on emerging infectious disease topics.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0820-eid-conference.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0820-eid-conference.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344949/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344949/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344949/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344949/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344950,
+        "name": "New CDC tool illustrates changes in antibiotic resistance - Media Advisory",
+        "description": "CDC is unveiling an interactive tool that makes it quicker and easier to see how antibiotic resistance for four bacteria transmitted commonly through food—Campylobacter, E. coli O157, Salmonella, and Shigella—has changed during the past 18 years.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0819-antibiotic-resistance.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0819-antibiotic-resistance.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344950/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344950/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344950/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344950/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344951,
+        "name": "Make all Public Places 100% Smoke-free to Protect Public Health - Press Release",
+        "description": "Smoke-free environments are crucial for protecting the public from the harms of secondhand smoke, and there is very strong public support for making public places smoke-free in China. Strong laws are needed – and where they exist and are rigorously enforced, they work. These are the key findings from the results of the China City Adult Tobacco Survey, released in Beijing today.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0818-china-smoking.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0818-china-smoking.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344951/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344951/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344951/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344951/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1716,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0818-china-smoking-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 84350
+        }]
+    }, {
+        "id": 344952,
+        "name": "Million Hearts launches annual blood pressure control challenge - Press Release",
+        "description": "The U.S. Department of Health and Human Services today launched an annual challenge designed to identify and honor clinicians and health care teams that have helped their patients control high blood pressure and prevent heart attacks and strokes.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0818-million-hearts.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0818-million-hearts.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344952/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344952/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344952/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344952/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1717,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0818-million-hearts-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 105863
+        }]
+    }, {
+        "id": 344953,
+        "name": "Class is In: Essential Tips before going back to school - Digital Press Kit",
+        "description": "It’s that time again! This is an exciting time of year for students and families. As students go back to school, it is important that parents and students recognize key health and safety information that will help ensure a great start to the school year.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/dpk/2015/dpk-back-to-school.html",
+        "targetUrl": "http://www.cdc.gov/media/dpk/2015/dpk-back-to-school.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344953/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344953/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344953/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344953/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1718,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-back-to-school/back-to-school-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 120198
+        }]
+    }, {
+        "id": 344954,
+        "name": "Most US middle and high schools start the school day too early - Press Release",
+        "description": "Fewer than 1 in 5 middle and high schools in the U.S. began the school day at the recommended 8:30 AM start time or later during the 2011-2012 school year, according to data published today in the Centers for Disease Control and Prevention’s Morbidity and Mortality Weekly Report.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0806-school-sleep.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0806-school-sleep.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344954/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344954/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344954/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344954/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1719,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0806-school-sleep-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 90047
+        }]
+    }, {
+        "id": 344955,
+        "name": "Transcript for CDC Telebriefing: With improved infection control, how many antibiotic-resistant related infections and deaths does CDC predict could be averted in 5 years? - Transcript",
+        "description": "The latest CDC Vital Signs report includes mathematical modeling showing that the spread of drug-resistant infections and Clostridium difficile (C. difficile) will increase without immediate improvements in infection control and antibiotic prescribing.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/t0804-hai-control.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/t0804-hai-control.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344955/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344955/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344955/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344955/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344956,
+        "name": "CDC modeling projects growth of drug-resistant infections and C. difficile  - Press Release",
+        "description": "The latest CDC Vital Signs includes mathematical modeling that projects increases in drug-resistant infections and Clostridium difficile (C. difficile) without immediate, nationwide improvements in infection control and antibiotic prescribing.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0804-hai-modeling.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0804-hai-modeling.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344956/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344956/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344956/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344956/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344957,
+        "name": "CDC Modeling Predicts Growth of Drug-resistant Infections and C. difficile - Digital Press Kit",
+        "description": "The latest CDC Vital Signs includes mathematical modeling that predicts increases in drug-resistant infections and Clostridium difficile (C. difficile) without immediate, nationwide improvements in infection control and antibiotic prescribing.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/dpk/2015/dpk-vs-hai.html",
+        "targetUrl": "http://www.cdc.gov/media/dpk/2015/dpk-vs-hai.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344957/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344957/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344957/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344957/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1720,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-vs-hai/hai-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 42522
+        }]
+    }, {
+        "id": 344958,
+        "name": "CDC Telebriefing: New Vital Signs Report - With improved infection control, how many antibiotic-resistant related infections and deaths does CDC predict could be averted in 5 years? - Media Advisory",
+        "description": "We’re at a tipping point: an increasing number of germs no longer respond to the drugs designed to kill them. The latest CDC Vital Signs report includes mathematical modeling showing that the spread of drug-resistant infections and Clostridium difficile (C. difficile) will increase without immediate improvements in infection control and antibiotic prescribing. ",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0803-hai-control.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0803-hai-control.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344958/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344958/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344958/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344958/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344959,
+        "name": "CDC funding helps states address infectious disease threats  - Press Release",
+        "description": "The Centers for Disease Control and Prevention (CDC) today announced awards of nearly $110 million to help states and communities strengthen their capacity to track and respond to infectious diseases. The awards represent an increase of about $13 million over fiscal year 2014 funding, with increases going to vaccine-preventable-disease surveillance, foodborne-disease prevention and advanced molecular detection, among other projects.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0803-cdc-funding.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0803-cdc-funding.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344959/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344959/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344959/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344959/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344960,
+        "name": "Many adolescents still not getting HPV vaccine - Press Release",
+        "description": "The number of 13- to 17-year-old boys and girls getting the human papillomavirus (HPV) vaccine increased slightly for the second year in a row, according to data from CDC’s 2014 National Immunization Survey-Teen (NIS-Teen), published in this week’s Morbidity and Mortality Weekly Report (MMWR).",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0730-hpv.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0730-hpv.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344960/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344960/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344960/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344960/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1721,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0730-hpv-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 74552
+        }]
+    }, {
+        "id": 344961,
+        "name": "CDC: 53 million adults in the US live with a disability - Press Release",
+        "description": "In the United States, one out of every five adults has a disability, according to a new study published by the Centers for Disease Control and Prevention. The most common functional disability type was a mobility limitation – defined as serious difficulty walking or climbing stairs -- reported by one in eight adults, followed by disability in thinking and/or memory, independent living, vision, and self-care.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0730-us-disability.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0730-us-disability.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344961/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344961/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344961/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344961/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1722,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0730-us-disability-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 93422
+        }]
+    }, {
+        "id": 344962,
+        "name": "CDC Telebriefing: CDC officials to discuss National Immunization Survey-Teen results - Media Advisory",
+        "description": "CDC will host a media telebriefing to discuss the latest coverage rate estimates for vaccines recommended for adolescents in the United States.\n",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0730-nis.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0730-nis.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344962/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344962/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344962/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344962/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344963,
+        "name": "Severe Weather Can Threaten Summer Fun, Safety and Health - Digital Press Kit",
+        "description": "Extreme weather in the summer can include soaring temperatures, thunderstorms, and dry conditions. Extreme weather poses serious health risks, causing illnesses, injuries and sometimes death.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/dpk/2015/dpk-summer-weather.html",
+        "targetUrl": "http://www.cdc.gov/media/dpk/2015/dpk-summer-weather.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344963/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344963/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344963/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344963/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1723,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-summer-weather/dpk-summer-weather-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 65795
+        }]
+    }, {
+        "id": 344964,
+        "name": "New CDC study highlights burden of pneumonia hospitalizations among US adults - Press Release",
+        "description": "When U.S. adults are hospitalized with pneumonia, viruses are more often to blame than bacteria.  However, despite current diagnostic tests, neither viruses nor bacteria are detected in the majority of these patients according to a study by the Centers for Disease Control and Prevention (CDC) released today in the New England Journal of Medicine.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0714-pneumonia-hospitalizations.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0714-pneumonia-hospitalizations.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344964/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344964/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344964/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344964/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344965,
+        "name": "Sodium Overload - Digital Press Kit",
+        "description": "Americans consume too much sodium. In fact, the average daily intake among individuals aged 2 years and older in the U.S. is 3,500 mg per day, significantly higher than the recommended daily maximum of 2,300 mg – and that doesn’t even include salt at the table.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/dpk/2015/dpk-sodium-overload.html",
+        "targetUrl": "http://www.cdc.gov/media/dpk/2015/dpk-sodium-overload.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344965/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344965/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344965/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344965/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1724,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-sodium-overload/sodium-overload-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 82617
+        }]
+    }, {
+        "id": 344966,
+        "name": "CDC Releases 2016 Edition of the Yellow Book - Media Advisory",
+        "description": "The Centers for Disease Control and Prevention has released the 2016 edition of “CDC Health Information for International Travel,” commonly known as the Yellow Book.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0710-yellow-book.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0710-yellow-book.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344966/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344966/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344966/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344966/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344967,
+        "name": "CDC versus Ebola: The Road to Zero - Press Release",
+        "description": "The Ebola epidemic that began in West Africa in early 2014 continues today. With more than 27,000 reported Ebola cases and more than 11,000 deaths, the scope has been unprecedented. Equally extraordinary is the scale and duration of the response by the Centers for Disease Control and Prevention and partners.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0709-cdc-vs-ebola.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0709-cdc-vs-ebola.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344967/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344967/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344967/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344967/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344968,
+        "name": "Transcript for CDC Telebriefing: New research reveals the trends and risk factors behind America’s growing heroin epidemic - Transcript",
+        "description": "Transcript for new Vital Signs report: Today’s Heroin Epidemic",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/t0707-heroin-epidemic.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/t0707-heroin-epidemic.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344968/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344968/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344968/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344968/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344969,
+        "name": "Three out of 4 American adults favor making 21 the minimum age of sale for tobacco products - Press Release",
+        "description": "Three out of 4 American adults—including 7 in 10 cigarette smokers—favor raising the minimum age of sale for all tobacco products to 21, according to an article by CDC published in the American Journal of Preventive Medicine. ",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0707-tobacco-age.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0707-tobacco-age.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344969/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344969/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344969/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344969/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1725,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0707-tobacco-age-330x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 75621
+        }]
+    }, {
+        "id": 344970,
+        "name": "Heroin Epidemic - Digital Press Kit",
+        "description": "Most demographic groups are increasingly using heroin and other drugs. During the past decade, heroin use has increased across the United States among men and women, most age groups, and all income levels, with some of the greatest increases occurring in demographic groups that have had historically lower rates of heroin use, according to a new Vital Signs report.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/dpk/2015/dpk-vs-heroin-epidemic.html",
+        "targetUrl": "http://www.cdc.gov/media/dpk/2015/dpk-vs-heroin-epidemic.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344970/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344970/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344970/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344970/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1726,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-vs-heroin-epidemic/dpk-heroin-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 87013
+        }]
+    }, {
+        "id": 344971,
+        "name": "New research reveals the trends and risk factors behind America’s growing heroin epidemic - Press Release",
+        "description": "Heroin use has increased across the United States among men and women, most age groups, and all income levels. The greatest increases have occurred in groups with historically lower rates of heroin use, including women and people with private insurance and higher incomes.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0707-heroin-epidemic.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0707-heroin-epidemic.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344971/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344971/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344971/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344971/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1727,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0707-heroin-epidemic-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 69192
+        }]
+    }, {
+        "id": 344972,
+        "name": "CDC Telebriefing: New Vital Signs Report - What are the risk factors and trends behind today's heroin epidemic? - Media Advisory",
+        "description": "Heroin use has increased across the US among men and women, most age groups, and all income levels. The greatest increases occurred in demographic groups with historically lower rates of heroin use: doubling among women and more than doubling among non-Hispanic whites. According to CDC’s latest Vital Signs report, nearly all people who used heroin in the past year also used at least one other drug.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0707-heroin.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0707-heroin.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344972/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344972/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344972/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344972/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344973,
+        "name": "CDC awards $216 million to community-based organizations to deliver the most effective HIV prevention strategies to those in greatest need - Press Release",
+        "description": "The Centers for Disease Control and Prevention announced today that it has awarded $216 million over five years to 90 community-based organizations (CBOs) nationwide to deliver effective HIV prevention strategies to those at greatest risk, including people of color, men who have sex with men (MSM), transgender individuals, and people who inject drugs.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/nchhstp/newsroom/2015/CBO-FOA-Awards-2015-Press-Release.html",
+        "targetUrl": "http://www.cdc.gov/nchhstp/newsroom/2015/CBO-FOA-Awards-2015-Press-Release.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344973/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344973/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344973/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344973/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344974,
+        "name": "New CDC Museum Exhibition Examines Georgia’s Refugee Communities - Media Advisory",
+        "description": "The new CDC museum exhibit, Resettling in America: Georgia’s Refugee Communities, explores the challenges of resettlement and the resiliency of refugees living in metropolitan Atlanta as they build new lives, identities, and a sense of community. ",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0626-cdc-museum.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0626-cdc-museum.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344974/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344974/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344974/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344974/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": [{
+            "id": 1728,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/a0626-cdc-museum-300x200.jpg",
+            "contentType": "image/jpeg",
+            "size": 114625
+        }]
+    }, {
+        "id": 344975,
+        "name": "Prevention and early treatment of RMSF in Arizona may save millions by preventing premature death and disability  - Press Release",
+        "description": "The mounting costs of an epidemic of Rocky Mountain spotted fever (RMSF) among several American Indian tribes in Arizona suggests that prevention and control efforts would be cost effective.  A recent study released by experts at the Centers for Disease Control and Prevention (CDC) and the Indian Health Service (IHS), in partnership with Arizona tribes, describes an estimated $13.2 million in losses linked to the epidemic of RMSF between 2002 and 2011, on two Indian reservations.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0619-RMSF.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/p0619-RMSF.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344975/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344975/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344975/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344975/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344976,
+        "name": "CDC Foundation’s New Business Pulse Focuses on Food Safety",
+        "description": "Business Pulse: Food Safety, launched today by the CDC Foundation, focuses on how the Centers for Disease Control and Prevention (CDC) fights foodborne diseases to protect American consumers and businesses from contaminated foods.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0617-cdc-foundation-food-safety.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0617-cdc-foundation-food-safety.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344976/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344976/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344976/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344976/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344977,
+        "name": "New Entry Screening and Monitoring Guidelines for Travelers Entering the United States from Liberia - Media Statement",
+        "description": "The United States government is modifying its enhanced Ebola entry screening and monitoring program for travelers from Liberia.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/s0612-new-entry-screening.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/s0612-new-entry-screening.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344977/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344977/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344977/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344977/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }, {
+        "id": 344978,
+        "name": "New report shows increase in reported adverse health effects from synthetic cannabinoid use - Media Advisory",
+        "description": "The June 12, 2015, Morbidity and Mortality Weekly Report (MMWR) includes an article that discusses the increase and the adverse health effects associated with their use.",
+        "mediaType": "Feed Item",
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0611-cannabinoid-use.html",
+        "targetUrl": "http://www.cdc.gov/media/releases/2015/a0611-cannabinoid-use.html",
+        "embedUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344978/embed.json",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344978/syndicate.json",
+        "contentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344978/content.html",
+        "thumbnailUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344978/thumbnail.png",
+        "alternateImages": [],
+        "status": "Published",
+        "enclosures": []
+    }]
+}

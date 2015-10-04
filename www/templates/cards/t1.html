@@ -1,0 +1,11 @@
+				<div class="card type-t1">
+					<div class="item item-notice">Travel Notice - Watch Level 1</div>
+					<div class="item item-text-wrap item-body" ng-click="clickControl('{{stream.sourcetype}}')">
+						<strong>T1: {{stream.title | words:10}}</strong>
+						<p class="date">{{stream.date | amDateFormat:'MMMM Do, YYYY'}}</p>
+						<p text-collapse text-collapse-max-length="110" text-collapse-text="{{stream.description}}"></p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/{{stream.source}}">{{stream.source}}</a>
+					</div>					
+				</div>

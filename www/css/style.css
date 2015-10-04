@@ -55,3 +55,15 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, text
     -webkit-overflow-scrolling: touch!important;
     overflow-y: scroll!important;
 }
+
+
+/*
+
+ */
+.stream .row + .row {
+    margin-top: -30px;
+    padding-top: 0;
+}
+.stream .row .card {
+    width: 100%;
+}

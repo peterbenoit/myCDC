@@ -1,0 +1,8 @@
+				<div class="card type-c">
+					<div class="item item-thumbnail-left" ng-click="clickControl('{{stream.sourcetype}}')">
+						<img src="{{stream.image}}">
+						<strong>C1: {{stream.title | words:10}}</strong>
+						<p class="date">{{stream.date | amDateFormat:'MMMM Do, YYYY'}}</p>
+						<p class="source"><a href="#app/source/{{stream.source}}">{{stream.source}}</a></p>
+					</div>
+				</div>	

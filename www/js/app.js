@@ -9,7 +9,9 @@ angular.module('mycdc', [
     'mycdc.filters',
     'mycdc.services',
     'mycdc.storage',
-    'ngCordova'
+    'ngCordova',
+    'angular.filter',
+    'angularMoment',
     ])
 /*
 add to body class: platform-android
@@ -171,7 +173,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: 'templates/blog.html',
-                controller: 'DirectorsBlogCtrl'
+                controller: 'DirectorBlogCtrl'
             }
         }
     })
@@ -204,7 +206,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: 'templates/stream.html',
-                controller: 'StreamCtrl'
+                controller: 'PHMblogsCtrl'
             }
         }
     })
@@ -213,7 +215,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: 'templates/blog.html',
-                controller: 'BlogCtrl'
+                controller: 'PHMblogCtrl'
             }
         }
     })
@@ -339,7 +341,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: 'templates/journal.html',
-                controller: 'JournalCtrl'
+                controller: 'MMWRCtrl'
             }
         }
     })
@@ -360,7 +362,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: 'templates/journal.html',
-                controller: 'JournalCtrl'
+                controller: 'PCDCtrl'
             }
         }
     })
@@ -497,7 +499,7 @@ add to body class: platform-wp8
         url: '/Podcasts',
         views: {
             'menuContent': {
-                templateUrl: 'templates/audios.html',
+                templateUrl: 'templates/stream.html',
                 controller: 'PodcastsCtrl'
             }
         }
@@ -507,7 +509,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: 'templates/audio.html',
-                controller: 'AudioCtrl'
+                controller: 'PodcastCtrl'
             }
         }
     })

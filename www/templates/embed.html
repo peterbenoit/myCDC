@@ -1,5 +1,10 @@
-<ion-view title="{{article.name}}">
+<ion-view>
     <ion-content scroll="true" overflow-scroll="true" class="iframe-wrapper">
+        <div ng-if="nochrome">
+            <h2 class="title">{{data.name}}</h2>
+            <p>Published {{data.datePublished | date:'fullDate'}}</p>
+            <p>Source: [Source Name]</p>
+        </div>
        <iframe data-tap-disabled="true" src="{{frameUrl}}"></iframe>
     </ion-content>
 </ion-view>

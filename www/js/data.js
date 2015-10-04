@@ -66,6 +66,14 @@ angular.module('mycdc.data', [])
     return service;
 })
 
+.factory('DotwContent', function($http){
+    return {
+        getStatus: function(url) {
+            return $http.get('http://peterbenoit.com/dev/exists.php?url=' + url);
+        }
+    }
+})
+
 /**
  * @param  {[type]}
  * @param  {[type]}
@@ -367,7 +375,6 @@ angular.module('mycdc.data', [])
     }
 })
 
-
 /**
  * @param  {[type]}
  * @param  {[type]}
@@ -428,7 +435,6 @@ angular.module('mycdc.data', [])
     }
 })
 
-
 /**
  * @param  {[type]}
  * @param  {[type]}
@@ -488,7 +494,6 @@ angular.module('mycdc.data', [])
         }
     }
 })
-
 
 /**
  * @param  {[type]}
@@ -832,6 +837,156 @@ angular.module('mycdc.data', [])
 
     return service;
 })
+
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.factory('PHMblogsData', function($http, $q, PHMblogsStorage) {
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        service = {};
+
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/sources/Blogs.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d.data.results;
+            PHMblogsStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = PHMblogsStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {});
+
+        return promise;
+    };
+
+    service.getAll = function() {
+        return data;
+    };
+
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    service.getId = function(idx) {
+        return data[idx].id;
+    };
+
+    return service;
+})
+
+/**
+ * Content is an additional query for data, either by sourceUrl or syndicateUrl
+ * @param  {[type]} $http
+ * @return {[type]}
+ */
+.factory('PHMblogsContent', function($http){
+    return {
+        getContent: function(id) {
+            return $http.get('json/content/' + id + '.json');
+        }
+    }
+})
+
+
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.factory('PodcastsData', function($http, $q, PodcastsStorage) {
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        service = {};
+
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/sources/Podcasts.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d.data.results;
+            PodcastsStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = PodcastsStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {});
+
+        return promise;
+    };
+
+    service.getAll = function() {
+        return data;
+    };
+
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    service.getId = function(idx) {
+        return data[idx].id;
+    };
+
+    service.getCount = function() {
+        return data.length;
+    }
+
+    service.getAudio = function(idx) {
+        var src = [];
+
+        angular.forEach(data[idx].enclosures, function(datum){
+            if(datum.contentType.indexOf('audio') > -1) {
+                src.push(datum.resourceUrl);
+                src.push(datum.contentType);
+            }
+        })
+
+        return src;
+    };
+
+    service.getTranscript = function(idx) {
+        var src;
+
+        angular.forEach(data[idx].enclosures, function(datum){
+            if(datum.contentType.indexOf('text/html') > -1) {
+                src = datum.resourceUrl;
+            }
+        })
+
+        return src;
+    };
+
+    return service;
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,11 +1,37 @@
-<ion-view view-title="{{title}}">
+<ion-view>
   <ion-content>
 
-    <ion-list>
+        <ion-refresher
+        pulling-text="Pull to refresh..."
+        on-refresh="doRefresh()">
+        </ion-refresher>
+
+            <div class="stream">
+                <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row">
+                    <!-- <div data-ng-include="selectTemplate(data)"></div> -->
+                    <div class="card type-b">
+                        <a class="item item-text-wrap item-body" href="{{url}}{{$index}}">
+                            <div ng-if="data.enclosures.length && data.enclosures | hasImageEnclosure" class="item item-image">
+                                <img src="{{data.enclosures | hasImageEnclosure}}">
+                            </div>
+                            <strong>{{data.name | words:10}}</strong>
+                            <p class="date">{{data.dateModified | amDateFormat:'MMMM Do, YYYY'}}</p>
+                            <!-- <p text-collapse text-collapse-max-length="110" text-collapse-text="{{data.description}}"></p> -->
+                            <p>{{data.description | words:20}}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+<!--     <ion-list>
       <ion-item ng-repeat="data in datas" href="{{url}}{{$index}}">
         {{data.name}}
       </ion-item>
-    </ion-list>
+    </ion-list> -->
+
+    <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()" >
+        Show more
+    </button>
 
   </ion-content>
 </ion-view>

@@ -1,0 +1,30 @@
+<ion-view>
+
+    <ion-content class="has-header">
+
+    <!-- <img src="{{data.enclosures[0].resourceUrl}}"> -->
+
+    <div class="padding data">
+        <h2 class="title">{{data.name}}</h2>
+
+        <div style="padding:0 0 20px 0;">
+        Published {{data.datePublished | date:'fullDate'}}
+        </div>
+
+            <audio controls>
+                <source src="{{audio}}" type="{{type}}">
+            </audio>
+
+        <p ng-bind-html="data.description"></p>
+        <p><a href="{{transcript}}">Transcript</a></p>
+
+        <a class="button icon-left ion-ios-arrow-back button-outline" ng-class="{'button-negative':!previous.visible, 'button-positive':previous.visible}" ng-disabled="!previous.visible" href="#/app/Podcast/{{previous.position}}">Previous</a>
+        <a class="button icon-left ion-ios-arrow-forward button-outline" ng-class="{'button-negative':!next.visible, 'button-positive':next.visible}" ng-disabled="!next.visible" href="#/app/Podcast/{{next.position}}">Next</a>
+
+        <p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+        <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC</button></p>
+
+    </div>
+
+    </ion-content>
+</ion-view>

@@ -1,1 +1,1012 @@
-{"meta":{"status":200,"message":[],"resultSet":{"id":"6f1a4aeb-3e18-452b-8797-8bebe18a6f78"},"pagination":{"total":33,"count":33,"max":100,"offset":0,"pageNum":1,"totalPages":1,"sort":"-datepublished,mediaid","previousUrl":"","currentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=image of the week&fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=100&pagenum=1","nextUrl":""}},"results":[{"id":344130,"name":"0020029","description":"Created on December 3, 2012, this photograph, captured in the northern Indian state of Uttar Pradesh, depicts school children who were lined up in a classroom awaiting their required childhood vaccinations. It appears that one soon to be vaccinated child had fallen asleep while in this tightly-packed line.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=20029","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344130/syndicate.json","datePublished":"2015-09-18T11:00:00Z","dateModified":"2015-09-18T20:58:46Z","enclosures":[{"id":1281,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/20029/20029_lores.jpg","contentType":"image/jpeg","size":54587}]},{"id":344131,"name":"0018557","description":"Hanging by her arms from an overhead ladder swing, this happy young Asian-American girl was photographed during her outdoor physical education class, which was taking place at one of the many metropolitan Atlanta, Georgia primary schools. This was but one of a variety of playground stations offered, providing school children with a wide array of choices, which would allow them to exercise all aspects of their growing bodies.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=18557","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344131/syndicate.json","datePublished":"2015-09-17T11:00:00Z","dateModified":"2015-09-18T20:58:50Z","enclosures":[{"id":1282,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/18557/18557_lores.jpg","contentType":"image/jpeg","size":116541}]},{"id":344132,"name":"0017550","description":"This digitally-colorized transmission electron micrograph (TEM) depicts numerous Chikungunya virus particles, which are composed of a central dense core that is surrounded by a viral envelope. Each virion is approximately 50nm in diameter.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=17550","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344132/syndicate.json","datePublished":"2015-09-16T11:00:00Z","dateModified":"2015-09-18T20:58:54Z","enclosures":[{"id":1283,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/17550/17550_lores.jpg","contentType":"image/jpeg","size":110906}]},{"id":344133,"name":"0013128","description":"Here we have a platter of fresh vegetable, and a low-fat dip. The plated veggies included bright-red sweet grape tomatoes, uncooked broccoli, cucumber, uncooked baby carrots, Boston lettuce, and a garnish of aromatic dill.  This is a great way to incorporate a healthy choice for luncheon or party guests.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=13128","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344133/syndicate.json","datePublished":"2015-09-15T11:00:00Z","dateModified":"2015-09-18T20:58:58Z","enclosures":[{"id":1284,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/13128/13128_lores.jpg","contentType":"image/jpeg","size":75844}]},{"id":344134,"name":"0019856","description":"Photographed inside Muntilan Hospital, in the Magelang District of Indonesia, on April 11th, 2012, this image depicts Indonesian Field Epidemiology Training Program (IFETP) resident, Lalu Hendi Hutomo, in the process of interviewing a stroke patient who was lying in her bed, while a family member was standing on the far left, in order to determine the risk factors associated with this patients cerebrovascular problems.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=19856","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344134/syndicate.json","datePublished":"2015-09-14T11:00:00Z","dateModified":"2015-09-18T20:59:01Z","enclosures":[{"id":1285,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/19856/19856_lores.jpg","contentType":"image/jpeg","size":42027}]},{"id":344135,"name":"0019685","description":"This image depicts Pakistani Field Epidemiology Training Program (PFETP) residents, Dr. Ayaz Chohan, and Dr. Khushal Khan Kasi, as they were in the process of interviewing a Pakistani girl during an immunization coverage survey in Muzaffarabad, Pakistan, while curious neighborhood kids gather around.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=19685","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344135/syndicate.json","datePublished":"2015-09-11T11:00:00Z","dateModified":"2015-09-18T20:59:05Z","enclosures":[{"id":1286,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/19685/19685_lores.jpg","contentType":"image/jpeg","size":72951}]},{"id":344136,"name":"0013477","description":"This image depicts a male physician dressed in scrubs using a stethoscope he’d placed upon the left upper anterior chest in order to perform a thoracic auscultation upon a female patient in a clinical setting.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=13477","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344136/syndicate.json","datePublished":"2015-09-10T11:00:00Z","dateModified":"2015-09-18T20:59:10Z","enclosures":[{"id":1287,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/13477/13477_lores.jpg","contentType":"image/jpeg","size":77740}]},{"id":344137,"name":"0000741","description":"Histopathology of lung in a case of fatal human plague.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=741","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344137/syndicate.json","datePublished":"2015-09-09T11:00:00Z","dateModified":"2015-09-18T20:59:14Z","enclosures":[{"id":1288,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/02132002/00002/PHIL_741_lores.jpg","contentType":"image/jpeg","size":172412}]},{"id":344138,"name":"0016875","description":"This illustration depicts a three-dimensional (3D) computer-generated image of three drug-resistant non-typhoidal <i>Salmonella</i> bacteria. Of note, are the organisms’ peritrichous flagella, i.e., flagella protruding in all directions from the cell wall, and the numerous fimbriae, imparting a furry look to its exterior.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=16875","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344138/syndicate.json","datePublished":"2015-09-08T11:00:00Z","dateModified":"2015-09-18T20:59:18Z","enclosures":[{"id":1289,"resourceUrl":"http://phil-link.cdc.gov//PHIL_Images/16875/16875_lores.jpg","contentType":"image/jpeg","size":95277}]},{"id":344139,"name":"0011516","description":"This father and his two sons were about to embark on a freshwater fishing trip. He was discussing the route they would take with the older of his two boys, using a written guide to the Maryland waterways, while the younger boy was examining one of the fishing poles to be used on the trip. Along with wearing clothing appropriate for an outdoor canoe trip, which would protect them from the sun’s rays, insect bites, and scratches, to their exposed skin they applied sunscreen.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=11516","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344139/syndicate.json","datePublished":"2015-09-04T11:00:00Z","dateModified":"2015-09-18T20:59:22Z","enclosures":[{"id":1290,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/11516/11516_lores.jpg","contentType":"image/jpeg","size":49370}]},{"id":344140,"name":"0014437","description":"Set atop this white ceramic serving plate were three baby carrots along-side a number of fresh celery stalks, which were all still moist after having been thoroughly washed.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=14437","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344140/syndicate.json","datePublished":"2015-09-03T11:00:00Z","dateModified":"2015-09-18T20:59:26Z","enclosures":[{"id":1291,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/14437/14437_lores.jpg","contentType":"image/jpeg","size":31248}]},{"id":344141,"name":"0010828","description":"Electron micrograph of a <i>Listeria</i> bacterium in tissue.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=10828","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344141/syndicate.json","datePublished":"2015-09-01T11:00:00Z","dateModified":"2015-09-18T20:59:29Z","enclosures":[{"id":1292,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/10828/10828_lores.jpg","contentType":"image/jpeg","size":101855}]},{"id":344142,"name":"0010854","description":"This 2006 image depicted five body lice, <i>Pediculus humanus</i> var. <i>corporis</i>, which from left to right included three nymphal-staged lice, beginning with a stage N1, then N2, and thirdly a N3-staged nymph, followed by an adult male louse, and finally an adult female louse.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=10854","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344142/syndicate.json","datePublished":"2015-08-31T11:00:00Z","dateModified":"2015-09-18T20:59:33Z","enclosures":[{"id":1293,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/10854/10854_lores.jpg","contentType":"image/jpeg","size":31272}]},{"id":344143,"name":"0018229","description":"This image was captured in 2011, by U.S. Centers for Disease Control and Prevention (CDC) Health Communication Specialist, Alan Janssen, MSPH, during his tour of India, whereupon, he reviewed the communications elements of the polio eradication program in that region. The young boy pictured here, was displaying the pinkie finger on his left hand, for it had been marked with indelible purple ink after he had received his oral polio vaccination.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=18229","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344143/syndicate.json","datePublished":"2015-08-28T11:00:00Z","dateModified":"2015-09-18T20:59:37Z","enclosures":[{"id":1294,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/18229/18229_lores.jpg","contentType":"image/jpeg","size":110407}]},{"id":344144,"name":"0019445","description":"This photograph depicts a Nigerian mother kneeling next to her young child outside their home. The child was a victim of polio, which appears to be why his mother was supporting him, holding him by his the right arm and torso, indicating his bilateral lower extremity paralysis, also known as flaccid paralysis, due to this disease.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=19445","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344144/syndicate.json","datePublished":"2015-08-27T11:00:00Z","dateModified":"2015-09-18T20:59:41Z","enclosures":[{"id":1295,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/19445/19445_lores.jpg","contentType":"image/jpeg","size":127676}]},{"id":344145,"name":"0016817","description":"This 2014 image depicts Centers for Disease Control (CDC) laboratorian Mustafa Mazher demonstrating a tool used to cut apart devices in support of studies into device-associated infections involving bacterial biofilms.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=16817","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344145/syndicate.json","datePublished":"2015-08-26T11:00:00Z","dateModified":"2015-09-18T20:59:45Z","enclosures":[{"id":1296,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/16817/16817_lores.jpg","contentType":"image/jpeg","size":48367}]},{"id":344146,"name":"0013579","description":"Pictured here in this kitchen setting were the hands of a woman who’d just purchased some fresh groceries, which could be seen in the background, and was in the process of washing a green bell pepper under some fresh running tap water, prior to preparing it in a meal.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=13579","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344146/syndicate.json","datePublished":"2015-08-25T11:00:00Z","dateModified":"2015-09-18T20:59:49Z","enclosures":[{"id":1297,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/13579/13579_lores.jpg","contentType":"image/jpeg","size":83445}]},{"id":344147,"name":"0001918","description":"<i>Yersinia pestis</i>, direct fluorescent antibody stain (DFA), 200x Magnification.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=1918","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344147/syndicate.json","datePublished":"2015-08-24T11:00:00Z","dateModified":"2015-09-18T20:59:53Z","enclosures":[{"id":1298,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/03192002/00011/PHIL_1918_lores.jpg","contentType":"image/jpeg","size":42938}]},{"id":344148,"name":"0019319","description":"This photo, taken at a rural clinic and supplementary food distribution site in Uganda, shows mothers having their children weighed as part of a nutritional assessment, in order to determine their eligibility to receive supplementary, fortified, blended flour and oil.  These food commodities are delivered to food-insecure families with malnourished children, as part of food and nutrition programming within the President’s Emergency Plan for AIDS Relief (PEPFAR).","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=19319","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344148/syndicate.json","datePublished":"2015-08-21T11:00:00Z","dateModified":"2015-09-18T20:59:57Z","enclosures":[{"id":1299,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/19319/19319_lores.jpg","contentType":"image/jpeg","size":81313}]},{"id":344149,"name":"0000377","description":"This image depicts a dorsal view of a female head louse, <i>Pediculus humanus</i> var. <i>capitis</i>.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=377","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344149/syndicate.json","datePublished":"2015-08-20T11:00:00Z","dateModified":"2015-09-18T21:00:01Z","enclosures":[{"id":1300,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/377/377_lores.jpg","contentType":"image/jpeg","size":72054}]},{"id":344150,"name":"0016877","description":"This illustration depicts a three-dimensional (3D) computer-generated image of five drug-resistant <i>Salmonella</i> serotype Typhi bacteria.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=16877","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344150/syndicate.json","datePublished":"2015-08-19T11:00:00Z","dateModified":"2015-09-18T21:00:04Z","enclosures":[{"id":1301,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/16877/16877_lores.jpg","contentType":"image/jpeg","size":110027}]},{"id":344151,"name":"0013576","description":"This kitchen setting still life of newly-purchased groceries, includes four bell peppers, i.e., red, yellow, green, orange, a bag of pre-sliced carrots, fresh-sliced pineapple, a sweet onion, a head of iceberg lettuce, a tomato, and two packages of meat.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=13576","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344151/syndicate.json","datePublished":"2015-08-18T11:00:00Z","dateModified":"2015-09-18T21:00:08Z","enclosures":[{"id":1302,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/13576/13576_lores.jpg","contentType":"image/jpeg","size":75245}]},{"id":344152,"name":"0002050","description":"Dark stained bipolar ends of <i>Yersinia pestis</i> can clearly be seen in this Wright's stain of blood from a plague victim.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=2050","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344152/syndicate.json","datePublished":"2015-08-17T11:00:00Z","dateModified":"2015-09-18T21:00:12Z","enclosures":[{"id":1303,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/09042002/00008/PHIL_2050_lores.jpg","contentType":"image/jpeg","size":69717}]},{"id":344153,"name":"0015546","description":"Photographed by U.S. Public Health Service (USPHS) Lt. Cmdr. Gary Brunette, this image shows us one of the makeshift dwellings in an Internal Displaced Persons (IDP) camp, which acted as housing for Haitians who had lost their homes after the country’s devastating earthquake in January, 2010. In this case, the temporary hut was constructed by using the covers of the military’s “Meal, Ready-to-Eat” or MRE covers.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=15546","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344153/syndicate.json","datePublished":"2015-08-14T11:00:00Z","dateModified":"2015-09-18T21:00:15Z","enclosures":[{"id":1304,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/15546/15546_lores.jpg","contentType":"image/jpeg","size":91017}]},{"id":344154,"name":"0014414","description":"This image depicts a dietary supplement bottle set alongside a weekly pill container, which contained two oblong tablets, one deep orange and one sky blue, within each of its daily reservoirs. Judging from the ingredient label on the pill bottle, the tablets inside were multivitamin and mineral supplements.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=14414","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344154/syndicate.json","datePublished":"2015-08-13T11:00:00Z","dateModified":"2015-09-18T21:00:19Z","enclosures":[{"id":1305,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/14414/14414_lores.jpg","contentType":"image/jpeg","size":29767}]},{"id":344155,"name":"0014504","description":"This image depicts a white ceramic dish that had been topped with a freshly-washed grouping of blackberries, which is a fruit high in vitamin C, potassium, and dietary fiber.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=14504","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344155/syndicate.json","datePublished":"2015-08-12T11:00:00Z","dateModified":"2015-09-18T21:00:24Z","enclosures":[{"id":1306,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/14504/14504_lores.jpg","contentType":"image/jpeg","size":42130}]},{"id":344156,"name":"0014001","description":"This image depicts a class in session, the purpose of which was to instruct a number of Centers for Disease Control (CDC) employees through an aerobic step session, consisting of attendees following the participatory commands of an instructor. In this particular scene, attendees had raised one of their legs, and rested that foot upon a three-tiered step, while holding a pair of 2.5lb dumbbells.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=14001","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344156/syndicate.json","datePublished":"2015-08-11T11:00:00Z","dateModified":"2015-09-18T21:00:27Z","enclosures":[{"id":1307,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/14001/14001_lores.jpg","contentType":"image/jpeg","size":63748}]},{"id":344157,"name":"0011152","description":"Under a moderately-high magnification of 8000X, this colorized scanning electron micrograph (SEM) depicted a large grouping of Gram-negative <i>Legionella pneumophila</i> bacteria.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=11152","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344157/syndicate.json","datePublished":"2015-08-10T11:00:00Z","dateModified":"2015-09-18T21:00:31Z","enclosures":[{"id":1308,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/11152/11152_lores.jpg","contentType":"image/jpeg","size":75144}]},{"id":344158,"name":"0011436","description":"This is a digitally-colorized scanning electron micrograph (SEM) of a flea. Fleas are known to carry a number of diseases that are transferable to human beings through their bites, including plague, caused by the bacterium, <i>Yersinia pestis</i>.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=11436","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344158/syndicate.json","datePublished":"2015-08-07T11:00:00Z","dateModified":"2015-09-18T21:00:35Z","enclosures":[{"id":1309,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/11436/11436_lores.jpg","contentType":"image/jpeg","size":64997}]},{"id":344159,"name":"0016874","description":"This illustration depicts a three-dimensional (3D) computer-generated image of a number of drug-resistant <i>Neisseria gonorrhoeae</i> diplococcal bacteria. Note that extending from the organisms’ exterior were type IV pili, or hair-like appendages, which in this case, are used to promote motility for these bacteria, and improve surface adherence. The artistic recreation was based upon scanning electron micrographic imagery.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=16874","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344159/syndicate.json","datePublished":"2015-08-06T11:00:00Z","dateModified":"2015-09-18T21:00:40Z","enclosures":[{"id":1310,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/16874/16874_lores.jpg","contentType":"image/jpeg","size":68641}]},{"id":344160,"name":"0018615","description":"It is important to know that objects, including these pencils, crayons, paper, etc., are known as fomites, which can act as transmitters of illnesses, for viruses and bacteria are able to remain alive on their surfaces after being handled by an ill child, who can then inadvertently transfer these “germs” to another child who subsequently handles these schoolroom objects.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=18615","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344160/syndicate.json","datePublished":"2015-08-05T11:00:00Z","dateModified":"2015-09-18T21:00:44Z","enclosures":[{"id":1311,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/18615/18615_lores.jpg","contentType":"image/jpeg","size":46572}]},{"id":344161,"name":"0011296","description":"Here, an elderly woman was in the process of preparing a fresh fish on her clean kitchen counter. Carefully using a large knife, the woman had cut into the fish’s belly, and would subsequently extract the internal organs prior to finally cutting away the fillets.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=11296","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344161/syndicate.json","datePublished":"2015-08-04T11:00:00Z","dateModified":"2015-09-18T21:00:48Z","enclosures":[{"id":1312,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/11296/11296_lores.jpg","contentType":"image/jpeg","size":40327}]},{"id":344162,"name":"0019680","description":"During an Indonesian Field Epidemiology Training Program (FETP) campaign, implemented in order to improve coverage against filariasis, this woman, who was part of a team of medical personnel, was in the process of observing a group of schoolgirls in an elementary school located in Bukittinggi, West Sumatera, Indonesia, each of whom had been given a preventive medication with the intent to protect them against filariasis, a parasitic infection caused by roundworms.","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"},{"id":34521,"name":"Image of the Week","language":"English","type":"ContentGroup"}],"sourceUrl":"http://phil.cdc.gov/phil/details_linked.asp?pid=19680","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344162/syndicate.json","datePublished":"2015-08-03T11:00:00Z","dateModified":"2015-09-18T21:00:52Z","enclosures":[{"id":1313,"resourceUrl":"http://phil.cdc.gov/PHIL_Images/19680/19680_lores.jpg","contentType":"image/jpeg","size":45841}]}]}
+{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "6f1a4aeb-3e18-452b-8797-8bebe18a6f78"
+        },
+        "pagination": {
+            "total": 33,
+            "count": 33,
+            "max": 100,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 1,
+            "sort": "-datepublished,mediaid",
+            "previousUrl": "",
+            "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=image of the week&fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=100&pagenum=1",
+            "nextUrl": ""
+        }
+    },
+    "results": [{
+        "id": 344130,
+        "name": "0020029",
+        "description": "Created on December 3, 2012, this photograph, captured in the northern Indian state of Uttar Pradesh, depicts school children who were lined up in a classroom awaiting their required childhood vaccinations. It appears that one soon to be vaccinated child had fallen asleep while in this tightly-packed line.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=20029",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344130/syndicate.json",
+        "datePublished": "2015-09-18T11:00:00Z",
+        "dateModified": "2015-09-18T20:58:46Z",
+        "enclosures": [{
+            "id": 1281,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/20029/20029_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 54587
+        }]
+    }, {
+        "id": 344131,
+        "name": "0018557",
+        "description": "Hanging by her arms from an overhead ladder swing, this happy young Asian-American girl was photographed during her outdoor physical education class, which was taking place at one of the many metropolitan Atlanta, Georgia primary schools. This was but one of a variety of playground stations offered, providing school children with a wide array of choices, which would allow them to exercise all aspects of their growing bodies.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=18557",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344131/syndicate.json",
+        "datePublished": "2015-09-17T11:00:00Z",
+        "dateModified": "2015-09-18T20:58:50Z",
+        "enclosures": [{
+            "id": 1282,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/18557/18557_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 116541
+        }]
+    }, {
+        "id": 344132,
+        "name": "0017550",
+        "description": "This digitally-colorized transmission electron micrograph (TEM) depicts numerous Chikungunya virus particles, which are composed of a central dense core that is surrounded by a viral envelope. Each virion is approximately 50nm in diameter.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=17550",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344132/syndicate.json",
+        "datePublished": "2015-09-16T11:00:00Z",
+        "dateModified": "2015-09-18T20:58:54Z",
+        "enclosures": [{
+            "id": 1283,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/17550/17550_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 110906
+        }]
+    }, {
+        "id": 344133,
+        "name": "0013128",
+        "description": "Here we have a platter of fresh vegetable, and a low-fat dip. The plated veggies included bright-red sweet grape tomatoes, uncooked broccoli, cucumber, uncooked baby carrots, Boston lettuce, and a garnish of aromatic dill.  This is a great way to incorporate a healthy choice for luncheon or party guests.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=13128",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344133/syndicate.json",
+        "datePublished": "2015-09-15T11:00:00Z",
+        "dateModified": "2015-09-18T20:58:58Z",
+        "enclosures": [{
+            "id": 1284,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/13128/13128_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 75844
+        }]
+    }, {
+        "id": 344134,
+        "name": "0019856",
+        "description": "Photographed inside Muntilan Hospital, in the Magelang District of Indonesia, on April 11th, 2012, this image depicts Indonesian Field Epidemiology Training Program (IFETP) resident, Lalu Hendi Hutomo, in the process of interviewing a stroke patient who was lying in her bed, while a family member was standing on the far left, in order to determine the risk factors associated with this patients cerebrovascular problems.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=19856",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344134/syndicate.json",
+        "datePublished": "2015-09-14T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:01Z",
+        "enclosures": [{
+            "id": 1285,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/19856/19856_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 42027
+        }]
+    }, {
+        "id": 344135,
+        "name": "0019685",
+        "description": "This image depicts Pakistani Field Epidemiology Training Program (PFETP) residents, Dr. Ayaz Chohan, and Dr. Khushal Khan Kasi, as they were in the process of interviewing a Pakistani girl during an immunization coverage survey in Muzaffarabad, Pakistan, while curious neighborhood kids gather around.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=19685",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344135/syndicate.json",
+        "datePublished": "2015-09-11T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:05Z",
+        "enclosures": [{
+            "id": 1286,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/19685/19685_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 72951
+        }]
+    }, {
+        "id": 344136,
+        "name": "0013477",
+        "description": "This image depicts a male physician dressed in scrubs using a stethoscope he’d placed upon the left upper anterior chest in order to perform a thoracic auscultation upon a female patient in a clinical setting.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=13477",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344136/syndicate.json",
+        "datePublished": "2015-09-10T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:10Z",
+        "enclosures": [{
+            "id": 1287,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/13477/13477_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 77740
+        }]
+    }, {
+        "id": 344137,
+        "name": "0000741",
+        "description": "Histopathology of lung in a case of fatal human plague.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=741",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344137/syndicate.json",
+        "datePublished": "2015-09-09T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:14Z",
+        "enclosures": [{
+            "id": 1288,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/02132002/00002/PHIL_741_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 172412
+        }]
+    }, {
+        "id": 344138,
+        "name": "0016875",
+        "description": "This illustration depicts a three-dimensional (3D) computer-generated image of three drug-resistant non-typhoidal <i>Salmonella</i> bacteria. Of note, are the organisms’ peritrichous flagella, i.e., flagella protruding in all directions from the cell wall, and the numerous fimbriae, imparting a furry look to its exterior.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=16875",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344138/syndicate.json",
+        "datePublished": "2015-09-08T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:18Z",
+        "enclosures": [{
+            "id": 1289,
+            "resourceUrl": "http://phil-link.cdc.gov//PHIL_Images/16875/16875_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 95277
+        }]
+    }, {
+        "id": 344139,
+        "name": "0011516",
+        "description": "This father and his two sons were about to embark on a freshwater fishing trip. He was discussing the route they would take with the older of his two boys, using a written guide to the Maryland waterways, while the younger boy was examining one of the fishing poles to be used on the trip. Along with wearing clothing appropriate for an outdoor canoe trip, which would protect them from the sun’s rays, insect bites, and scratches, to their exposed skin they applied sunscreen.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=11516",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344139/syndicate.json",
+        "datePublished": "2015-09-04T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:22Z",
+        "enclosures": [{
+            "id": 1290,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/11516/11516_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 49370
+        }]
+    }, {
+        "id": 344140,
+        "name": "0014437",
+        "description": "Set atop this white ceramic serving plate were three baby carrots along-side a number of fresh celery stalks, which were all still moist after having been thoroughly washed.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=14437",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344140/syndicate.json",
+        "datePublished": "2015-09-03T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:26Z",
+        "enclosures": [{
+            "id": 1291,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/14437/14437_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 31248
+        }]
+    }, {
+        "id": 344141,
+        "name": "0010828",
+        "description": "Electron micrograph of a <i>Listeria</i> bacterium in tissue.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=10828",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344141/syndicate.json",
+        "datePublished": "2015-09-01T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:29Z",
+        "enclosures": [{
+            "id": 1292,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/10828/10828_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 101855
+        }]
+    }, {
+        "id": 344142,
+        "name": "0010854",
+        "description": "This 2006 image depicted five body lice, <i>Pediculus humanus</i> var. <i>corporis</i>, which from left to right included three nymphal-staged lice, beginning with a stage N1, then N2, and thirdly a N3-staged nymph, followed by an adult male louse, and finally an adult female louse.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=10854",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344142/syndicate.json",
+        "datePublished": "2015-08-31T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:33Z",
+        "enclosures": [{
+            "id": 1293,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/10854/10854_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 31272
+        }]
+    }, {
+        "id": 344143,
+        "name": "0018229",
+        "description": "This image was captured in 2011, by U.S. Centers for Disease Control and Prevention (CDC) Health Communication Specialist, Alan Janssen, MSPH, during his tour of India, whereupon, he reviewed the communications elements of the polio eradication program in that region. The young boy pictured here, was displaying the pinkie finger on his left hand, for it had been marked with indelible purple ink after he had received his oral polio vaccination.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=18229",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344143/syndicate.json",
+        "datePublished": "2015-08-28T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:37Z",
+        "enclosures": [{
+            "id": 1294,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/18229/18229_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 110407
+        }]
+    }, {
+        "id": 344144,
+        "name": "0019445",
+        "description": "This photograph depicts a Nigerian mother kneeling next to her young child outside their home. The child was a victim of polio, which appears to be why his mother was supporting him, holding him by his the right arm and torso, indicating his bilateral lower extremity paralysis, also known as flaccid paralysis, due to this disease.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=19445",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344144/syndicate.json",
+        "datePublished": "2015-08-27T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:41Z",
+        "enclosures": [{
+            "id": 1295,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/19445/19445_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 127676
+        }]
+    }, {
+        "id": 344145,
+        "name": "0016817",
+        "description": "This 2014 image depicts Centers for Disease Control (CDC) laboratorian Mustafa Mazher demonstrating a tool used to cut apart devices in support of studies into device-associated infections involving bacterial biofilms.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=16817",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344145/syndicate.json",
+        "datePublished": "2015-08-26T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:45Z",
+        "enclosures": [{
+            "id": 1296,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/16817/16817_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 48367
+        }]
+    }, {
+        "id": 344146,
+        "name": "0013579",
+        "description": "Pictured here in this kitchen setting were the hands of a woman who’d just purchased some fresh groceries, which could be seen in the background, and was in the process of washing a green bell pepper under some fresh running tap water, prior to preparing it in a meal.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=13579",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344146/syndicate.json",
+        "datePublished": "2015-08-25T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:49Z",
+        "enclosures": [{
+            "id": 1297,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/13579/13579_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 83445
+        }]
+    }, {
+        "id": 344147,
+        "name": "0001918",
+        "description": "<i>Yersinia pestis</i>, direct fluorescent antibody stain (DFA), 200x Magnification.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=1918",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344147/syndicate.json",
+        "datePublished": "2015-08-24T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:53Z",
+        "enclosures": [{
+            "id": 1298,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/03192002/00011/PHIL_1918_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 42938
+        }]
+    }, {
+        "id": 344148,
+        "name": "0019319",
+        "description": "This photo, taken at a rural clinic and supplementary food distribution site in Uganda, shows mothers having their children weighed as part of a nutritional assessment, in order to determine their eligibility to receive supplementary, fortified, blended flour and oil.  These food commodities are delivered to food-insecure families with malnourished children, as part of food and nutrition programming within the President’s Emergency Plan for AIDS Relief (PEPFAR).",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=19319",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344148/syndicate.json",
+        "datePublished": "2015-08-21T11:00:00Z",
+        "dateModified": "2015-09-18T20:59:57Z",
+        "enclosures": [{
+            "id": 1299,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/19319/19319_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 81313
+        }]
+    }, {
+        "id": 344149,
+        "name": "0000377",
+        "description": "This image depicts a dorsal view of a female head louse, <i>Pediculus humanus</i> var. <i>capitis</i>.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=377",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344149/syndicate.json",
+        "datePublished": "2015-08-20T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:01Z",
+        "enclosures": [{
+            "id": 1300,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/377/377_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 72054
+        }]
+    }, {
+        "id": 344150,
+        "name": "0016877",
+        "description": "This illustration depicts a three-dimensional (3D) computer-generated image of five drug-resistant <i>Salmonella</i> serotype Typhi bacteria.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=16877",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344150/syndicate.json",
+        "datePublished": "2015-08-19T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:04Z",
+        "enclosures": [{
+            "id": 1301,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/16877/16877_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 110027
+        }]
+    }, {
+        "id": 344151,
+        "name": "0013576",
+        "description": "This kitchen setting still life of newly-purchased groceries, includes four bell peppers, i.e., red, yellow, green, orange, a bag of pre-sliced carrots, fresh-sliced pineapple, a sweet onion, a head of iceberg lettuce, a tomato, and two packages of meat.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=13576",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344151/syndicate.json",
+        "datePublished": "2015-08-18T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:08Z",
+        "enclosures": [{
+            "id": 1302,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/13576/13576_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 75245
+        }]
+    }, {
+        "id": 344152,
+        "name": "0002050",
+        "description": "Dark stained bipolar ends of <i>Yersinia pestis</i> can clearly be seen in this Wright's stain of blood from a plague victim.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=2050",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344152/syndicate.json",
+        "datePublished": "2015-08-17T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:12Z",
+        "enclosures": [{
+            "id": 1303,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/09042002/00008/PHIL_2050_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 69717
+        }]
+    }, {
+        "id": 344153,
+        "name": "0015546",
+        "description": "Photographed by U.S. Public Health Service (USPHS) Lt. Cmdr. Gary Brunette, this image shows us one of the makeshift dwellings in an Internal Displaced Persons (IDP) camp, which acted as housing for Haitians who had lost their homes after the country’s devastating earthquake in January, 2010. In this case, the temporary hut was constructed by using the covers of the military’s “Meal, Ready-to-Eat” or MRE covers.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=15546",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344153/syndicate.json",
+        "datePublished": "2015-08-14T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:15Z",
+        "enclosures": [{
+            "id": 1304,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/15546/15546_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 91017
+        }]
+    }, {
+        "id": 344154,
+        "name": "0014414",
+        "description": "This image depicts a dietary supplement bottle set alongside a weekly pill container, which contained two oblong tablets, one deep orange and one sky blue, within each of its daily reservoirs. Judging from the ingredient label on the pill bottle, the tablets inside were multivitamin and mineral supplements.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=14414",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344154/syndicate.json",
+        "datePublished": "2015-08-13T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:19Z",
+        "enclosures": [{
+            "id": 1305,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/14414/14414_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 29767
+        }]
+    }, {
+        "id": 344155,
+        "name": "0014504",
+        "description": "This image depicts a white ceramic dish that had been topped with a freshly-washed grouping of blackberries, which is a fruit high in vitamin C, potassium, and dietary fiber.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=14504",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344155/syndicate.json",
+        "datePublished": "2015-08-12T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:24Z",
+        "enclosures": [{
+            "id": 1306,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/14504/14504_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 42130
+        }]
+    }, {
+        "id": 344156,
+        "name": "0014001",
+        "description": "This image depicts a class in session, the purpose of which was to instruct a number of Centers for Disease Control (CDC) employees through an aerobic step session, consisting of attendees following the participatory commands of an instructor. In this particular scene, attendees had raised one of their legs, and rested that foot upon a three-tiered step, while holding a pair of 2.5lb dumbbells.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=14001",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344156/syndicate.json",
+        "datePublished": "2015-08-11T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:27Z",
+        "enclosures": [{
+            "id": 1307,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/14001/14001_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 63748
+        }]
+    }, {
+        "id": 344157,
+        "name": "0011152",
+        "description": "Under a moderately-high magnification of 8000X, this colorized scanning electron micrograph (SEM) depicted a large grouping of Gram-negative <i>Legionella pneumophila</i> bacteria.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=11152",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344157/syndicate.json",
+        "datePublished": "2015-08-10T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:31Z",
+        "enclosures": [{
+            "id": 1308,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/11152/11152_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 75144
+        }]
+    }, {
+        "id": 344158,
+        "name": "0011436",
+        "description": "This is a digitally-colorized scanning electron micrograph (SEM) of a flea. Fleas are known to carry a number of diseases that are transferable to human beings through their bites, including plague, caused by the bacterium, <i>Yersinia pestis</i>.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=11436",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344158/syndicate.json",
+        "datePublished": "2015-08-07T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:35Z",
+        "enclosures": [{
+            "id": 1309,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/11436/11436_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 64997
+        }]
+    }, {
+        "id": 344159,
+        "name": "0016874",
+        "description": "This illustration depicts a three-dimensional (3D) computer-generated image of a number of drug-resistant <i>Neisseria gonorrhoeae</i> diplococcal bacteria. Note that extending from the organisms’ exterior were type IV pili, or hair-like appendages, which in this case, are used to promote motility for these bacteria, and improve surface adherence. The artistic recreation was based upon scanning electron micrographic imagery.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=16874",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344159/syndicate.json",
+        "datePublished": "2015-08-06T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:40Z",
+        "enclosures": [{
+            "id": 1310,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/16874/16874_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 68641
+        }]
+    }, {
+        "id": 344160,
+        "name": "0018615",
+        "description": "It is important to know that objects, including these pencils, crayons, paper, etc., are known as fomites, which can act as transmitters of illnesses, for viruses and bacteria are able to remain alive on their surfaces after being handled by an ill child, who can then inadvertently transfer these “germs” to another child who subsequently handles these schoolroom objects.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=18615",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344160/syndicate.json",
+        "datePublished": "2015-08-05T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:44Z",
+        "enclosures": [{
+            "id": 1311,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/18615/18615_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 46572
+        }]
+    }, {
+        "id": 344161,
+        "name": "0011296",
+        "description": "Here, an elderly woman was in the process of preparing a fresh fish on her clean kitchen counter. Carefully using a large knife, the woman had cut into the fish’s belly, and would subsequently extract the internal organs prior to finally cutting away the fillets.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=11296",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344161/syndicate.json",
+        "datePublished": "2015-08-04T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:48Z",
+        "enclosures": [{
+            "id": 1312,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/11296/11296_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 40327
+        }]
+    }, {
+        "id": 344162,
+        "name": "0019680",
+        "description": "During an Indonesian Field Epidemiology Training Program (FETP) campaign, implemented in order to improve coverage against filariasis, this woman, who was part of a team of medical personnel, was in the process of observing a group of schoolgirls in an elementary school located in Bukittinggi, West Sumatera, Indonesia, each of whom had been given a preventive medication with the intent to protect them against filariasis, a parasitic infection caused by roundworms.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34521,
+            "name": "Image of the Week",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://phil.cdc.gov/phil/details_linked.asp?pid=19680",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344162/syndicate.json",
+        "datePublished": "2015-08-03T11:00:00Z",
+        "dateModified": "2015-09-18T21:00:52Z",
+        "enclosures": [{
+            "id": 1313,
+            "resourceUrl": "http://phil.cdc.gov/PHIL_Images/19680/19680_lores.jpg",
+            "contentType": "image/jpeg",
+            "size": 45841
+        }]
+    }]
+}
