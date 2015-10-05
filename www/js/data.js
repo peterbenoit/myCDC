@@ -786,7 +786,6 @@ angular.module('mycdc.data', [])
     return service;
 })
 
-
 /**
  * @param  {[type]}
  * @param  {[type]}
@@ -837,7 +836,6 @@ angular.module('mycdc.data', [])
 
     return service;
 })
-
 
 /**
  * @param  {[type]}
@@ -898,8 +896,6 @@ angular.module('mycdc.data', [])
         }
     }
 })
-
-
 
 /**
  * @param  {[type]}
@@ -977,12 +973,57 @@ angular.module('mycdc.data', [])
     return service;
 })
 
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.factory('PHILsData', function($http, $q, PHILsStorage) {
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        service = {};
 
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/sources/PHIL.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d.data.results;
+            console.log(data);
+            PHILsStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = PHILsStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {});
 
+        return promise;
+    };
 
+    service.getAll = function() {
+        return data;
+    };
 
+    service.get = function(idx) {
+        return data[idx];
+    };
 
+    service.getId = function(idx) {
+        return data[idx].id;
+    };
 
+    service.getCount = function() {
+        return data.length;
+    }
+
+    return service;
+})
 
 
 

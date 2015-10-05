@@ -432,21 +432,21 @@ add to body class: platform-wp8
     // *******************************************************************************************
     // Image Library
     // *******************************************************************************************
-    .state('app.ImageLibrarys', {
-        url: '/ImageLibrarys',
+    .state('app.PHILs', {
+        url: '/PHILs',
         views: {
             'menuContent': {
-                templateUrl: 'templates/images.html',
-                controller: 'ImageLibrarysCtrl'
+                templateUrl: 'templates/image_stream.html',
+                controller: 'PHILsCtrl'
             }
         }
     })
-    .state('app.ImageLibrary', {
-        url: '/ImageLibrary/:idx',
+    .state('app.PHIL', {
+        url: '/PHIL/:idx',
         views: {
             'menuContent': {
                 templateUrl: 'templates/image.html',
-                controller: 'ImageCtrl'
+                controller: 'PHILCtrl'
             }
         }
     })

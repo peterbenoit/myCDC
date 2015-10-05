@@ -430,6 +430,25 @@ angular.module('mycdc.storage', [])
     };
 })
 
-
+/**
+ * @return {[type]}
+ */
+.factory('PHILsStorage', function() {
+    return {
+        all: function() {
+            var phil = window.localStorage['phil'];
+            if (phil) {
+                return angular.fromJson(phil);
+            }
+            return {};
+        },
+        save: function(phil) {
+            window.localStorage['phil'] = angular.toJson(phil);
+        },
+        clear: function() {
+            window.localStorage.removeItem('phil');
+        }
+    };
+})
 
 ;

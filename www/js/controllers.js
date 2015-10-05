@@ -106,8 +106,8 @@ angular.module('mycdc.controllers', [])
         icon: 'ion-checkmark-circled'
     }, {
         title: 'Image Library',
-        href: '#/app/ImageLibrarys',
-        icon: 'ion-close-circled'
+        href: '#/app/PHILs',
+        icon: 'ion-checkmark-circled'
     }, {
         title: 'Instagram',
         href: '#/app/Instagrams',
@@ -143,7 +143,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/disease/';
-    $scope.title = 'Disease of the Week';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -253,7 +252,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/fluview/';
-    $scope.title = 'FluView Weekly Summary';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -352,13 +350,18 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/healtharticle/';
-    $scope.title = 'Health Articles';
+    $scope.hasloaded = true;
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.init = function() {
+        console.log('init')
+        $scope.hasloaded = false;
+    }
 
     var getData = function() {
         HealthArticlesData.async().then(
@@ -462,7 +465,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/vitalsign/';
-    $scope.title = 'Vital Signs';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -559,7 +561,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/FastStat/';
-    $scope.title = 'Fast Stats';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -656,7 +657,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/WeeklyDiseaseCaseCount/';
-    $scope.title = 'Weekly Disease Case Counts';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -764,7 +764,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/DYK/';
-    $scope.title = 'Did You Know?';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -861,7 +860,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Fact/';
-    $scope.title = 'Fact of the Week';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -958,7 +956,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/EID/';
-    $scope.title = 'Emerging Infectious Disease (EID)';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1055,7 +1052,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/MMWR/';
-    $scope.title = 'Morbidity and Mortality Weekly Report (MMWR)';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1152,7 +1148,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PCD/';
-    $scope.title = 'Preventing Chronic Disease (PCD)';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1254,7 +1249,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Newsroom/';
-    $scope.title = 'Newsroom';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1364,7 +1358,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Outbreak/';
-    $scope.title = 'Outbreaks';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1456,7 +1449,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/TravelNotice/';
-    $scope.title = 'Travel Notices';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1548,7 +1540,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PHMblog/';
-    $scope.title = 'Public Health Matters Blog';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1631,7 +1622,7 @@ angular.module('mycdc.controllers', [])
 })
 
 
-// NO SYDICATED OR SOURCEURL CONTENT
+// NO SYDICATED OR SOURCEURL CONTENT - content is derived from the source feed
 /**
  * @param  {[type]}
  * @param  {[type]}
@@ -1646,7 +1637,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Podcast/';
-    $scope.title = 'Podcasts';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1730,7 +1720,98 @@ angular.module('mycdc.controllers', [])
     $scope.type = audio[1];
 })
 
+// NO SYDICATED OR SOURCEURL CONTENT - content is derived from the source feed
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('PHILsCtrl', function($scope, $location, $ionicLoading, PHILsData, PHILsStorage) {
+    var source = $location.$$url.split('/').pop();
+    $scope.datas = [];
+    $scope.storage = '';
+    $scope.url = '#/app/PHIL/';
 
+    $scope.loading = $ionicLoading.show({
+        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+        showBackdrop: false,
+        showDelay: 100
+    });
+
+    var getData = function() {
+        PHILsData.async().then(
+            function() {
+                $scope.datas = PHILsData.getAll();
+                $ionicLoading.hide();
+                $scope.$broadcast('scroll.refreshComplete');
+            },
+            function() {
+                $scope.datas = PHILsStorage.all();
+                $scope.storage = 'Data from local storage';
+                $ionicLoading.hide();
+                $scope.$broadcast('scroll.refreshComplete');
+            },
+            function() {}
+        );
+    };
+
+    getData();
+
+    var page = 1,
+        pageSize = 10;
+
+    $scope.doRefresh = function() {
+        getData();
+    };
+
+    $scope.paginationLimit = function(data) {
+        return pageSize * page;
+    };
+
+    $scope.hasMoreItems = function() {
+        return page < ($scope.datas.length / pageSize);
+    };
+
+    $scope.showMoreItems = function() {
+        page = page + 1;
+        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+            $scope.$apply();
+        }
+    };
+})
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {Object}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('PHILCtrl', function($scope, $ionicLoading, $stateParams, $sce, PHILsData) {
+    var position = $stateParams.idx,
+        count = PHILsData.getCount();
+
+    $scope.data = PHILsData.get(position);
+    $scope.id = PHILsData.getId(position);
+
+    $scope.image = $scope.data.enclosures[0].resourceUrl;
+
+    $scope.previous = {
+        "visible": position > 0,
+        "position": parseInt(position) - 1
+    }
+
+    $scope.next = {
+        "visible": position < count - 1,
+        "position": parseInt(position) + 1
+    }
+})
 
 
 
@@ -1769,7 +1850,6 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/directorblog/';
-    $scope.title = 'CDC Directors Blog';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
