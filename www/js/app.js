@@ -78,11 +78,13 @@ add to body class: platform-wp8
                     if (ionic.Platform.isAndroid()) {
                         return  "templates/home-android.html";
                     }
-                    if (ionic.Platform.isIOS()) {
-                        return  "templates/home-ios.html";
-                    }
                     if (ionic.Platform.isIPad()) {
                         return  "templates/home-ipad.html";
+                    }
+                    else {
+                        if (ionic.Platform.isIOS()) {
+                            return  "templates/home-ios.html";
+                        }
                     }
                     return "templates/home.html";
                 },
