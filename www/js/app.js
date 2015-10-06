@@ -51,6 +51,22 @@ add to body class: platform-wp8
         };
         console.log(deviceinfo);
 
+        /**
+         * https://github.com/gbenvenuti/cordova-plugin-screen-orientation
+         */
+
+        // lock all devices into portrait mode, except for ipads
+        screen.lockOrientation('portrait');
+        if (ionic.Platform.isIPad()) {
+            screen.unlockOrientation();
+            console.log('Orientation is ' + screen.orientation);
+        }
+
+        window.addEventListener("orientationchange", function(){
+            console.log('Orientation changed to ' + screen.orientation);
+        });
+
+        // alternatively (or in conjunction?), using window.matchMedia to determine(double check?) orientation
         var mq;
         if (window.matchMedia) {
             mq = window.matchMedia('(orientation: portrait)');
@@ -74,7 +90,6 @@ add to body class: platform-wp8
                     console.log('changed to landscape');
                 }
             });
-
         }
     });
 })

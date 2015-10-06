@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"mat",
+				"matchMedia"
+			],
+			[
+				"en",
+				"enclosures	(data.js)"
+			],
+			[
+				"Pod",
+				"PodcastsData"
+			],
+			[
+				"resourc",
+				"resourceUrl"
+			],
+			[
+				"for",
+				"forEach	(filters.js)"
+			],
+			[
+				"strea",
+				"stream"
+			],
+			[
+				"Strea",
+				"StreamCtrl"
+			],
+			[
+				"conten",
+				"contentType"
+			],
+			[
+				"len",
+				"length	(stream.html)"
+			],
+			[
+				"page",
+				"pageSize"
+			],
+			[
+				"tre",
+				"true	(app.js)"
+			],
+			[
 				"di",
 				"display"
 			],
@@ -30,10 +74,6 @@
 			[
 				"Con",
 				"console"
-			],
-			[
-				"for",
-				"forEach"
 			],
 			[
 				"cdc",
@@ -86,10 +126,6 @@
 			[
 				"text-",
 				"text-transform"
-			],
-			[
-				"page",
-				"pageitems"
 			],
 			[
 				"image",
@@ -154,10 +190,6 @@
 			[
 				"c",
 				"console"
-			],
-			[
-				"en",
-				"enableScroll"
 			],
 			[
 				"clas",
@@ -324,53 +356,89 @@
 	"buffers":
 	[
 		{
-			"file": "www/js/data.js",
+			"file": "/Users/peterbenoit/DEV/myCDC/www/js/app.js",
 			"settings":
 			{
-				"buffer_size": 7376,
+				"buffer_size": 19328,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "www/js/controllers.js",
+			"file": "/Users/peterbenoit/DEV/myCDC/www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 17248,
+				"buffer_size": 52270,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "www/templates/embed.html",
+			"file": "/Users/peterbenoit/DEV/myCDC/www/js/data.js",
 			"settings":
 			{
-				"buffer_size": 214,
+				"buffer_size": 23221,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/js/local-storage.js",
+			"settings":
+			{
+				"buffer_size": 10794,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/templates/image_stream.html",
+			"settings":
+			{
+				"buffer_size": 1092,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/templates/stream.html",
+			"settings":
+			{
+				"buffer_size": 1368,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/templates/image.html",
+			"settings":
+			{
+				"buffer_size": 1148,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/js/directives.js",
+			"settings":
+			{
+				"buffer_size": 366,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/css/mq-phone.css",
+			"settings":
+			{
+				"buffer_size": 495,
 				"line_ending": "Unix",
-				"name": "source.html"
-			}
-		},
-		{
-			"file": "www/js/app.js",
-			"settings":
-			{
-				"buffer_size": 5691,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/css/style.css",
-			"settings":
-			{
-				"buffer_size": 1170,
-				"line_ending": "Unix"
+				"name": "mq.css"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 107.0,
+		"height": 115.0,
 		"selected_items":
 		[
+			[
+				"INSTALL",
+				"Package Control: Install Package"
+			],
 			[
 				"install",
 				"Package Control: Install Package"
@@ -416,7 +484,7 @@
 				"Javascript Beautify"
 			]
 		],
-		"width": 521.0
+		"width": 507.0
 	},
 	"console":
 	{
@@ -433,49 +501,109 @@
 	},
 	"file_history":
 	[
-		"/Users/peterbenoit/DEV/myCDC/platforms/ios/build/device/myCDC.app/_CodeSignature/CodeResources",
-		"/Users/peterbenoit/DEV/mobionic/www/js/data.js",
+		"/Users/peterbenoit/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
+		"/Users/peterbenoit/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/peterbenoit/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/peterbenoit/DEV/myCDC/config.xml",
+		"/Users/peterbenoit/DEV/myCDC/merges/ios/css/platform.css",
+		"/Users/peterbenoit/DEV/myCDC/www/index.html",
+		"/Users/peterbenoit/DEV/myCDC/www/css/mq-tablet.css",
+		"/Users/peterbenoit/DEV/myCDC/tools/fixjsstyle.sh",
+		"/Users/peterbenoit/DEV/myCDC/www/css/style.css",
+		"/Users/peterbenoit/DEV/myCDC/merges/android/css/platform.css",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/home-ipad.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/home-ios.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/home-android.html",
+		"/Users/peterbenoit/DEV/myCDC/www/css/platform.css",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/home-iphone.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/home.html",
+		"/Users/peterbenoit/DEV/GeneralApp/www/index.html",
+		"/Users/peterbenoit/DEV/myCDC/merges/README.md",
+		"/Users/peterbenoit/DEV/GeneralApp/www/js/directives.js",
+		"/Users/peterbenoit/DEV/GeneralApp/www/js/jquery.nailthumb.1.1.min.js",
+		"/Users/peterbenoit/DEV/TemplatePackage/3.0/js/jquery-funcs.js",
+		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards.html",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/YouTube_All.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/YouTube.json",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/embed.html",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/347609.json",
+		"/Users/peterbenoit/DEV/GeneralApp/www/css/style.css",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/article.html",
+		"/Users/peterbenoit/DEV/myCDC/www/css/animate.min.css",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/PHIL.json",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/stream.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/image.html",
+		"/Users/peterbenoit/DEV/GeneralApp/www/templates/gallery2.html",
+		"/Users/peterbenoit/DEV/GeneralApp/www/js/controllers.js",
+		"/Users/peterbenoit/DEV/myCDC/www/js/filters.js",
 		"/Users/peterbenoit/DEV/myCDC/www/js/app.js",
 		"/Users/peterbenoit/DEV/myCDC/www/js/controllers.js",
+		"/Users/peterbenoit/DEV/myCDC/www/js/data.js",
 		"/Users/peterbenoit/DEV/myCDC/www/js/local-storage.js",
-		"/Users/peterbenoit/DEV/myCDC/www/js/filters.js",
-		"/Users/peterbenoit/DEV/myCDC/www/js/directives.js",
-		"/Users/peterbenoit/DEV/myCDC/www/js/services.js",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/article.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/menu.html",
-		"/Users/peterbenoit/DEV/mobionic/www/templates/menu.html",
-		"/Users/peterbenoit/DEV/myCDC/www/css/style.css",
-		"/Users/peterbenoit/DEV/myCDC/www/json/content/343933.json",
-		"/Users/peterbenoit/DEV/myCDC/www/json/content/344732.json",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/stream.html",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/FluView.json",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/audio.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/blog.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/data.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/fact.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/journal.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/news.html",
 		"/Users/peterbenoit/DEV/myCDC/www/json/sources/DOTW.json",
-		"/Users/peterbenoit/DEV/myCDC/platforms/wp8/App.xaml",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/Podcasts.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/TravelNotices.json",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/cards/a1.html",
 		"/Users/peterbenoit/DEV/myCDC/www/json/sources/Blogs.json",
 		"/Users/peterbenoit/DEV/myCDC/www/json/sources/EID.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/FactoftheWeek.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/MMWR.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/NewsRoom.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/Outbreaks.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/PCD.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/PHIL_Image_of_the_Week.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/content/343934.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/content/343935.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/content/343983.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/content/344330.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/DirectorVideos.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/CDC_EMERGENCY_FACEBOOK.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/HealthArticles.json",
+		"/Users/peterbenoit/DEV/GeneralApp/www/js/pushwoosh-android.js",
+		"/Users/peterbenoit/DEV/GeneralApp/www/js/app.js",
+		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-stream-phone-portrait.html",
+		"/Users/peterbenoit/DEV/GeneralApp/www/templates/source-stream.html",
+		"/Users/peterbenoit/DEV/GeneralApp/platforms/android/assets/www/js/controllers.js",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/cards/b1.html",
+		"/Users/peterbenoit/DEV/GeneralApp/www/js/moment-min.js",
+		"/Users/peterbenoit/DEV/GeneralApp/www/js/angular-moment-min.js",
+		"/Users/peterbenoit/DEV/myCDC/www/json/content/README.md",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/DidYouKnow.json",
+		"/Users/peterbenoit/DEV/myCDC/tools/www/js/data.js",
+		"/Users/peterbenoit/DEV/myCDC/tools/www/js/controllers.js",
+		"/Users/peterbenoit/DEV/myCDC/tools/www/templates/embed.html",
+		"/Users/peterbenoit/DEV/myCDC/tools/www/js/app.js",
+		"/Users/peterbenoit/DEV/myCDC/tools/www/css/style.css",
+		"/Users/peterbenoit/DEV/myCDC/platforms/ios/build/device/myCDC.app/_CodeSignature/CodeResources",
+		"/Users/peterbenoit/DEV/mobionic/www/js/data.js",
+		"/Users/peterbenoit/DEV/myCDC/www/js/directives.js",
+		"/Users/peterbenoit/DEV/myCDC/www/js/services.js",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/menu.html",
+		"/Users/peterbenoit/DEV/mobionic/www/templates/menu.html",
+		"/Users/peterbenoit/DEV/myCDC/www/json/content/343933.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/content/344732.json",
+		"/Users/peterbenoit/DEV/myCDC/www/json/sources/FluView.json",
+		"/Users/peterbenoit/DEV/myCDC/platforms/wp8/App.xaml",
 		"/Users/peterbenoit/DEV/myCDC/www/json/sources/FastStats.json",
 		"/Users/peterbenoit/DEV/myCDC/www/json/sources/instagram.json",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/PHIL.json",
 		"/Users/peterbenoit/DEV/myCDC/www/json/sources/VitalSigns.json",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/HealthArticles.json",
 		"/Users/peterbenoit/DEV/mobionic/ionic.project",
 		"/Users/peterbenoit/DEV/mobionic/www/js/controllers.js",
-		"/Users/peterbenoit/DEV/myCDC/www/js/data.js",
 		"/Users/peterbenoit/DEV/mobionic-2.0.0/ionic-1.0.0/com.hybridapps.mobionic/www/json/news.json",
 		"/Users/peterbenoit/DEV/mobionic-2.0.0/ionic-1.0.0/com.hybridapps.mobionic/www/js/data.js",
 		"/Users/peterbenoit/DEV/mobionic-2.0.0/ionic-1.0.0/com.hybridapps.mobionic/www/json/about.json",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/playlist.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/data.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/home.html",
-		"/Users/peterbenoit/DEV/myCDC/www/index.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/blog.html",
 		"/Users/peterbenoit/DEV/myCDC/www/js/filters",
 		"/Users/peterbenoit/DEV/GeneralApp/www/json/config.json",
 		"/Users/peterbenoit/DEV/myCDC/www/json/config.json",
-		"/Users/peterbenoit/DEV/GeneralApp/platforms/android/assets/www/js/controllers.js",
 		"/Users/peterbenoit/DEV/GeneralApp/platforms/ios/build/emulator/CDC General App.app/Info.plist",
 		"/Users/peterbenoit/DEV/GeneralApp/www/lib/ionic/js/ionic.bundle.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/index.html",
 		"/Users/peterbenoit/DEV/GeneralApp/config.xml",
 		"/Users/peterbenoit/DEV/GeneralApp/gulpfile.js",
 		"/Users/peterbenoit/DEV/GeneralApp/fixjsstyle.sh",
@@ -487,80 +615,20 @@
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/podcasts.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/json/DirectorVideos.json",
 		"/Users/peterbenoit/DEV/GeneralApp/www/js/data.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/css/style.css",
 		"/Users/peterbenoit/DEV/GeneralApp/www/js/local-storage.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/app.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/controllers.js",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-demo.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/menu.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/external.html",
 		"/Users/peterbenoit/DEV/GeneralApp3/www/js/controllers.js",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-grid-2a.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/img/emoji.png",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/source-stream.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/thumbnails.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/vital-signs.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/youtube-videos.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/dotw.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/elements.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/form-quiz.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/gallery2.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/gallery3.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/gallery4.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/grid.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/guided-quiz.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/health-articles.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-grid-2.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-grid-2b.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-grid-3.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-rows.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-stream-phone-portrait.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-tablet-landscape.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-tablet-portrait.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-typeface.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/sources.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/about.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/disease.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/settings.html",
-		"/Users/peterbenoit/DEV/GeneralApp3/www/js/local-storage.js",
-		"/Users/peterbenoit/DEV/GeneralApp3/www/templates/settings.html",
-		"/Users/peterbenoit/DEV/GeneralApp3/ionic.project",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/youtube-video.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/DOTW.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/social-left.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/menu.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/YouTube.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/c1.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/filters.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/directives.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/YouTube-all.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/img/video-placeholder.jpg",
-		"/Users/peterbenoit/DEV/GeneralApp3/www/js/data.js",
-		"/Users/peterbenoit/DEV/GeneralApp3/www/templates/menu.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/health-articles.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t3a.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t2a.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t1a.html",
-		"/Users/peterbenoit/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/peterbenoit/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/services.js",
-		"/Users/peterbenoit/DEV/GeneralApp/update_plugins.sh",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t3.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t2.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t1.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/social-top.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/social-right.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/d2.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/d1.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/b3.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/b2.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/b1.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/a2.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/a1.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/basic.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/css/jquery.nailthumb.1.1.min.css",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/blog.html"
+		"/Users/peterbenoit/DEV/GeneralApp/www/templates/gallery3.html"
 	],
 	"find":
 	{
@@ -571,6 +639,9 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"/Users/peterbenoit/DEV/myCDC/www/",
+			"/Users/peterbenoit/DEV/myCDC/www/templates",
+			"<project>,/Users/peterbenoit/DEV/myCDC/www/templates",
 			"<project>",
 			"/Users/peterbenoit/DEV/myCDC/",
 			"/Users/peterbenoit/DEV/myCDC/www/js",
@@ -703,6 +774,75 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"console.log",
+			"*/",
+			"/*",
+			" \n",
+			"\n  ",
+			" ",
+			"transition",
+			" = ",
+			";\n        var ",
+			"http://eyespeak.com/wp-content/uploads/2012/12/FlyingMonkey646x249.jpg",
+			"first",
+			";}*/\n",
+			"card",
+			"PodcastsCtrl",
+			"PodcastsData",
+			"class=\"banana\" ",
+			"col50",
+			"ng-class",
+			"PHILsCtrl",
+			"$scope.title = ",
+			"pod",
+			"PHMblogs",
+			"PHILsCtrl",
+			"PHMblogs",
+			"image",
+			"ImageLibrarys",
+			"mycdc",
+			"Could not load Content",
+			"could not load",
+			" title=\"{{data.name}}\"",
+			"ng-if",
+			"$stateParams.idx",
+			"PodcastsContent",
+			"PHMblog",
+			"tn",
+			"PHMblogs",
+			"podcast",
+			"pageSize = 6",
+			"infant",
+			"infant mortality",
+			"console.log($scope.datas)",
+			"console.log",
+			"();\n",
+			"console.log",
+			"PHMB",
+			"VitalSign",
+			"fast",
+			"phmblog",
+			"faststat",
+			"VitalSign",
+			"VitalSigns",
+			"div",
+			" - {{id}}",
+			"$sce.trustAsResourceUrl",
+			"HealthArticlesData",
+			"$scope.content = ",
+			"hasMoreItems",
+			"            console.log(resp);",
+			"text-collapse",
+			"text-collapse-text",
+			"stream",
+			"$scope.data = {};",
+			"$scope.article =",
+			"article",
+			"news",
+			"shareData",
+			"fact",
+			"scope.fact",
+			"article",
 			"plist",
 			"bitcode",
 			"getcontent",
@@ -761,76 +901,7 @@
 			"menu",
 			".data.sources",
 			"/disease/",
-			"externa",
-			"inAppBrowser",
-			"location.href",
-			"externalctrl",
-			"externalctl",
-			"external",
-			"Open any external link with InAppBrowser Plugin",
-			"/external/",
-			"external.html",
-			"iframe",
-			";\n            var ",
-			"pete",
-			"scope.menu",
-			"config",
-			"arr.forEach",
-			"success",
-			"error",
-			"MenuStorage",
-			"LS menu exists",
-			"MenuStorage.save",
-			"Saving Menu",
-			"AppData.",
-			"AppCtrl Menu Scope",
-			"angular.",
-			"angular.js",
-			"codepen",
-			"data from code",
-			"AppCtrl Menu Scope",
-			"result",
-			"arr",
-			"menu",
-			"codepen",
-			"filltext",
-			"console.error",
-			"response",
-			"console.error",
-			"console.log",
-			"\"_comment\": \"Config version and the last time it was updated, used to match app updates\",",
-			"                {\"phone\": \"a1\",\"b1\"},\n                {\"tablet\": \"b1\"}\n",
-			"                {\"phone\": \"b1\",\"b2\"},\n                {\"tablet\": \"b1\"}\n",
-			"                \"a1\",\n                \"b1\"\n",
-			"\"content\"",
-			"\"id\":",
-			"    <img src=\"img/mycdc.png\">\n    <button menu-toggle=\"left\" class=\"button button-icon icon ion-navicon\"> Menu</button>",
-			"		<img src=\"img/mycdc.png\">\n		<button menu-toggle=\"left\" class=\"button button-icon icon ion-navicon\"> Menu</button>",
-			"img/cdclogo.png",
-			"  // built into app",
-			"  //built into app",
-			"sourceUrl",
-			"\"hasimage\"",
-			"sourceUrl",
-			"\"hasimage\"",
-			"sourceUrl",
-			"\"hasimage\"",
-			"\"hasimage\": true,",
-			"true",
-			"sourceUrl",
-			"\"source\"",
-			"            \"hasimage\":",
-			"\"readonly\"",
-			"            \"readonly\": true",
-			"\"icon\": \"\",",
-			"        // should this source appear in the app?",
-			"    // source vs syndicate",
-			"\"icon\"",
-			"    // source vs syndicate",
-			"\"url\"",
-			"readonly",
-			"url",
-			"note"
+			"externa"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -838,6 +909,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Content not available.",
+			"",
 			"    <button menu-toggle=\"left\" class=\"button button-icon icon ion-navicon\"> Menu</button>\n    <img src=\"img/mycdc.png\">",
 			"		<button menu-toggle=\"left\" class=\"button button-icon icon ion-navicon\"> Menu</button>\n		<img src=\"img/mycdc.png\">",
 			"img/mycdc.png",
@@ -901,18 +974,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "www/js/data.js",
+					"file": "/Users/peterbenoit/DEV/myCDC/www/js/app.js",
 					"settings":
 					{
-						"buffer_size": 7376,
+						"buffer_size": 19328,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2955,
-								2955
+								2088,
+								2088
 							]
 						],
 						"settings":
@@ -977,10 +1050,10 @@
 				},
 				{
 					"buffer": 1,
-					"file": "www/js/controllers.js",
+					"file": "/Users/peterbenoit/DEV/myCDC/www/js/controllers.js",
 					"settings":
 					{
-						"buffer_size": 17248,
+						"buffer_size": 52270,
 						"regions":
 						{
 						},
@@ -1046,92 +1119,17 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3569.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "www/templates/embed.html",
+					"file": "/Users/peterbenoit/DEV/myCDC/www/js/data.js",
 					"settings":
 					{
-						"buffer_size": 214,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_name": "source.html",
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "www/js/app.js",
-					"settings":
-					{
-						"buffer_size": 5691,
+						"buffer_size": 23221,
 						"regions":
 						{
 						},
@@ -1197,17 +1195,17 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1330.0,
+						"translation.y": 1616.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "www/css/style.css",
+					"buffer": 3,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/js/local-storage.js",
 					"settings":
 					{
-						"buffer_size": 1170,
+						"buffer_size": 10794,
 						"regions":
 						{
 						},
@@ -1268,12 +1266,389 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 277.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/templates/image_stream.html",
+					"settings":
+					{
+						"buffer_size": 1092,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								524,
+								524
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/templates/stream.html",
+					"settings":
+					{
+						"buffer_size": 1368,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								823,
+								823
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/templates/image.html",
+					"settings":
+					{
+						"buffer_size": 1148,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								336,
+								313
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/js/directives.js",
+					"settings":
+					{
+						"buffer_size": 366,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/css/mq-phone.css",
+					"settings":
+					{
+						"buffer_size": 495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								66,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_name": "mq.css",
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1323,6 +1698,18 @@
 		"selected_items":
 		[
 			[
+				"podcasts",
+				"myCDC/www/json/sources/Podcasts.json"
+			],
+			[
+				"pod",
+				"myCDC/www/json/sources/Podcasts.json"
+			],
+			[
+				"steam",
+				"myCDC/www/templates/stream.html"
+			],
+			[
 				"app",
 				"www/js/app.js"
 			],
@@ -1345,10 +1732,6 @@
 			[
 				"index",
 				"www/index.html"
-			],
-			[
-				"pod",
-				"www/templates/podcasts.html"
 			],
 			[
 				"controll",
@@ -1825,14 +2208,6 @@
 			[
 				"globa",
 				"js/global.js"
-			],
-			[
-				"homepage/inde",
-				"3.0/homepage/index.html"
-			],
-			[
-				"policy",
-				"3.0/js/modules/policy.js"
 			]
 		],
 		"width": 0.0
