@@ -36,7 +36,7 @@ angular.module('mycdc.controllers', [])
         title: 'CDC Around the World',
         href: '#/app/cdcatw',
         icon: 'ion-close-circled'
-    },    {
+    }, {
         title: 'Disease of the Week',
         href: '#/app/dotw',
         icon: 'ion-checkmark-circled'
@@ -220,7 +220,7 @@ angular.module('mycdc.controllers', [])
 
     DotwContent.getStatus(nochromeurl).then(
         function(resp) {
-            if(resp.data.status === 200) {
+            if (resp.data.status === 200) {
                 $scope.nochrome = true;
                 $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
             }
@@ -359,9 +359,9 @@ angular.module('mycdc.controllers', [])
     });
 
     $scope.init = function() {
-        console.log('init')
+        console.log('init');
         $scope.hasloaded = false;
-    }
+    };
 
     var getData = function() {
         HealthArticlesData.async().then(
@@ -433,7 +433,7 @@ angular.module('mycdc.controllers', [])
 
     HealthArticlesContent.getStatus(nochromeurl).then(
         function(resp) {
-            if(resp.data.status === 200) {
+            if (resp.data.status === 200) {
                 $scope.nochrome = true;
                 $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
             }
@@ -733,7 +733,7 @@ angular.module('mycdc.controllers', [])
 
     WeeklyCaseCountsContent.getStatus(nochromeurl).then(
         function(resp) {
-            if(resp.data.status === 200) {
+            if (resp.data.status === 200) {
                 $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
             }
             else {
@@ -1186,11 +1186,11 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.hasMoreItems = function() {
-        console.log(page < ($scope.datas.length / pageSize))
-        console.log(page)
-        console.log($scope.datas.length / pageSize)
-        console.log($scope.datas.length)
-        console.log(pageSize)
+        console.log(page < ($scope.datas.length / pageSize));
+        console.log(page);
+        console.log($scope.datas.length / pageSize);
+        console.log($scope.datas.length);
+        console.log(pageSize);
         return page < ($scope.datas.length / pageSize);
     };
 
@@ -1326,7 +1326,7 @@ angular.module('mycdc.controllers', [])
 
     NewsroomsContent.getStatus(nochromeurl).then(
         function(resp) {
-            if(resp.data.status === 200) {
+            if (resp.data.status === 200) {
                 $scope.nochrome = true;
                 $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
             }
@@ -1704,14 +1704,14 @@ angular.module('mycdc.controllers', [])
     var audio = PodcastsData.getAudio(position);
 
     $scope.previous = {
-        "visible": position > 0,
-        "position": parseInt(position) - 1
-    }
+        'visible': position > 0,
+        'position': parseInt(position) - 1
+    };
 
     $scope.next = {
-        "visible": position < count - 1,
-        "position": parseInt(position) + 1
-    }
+        'visible': position < count - 1,
+        'position': parseInt(position) + 1
+    };
 
     console.log(position);
 
@@ -1803,14 +1803,14 @@ angular.module('mycdc.controllers', [])
     $scope.image = $scope.data.enclosures[0].resourceUrl;
 
     $scope.previous = {
-        "visible": position > 0,
-        "position": parseInt(position) - 1
-    }
+        'visible': position > 0,
+        'position': parseInt(position) - 1
+    };
 
     $scope.next = {
-        "visible": position < count - 1,
-        "position": parseInt(position) + 1
-    }
+        'visible': position < count - 1,
+        'position': parseInt(position) + 1
+    };
 })
 
 
@@ -1987,5 +1987,4 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('Video  Ctrl', function($scope, $stateParams) {})
-;
+.controller('Video  Ctrl', function($scope, $stateParams) {});

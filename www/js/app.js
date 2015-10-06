@@ -40,16 +40,42 @@ add to body class: platform-wp8
         }
 
         var deviceinfo = {
-            "deviceInformation": ionic.Platform.device(),
-            "isWebView": ionic.Platform.isWebView(),
-            "isIPad": ionic.Platform.isIPad(),
-            "isIOS": ionic.Platform.isIOS(),
-            "isAndroid": ionic.Platform.isAndroid(),
-            "isWindowsPhone": ionic.Platform.isWindowsPhone(),
-            "currentPlatform": ionic.Platform.platform(),
-            "currentPlatformVersion": ionic.Platform.version()
-        }
+            'deviceInformation': ionic.Platform.device(),
+            'isWebView': ionic.Platform.isWebView(),
+            'isIPad': ionic.Platform.isIPad(),
+            'isIOS': ionic.Platform.isIOS(),
+            'isAndroid': ionic.Platform.isAndroid(),
+            'isWindowsPhone': ionic.Platform.isWindowsPhone(),
+            'currentPlatform': ionic.Platform.platform(),
+            'currentPlatformVersion': ionic.Platform.version()
+        };
         console.log(deviceinfo);
+
+        var mq;
+        if (window.matchMedia) {
+            mq = window.matchMedia('(orientation: portrait)');
+
+            if (mq.matches) {
+                //portrait
+                console.log('portrait');
+            }
+            else {
+                //landscape
+                console.log('landscape');
+            }
+
+            mq.addListener(function(m) {
+                if (m.matches) {
+                    // changed to portrait
+                    console.log('changed to portrait');
+                }
+                else {
+                    // changed to landscape
+                    console.log('changed to landscape');
+                }
+            });
+
+        }
     });
 })
 
@@ -76,17 +102,17 @@ add to body class: platform-wp8
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.isAndroid()) {
-                        return  "templates/home-android.html";
+                        return 'templates/home-android.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return  "templates/home-ipad.html";
+                        return 'templates/home-ipad.html';
                     }
                     else {
                         if (ionic.Platform.isIOS()) {
-                            return  "templates/home-ios.html";
+                            return 'templates/home-ios.html';
                         }
                     }
-                    return "templates/home.html";
+                    return 'templates/home.html';
                 },
                 controller: 'HomeCtrl'
             }
@@ -558,7 +584,7 @@ add to body class: platform-wp8
                 controller: 'YouTubeCtrl'
             }
         }
-    })
+    });
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');

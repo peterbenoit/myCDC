@@ -1,4 +1,4 @@
 /**
  *
  */
-angular.module('mycdc.services', [])
+angular.module('mycdc.services', []);

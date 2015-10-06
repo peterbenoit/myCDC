@@ -449,6 +449,5 @@ angular.module('mycdc.storage', [])
             window.localStorage.removeItem('phil');
         }
     };
-})
+});
 
-;

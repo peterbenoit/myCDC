@@ -70,15 +70,15 @@ angular.module('mycdc.filters', [])
         return input;
     };
 })
-.filter("groupBy", function() {
+.filter('groupBy', function() {
     var mArr = null,
         mGroupBy = null,
         mRetArr = null,
         getMemoArr = function(arr, groupBy) {
             var ret = {};
-            angular.forEach(arr, function(item){
+            angular.forEach(arr, function(item) {
                 var groupValue = item[groupBy];
-                if(ret[groupValue]) {
+                if (ret[groupValue]) {
                     ret[groupValue].push(item);
                 } else {
                     ret[groupValue] = [item];
@@ -88,14 +88,14 @@ angular.module('mycdc.filters', [])
         };
     return function(arr, groupBy) {
         var newMemoArr = getMemoArr(arr, groupBy);
-        if(mGroupBy !== groupBy || !angular.equals(mArr, newMemoArr)) {
+        if (mGroupBy !== groupBy || !angular.equals(mArr, newMemoArr)) {
             mArr = newMemoArr;
             mGroupBy = groupBy;
             mRetArr = [];
             var groups = {};
             angular.forEach(arr, function(item) {
-                var groupValue = item[groupBy]
-                if(groups[groupValue]) {
+                var groupValue = item[groupBy];
+                if (groups[groupValue]) {
                     groups[groupValue].items.push(item);
                 } else {
                     groups[groupValue] = {
@@ -109,50 +109,49 @@ angular.module('mycdc.filters', [])
         return mRetArr;
     };
 })
-.filter("hasImageEnclosure", function() {
+.filter('hasImageEnclosure', function() {
     var resource;
     return function(enclosures) {
-        enclosures.some(function(i){
-            if(i.contentType.indexOf('image') > -1) {
+        enclosures.some(function(i) {
+            if (i.contentType.indexOf('image') > -1) {
                 resource = i.resourceUrl;
             }
-        })
-        return typeof resource !== "undefined" ? resource : false;
+        });
+        return typeof resource !== 'undefined' ? resource : false;
     };
 })
-.filter("hasAudioEnclosure", ['$sce', function($sce) {
+.filter('hasAudioEnclosure', ['$sce', function($sce) {
     var resource;
     return function(enclosures) {
-        enclosures.some(function(i){
-            if(i.contentType.indexOf('audio') > -1) {
+        enclosures.some(function(i) {
+            if (i.contentType.indexOf('audio') > -1) {
                 resource = i.resourceUrl;
             }
-        })
-        return typeof resource !== "undefined" ? $sce.trustAsResourceUrl(resource) : false;
+        });
+        return typeof resource !== 'undefined' ? $sce.trustAsResourceUrl(resource) : false;
     };
 }])
-.filter("hasPdfEnclosure", ['$sce', function($sce) {
+.filter('hasPdfEnclosure', ['$sce', function($sce) {
     var resource;
     return function(enclosures) {
-        enclosures.some(function(i){
-            if(i.contentType.indexOf('application/pdf') > -1) {
+        enclosures.some(function(i) {
+            if (i.contentType.indexOf('application/pdf') > -1) {
                 resource = i.resourceUrl;
             }
-        })
-        return typeof resource !== "undefined" ? $sce.trustAsResourceUrl(resource) : false;
+        });
+        return typeof resource !== 'undefined' ? $sce.trustAsResourceUrl(resource) : false;
     };
 }])
-.filter("hasHtmlEnclosure", ['$sce', function($sce) {
+.filter('hasHtmlEnclosure', ['$sce', function($sce) {
     var resource;
     return function(enclosures) {
-        enclosures.some(function(i){
-            if(i.contentType.indexOf('text/html') > -1) {
+        enclosures.some(function(i) {
+            if (i.contentType.indexOf('text/html') > -1) {
                 resource = i.resourceUrl;
             }
-        })
-        return typeof resource !== "undefined" ? $sce.trustAsResourceUrl(resource) : false;
+        });
+        return typeof resource !== 'undefined' ? $sce.trustAsResourceUrl(resource) : false;
     };
-}])
+}]);
 
 
-;

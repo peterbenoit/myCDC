@@ -61,17 +61,17 @@ angular.module('mycdc.data', [])
 
     service.getSourceUrl = function(idx) {
         return data[idx].sourceUrl;
-    }
+    };
 
     return service;
 })
 
-.factory('DotwContent', function($http){
+.factory('DotwContent', function($http) {
     return {
         getStatus: function(url) {
             return $http.get('http://peterbenoit.com/dev/exists.php?url=' + url);
         }
-    }
+    };
 })
 
 /**
@@ -120,7 +120,7 @@ angular.module('mycdc.data', [])
 
     service.getSourceUrl = function(idx) {
         return data[idx].sourceUrl;
-    }
+    };
     return service;
 })
 
@@ -129,12 +129,12 @@ angular.module('mycdc.data', [])
  * @param  {[type]} $http
  * @return {[type]}
  */
-.factory('FluViewContent', function($http){
+.factory('FluViewContent', function($http) {
     return {
         getContent: function(id) {
             return $http.get('json/content/' + id + '.json');
         }
-    }
+    };
 })
 
 /**
@@ -183,17 +183,17 @@ angular.module('mycdc.data', [])
 
     service.getSourceUrl = function(idx) {
         return data[idx].sourceUrl;
-    }
+    };
 
     return service;
 })
 
-.factory('HealthArticlesContent', function($http){
+.factory('HealthArticlesContent', function($http) {
     return {
         getStatus: function(url) {
             return $http.get('http://peterbenoit.com/dev/exists.php?url=' + url);
         }
-    }
+    };
 })
 
 /**
@@ -248,12 +248,12 @@ angular.module('mycdc.data', [])
  * @param  {[type]} $http
  * @return {[type]}
  */
-.factory('VitalSignsContent', function($http){
+.factory('VitalSignsContent', function($http) {
     return {
         getContent: function(id) {
             return $http.get('json/content/' + id + '.json');
         }
-    }
+    };
 })
 
 /**
@@ -308,12 +308,12 @@ angular.module('mycdc.data', [])
  * @param  {[type]} $http
  * @return {[type]}
  */
-.factory('FastStatsContent', function($http){
+.factory('FastStatsContent', function($http) {
     return {
         getContent: function(id) {
             return $http.get('json/content/' + id + '.json');
         }
-    }
+    };
 })
 
 /**
@@ -362,17 +362,17 @@ angular.module('mycdc.data', [])
 
     service.getSourceUrl = function(idx) {
         return data[idx].sourceUrl;
-    }
+    };
 
     return service;
 })
 
-.factory('WeeklyCaseCountsContent', function($http){
+.factory('WeeklyCaseCountsContent', function($http) {
     return {
         getStatus: function(url) {
             return $http.get('http://peterbenoit.com/dev/exists.php?url=' + url);
         }
-    }
+    };
 })
 
 /**
@@ -427,12 +427,12 @@ angular.module('mycdc.data', [])
  * @param  {[type]} $http
  * @return {[type]}
  */
-.factory('DidYouKnowContent', function($http){
+.factory('DidYouKnowContent', function($http) {
     return {
         getContent: function(id) {
             return $http.get('json/content/' + id + '.json');
         }
-    }
+    };
 })
 
 /**
@@ -487,12 +487,12 @@ angular.module('mycdc.data', [])
  * @param  {[type]} $http
  * @return {[type]}
  */
-.factory('FactoftheWeekContent', function($http){
+.factory('FactoftheWeekContent', function($http) {
     return {
         getContent: function(id) {
             return $http.get('json/content/' + id + '.json');
         }
-    }
+    };
 })
 
 /**
@@ -547,12 +547,12 @@ angular.module('mycdc.data', [])
  * @param  {[type]} $http
  * @return {[type]}
  */
-.factory('EIDsContent', function($http){
+.factory('EIDsContent', function($http) {
     return {
         getContent: function(id) {
             return $http.get('json/content/' + id + '.json');
         }
-    }
+    };
 })
 
 /**
@@ -607,12 +607,12 @@ angular.module('mycdc.data', [])
  * @param  {[type]} $http
  * @return {[type]}
  */
-.factory('MMWRsContent', function($http){
+.factory('MMWRsContent', function($http) {
     return {
         getContent: function(id) {
             return $http.get('json/content/' + id + '.json');
         }
-    }
+    };
 })
 
 
@@ -668,12 +668,12 @@ angular.module('mycdc.data', [])
  * @param  {[type]} $http
  * @return {[type]}
  */
-.factory('PCDsContent', function($http){
+.factory('PCDsContent', function($http) {
     return {
         getContent: function(id) {
             return $http.get('json/content/' + id + '.json');
         }
-    }
+    };
 })
 
 /**
@@ -722,17 +722,17 @@ angular.module('mycdc.data', [])
 
     service.getSourceUrl = function(idx) {
         return data[idx].sourceUrl;
-    }
+    };
 
     return service;
 })
 
-.factory('NewsroomsContent', function($http){
+.factory('NewsroomsContent', function($http) {
     return {
         getStatus: function(url) {
             return $http.get('http://peterbenoit.com/dev/exists.php?url=' + url);
         }
-    }
+    };
 })
 
 /**
@@ -781,7 +781,7 @@ angular.module('mycdc.data', [])
 
     service.getSourceUrl = function(idx) {
         return data[idx].sourceUrl;
-    }
+    };
 
     return service;
 })
@@ -832,7 +832,7 @@ angular.module('mycdc.data', [])
 
     service.getSourceUrl = function(idx) {
         return data[idx].sourceUrl;
-    }
+    };
 
     return service;
 })
@@ -889,12 +889,12 @@ angular.module('mycdc.data', [])
  * @param  {[type]} $http
  * @return {[type]}
  */
-.factory('PHMblogsContent', function($http){
+.factory('PHMblogsContent', function($http) {
     return {
         getContent: function(id) {
             return $http.get('json/content/' + id + '.json');
         }
-    }
+    };
 })
 
 /**
@@ -943,17 +943,17 @@ angular.module('mycdc.data', [])
 
     service.getCount = function() {
         return data.length;
-    }
+    };
 
     service.getAudio = function(idx) {
         var src = [];
 
-        angular.forEach(data[idx].enclosures, function(datum){
-            if(datum.contentType.indexOf('audio') > -1) {
+        angular.forEach(data[idx].enclosures, function(datum) {
+            if (datum.contentType.indexOf('audio') > -1) {
                 src.push(datum.resourceUrl);
                 src.push(datum.contentType);
             }
-        })
+        });
 
         return src;
     };
@@ -961,11 +961,11 @@ angular.module('mycdc.data', [])
     service.getTranscript = function(idx) {
         var src;
 
-        angular.forEach(data[idx].enclosures, function(datum){
-            if(datum.contentType.indexOf('text/html') > -1) {
+        angular.forEach(data[idx].enclosures, function(datum) {
+            if (datum.contentType.indexOf('text/html') > -1) {
                 src = datum.resourceUrl;
             }
-        })
+        });
 
         return src;
     };
@@ -1020,7 +1020,7 @@ angular.module('mycdc.data', [])
 
     service.getCount = function() {
         return data.length;
-    }
+    };
 
     return service;
 })
@@ -1097,7 +1097,6 @@ angular.module('mycdc.data', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.factory('PublicHealthMattersBlogData', function($http, $q, PublicHealthMattersBlogStorage) {})
+.factory('PublicHealthMattersBlogData', function($http, $q, PublicHealthMattersBlogStorage) {});
 
 
-;
