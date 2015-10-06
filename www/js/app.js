@@ -38,6 +38,18 @@ add to body class: platform-wp8
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
+
+        var deviceinfo = {
+            "deviceInformation": ionic.Platform.device(),
+            "isWebView": ionic.Platform.isWebView(),
+            "isIPad": ionic.Platform.isIPad(),
+            "isIOS": ionic.Platform.isIOS(),
+            "isAndroid": ionic.Platform.isAndroid(),
+            "isWindowsPhone": ionic.Platform.isWindowsPhone(),
+            "currentPlatform": ionic.Platform.platform(),
+            "currentPlatformVersion": ionic.Platform.version()
+        }
+        console.log(deviceinfo);
     });
 })
 
@@ -62,7 +74,18 @@ add to body class: platform-wp8
         url: '/home',
         views: {
             'menuContent': {
-                templateUrl: 'templates/home.html',
+                templateUrl: function() {
+                    if (ionic.Platform.isAndroid()) {
+                        return  "templates/home-android.html";
+                    }
+                    if (ionic.Platform.isIOS()) {
+                        return  "templates/home-ios.html";
+                    }
+                    if (ionic.Platform.isIPad()) {
+                        return  "templates/home-ipad.html";
+                    }
+                    return "templates/home.html";
+                },
                 controller: 'HomeCtrl'
             }
         }
@@ -520,8 +543,8 @@ add to body class: platform-wp8
         url: '/YouTubes',
         views: {
             'menuContent': {
-                templateUrl: 'templates/videos.html',
-                controller: 'YouTubeCtrl'
+                templateUrl: 'templates/stream.html',
+                controller: 'YouTubesCtrl'
             }
         }
     })
@@ -530,7 +553,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: 'templates/video.html',
-                controller: 'VideoCtrl'
+                controller: 'YouTubeCtrl'
             }
         }
     })
