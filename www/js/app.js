@@ -25,7 +25,7 @@ add to body class: platform-wp8
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $rootScope, $ionicBody) {
+.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, Orientation) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -39,17 +39,7 @@ add to body class: platform-wp8
             StatusBar.styleDefault();
         }
 
-        var deviceinfo = {
-            'deviceInformation': ionic.Platform.device(),
-            'isWebView': ionic.Platform.isWebView(),
-            'isIPad': ionic.Platform.isIPad(),
-            'isIOS': ionic.Platform.isIOS(),
-            'isAndroid': ionic.Platform.isAndroid(),
-            'isWindowsPhone': ionic.Platform.isWindowsPhone(),
-            'currentPlatform': ionic.Platform.platform(),
-            'currentPlatformVersion': ionic.Platform.version()
-        };
-        console.log(deviceinfo);
+        console.log(DeviceInfo);
 
         /**
          * https://github.com/gbenvenuti/cordova-plugin-screen-orientation
@@ -61,26 +51,21 @@ add to body class: platform-wp8
                 // unlocking screen for orientation change
                 screen.unlockOrientation();
             }
-
-            // window.addEventListener('orientationchange', function() {
-            //     console.log('Orientation changed to ' + screen.orientation);
-            //     $ionicBody.addClass(screen.orientation.replace(' ', '-'));
-            // });
         }
 
-        // alternatively (or in conjunction?), using window.matchMedia to determine(double check?) orientation
+        console.log(Orientation);
+
+        // kick off a media query listener to tag the body with a class
         var mq;
         if (window.matchMedia) {
             mq = window.matchMedia('(orientation: portrait)');
 
             if (mq.matches) {
                 //portrait
-                console.log('portrait');
                 $ionicBody.addClass('portrait');
             }
             else {
                 //landscape
-                console.log('landscape');
                 $ionicBody.addClass('landscape');
             }
 
