@@ -25,7 +25,7 @@ add to body class: platform-wp8
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $rootScope) {
+.run(function($ionicPlatform, $rootScope, $ionicBody) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -54,17 +54,19 @@ add to body class: platform-wp8
         /**
          * https://github.com/gbenvenuti/cordova-plugin-screen-orientation
          */
+        if (window.cordova && window.cordova.plugins) {
+            // lock all devices into portrait mode, except for ipads
+            screen.lockOrientation('portrait');
+            if (ionic.Platform.isIPad()) {
+                // unlocking screen for orientation change
+                screen.unlockOrientation();
+            }
 
-        // lock all devices into portrait mode, except for ipads
-        screen.lockOrientation('portrait');
-        if (ionic.Platform.isIPad()) {
-            screen.unlockOrientation();
-            console.log('Orientation is ' + screen.orientation);
+            // window.addEventListener('orientationchange', function() {
+            //     console.log('Orientation changed to ' + screen.orientation);
+            //     $ionicBody.addClass(screen.orientation.replace(' ', '-'));
+            // });
         }
-
-        window.addEventListener("orientationchange", function(){
-            console.log('Orientation changed to ' + screen.orientation);
-        });
 
         // alternatively (or in conjunction?), using window.matchMedia to determine(double check?) orientation
         var mq;
@@ -74,20 +76,22 @@ add to body class: platform-wp8
             if (mq.matches) {
                 //portrait
                 console.log('portrait');
+                $ionicBody.addClass('portrait');
             }
             else {
                 //landscape
                 console.log('landscape');
+                $ionicBody.addClass('landscape');
             }
 
             mq.addListener(function(m) {
                 if (m.matches) {
-                    // changed to portrait
                     console.log('changed to portrait');
+                    $ionicBody.removeClass('landscape').addClass('portrait');
                 }
                 else {
-                    // changed to landscape
                     console.log('changed to landscape');
+                    $ionicBody.removeClass('portrait').addClass('landscape');
                 }
             });
         }
