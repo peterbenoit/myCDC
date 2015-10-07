@@ -25,7 +25,7 @@ add to body class: platform-wp8
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, Orientation) {
+.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, Orientation, ScreenSize) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -54,6 +54,7 @@ add to body class: platform-wp8
         }
 
         console.log(Orientation);
+        console.log(ScreenSize);
 
         // kick off a media query listener to tag the body with a class
         var mq;
@@ -119,6 +120,16 @@ add to body class: platform-wp8
                     return 'templates/home.html';
                 },
                 controller: 'HomeCtrl'
+            }
+        }
+    })
+
+    .state('app.settings', {
+        url: '/settings',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/settings.html',
+                controller: 'SettingsCtrl'
             }
         }
     })

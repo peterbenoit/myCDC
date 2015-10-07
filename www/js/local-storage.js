@@ -27,6 +27,44 @@ angular.module('mycdc.storage', [])
 /**
  * @return {[type]}
  */
+.factory('SettingsStorage', function() {
+    return {
+        all: function() {
+            var settings = window.localStorage['settings'];
+            if (settings) {
+                return angular.fromJson(settings);
+            }
+            return {
+                // Initial App Setting Values
+                options: [
+                {
+                    name: 'First Option',
+                    checked: true
+                },
+                {
+                    name: 'Second Option',
+                    checked: false
+                },
+                {
+                    name: 'Third Option',
+                    checked: false
+                }],
+                sorting: 'A',
+                range: 30
+            };
+        },
+        save: function(settings) {
+            window.localStorage['settings'] = angular.toJson(settings);
+        },
+        clear: function() {
+            window.localStorage.removeItem('settings');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
 .factory('MenuStorage', function() {
     return {
         all: function() {

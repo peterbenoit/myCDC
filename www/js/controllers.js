@@ -20,6 +20,31 @@ angular.module('mycdc.controllers', [])
 
 
 })
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('SettingsCtrl', function($scope, SettingsStorage) {
+
+    $scope.settings = SettingsStorage.all();
+
+    console.log(SettingsStorage.all());
+
+    $scope.saveSettings = function() {
+        SettingsStorage.save($scope.settings);
+    };
+
+    $scope.$watch('settings', function() {
+        SettingsStorage.save($scope.settings);
+    }, true);
+
+    $scope.resetSettings = function() {
+        SettingsStorage.clear();
+        $scope.settings = SettingsStorage.all();
+    };
+})
 
 // TODO: most of this can be reduced to a single controller with params
 
@@ -345,7 +370,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HealthArticlesCtrl', function($scope, $location, $ionicLoading, HealthArticlesData, HealthArticlesStorage) {
+.controller('HealthArticlesCtrl', function($scope, $location, $ionicLoading, HealthArticlesData, HealthArticlesStorage, ScreenSize) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -384,6 +409,11 @@ angular.module('mycdc.controllers', [])
 
     var page = 1,
         pageSize = 10;
+
+    $scope.screensize = ScreenSize;
+
+    // ignore this for now
+    // document.getElementsByClassName('card').style.height = ScreenSize.width + "px";
 
     $scope.doRefresh = function() {
         getData();

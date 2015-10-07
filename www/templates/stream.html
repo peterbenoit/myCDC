@@ -1,5 +1,8 @@
 <ion-view>
-  <ion-content ng-init="init()">
+<!--     <ion-nav-buttons side="right">
+        <a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
+    </ion-nav-buttons> -->
+    <ion-content ng-init="init()" class="content-stable">
 
         <ion-refresher
         pulling-text="Pull to refresh..."
@@ -10,12 +13,11 @@
                 <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row">
                     <!-- <div data-ng-include="selectTemplate(data)"></div> -->
                     <div class="card">
+                        <div ng-if="data.enclosures.length && data.enclosures | hasImageEnclosure" class="item item-image">
+                            <img ng-src="{{datas[$index].enclosures[0].resourceUrl}}" err-src="/img/image-placeholder.png">
+                            <!-- <img src="{{data.enclosures | hasImageEnclosure}}"> -->
+                        </div>
                         <a class="item item-text-wrap item-body animated" href="{{url}}{{$index}}">
-
-                            <div ng-if="data.enclosures.length && data.enclosures | hasImageEnclosure" class="item item-image">
-                                <img ng-src="{{datas[$index].enclosures[0].resourceUrl}}">
-                                <!-- <img src="{{data.enclosures | hasImageEnclosure}}"> -->
-                            </div>
                             <strong>{{data.name | words:10}}</strong>
                             <p class="date">{{data.dateModified | amDateFormat:'MMMM Do, YYYY'}}</p>
                             <p>{{data.description | words:20}}</p>
@@ -28,5 +30,5 @@
         Show more
     </button>
 
-  </ion-content>
+    </ion-content>
 </ion-view>

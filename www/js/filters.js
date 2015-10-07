@@ -110,46 +110,70 @@ angular.module('mycdc.filters', [])
     };
 })
 .filter('hasImageEnclosure', function() {
-    var resource;
+    var resource, enclosuresLength;
     return function(enclosures) {
-        enclosures.some(function(i) {
-            if (i.contentType.indexOf('image') > -1) {
-                resource = i.resourceUrl;
+        enclosuresLength = enclosures.length;
+        if (enclosuresLength) {
+            console.log(enclosuresLength);
+            for (var i = 0; i < enclosuresLength; i++) {
+                if (enclosures[i].contentType.indexOf('image') > -1) {
+                    resource = enclosures[i].resourceUrl;
+                    break;
+                }
             }
-        });
+        }
+
         return typeof resource !== 'undefined' ? resource : false;
     };
 })
 .filter('hasAudioEnclosure', ['$sce', function($sce) {
-    var resource;
+    var resource, enclosuresLength;
     return function(enclosures) {
-        enclosures.some(function(i) {
-            if (i.contentType.indexOf('audio') > -1) {
-                resource = i.resourceUrl;
+        enclosuresLength = enclosures.length;
+        if (enclosuresLength) {
+            console.log(enclosuresLength);
+            for (var i = 0; i < enclosuresLength; i++) {
+                if (enclosures[i].contentType.indexOf('audio') > -1) {
+                    resource = enclosures[i].resourceUrl;
+                    break;
+                }
             }
-        });
+        }
+
         return typeof resource !== 'undefined' ? $sce.trustAsResourceUrl(resource) : false;
     };
 }])
 .filter('hasPdfEnclosure', ['$sce', function($sce) {
-    var resource;
+    var resource, enclosuresLength;
     return function(enclosures) {
-        enclosures.some(function(i) {
-            if (i.contentType.indexOf('application/pdf') > -1) {
-                resource = i.resourceUrl;
+        enclosuresLength = enclosures.length;
+        if (enclosuresLength) {
+            console.log(enclosuresLength);
+            for (var i = 0; i < enclosuresLength; i++) {
+                if (enclosures[i].contentType.indexOf('application/pdf') > -1) {
+                    resource = enclosures[i].resourceUrl;
+                    break;
+                }
             }
-        });
+        }
+
         return typeof resource !== 'undefined' ? $sce.trustAsResourceUrl(resource) : false;
     };
 }])
 .filter('hasHtmlEnclosure', ['$sce', function($sce) {
-    var resource;
+    var resource, enclosuresLength;
     return function(enclosures) {
-        enclosures.some(function(i) {
-            if (i.contentType.indexOf('text/html') > -1) {
-                resource = i.resourceUrl;
+        enclosuresLength = enclosures.length;
+        if (enclosuresLength) {
+            console.log(enclosuresLength);
+            for (var i = 0; i < enclosuresLength; i++) {
+                if (enclosures[i].contentType.indexOf('application/pdf') > -1) {
+                    resource = enclosures[i].resourceUrl;
+                    break;
+                }
             }
-        });
+        }
+
         return typeof resource !== 'undefined' ? $sce.trustAsResourceUrl(resource) : false;
     };
 }]);

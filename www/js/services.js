@@ -29,6 +29,13 @@ angular.module('mycdc.services', ['ionic'])
     return undefined;
 })
 
+.factory('ScreenSize', function() {
+    return {
+        'width': window.innerWidth,
+        'height': window.innerHeight
+    };
+})
+
 .factory('FindAllURLsInText', function() {
     return function(text) {
         if (!text) return undefined;
