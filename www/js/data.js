@@ -82,6 +82,7 @@ angular.module('mycdc.data', [])
 
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
+                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
@@ -168,6 +169,7 @@ angular.module('mycdc.data', [])
 
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
+                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
@@ -262,6 +264,7 @@ angular.module('mycdc.data', [])
 
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
+                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
@@ -352,6 +355,7 @@ angular.module('mycdc.data', [])
 
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
+                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
@@ -443,6 +447,7 @@ angular.module('mycdc.data', [])
 
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
+                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
@@ -534,6 +539,7 @@ angular.module('mycdc.data', [])
 
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
+                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
@@ -597,187 +603,7 @@ angular.module('mycdc.data', [])
     };
 })
 
-/**
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @return {[type]}
- */
-.factory('DidYouKnowData', function($http, $q, DidYouKnowStorage) {
-    var deferred = $q.defer(),
-        promise = deferred.promise,
-        data = [],
-        time = new Date(),
-        datum = [],
-        enclosures = [],
-        service = {},
-        hasImage = false;
 
-    service.async = function() {
-        $http({
-            method: 'GET',
-            url: 'json/sources/DidYouKnow.json',
-            timeout: 5000
-        }).
-        then(function(d) {
-            data = d.data.results;
-
-            for (var i = data.length - 1; i >= 0; i--) {
-                datum = data[i];
-
-                // format the dateModified
-                time = moment(datum.datePublished);
-                datum.datePublished = time.format('MMMM Do, YYYY');
-
-                // if there's an enclosure
-                if (datum.enclosures.length) {
-                    enclosures = datum.enclosures;
-
-                    // look for the image enclosure
-                    for (var j = enclosures.length - 1; j >= 0; j--) {
-                        if (enclosures[j].contentType.indexOf('image') > -1) {
-                            hasImage = true;
-                            datum.imageSrc = enclosures[j].resourceUrl;
-                            break;
-                        }
-                    }
-                }
-
-                datum.hasImage = hasImage;
-            }
-
-            // console.log(data);
-
-            DidYouKnowStorage.save(data);
-            deferred.resolve();
-        }).
-        catch(function() {
-            data = DidYouKnowStorage.all();
-            deferred.reject();
-        }).
-        finally(function() {});
-
-        return promise;
-    };
-
-    service.getAll = function() {
-        return data;
-    };
-
-    service.get = function(idx) {
-        return data[idx];
-    };
-
-    service.getId = function(idx) {
-        return data[idx].id;
-    };
-
-    return service;
-})
-
-/**
- * Content is an additional query for data, either by sourceUrl or syndicateUrl
- * @param  {[type]} $http
- * @return {[type]}
- */
-.factory('DidYouKnowContent', function($http) {
-    return {
-        getContent: function(id) {
-            return $http.get('json/content/' + id + '.json');
-        }
-    };
-})
-
-/**
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @return {[type]}
- */
-.factory('FactoftheWeekData', function($http, $q, FactoftheWeekStorage) {
-    var deferred = $q.defer(),
-        promise = deferred.promise,
-        data = [],
-        time = new Date(),
-        datum = [],
-        enclosures = [],
-        service = {},
-        hasImage = false;
-
-    service.async = function() {
-        $http({
-            method: 'GET',
-            url: 'json/sources/FactoftheWeek.json',
-            timeout: 5000
-        }).
-        then(function(d) {
-            data = d.data.results;
-
-            for (var i = data.length - 1; i >= 0; i--) {
-                datum = data[i];
-
-                // format the dateModified
-                time = moment(datum.datePublished);
-                datum.datePublished = time.format('MMMM Do, YYYY');
-
-                // if there's an enclosure
-                if (datum.enclosures.length) {
-                    enclosures = datum.enclosures;
-
-                    // look for the image enclosure
-                    for (var j = enclosures.length - 1; j >= 0; j--) {
-                        if (enclosures[j].contentType.indexOf('image') > -1) {
-                            hasImage = true;
-                            datum.imageSrc = enclosures[j].resourceUrl;
-                            break;
-                        }
-                    }
-                }
-
-                datum.hasImage = hasImage;
-            }
-
-            // console.log(data);
-
-            FactoftheWeekStorage.save(data);
-            deferred.resolve();
-        }).
-        catch(function() {
-            data = FactoftheWeekStorage.all();
-            deferred.reject();
-        }).
-        finally(function() {});
-
-        return promise;
-    };
-
-    service.getAll = function() {
-        return data;
-    };
-
-    service.get = function(idx) {
-        return data[idx];
-    };
-
-    service.getId = function(idx) {
-        return data[idx].id;
-    };
-
-    return service;
-})
-
-/**
- * Content is an additional query for data, either by sourceUrl or syndicateUrl
- * @param  {[type]} $http
- * @return {[type]}
- */
-.factory('FactoftheWeekContent', function($http) {
-    return {
-        getContent: function(id) {
-            return $http.get('json/content/' + id + '.json');
-        }
-    };
-})
 
 /**
  * @param  {[type]}
@@ -890,6 +716,7 @@ angular.module('mycdc.data', [])
 
              for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
+                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
@@ -1060,6 +887,7 @@ angular.module('mycdc.data', [])
 
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
+                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
@@ -1072,6 +900,7 @@ angular.module('mycdc.data', [])
                     // look for the image enclosure
                     for (var j = enclosures.length - 1; j >= 0; j--) {
                         if (enclosures[j].contentType.indexOf('image') > -1) {
+                            console.log(enclosures[j].contentType);
                             hasImage = true;
                             datum.imageSrc = enclosures[j].resourceUrl;
                             break;
@@ -1151,23 +980,26 @@ angular.module('mycdc.data', [])
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
 
+                // flag these as outbreaks
+                datum.isOutbreak = true;
+
                 // format the dateModified
                 time = moment(datum.datePublished);
                 datum.datePublished = time.format('MMMM Do, YYYY');
 
                 // if there's an enclosure
-                if (datum.enclosures.length) {
-                    enclosures = datum.enclosures;
+                // if (datum.enclosures.length) {
+                //     enclosures = datum.enclosures;
 
-                    // look for the image enclosure
-                    for (var j = enclosures.length - 1; j >= 0; j--) {
-                        if (enclosures[j].contentType.indexOf('image') > -1) {
-                            hasImage = true;
-                            datum.imageSrc = enclosures[j].resourceUrl;
-                            break;
-                        }
-                    }
-                }
+                //     // look for the image enclosure
+                //     for (var j = enclosures.length - 1; j >= 0; j--) {
+                //         if (enclosures[j].contentType.indexOf('image') > -1) {
+                //             hasImage = true;
+                //             datum.imageSrc = enclosures[j].resourceUrl;
+                //             break;
+                //         }
+                //     }
+                // }
 
                 datum.hasImage = hasImage;
             }
@@ -1237,19 +1069,24 @@ angular.module('mycdc.data', [])
                 time = moment(datum.datePublished);
                 datum.datePublished = time.format('MMMM Do, YYYY');
 
-                // if there's an enclosure
-                if (datum.enclosures.length) {
-                    enclosures = datum.enclosures;
+                //Warning, Watch, Alert
+                datum.isAlert = datum.name.indexOf('Alert') > -1;
+                datum.isWatch = datum.name.indexOf('Watch') > -1;
+                datum.isWarning = datum.name.indexOf('Warning') > -1;
 
-                    // look for the image enclosure
-                    for (var j = enclosures.length - 1; j >= 0; j--) {
-                        if (enclosures[j].contentType.indexOf('image') > -1) {
-                            hasImage = true;
-                            datum.imageSrc = enclosures[j].resourceUrl;
-                            break;
-                        }
-                    }
-                }
+                // if there's an enclosure
+                // if (datum.enclosures.length) {
+                //     enclosures = datum.enclosures;
+
+                //     // look for the image enclosure
+                //     for (var j = enclosures.length - 1; j >= 0; j--) {
+                //         if (enclosures[j].contentType.indexOf('image') > -1) {
+                //             hasImage = true;
+                //             datum.imageSrc = enclosures[j].resourceUrl;
+                //             break;
+                //         }
+                //     }
+                // }
 
                 datum.hasImage = hasImage;
             }
@@ -1287,96 +1124,6 @@ angular.module('mycdc.data', [])
     return service;
 })
 
-/**
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @return {[type]}
- */
-.factory('PHMblogsData', function($http, $q, PHMblogsStorage) {
-    var deferred = $q.defer(),
-        promise = deferred.promise,
-        data = [],
-        time = new Date(),
-        datum = [],
-        enclosures = [],
-        service = {},
-        hasImage = false;
-
-    service.async = function() {
-        $http({
-            method: 'GET',
-            url: 'json/sources/Blogs.json',
-            timeout: 5000
-        }).
-        then(function(d) {
-            data = d.data.results;
-
-            for (var i = data.length - 1; i >= 0; i--) {
-                datum = data[i];
-
-                // format the dateModified
-                time = moment(datum.datePublished);
-                datum.datePublished = time.format('MMMM Do, YYYY');
-
-                // if there's an enclosure
-                if (datum.enclosures.length) {
-                    enclosures = datum.enclosures;
-
-                    // look for the image enclosure
-                    for (var j = enclosures.length - 1; j >= 0; j--) {
-                        if (enclosures[j].contentType.indexOf('image') > -1) {
-                            hasImage = true;
-                            datum.imageSrc = enclosures[j].resourceUrl;
-                            break;
-                        }
-                    }
-                }
-
-                datum.hasImage = hasImage;
-            }
-
-            // console.log(data);
-
-            PHMblogsStorage.save(data);
-            deferred.resolve();
-        }).
-        catch(function() {
-            data = PHMblogsStorage.all();
-            deferred.reject();
-        }).
-        finally(function() {});
-
-        return promise;
-    };
-
-    service.getAll = function() {
-        return data;
-    };
-
-    service.get = function(idx) {
-        return data[idx];
-    };
-
-    service.getId = function(idx) {
-        return data[idx].id;
-    };
-
-    return service;
-})
-
-/**
- * Content is an additional query for data, either by sourceUrl or syndicateUrl
- * @param  {[type]} $http
- * @return {[type]}
- */
-.factory('PHMblogsContent', function($http) {
-    return {
-        getContent: function(id) {
-            return $http.get('json/content/' + id + '.json');
-        }
-    };
-})
 
 /**
  * @param  {[type]}
@@ -1405,6 +1152,7 @@ angular.module('mycdc.data', [])
 
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
+                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
@@ -1491,7 +1239,7 @@ angular.module('mycdc.data', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.factory('PHILsData', function($http, $q, PHILsStorage) {
+.factory('PHILsData', function($http, $q, PHILsStorage, ScreenSize) {
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
@@ -1510,8 +1258,11 @@ angular.module('mycdc.data', [])
         then(function(d) {
             data = d.data.results;
 
+            console.log(ScreenSize.width);
+
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
+                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
@@ -1533,8 +1284,6 @@ angular.module('mycdc.data', [])
 
                 datum.hasImage = hasImage;
             }
-
-            // console.log(data);
 
             PHILsStorage.save(data);
             deferred.resolve();
@@ -1568,15 +1317,11 @@ angular.module('mycdc.data', [])
 })
 
 
-
-
-
-
-
-
-
-
-
+/**
+ * *******************************************************************************************
+ *                                      BLOGS
+ * *******************************************************************************************
+ */
 
 /**
  * @param  {[type]}
@@ -1584,7 +1329,7 @@ angular.module('mycdc.data', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.factory('DirectorsBlogData', function($http, $q, DirectorsBlogStorage) {
+.factory('PHMblogsData', function($http, $q, PHMblogsStorage) {
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
@@ -1597,7 +1342,7 @@ angular.module('mycdc.data', [])
     service.async = function() {
         $http({
             method: 'GET',
-            url: 'json/sources/Blogs.json',
+            url: 'json/sources/PublicHealthMattersBlog.json',
             timeout: 5000
         }).
         then(function(d) {
@@ -1605,6 +1350,7 @@ angular.module('mycdc.data', [])
 
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
+                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
@@ -1629,11 +1375,11 @@ angular.module('mycdc.data', [])
 
             // console.log(data);
 
-            DirectorsBlogStorage.save(data);
+            PHMblogsStorage.save(data);
             deferred.resolve();
         }).
         catch(function() {
-            data = DirectorsBlogStorage.all();
+            data = PHMblogsStorage.all();
             deferred.reject();
         }).
         finally(function() {});
@@ -1657,12 +1403,17 @@ angular.module('mycdc.data', [])
 })
 
 /**
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
+ * Content is an additional query for data, either by sourceUrl or syndicateUrl
+ * @param  {[type]} $http
  * @return {[type]}
  */
-.factory('CDCWorksforYou247BlogData', function($http, $q, CDCWorksforYou247BlogStorage) {})
+.factory('PHMblogsContent', function($http) {
+    return {
+        getContent: function(id) {
+            return $http.get('json/content/' + id + '.json');
+        }
+    };
+})
 
 /**
  * @param  {[type]}
@@ -1670,6 +1421,296 @@ angular.module('mycdc.data', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.factory('PublicHealthMattersBlogData', function($http, $q, PublicHealthMattersBlogStorage) {});
+.factory('DirectorsBlogsData', function($http, $q, DirectorsBlogsStorage) {
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
+
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/sources/CDCDirectorsBlog.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+                hasImage = false;
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
+            DirectorsBlogsStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = DirectorsBlogsStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {});
+
+        return promise;
+    };
+
+    service.getAll = function() {
+        return data;
+    };
+
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    service.getId = function(idx) {
+        return data[idx].id;
+    };
+
+    return service;
+})
+
+/**
+ * Content is an additional query for data, either by sourceUrl or syndicateUrl
+ * @param  {[type]} $http
+ * @return {[type]}
+ */
+.factory('DirectorsBlogsContent', function($http) {
+    return {
+        getContent: function(id) {
+            return $http.get('json/content/' + id + '.json');
+        }
+    };
+})
+
+
+/**
+ * *******************************************************************************************
+ *                                      FACTS
+ * *******************************************************************************************
+ */
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.factory('DidYouKnowData', function($http, $q, DidYouKnowStorage) {
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
+
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/sources/DidYouKnow.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+                hasImage = false;
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
+            DidYouKnowStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = DidYouKnowStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {});
+
+        return promise;
+    };
+
+    service.getAll = function() {
+        return data;
+    };
+
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    service.getId = function(idx) {
+        return data[idx].id;
+    };
+
+    return service;
+})
+
+/**
+ * Content is an additional query for data, either by sourceUrl or syndicateUrl
+ * @param  {[type]} $http
+ * @return {[type]}
+ */
+.factory('DidYouKnowContent', function($http) {
+    return {
+        getContent: function(id) {
+            return $http.get('json/content/' + id + '.json');
+        }
+    };
+})
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.factory('FactoftheWeekData', function($http, $q, FactoftheWeekStorage) {
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
+
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/sources/FactoftheWeek.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+                hasImage = false;
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
+            FactoftheWeekStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = FactoftheWeekStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {});
+
+        return promise;
+    };
+
+    service.getAll = function() {
+        return data;
+    };
+
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    service.getId = function(idx) {
+        return data[idx].id;
+    };
+
+    return service;
+})
+
+/**
+ * Content is an additional query for data, either by sourceUrl or syndicateUrl
+ * @param  {[type]} $http
+ * @return {[type]}
+ */
+.factory('FactoftheWeekContent', function($http) {
+    return {
+        getContent: function(id) {
+            return $http.get('json/content/' + id + '.json');
+        }
+    };
+})
+
+
+
+
+
+// other
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.factory('CDCWorksforYou247BlogData', function($http, $q, CDCWorksforYou247BlogStorage) {})
+
 
 

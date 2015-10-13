@@ -194,26 +194,14 @@ angular.module('mycdc.storage', [])
     };
 })
 
+
+
+
 /**
- * @return {[type]}
+ * *******************************************************************************************
+ *                                      BLOGS
+ * *******************************************************************************************
  */
-.factory('DirectorsBlogStorage', function() {
-    return {
-        all: function() {
-            var cdcdirectorsblog = window.localStorage['cdcdirectorsblog'];
-            if (cdcdirectorsblog) {
-                return angular.fromJson(cdcdirectorsblog);
-            }
-            return {};
-        },
-        save: function(cdcdirectorsblog) {
-            window.localStorage['cdcdirectorsblog'] = angular.toJson(cdcdirectorsblog);
-        },
-        clear: function() {
-            window.localStorage.removeItem('cdcdirectorsblog');
-        }
-    };
-})
 
 /**
  * @return {[type]}
@@ -256,6 +244,33 @@ angular.module('mycdc.storage', [])
         }
     };
 })
+
+/**
+ * @return {[type]}
+ */
+.factory('DirectorsBlogsStorage', function() {
+    return {
+        all: function() {
+            var directors = window.localStorage['directors'];
+            if (directors) {
+                return angular.fromJson(directors);
+            }
+            return {};
+        },
+        save: function(directors) {
+            window.localStorage['directors'] = angular.toJson(directors);
+        },
+        clear: function() {
+            window.localStorage.removeItem('directors');
+        }
+    };
+})
+
+
+
+
+
+
 
 /**
  * @return {[type]}

@@ -245,7 +245,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: 'templates/stream.html',
-                controller: 'DirectorsBlogCtrl'
+                controller: 'DirectorsBlogsCtrl'
             }
         }
     })
@@ -254,12 +254,12 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: 'templates/blog.html',
-                controller: 'DirectorBlogCtrl'
+                controller: 'DirectorsBlogCtrl'
             }
         }
     })
     // *******************************************************************************************
-    // CDC Works for You 24/7 Blog
+    // CDC Works for You 24/7 Blog - currently unused
     // *******************************************************************************************
     .state('app.247blogs', {
         url: '/247blogs',
