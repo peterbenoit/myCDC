@@ -17,7 +17,43 @@ angular.module('mycdc.data', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.factory('MenuData', function($http, $q, MenuStorage) {})
+.factory('MenuData', function($http, $q, MenuStorage) {
+      var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        service = {};
+
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/conf.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d;
+
+            MenuStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = MenuStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {});
+
+        return promise;
+    };
+
+    service.getAll = function() {
+        return data;
+    };
+
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    return service;
+})
 
 /**
  * @param  {[type]}
@@ -29,7 +65,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -39,6 +79,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             DotwStorage.save(data);
             deferred.resolve();
         }).
@@ -84,7 +151,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -94,6 +165,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             FluViewStorage.save(data);
             deferred.resolve();
         }).
@@ -147,7 +245,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -157,6 +259,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             HealthArticlesStorage.save(data);
             deferred.resolve();
         }).
@@ -206,7 +335,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -216,6 +349,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             VitalSignsStorage.save(data);
             deferred.resolve();
         }).
@@ -266,7 +426,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -276,6 +440,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             FastStatsStorage.save(data);
             deferred.resolve();
         }).
@@ -326,7 +517,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -336,6 +531,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             WeeklyCaseCountsStorage.save(data);
             deferred.resolve();
         }).
@@ -385,7 +607,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -395,6 +621,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             DidYouKnowStorage.save(data);
             deferred.resolve();
         }).
@@ -445,7 +698,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -455,6 +712,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             FactoftheWeekStorage.save(data);
             deferred.resolve();
         }).
@@ -505,7 +789,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -515,6 +803,26 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // remove html from name
+                datum.name = datum.name.replace(/<[^>]+>/gm, '');
+
+                // remove html from description
+                datum.description = datum.description.replace(/<[^>]+>/gm, '');
+
+                // WE ARE NOT SHOWING EID IMAGES
+                datum.hasImage = false;
+            }
+
+            // console.log(data);
+
             EIDsStorage.save(data);
             deferred.resolve();
         }).
@@ -565,7 +873,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -575,6 +887,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+             for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             MMWRsStorage.save(data);
             deferred.resolve();
         }).
@@ -626,7 +965,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -636,6 +979,20 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // WE ARE NOT SHOWING PCD images
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             PCDsStorage.save(data);
             deferred.resolve();
         }).
@@ -686,7 +1043,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -696,6 +1057,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             NewsroomsStorage.save(data);
             deferred.resolve();
         }).
@@ -745,7 +1133,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -755,6 +1147,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             OutbreaksStorage.save(data);
             deferred.resolve();
         }).
@@ -796,7 +1215,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -806,6 +1229,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             TravelNoticesStorage.save(data);
             deferred.resolve();
         }).
@@ -847,7 +1297,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -857,6 +1311,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             PHMblogsStorage.save(data);
             deferred.resolve();
         }).
@@ -907,7 +1388,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -917,6 +1402,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             PodcastsStorage.save(data);
             deferred.resolve();
         }).
@@ -983,7 +1495,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -993,7 +1509,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
-            console.log(data);
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             PHILsStorage.save(data);
             deferred.resolve();
         }).
@@ -1046,7 +1588,11 @@ angular.module('mycdc.data', [])
     var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
-        service = {};
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
     service.async = function() {
         $http({
@@ -1056,6 +1602,33 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
             DirectorsBlogStorage.save(data);
             deferred.resolve();
         }).

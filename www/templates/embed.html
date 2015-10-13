@@ -1,13 +1,16 @@
 <ion-view>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-share" ng-click="shareData()"></button>
+    </ion-nav-buttons>
     <ion-content scroll="true" overflow-scroll="true" class="iframe-wrapper">
-        <div ng-if="nochrome">
-            <h2 class="title">{{data.name}}</h2>
-            <p>Published {{data.datePublished | date:'fullDate'}}</p>
-            <p>Source: [Source Name]</p>
+        <div ng-if="nochrome" class="padding">
+            <div class="title">{{data.name}}</div>
+            <div class="datepub">{{data.datePublished}}</div>
+            <div class="source">Source: {{name}}</div>
         </div>
-       <iframe data-tap-disabled="true" src="{{frameUrl}}"></iframe>
-
-        <p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
-        <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC</button></p>
+        <iframe data-tap-disabled="true" src="{{frameUrl}}"></iframe>
+        <p class="right padding"><button class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+            <button class="button icon-right ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
+        </p>
     </ion-content>
 </ion-view>

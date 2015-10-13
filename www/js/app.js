@@ -1,5 +1,6 @@
 /**
  *  myCDC
+ *  TODO: info.plist NSAppTransportSecurity key needs to be corrected before deployment
  */
 angular.module('mycdc', [
     'ionic',
@@ -11,7 +12,7 @@ angular.module('mycdc', [
     'mycdc.storage',
     'ngCordova',
     'angular.filter',
-    'angularMoment',
+    'ngIOS9UIWebViewPatch'
     ])
 /*
 add to body class: platform-android
@@ -26,6 +27,13 @@ add to body class: platform-wp8
  * @return {[type]}
  */
 .run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, Orientation, ScreenSize) {
+    var rs = $rootScope,
+        href = window.location.href;
+
+    // if(href.indexOf('android') > -1 || href.indexOf('Bundle') > -1) {
+    //     alert('not in ionic.view');
+    // }
+
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -34,12 +42,19 @@ add to body class: platform-wp8
             cordova.plugins.Keyboard.disableScroll(true);
 
         }
+
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
 
-        console.log(DeviceInfo);
+        if (window.plugins && window.plugins.toast) {
+            window.plugins.toast.showLongCenter('App Loaded', function(a) {
+                console.log('toast success: ' + a)}, function(b) {
+                    console.log('toast error: ' + b)});
+        }
+
+        rs.deviceinfo = DeviceInfo;
 
         /**
          * https://github.com/gbenvenuti/cordova-plugin-screen-orientation
@@ -53,8 +68,8 @@ add to body class: platform-wp8
             }
         }
 
-        console.log(Orientation);
-        console.log(ScreenSize);
+        rs.orientation = Orientation;
+        rs.screensize = ScreenSize;
 
         // kick off a media query listener to tag the body with a class
         var mq;

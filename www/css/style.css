@@ -41,7 +41,33 @@
     font-style:italic;
 }
 
-body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Source Sans Pro', sans-serif; }
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Source Sans Pro', sans-serif; color:#303030; }
+
+/*
+colors
+ */
+
+.cdc-blue.primary {
+    background-color: #b1dafb
+}
+.cdc-blue.primary.border {
+    border-color: #b1dafb
+}
+
+.cdc-blue.secondary {
+    background-color: #e3f2fe;
+}
+.cdc-blue.secondary.border {
+    border-color: #e3f2fe
+}
+
+.cdc-blue.selected {
+    background-color: #075290;
+}
+.cdc-blue.selected.border {
+    border-color: #075290
+}
+
 
 .content-stable {
   background-color: #f8f8f8;
@@ -109,6 +135,12 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, text
 /*    height: 300px;
     background: url(/img/placeholder.png) no-repeat;
     background-size: 100%;*/
+}
+
+a.item.item-footer {
+    padding: 4px 16px 0;
+    border-top: 0;
+    margin-top:16px;
 }
 
 .card.col.home, .card.col.home .item-note { text-align: center; float:none; }
@@ -237,3 +269,70 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, text
 .type-t1a .item-notice span {
     background: green;
 }
+
+
+/*
+    adjustments
+*/
+
+.right { float: right;}
+
+.padding .title {
+    font-size: 24px;
+}
+
+.item-body {
+    padding-bottom: 0;
+}
+
+.nav-bar-block .bar, .menu-left .bar {
+    background-color:#075290!important;
+}
+
+ion-side-menu h4 {
+    color:#303030;
+    margin:0;
+    padding:10px;
+    padding-left:14px;
+}
+
+/* hiding first heading in content area */
+.contentarea h1:first-child,
+.contentarea .h1:first-child,
+.contentarea h2:first-child,
+.contentarea .h2:first-child,
+.contentarea h3:first-child,
+.contentarea .h3:first-child {
+    display:none;
+}
+
+/*
+    hiding content
+ */
+
+.civ table,
+.civ table + .caption,
+.civ .civ [class*="onthis"], .civ [id*="onthis"],
+.civ a[href="#"],
+.civ a[href^="#"],
+.civ .figure, .civ .figure-story,
+.civ .table, .civ .table-story,
+.civ .box-frieden,
+.civ [class*="table"], .civ [id*="table"],
+.civ [class*="figure"], .civ [id*="figure"],
+.civ hr {
+    display:none!important;
+}
+
+/*
+side menu wrap
+*/
+
+ion-side-menu.menu.menu-left .item-content {
+    overflow: visible;
+    white-space: normal;
+}
+
+
+
+

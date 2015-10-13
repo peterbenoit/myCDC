@@ -1,0 +1,167 @@
+{
+    "id": 1,
+    "title": "Menu Data",
+    "result": [
+        {
+            "id": 1,
+            "title": "Disease of the Week",
+            "contenttype": "Articles",
+            "url": "#/app/dotw",
+            "icon": "",
+            "default": true,
+            "readonly": true
+        }, {
+            "id": 2,
+            "title": "FluView Weekly Report Summary",
+            "contenttype": "Articles",
+            "url": "#/app/fluview",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 3,
+            "title": "Health Articles",
+            "contenttype": "Articles",
+            "url": "#/app/healtharticles",
+            "icon": "",
+            "default": true,
+            "readonly": true
+        }, {
+            "id": 4,
+            "title": "Vital Signs",
+            "contenttype": "Articles",
+            "url": "#/app/vitalsigns",
+            "icon": "",
+            "default": true,
+            "readonly": true
+        }, {
+            "id": 5,
+            "title": "CDC Directors Blog",
+            "contenttype": "Blogs",
+            "url": "#/app/directorsblog",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 6,
+            "title": "CDC Works for You 24/7 Blog",
+            "contenttype": "Blogs",
+            "url": "#/app/cdcworksblog",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 7,
+            "title": "Public Health Matters",
+            "contenttype": "Blogs",
+            "url": "#/app/phmblog",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 8,
+            "title": "FastStats",
+            "contenttype": "Data &amp; Statistics",
+            "url": "#/app/faststats",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 9,
+            "title": "Weekly Disease Case Counts",
+            "contenttype": "Data &amp; Statistics",
+            "url": "#/app/casecounts",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 10,
+            "title": "Did You Know?",
+            "contenttype": "Facts",
+            "url": "#/app/didyouknow",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 11,
+            "title": "Weekly Disease Case Counts",
+            "contenttype": "Facts",
+            "url": "#/app/factoftheweek",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 12,
+            "title": "Emerging Infectious Diseases (EID)",
+            "contenttype": "Journals",
+            "url": "#/app/eid",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 13,
+            "title": "Morbidity and Mortality Weekly Report (MMWR)",
+            "contenttype": "Journals",
+            "url": "#/app/mmwr",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 14,
+            "title": "Preventing Chronic Disease (PCD)",
+            "contenttype": "Journals",
+            "url": "#/app/pcd",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 15,
+            "title": "Newsroom",
+            "contenttype": "News",
+            "url": "#/app/newsroom",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 16,
+            "title": "Outbreaks",
+            "contenttype": "News",
+            "url": "#/app/outbreaks",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 17,
+            "title": "Travel Notices",
+            "contenttype": "News",
+            "url": "#/app/travelnotices",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 18,
+            "title": "Image Library",
+            "contenttype": "Photos",
+            "url": "#/app/imagelibrary",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 19,
+            "title": "Instagram",
+            "contenttype": "Photos",
+            "url": "#/app/instagram",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 20,
+            "title": "Flickr",
+            "contenttype": "Photos",
+            "url": "#/app/flickr",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }
+    ]
+}

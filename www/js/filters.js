@@ -109,23 +109,23 @@ angular.module('mycdc.filters', [])
         return mRetArr;
     };
 })
-.filter('hasImageEnclosure', function() {
-    var resource, enclosuresLength;
-    return function(enclosures) {
-        enclosuresLength = enclosures.length;
-        if (enclosuresLength) {
-            console.log(enclosuresLength);
-            for (var i = 0; i < enclosuresLength; i++) {
-                if (enclosures[i].contentType.indexOf('image') > -1) {
-                    resource = enclosures[i].resourceUrl;
-                    break;
-                }
-            }
-        }
+// .filter('hasImageEnclosure', function() {
+//     var resource, enclosuresLength;
+//     return function(enclosures) {
+//         enclosuresLength = enclosures.length;
+//         if (enclosuresLength) {
+//             console.log(enclosuresLength);
+//             for (var i = 0; i < enclosuresLength; i++) {
+//                 if (enclosures[i].contentType.indexOf('image') > -1) {
+//                     resource = enclosures[i].resourceUrl;
+//                     break;
+//                 }
+//             }
+//         }
 
-        return typeof resource !== 'undefined' ? resource : false;
-    };
-})
+//         return typeof resource !== 'undefined' ? resource : false;
+//     };
+// })
 .filter('hasAudioEnclosure', ['$sce', function($sce) {
     var resource, enclosuresLength;
     return function(enclosures) {
