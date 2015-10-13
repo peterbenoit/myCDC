@@ -611,7 +611,7 @@ angular.module('mycdc.controllers', [])
         return pageSize * page;
     };
 
-    $scope.hasMoMoreItems = function() {
+    $scope.hasMoreItems = function() {
         return page < ($scope.datas.length / pageSize);
     };
 
