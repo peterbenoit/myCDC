@@ -30,6 +30,8 @@ add to body class: platform-wp8
     var rs = $rootScope,
         href = window.location.href;
 
+        rs.HomeCtrlLoad = false;
+
     // if(href.indexOf('android') > -1 || href.indexOf('Bundle') > -1) {
     //     alert('not in ionic.view');
     // }
@@ -55,6 +57,8 @@ add to body class: platform-wp8
         }
 
         rs.deviceinfo = DeviceInfo;
+        rs.orientation = Orientation;
+        rs.screensize = ScreenSize;
 
         /**
          * https://github.com/gbenvenuti/cordova-plugin-screen-orientation
@@ -67,9 +71,6 @@ add to body class: platform-wp8
                 screen.unlockOrientation();
             }
         }
-
-        rs.orientation = Orientation;
-        rs.screensize = ScreenSize;
 
         // kick off a media query listener to tag the body with a class
         var mq;
@@ -149,6 +150,14 @@ add to body class: platform-wp8
         }
     })
 
+    .state('app.civdemo', {
+        url: '/civdemo',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/civ-demo.html'
+            }
+        }
+    })
 /**
  * Source States
  * Ideally, these would all be dynamic, based off some config file. But I don't know if Angular works that way - yet .

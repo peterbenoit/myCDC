@@ -267,8 +267,52 @@ angular.module('mycdc.storage', [])
 })
 
 
+/**
+ * *******************************************************************************************
+ *                                      AUDIO/VIDEO
+ * *******************************************************************************************
+ */
 
-
+/**
+ * @return {[type]}
+ */
+.factory('PodcastsStorage', function() {
+    return {
+        all: function() {
+            var pod = window.localStorage['pod'];
+            if (pod) {
+                return angular.fromJson(pod);
+            }
+            return {};
+        },
+        save: function(pod) {
+            window.localStorage['pod'] = angular.toJson(pod);
+        },
+        clear: function() {
+            window.localStorage.removeItem('pod');
+        }
+    };
+})
+/**
+ * @return {[type]}
+ */
+.factory('YouTubesStorage', function() {
+    return {
+        all: function() {
+            var youtube = window.localStorage['youtube'];
+            if (youtube) {
+                return angular.fromJson(youtube);
+            }
+            return {};
+        },
+        save: function(youtube) {
+            window.localStorage['youtube'] = angular.toJson(youtube);
+        },
+        clear: function() {
+            window.localStorage.removeItem('youtube');
+        }
+    };
+})
 
 
 
@@ -462,26 +506,6 @@ angular.module('mycdc.storage', [])
     };
 })
 
-/**
- * @return {[type]}
- */
-.factory('PodcastsStorage', function() {
-    return {
-        all: function() {
-            var pod = window.localStorage['pod'];
-            if (pod) {
-                return angular.fromJson(pod);
-            }
-            return {};
-        },
-        save: function(pod) {
-            window.localStorage['pod'] = angular.toJson(pod);
-        },
-        clear: function() {
-            window.localStorage.removeItem('pod');
-        }
-    };
-})
 
 /**
  * @return {[type]}

@@ -17,8 +17,6 @@ angular.module('mycdc.controllers', [])
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
-
-
 })
 /**
  * @param  {[type]}
@@ -53,9 +51,27 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HomeCtrl', function($scope, MenuData) {
+.controller('HomeCtrl', function($scope, MenuData, $ionicModal, $ionicPlatform, $timeout, $rootScope) {
     $scope.menu = [];
     $scope.storage = '';
+
+    // This little bit of nonsense checks for the existance of the runonce localstorage key and if the Home Controller has already loaded (it loads 2x for some reason)
+    // If they key doesn't exist, and the Home Controller hasn't already loaded, load the modal
+    $ionicPlatform.ready(function() {
+        var runonce = window.localStorage.getItem('runonce');
+
+        if (runonce === null && $rootScope.HomeCtrlLoad === false) {
+            $rootScope.HomeCtrlLoad = true;
+            $ionicModal.fromTemplateUrl('templates/modal.html', {
+                scope: $scope
+            }).then(function(modal) {
+                $scope.modal = modal;
+                $scope.modal.show();
+
+                window.localStorage['runonce'] = true;
+            });
+        }
+    });
 
     MenuData.async().then(
         function() {
@@ -105,7 +121,7 @@ angular.module('mycdc.controllers', [])
         href: '#/app/FastStats',
         icon: 'ion-checkmark-circled'
     }, {
-        title: 'Weekly Disease Case Counts (No test data)',
+        title: 'Weekly Disease Case Counts (No data)',
         href: '#/app/WeeklyDiseaseCaseCounts',
         icon: 'ion-close-circled'
     }, {
@@ -159,7 +175,11 @@ angular.module('mycdc.controllers', [])
     }, {
         title: 'YouTube',
         href: '#/app/YouTubes',
-        icon: 'ion-close-circled'
+        icon: 'ion-checkmark-circled'
+    }, {
+        title: 'CIV Demo Page',
+        href: '#/app/civdemo',
+        icon: 'ion-checkmark-circled'
     }];
 })
 
@@ -276,7 +296,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -395,7 +415,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -465,9 +485,6 @@ angular.module('mycdc.controllers', [])
 
     $scope.screensize = ScreenSize;
 
-    // ignore this for now
-    // document.getElementsByClassName('card').style.height = ScreenSize.width + "px";
-
     $scope.doRefresh = function() {
         getData();
     };
@@ -536,7 +553,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -656,7 +673,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -772,7 +789,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -899,7 +916,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -1018,7 +1035,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -1135,7 +1152,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -1257,7 +1274,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -1386,7 +1403,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -1497,7 +1514,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -1608,7 +1625,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -1729,7 +1746,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -1842,7 +1859,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -1967,7 +1984,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -2088,7 +2105,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -2200,7 +2217,7 @@ angular.module('mycdc.controllers', [])
 
     $scope.data = DidYouKnowData.get($stateParams.idx);
     $scope.id = DidYouKnowData.getId($stateParams.idx);
-    $scope.name = "Did You Know?";
+    $scope.name = 'Did You Know?';
 
     DidYouKnowContent.getContent($scope.id).then(
         function(resp) {
@@ -2217,7 +2234,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -2317,7 +2334,7 @@ angular.module('mycdc.controllers', [])
 
     $scope.data = FactoftheWeekData.get($stateParams.idx);
     $scope.id = FactoftheWeekData.getId($stateParams.idx);
-    $scope.name = "Fact of the Week";
+    $scope.name = 'Fact of the Week';
 
     FactoftheWeekContent.getContent($scope.id).then(
         function(resp) {
@@ -2334,7 +2351,7 @@ angular.module('mycdc.controllers', [])
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
-                message = $scope.data.description;
+                message = $scope.data.description,
                 link = $scope.data.sourceUrl;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
@@ -2354,12 +2371,133 @@ angular.module('mycdc.controllers', [])
 
 
 
+/**
+ * *******************************************************************************************
+ *                                      AUDIO/VIDEO
+ * *******************************************************************************************
+ */
 
 
+// SYNDICATED CONTENT
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('YouTubesCtrl', function($scope, $location, $ionicLoading, YouTubesData, YouTubesStorage) {
+    var source = $location.$$url.split('/').pop();
+    $scope.datas = [];
+    $scope.storage = '';
+    $scope.url = '#/app/YouTube/';
 
+    $scope.loading = $ionicLoading.show({
+        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+        showBackdrop: false,
+        showDelay: 100
+    });
 
+    var getData = function() {
+        YouTubesData.async().then(
+            function() {
+                $scope.datas = YouTubesData.getAll();
+                $ionicLoading.hide();
+                $scope.$broadcast('scroll.refreshComplete');
+            },
+            function() {
+                $scope.datas = YouTubesStorage.all();
+                $scope.storage = 'Data from local storage';
+                $ionicLoading.hide();
+                $scope.$broadcast('scroll.refreshComplete');
+            },
+            function() {}
+        );
+    };
 
+    getData();
 
+    var page = 1,
+        pageSize = 10;
+
+    $scope.doRefresh = function() {
+        getData();
+    };
+
+    $scope.paginationLimit = function(data) {
+        return pageSize * page;
+    };
+
+    $scope.hasMoreItems = function() {
+        return page < ($scope.datas.length / pageSize);
+    };
+
+    $scope.showMoreItems = function() {
+        page = page + 1;
+        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+            $scope.$apply();
+        }
+    };
+})
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {Object}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('YouTubeCtrl', function($scope, $ionicLoading, $stateParams, $sce, YouTubesData) {
+    // $scope.loading = $ionicLoading.show({
+    //     template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+    //     showBackdrop: false,
+    //     showDelay: 100
+    // });
+
+    $scope.data = YouTubesData.get($stateParams.idx);
+    $scope.id = YouTubesData.getId($stateParams.idx);
+    $scope.name = 'YouTube';
+
+    // YouTubesContent.getContent($scope.id).then(
+    //     function(resp) {
+    //         $scope.content = $sce.trustAsHtml(resp.data.results.content);
+    //         $ionicLoading.hide();
+    //     },
+    //     function() {
+    //         alert('Content not available.');
+    //         $ionicLoading.hide();
+    //     },
+    //     function() {}
+    // );
+
+    $scope.shareData = function() {
+        if (window.plugins && window.plugins.socialsharing) {
+            var subject = $scope.data.name,
+                message = $scope.data.description,
+                link = 'http://www.youtube.com/embed/' + $scope.data.sourceUrl.split('?v=')[1]; //$scope.data.sourceUrl;
+            message = message.replace(/(<([^>]+)>)/ig, '');
+
+            //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
+            //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
+            window.plugins.socialsharing.share(message, subject, null, link);
+        }
+        else {
+            alert('Social Sharing not available in Ionic View');
+        }
+    };
+
+    $scope.viewOnCDC = function() {
+        window.open($scope.data.sourceUrl, '_blank');
+    };
+
+    $scope.getVideoUrl = function() {
+        return $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + $scope.data.sourceUrl.split('?v=')[1]);
+    };
+})
 
 
 

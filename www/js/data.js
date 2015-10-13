@@ -1698,11 +1698,11 @@ angular.module('mycdc.data', [])
     };
 })
 
-
-
-
-
-// other
+/**
+ * *******************************************************************************************
+ *                                      FACTS
+ * *******************************************************************************************
+ */
 
 /**
  * @param  {[type]}
@@ -1710,7 +1710,90 @@ angular.module('mycdc.data', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.factory('CDCWorksforYou247BlogData', function($http, $q, CDCWorksforYou247BlogStorage) {})
+.factory('YouTubesData', function($http, $q, YouTubesStorage) {
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
 
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/sources/YouTube_All.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d.data.results;
 
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+                hasImage = false;
 
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                datum.description = datum.description.split('Comments on this video')[0].trim();
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
+            YouTubesStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = YouTubesStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {});
+
+        return promise;
+    };
+
+    service.getAll = function() {
+        return data;
+    };
+
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    service.getId = function(idx) {
+        return data[idx].id;
+    };
+
+    return service;
+});
+
+/**
+ * Content is an additional query for data, either by sourceUrl or syndicateUrl
+ * @param  {[type]} $http
+ * @return {[type]}
+ */
+// .factory('YouTubesContent', function($http) {
+//     return {
+//         getContent: function(id) {
+//             return $http.get('json/content/' + id + '.json');
+//         }
+//     };
+// })
