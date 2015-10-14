@@ -73,12 +73,13 @@ colors
   background-color: #f8f8f8;
 }
 
-/*
-    Images
+/**
+ * Images
  */
+
 /* make CIV of PHIL = 100% */
 
-.image-stream .item-image {
+.item-image {
   position: relative;
   width: auto;
 /*  width: 150px; *//*300px;*/
@@ -86,7 +87,7 @@ colors
   overflow: hidden;
 }
 
-.image-stream .item-image img {
+.item-image img {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -97,17 +98,20 @@ colors
           transform: translate(-50%,-50%);
 }
 
-.image-stream .item-image img.portrait {
+.item-image img.portrait {
   width: 100%;
   height: auto;
 }
 
-.image-stream .item-image {
+.item-image {
     margin: 3px;
     text-align: center;
     padding: 0;
     border: 0;
 }
+
+
+
 
 /**
  * iframe
@@ -126,7 +130,22 @@ colors
     overflow-y: scroll!important;
 }
 
+/**
+ * random
+ */
 
+
+.border {
+    border-top: 1px solid #c0c0c0;
+}
+
+
+/* content area adjustments */
+p.contentarea img {
+    float: left;
+    margin:0 10px 10px 0;
+    clear: right;
+}
 /*
 
  */
@@ -216,7 +235,9 @@ a.item.item-footer {
 
 .card .item:first-child {
     border-bottom: 0;
-    margin-bottom: 5px;
+    margin: 0;
+    margin-top: -3px;
+    margin-left: -1px;
 }
 
 

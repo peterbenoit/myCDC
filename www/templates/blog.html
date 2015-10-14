@@ -8,10 +8,13 @@
             <div class="datepub">{{data.datePublished}}</div>
             <div class="source">Source: {{name}}</div>
             <p class="contentarea" ng-bind-html="content"></p>
-            <p><button class="button icon-left ion-share button-outline button-positive" ng-click="postComment()">Post Comment</button>
-                <button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
-                <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
-            </p>
+            <div class="post"><i class="ion ion-social-rss"></i> <a href="javascript:void(0)" ng-click="postComment()">Post a Comment on CDC.gov</a></div>
+            <div class="border">
+                <p class="padding right">
+                    <button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+                    <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
+                </p>
+            </div>
         </div>
     </ion-content>
 </ion-view>

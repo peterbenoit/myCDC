@@ -45,4 +45,19 @@ angular.module('mycdc.directives', [])
             });
         }
     }
+ }])
+ .directive('fullwidth', ['ScreenSize', function(ScreenSize){
+    return {
+        link: function (scope, element, attrs) {
+            element.bind('load', function(e) {
+                var newwidth = ScreenSize.width - 10,       // screen - padding
+                    newheight = (newwidth/16) * 9;          // maintian 16x9 aspect ratio
+                    parent = this.parentElement
+
+                // apply the new sizes to the parent element
+                parent.style.width = newwidth + 'px';
+                parent.style.height = newheight + 'px';
+            });
+        }
+    }
  }]);

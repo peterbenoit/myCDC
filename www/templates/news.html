@@ -1,22 +1,16 @@
 <ion-view>
-
     <ion-content class="has-header">
-
-    <!-- <img src="{{data.enclosures[0].resourceUrl}}"> -->
-
-    <div class="padding data">
-        <h2 class="title">{{data.name}}</h2>
-
-        <div style="padding:0 0 20px 0;">
-        Published {{data.datePublished | date:'fullDate'}}
+        <div class="padding data">
+            <div class="title">{{data.name}}</div>
+            <div class="datepub">{{data.datePublished}}</div>
+            <div class="source">Source: {{name}}</div>
+            <p class="contentarea" ng-bind-html="content"></p>
+            <div class="border">
+                <p class="padding right">
+                    <button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+                    <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
+                </p>
+            </div>
         </div>
-
-        <p ng-bind-html="content"></p>
-
-        <p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
-        <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button></p>
-
-    </div>
-
     </ion-content>
 </ion-view>
