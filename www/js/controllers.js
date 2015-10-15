@@ -51,9 +51,22 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HomeCtrl', function($scope, MenuData, $ionicModal, $ionicPlatform, $timeout, $rootScope) {
+.controller('HomeCtrl', function($scope, MenuData, $ionicPlatform, $timeout, $rootScope, $ionicHistory, returnToState) {
     $scope.menu = [];
     $scope.storage = '';
+    $scope.goBack = function() {
+        var sn = $ionicHistory.currentView().stateName;
+
+        if (sn === 'app.YouTube' || sn === 'app.PHIL' || sn === 'app.Podcast') {
+            // returnToState('app.home');
+
+            // source streams are always the statename + s
+            returnToState(sn +  's');
+        }
+        else {
+            $ionicHistory.goBack();
+        }
+    }
 
     // This little bit of nonsense checks for the existance of the runonce localstorage key and if the Home Controller has already loaded (it loads 2x for some reason)
     // If they key doesn't exist, and the Home Controller hasn't already loaded, load the modal
@@ -62,14 +75,16 @@ angular.module('mycdc.controllers', [])
 
         if (runonce === null && $rootScope.HomeCtrlLoad === false) {
             $rootScope.HomeCtrlLoad = true;
-            $ionicModal.fromTemplateUrl('templates/modal.html', {
-                scope: $scope
-            }).then(function(modal) {
-                $scope.modal = modal;
-                $scope.modal.show();
+            // $ionicModal.fromTemplateUrl('templates/modal.html', {
+            //     scope: $scope
+            // }).then(function(modal) {
+            //     $scope.modal = modal;
+            //     $scope.modal.show();
 
-                window.localStorage['runonce'] = true;
-            });
+            //     window.localStorage['runonce'] = true;
+            // });
+            //
+            // alert('')
         }
     });
 
@@ -194,7 +209,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DotwCtrl', function($scope, $location, $ionicLoading, DotwData, DotwStorage) {
+.controller('DotwCtrl', function($scope, $location, $ionicLoading, DotwData, DotwStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -261,7 +276,7 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('DiseaseCtrl', function($scope, $stateParams, $ionicLoading, $sce, DotwData, DotwContent) {
+.controller('DiseaseCtrl', function($scope, $stateParams, $ionicLoading, $sce, DotwData, DotwContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -325,7 +340,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FluViewsCtrl', function($scope, $location, $ionicLoading, FluViewData, FluViewStorage) {
+.controller('FluViewsCtrl', function($scope, $location, $ionicLoading, FluViewData, FluViewStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -391,7 +406,7 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('FluViewCtrl', function($scope, $stateParams, $ionicLoading, $sce, FluViewData, FluViewContent) {
+.controller('FluViewCtrl', function($scope, $stateParams, $ionicLoading, $sce, FluViewData, FluViewContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -445,7 +460,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HealthArticlesCtrl', function($scope, $location, $ionicLoading, HealthArticlesData, HealthArticlesStorage, ScreenSize) {
+.controller('HealthArticlesCtrl', function($scope, $location, $ionicLoading, HealthArticlesData, HealthArticlesStorage, ScreenSize, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -520,7 +535,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HealthArticleCtrl', function($scope, $stateParams, $ionicLoading, $sce, HealthArticlesData, HealthArticlesContent) {
+.controller('HealthArticleCtrl', function($scope, $stateParams, $ionicLoading, $sce, HealthArticlesData, HealthArticlesContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -584,7 +599,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('VitalSignsCtrl', function($scope, $location, $ionicLoading, VitalSignsData, VitalSignsStorage) {
+.controller('VitalSignsCtrl', function($scope, $location, $ionicLoading, VitalSignsData, VitalSignsStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -648,7 +663,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('VitalSignCtrl', function($scope, $ionicLoading, $stateParams, $sce, VitalSignsData, VitalSignsContent) {
+.controller('VitalSignCtrl', function($scope, $ionicLoading, $stateParams, $sce, VitalSignsData, VitalSignsContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -704,7 +719,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FastStatsCtrl', function($scope, $location, $ionicLoading, FastStatsData, FastStatsStorage) {
+.controller('FastStatsCtrl', function($scope, $location, $ionicLoading, FastStatsData, FastStatsStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -768,7 +783,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FastStatCtrl', function($scope, $ionicLoading, $stateParams, $sce, FastStatsData, FastStatsContent) {
+.controller('FastStatCtrl', function($scope, $ionicLoading, $stateParams, $sce, FastStatsData, FastStatsContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -822,7 +837,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('WeeklyDiseaseCaseCountsCtrl', function($scope, $location, $ionicLoading, WeeklyCaseCountsData, WeeklyCaseCountsStorage) {
+.controller('WeeklyDiseaseCaseCountsCtrl', function($scope, $location, $ionicLoading, WeeklyCaseCountsData, WeeklyCaseCountsStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -889,7 +904,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('WeeklyDiseaseCaseCountCtrl', function($scope, $stateParams, $sce, $ionicLoading, WeeklyCaseCountsData, WeeklyCaseCountsContent) {
+.controller('WeeklyDiseaseCaseCountCtrl', function($scope, $stateParams, $sce, $ionicLoading, WeeklyCaseCountsData, WeeklyCaseCountsContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -954,7 +969,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('EIDsCtrl', function($scope, $location, $ionicLoading, EIDsData, EIDsStorage) {
+.controller('EIDsCtrl', function($scope, $location, $ionicLoading, EIDsData, EIDsStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -1018,7 +1033,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('EIDCtrl', function($scope, $ionicLoading, $stateParams, $sce, EIDsData, EIDsContent) {
+.controller('EIDCtrl', function($scope, $ionicLoading, $stateParams, $sce, EIDsData, EIDsContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1072,7 +1087,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('MMWRsCtrl', function($scope, $location, $ionicLoading, MMWRsData, MMWRsStorage) {
+.controller('MMWRsCtrl', function($scope, $location, $ionicLoading, MMWRsData, MMWRsStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -1136,7 +1151,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('MMWRCtrl', function($scope, $ionicLoading, $stateParams, $sce, MMWRsData, MMWRsContent) {
+.controller('MMWRCtrl', function($scope, $ionicLoading, $stateParams, $sce, MMWRsData, MMWRsContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1190,7 +1205,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PCDsCtrl', function($scope, $location, $ionicLoading, PCDsData, PCDsStorage) {
+.controller('PCDsCtrl', function($scope, $location, $ionicLoading, PCDsData, PCDsStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -1259,7 +1274,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PCDCtrl', function($scope, $ionicLoading, $stateParams, $sce, PCDsData, PCDsContent) {
+.controller('PCDCtrl', function($scope, $ionicLoading, $stateParams, $sce, PCDsData, PCDsContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1313,7 +1328,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('NewsroomsCtrl', function($scope, $location, $ionicLoading, NewsroomsData, NewsroomsStorage) {
+.controller('NewsroomsCtrl', function($scope, $location, $ionicLoading, NewsroomsData, NewsroomsStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -1380,7 +1395,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('NewsroomCtrl', function($scope, $stateParams, $sce, $ionicLoading, NewsroomsData, NewsroomsContent) {
+.controller('NewsroomCtrl', function($scope, $stateParams, $sce, $ionicLoading, NewsroomsData, NewsroomsContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1444,7 +1459,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('OutbreaksCtrl', function($scope, $location, $ionicLoading, OutbreaksData, OutbreaksStorage) {
+.controller('OutbreaksCtrl', function($scope, $location, $ionicLoading, OutbreaksData, OutbreaksStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -1511,7 +1526,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('OutbreakCtrl', function($scope, $stateParams, $sce, $ionicLoading, OutbreaksData) {
+.controller('OutbreakCtrl', function($scope, $stateParams, $sce, $ionicLoading, OutbreaksData, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1557,7 +1572,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('TravelNoticesCtrl', function($scope, $location, $ionicLoading, TravelNoticesData, TravelNoticesStorage) {
+.controller('TravelNoticesCtrl', function($scope, $location, $ionicLoading, TravelNoticesData, TravelNoticesStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -1624,7 +1639,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('TravelNoticeCtrl', function($scope, $stateParams, $sce, $ionicLoading, TravelNoticesData) {
+.controller('TravelNoticeCtrl', function($scope, $stateParams, $sce, $ionicLoading, TravelNoticesData, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1673,7 +1688,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PodcastsCtrl', function($scope, $location, $ionicLoading, PodcastsData, PodcastsStorage) {
+.controller('PodcastsCtrl', function($scope, $location, $ionicLoading, PodcastsData, PodcastsStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -1737,7 +1752,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PodcastCtrl', function($scope, $ionicLoading, $stateParams, $sce, PodcastsData) {
+.controller('PodcastCtrl', function($scope, $ionicLoading, $stateParams, $sce, PodcastsData, $ionicHistory) {
     var position = $stateParams.idx,
         count = PodcastsData.getCount();
 
@@ -1793,7 +1808,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PHILsCtrl', function($scope, $location, $ionicLoading, PHILsData, PHILsStorage) {
+.controller('PHILsCtrl', function($scope, $location, $ionicLoading, PHILsData, PHILsStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -1857,7 +1872,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PHILCtrl', function($scope, $ionicLoading, $stateParams, $sce, PHILsData) {
+.controller('PHILCtrl', function($scope, $ionicLoading, $stateParams, $sce, PHILsData, $ionicHistory) {
     var position = $stateParams.idx,
         count = PHILsData.getCount();
 
@@ -1915,7 +1930,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PHMblogsCtrl', function($scope, $location, $ionicLoading, PHMblogsData, PHMblogsStorage) {
+.controller('PHMblogsCtrl', function($scope, $location, $ionicLoading, PHMblogsData, PHMblogsStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -1979,7 +1994,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PHMblogCtrl', function($scope, $ionicLoading, $stateParams, $sce, PHMblogsData, PHMblogsContent) {
+.controller('PHMblogCtrl', function($scope, $ionicLoading, $stateParams, $sce, PHMblogsData, PHMblogsContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -2037,7 +2052,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DirectorsBlogsCtrl', function($scope, $location, $ionicLoading, DirectorsBlogsData, DirectorsBlogsStorage) {
+.controller('DirectorsBlogsCtrl', function($scope, $location, $ionicLoading, DirectorsBlogsData, DirectorsBlogsStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -2101,7 +2116,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DirectorsBlogCtrl', function($scope, $ionicLoading, $stateParams, $sce, DirectorsBlogsData, DirectorsBlogsContent) {
+.controller('DirectorsBlogCtrl', function($scope, $ionicLoading, $stateParams, $sce, DirectorsBlogsData, DirectorsBlogsContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -2167,7 +2182,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DidYouKnowCtrl', function($scope, $location, $ionicLoading, DidYouKnowData, DidYouKnowStorage) {
+.controller('DidYouKnowCtrl', function($scope, $location, $ionicLoading, DidYouKnowData, DidYouKnowStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -2231,7 +2246,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DYKCtrl', function($scope, $ionicLoading, $stateParams, $sce, DidYouKnowData, DidYouKnowContent) {
+.controller('DYKCtrl', function($scope, $ionicLoading, $stateParams, $sce, DidYouKnowData, DidYouKnowContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -2285,7 +2300,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FactoftheWeekCtrl', function($scope, $location, $ionicLoading, FactoftheWeekData, FactoftheWeekStorage) {
+.controller('FactoftheWeekCtrl', function($scope, $location, $ionicLoading, FactoftheWeekData, FactoftheWeekStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -2349,7 +2364,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FOTWCtrl', function($scope, $ionicLoading, $stateParams, $sce, FactoftheWeekData, FactoftheWeekContent) {
+.controller('FOTWCtrl', function($scope, $ionicLoading, $stateParams, $sce, FactoftheWeekData, FactoftheWeekContent, $ionicHistory) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -2412,7 +2427,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('YouTubesCtrl', function($scope, $location, $ionicLoading, YouTubesData, YouTubesStorage) {
+.controller('YouTubesCtrl', function($scope, $location, $ionicLoading, YouTubesData, YouTubesStorage, $ionicHistory) {
     var source = $location.$$url.split('/').pop();
     $scope.datas = [];
     $scope.storage = '';
@@ -2476,7 +2491,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('YouTubeCtrl', function($scope, $ionicLoading, $stateParams, $sce, YouTubesData) {
+.controller('YouTubeCtrl', function($scope, $ionicLoading, $stateParams, $sce, YouTubesData, $ionicHistory) {
     // $scope.loading = $ionicLoading.show({
     //     template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
     //     showBackdrop: false,

@@ -56,4 +56,30 @@ angular.module('mycdc.services', ['ionic'])
 
         return urlArray;
     }
+})
+
+.service('returnToState', function($ionicHistory) {
+    return function(stateName) {
+        var historyId = $ionicHistory.currentHistoryId(),
+            history = $ionicHistory.viewHistory().histories[historyId];
+
+        for (var i = history.stack.length - 1; i >= 0; i--) {
+            if (history.stack[i].stateName == stateName) {
+                $ionicHistory.backView(history.stack[i]);
+                $ionicHistory.goBack();
+            }
+        }
+    }
+})
+
+.service('goBackMany', function($ionicHistory) {
+    return function(depth) {
+        var historyId = $ionicHistory.currentHistoryId(),
+            history = $ionicHistory.viewHistory().histories[historyId],
+            targetViewIndex = history.stack.length - 1 - depth;             // set the view 'depth' back in the stack as the back view
+
+        $ionicHistory.backView(history.stack[targetViewIndex]);
+        // navigate to it
+        $ionicHistory.goBack();
+    }
 });
