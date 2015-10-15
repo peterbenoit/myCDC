@@ -5,44 +5,48 @@
 
 /* Fonts */
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("../font/SourceSansPro-Regular.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-Regular.ttf");
 }
 
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("../font/SourceSansPro-Italic.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-Italic.ttf");
     font-style:italic;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../font/SourceSansPro-Light.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-Light.ttf");
     font-weight: 300;
 }
 
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("../font/SourceSansPro-LightItalic.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-LightItalic.ttf");
     font-weight: 300;
     font-style:italic;
 }
 
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("../font/SourceSansPro-Bold.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-Bold.ttf");
     font-weight: 600;
 }
 
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("../font/SourceSansPro-BoldItalic.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-BoldItalic.ttf");
     font-weight: 600;
     font-style:italic;
 }
 
-body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Roboto', 'Source Sans Pro', sans-serif; color:#303030; }
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea, p, b, i, em { font-family: 'Roboto', sans-serif; color:#303030; }
 
+/* ... */
+i, cite, em, var, address, dfn {
+    font-style: italic;
+}
 
 /* useful */
 body.platform-ios {}
@@ -74,6 +78,22 @@ colors
 .cdc-blue.selected.border {
     border-color: #075290
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .content-stable {
@@ -143,7 +163,7 @@ colors
 
 
 .border {
-    border-top: 1px solid #c0c0c0;
+    border-top: 1px solid #e0e0e0;
 }
 
 
@@ -153,9 +173,19 @@ colors
     margin:0 10px 10px 0;
     clear: right;
 }*/
-/*
 
- */
+
+
+
+
+/* stream */
+
+.stream > h3 {
+    margin-bottom: -10px;
+    border-bottom: 1px solid #e0e0e0;
+    background:#fff;
+}
+
 .stream .row + .row {
     margin-top: -30px;
     padding-top: 0;
@@ -167,7 +197,7 @@ colors
 .stream .row .card {
     width: 100%;
     box-shadow: none;
-    border:1px solid #d0d0d0;
+    border:1px solid #e0e0e0;
 /*    height: 300px;
     background: url(/img/placeholder.png) no-repeat;
     background-size: 100%;*/
@@ -248,7 +278,25 @@ a.item.item-footer {
 }
 
 
+/*
+popover
+ */
+#popper {
+    position: fixed !important;
+    top: 50px!important;
+    left: 6px!important;
+    height: 250px !important;
+    width: 200px !important;
+    padding:16px;
+}
 
+#popper p {
+    padding: 16px;
+}
+
+#popper div.popover-arrow {
+    left: 0!important;
+}
 
 /*
     adjustments
@@ -262,6 +310,11 @@ a.item.item-footer {
 
 .item-body {
     padding-bottom: 0;
+}
+
+/* keep the card background from turning gray when tapped */
+.card .item.activated {
+    background:#fff!important;
 }
 
 .nav-bar-block .bar, .menu-left .bar {

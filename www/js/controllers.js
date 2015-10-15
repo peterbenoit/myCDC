@@ -9,7 +9,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $timeout) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -51,9 +51,10 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HomeCtrl', function($scope, MenuData, $ionicPlatform, $timeout, $rootScope, $ionicHistory, returnToState) {
+.controller('HomeCtrl', function($scope, MenuData, $ionicPlatform, $timeout, $rootScope, $ionicHistory, $ionicPopover, returnToState) {
     $scope.menu = [];
     $scope.storage = '';
+
     $scope.goBack = function() {
         var sn = $ionicHistory.currentView().stateName;
 
@@ -68,6 +69,8 @@ angular.module('mycdc.controllers', [])
         }
     }
 
+
+
     // This little bit of nonsense checks for the existance of the runonce localstorage key and if the Home Controller has already loaded (it loads 2x for some reason)
     // If they key doesn't exist, and the Home Controller hasn't already loaded, load the modal
     $ionicPlatform.ready(function() {
@@ -75,6 +78,15 @@ angular.module('mycdc.controllers', [])
 
         if (runonce === null && $rootScope.HomeCtrlLoad === false) {
             $rootScope.HomeCtrlLoad = true;
+
+            $ionicPopover.fromTemplateUrl('templates/popover.html', {
+                scope: $scope,
+            }).then(function(popover) {
+                $scope.popover = popover;
+                var element = document.getElementById('navicon');
+                popover.show(element);
+            });
+
             // $ionicModal.fromTemplateUrl('templates/modal.html', {
             //     scope: $scope
             // }).then(function(modal) {
@@ -84,7 +96,6 @@ angular.module('mycdc.controllers', [])
             //     window.localStorage['runonce'] = true;
             // });
             //
-            // alert('')
         }
     });
 
@@ -209,8 +220,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DotwCtrl', function($scope, $location, $ionicLoading, DotwData, DotwStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('DotwCtrl', function($scope, $location, $ionicLoading, DotwData, DotwStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/disease/';
@@ -340,8 +350,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FluViewsCtrl', function($scope, $location, $ionicLoading, FluViewData, FluViewStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('FluViewsCtrl', function($scope, $location, $ionicLoading, FluViewData, FluViewStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/fluview/';
@@ -460,8 +469,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HealthArticlesCtrl', function($scope, $location, $ionicLoading, HealthArticlesData, HealthArticlesStorage, ScreenSize, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('HealthArticlesCtrl', function($scope, $location, $ionicLoading, HealthArticlesData, HealthArticlesStorage, ScreenSize, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/healtharticle/';
@@ -477,6 +485,10 @@ angular.module('mycdc.controllers', [])
     $scope.init = function() {
         //console.log('init');
         $scope.hasloaded = false;
+    };
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
     };
 
     var getData = function() {
@@ -599,8 +611,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('VitalSignsCtrl', function($scope, $location, $ionicLoading, VitalSignsData, VitalSignsStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('VitalSignsCtrl', function($scope, $location, $ionicLoading, VitalSignsData, VitalSignsStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/vitalsign/';
@@ -611,6 +622,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         VitalSignsData.async().then(
@@ -719,8 +734,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FastStatsCtrl', function($scope, $location, $ionicLoading, FastStatsData, FastStatsStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('FastStatsCtrl', function($scope, $location, $ionicLoading, FastStatsData, FastStatsStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/FastStat/';
@@ -731,6 +745,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         FastStatsData.async().then(
@@ -837,8 +855,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('WeeklyDiseaseCaseCountsCtrl', function($scope, $location, $ionicLoading, WeeklyCaseCountsData, WeeklyCaseCountsStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('WeeklyDiseaseCaseCountsCtrl', function($scope, $location, $ionicLoading, WeeklyCaseCountsData, WeeklyCaseCountsStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/WeeklyDiseaseCaseCount/';
@@ -849,6 +866,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         WeeklyCaseCountsData.async().then(
@@ -969,8 +990,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('EIDsCtrl', function($scope, $location, $ionicLoading, EIDsData, EIDsStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('EIDsCtrl', function($scope, $location, $ionicLoading, EIDsData, EIDsStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/EID/';
@@ -981,6 +1001,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         EIDsData.async().then(
@@ -1087,8 +1111,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('MMWRsCtrl', function($scope, $location, $ionicLoading, MMWRsData, MMWRsStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('MMWRsCtrl', function($scope, $location, $ionicLoading, MMWRsData, MMWRsStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/MMWR/';
@@ -1099,6 +1122,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         MMWRsData.async().then(
@@ -1205,8 +1232,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PCDsCtrl', function($scope, $location, $ionicLoading, PCDsData, PCDsStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('PCDsCtrl', function($scope, $location, $ionicLoading, PCDsData, PCDsStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PCD/';
@@ -1217,6 +1243,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         PCDsData.async().then(
@@ -1328,8 +1358,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('NewsroomsCtrl', function($scope, $location, $ionicLoading, NewsroomsData, NewsroomsStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('NewsroomsCtrl', function($scope, $location, $ionicLoading, NewsroomsData, NewsroomsStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Newsroom/';
@@ -1340,6 +1369,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         NewsroomsData.async().then(
@@ -1459,8 +1492,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('OutbreaksCtrl', function($scope, $location, $ionicLoading, OutbreaksData, OutbreaksStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('OutbreaksCtrl', function($scope, $location, $ionicLoading, OutbreaksData, OutbreaksStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Outbreak/';
@@ -1471,6 +1503,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         OutbreaksData.async().then(
@@ -1572,8 +1608,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('TravelNoticesCtrl', function($scope, $location, $ionicLoading, TravelNoticesData, TravelNoticesStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('TravelNoticesCtrl', function($scope, $location, $ionicLoading, TravelNoticesData, TravelNoticesStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/TravelNotice/';
@@ -1584,6 +1619,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         TravelNoticesData.async().then(
@@ -1688,8 +1727,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PodcastsCtrl', function($scope, $location, $ionicLoading, PodcastsData, PodcastsStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('PodcastsCtrl', function($scope, $location, $ionicLoading, PodcastsData, PodcastsStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Podcast/';
@@ -1700,6 +1738,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         PodcastsData.async().then(
@@ -1808,8 +1850,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PHILsCtrl', function($scope, $location, $ionicLoading, PHILsData, PHILsStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('PHILsCtrl', function($scope, $location, $ionicLoading, PHILsData, PHILsStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PHIL/';
@@ -1820,6 +1861,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         PHILsData.async().then(
@@ -1930,8 +1975,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PHMblogsCtrl', function($scope, $location, $ionicLoading, PHMblogsData, PHMblogsStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('PHMblogsCtrl', function($scope, $location, $ionicLoading, PHMblogsData, PHMblogsStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PHMblog/';
@@ -1942,6 +1986,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         PHMblogsData.async().then(
@@ -2052,8 +2100,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DirectorsBlogsCtrl', function($scope, $location, $ionicLoading, DirectorsBlogsData, DirectorsBlogsStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('DirectorsBlogsCtrl', function($scope, $location, $ionicLoading, DirectorsBlogsData, DirectorsBlogsStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/directorblog/';
@@ -2064,6 +2111,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         DirectorsBlogsData.async().then(
@@ -2182,8 +2233,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DidYouKnowCtrl', function($scope, $location, $ionicLoading, DidYouKnowData, DidYouKnowStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('DidYouKnowCtrl', function($scope, $location, $ionicLoading, DidYouKnowData, DidYouKnowStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/DYK/';
@@ -2194,6 +2244,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         DidYouKnowData.async().then(
@@ -2300,12 +2354,15 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FactoftheWeekCtrl', function($scope, $location, $ionicLoading, FactoftheWeekData, FactoftheWeekStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('FactoftheWeekCtrl', function($scope, $location, $ionicLoading, FactoftheWeekData, FactoftheWeekStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Fact/';
     $scope.name = 'Fact of the Week';
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -2427,8 +2484,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('YouTubesCtrl', function($scope, $location, $ionicLoading, YouTubesData, YouTubesStorage, $ionicHistory) {
-    var source = $location.$$url.split('/').pop();
+.controller('YouTubesCtrl', function($scope, $location, $ionicLoading, YouTubesData, YouTubesStorage, $ionicHistory, $ionicScrollDelegate) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/YouTube/';
@@ -2439,6 +2495,10 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
+
+    $scope.scrollTop = function() {
+        $ionicScrollDelegate.scrollTop();
+    };
 
     var getData = function() {
         YouTubesData.async().then(
@@ -2556,7 +2616,6 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('StreamCtrl', function($scope, $location, $ionicLoading) {
-    var source = $location.$$url.split('/').pop();
         //console.log('StreamCtrl source: ', source);
 })
 

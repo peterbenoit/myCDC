@@ -5,6 +5,7 @@
             on-refresh="doRefresh()">
         </ion-refresher>
         <div class="stream">
+            <h3 class="padding">{{name}}</h3>
             <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row">
                 <div class="card">
                     <div ng-if="data.isOutbreak" class="item item-notice outbreak"><b>Outbreak</b></div>
@@ -19,7 +20,7 @@
                         <p class="date">{{data.datePublished}}</p>
                         <p>{{data.description | words:20}}</p>
                     </a>
-                    <a class="item item-footer" ng-if="name" ng-href="{{url}}">
+                    <a class="item item-footer" ng-if="name" ng-click="scrollTop()">
                         {{name}}
                     </a>
                 </div>
