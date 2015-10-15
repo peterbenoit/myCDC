@@ -41,7 +41,7 @@
     font-style:italic;
 }
 
-body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea, p, b, i, em { font-family: 'Roboto', sans-serif; color:#303030; }
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Roboto', sans-serif; color:#303030; }
 
 /* ... */
 i, cite, em, var, address, dfn {
