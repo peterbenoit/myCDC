@@ -4,12 +4,22 @@
 angular.module('mycdc.services', ['ionic'])
 
 .factory('DeviceInfo', function() {
+    var ua = navigator.userAgent;
+    //Mozilla/5.0 (Linux; Android 4.4.2; SM-T310 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Safari/537.36
+    //Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LVY48H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.76 Mobile Safari/537.36
+
+    if (ua.indexOf('Android') > -1 && ua.indexOf('Mobile') === -1) {
+        console.log('setting androidtablet');
+        ionic.Platform.setPlatform('androidTablet');
+    }
+
     return {
         'deviceInformation': ionic.Platform.device(),
         'isWebView': ionic.Platform.isWebView(),
         'isIPad': ionic.Platform.isIPad(),
         'isIOS': ionic.Platform.isIOS(),
         'isAndroid': ionic.Platform.isAndroid(),
+        'isAndroidTablet': ionic.Platform.platform() === 'androidTablet',
         'isWindowsPhone': ionic.Platform.isWindowsPhone(),
         'currentPlatform': ionic.Platform.platform(),
         'currentPlatformVersion': ionic.Platform.version()

@@ -1,6 +1,6 @@
 <ion-view>
     <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-share" ng-click="shareData()"></button>
+        <button class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': devicePlatform === 'Android','ion-ios-upload-outline': devicePlatform !== 'Android'}"></button>
     </ion-nav-buttons>
     <ion-content class="has-header">
         <div class="padding data civ article">

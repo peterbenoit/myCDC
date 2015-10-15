@@ -43,6 +43,13 @@
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Roboto', 'Source Sans Pro', sans-serif; color:#303030; }
 
+
+/* useful */
+body.platform-ios {}
+body.platform-ipad {}
+body.platform-android {}
+body.platform-windowsphone {}
+
 /*
 colors
  */
@@ -141,11 +148,11 @@ colors
 
 
 /* content area adjustments */
-p.contentarea img {
+/*p.contentarea img {
     float: left;
     margin:0 10px 10px 0;
     clear: right;
-}
+}*/
 /*
 
  */
@@ -269,20 +276,20 @@ ion-side-menu h4 {
 }
 
 /* hiding first heading in content area */
-.contentarea h1:first-child,
+/*.contentarea h1:first-child,
 .contentarea .h1:first-child,
 .contentarea h2:first-child,
 .contentarea .h2:first-child,
 .contentarea h3:first-child,
 .contentarea .h3:first-child {
     display:none;
-}
+}*/
 
 /*
     hiding content
  */
 
-.civ table,
+/*.civ table,
 .civ table + .caption,
 .civ .civ [class*="onthis"], .civ [id*="onthis"],
 .civ a[href="#"],
@@ -296,7 +303,7 @@ ion-side-menu h4 {
 .civ .cat-links, .civ .tags-links,
 .civ hr {
     display:none!important;
-}
+}*/
 
 /*
 side menu wrap

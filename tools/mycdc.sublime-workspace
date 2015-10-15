@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"isAndroid",
+				"ionicPlatform.isAndroid	Ionic Platform"
+			],
+			[
+				"ioni",
+				"ionicHistory"
+			],
+			[
+				"Pod",
+				"Podcast"
+			],
+			[
+				"ion",
+				"ionicHistory"
+			],
+			[
 				"root",
 				"rootScope"
 			],
@@ -44,20 +60,12 @@
 				"ScreenSize	(services.js)"
 			],
 			[
-				"ioni",
-				"ionicBody"
-			],
-			[
 				"mat",
 				"matchMedia"
 			],
 			[
 				"en",
 				"enclosures	(data.js)"
-			],
-			[
-				"Pod",
-				"PodcastsData"
 			],
 			[
 				"resourc",
@@ -392,6 +400,46 @@
 	"buffers":
 	[
 		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/js/controllers.js",
+			"settings":
+			{
+				"buffer_size": 76194,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/templates/home.html",
+			"settings":
+			{
+				"buffer_size": 589,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/templates/video.html",
+			"settings":
+			{
+				"buffer_size": 1585,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/templates/menu.html",
+			"settings":
+			{
+				"buffer_size": 4175,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/js/app.js",
+			"settings":
+			{
+				"buffer_size": 21048,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "/Users/peterbenoit/DEV/myCDC/www/templates/stream.html",
 			"settings":
 			{
@@ -400,10 +448,18 @@
 			}
 		},
 		{
-			"file": "/Users/peterbenoit/DEV/myCDC/www/js/controllers.js",
+			"file": "/Users/peterbenoit/DEV/myCDC/www/css/style.css",
 			"settings":
 			{
-				"buffer_size": 75158,
+				"buffer_size": 5797,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/peterbenoit/DEV/myCDC/www/js/services.js",
+			"settings":
+			{
+				"buffer_size": 3027,
 				"line_ending": "Unix"
 			}
 		}
@@ -480,10 +536,26 @@
 	},
 	"file_history":
 	[
+		"/Users/peterbenoit/DEV/myCDC/www/templates/home-android-tablet.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/civ-demo.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/article.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/home-ipad.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/home-ios.html",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/home-android.html",
+		"/Users/peterbenoit/DEV/myCDC/www/js/services.js",
+		"/Users/peterbenoit/DEV/myCDC/www/json/conf.json",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/stream_image.html",
+		"/Users/peterbenoit/DEV/myCDC/www/js/app.js",
+		"/Users/peterbenoit/DEV/myCDC/www/json/README.md",
+		"/Users/peterbenoit/DEV/myCDC/www/templates/stream.html",
+		"/Users/peterbenoit/DEV/GeneralApp/www/js/services.js",
+		"/Users/peterbenoit/DEV/myCDC/.editorconfig",
+		"/Users/peterbenoit/DEV/myCDC/www/README.md",
+		"/Users/peterbenoit/DEV/myCDC/README.md",
+		"/Users/peterbenoit/DEV/myCDC/tools/exists.php",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/blog.html",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/data.html",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/fact.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/article.html",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/audio.html",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/embed.html",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/journal.html",
@@ -493,19 +565,13 @@
 		"/Users/peterbenoit/DEV/myCDC/www/css/style.css",
 		"/Users/peterbenoit/DEV/myCDC/www/js/controllers.js",
 		"/Users/peterbenoit/DEV/myCDC/www/js/data.js",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/stream.html",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/image_stream.html",
 		"/Users/peterbenoit/DEV/myCDC/www/js/directives.js",
-		"/Users/peterbenoit/DEV/myCDC/www/js/app.js",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/modal.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/home-android.html",
-		"/Users/peterbenoit/DEV/myCDC/tools/exists.php",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/settings.html",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/home.html",
 		"/Users/peterbenoit/DEV/myCDC/www/index.html",
 		"/Users/peterbenoit/DEV/myCDC/www/js/local-storage.js",
-		"/Users/peterbenoit/DEV/myCDC/www/js/services.js",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/civ-demo.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/js/controllers.js",
 		"/Users/peterbenoit/DEV/myCDC/www/json/sources/FactoftheWeek 1.json",
 		"/Users/peterbenoit/DEV/GeneralApp/www/js/angular-adaptive-templating.min.js",
@@ -527,7 +593,6 @@
 		"/Users/peterbenoit/DEV/myCDC/www/templates/menu.html",
 		"/Users/peterbenoit/DEV/mycdc/www/templates/stream.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/js/data.js",
-		"/Users/peterbenoit/DEV/myCDC/www/json/conf.json",
 		"/Users/peterbenoit/DEV/myCDC/platforms/ios/myCDC/myCDC-Info.plist",
 		"/Users/peterbenoit/DEV/mycdc/platforms/android/assets/www/css/style.css",
 		"/Users/peterbenoit/DEV/mycdc/platforms/android/assets/www/js/controllers.js",
@@ -547,7 +612,6 @@
 		"/Users/peterbenoit/DEV/myCDC/www/json/sources/DOTW.json",
 		"/Users/peterbenoit/DEV/mobionic/ionic.project",
 		"/Users/peterbenoit/DEV/GeneralApp/www/js/local-storage.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/services.js",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/settings.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-grid-3.html",
 		"/Users/peterbenoit/DEV/myCDC/www/img/card-placeholder.png",
@@ -561,8 +625,6 @@
 		"/Users/peterbenoit/DEV/myCDC/merges/ios/css/platform.css",
 		"/Users/peterbenoit/DEV/myCDC/www/css/mq-tablet.css",
 		"/Users/peterbenoit/DEV/myCDC/merges/android/css/platform.css",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/home-ipad.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/home-ios.html",
 		"/Users/peterbenoit/DEV/myCDC/www/css/platform.css",
 		"/Users/peterbenoit/DEV/myCDC/www/templates/home-iphone.html",
 		"/Users/peterbenoit/DEV/GeneralApp/www/index.html",
@@ -601,13 +663,7 @@
 		"/Users/peterbenoit/DEV/GeneralApp/www/js/angular-moment-min.js",
 		"/Users/peterbenoit/DEV/myCDC/www/json/content/README.md",
 		"/Users/peterbenoit/DEV/myCDC/www/json/sources/DidYouKnow.json",
-		"/Users/peterbenoit/DEV/myCDC/tools/www/js/data.js",
-		"/Users/peterbenoit/DEV/myCDC/tools/www/js/controllers.js",
-		"/Users/peterbenoit/DEV/myCDC/tools/www/templates/embed.html",
-		"/Users/peterbenoit/DEV/myCDC/tools/www/js/app.js",
-		"/Users/peterbenoit/DEV/myCDC/tools/www/css/style.css",
-		"/Users/peterbenoit/DEV/myCDC/platforms/ios/build/device/myCDC.app/_CodeSignature/CodeResources",
-		"/Users/peterbenoit/DEV/myCDC/www/json/content/343933.json"
+		"/Users/peterbenoit/DEV/myCDC/tools/www/js/data.js"
 	],
 	"find":
 	{
@@ -615,9 +671,11 @@
 	},
 	"find_in_files":
 	{
-		"height": 425.0,
+		"height": 95.0,
 		"where_history":
 		[
+			"/Users/peterbenoit/DEV/myCDC/www/",
+			"/Users/peterbenoit/DEV/myCDC/www/templates",
 			"<open files>",
 			"",
 			"/Users/peterbenoit/DEV/mycdc/www/",
@@ -743,9 +801,7 @@
 			"homepage2.less",
 			"*.less",
 			"*.html",
-			"*.less",
-			"*.html",
-			"*.js"
+			"*.less"
 		]
 	},
 	"find_state":
@@ -753,6 +809,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"image_stream",
+			"\"hasimage\":",
+			"back",
 			"disease",
 			".image-stream ",
 			"director",
@@ -877,10 +936,7 @@
 			"PodcastsData",
 			"class=\"banana\" ",
 			"col50",
-			"ng-class",
-			"PHILsCtrl",
-			"$scope.title = ",
-			"pod"
+			"ng-class"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -954,23 +1010,98 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/Users/peterbenoit/DEV/myCDC/www/templates/stream.html",
+					"file": "/Users/peterbenoit/DEV/myCDC/www/js/controllers.js",
 					"settings":
 					{
-						"buffer_size": 1772,
+						"buffer_size": 76194,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1366,
-								1366
+								1697,
+								1697
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 336.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/templates/home.html",
+					"settings":
+					{
+						"buffer_size": 589,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								316,
+								16
 							]
 						],
 						"settings":
@@ -1034,19 +1165,171 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "/Users/peterbenoit/DEV/myCDC/www/js/controllers.js",
+					"buffer": 2,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/templates/video.html",
 					"settings":
 					{
-						"buffer_size": 75158,
+						"buffer_size": 1585,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								70214,
-								70214
+								10,
+								10
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/templates/menu.html",
+					"settings":
+					{
+						"buffer_size": 4175,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								196,
+								196
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/js/app.js",
+					"settings":
+					{
+						"buffer_size": 21048,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3857,
+								3857
 							]
 						],
 						"settings":
@@ -1104,7 +1387,235 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 36073.0,
+						"translation.y": 1347.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/templates/stream.html",
+					"settings":
+					{
+						"buffer_size": 1772,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1527,
+								315
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/css/style.css",
+					"settings":
+					{
+						"buffer_size": 5797,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4353,
+								4353
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3506.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/Users/peterbenoit/DEV/myCDC/www/js/services.js",
+					"settings":
+					{
+						"buffer_size": 3027,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1086,
+								1086
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1154,8 +1665,16 @@
 		"selected_items":
 		[
 			[
+				"articl",
+				"myCDC/www/templates/article.html"
+			],
+			[
 				"app",
 				"myCDC/www/js/app.js"
+			],
+			[
+				"service",
+				"myCDC/www/js/services.js"
 			],
 			[
 				"local",
@@ -1656,14 +2175,6 @@
 			[
 				"homepage/index",
 				"homepage/index2.html"
-			],
-			[
-				"homepage.less",
-				"less/homepage.less"
-			],
-			[
-				"globa",
-				"js/global.js"
 			]
 		],
 		"width": 0.0
