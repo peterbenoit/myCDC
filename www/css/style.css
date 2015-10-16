@@ -86,10 +86,19 @@ colors
 
 
 
+.button.button-positive.activated {
+    background-color:#075290;
+}
 
 
-
-
+   .button.button-positive.button-clear {
+      color: #075290; }
+    .button.button-positive.button-outline {
+      border-color: #075290;
+      color: #075290; }
+      .button.button-positive.button-outline.active, .button.button-positive.button-outline.activated {
+        background-color: #075290;
+}
 
 
 

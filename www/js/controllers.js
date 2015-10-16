@@ -124,7 +124,7 @@ angular.module('mycdc.controllers', [])
         icon: 'ion-checkmark-circled'
     }, {
         title: 'FluView Weekly Summary',
-        href: '#/app/fluviews',
+        href: '#/app/fluview/0',
         icon: 'ion-checkmark-circled'
     }, {
         title: 'Health Articles',
@@ -152,7 +152,7 @@ angular.module('mycdc.controllers', [])
         icon: 'ion-close-circled'
     }, {
         title: 'Did You Know?',
-        href: '#/app/DidYouKnow',
+        href: '#/app/DYK/0',
         icon: 'ion-checkmark-circled'
     }, {
         title: 'Fact of the Week (Bad data)',
@@ -295,7 +295,10 @@ angular.module('mycdc.controllers', [])
     $scope.data = DotwData.get($stateParams.idx);
     $scope.nochrome = false;
     $scope.name = 'Disease of the Week'; // TODO: is this provided?
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     var sourceurl = DotwData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
@@ -341,73 +344,6 @@ angular.module('mycdc.controllers', [])
     };
 })
 
-// SYNDICATED CONTENT
-/**
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @return {[type]}
- */
-.controller('FluViewsCtrl', function($scope, $location, $ionicLoading, FluViewData, FluViewStorage, $ionicScrollDelegate) {
-    $scope.datas = [];
-    $scope.storage = '';
-    $scope.url = '#/app/fluview/';
-    $scope.name = 'FluView Weekly Summary';
-
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
-    });
-
-    var getData = function() {
-        FluViewData.async().then(
-            // successCallback
-            function() {
-                $scope.datas = FluViewData.getAll();
-                $ionicLoading.hide();
-                $scope.$broadcast('scroll.refreshComplete');
-            },
-            // errorCallback
-            function() {
-                $scope.datas = FluViewStorage.all();
-                $scope.storage = 'Data from local storage';
-                $ionicLoading.hide();
-                $scope.$broadcast('scroll.refreshComplete');
-            },
-            // notifyCallback
-            function() {}
-        );
-    };
-
-    getData();
-
-    var page = 1,
-        pageSize = 10;
-
-    $scope.doRefresh = function() {
-        getData();
-    };
-
-    $scope.paginationLimit = function(data) {
-        return pageSize * page;
-    };
-
-    $scope.hasMoreItems = function() {
-        return page < ($scope.datas.length / pageSize);
-    };
-
-    $scope.showMoreItems = function() {
-        page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
-    };
-})
-
 /**
  * @param  {[type]}
  * @param  {[type]}
@@ -416,29 +352,53 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('FluViewCtrl', function($scope, $stateParams, $ionicLoading, $sce, FluViewData, FluViewContent) {
+.controller('FluViewCtrl', function($scope, $stateParams, $ionicLoading, $sce, FluViewData, FluViewStorage, FluViewContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
         showDelay: 100
     });
 
-    $scope.data = FluViewData.get($stateParams.idx);
-    $scope.id = FluViewData.getId($stateParams.idx);
-    $scope.name = 'FluView Weekly Summary';
-    $scope.devicePlatform = device.platform;
-
-    FluViewContent.getContent($scope.id).then(
-        function(resp) {
-            $scope.content = $sce.trustAsHtml(resp.data.results.content);
-            $ionicLoading.hide();
-        },
+    FluViewData.async().then(
+        // successCallback
         function() {
-            alert('Could not load URL');
+            $scope.data = FluViewData.getAll();
             $ionicLoading.hide();
+            getContent()
+            $scope.$broadcast('scroll.refreshComplete');
         },
+        // errorCallback
+        function() {
+            $scope.data = FluViewStorage.all();
+            $scope.storage = 'Data from local storage';
+            $ionicLoading.hide();
+            getContent()
+            $scope.$broadcast('scroll.refreshComplete');
+        },
+        // notifyCallback
         function() {}
     );
+
+    getContent = function() {
+        $scope.id = $scope.data.id;
+        $scope.name = 'FluView Weekly Summary';
+
+        if(window.device){
+            $scope.devicePlatform = device.platform;
+        }
+
+        FluViewContent.getContent($scope.id).then(
+            function(resp) {
+                $scope.content = $sce.trustAsHtml(resp.data.results.content);
+                $ionicLoading.hide();
+            },
+            function() {
+                alert('Could not load URL');
+                $ionicLoading.hide();
+            },
+            function() {}
+        );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
@@ -558,7 +518,9 @@ angular.module('mycdc.controllers', [])
     $scope.data = HealthArticlesData.get($stateParams.idx);
     $scope.nochrome = false;
     $scope.name = 'Health Articles'; // TODO: is this provided?
-    $scope.devicePlatform = device.platform;
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     var sourceurl = HealthArticlesData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
@@ -691,7 +653,10 @@ angular.module('mycdc.controllers', [])
     $scope.data = VitalSignsData.get($stateParams.idx);
     $scope.id = VitalSignsData.getId($stateParams.idx);
     $scope.name = 'Vital Signs';
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     //console.log($scope.data);
 
@@ -815,7 +780,10 @@ angular.module('mycdc.controllers', [])
     $scope.data = FastStatsData.get($stateParams.idx);
     $scope.id = FastStatsData.getId($stateParams.idx);
     $scope.name = 'FastStats';
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     FastStatsContent.getContent($scope.id).then(
         function(resp) {
@@ -939,7 +907,10 @@ angular.module('mycdc.controllers', [])
 
     $scope.data = WeeklyCaseCountsData.get($stateParams.idx);
     $scope.name = 'Weekly Disease Case Counts';
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     var sourceurl = WeeklyCaseCountsData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
@@ -1073,7 +1044,10 @@ angular.module('mycdc.controllers', [])
     $scope.data = EIDsData.get($stateParams.idx);
     $scope.id = EIDsData.getId($stateParams.idx);
     $scope.name = 'Emerging Infectious Disease (EID)';
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     EIDsContent.getContent($scope.id).then(
         function(resp) {
@@ -1195,7 +1169,10 @@ angular.module('mycdc.controllers', [])
     $scope.data = MMWRsData.get($stateParams.idx);
     $scope.id = MMWRsData.getId($stateParams.idx);
     $scope.name = 'Morbidity and Mortality Weekly Report (MMWR)';
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     MMWRsContent.getContent($scope.id).then(
         function(resp) {
@@ -1322,7 +1299,10 @@ angular.module('mycdc.controllers', [])
     $scope.data = PCDsData.get($stateParams.idx);
     $scope.id = PCDsData.getId($stateParams.idx);
     $scope.name = 'Preventing Chronic Disease (PCD)';
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     PCDsContent.getContent($scope.id).then(
         function(resp) {
@@ -1446,7 +1426,10 @@ angular.module('mycdc.controllers', [])
     $scope.news = NewsroomsData.get($stateParams.idx);
     $scope.nochrome = false;
     $scope.name = "Newsroom";
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     var sourceurl = NewsroomsData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
@@ -1580,7 +1563,10 @@ angular.module('mycdc.controllers', [])
     });
     $scope.data = OutbreaksData.get($stateParams.idx);
     $scope.name = "Outbreaks";
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     var sourceurl = OutbreaksData.getSourceUrl($stateParams.idx);
 
@@ -1697,7 +1683,10 @@ angular.module('mycdc.controllers', [])
     });
     $scope.data = TravelNoticesData.get($stateParams.idx);
     $scope.name = "Travel Notices";
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     var sourceurl = TravelNoticesData.getSourceUrl($stateParams.idx);
 
@@ -1813,7 +1802,10 @@ angular.module('mycdc.controllers', [])
     $scope.data = PodcastsData.get(position);
     $scope.id = PodcastsData.getId(position);
     $scope.name = "Podcasts";
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
     var audio = PodcastsData.getAudio(position);
 
     $scope.previous = {
@@ -1937,7 +1929,11 @@ angular.module('mycdc.controllers', [])
     $scope.data = PHILsData.get(position);
     $scope.id = PHILsData.getId(position);
     $scope.name = "Public Health Image Library";
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
+
     $scope.image = $scope.data.enclosures[0].resourceUrl;
 
     $scope.previous = {
@@ -2065,8 +2061,11 @@ angular.module('mycdc.controllers', [])
 
     $scope.data = PHMblogsData.get($stateParams.idx);
     $scope.id = PHMblogsData.getId($stateParams.idx);
-    $scope.name = 'Public Health Matters Blog'; // TODO: is this provided?
-    $scope.devicePlatform = device.platform;
+    $scope.name = 'Public Health Matters Blog';
+    // TODO: is this provided?
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     PHMblogsContent.getContent($scope.id).then(
         function(resp) {
@@ -2192,7 +2191,10 @@ angular.module('mycdc.controllers', [])
     $scope.data = DirectorsBlogsData.get($stateParams.idx);
     $scope.id = DirectorsBlogsData.getId($stateParams.idx);
     $scope.name = 'CDC Directors Blog'; // TODO: is this provided?
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     DirectorsBlogsContent.getContent($scope.id).then(
         function(resp) {
@@ -2239,106 +2241,53 @@ angular.module('mycdc.controllers', [])
  * *******************************************************************************************
  */
 
-// SYNDICATED CONTENT
-/**
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @return {[type]}
- */
-.controller('DidYouKnowCtrl', function($scope, $location, $ionicLoading, DidYouKnowData, DidYouKnowStorage, $ionicScrollDelegate) {
-    $scope.datas = [];
-    $scope.storage = '';
-    $scope.url = '#/app/DYK/';
-    $scope.name = 'Did You Know?';
-
+.controller('DYKCtrl', function($scope, $stateParams, $ionicLoading, $sce, DidYouKnowData, DidYouKnowStorage, DidYouKnowContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
         showDelay: 100
     });
 
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
+    DidYouKnowData.async().then(
+        // successCallback
+        function() {
+            $scope.data = DidYouKnowData.getAll();
+            $ionicLoading.hide();
+            getContent()
+            $scope.$broadcast('scroll.refreshComplete');
+        },
+        // errorCallback
+        function() {
+            $scope.data = DidYouKnowStorage.all();
+            $scope.storage = 'Data from local storage';
+            $ionicLoading.hide();
+            getContent()
+            $scope.$broadcast('scroll.refreshComplete');
+        },
+        // notifyCallback
+        function() {}
+    );
 
-    var getData = function() {
-        DidYouKnowData.async().then(
-            function() {
-                $scope.datas = DidYouKnowData.getAll();
+    getContent = function() {
+        $scope.id = $scope.data.id;
+        $scope.name = 'Did You Know?';
+
+        if(window.device){
+            $scope.devicePlatform = device.platform;
+        }
+
+        DidYouKnowContent.getContent($scope.id).then(
+            function(resp) {
+                $scope.content = $sce.trustAsHtml(resp.data.results.content);
                 $ionicLoading.hide();
-                $scope.$broadcast('scroll.refreshComplete');
             },
             function() {
-                $scope.datas = DidYouKnowStorage.all();
-                $scope.storage = 'Data from local storage';
+                alert('Could not load URL');
                 $ionicLoading.hide();
-                $scope.$broadcast('scroll.refreshComplete');
             },
             function() {}
         );
-    };
-
-    getData();
-
-    var page = 1,
-        pageSize = 10;
-
-    $scope.doRefresh = function() {
-        getData();
-    };
-
-    $scope.paginationLimit = function(data) {
-        return pageSize * page;
-    };
-
-    $scope.hasMoreItems = function() {
-        return page < ($scope.datas.length / pageSize);
-    };
-
-    $scope.showMoreItems = function() {
-        page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
-    };
-})
-
-/**
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @param  {Object}
- * @param  {[type]}
- * @return {[type]}
- */
-.controller('DYKCtrl', function($scope, $ionicLoading, $stateParams, $sce, DidYouKnowData, DidYouKnowContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
-    });
-
-    $scope.data = DidYouKnowData.get($stateParams.idx);
-    $scope.id = DidYouKnowData.getId($stateParams.idx);
-    $scope.name = 'Did You Know?';
-    $scope.devicePlatform = device.platform;
-
-    DidYouKnowContent.getContent($scope.id).then(
-        function(resp) {
-            $scope.content = $sce.trustAsHtml(resp.data.results.content);
-            $ionicLoading.hide();
-        },
-        function() {
-            alert('Content not available.');
-            $ionicLoading.hide();
-        },
-        function() {}
-    );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
@@ -2360,6 +2309,7 @@ angular.module('mycdc.controllers', [])
         window.open($scope.data.sourceUrl, '_blank');
     };
 })
+
 
 // SYNDICATED CONTENT
 /**
@@ -2448,7 +2398,10 @@ angular.module('mycdc.controllers', [])
     $scope.data = FactoftheWeekData.get($stateParams.idx);
     $scope.id = FactoftheWeekData.getId($stateParams.idx);
     $scope.name = 'Fact of the Week';
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
 
     FactoftheWeekContent.getContent($scope.id).then(
         function(resp) {
@@ -2575,11 +2528,26 @@ angular.module('mycdc.controllers', [])
     //     showBackdrop: false,
     //     showDelay: 100
     // });
+    var position = $stateParams.idx,
+        count = YouTubesData.getCount();
 
     $scope.data = YouTubesData.get($stateParams.idx);
     $scope.id = YouTubesData.getId($stateParams.idx);
     $scope.name = 'YouTube';
-    $scope.devicePlatform = device.platform;
+
+    if(window.device){
+        $scope.devicePlatform = device.platform;
+    }
+
+    $scope.previous = {
+        'visible': position > 0,
+        'position': parseInt(position) - 1
+    };
+
+    $scope.next = {
+        'visible': position < count - 1,
+        'position': parseInt(position) + 1
+    };
 
     // YouTubesContent.getContent($scope.id).then(
     //     function(resp) {
@@ -2708,4 +2676,4 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('Video  Ctrl', function($scope, $stateParams) {});
+.controller('VideoCtrl', function($scope, $stateParams) {});

@@ -228,33 +228,6 @@ add to body class: platform-wp8
     // *******************************************************************************************
     // FluView Weekly Summary
     // *******************************************************************************************
-    .state('app.fluviews', {
-        url: '/fluviews',
-        views: {
-            'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
-                        return 'templates/stream-android-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
-                controller: 'FluViewsCtrl'
-            }
-        }
-    })
     .state('app.fluview', {
         url: '/fluview/:idx',
         views: {
@@ -540,33 +513,6 @@ add to body class: platform-wp8
     // *******************************************************************************************
     // Did You Know
     // *******************************************************************************************
-    .state('app.DidYouKnow', {
-        url: '/DidYouKnow',
-        views: {
-            'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
-                        return 'templates/stream-android-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
-                controller: 'DidYouKnowCtrl'
-            }
-        }
-    })
     .state('app.DYK', {
         url: '/DYK/:idx',
         views: {

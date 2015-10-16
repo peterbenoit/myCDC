@@ -1,1 +1,42 @@
-{"meta":{"status":200,"message":[],"resultSet":{"id":"35a45bb0-f16e-4d1c-b156-a0097a91bedd"},"pagination":{"total":1,"count":1,"max":100,"offset":0,"pageNum":1,"totalPages":1,"sort":"-datepublished,mediaid","previousUrl":"","currentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=did you know&fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=100&pagenum=1","nextUrl":""}},"results":[{"id":343983,"name":"Did You Know from the Office for State, Tribal, Local and Territorial Support","description":"Did You Know?","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"}],"sourceUrl":"http://www.cdc.gov/stltpublichealth/didyouknow/index.html","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343983/syndicate.json","datePublished":"2011-02-02T01:23:00Z","dateModified":"2015-09-18T20:21:28Z","enclosures":[]}]}
+{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "35a45bb0-f16e-4d1c-b156-a0097a91bedd"
+        },
+        "pagination": {
+            "total": 1,
+            "count": 1,
+            "max": 100,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 1,
+            "sort": "-datepublished,mediaid",
+            "previousUrl": "",
+            "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=did you know&fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=100&pagenum=1",
+            "nextUrl": ""
+        }
+    },
+    "results": [{
+        "id": 343983,
+        "name": "Did You Know from the Office for State, Tribal, Local and Territorial Support",
+        "description": "Did You Know?",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }],
+        "sourceUrl": "http://www.cdc.gov/stltpublichealth/didyouknow/index.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343983/syndicate.json",
+        "datePublished": "2011-02-02T01:23:00Z",
+        "dateModified": "2015-09-18T20:21:28Z",
+        "enclosures": []
+    }]
+}

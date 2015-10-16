@@ -134,6 +134,11 @@ angular.module('mycdc.data', [])
     return service;
 })
 
+/**
+ * Content is an additional query for data, either by sourceUrl or syndicateUrl
+ * @param  {[type]} $http
+ * @return {[type]}
+ */
 .factory('DotwContent', function($http) {
     return {
         getStatus: function(url) {
@@ -153,10 +158,7 @@ angular.module('mycdc.data', [])
         promise = deferred.promise,
         data = [],
         time = new Date(),
-        datum = [],
-        enclosures = [],
-        service = {},
-        hasImage = false;
+        service = {};
 
     service.async = function() {
         $http({
@@ -165,35 +167,9 @@ angular.module('mycdc.data', [])
             timeout: 5000
         }).
         then(function(d) {
-            data = d.data.results;
-
-            for (var i = data.length - 1; i >= 0; i--) {
-                datum = data[i];
-                hasImage = false;
-
-                // format the dateModified
-                time = moment(datum.datePublished);
-                datum.datePublished = time.format('MMMM Do, YYYY');
-
-                // if there's an enclosure
-                if (datum.enclosures.length) {
-                    enclosures = datum.enclosures;
-
-                    // look for the image enclosure
-                    for (var j = enclosures.length - 1; j >= 0; j--) {
-                        if (enclosures[j].contentType.indexOf('image') > -1) {
-                            hasImage = true;
-                            datum.imageSrc = enclosures[j].resourceUrl;
-                            break;
-                        }
-                    }
-                }
-
-                datum.hasImage = hasImage;
-            }
-
-            // console.log(data);
-
+            data = d.data.results[0];   // only the first (and onlyl?) record
+            time = moment(data.datePublished);
+            data.datePublished = time.format('MMMM Do, YYYY');
             FluViewStorage.save(data);
             deferred.resolve();
         }).
@@ -210,17 +186,6 @@ angular.module('mycdc.data', [])
         return data;
     };
 
-    service.get = function(idx) {
-        return data[idx];
-    };
-
-    service.getId = function(idx) {
-        return data[idx].id;
-    };
-
-    service.getSourceUrl = function(idx) {
-        return data[idx].sourceUrl;
-    };
     return service;
 })
 
@@ -1258,8 +1223,6 @@ angular.module('mycdc.data', [])
         then(function(d) {
             data = d.data.results;
 
-            console.log(ScreenSize.width);
-
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
                 hasImage = false;
@@ -1525,10 +1488,7 @@ angular.module('mycdc.data', [])
         promise = deferred.promise,
         data = [],
         time = new Date(),
-        datum = [],
-        enclosures = [],
-        service = {},
-        hasImage = false;
+        service = {};
 
     service.async = function() {
         $http({
@@ -1537,35 +1497,9 @@ angular.module('mycdc.data', [])
             timeout: 5000
         }).
         then(function(d) {
-            data = d.data.results;
-
-            for (var i = data.length - 1; i >= 0; i--) {
-                datum = data[i];
-                hasImage = false;
-
-                // format the dateModified
-                time = moment(datum.datePublished);
-                datum.datePublished = time.format('MMMM Do, YYYY');
-
-                // if there's an enclosure
-                if (datum.enclosures.length) {
-                    enclosures = datum.enclosures;
-
-                    // look for the image enclosure
-                    for (var j = enclosures.length - 1; j >= 0; j--) {
-                        if (enclosures[j].contentType.indexOf('image') > -1) {
-                            hasImage = true;
-                            datum.imageSrc = enclosures[j].resourceUrl;
-                            break;
-                        }
-                    }
-                }
-
-                datum.hasImage = hasImage;
-            }
-
-            // console.log(data);
-
+            data = d.data.results[0];   // only the first (and onlyl?) record
+            time = moment(data.datePublished);
+            data.datePublished = time.format('MMMM Do, YYYY');
             DidYouKnowStorage.save(data);
             deferred.resolve();
         }).
@@ -1580,14 +1514,6 @@ angular.module('mycdc.data', [])
 
     service.getAll = function() {
         return data;
-    };
-
-    service.get = function(idx) {
-        return data[idx];
-    };
-
-    service.getId = function(idx) {
-        return data[idx].id;
     };
 
     return service;
@@ -1780,6 +1706,10 @@ angular.module('mycdc.data', [])
 
     service.getId = function(idx) {
         return data[idx].id;
+    };
+
+    service.getCount = function() {
+        return data.length;
     };
 
     return service;

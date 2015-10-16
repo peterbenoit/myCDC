@@ -10,8 +10,8 @@
             <div class="source">Source: {{name}}</div>
             <p ng-bind-html="data.description"></p>
             <!-- <p><a href="{{transcript}}">Transcript</a></p> -->
-            <a class="button icon-left ion-ios-arrow-back button-outline" ng-class="{'button-negative':!previous.visible, 'button-positive':previous.visible}" ng-disabled="!previous.visible" href="#/app/Podcast/{{previous.position}}">Previous</a>
-            <a class="button icon-left ion-ios-arrow-forward button-outline" ng-class="{'button-negative':!next.visible, 'button-positive':next.visible}" ng-disabled="!next.visible" href="#/app/Podcast/{{next.position}}">Next</a>
+            <a class="button icon-left ion-ios-arrow-back button-outline" ng-class="{'button-negative':!previous.visible, 'button-positive':previous.visible}" ng-disabled="!previous.visible" href="#/app/YouTube/{{previous.position}}">Previous</a>
+            <a class="button icon-left ion-ios-arrow-forward button-outline" ng-class="{'button-negative':!next.visible, 'button-positive':next.visible}" ng-disabled="!next.visible" href="#/app/YouTube/{{next.position}}">Next</a>
             <div class="border">
                 <p class="padding right">
                     <button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
