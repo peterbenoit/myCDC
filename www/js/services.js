@@ -9,8 +9,7 @@ angular.module('mycdc.services', ['ionic'])
     //Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LVY48H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.76 Mobile Safari/537.36
 
     if (ua.indexOf('Android') > -1 && ua.indexOf('Mobile') === -1) {
-        console.log('setting androidtablet');
-        ionic.Platform.setPlatform('androidTablet');
+        ionic.Platform.setPlatform('androidtablet');
     }
 
     return {
@@ -19,7 +18,7 @@ angular.module('mycdc.services', ['ionic'])
         'isIPad': ionic.Platform.isIPad(),
         'isIOS': ionic.Platform.isIOS(),
         'isAndroid': ionic.Platform.isAndroid(),
-        'isAndroidTablet': ionic.Platform.platform() === 'androidTablet',
+        'isAndroidTablet': ionic.Platform.platform() === 'androidtablet', //ionic.Platform.is('androidtablet')
         'isWindowsPhone': ionic.Platform.isWindowsPhone(),
         'currentPlatform': ionic.Platform.platform(),
         'currentPlatformVersion': ionic.Platform.version()

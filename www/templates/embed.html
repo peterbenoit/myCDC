@@ -1,9 +1,9 @@
 <ion-view>
     <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': devicePlatform === 'Android','ion-ios-upload-outline': devicePlatform !== 'Android'}"></button>
+        <button class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
     </ion-nav-buttons>
     <ion-content scroll="true" overflow-scroll="true" class="iframe-wrapper">
-        <div ng-if="nochrome" class="padding">
+        <div ng-if="nochrome" class="padding data civ embed">
             <div class="title">{{data.name}}</div>
             <div class="datepub">{{data.datePublished}}</div>
             <div class="source">Source: {{name}}</div>

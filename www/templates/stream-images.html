@@ -8,12 +8,12 @@
             <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row" ng-if="$index % 2 === 0">
                 <a href="{{url}}{{$index}}" ng-if="$index < datas.length">
                     <div class="item item-image">
-                        <img ng-src="{{datas[$index].imageSrc}}" class="horizontal" orientation halfwidth>
+                        <img ng-src="{{datas[$index].imageSrc}}" class="horizontal" halfwidth>
                     </div>
                 </a>
                 <a href="{{url}}{{$index + 1}}" ng-if="$index + 1 < datas.length">
                     <div class="item item-image">
-                        <img ng-src="{{datas[$index + 1].imageSrc}}" class="horizontal" orientation halfwidth>
+                        <img ng-src="{{datas[$index + 1].imageSrc}}" class="horizontal" halfwidth>
                     </div>
                 </a>
             </div>

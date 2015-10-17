@@ -26,9 +26,12 @@ add to body class: platform-wp8
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, Orientation, ScreenSize) {
+.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, Orientation, ScreenSize, $ionicScrollDelegate, $state, $stateParams) {
     var rs = $rootScope,
         href = window.location.href;
+
+        rs.$state = $state;
+        rs.$stateParams = $stateParams;
 
         rs.HomeCtrlLoad = false;
 
@@ -60,6 +63,10 @@ add to body class: platform-wp8
         rs.orientation = Orientation;
         rs.screensize = ScreenSize;
 
+        rs.scrollTop = function() {
+            $ionicScrollDelegate.scrollTop();
+        };
+
         /**
          * https://github.com/gbenvenuti/cordova-plugin-screen-orientation
          */
@@ -71,6 +78,8 @@ add to body class: platform-wp8
                 screen.unlockOrientation();
             }
         }
+
+        // angular.element(window).on('resize', windowResizeHandler);
 
         // kick off a media query listener to tag the body with a class
         var mq;
@@ -95,6 +104,7 @@ add to body class: platform-wp8
                     console.log('changed to landscape');
                     $ionicBody.removeClass('portrait').addClass('landscape');
                 }
+                rs.orientation = Orientation;
             });
         }
     });
@@ -122,7 +132,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/home-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -139,23 +149,6 @@ add to body class: platform-wp8
                     }
 
                     return 'templates/home.html';
-
-                    // switch (ionic.Platform.is) {
-                    //     case 'Android':
-                    //         return 'templates/home-android.html';
-                    //         break;
-                    //     case 'Ipad':
-                    //         return 'templates/home-ipad.html';
-                    //         break;
-                    //     case 'Iphone':
-                    //         return 'templates/home-ios.html';
-                    //         break;
-                    //     case 'WindowsPhone':
-                    //         return 'templates/home-windows.html';
-                    //         break;
-                    //     default:
-                    //         return 'templates/home.html';
-                    // }
                 },
                 controller: 'HomeCtrl'
             }
@@ -194,7 +187,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -245,7 +238,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -284,7 +277,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -323,7 +316,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -362,7 +355,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -401,7 +394,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -440,7 +433,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -479,7 +472,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -530,7 +523,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -569,7 +562,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -608,7 +601,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -647,7 +640,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -686,7 +679,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -725,7 +718,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -764,7 +757,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -866,7 +859,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
@@ -905,7 +898,7 @@ add to body class: platform-wp8
         views: {
             'menuContent': {
                 templateUrl: function() {
-                    if (ionic.Platform.platform() === 'androidtablet') {
+                    if (ionic.Platform.is('androidtablet')) {
                         return 'templates/stream-android-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {

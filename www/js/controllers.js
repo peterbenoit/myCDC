@@ -69,8 +69,6 @@ angular.module('mycdc.controllers', [])
         }
     }
 
-
-
     // This little bit of nonsense checks for the existance of the runonce localstorage key and if the Home Controller has already loaded (it loads 2x for some reason)
     // If they key doesn't exist, and the Home Controller hasn't already loaded, load the modal
     $ionicPlatform.ready(function() {
@@ -85,7 +83,17 @@ angular.module('mycdc.controllers', [])
                 $scope.popover = popover;
                 var element = document.getElementById('navicon');
                 popover.show(element);
+
+                $scope.closePopover = function() {
+                    $scope.popover.hide();
+                    $scope.popover.remove();
+                };
+                // $scope.$on('$destroy', function() {
+                //     $scope.popover.remove();
+                // });
             });
+
+
 
             // $ionicModal.fromTemplateUrl('templates/modal.html', {
             //     scope: $scope
@@ -220,7 +228,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DotwCtrl', function($scope, $location, $ionicLoading, DotwData, DotwStorage, $ionicScrollDelegate) {
+.controller('DotwCtrl', function($scope, $location, $ionicLoading, DotwData, DotwStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/disease/';
@@ -295,10 +303,6 @@ angular.module('mycdc.controllers', [])
     $scope.data = DotwData.get($stateParams.idx);
     $scope.nochrome = false;
     $scope.name = 'Disease of the Week'; // TODO: is this provided?
-
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
 
     var sourceurl = DotwData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
@@ -431,7 +435,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HealthArticlesCtrl', function($scope, $location, $ionicLoading, HealthArticlesData, HealthArticlesStorage, ScreenSize, $ionicScrollDelegate) {
+.controller('HealthArticlesCtrl', function($scope, $location, $ionicLoading, HealthArticlesData, HealthArticlesStorage, ScreenSize) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/healtharticle/';
@@ -447,10 +451,6 @@ angular.module('mycdc.controllers', [])
     $scope.init = function() {
         //console.log('init');
         $scope.hasloaded = false;
-    };
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
     };
 
     var getData = function() {
@@ -518,10 +518,6 @@ angular.module('mycdc.controllers', [])
     $scope.data = HealthArticlesData.get($stateParams.idx);
     $scope.nochrome = false;
     $scope.name = 'Health Articles'; // TODO: is this provided?
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     var sourceurl = HealthArticlesData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
         newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
@@ -576,7 +572,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('VitalSignsCtrl', function($scope, $location, $ionicLoading, VitalSignsData, VitalSignsStorage, $ionicScrollDelegate) {
+.controller('VitalSignsCtrl', function($scope, $location, $ionicLoading, VitalSignsData, VitalSignsStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/vitalsign/';
@@ -587,10 +583,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         VitalSignsData.async().then(
@@ -654,10 +646,6 @@ angular.module('mycdc.controllers', [])
     $scope.id = VitalSignsData.getId($stateParams.idx);
     $scope.name = 'Vital Signs';
 
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     //console.log($scope.data);
 
     VitalSignsContent.getContent($scope.id).then(
@@ -703,7 +691,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FastStatsCtrl', function($scope, $location, $ionicLoading, FastStatsData, FastStatsStorage, $ionicScrollDelegate) {
+.controller('FastStatsCtrl', function($scope, $location, $ionicLoading, FastStatsData, FastStatsStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/FastStat/';
@@ -714,10 +702,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         FastStatsData.async().then(
@@ -781,10 +765,6 @@ angular.module('mycdc.controllers', [])
     $scope.id = FastStatsData.getId($stateParams.idx);
     $scope.name = 'FastStats';
 
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     FastStatsContent.getContent($scope.id).then(
         function(resp) {
             $scope.content = $sce.trustAsHtml(resp.data.results.content);
@@ -828,7 +808,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('WeeklyDiseaseCaseCountsCtrl', function($scope, $location, $ionicLoading, WeeklyCaseCountsData, WeeklyCaseCountsStorage, $ionicScrollDelegate) {
+.controller('WeeklyDiseaseCaseCountsCtrl', function($scope, $location, $ionicLoading, WeeklyCaseCountsData, WeeklyCaseCountsStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/WeeklyDiseaseCaseCount/';
@@ -839,10 +819,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         WeeklyCaseCountsData.async().then(
@@ -908,10 +884,6 @@ angular.module('mycdc.controllers', [])
     $scope.data = WeeklyCaseCountsData.get($stateParams.idx);
     $scope.name = 'Weekly Disease Case Counts';
 
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     var sourceurl = WeeklyCaseCountsData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
         newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
@@ -967,7 +939,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('EIDsCtrl', function($scope, $location, $ionicLoading, EIDsData, EIDsStorage, $ionicScrollDelegate) {
+.controller('EIDsCtrl', function($scope, $location, $ionicLoading, EIDsData, EIDsStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/EID/';
@@ -978,10 +950,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         EIDsData.async().then(
@@ -1045,10 +1013,6 @@ angular.module('mycdc.controllers', [])
     $scope.id = EIDsData.getId($stateParams.idx);
     $scope.name = 'Emerging Infectious Disease (EID)';
 
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     EIDsContent.getContent($scope.id).then(
         function(resp) {
             $scope.content = $sce.trustAsHtml(resp.data.results.content);
@@ -1092,7 +1056,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('MMWRsCtrl', function($scope, $location, $ionicLoading, MMWRsData, MMWRsStorage, $ionicScrollDelegate) {
+.controller('MMWRsCtrl', function($scope, $location, $ionicLoading, MMWRsData, MMWRsStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/MMWR/';
@@ -1103,10 +1067,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         MMWRsData.async().then(
@@ -1170,10 +1130,6 @@ angular.module('mycdc.controllers', [])
     $scope.id = MMWRsData.getId($stateParams.idx);
     $scope.name = 'Morbidity and Mortality Weekly Report (MMWR)';
 
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     MMWRsContent.getContent($scope.id).then(
         function(resp) {
             $scope.content = $sce.trustAsHtml(resp.data.results.content);
@@ -1217,7 +1173,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PCDsCtrl', function($scope, $location, $ionicLoading, PCDsData, PCDsStorage, $ionicScrollDelegate) {
+.controller('PCDsCtrl', function($scope, $location, $ionicLoading, PCDsData, PCDsStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PCD/';
@@ -1228,10 +1184,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         PCDsData.async().then(
@@ -1300,10 +1252,6 @@ angular.module('mycdc.controllers', [])
     $scope.id = PCDsData.getId($stateParams.idx);
     $scope.name = 'Preventing Chronic Disease (PCD)';
 
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     PCDsContent.getContent($scope.id).then(
         function(resp) {
             $scope.content = $sce.trustAsHtml(resp.data.results.content);
@@ -1347,7 +1295,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('NewsroomsCtrl', function($scope, $location, $ionicLoading, NewsroomsData, NewsroomsStorage, $ionicScrollDelegate) {
+.controller('NewsroomsCtrl', function($scope, $location, $ionicLoading, NewsroomsData, NewsroomsStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Newsroom/';
@@ -1358,10 +1306,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         NewsroomsData.async().then(
@@ -1427,10 +1371,6 @@ angular.module('mycdc.controllers', [])
     $scope.nochrome = false;
     $scope.name = "Newsroom";
 
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     var sourceurl = NewsroomsData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
         newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
@@ -1485,7 +1425,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('OutbreaksCtrl', function($scope, $location, $ionicLoading, OutbreaksData, OutbreaksStorage, $ionicScrollDelegate) {
+.controller('OutbreaksCtrl', function($scope, $location, $ionicLoading, OutbreaksData, OutbreaksStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Outbreak/';
@@ -1496,10 +1436,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         OutbreaksData.async().then(
@@ -1564,10 +1500,6 @@ angular.module('mycdc.controllers', [])
     $scope.data = OutbreaksData.get($stateParams.idx);
     $scope.name = "Outbreaks";
 
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     var sourceurl = OutbreaksData.getSourceUrl($stateParams.idx);
 
     $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
@@ -1605,7 +1537,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('TravelNoticesCtrl', function($scope, $location, $ionicLoading, TravelNoticesData, TravelNoticesStorage, $ionicScrollDelegate) {
+.controller('TravelNoticesCtrl', function($scope, $location, $ionicLoading, TravelNoticesData, TravelNoticesStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/TravelNotice/';
@@ -1616,10 +1548,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         TravelNoticesData.async().then(
@@ -1684,10 +1612,6 @@ angular.module('mycdc.controllers', [])
     $scope.data = TravelNoticesData.get($stateParams.idx);
     $scope.name = "Travel Notices";
 
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     var sourceurl = TravelNoticesData.getSourceUrl($stateParams.idx);
 
     $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
@@ -1728,7 +1652,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PodcastsCtrl', function($scope, $location, $ionicLoading, PodcastsData, PodcastsStorage, $ionicScrollDelegate) {
+.controller('PodcastsCtrl', function($scope, $location, $ionicLoading, PodcastsData, PodcastsStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Podcast/';
@@ -1739,10 +1663,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         PodcastsData.async().then(
@@ -1802,10 +1722,6 @@ angular.module('mycdc.controllers', [])
     $scope.data = PodcastsData.get(position);
     $scope.id = PodcastsData.getId(position);
     $scope.name = "Podcasts";
-
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
     var audio = PodcastsData.getAudio(position);
 
     $scope.previous = {
@@ -1855,7 +1771,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PHILsCtrl', function($scope, $location, $ionicLoading, PHILsData, PHILsStorage, $ionicScrollDelegate) {
+.controller('PHILsCtrl', function($scope, $location, $ionicLoading, PHILsData, PHILsStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PHIL/';
@@ -1866,10 +1782,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         PHILsData.async().then(
@@ -1930,10 +1842,6 @@ angular.module('mycdc.controllers', [])
     $scope.id = PHILsData.getId(position);
     $scope.name = "Public Health Image Library";
 
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     $scope.image = $scope.data.enclosures[0].resourceUrl;
 
     $scope.previous = {
@@ -1985,7 +1893,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PHMblogsCtrl', function($scope, $location, $ionicLoading, PHMblogsData, PHMblogsStorage, $ionicScrollDelegate) {
+.controller('PHMblogsCtrl', function($scope, $location, $ionicLoading, PHMblogsData, PHMblogsStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PHMblog/';
@@ -1996,10 +1904,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         PHMblogsData.async().then(
@@ -2063,10 +1967,6 @@ angular.module('mycdc.controllers', [])
     $scope.id = PHMblogsData.getId($stateParams.idx);
     $scope.name = 'Public Health Matters Blog';
     // TODO: is this provided?
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     PHMblogsContent.getContent($scope.id).then(
         function(resp) {
             $scope.content = $sce.trustAsHtml(resp.data.results.content);
@@ -2114,7 +2014,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DirectorsBlogsCtrl', function($scope, $location, $ionicLoading, DirectorsBlogsData, DirectorsBlogsStorage, $ionicScrollDelegate) {
+.controller('DirectorsBlogsCtrl', function($scope, $location, $ionicLoading, DirectorsBlogsData, DirectorsBlogsStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/directorblog/';
@@ -2125,10 +2025,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         DirectorsBlogsData.async().then(
@@ -2191,10 +2087,6 @@ angular.module('mycdc.controllers', [])
     $scope.data = DirectorsBlogsData.get($stateParams.idx);
     $scope.id = DirectorsBlogsData.getId($stateParams.idx);
     $scope.name = 'CDC Directors Blog'; // TODO: is this provided?
-
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
 
     DirectorsBlogsContent.getContent($scope.id).then(
         function(resp) {
@@ -2321,15 +2213,11 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FactoftheWeekCtrl', function($scope, $location, $ionicLoading, FactoftheWeekData, FactoftheWeekStorage, $ionicScrollDelegate) {
+.controller('FactoftheWeekCtrl', function($scope, $location, $ionicLoading, FactoftheWeekData, FactoftheWeekStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Fact/';
     $scope.name = 'Fact of the Week';
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -2399,10 +2287,6 @@ angular.module('mycdc.controllers', [])
     $scope.id = FactoftheWeekData.getId($stateParams.idx);
     $scope.name = 'Fact of the Week';
 
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
-
     FactoftheWeekContent.getContent($scope.id).then(
         function(resp) {
             $scope.content = $sce.trustAsHtml(resp.data.results.content);
@@ -2455,7 +2339,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('YouTubesCtrl', function($scope, $location, $ionicLoading, YouTubesData, YouTubesStorage, $ionicScrollDelegate) {
+.controller('YouTubesCtrl', function($scope, $location, $ionicLoading, YouTubesData, YouTubesStorage) {
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/YouTube/';
@@ -2466,10 +2350,6 @@ angular.module('mycdc.controllers', [])
         showBackdrop: false,
         showDelay: 100
     });
-
-    $scope.scrollTop = function() {
-        $ionicScrollDelegate.scrollTop();
-    };
 
     var getData = function() {
         YouTubesData.async().then(
@@ -2534,10 +2414,6 @@ angular.module('mycdc.controllers', [])
     $scope.data = YouTubesData.get($stateParams.idx);
     $scope.id = YouTubesData.getId($stateParams.idx);
     $scope.name = 'YouTube';
-
-    if(window.device){
-        $scope.devicePlatform = device.platform;
-    }
 
     $scope.previous = {
         'visible': position > 0,

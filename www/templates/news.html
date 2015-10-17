@@ -1,15 +1,15 @@
 <ion-view>
     <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': devicePlatform === 'Android','ion-ios-upload-outline': devicePlatform !== 'Android'}"></button>
+        <button class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
     </ion-nav-buttons>
     <ion-content class="has-header">
-        <div class="padding data">
+        <div class="padding data civ news">
             <div class="title">{{data.name}}</div>
             <div class="datepub">{{data.datePublished}}</div>
             <div class="source">Source: {{name}}</div>
             <p class="contentarea" ng-bind-html="content"></p>
             <div class="border">
-                <p class="padding right">
+                <p class="padding">
                     <button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
                     <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
                 </p>
