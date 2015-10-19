@@ -320,26 +320,10 @@ angular.module('mycdc.data', [])
 
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
-                hasImage = false;
 
                 // format the dateModified
                 time = moment(datum.datePublished);
                 datum.datePublished = time.format('MMMM Do, YYYY');
-
-                // if there's an enclosure
-                if (datum.enclosures.length) {
-                    enclosures = datum.enclosures;
-
-                    // look for the image enclosure
-                    for (var j = enclosures.length - 1; j >= 0; j--) {
-                        if (enclosures[j].contentType.indexOf('image') > -1) {
-                            hasImage = true;
-                            datum.imageSrc = enclosures[j].resourceUrl;
-                            break;
-                        }
-                    }
-                }
-
                 datum.hasImage = hasImage;
             }
 
