@@ -6,3 +6,7 @@ platforms/
 plugins/
 
 *.log
+
+*.sublime-workspace
+
+*.sublime-project
