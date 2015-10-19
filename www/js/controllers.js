@@ -344,7 +344,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -421,7 +421,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -558,7 +558,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -677,7 +677,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -794,7 +794,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -923,7 +923,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -1042,7 +1042,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -1159,7 +1159,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -1281,7 +1281,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -1411,7 +1411,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -1523,7 +1523,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -1635,7 +1635,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -1757,7 +1757,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -1871,7 +1871,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -1996,10 +1996,10 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
     $scope.postComment = function() {
-        window.open($scope.data.sourceUrl + '#respond', '_blank');
+        window.open($scope.data.sourceUrl + '#respond', '_system');
     };
 })
 
@@ -2117,10 +2117,10 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
     $scope.postComment = function() {
-        window.open($scope.data.sourceUrl + '#respond', '_blank');
+        window.open($scope.data.sourceUrl + '#respond', '_system');
     };
 })
 
@@ -2164,7 +2164,7 @@ angular.module('mycdc.controllers', [])
         $scope.id = $scope.data.id;
         $scope.name = 'Did You Know?';
 
-        if(window.device){
+        if(window.device) {
             $scope.devicePlatform = device.platform;
         }
 
@@ -2198,7 +2198,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -2316,7 +2316,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 })
 
@@ -2454,7 +2454,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.viewOnCDC = function() {
-        window.open($scope.data.sourceUrl, '_blank');
+        window.open($scope.data.sourceUrl, '_system');
     };
 
     $scope.getVideoUrl = function() {

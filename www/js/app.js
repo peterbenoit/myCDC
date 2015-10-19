@@ -40,6 +40,43 @@ add to body class: platform-wp8
     // }
 
     $ionicPlatform.ready(function() {
+
+
+        if (window.device) {
+            window.open = cordova.InAppBrowser.open;
+        }
+
+        // Open any EXTERNAL link with InAppBrowser Plugin
+        $(document).on('click', '[href^=http], [href^=https]', function(e) {
+
+            // window.open(‘http://example.com’, ‘_system’);    Loads in the system browser
+            // window.open(‘http://example.com’, ‘_blank’);     Loads in the InAppBrowser
+            // window.open(‘http://example.com’, ‘_blank’, ‘location=no’);  Loads in the InAppBrowser with no location bar
+            // window.open(‘http://example.com’, ‘_self’);  Loads in the Cordova web view
+
+            e.preventDefault();
+
+            var t = $(this),
+                href = t.attr('href'),
+                browser = t.data('browser') || '_system';
+
+
+            var ref = window.open(href, browser, 'location=no');
+
+            ref.addEventListener('loadstop', function() {
+            // alert(ref);
+            });
+
+            //TODO: not working in iOS
+            // if (href.indexOf('cdc.gov') >= 0) {
+            //     ref.addEventListener('loadstop', function() {
+            //         ref.insertCSS({
+            //             code: 'header#header { display: none; }footer#footer {display:none} div#socialMediaShareContainer.dd {display:none}'
+            //         });
+            //     });
+            // }
+        });
+
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
