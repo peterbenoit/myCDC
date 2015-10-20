@@ -35,37 +35,63 @@ add to body class: platform-wp8
 
         rs.HomeCtrlLoad = false;
 
-    // if(href.indexOf('android') > -1 || href.indexOf('Bundle') > -1) {
-    //     alert('not in ionic.view');
-    // }
+
+    // window.open should use inappbrowser
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        window.open = cordova.InAppBrowser.open;
+    }
+
+    // frameready() is called in embed.html, when the iframe has loaded
+    // NOTE: this only works on a device
+    window.frameready = function() {
+        var iframe = $("#contentframe");
+            anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
+
+        // Capture any anchors clicked in the iframe document
+        anchors.on('click', function(e) {
+            e.preventDefault();
+
+            console.log('iframe click');
+
+            var framesrc = iframe.attr('src'),
+                href = $(this).attr('href'),
+                anchor = document.createElement('a');
+                anchor.href = href;
+            var anchorhost = anchor.hostname;
+
+            // create an anchor with the href set to the iframe src to fetch the domain & protocol
+            // WARN: cannot assume "http" || "www.cdc.gov"
+            var frameanchor = document.createElement('a');
+                frameanchor.href = framesrc;
+            var framehost = frameanchor.hostname,
+                frameprotocol = frameanchor.protocol;
+
+            // if this anchor doesn't have a hostname
+            if (anchorhost === '') {
+                href = frameprotocol + '//' + framehost + href;
+            }
+
+            window.open(href, '_system');
+        });
+    };
 
     $ionicPlatform.ready(function() {
-
-
         if (window.device) {
             window.open = cordova.InAppBrowser.open;
         }
 
         // Open any EXTERNAL link with InAppBrowser Plugin
         $(document).on('click', '[href^=http], [href^=https]', function(e) {
-
-            // window.open(‘http://example.com’, ‘_system’);    Loads in the system browser
-            // window.open(‘http://example.com’, ‘_blank’);     Loads in the InAppBrowser
-            // window.open(‘http://example.com’, ‘_blank’, ‘location=no’);  Loads in the InAppBrowser with no location bar
-            // window.open(‘http://example.com’, ‘_self’);  Loads in the Cordova web view
-
             e.preventDefault();
 
+            console.log('document click');
+
             var t = $(this),
-                href = t.attr('href'),
-                browser = t.data('browser') || '_system';
+                href = t.attr('href');
 
 
-            var ref = window.open(href, browser, 'location=no');
-
-            ref.addEventListener('loadstop', function() {
-            // alert(ref);
-            });
+            var ref = window.open(href, '_system');
 
             //TODO: not working in iOS
             // if (href.indexOf('cdc.gov') >= 0) {
