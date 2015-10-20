@@ -125,7 +125,7 @@ angular.module('mycdc.controllers', [])
     {
         title: 'CDC Around the World',
         href: '#/app/cdcatws',
-        icon: 'ion-close-circled'
+        icon: 'ion-checkmark-circled'
     }, {
         title: 'Disease of the Week',
         href: '#/app/dotw',
