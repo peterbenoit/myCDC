@@ -5,7 +5,7 @@
             on-refresh="doRefresh()">
         </ion-refresher>
         <div class="stream tablet-stream">
-            <h3 class="padding">{{name}}</h3>
+            <h3 class="padding">Tablet ({{orientation}}): {{name}}</h3>
             <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row" ng-if="$index % 2 === 0">
                 <div class="card" ng-if="$index < datas.length">
                     <div ng-if="data.isOutbreak" class="item item-notice outbreak"><b>Outbreak</b></div>
@@ -15,7 +15,7 @@
                     <a ng-if="data.hasImage" class="item item-image" ng-href="{{url}}{{$index}}">
                         <img ng-src="{{data.imageSrc}}" err-src="img/image-placeholder.png" halfwidth>
                     </a>
-                    <a class="item item-text-wrap item-body animated" ng-href="{{url}}{{$index}}">
+                    <a class="item item-text-wrap item-body" ng-href="{{url}}{{$index}}">
                         <strong>{{data.name | words:10}}</strong>
                         <p class="date">{{data.datePublished}}</p>
                         <p>{{data.description | words:20}}</p>
@@ -32,7 +32,7 @@
                     <a ng-if="data.hasImage" class="item item-image" ng-href="{{url}}{{$index + 1}}">
                         <img ng-src="{{datas[$index + 1].imageSrc}}" err-src="img/image-placeholder.png" halfwidth>
                     </a>
-                    <a class="item item-text-wrap item-body animated" ng-href="{{url}}{{$index + 1}}">
+                    <a class="item item-text-wrap item-body" ng-href="{{url}}{{$index + 1}}">
                         <strong>{{datas[$index + 1].name | words:10}}</strong>
                         <p class="date">{{datas[$index + 1].datePublished}}</p>
                         <p>{{datas[$index + 1].description | words:20}}</p>
