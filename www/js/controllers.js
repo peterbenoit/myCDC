@@ -195,20 +195,36 @@ angular.module('mycdc.controllers', [])
         href: '#/app/PHILs',
         icon: 'ion-checkmark-circled'
     }, {
-        title: 'Instagram',
-        href: '#/app/Instagrams',
-        icon: 'ion-close-circled'
-    }, {
-        title: 'Flickr',
-        href: '#/app/Flickrs',
-        icon: 'ion-close-circled'
-    }, {
         title: 'Podcasts',
         href: '#/app/Podcasts',
         icon: 'ion-checkmark-circled'
     }, {
         title: 'YouTube',
         href: '#/app/YouTubes',
+        icon: 'ion-checkmark-circled'
+    }, {
+        title: 'Instagram',
+        href: 'https://instagram.com/cdcgov/',
+        icon: 'ion-checkmark-circled'
+    }, {
+        title: 'Flickr',
+        href: 'https://www.flickr.com/photos/CDCsocialmedia',
+        icon: 'ion-checkmark-circled'
+    }, {
+        title: 'Facebook',
+        href: 'https://www.facebook.com/CDC',
+        icon: 'ion-checkmark-circled'
+    }, {
+        title: 'Google+',
+        href: 'https://plus.google.com/+CDC/posts',
+        icon: 'ion-checkmark-circled'
+    }, {
+        title: 'Twitter',
+        href: 'https://twitter.com/CDCgov',
+        icon: 'ion-checkmark-circled'
+    }, {
+        title: 'Pinterest',
+        href: 'https://www.pinterest.com/cdcgov/',
         icon: 'ion-checkmark-circled'
     }, {
         title: 'CIV Demo Page',
