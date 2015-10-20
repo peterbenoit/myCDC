@@ -935,21 +935,6 @@ angular.module('mycdc.data', [])
                 // format the dateModified
                 time = moment(datum.datePublished);
                 datum.datePublished = time.format('MMMM Do, YYYY');
-
-                // if there's an enclosure
-                // if (datum.enclosures.length) {
-                //     enclosures = datum.enclosures;
-
-                //     // look for the image enclosure
-                //     for (var j = enclosures.length - 1; j >= 0; j--) {
-                //         if (enclosures[j].contentType.indexOf('image') > -1) {
-                //             hasImage = true;
-                //             datum.imageSrc = enclosures[j].resourceUrl;
-                //             break;
-                //         }
-                //     }
-                // }
-
                 datum.hasImage = hasImage;
             }
 
@@ -1018,25 +1003,10 @@ angular.module('mycdc.data', [])
                 time = moment(datum.datePublished);
                 datum.datePublished = time.format('MMMM Do, YYYY');
 
-                //Warning, Watch, Alert
+                //Warning, Watch, Alert, based off text in the name
                 datum.isAlert = datum.name.indexOf('Alert') > -1;
                 datum.isWatch = datum.name.indexOf('Watch') > -1;
                 datum.isWarning = datum.name.indexOf('Warning') > -1;
-
-                // if there's an enclosure
-                // if (datum.enclosures.length) {
-                //     enclosures = datum.enclosures;
-
-                //     // look for the image enclosure
-                //     for (var j = enclosures.length - 1; j >= 0; j--) {
-                //         if (enclosures[j].contentType.indexOf('image') > -1) {
-                //             hasImage = true;
-                //             datum.imageSrc = enclosures[j].resourceUrl;
-                //             break;
-                //         }
-                //     }
-                // }
-
                 datum.hasImage = hasImage;
             }
 
