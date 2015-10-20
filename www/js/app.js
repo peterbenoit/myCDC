@@ -213,19 +213,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/home-android-tablet.html';
+                        return 'templates/home-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/home-android.html';
+                        return 'templates/home.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/home-ipad.html';
+                        return 'templates/home-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/home-ios.html';
+                        return 'templates/home.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/home-windowsphone.html';
+                        return 'templates/home.html';
                     }
 
                     return 'templates/home.html';
@@ -260,6 +260,45 @@ console.log('document click');
  * Ideally, these would all be dynamic, based off some config file. But I don't know if Angular works that way - yet .
  */
     // *******************************************************************************************
+    // CDC Around the World
+    // *******************************************************************************************
+    .state('app.cdcatws', {
+        url: '/cdcatws',
+        views: {
+            'menuContent': {
+                templateUrl: function() {
+                    if (ionic.Platform.is('androidtablet')) {
+                        return 'templates/stream-tablet.html';
+                    }
+                    if (ionic.Platform.isAndroid()) {
+                        return 'templates/stream.html';
+                    }
+                    if (ionic.Platform.isIPad()) {
+                        return 'templates/stream-tablet.html';
+                    }
+                    if (ionic.Platform.isIOS()) {
+                        return 'templates/stream.html';
+                    }
+                    if (ionic.Platform.isWindowsPhone()) {
+                        return 'templates/stream.html';
+                    }
+
+                    return 'templates/stream.html';
+                },
+                controller: 'CDCAtwsCtrl'
+            }
+        }
+    })
+    .state('app.cdcatw', {
+        url: '/cdcatw/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/embed.html',
+                controller: 'CDCAtwsCtrl'
+            }
+        }
+    })
+    // *******************************************************************************************
     // Disease of the Week
     // *******************************************************************************************
     .state('app.DOTW', {
@@ -268,19 +307,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -319,19 +358,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -358,19 +397,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -397,19 +436,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -436,19 +475,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -475,19 +514,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -514,19 +553,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -553,19 +592,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -604,19 +643,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -643,19 +682,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -682,19 +721,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -721,19 +760,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -760,19 +799,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -799,19 +838,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -838,19 +877,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -940,19 +979,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
@@ -979,19 +1018,19 @@ console.log('document click');
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-android-tablet.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-android.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-ipad.html';
+                        return 'templates/stream-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-ios.html';
+                        return 'templates/stream.html';
                     }
                     if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-windowsphone.html';
+                        return 'templates/stream.html';
                     }
 
                     return 'templates/stream.html';
