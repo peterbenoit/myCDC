@@ -26,7 +26,7 @@ add to body class: platform-wp8
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, Orientation, ScreenSize, $ionicScrollDelegate, $state, $stateParams) {
+.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams) {
     var rs = $rootScope,
         href = window.location.href;
 
@@ -123,7 +123,6 @@ add to body class: platform-wp8
         }
 
         rs.deviceinfo = DeviceInfo;
-        rs.orientation = Orientation;
         rs.screensize = ScreenSize;
 
         rs.scrollTop = function() {
@@ -142,7 +141,15 @@ add to body class: platform-wp8
             }
         }
 
-        // angular.element(window).on('resize', windowResizeHandler);
+        // rs.$on('resize', function() {
+        //     console.log('rs resize');
+        // })
+
+        angular.element($(window)).bind('resize', _.debounce(function() {
+            rs.orientation = $('body').hasClass('portrait') ? 'portrait' : 'landscape';
+            // rs.$broadcast("resize");
+            rs.$apply();
+        }, 150));
 
         // kick off a media query listener to tag the body with a class
         var mq;
@@ -167,7 +174,6 @@ add to body class: platform-wp8
                     console.log('changed to landscape');
                     $ionicBody.removeClass('portrait').addClass('landscape');
                 }
-                rs.orientation = Orientation;
             });
         }
     });
