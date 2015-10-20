@@ -4,7 +4,7 @@
             pulling-text="Pull to refresh..."
             on-refresh="doRefresh()">
         </ion-refresher>
-        <div class="stream">
+        <div class="stream" resize>
             <h3 class="padding">{{name}}</h3>
             <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row">
                 <div class="card">
@@ -12,10 +12,10 @@
                     <div ng-if="data.isWarning" class="item item-notice warning"><b>Travel Notice</b> - Warning Level 3</div>
                     <div ng-if="data.isWatch" class="item item-notice watch"><b>Travel Notice</b> - Watch Level 1</div>
                     <div ng-if="data.isAlert" class="item item-notice alert"><b>Travel Notice</b> - Alert Level 2</div>
-                    <a ng-if="data.hasImage" class="item item-image" ng-href="{{url}}{{$index}}">
+                    <a ng-if="data.hasImage" class="item item-image" ng-href="{{url}}{{$index}}" ng-style="fullwidth()">
                         <img ng-src="{{data.imageSrc}}" err-src="img/image-placeholder.png" fullwidth>
                     </a>
-                    <a class="item item-text-wrap item-body animated" ng-href="{{url}}{{$index}}">
+                    <a class="item item-text-wrap item-body" ng-href="{{url}}{{$index}}">
                         <strong>{{data.name | words:10}}</strong>
                         <p class="date">{{data.datePublished}}</p>
                         <p>{{data.description | words:20}}</p>
