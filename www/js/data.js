@@ -202,6 +202,83 @@ angular.module('mycdc.data', [])
     };
 })
 
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.factory('CDCAtwsData', function($http, $q, CDCAtwsStorage) {
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
+
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/sources/CDCAroundtheWorld.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
+            CDCAtwsStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = CDCAtwsStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {});
+
+        return promise;
+    };
+
+    service.getAll = function() {
+        return data;
+    };
+
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    service.getId = function(idx) {
+        return data[idx].id;
+    };
+
+    return service;
+})
+
+/**
+ * Content is an additional query for data, either by sourceUrl or syndicateUrl
+ * @param  {[type]} $http
+ * @return {[type]}
+ */
+.factory('CDCAtwsContent', function($http) {
+    return {
+        getContent: function(id) {
+            return $http.get('json/content/' + id + '.json');
+        }
+    };
+})
+
 /**
  * @param  {[type]}
  * @param  {[type]}

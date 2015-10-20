@@ -293,8 +293,8 @@ console.log('document click');
         url: '/cdcatw/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/embed.html',
-                controller: 'CDCAtwsCtrl'
+                templateUrl: 'templates/article.html',
+                controller: 'CDCAtwCtrl'
             }
         }
     })

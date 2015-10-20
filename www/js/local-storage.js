@@ -526,5 +526,26 @@ angular.module('mycdc.storage', [])
             window.localStorage.removeItem('phil');
         }
     };
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('CDCAtwsStorage', function() {
+    return {
+        all: function() {
+            var atw = window.localStorage['atw'];
+            if (atw) {
+                return angular.fromJson(atw);
+            }
+            return {};
+        },
+        save: function(atw) {
+            window.localStorage['atw'] = angular.toJson(atw);
+        },
+        clear: function() {
+            window.localStorage.removeItem('atw');
+        }
+    };
 });
 

@@ -124,7 +124,7 @@ angular.module('mycdc.controllers', [])
     $scope.sources = [
     {
         title: 'CDC Around the World',
-        href: '#/app/cdcatw',
+        href: '#/app/cdcatws',
         icon: 'ion-close-circled'
     }, {
         title: 'Disease of the Week',
@@ -577,6 +577,127 @@ angular.module('mycdc.controllers', [])
         window.open($scope.data.sourceUrl, '_system');
     };
 })
+
+// ARTICLE: SYNDICATED CONTENT
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('CDCAtwsCtrl', function($scope, $location, $ionicLoading, CDCAtwsData, CDCAtwsStorage) {
+    $scope.datas = [];
+    $scope.storage = '';
+    $scope.url = '#/app/cdcatw/';
+    $scope.name = 'CDC Around the World';
+
+    $scope.loading = $ionicLoading.show({
+        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+        showBackdrop: false,
+        showDelay: 100
+    });
+
+    var getData = function() {
+        CDCAtwsData.async().then(
+            function() {
+                $scope.datas = CDCAtwsData.getAll();
+                $ionicLoading.hide();
+                $scope.$broadcast('scroll.refreshComplete');
+            },
+            function() {
+                $scope.datas = CDCAtwsStorage.all();
+                $scope.storage = 'Data from local storage';
+                $ionicLoading.hide();
+                $scope.$broadcast('scroll.refreshComplete');
+            },
+            function() {}
+        );
+    };
+
+    getData();
+
+    var page = 1,
+        pageSize = 10;
+
+    $scope.doRefresh = function() {
+        getData();
+    };
+
+    $scope.paginationLimit = function(data) {
+        return pageSize * page;
+    };
+
+    $scope.hasMoreItems = function() {
+        return page < ($scope.datas.length / pageSize);
+    };
+
+    $scope.showMoreItems = function() {
+        page = page + 1;
+        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+            $scope.$apply();
+        }
+    };
+})
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {Object}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('CDCAtwCtrl', function($scope, $ionicLoading, $stateParams, $sce, CDCAtwsData, CDCAtwsContent) {
+    $scope.loading = $ionicLoading.show({
+        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+        showBackdrop: false,
+        showDelay: 100
+    });
+
+    $scope.data = CDCAtwsData.get($stateParams.idx);
+    $scope.id = CDCAtwsData.getId($stateParams.idx);
+    $scope.name = 'CDC Around the World';
+
+    //console.log($scope.data);
+
+    CDCAtwsContent.getContent($scope.id).then(
+        function(resp) {
+            $scope.content = $sce.trustAsHtml(resp.data.results.content);
+            $ionicLoading.hide();
+        },
+        function() {
+            alert('Content not available.');
+            $ionicLoading.hide();
+        },
+        function() {}
+    );
+
+    $scope.shareData = function() {
+        if (window.plugins && window.plugins.socialsharing) {
+            var subject = $scope.data.name,
+                message = $scope.data.description,
+                link = $scope.data.sourceUrl;
+            message = message.replace(/(<([^>]+)>)/ig, '');
+
+            //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
+            //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
+            window.plugins.socialsharing.share(message, subject, null, link);
+        }
+        else {
+            alert('Social Sharing not available in Ionic View');
+        }
+    };
+
+    $scope.viewOnCDC = function() {
+        window.open($scope.data.sourceUrl, '_system');
+    };
+})
+
+//////////////////////////////////
 
 // ARTICLE: SYNDICATED CONTENT
 /**
