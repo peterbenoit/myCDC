@@ -10,7 +10,6 @@
   <content src="index.html"/>
   <access origin="*.cdc.gov"/>
   <access origin="*.pushwoosh.com" />
-  <access origin="*.peterbenoit.com" />
   <allow-navigation href="*://*.cdc.gov/*"/>
   <allow-intent href="*://*.cdc.gov/*"/>
   <preference name="webviewbounce" value="false"/>
