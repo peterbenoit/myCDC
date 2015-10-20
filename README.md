@@ -29,7 +29,7 @@
 
 #Cordova Plugins
 
-These will likely change as the app matures. For instance, I don't believe I'm currently using the Screen Orientation plugin.
+These will likely change as the app matures.
 
 Here are some currently being used:
 
