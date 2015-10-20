@@ -32,9 +32,8 @@ add to body class: platform-wp8
 
         rs.$state = $state;
         rs.$stateParams = $stateParams;
-
-        rs.HomeCtrlLoad = false;
-
+        rs.HomeCtrlLoad = false;        // for whatever reason, the HomeCtrl controller loads multiple times; setting a flag here, which is modified in the controller, so it only loads once.
+        rs.existsUrl = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
 
     // window.open should use inappbrowser
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -47,6 +46,7 @@ add to body class: platform-wp8
     window.frameready = function() {
         var iframe = $("#contentframe");
             anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
+            //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
 
         // Capture any anchors clicked in the iframe document
         anchors.on('click', function(e) {

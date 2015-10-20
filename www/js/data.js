@@ -139,10 +139,10 @@ angular.module('mycdc.data', [])
  * @param  {[type]} $http
  * @return {[type]}
  */
-.factory('DotwContent', function($http) {
+.factory('DotwContent', function($http, $rootScope) {
     return {
         getStatus: function(url) {
-            return $http.get('http://peterbenoit.com/dev/exists.php?url=' + url);
+            return $http.get($rootScope.existsUrl + url);
         }
     };
 })
@@ -285,10 +285,10 @@ angular.module('mycdc.data', [])
     return service;
 })
 
-.factory('HealthArticlesContent', function($http) {
+.factory('HealthArticlesContent', function($http, $rootScope) {
     return {
         getStatus: function(url) {
-            return $http.get('http://peterbenoit.com/dev/exists.php?url=' + url);
+            return $http.get($rootScope.existsUrl + url);
         }
     };
 })
@@ -544,10 +544,10 @@ angular.module('mycdc.data', [])
     return service;
 })
 
-.factory('WeeklyCaseCountsContent', function($http) {
+.factory('WeeklyCaseCountsContent', function($http, $rootScope) {
     return {
         getStatus: function(url) {
-            return $http.get('http://peterbenoit.com/dev/exists.php?url=' + url);
+            return $http.get($rootScope.existsUrl + url);
         }
     };
 })
@@ -893,10 +893,10 @@ angular.module('mycdc.data', [])
     return service;
 })
 
-.factory('NewsroomsContent', function($http) {
+.factory('NewsroomsContent', function($http, $rootScope) {
     return {
         getStatus: function(url) {
-            return $http.get('http://peterbenoit.com/dev/exists.php?url=' + url);
+            return $http.get($rootScope.existsUrl + url);
         }
     };
 })
