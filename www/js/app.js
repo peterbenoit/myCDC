@@ -52,7 +52,7 @@ add to body class: platform-wp8
         anchors.on('click', function(e) {
             e.preventDefault();
 
-            console.log('iframe click');
+console.log('iframe click');
 
             var framesrc = iframe.attr('src'),
                 href = $(this).attr('href'),
@@ -85,7 +85,7 @@ add to body class: platform-wp8
         $(document).on('click', '[href^=http], [href^=https]', function(e) {
             e.preventDefault();
 
-            console.log('document click');
+console.log('document click');
 
             var t = $(this),
                 href = t.attr('href');
@@ -118,8 +118,10 @@ add to body class: platform-wp8
 
         if (window.plugins && window.plugins.toast) {
             window.plugins.toast.showLongCenter('App Loaded', function(a) {
-                console.log('toast success: ' + a)}, function(b) {
-                    console.log('toast error: ' + b)});
+                console.log('toast success: ' + a);
+            }, function(b) {
+                console.log('toast error: ' + b);
+            });
         }
 
         rs.deviceinfo = DeviceInfo;
@@ -145,11 +147,16 @@ add to body class: platform-wp8
         //     console.log('rs resize');
         // })
 
-        angular.element($(window)).bind('resize', _.debounce(function() {
-            rs.orientation = $('body').hasClass('portrait') ? 'portrait' : 'landscape';
-            // rs.$broadcast("resize");
-            rs.$apply();
-        }, 150));
+        // angular.element($(window)).bind('resize', _.debounce(function() {
+        //     rs.orientation = $('body').hasClass('portrait') ? 'portrait' : 'landscape';
+        //     // rs.$broadcast("resize");
+        //     // rs.$apply();
+
+        //     // rs.$state.reload();..
+        //     //
+        //     // window.document.location.reload();
+
+        // }, 150));
 
         // kick off a media query listener to tag the body with a class
         var mq;
@@ -158,20 +165,24 @@ add to body class: platform-wp8
 
             if (mq.matches) {
                 //portrait
+                rs.orientation = 'portrait';
                 $ionicBody.addClass('portrait');
             }
             else {
                 //landscape
+                rs.orientation = 'landscape';
                 $ionicBody.addClass('landscape');
             }
 
             mq.addListener(function(m) {
                 if (m.matches) {
                     console.log('changed to portrait');
+                    rs.orientation = 'portrait';
                     $ionicBody.removeClass('landscape').addClass('portrait');
                 }
                 else {
                     console.log('changed to landscape');
+                    rs.orientation = 'landscape';
                     $ionicBody.removeClass('portrait').addClass('landscape');
                 }
             });
