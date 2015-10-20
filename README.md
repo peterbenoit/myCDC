@@ -29,6 +29,7 @@
 
 #Cordova Plugins
 
+`cordova plugin add ionic-plugin-keyboard`
 `cordova plugin add cordova-plugin-inappbrowser` `cordova plugin add cordova-plugin-themeablebrowser`
 `cordova plugin add cordova-plugin-network-information`
 `cordova plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git`
