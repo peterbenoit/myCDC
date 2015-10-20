@@ -29,13 +29,31 @@
 
 #Cordova Plugins
 
+These will likely change as the app matures. For instance, I don't believe I'm currently using the Screen Orientation plugin.
+
+Here are some currently being used:
+
 `cordova plugin add ionic-plugin-keyboard`
-`cordova plugin add cordova-plugin-inappbrowser` `cordova plugin add cordova-plugin-themeablebrowser`
+`cordova plugin add cordova-plugin-inappbrowser`
 `cordova plugin add cordova-plugin-network-information`
 `cordova plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git`
 `cordova plugin add https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git`
 `cordova plugin add https://github.com/Pushwoosh/pushwoosh-phonegap-3.0-plugin.git`
 `ionic plugin add https://github.com/apache/cordova-plugin-whitelist.git`
+
+	$ cordova plugins ls
+	com.pushwoosh.plugins.pushwoosh 3.6.11 "Pushwoosh"
+	cordova-plugin-console 1.0.1 "Console"
+	cordova-plugin-device 1.0.1 "Device"
+	cordova-plugin-inappbrowser 1.0.1 "InAppBrowser"
+	cordova-plugin-network-information 1.0.1 "Network Information"
+	cordova-plugin-screen-orientation 1.4.0 "Screen Orientation"
+	cordova-plugin-splashscreen 2.1.0 "Splashscreen"
+	cordova-plugin-statusbar 1.0.1 "StatusBar"
+	cordova-plugin-whitelist 1.1.1-dev "Whitelist"
+	cordova-plugin-x-socialsharing 5.0.4 "SocialSharing"
+	cordova-plugin-x-toast 2.2.1 "Toast"
+	ionic-plugin-keyboard 1.0.7 "Keyboard"
 
 ##Ionic View & Plugins
 Ionic View only supports a small subset of plugins, so not all functions/features will work in it. You will need to test for the existance of the plugin before using it.
@@ -57,15 +75,6 @@ Current adding Android, iOS, Windows (not WP8) and Browser.
 `cordova platform add windows`
 
 `cordova platform add browser`
-
-
-	$ cordova plugin ls
-	com.pushwoosh.plugins.pushwoosh 3.6.11 "Pushwoosh"
-	cordova-plugin-inappbrowser 1.0.1 "InAppBrowser"
-	cordova-plugin-network-information 1.0.1 "Network Information"
-	cordova-plugin-whitelist 1.1.1-dev "Whitelist"
-	cordova-plugin-x-socialsharing 5.0.4 "SocialSharing"
-	cordova-plugin-x-toast 2.2.1 "Toast"
 	
 	
 #Issues
