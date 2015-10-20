@@ -29,58 +29,60 @@ angular.module('mycdc.directives', [])
                 }
             });
         }
-    }
+    };
 })
-.directive('quarterwidth', ['ScreenSize', function(ScreenSize){
+.directive('quarterwidth', function ($window) {
     return {
         link: function (scope, element, attrs) {
             element.bind('load', function(e) {
-                var newwidth = (ScreenSize.width - 20) / 4, // half the screen - padding
-                    newheight = (newwidth/16) * 9;          // maintian 16x9 aspect ratio
-                    parent = this.parentElement
+                var w = angular.element($window),
+                    newwidth = (w.innerWidth - 20) / 4,        // half the screen - padding
+                    newheight = (newwidth/16) * 9,          // maintian 16x9 aspect ratio
+                    parent = this.parentElement;
 
                 // apply the new sizes to the parent element
                 parent.style.width = newwidth + 'px';
                 parent.style.height = newheight + 'px';
             });
         }
-    }
- }])
-.directive('halfwidth', ['ScreenSize', function(ScreenSize){
+    };
+ })
+.directive('halfwidth', function ($window) {
     return {
         link: function (scope, element, attrs) {
             element.bind('load', function(e) {
-                var newwidth = (ScreenSize.width - 20) / 2, // half the screen - padding
-                    newheight = (newwidth/16) * 9;          // maintian 16x9 aspect ratio
-                    parent = this.parentElement
+                var w = $(window),
+                    newwidth = (w.width() - 20) / 2,        // half the screen - padding
+                    newheight = (newwidth/16) * 9,          // maintian 16x9 aspect ratio
+                    parent = this.parentElement;
 
                 // apply the new sizes to the parent element
                 parent.style.width = newwidth + 'px';
                 parent.style.height = newheight + 'px';
             });
         }
-    }
- }])
- .directive('fullwidth', ['ScreenSize', function(ScreenSize){
+    };
+ })
+// full width at the correct aspect ratio
+ .directive('fullwidth', function ($window) {
     return {
         link: function (scope, element, attrs) {
             element.bind('load', function(e) {
-                var newwidth = ScreenSize.width - 10,       // screen - padding
-                    newheight = (newwidth/16) * 9;          // maintian 16x9 aspect ratio
-                    parent = this.parentElement
+                var w = $(window),
+                    newwidth = w.width() - 10,             // screen - padding
+                    newheight = (newwidth/16) * 9,          // maintian 16x9 aspect ratio
+                    parent = this.parentElement;
 
                 // apply the new sizes to the parent element
                 parent.style.width = newwidth + 'px';
                 parent.style.height = newheight + 'px';
             });
         }
-    }
- }])
- .directive('resize', function ($window) {
+    };
+ })
+.directive('resize', function ($window) {
     return function (scope, element) {
-        var w = angular.element($window);
-
-console.log(w);
+        var w = $(window);
 
         scope.getWindowDimensions = function () {
             return { 'h': w.height(), 'w': w.width() };
@@ -90,44 +92,29 @@ console.log(w);
             scope.windowHeight = newValue.h;
             scope.windowWidth = newValue.w;
 
-            scope.style = function () {
+            scope.halfwidth = function () {
+                var newwidth = (newValue.w - 20) / 2,        // half the screen - padding
+                    newheight = (newwidth/16) * 9;
+
                 return {
-                    'height': (newValue.h - 100) + 'px',
-                    'width': (newValue.w - 100) + 'px'
+                    'height': newheight + 'px',
+                    'width': newwidth + 'px'
                 };
             };
 
+            scope.fullwidth = function () {
+                var newwidth = newValue.w - 10,             // screen - padding
+                    newheight = (newwidth/16) * 9;
+
+                return {
+                    'height': newheight + 'px',
+                    'width': newwidth + 'px'
+                };
+            };
         }, true);
 
         w.bind('resize', function () {
             scope.$apply();
         });
-    }
-})
-.directive('resize2', function ($window) {
-    return function (scope, element) {
-        var w = $window;
-
-console.log(w);
-
-        scope.$watch(function () {
-            return { 'h': w.innerHeight, 'w': w.innerWidth };
-        }, function (newValue, oldValue) {
-            scope.windowHeight = newValue.h;
-            scope.windowWidth = newValue.w;
-
-            scope.style = function () {
-                return {
-                    'height': (newValue.h - 100) + 'px',
-                    'width': (newValue.w - 100) + 'px'
-                };
-            };
-
-        }, true);
-
-//moar jquery
-        // w.bind('resize', function () {
-        //     scope.$apply();
-        // });
-    }
+    };
 });
