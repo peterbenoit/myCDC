@@ -10,3 +10,5 @@ plugins/
 *.sublime-workspace
 
 *.sublime-project
+
+*.log
