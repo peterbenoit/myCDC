@@ -137,7 +137,7 @@ console.log('document click');
         if (window.cordova && window.cordova.plugins) {
             // lock all devices into portrait mode, except for ipads
             screen.lockOrientation('portrait');
-            if (ionic.Platform.isIPad()) {
+            if (ionic.Platform.isIPad() || ionic.Platform.is('androidtablet')) {
                 // unlocking screen for orientation change
                 screen.unlockOrientation();
             }
