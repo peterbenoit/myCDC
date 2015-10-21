@@ -4,7 +4,7 @@
             pulling-text="Pull to refresh..."
             on-refresh="doRefresh()">
         </ion-refresher>
-        <div class="stream tablet-stream">
+        <div class="stream tablet-stream" ng-if="orientation == 'portrait'">
             <h3 class="padding">Tablet ({{orientation}}): {{name}}</h3>
             <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row" ng-if="$index % 2 === 0">
                 <div class="card" ng-if="$index < datas.length">
