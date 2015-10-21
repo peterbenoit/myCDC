@@ -2020,12 +2020,13 @@ angular.module('mycdc.controllers', [])
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, 'Public Health Image Library', image, link);
         }
         else {
             alert('Social Sharing not available in Ionic View');

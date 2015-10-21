@@ -1,20 +1,20 @@
 <ion-side-menus> <!--enable-menu-with-back-views="false"-->
     <ion-side-menu-content>
         <ion-nav-bar class="bar-positive nav-title-slide-ios7">
-            <ion-nav-back-button ng-click="goBack()">
+            <ion-nav-back-button alt="Back Button" ng-click="goBack()">
             </ion-nav-back-button>
             <ion-nav-buttons side="left">
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left" id="navicon"></button>
+                <button alt="Menu Button" class="button button-icon button-clear ion-navicon" menu-toggle="left" id="navicon"></button>
             </ion-nav-buttons>
             <ion-nav-buttons side="right">
-                <a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
+                <a alt="Settings Button" class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
     </ion-side-menu-content>
     <ion-side-menu side="left" ng-if="orientation == 'portrait'" expose-aside-when="(orientation: landscape)">
         <ion-header-bar class="bar-positive">
-            <button class="button button-icon button-clear ion-android-close" menu-toggle="left"></button>
+            <button alt="Close Button" class="button button-icon button-clear ion-android-close" menu-toggle="left"></button>
         </ion-header-bar>
         <ion-content>
             <ion-list can-swipe="listCanSwipe">

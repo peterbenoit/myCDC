@@ -1262,6 +1262,8 @@ angular.module('mycdc.data', [])
                 time = moment(datum.datePublished);
                 datum.datePublished = time.format('MMMM Do, YYYY');
 
+                datum.name = '';
+
                 // if there's an enclosure
                 if (datum.enclosures.length) {
                     enclosures = datum.enclosures;

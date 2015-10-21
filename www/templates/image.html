@@ -1,22 +1,25 @@
 <ion-view>
     <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
+        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
     </ion-nav-buttons>
     <ion-content class="has-header">
         <div class="paging">
-            <a class="button icon-right ion-chevron-right button-clear button-dark" ng-class="{'button-negative':!next.visible, 'button-dark':next.visible}" ng-disabled="!next.visible" href="#/app/PHIL/{{next.position}}">Next</a>
-            <a class="button icon-left ion-chevron-left button-clear button-dark" ng-class="{'button-negative':!previous.visible, 'button-dark':previous.visible}" ng-disabled="!previous.visible" href="#/app/PHIL/{{previous.position}}">Prev</a>
+            <a alt="Next Button" class="button icon-right ion-chevron-right button-clear button-dark" ng-class="{'button-negative':!next.visible, 'button-dark':next.visible}" ng-disabled="!next.visible" href="#/app/PHIL/{{next.position}}">Next</a>
+            <a alt="Previous Button" class="button icon-left ion-chevron-left button-clear button-dark" ng-class="{'button-negative':!previous.visible, 'button-dark':previous.visible}" ng-disabled="!previous.visible" href="#/app/PHIL/{{previous.position}}">Prev</a>
         </div>
         <div class="padding data civ image">
+<<<<<<< HEAD
             <h1 class="title">{{data.name}}</h1>
+=======
+            <img ng-src="{{image}}" />
+>>>>>>> origin/master
             <div class="datepub">{{data.datePublished}}</div>
             <div class="source">Source: {{name}}</div>
-            <img ng-src="{{image}}" />
             <p ng-bind-html="data.description"></p>
             <div class="top-border">
                 <p class="padding">
-                    <button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
-                    <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
+                    <button alt="Footer Share Menu Button" class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+                    <button alt="View on CDC.gov Button" class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
                 </p>
             </div>
         </div>

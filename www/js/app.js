@@ -52,8 +52,6 @@ add to body class: platform-wp8
         anchors.on('click', function(e) {
             e.preventDefault();
 
-console.log('iframe click');
-
             var framesrc = iframe.attr('src'),
                 href = $(this).attr('href'),
                 anchor = document.createElement('a');
@@ -84,8 +82,6 @@ console.log('iframe click');
         // Open any EXTERNAL link with InAppBrowser Plugin
         $(document).on('click', '[href^=http], [href^=https]', function(e) {
             e.preventDefault();
-
-console.log('document click');
 
             var t = $(this),
                 href = t.attr('href');
