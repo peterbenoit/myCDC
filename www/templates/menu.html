@@ -12,7 +12,7 @@
         </ion-nav-bar>
         <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
     </ion-side-menu-content>
-    <ion-side-menu side="left">
+    <ion-side-menu side="left" ng-if="orientation == 'portrait'" expose-aside-when="(orientation: landscape)">
         <ion-header-bar class="bar-positive">
             <button class="button button-icon button-clear ion-android-close" menu-toggle="left"></button>
         </ion-header-bar>
@@ -54,6 +54,26 @@
                 <ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'AudioVideo'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
                     <i class="icon {{i.icon}}"></i> {{ i.title }}
                 </ion-checkbox>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+    <ion-side-menu side="left" ng-if="orientation == 'landscape'" expose-aside-when="(orientation: landscape)">
+        <ion-header-bar class="bar-positive">
+        </ion-header-bar>
+        <ion-content>
+            <ion-list can-swipe="listCanSwipe">
+                <div class="item">
+                  A few
+                </div>
+                <div class="item">
+                  of my
+                </div>
+                <div class="item">
+                  favorite
+                </div>
+                <div class="item">
+                  things
+                </div>
             </ion-list>
         </ion-content>
     </ion-side-menu>
