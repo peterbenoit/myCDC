@@ -389,6 +389,7 @@ body.platform-ios #popper {
 
 .nav-bar-block .bar, .menu-left .bar {
     background-color:#075290!important;
+    border-color: #e3f2fe;
 }
 
 ion-side-menu h4 {
