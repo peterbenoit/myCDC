@@ -6,6 +6,32 @@ angular.module('mycdc.storage', [])
 /**
  * @return {[type]}
  */
+.factory('LocalStorage', function(storeName) {
+
+    var storePrefix = 'myCDC-';
+
+    storeName = storePrefix + storeName;
+
+    return {
+        all: function() {
+            var appdata = window.localStorage['appdata'];
+            if (appdata) {
+                return angular.fromJson(appdata);
+            }
+            return {};
+        },
+        save: function(appdata) {
+            window.localStorage['appdata'] = angular.toJson(appdata);
+        },
+        clear: function() {
+            window.localStorage.removeItem('appdata');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
 .factory('AppStorage', function() {
     return {
         all: function() {

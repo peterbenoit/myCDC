@@ -245,6 +245,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('DotwCtrl', function($scope, $location, $ionicLoading, DotwData, DotwStorage) {
+    $scope.viewId = 'DotwView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/disease/';
@@ -452,6 +453,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('HealthArticlesCtrl', function($scope, $location, $ionicLoading, HealthArticlesData, HealthArticlesStorage, ScreenSize) {
+    $scope.viewId = 'HealthArticlesView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/healtharticle/';
@@ -589,6 +591,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('CDCAtwsCtrl', function($scope, $location, $ionicLoading, CDCAtwsData, CDCAtwsStorage) {
+    $scope.viewId = 'CDCAtwsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/cdcatw/';
@@ -710,6 +713,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('VitalSignsCtrl', function($scope, $location, $ionicLoading, VitalSignsData, VitalSignsStorage) {
+    $scope.viewId = 'VitalSignsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/vitalsign/';
@@ -782,6 +786,7 @@ angular.module('mycdc.controllers', [])
     $scope.data = VitalSignsData.get($stateParams.idx);
     $scope.id = VitalSignsData.getId($stateParams.idx);
     $scope.name = 'Vital Signs';
+         = 'VitalSign';
 
     //console.log($scope.data);
 
@@ -829,6 +834,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('FastStatsCtrl', function($scope, $location, $ionicLoading, FastStatsData, FastStatsStorage) {
+    $scope.viewId = 'FastStatsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/FastStat/';
@@ -901,6 +907,7 @@ angular.module('mycdc.controllers', [])
     $scope.data = FastStatsData.get($stateParams.idx);
     $scope.id = FastStatsData.getId($stateParams.idx);
     $scope.name = 'FastStats';
+    $scope.viewId = 'FastStat';
 
     FastStatsContent.getContent($scope.id).then(
         function(resp) {
@@ -946,6 +953,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('WeeklyDiseaseCaseCountsCtrl', function($scope, $location, $ionicLoading, WeeklyCaseCountsData, WeeklyCaseCountsStorage) {
+    $scope.viewId = 'WeeklyDiseaseCaseCountsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/WeeklyDiseaseCaseCount/';
@@ -1020,6 +1028,7 @@ angular.module('mycdc.controllers', [])
 
     $scope.data = WeeklyCaseCountsData.get($stateParams.idx);
     $scope.name = 'Weekly Disease Case Counts';
+    $scope.viewId = 'WeeklyDiseaseCaseCount';
 
     var sourceurl = WeeklyCaseCountsData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
@@ -1077,6 +1086,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('EIDsCtrl', function($scope, $location, $ionicLoading, EIDsData, EIDsStorage) {
+    $scope.viewId = 'EIDsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/EID/';
@@ -1149,6 +1159,7 @@ angular.module('mycdc.controllers', [])
     $scope.data = EIDsData.get($stateParams.idx);
     $scope.id = EIDsData.getId($stateParams.idx);
     $scope.name = 'Emerging Infectious Disease (EID)';
+    $scope.viewId = 'EID';
 
     EIDsContent.getContent($scope.id).then(
         function(resp) {
@@ -1194,6 +1205,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('MMWRsCtrl', function($scope, $location, $ionicLoading, MMWRsData, MMWRsStorage) {
+    $scope.viewId = 'MMWRsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/MMWR/';
@@ -1311,6 +1323,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('PCDsCtrl', function($scope, $location, $ionicLoading, PCDsData, PCDsStorage) {
+    $scope.viewId = 'PCDsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PCD/';
@@ -1388,6 +1401,7 @@ angular.module('mycdc.controllers', [])
     $scope.data = PCDsData.get($stateParams.idx);
     $scope.id = PCDsData.getId($stateParams.idx);
     $scope.name = 'Preventing Chronic Disease (PCD)';
+    $scope.viewId = 'PDC';
 
     PCDsContent.getContent($scope.id).then(
         function(resp) {
@@ -1433,6 +1447,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('NewsroomsCtrl', function($scope, $location, $ionicLoading, NewsroomsData, NewsroomsStorage) {
+    $scope.viewId = 'NewsroomsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Newsroom/';
@@ -1507,6 +1522,7 @@ angular.module('mycdc.controllers', [])
     $scope.news = NewsroomsData.get($stateParams.idx);
     $scope.nochrome = false;
     $scope.name = 'Newsroom';
+    $scope.viewId = 'Newsroom';
 
     var sourceurl = NewsroomsData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
@@ -1563,6 +1579,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('OutbreaksCtrl', function($scope, $location, $ionicLoading, OutbreaksData, OutbreaksStorage) {
+    $scope.viewId = 'OutbreaksView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Outbreak/';
@@ -1636,6 +1653,7 @@ angular.module('mycdc.controllers', [])
     });
     $scope.data = OutbreaksData.get($stateParams.idx);
     $scope.name = 'Outbreaks';
+    $scope.viewId = 'Outbreak';
 
     var sourceurl = OutbreaksData.getSourceUrl($stateParams.idx);
 
@@ -1675,6 +1693,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('TravelNoticesCtrl', function($scope, $location, $ionicLoading, TravelNoticesData, TravelNoticesStorage) {
+    $scope.viewId = 'TravelNoticesView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/TravelNotice/';
@@ -1748,6 +1767,7 @@ angular.module('mycdc.controllers', [])
     });
     $scope.data = TravelNoticesData.get($stateParams.idx);
     $scope.name = 'Travel Notices';
+    $scope.viewId = 'TravelNotice';
 
     var sourceurl = TravelNoticesData.getSourceUrl($stateParams.idx);
 
@@ -1790,6 +1810,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('PodcastsCtrl', function($scope, $location, $ionicLoading, PodcastsData, PodcastsStorage) {
+    $scope.viewId = 'PodcastsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Podcast/';
@@ -1859,6 +1880,8 @@ angular.module('mycdc.controllers', [])
     $scope.data = PodcastsData.get(position);
     $scope.id = PodcastsData.getId(position);
     $scope.name = 'Podcasts';
+    $scope.viewId = 'Podcast';
+
     var audio = PodcastsData.getAudio(position);
 
     $scope.previous = {
@@ -1909,6 +1932,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('PHILsCtrl', function($scope, $location, $ionicLoading, PHILsData, PHILsStorage) {
+    $scope.viewId = 'PHILsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PHIL/';
@@ -1978,6 +2002,7 @@ angular.module('mycdc.controllers', [])
     $scope.data = PHILsData.get(position);
     $scope.id = PHILsData.getId(position);
     $scope.name = 'Public Health Image Library';
+    $scope.viewId = 'PHIL';
 
     $scope.image = $scope.data.enclosures[0].resourceUrl;
 
@@ -2031,6 +2056,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('PHMblogsCtrl', function($scope, $location, $ionicLoading, PHMblogsData, PHMblogsStorage) {
+    $scope.viewId = 'PHMblogsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PHMblog/';
@@ -2103,6 +2129,8 @@ angular.module('mycdc.controllers', [])
     $scope.data = PHMblogsData.get($stateParams.idx);
     $scope.id = PHMblogsData.getId($stateParams.idx);
     $scope.name = 'Public Health Matters Blog';
+    $scope.viewId = 'PHM';
+
     // TODO: is this provided?
     PHMblogsContent.getContent($scope.id).then(
         function(resp) {
@@ -2152,6 +2180,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('DirectorsBlogsCtrl', function($scope, $location, $ionicLoading, DirectorsBlogsData, DirectorsBlogsStorage) {
+    $scope.viewId = 'DirectorsBlogsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/directorblog/';
@@ -2224,6 +2253,7 @@ angular.module('mycdc.controllers', [])
     $scope.data = DirectorsBlogsData.get($stateParams.idx);
     $scope.id = DirectorsBlogsData.getId($stateParams.idx);
     $scope.name = 'CDC Directors Blog'; // TODO: is this provided?
+    $scope.viewId = 'DirectorsBlog';
 
     DirectorsBlogsContent.getContent($scope.id).then(
         function(resp) {
@@ -2300,6 +2330,7 @@ angular.module('mycdc.controllers', [])
     getContent = function() {
         $scope.id = $scope.data.id;
         $scope.name = 'Did You Know?';
+        $scope.viewId = 'DidYouKnow';
 
         if (window.device) {
             $scope.devicePlatform = device.platform;
@@ -2351,6 +2382,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('FactoftheWeekCtrl', function($scope, $location, $ionicLoading, FactoftheWeekData, FactoftheWeekStorage) {
+    $scope.viewId = 'FactoftheWeekView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Fact/';
@@ -2477,6 +2509,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('YouTubesCtrl', function($scope, $location, $ionicLoading, YouTubesData, YouTubesStorage) {
+    $scope.viewId = 'YouTubesView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/YouTube/';
