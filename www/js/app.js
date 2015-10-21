@@ -36,7 +36,7 @@ add to body class: platform-wp8
         rs.existsUrl = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
 
     // window.open should use inappbrowser
-    document.addEventListener("deviceready", onDeviceReady, false);
+    document.addEventListener('deviceready', onDeviceReady, false);
     function onDeviceReady() {
         window.open = cordova.InAppBrowser.open;
     }
@@ -44,7 +44,7 @@ add to body class: platform-wp8
     // frameready() is called in embed.html, when the iframe has loaded
     // NOTE: this only works on a device
     window.frameready = function() {
-        var iframe = $("#contentframe");
+        var iframe = $('#contentframe');
             anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
             //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
 
@@ -135,7 +135,7 @@ console.log('document click');
          * https://github.com/gbenvenuti/cordova-plugin-screen-orientation
          */
         if (window.cordova && window.cordova.plugins) {
-            // lock all devices into portrait mode, except for ipads
+            // lock all devices into portrait mode, except for tablets
             screen.lockOrientation('portrait');
             if (ionic.Platform.isIPad() || ionic.Platform.is('androidtablet')) {
                 // unlocking screen for orientation change
@@ -173,6 +173,7 @@ console.log('document click');
                 rs.orientation = 'landscape';
                 $ionicBody.addClass('landscape');
             }
+            rs.$apply();
 
             mq.addListener(function(m) {
                 if (m.matches) {
@@ -185,6 +186,7 @@ console.log('document click');
                     rs.orientation = 'landscape';
                     $ionicBody.removeClass('portrait').addClass('landscape');
                 }
+                rs.$apply();
             });
         }
     });

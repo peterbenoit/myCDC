@@ -62,12 +62,12 @@ angular.module('mycdc.controllers', [])
             // returnToState('app.home');
 
             // source streams are always the statename + s
-            returnToState(sn +  's');
+            returnToState(sn + 's');
         }
         else {
             $ionicHistory.goBack();
         }
-    }
+    };
 
     // This little bit of nonsense checks for the existance of the runonce localstorage key and if the Home Controller has already loaded (it loads 2x for some reason)
     // If they key doesn't exist, and the Home Controller hasn't already loaded, load the modal
@@ -384,7 +384,7 @@ angular.module('mycdc.controllers', [])
         function() {
             $scope.data = FluViewData.getAll();
             $ionicLoading.hide();
-            getContent()
+            getContent();
             $scope.$broadcast('scroll.refreshComplete');
         },
         // errorCallback
@@ -392,7 +392,7 @@ angular.module('mycdc.controllers', [])
             $scope.data = FluViewStorage.all();
             $scope.storage = 'Data from local storage';
             $ionicLoading.hide();
-            getContent()
+            getContent();
             $scope.$broadcast('scroll.refreshComplete');
         },
         // notifyCallback
@@ -403,7 +403,7 @@ angular.module('mycdc.controllers', [])
         $scope.id = $scope.data.id;
         $scope.name = 'FluView Weekly Summary';
 
-        if(window.device){
+        if (window.device) {
             $scope.devicePlatform = device.platform;
         }
 
@@ -418,7 +418,7 @@ angular.module('mycdc.controllers', [])
             },
             function() {}
         );
-    }
+    };
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
@@ -1436,7 +1436,7 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Newsroom/';
-    $scope.name = "Newsroom";
+    $scope.name = 'Newsroom';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1506,7 +1506,7 @@ angular.module('mycdc.controllers', [])
     });
     $scope.news = NewsroomsData.get($stateParams.idx);
     $scope.nochrome = false;
-    $scope.name = "Newsroom";
+    $scope.name = 'Newsroom';
 
     var sourceurl = NewsroomsData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
@@ -1566,7 +1566,7 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Outbreak/';
-    $scope.name = "Outbreaks";
+    $scope.name = 'Outbreaks';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1635,7 +1635,7 @@ angular.module('mycdc.controllers', [])
         showDelay: 100
     });
     $scope.data = OutbreaksData.get($stateParams.idx);
-    $scope.name = "Outbreaks";
+    $scope.name = 'Outbreaks';
 
     var sourceurl = OutbreaksData.getSourceUrl($stateParams.idx);
 
@@ -1678,7 +1678,7 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/TravelNotice/';
-    $scope.name = "Travel Notices";
+    $scope.name = 'Travel Notices';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1747,7 +1747,7 @@ angular.module('mycdc.controllers', [])
         showDelay: 100
     });
     $scope.data = TravelNoticesData.get($stateParams.idx);
-    $scope.name = "Travel Notices";
+    $scope.name = 'Travel Notices';
 
     var sourceurl = TravelNoticesData.getSourceUrl($stateParams.idx);
 
@@ -1793,7 +1793,7 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/Podcast/';
-    $scope.name = "Podcasts";
+    $scope.name = 'Podcasts';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1858,7 +1858,7 @@ angular.module('mycdc.controllers', [])
 
     $scope.data = PodcastsData.get(position);
     $scope.id = PodcastsData.getId(position);
-    $scope.name = "Podcasts";
+    $scope.name = 'Podcasts';
     var audio = PodcastsData.getAudio(position);
 
     $scope.previous = {
@@ -1912,7 +1912,7 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PHIL/';
-    $scope.name = "Public Health Image Library";
+    $scope.name = 'Public Health Image Library';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -1977,7 +1977,7 @@ angular.module('mycdc.controllers', [])
 
     $scope.data = PHILsData.get(position);
     $scope.id = PHILsData.getId(position);
-    $scope.name = "Public Health Image Library";
+    $scope.name = 'Public Health Image Library';
 
     $scope.image = $scope.data.enclosures[0].resourceUrl;
 
@@ -2034,7 +2034,7 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/PHMblog/';
-    $scope.name = "Public Health Matters Blog";
+    $scope.name = 'Public Health Matters Blog';
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -2282,7 +2282,7 @@ angular.module('mycdc.controllers', [])
         function() {
             $scope.data = DidYouKnowData.getAll();
             $ionicLoading.hide();
-            getContent()
+            getContent();
             $scope.$broadcast('scroll.refreshComplete');
         },
         // errorCallback
@@ -2290,7 +2290,7 @@ angular.module('mycdc.controllers', [])
             $scope.data = DidYouKnowStorage.all();
             $scope.storage = 'Data from local storage';
             $ionicLoading.hide();
-            getContent()
+            getContent();
             $scope.$broadcast('scroll.refreshComplete');
         },
         // notifyCallback
@@ -2301,7 +2301,7 @@ angular.module('mycdc.controllers', [])
         $scope.id = $scope.data.id;
         $scope.name = 'Did You Know?';
 
-        if(window.device) {
+        if (window.device) {
             $scope.devicePlatform = device.platform;
         }
 
@@ -2316,7 +2316,7 @@ angular.module('mycdc.controllers', [])
             },
             function() {}
         );
-    }
+    };
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
