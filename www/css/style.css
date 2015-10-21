@@ -168,6 +168,7 @@ colors
  }
 
 /*http://stackoverflow.com/questions/23533646/content-within-an-iframe-in-ios-7-mobile-keeps-scrolling-to-top-always*/
+/*https://github.com/kbwood/countdown/issues/50*/
 .iframe-wrapper {
     /*-webkit-overflow-scrolling: touch!important;*/
     overflow-y: scroll!important;
