@@ -48,6 +48,10 @@ i, cite, em, var, address, dfn {
     font-style: italic;
 }
 
+.list i {
+    font-size: 24px;
+}
+
 /* useful */
 body.platform-ios {}
 body.platform-ipad {}
@@ -163,8 +167,9 @@ colors
    height: 100%;
  }
 
+/*http://stackoverflow.com/questions/23533646/content-within-an-iframe-in-ios-7-mobile-keeps-scrolling-to-top-always*/
 .iframe-wrapper {
-    -webkit-overflow-scrolling: touch!important;
+    /*-webkit-overflow-scrolling: touch!important;*/
     overflow-y: scroll!important;
 }
 
