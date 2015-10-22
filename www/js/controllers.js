@@ -786,6 +786,7 @@ angular.module('mycdc.controllers', [])
     $scope.data = VitalSignsData.get($stateParams.idx);
     $scope.id = VitalSignsData.getId($stateParams.idx);
     $scope.name = 'Vital Signs';
+    $scope.viewId = 'VitalSign';
 
     //console.log($scope.data);
 
