@@ -145,7 +145,7 @@ angular.module('mycdc.data', [])
                     }
                 }
 
-console.log(datum);
+// console.log(datum);
                 datum.hasImage = hasImage;
             }
 
