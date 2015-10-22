@@ -30,10 +30,11 @@ add to body class: platform-wp8
     var rs = $rootScope,
         href = window.location.href;
 
-        rs.$state = $state;
-        rs.$stateParams = $stateParams;
-        rs.HomeCtrlLoad = false;        // for whatever reason, the HomeCtrl controller loads multiple times; setting a flag here, which is modified in the controller, so it only loads once.
-        rs.existsUrl = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
+    rs.$state = $state;
+    rs.$stateParams = $stateParams;
+    rs.HomeCtrlLoad = false;        // for whatever reason, the HomeCtrl controller loads multiple times; setting a flag here, which is modified in the controller, so it only loads once.
+    rs.existsUrl = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
+    rs.showleft = false;
 
     // window.open should use inappbrowser
     document.addEventListener('deviceready', onDeviceReady, false);

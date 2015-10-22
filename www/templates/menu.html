@@ -57,13 +57,13 @@
             </ion-list>
         </ion-content>
     </ion-side-menu>
-    <ion-side-menu side="left" ng-if="orientation == 'landscape'" expose-aside-when="(orientation: landscape)">
+    <ion-side-menu side="left" ng-if="orientation == 'landscape' && showleft" expose-aside-when="(orientation: landscape)">
         <ion-header-bar class="bar-positive">
         </ion-header-bar>
         <ion-content>
             <ion-list can-swipe="listCanSwipe">
                 <div class="item">
-                  A few
+                  A few {{showleft}}
                 </div>
                 <div class="item">
                   of my

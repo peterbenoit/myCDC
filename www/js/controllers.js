@@ -244,12 +244,13 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DotwCtrl', function($scope, $location, $ionicLoading, DotwData, DotwStorage) {
+.controller('DotwCtrl', function($scope, $rootScope, $location, $ionicLoading, DotwData, DotwStorage) {
     $scope.viewId = 'DotwView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/disease/';
     $scope.name = 'Disease of the Week';
+    $rootScope.showleft = false;
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -311,7 +312,7 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('DiseaseCtrl', function($scope, $stateParams, $ionicLoading, $sce, DotwData, DotwContent) {
+.controller('DiseaseCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $sce, DotwData, DotwContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -319,7 +320,8 @@ angular.module('mycdc.controllers', [])
     });
     $scope.data = DotwData.get($stateParams.idx);
     $scope.nochrome = false;
-    $scope.name = 'Disease of the Week'; // TODO: is this provided?
+    $scope.name = 'Disease of the Week';
+    $rootScope.showleft = true;
 
     var sourceurl = DotwData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
@@ -527,7 +529,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HealthArticleCtrl', function($scope, $stateParams, $ionicLoading, $sce, HealthArticlesData, HealthArticlesContent) {
+.controller('HealthArticleCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $sce, HealthArticlesData, HealthArticlesContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -535,7 +537,9 @@ angular.module('mycdc.controllers', [])
     });
     $scope.data = HealthArticlesData.get($stateParams.idx);
     $scope.nochrome = false;
-    $scope.name = 'Health Articles'; // TODO: is this provided?
+    $scope.name = 'Health Articles';
+    $rootScope.showleft = true;
+
     var sourceurl = HealthArticlesData.getSourceUrl($stateParams.idx),
         filename = sourceurl.split('/').pop(),
         newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
@@ -654,7 +658,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('CDCAtwCtrl', function($scope, $ionicLoading, $stateParams, $sce, CDCAtwsData, CDCAtwsContent) {
+.controller('CDCAtwCtrl', function($scope, $rootScope, $ionicLoading, $stateParams, $sce, CDCAtwsData, CDCAtwsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -664,6 +668,7 @@ angular.module('mycdc.controllers', [])
     $scope.data = CDCAtwsData.get($stateParams.idx);
     $scope.id = CDCAtwsData.getId($stateParams.idx);
     $scope.name = 'CDC Around the World';
+    $rootScope.showleft = true;
 
     //console.log($scope.data);
 
@@ -712,12 +717,13 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('VitalSignsCtrl', function($scope, $location, $ionicLoading, VitalSignsData, VitalSignsStorage) {
+.controller('VitalSignsCtrl', function($scope, $rootScope, $location, $ionicLoading, VitalSignsData, VitalSignsStorage) {
     $scope.viewId = 'VitalSignsView';
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/vitalsign/';
     $scope.name = 'Vital Signs';
+    $rootScope.showleft = false;
 
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
@@ -776,7 +782,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('VitalSignCtrl', function($scope, $ionicLoading, $stateParams, $sce, VitalSignsData, VitalSignsContent) {
+.controller('VitalSignCtrl', function($scope, $rootScope, $ionicLoading, $stateParams, $sce, VitalSignsData, VitalSignsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -787,6 +793,7 @@ angular.module('mycdc.controllers', [])
     $scope.id = VitalSignsData.getId($stateParams.idx);
     $scope.name = 'Vital Signs';
     $scope.viewId = 'VitalSign';
+    $rootScope.showleft = true;
 
     //console.log($scope.data);
 
@@ -2132,7 +2139,7 @@ angular.module('mycdc.controllers', [])
     $scope.name = 'Public Health Matters Blog';
     $scope.viewId = 'PHM';
 
-    // TODO: is this provided?
+
     PHMblogsContent.getContent($scope.id).then(
         function(resp) {
             $scope.content = $sce.trustAsHtml(resp.data.results.content);
@@ -2253,7 +2260,7 @@ angular.module('mycdc.controllers', [])
 
     $scope.data = DirectorsBlogsData.get($stateParams.idx);
     $scope.id = DirectorsBlogsData.getId($stateParams.idx);
-    $scope.name = 'CDC Directors Blog'; // TODO: is this provided?
+    $scope.name = 'CDC Directors Blog';
     $scope.viewId = 'DirectorsBlog';
 
     DirectorsBlogsContent.getContent($scope.id).then(
