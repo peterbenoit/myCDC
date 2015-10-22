@@ -6,6 +6,25 @@
         {
             "id": 1,
             "contentid": 1,
+            "title": "Aggregate Stream",
+            "contenttype": "",
+            "appurl": "#/app/home",
+            "contentsource": "",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": true,
+            "hasimage": true,
+            "backToSource": false,
+            "cardtypes": [
+                {"phone": ["a1","b1"]},
+                {"tablet": ["b1"]}
+            ],
+            "contentrules": ""
+        },
+        {
+            "id": 1,
+            "contentid": 1,
             "title": "CDC Around the World",
             "contenttype": "Articles",
             "appurl": "#/app/CDCATW",

@@ -43,12 +43,12 @@ add to body class: platform-wp8
     }
 
     rs.doSomething = function() {
-        var doingSomething = ['app.disease','app.vitalsign','app.healtharticle','app.cdcatw','app.FastStat','app.WeeklyDiseaseCaseCount', 'app.EID'];
-        if(doingSomething.indexOf(rs.$state.current.name) > -1) {
+        var doingSomething = ['app.disease', 'app.vitalsign', 'app.healtharticle', 'app.cdcatw', 'app.FastStat', 'app.WeeklyDiseaseCaseCount', 'app.EID'];
+        if (doingSomething.indexOf(rs.$state.current.name) > -1) {
             return true;
         }
         return false;
-    }
+    };
 
     // frameready() is called in embed.html, when the iframe has loaded
     // NOTE: this only works on a device
@@ -212,6 +212,35 @@ add to body class: platform-wp8
         templateUrl: 'templates/menu.html',
         controller: 'HomeCtrl'
         // controller: 'AppCtrl'
+    })
+
+// WARN: this is temporary
+    .state('app.homestream', {
+        url: '/homestream',
+        views: {
+            'menuContent': {
+                templateUrl: function() {
+                    if (ionic.Platform.is('androidtablet')) {
+                        return 'templates/home-tablet.html';
+                    }
+                    if (ionic.Platform.isAndroid()) {
+                        return 'templates/stream-home.html';
+                    }
+                    if (ionic.Platform.isIPad()) {
+                        return 'templates/home-tablet.html';
+                    }
+                    if (ionic.Platform.isIOS()) {
+                        return 'templates/stream-home.html';
+                    }
+                    if (ionic.Platform.isWindowsPhone()) {
+                        return 'templates/stream-home.html';
+                    }
+
+                    return 'templates/stream-home.html';
+                },
+                controller: 'HomeCtrl'
+            }
+        }
     })
 
     .state('app.home', {

@@ -61,6 +61,111 @@ angular.module('mycdc.data', [])
  * @param  {[type]}
  * @return {[type]}
  */
+.factory('HomeStreamData', function($http, $q, HomeStreamStorage) {
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        time = new Date(),
+        datum = [],
+        enclosures = [],
+        service = {},
+        hasImage = false;
+
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'http://prototype.cdc.gov/api/v2/resources/media?parentId=150686&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
+            timeout: 5000
+        }).
+        then(function(d) {
+            data = d.data.results;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // remove html from name
+                datum.name = datum.name.replace(/<[^>]+>/gm, '');
+
+                // remove html from description
+                datum.description = datum.description.replace(/<[^>]+>/gm, '');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    var enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                if (datum.tags.length) {
+                    var tags = datum.tags;
+
+                    // look for the ContentGroup enclosure
+                    for (var k = tags.length - 1; k >= 0; k--) {
+                        if (tags[k].type === 'ContentGroup') {
+                            datum.contentGroup = tags[k].name;
+
+                            if (datum.contentGroup === 'EID' || datum.contentGroup === 'Vital Signs') {
+                                hasImage = false;
+                            }
+
+                            if (datum.contentGroup === 'Image of the Week') {
+                                datum.name = '';
+                            }
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            // console.log(data);
+
+            HomeStreamStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = HomeStreamStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {});
+
+        return promise;
+    };
+
+    service.getAll = function() {
+        return data;
+    };
+
+    service.get = function(idx) {
+        return data[idx];
+    };
+
+    service.getId = function(idx) {
+        return data[idx].id;
+    };
+
+    return service;
+})
+
+
+/**
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
 .factory('DotwData', function($http, $q, DotwStorage) {
     var deferred = $q.defer(),
         promise = deferred.promise,
@@ -306,7 +411,7 @@ angular.module('mycdc.data', [])
 
             var getRandom = function(max, min) {
                     return Math.floor(Math.random() * (max - min + 1));
-                },
+                };,
                 socialcards = [
                 {
                     name: 'Facebook',
@@ -346,7 +451,7 @@ angular.module('mycdc.data', [])
                 }];
 
             for (var k = data.length - 1; k >= 0; k--) {
-                if(k%10===0){
+                if (k % 10 === 0) {
                     var newdatum = {},
                         socialrandom = socialcards[getRandom(socialcards.length, 1)];
 
@@ -356,7 +461,7 @@ angular.module('mycdc.data', [])
                     newdatum.enclosures = [];
                     newdatum.image = socialrandom.image;
                     newdatum.href = socialrandom.href;
-                    data.splice(k,0,newdatum);
+                    data.splice(k, 0, newdatum);
                 }
             }
 

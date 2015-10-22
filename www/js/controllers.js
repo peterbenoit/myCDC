@@ -44,14 +44,13 @@ angular.module('mycdc.controllers', [])
     };
 })
 
-// TODO: most of this can be reduced to a single controller with params
-
 /**
  * Home Controller
  * @param  {[type]}
  * @return {[type]}
+ * Note: This should really be AppCtrl and HomeCtrl saved for the home stream
  */
-.controller('HomeCtrl', function($scope, MenuData, $ionicPlatform, $timeout, $rootScope, $ionicPopover, $ionicHistory, returnToState) {
+.controller('HomeCtrl', function($scope, $ionicPlatform, $timeout, $rootScope, $ionicPopover, $ionicHistory, returnToState, MenuData, HomeStreamData) {
     $scope.menu = [];
     $scope.storage = '';
 
@@ -105,6 +104,18 @@ angular.module('mycdc.controllers', [])
         },
         function() {
             $scope.menu = MenuStorage.all();
+            $scope.$broadcast('scroll.refreshComplete');
+        },
+        function() {}
+    );
+
+    HomeStreamData.async().then(
+        function() {
+            $scope.datas = HomeStreamData.getAll();
+            $scope.$broadcast('scroll.refreshComplete');
+        },
+        function() {
+            $scope.datas = HomeStreamStorage.all();
             $scope.storage = 'Data from local storage';
             $scope.$broadcast('scroll.refreshComplete');
         },
@@ -113,6 +124,11 @@ angular.module('mycdc.controllers', [])
 
     // app sources, should be maintained by config.json
     $scope.sources = [
+    {
+        title: 'Home (Aggregate) Stream',
+        href: '#/app/homestream',
+        icon: 'ion-checkmark-circled'
+    },
     {
         title: 'CDC Around the World',
         href: '#/app/cdcatws',
@@ -410,7 +426,7 @@ angular.module('mycdc.controllers', [])
                 $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                 $ionicLoading.hide();
                 var backView = $ionicViewService.getBackView();
-                if(backView){
+                if (backView) {
                     backView.go();
                 }
             },
@@ -676,7 +692,7 @@ angular.module('mycdc.controllers', [])
             $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
             var backView = $ionicViewService.getBackView();
-            if(backView){
+            if (backView) {
                 backView.go();
             }
         },
@@ -805,7 +821,7 @@ angular.module('mycdc.controllers', [])
             $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
             var backView = $ionicViewService.getBackView();
-            if(backView){
+            if (backView) {
                 backView.go();
             }
         },
@@ -928,7 +944,7 @@ angular.module('mycdc.controllers', [])
             $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
             var backView = $ionicViewService.getBackView();
-            if(backView){
+            if (backView) {
                 backView.go();
             }
         },
@@ -1184,7 +1200,7 @@ angular.module('mycdc.controllers', [])
             $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
             var backView = $ionicViewService.getBackView();
-            if(backView){
+            if (backView) {
                 backView.go();
             }
         },
@@ -1306,7 +1322,7 @@ angular.module('mycdc.controllers', [])
             $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
             var backView = $ionicViewService.getBackView();
-            if(backView){
+            if (backView) {
                 backView.go();
             }
         },
@@ -1434,7 +1450,7 @@ angular.module('mycdc.controllers', [])
             $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
             var backView = $ionicViewService.getBackView();
-            if(backView){
+            if (backView) {
                 backView.go();
             }
         },
@@ -2168,7 +2184,7 @@ angular.module('mycdc.controllers', [])
             $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
             var backView = $ionicViewService.getBackView();
-            if(backView){
+            if (backView) {
                 backView.go();
             }
         },
@@ -2295,7 +2311,7 @@ angular.module('mycdc.controllers', [])
             $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
             var backView = $ionicViewService.getBackView();
-            if(backView){
+            if (backView) {
                 backView.go();
             }
         },
@@ -2380,7 +2396,7 @@ angular.module('mycdc.controllers', [])
                 $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                 $ionicLoading.hide();
                 var backView = $ionicViewService.getBackView();
-                if(backView){
+                if (backView) {
                     backView.go();
                 }
             },
@@ -2504,7 +2520,7 @@ angular.module('mycdc.controllers', [])
             $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
             var backView = $ionicViewService.getBackView();
-            if(backView){
+            if (backView) {
                 backView.go();
             }
         },
@@ -2690,7 +2706,7 @@ angular.module('mycdc.controllers', [])
         title: 'CDC',
         href: 'https://www.facebook.com/CDC',
         icon: 'ion-social-facebook'
-    },    {
+    }, {
         title: 'CDC Espanol',
         href: 'https://www.facebook.com/CDCespanol',
         icon: 'ion-social-facebook'
@@ -2710,7 +2726,7 @@ angular.module('mycdc.controllers', [])
         title: 'CDC',
         href: 'https://www.twitter.com/CDC',
         icon: 'ion-social-twitter'
-    },    {
+    }, {
         title: 'CDC Espanol',
         href: 'https://www.twitter.com/CDCespanol',
         icon: 'ion-social-twitter'

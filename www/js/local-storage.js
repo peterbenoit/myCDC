@@ -573,5 +573,30 @@ angular.module('mycdc.storage', [])
             window.localStorage.removeItem('atw');
         }
     };
-});
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('HomeStreamStorage', function() {
+    return {
+        all: function() {
+            var homestream = window.localStorage['homestream'];
+            if (homestream) {
+                return angular.fromJson(homestream);
+            }
+            return {};
+        },
+        save: function(homestream) {
+            window.localStorage['homestream'] = angular.toJson(homestream);
+        },
+        clear: function() {
+            window.localStorage.removeItem('homestream');
+        }
+    };
+})
+
+
+
+;
 
