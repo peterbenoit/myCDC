@@ -194,6 +194,10 @@ colors
     float:right;
 }
 
+.bar .title {
+    font-size: 24px;
+}
+
 /* content area adjustments */
 /*p.contentarea img {
     float: left;

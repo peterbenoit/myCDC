@@ -1,11 +1,14 @@
 <ion-side-menus> <!--enable-menu-with-back-views="false"-->
     <ion-side-menu-content>
-        <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+        <ion-nav-bar class="bar-positive" align-title="left" animation="no-animation">
             <ion-nav-back-button alt="Back Button" ng-click="goBack()">
             </ion-nav-back-button>
             <ion-nav-buttons side="left">
                 <button alt="Menu Button" class="button button-icon button-clear ion-navicon" menu-toggle="left" id="navicon"></button>
             </ion-nav-buttons>
+            <ion-nav-title side="left">
+                CDC
+            </ion-nav-title>
             <ion-nav-buttons side="right">
                 <a alt="Settings Button" class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
             </ion-nav-buttons>
