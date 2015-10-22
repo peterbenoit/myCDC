@@ -115,18 +115,37 @@ angular.module('mycdc.data', [])
                         if (tags[k].type === 'ContentGroup') {
                             datum.contentGroup = tags[k].name;
 
-                            if (datum.contentGroup === 'EID' || datum.contentGroup === 'Vital Signs') {
+
+                            // TODO: This is terrible.
+                            if (datum.contentGroup === 'EID') {
                                 hasImage = false;
+                                datum.home = '#/app/EIDS';
+                                datum.url = '#/app/EID/';
+                            }
+
+                            if (datum.contentGroup === 'Vital Signs') {
+                                hasImage = false;
+                                datum.home = '#/app/VitalSigns';
+                                datum.url = '#/app/VitalSign/';
                             }
 
                             if (datum.contentGroup === 'Image of the Week') {
                                 datum.name = '';
+                                datum.home = '#/app/PHILs';
+                                datum.url = '#/app/PHIL/';
+                            }
+
+                            if (datum.contentGroup === 'YouTube') {
+                                datum.name = '';
+                                datum.home = '#/app/YouTubes';
+                                datum.url = '#/app/YouTube/';
                             }
                             break;
                         }
                     }
                 }
 
+console.log(datum);
                 datum.hasImage = hasImage;
             }
 
