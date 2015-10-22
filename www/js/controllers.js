@@ -76,7 +76,10 @@ angular.module('mycdc.controllers', [])
 
         if (runonce === null && $rootScope.HomeCtrlLoad === false) {
             $rootScope.HomeCtrlLoad = true;
+            window.localStorage['runonce'] = true;
 
+
+            // Show the popover only on first load
             $ionicPopover.fromTemplateUrl('templates/popover.html', {
                 scope: $scope,
             }).then(function(popover) {
@@ -92,18 +95,6 @@ angular.module('mycdc.controllers', [])
                 //     $scope.popover.remove();
                 // });
             });
-
-
-
-            // $ionicModal.fromTemplateUrl('templates/modal.html', {
-            //     scope: $scope
-            // }).then(function(modal) {
-            //     $scope.modal = modal;
-            //     $scope.modal.show();
-
-            //     window.localStorage['runonce'] = true;
-            // });
-            //
         }
     });
 
