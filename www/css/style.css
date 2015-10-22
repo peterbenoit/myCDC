@@ -382,7 +382,7 @@ body.platform-ios #popper {
 
 #popper a {
     display: inline-block;
-    width: 100%;
+    width: 50%;
     background: #075290;
     text-align: center;
     color: #fff;
@@ -391,6 +391,10 @@ body.platform-ios #popper {
 
 #popper div.popover-arrow {
     left: 0!important;
+}
+
+#popper #popbut {
+    text-align: center;
 }
 
 /*
