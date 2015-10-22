@@ -304,6 +304,62 @@ angular.module('mycdc.data', [])
         then(function(d) {
             data = d.data.results;
 
+            var getRandom = function(max, min) {
+                    return Math.floor(Math.random() * (max - min + 1));
+                },
+                socialcards = [
+                {
+                    name: 'Facebook',
+                    description: '',
+                    href: '#/app/Facebook',
+                    image: 'img/facebook.png'
+                },
+                {
+                    name: 'Twitter',
+                    description: '',
+                    href: '#/app/Twitter',
+                    image: 'img/twitter.png'
+                },
+                {
+                    name: 'Instagram',
+                    description: '',
+                    href: 'https://instagram.com/cdcgov/',
+                    image: 'img/instagram.png'
+                },
+                {
+                    name: 'Google+',
+                    description: '',
+                    href: 'https://plus.google.com/+CDC/posts',
+                    image: 'img/googleplus.png'
+                },
+                {
+                    name: 'Pinterest',
+                    description: '',
+                    href: 'https://www.pinterest.com/cdcgov/',
+                    image: 'img/pinterest.png'
+                },
+                {
+                    name: 'Flickr',
+                    description: '',
+                    href: 'https://www.flickr.com/photos/CDCsocialmedia',
+                    image: 'img/flickr.png'
+                }];
+
+            for (var k = data.length - 1; k >= 0; k--) {
+                if(k%10===0){
+                    var newdatum = {},
+                        socialrandom = socialcards[getRandom(socialcards.length, 1)];
+
+                    newdatum.description = socialrandom.description;
+                    newdatum.type = 'social';
+                    newdatum.name = socialrandom.name;
+                    newdatum.enclosures = [];
+                    newdatum.image = socialrandom.image;
+                    newdatum.href = socialrandom.href;
+                    data.splice(k,0,newdatum);
+                }
+            }
+
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
                 hasImage = false;

@@ -272,6 +272,26 @@ a.item.item-footer {
 
 /*.card { margin:7.5px 10px 7.5px; position:relative;}*/
 
+.card.social {
+
+}
+.card.social a {
+    margin: 0!important;
+    top: 0!important;
+    min-height: 60px!important;
+    padding: 0;
+}
+.card.social a strong{
+    line-height: 60px;
+    margin-left: 15px;
+}
+.card.social a > img:first-child {
+    max-width: 40px;
+    max-height: 40px;
+    top: 10px;
+    right: 10px;
+}
+
 .source a {
     color:#444;
     font-size: 14px;
