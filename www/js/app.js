@@ -42,6 +42,14 @@ add to body class: platform-wp8
         window.open = cordova.InAppBrowser.open;
     }
 
+    rs.doSomething = function() {
+        var doingSomething = ['app.disease','app.vitalsign','app.healtharticle','app.cdcatw','app.FastStat','app.WeeklyDiseaseCaseCount', 'app.EID'];
+        if(doingSomething.indexOf(rs.$state.current.name) > -1) {
+            return true;
+        }
+        return false;
+    }
+
     // frameready() is called in embed.html, when the iframe has loaded
     // NOTE: this only works on a device
     window.frameready = function() {

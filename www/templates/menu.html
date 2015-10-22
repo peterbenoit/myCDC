@@ -12,7 +12,7 @@
         </ion-nav-bar>
         <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
     </ion-side-menu-content>
-    <ion-side-menu side="left" ng-if="orientation == 'portrait'" expose-aside-when="(orientation: landscape)">
+    <ion-side-menu side="left" ng-if="orientation == 'portrait'" expose-aside-when="(orientation: landscape)" yarp>
         <ion-header-bar class="bar-positive">
             <button alt="Close Button" class="button button-icon button-clear ion-android-close" menu-toggle="left"></button>
         </ion-header-bar>
@@ -57,7 +57,7 @@
             </ion-list>
         </ion-content>
     </ion-side-menu>
-    <ion-side-menu side="left" ng-if="orientation == 'landscape' && showleft" expose-aside-when="(orientation: landscape)">
+    <ion-side-menu side="left" ng-if="doSomething() && orientation == 'landscape'" expose-aside-when="(orientation: landscape)" narp>
         <ion-header-bar class="bar-positive">
         </ion-header-bar>
         <ion-content>
