@@ -312,7 +312,7 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('DiseaseCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $sce, DotwData, DotwContent) {
+.controller('DiseaseCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $ionicPopup, $sce, DotwData, DotwContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -358,7 +358,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -375,7 +375,7 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('FluViewCtrl', function($scope, $stateParams, $ionicLoading, $sce, FluViewData, FluViewStorage, FluViewContent) {
+.controller('FluViewCtrl', function($scope, $stateParams, $ionicLoading, $ionicPopup, $ionicViewService, $sce, FluViewData, FluViewStorage, FluViewContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -416,8 +416,12 @@ angular.module('mycdc.controllers', [])
                 $ionicLoading.hide();
             },
             function() {
-                alert('Could not load URL');
+                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                 $ionicLoading.hide();
+                var backView = $ionicViewService.getBackView();
+                if(backView){
+                    backView.go();
+                }
             },
             function() {}
         );
@@ -435,7 +439,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -529,7 +533,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('HealthArticleCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $sce, HealthArticlesData, HealthArticlesContent) {
+.controller('HealthArticleCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $ionicPopup, $sce, HealthArticlesData, HealthArticlesContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -575,7 +579,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -658,7 +662,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('CDCAtwCtrl', function($scope, $rootScope, $ionicLoading, $stateParams, $sce, CDCAtwsData, CDCAtwsContent) {
+.controller('CDCAtwCtrl', function($scope, $rootScope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, CDCAtwsData, CDCAtwsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -678,8 +682,12 @@ angular.module('mycdc.controllers', [])
             $ionicLoading.hide();
         },
         function() {
-            alert('Content not available.');
+            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
+            var backView = $ionicViewService.getBackView();
+            if(backView){
+                backView.go();
+            }
         },
         function() {}
     );
@@ -696,7 +704,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -782,7 +790,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('VitalSignCtrl', function($scope, $rootScope, $ionicLoading, $stateParams, $sce, VitalSignsData, VitalSignsContent) {
+.controller('VitalSignCtrl', function($scope, $rootScope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, VitalSignsData, VitalSignsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -803,8 +811,12 @@ angular.module('mycdc.controllers', [])
             $ionicLoading.hide();
         },
         function() {
-            alert('Content not available.');
+            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
+            var backView = $ionicViewService.getBackView();
+            if(backView){
+                backView.go();
+            }
         },
         function() {}
     );
@@ -821,7 +833,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -904,7 +916,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FastStatCtrl', function($scope, $ionicLoading, $stateParams, $sce, FastStatsData, FastStatsContent) {
+.controller('FastStatCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, FastStatsData, FastStatsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -922,8 +934,12 @@ angular.module('mycdc.controllers', [])
             $ionicLoading.hide();
         },
         function() {
-            alert('Content not available.');
+            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
+            var backView = $ionicViewService.getBackView();
+            if(backView){
+                backView.go();
+            }
         },
         function() {}
     );
@@ -940,7 +956,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -1026,7 +1042,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('WeeklyDiseaseCaseCountCtrl', function($scope, $stateParams, $sce, $ionicLoading, WeeklyCaseCountsData, WeeklyCaseCountsContent) {
+.controller('WeeklyDiseaseCaseCountCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, WeeklyCaseCountsData, WeeklyCaseCountsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1071,7 +1087,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -1156,7 +1172,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('EIDCtrl', function($scope, $ionicLoading, $stateParams, $sce, EIDsData, EIDsContent) {
+.controller('EIDCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, EIDsData, EIDsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1174,8 +1190,12 @@ angular.module('mycdc.controllers', [])
             $ionicLoading.hide();
         },
         function() {
-            alert('Content not available.');
+            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
+            var backView = $ionicViewService.getBackView();
+            if(backView){
+                backView.go();
+            }
         },
         function() {}
     );
@@ -1192,7 +1212,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -1275,7 +1295,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('MMWRCtrl', function($scope, $ionicLoading, $stateParams, $sce, MMWRsData, MMWRsContent) {
+.controller('MMWRCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, MMWRsData, MMWRsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1292,8 +1312,12 @@ angular.module('mycdc.controllers', [])
             $ionicLoading.hide();
         },
         function() {
-            alert('Content not available.');
+            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
+            var backView = $ionicViewService.getBackView();
+            if(backView){
+                backView.go();
+            }
         },
         function() {}
     );
@@ -1310,7 +1334,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -1398,7 +1422,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PCDCtrl', function($scope, $ionicLoading, $stateParams, $sce, PCDsData, PCDsContent) {
+.controller('PCDCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, PCDsData, PCDsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1416,8 +1440,12 @@ angular.module('mycdc.controllers', [])
             $ionicLoading.hide();
         },
         function() {
-            alert('Content not available.');
+            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
+            var backView = $ionicViewService.getBackView();
+            if(backView){
+                backView.go();
+            }
         },
         function() {}
     );
@@ -1434,7 +1462,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -1520,7 +1548,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('NewsroomCtrl', function($scope, $stateParams, $sce, $ionicLoading, NewsroomsData, NewsroomsContent) {
+.controller('NewsroomCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, NewsroomsData, NewsroomsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1566,7 +1594,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -1652,7 +1680,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('OutbreakCtrl', function($scope, $stateParams, $sce, $ionicLoading, OutbreaksData) {
+.controller('OutbreakCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, OutbreaksData) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1680,7 +1708,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -1766,7 +1794,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('TravelNoticeCtrl', function($scope, $stateParams, $sce, $ionicLoading, TravelNoticesData) {
+.controller('TravelNoticeCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, TravelNoticesData) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -1794,7 +1822,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -1880,7 +1908,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PodcastCtrl', function($scope, $ionicLoading, $stateParams, $sce, PodcastsData) {
+.controller('PodcastCtrl', function($scope, $ionicLoading, $ionicPopup, $stateParams, $sce, PodcastsData) {
     var position = $stateParams.idx,
         count = PodcastsData.getCount();
 
@@ -1919,7 +1947,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -2002,7 +2030,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PHILCtrl', function($scope, $ionicLoading, $stateParams, $sce, PHILsData) {
+.controller('PHILCtrl', function($scope, $ionicLoading, $ionicPopup, $stateParams, $sce, PHILsData) {
     var position = $stateParams.idx,
         count = PHILsData.getCount();
 
@@ -2036,7 +2064,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, 'Public Health Image Library', image, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -2127,7 +2155,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PHMblogCtrl', function($scope, $ionicLoading, $stateParams, $sce, PHMblogsData, PHMblogsContent) {
+.controller('PHMblogCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, PHMblogsData, PHMblogsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -2146,8 +2174,12 @@ angular.module('mycdc.controllers', [])
             $ionicLoading.hide();
         },
         function() {
-            alert('Content not available.');
+            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
+            var backView = $ionicViewService.getBackView();
+            if(backView){
+                backView.go();
+            }
         },
         function() {}
     );
@@ -2164,7 +2196,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -2251,7 +2283,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DirectorsBlogCtrl', function($scope, $ionicLoading, $stateParams, $sce, DirectorsBlogsData, DirectorsBlogsContent) {
+.controller('DirectorsBlogCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, DirectorsBlogsData, DirectorsBlogsContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -2269,8 +2301,12 @@ angular.module('mycdc.controllers', [])
             $ionicLoading.hide();
         },
         function() {
-            alert('Content not available.');
+            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
+            var backView = $ionicViewService.getBackView();
+            if(backView){
+                backView.go();
+            }
         },
         function() {}
     );
@@ -2287,7 +2323,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -2308,7 +2344,7 @@ angular.module('mycdc.controllers', [])
  * *******************************************************************************************
  */
 
-.controller('DYKCtrl', function($scope, $stateParams, $ionicLoading, $sce, DidYouKnowData, DidYouKnowStorage, DidYouKnowContent) {
+.controller('DYKCtrl', function($scope, $stateParams, $ionicLoading, $ionicPopup, $ionicViewService, $sce, DidYouKnowData, DidYouKnowStorage, DidYouKnowContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -2350,8 +2386,12 @@ angular.module('mycdc.controllers', [])
                 $ionicLoading.hide();
             },
             function() {
-                alert('Could not load URL');
+                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                 $ionicLoading.hide();
+                var backView = $ionicViewService.getBackView();
+                if(backView){
+                    backView.go();
+                }
             },
             function() {}
         );
@@ -2369,7 +2409,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -2453,7 +2493,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FOTWCtrl', function($scope, $ionicLoading, $stateParams, $sce, FactoftheWeekData, FactoftheWeekContent) {
+.controller('FOTWCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, FactoftheWeekData, FactoftheWeekContent) {
     $scope.loading = $ionicLoading.show({
         template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
         showBackdrop: false,
@@ -2470,8 +2510,12 @@ angular.module('mycdc.controllers', [])
             $ionicLoading.hide();
         },
         function() {
-            alert('Content not available.');
+            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
+            var backView = $ionicViewService.getBackView();
+            if(backView){
+                backView.go();
+            }
         },
         function() {}
     );
@@ -2488,7 +2532,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
@@ -2580,7 +2624,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('YouTubeCtrl', function($scope, $ionicLoading, $stateParams, $sce, YouTubesData) {
+.controller('YouTubeCtrl', function($scope, $ionicLoading, $ionicPopup, $stateParams, $sce, YouTubesData) {
     // $scope.loading = $ionicLoading.show({
     //     template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
     //     showBackdrop: false,
@@ -2609,7 +2653,7 @@ angular.module('mycdc.controllers', [])
     //         $ionicLoading.hide();
     //     },
     //     function() {
-    //         alert('Content not available.');
+    //         $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
     //         $ionicLoading.hide();
     //     },
     //     function() {}
@@ -2627,7 +2671,7 @@ angular.module('mycdc.controllers', [])
             window.plugins.socialsharing.share(message, subject, null, link);
         }
         else {
-            alert('Social Sharing not available in Ionic View');
+            $ionicPopup.alert({title: 'Social Sharing not available.'});
         }
     };
 
