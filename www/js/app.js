@@ -1046,6 +1046,24 @@ add to body class: platform-wp8
                 controller: 'YouTubeCtrl'
             }
         }
+    })
+    .state('app.Facebook', {
+        url: '/Facebook',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/landing-facebook.html',
+                controller: 'FacebookCtrl'
+            }
+        }
+    })
+    .state('app.Twitter', {
+        url: '/Twitter',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/landing-twitter.html',
+                controller: 'TwitterCtrl'
+            }
+        }
     });
 
     // if none of the above states are matched, use this as the fallback

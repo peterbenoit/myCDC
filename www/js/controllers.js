@@ -212,7 +212,7 @@ angular.module('mycdc.controllers', [])
         icon: 'ion-checkmark-circled'
     }, {
         title: 'Facebook',
-        href: 'https://www.facebook.com/CDC',
+        href: '#/app/Facebook',
         icon: 'ion-checkmark-circled'
     }, {
         title: 'Google+',
@@ -220,7 +220,7 @@ angular.module('mycdc.controllers', [])
         icon: 'ion-checkmark-circled'
     }, {
         title: 'Twitter',
-        href: 'https://twitter.com/CDCgov',
+        href: '#/app/Twitter',
         icon: 'ion-checkmark-circled'
     }, {
         title: 'Pinterest',
@@ -2642,7 +2642,45 @@ angular.module('mycdc.controllers', [])
 
 
 
+/**
+ * Facebook Controller
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('FacebookCtrl', function($scope, $stateParams) {
+    $scope.viewId = 'Facebook';
+    $scope.sources = [
+    {
+        title: 'CDC',
+        href: 'https://www.facebook.com/CDC',
+        icon: 'ion-social-facebook'
+    },    {
+        title: 'CDC Espanol',
+        href: 'https://www.facebook.com/CDCespanol',
+        icon: 'ion-social-facebook'
+    }];
+})
 
+/**
+ * Twitter Controller
+ * @param  {[type]}
+ * @param  {[type]}
+ * @return {[type]}
+ */
+.controller('TwitterCtrl', function($scope, $stateParams) {
+    $scope.viewId = 'Twitter';
+    $scope.sources = [
+    {
+        title: 'CDC',
+        href: 'https://www.twitter.com/CDC',
+        icon: 'ion-social-twitter'
+    },    {
+        title: 'CDC Espanol',
+        href: 'https://www.twitter.com/CDCespanol',
+        icon: 'ion-social-twitter'
+    }];
+})
 
 
 
