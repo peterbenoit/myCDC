@@ -98,6 +98,26 @@ angular.module('mycdc.directives', [])
         }
     };
  })
+ .directive('newresize', function(){
+    return {
+        link: function(scope, element, attrs) {
+            element.on('load', function(e) {
+                var w = $(window),
+                    newwidth = (w.width() - 20) / 2,            // half the screen - padding
+                    newheight = (newwidth / 16) * 9,            // maintian 16x9 aspect ratio
+                    parent = this.parentElement,
+                    src = $(element).attr('src');
+
+                    $(element).remove();
+
+                // apply the new sizes to the parent element
+                parent.style.width = newwidth + 'px';
+                parent.style.height = newheight + 'px';
+                parent.style.backgroundImage = 'url('+src+')';
+            });
+        }
+    };
+ })
 .directive('resize', function($window) {
     return function(scope, element) {
         var w = $(window);

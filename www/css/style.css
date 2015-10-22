@@ -154,6 +154,13 @@ colors
 }
 
 
+.image-stream .item-image {
+    overflow:hidden;
+    float:left;
+    background-position: center;
+    background-size: cover;
+}
+
 
 
 /**
@@ -272,9 +279,7 @@ a.item.item-footer {
 
 /*.card { margin:7.5px 10px 7.5px; position:relative;}*/
 
-.card.social {
-
-}
+.card.social {}
 .card.social a {
     margin: 0!important;
     top: 0!important;
