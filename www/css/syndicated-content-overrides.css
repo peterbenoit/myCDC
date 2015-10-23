@@ -34,6 +34,50 @@
 #YouTubesView,
 */
 
+/* CONTENT AREA GENERAL */
+.contentarea .row {
+  display: block;
+  padding: 0;
+  clear: left;
+}
+
+.contentarea .pull-left {
+  float: left;
+}
+
+.contentarea img {
+  float: left;
+  max-width: 100%;
+  width: auto !important;
+  height: auto !important;
+  margin-right: 10px;
+}
+
+.contentarea .row [class*="span"] {
+  display: block;
+  float: none;
+  padding: 0;
+}
+
+/* CONTENT AREA RESPONSIVE */
+@media only screen and (max-width: 320px) {
+  .contentarea .row img {
+    margin: 0;
+    display: block;
+  }
+}
+
+/* VIEW TYPE SPECIFIC AREAS */
+.article .contentarea img:first-of-type {
+  /*display: none;*/
+}
+
+/* VIEW SPECIFIC CONTENT AREAS */
+#CDCAtwView .contentarea h1:first-of-type,
 #VitalSign .contentarea h1:first-of-type {
   display: none;
+}
+
+#CDCAtwView .contentarea {
+
 }

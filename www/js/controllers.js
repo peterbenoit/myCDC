@@ -703,6 +703,7 @@ angular.module('mycdc.controllers', [])
     $scope.data = CDCAtwsData.get($stateParams.idx);
     $scope.id = CDCAtwsData.getId($stateParams.idx);
     $scope.name = 'CDC Around the World';
+    $scope.viewId = 'CDCAtwView';
     $rootScope.showleft = true;
 
     //console.log($scope.data);
