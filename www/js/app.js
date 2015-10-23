@@ -202,7 +202,12 @@ add to body class: platform-wp8
  * @param  {[type]}
  * @return {[type]}
  */
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+    $ionicConfigProvider.navBar.transition('none');     // keep the navbar from animating
+
+    // TODO: consider using this for "lower" end devices
+    // $ionicConfigProvider.views.transition('none');      // keep the views from animating
 
     $stateProvider
 
