@@ -2,6 +2,8 @@
     "version": 1,
     "lastUpdate": "092815",
     "_comment": "Config version and the last time it was updated, used to match app updates",
+    "feedsrc": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=[CONTENT_GROUP]&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
+    "syndicatesrc": "https://prototype.cdc.gov/api/v2/resources/media/[MEDIA_ID]/syndicate.json",
     "sources": [
         {
             "id": 1,
