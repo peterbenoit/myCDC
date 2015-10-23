@@ -1218,7 +1218,9 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('EIDCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, EIDsData, EIDsContent) {
-   $scope.loading = $ionicLoading.show({
+    var backView = $ionicViewService.getBackView();
+
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1239,7 +1241,7 @@ angular.module('mycdc.controllers', [])
         function() {
             $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
-            var backView = $ionicViewService.getBackView();
+
             if (backView) {
                 backView.go();
             }
@@ -2712,11 +2714,6 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('YouTubeCtrl', function($scope, $ionicLoading, $ionicPopup, $stateParams, $sce, YouTubesData) {
-    // $scope.loading = $ionicLoading.show({
-    //     template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-    //     showBackdrop: false,
-    //     showDelay: 100
-    // });
     var position = $stateParams.idx,
         count = YouTubesData.getCount();
 
