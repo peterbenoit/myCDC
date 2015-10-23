@@ -53,6 +53,10 @@
   margin-right: 10px;
 }
 
+.contentarea .toTop {
+  display: none;
+}
+
 .contentarea .row [class*="span"] {
   display: block;
   float: none;
