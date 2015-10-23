@@ -50,7 +50,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  * Note: This should really be AppCtrl and HomeCtrl saved for the home stream
  */
-.controller('HomeCtrl', function($scope, $ionicPlatform, $timeout, $rootScope, $ionicPopover, $ionicHistory, returnToState, MenuData, HomeStreamData) {
+.controller('HomeCtrl', function($scope, $ionicPlatform, $ionicLoading, $timeout, $rootScope, $ionicPopover, $ionicHistory, returnToState, MenuData, HomeStreamData) {
     $scope.menu = [];
     $scope.storage = '';
 
@@ -109,13 +109,23 @@ angular.module('mycdc.controllers', [])
         function() {}
     );
 
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
+    });
+
     HomeStreamData.async().then(
         function() {
             $scope.datas = HomeStreamData.getAll();
+            $ionicLoading.hide();
             $scope.$broadcast('scroll.refreshComplete');
         },
         function() {
             $scope.datas = HomeStreamStorage.all();
+            $ionicLoading.hide();
             $scope.storage = 'Data from local storage';
             $scope.$broadcast('scroll.refreshComplete');
         },
@@ -259,10 +269,12 @@ angular.module('mycdc.controllers', [])
     $scope.name = 'Disease of the Week';
     $rootScope.showleft = false;
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -320,10 +332,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('DiseaseCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $ionicPopup, $sce, DotwData, DotwContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
     $scope.data = DotwData.get($stateParams.idx);
     $scope.nochrome = false;
@@ -383,10 +397,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('FluViewCtrl', function($scope, $stateParams, $ionicLoading, $ionicPopup, $ionicViewService, $sce, FluViewData, FluViewStorage, FluViewContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     FluViewData.async().then(
@@ -473,10 +489,12 @@ angular.module('mycdc.controllers', [])
     $scope.name = 'Health Articles';
     $scope.hasloaded = true;
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     $scope.init = function() {
@@ -541,10 +559,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('HealthArticleCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $ionicPopup, $sce, HealthArticlesData, HealthArticlesContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
     $scope.data = HealthArticlesData.get($stateParams.idx);
     $scope.nochrome = false;
@@ -612,10 +632,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/cdcatw/';
     $scope.name = 'CDC Around the World';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -670,10 +692,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('CDCAtwCtrl', function($scope, $rootScope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, CDCAtwsData, CDCAtwsContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     $scope.data = CDCAtwsData.get($stateParams.idx);
@@ -740,10 +764,12 @@ angular.module('mycdc.controllers', [])
     $scope.name = 'Vital Signs';
     $rootScope.showleft = false;
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -798,10 +824,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('VitalSignCtrl', function($scope, $rootScope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, VitalSignsData, VitalSignsContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     $scope.data = VitalSignsData.get($stateParams.idx);
@@ -866,10 +894,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/FastStat/';
     $scope.name = 'FastStats';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -924,10 +954,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('FastStatCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, FastStatsData, FastStatsContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     $scope.data = FastStatsData.get($stateParams.idx);
@@ -989,10 +1021,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/WeeklyDiseaseCaseCount/';
     $scope.name = 'Weekly Disease Case Counts';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -1050,10 +1084,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('WeeklyDiseaseCaseCountCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, WeeklyCaseCountsData, WeeklyCaseCountsContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     $scope.data = WeeklyCaseCountsData.get($stateParams.idx);
@@ -1123,9 +1159,11 @@ angular.module('mycdc.controllers', [])
     $scope.name = 'Emerging Infectious Disease (EID)';
 
     $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -1180,10 +1218,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('EIDCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, EIDsData, EIDsContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     $scope.data = EIDsData.get($stateParams.idx);
@@ -1245,10 +1285,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/MMWR/';
     $scope.name = 'Morbidity and Mortality Weekly Report (MMWR)';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -1303,10 +1345,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('MMWRCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, MMWRsData, MMWRsContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     $scope.data = MMWRsData.get($stateParams.idx);
@@ -1367,10 +1411,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/PCD/';
     $scope.name = 'Preventing Chronic Disease (PCD)';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -1430,10 +1476,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('PCDCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, PCDsData, PCDsContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     $scope.data = PCDsData.get($stateParams.idx);
@@ -1495,10 +1543,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/Newsroom/';
     $scope.name = 'Newsroom';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -1556,10 +1606,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('NewsroomCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, NewsroomsData, NewsroomsContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
     $scope.news = NewsroomsData.get($stateParams.idx);
     $scope.nochrome = false;
@@ -1627,10 +1679,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/Outbreak/';
     $scope.name = 'Outbreaks';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -1688,10 +1742,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('OutbreakCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, OutbreaksData) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
     $scope.data = OutbreaksData.get($stateParams.idx);
     $scope.name = 'Outbreaks';
@@ -1741,10 +1797,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/TravelNotice/';
     $scope.name = 'Travel Notices';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -1802,10 +1860,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('TravelNoticeCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, TravelNoticesData) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
     $scope.data = TravelNoticesData.get($stateParams.idx);
     $scope.name = 'Travel Notices';
@@ -1858,10 +1918,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/Podcast/';
     $scope.name = 'Podcasts';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -1980,10 +2042,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/PHIL/';
     $scope.name = 'Public Health Image Library';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -2105,10 +2169,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/PHMblog/';
     $scope.name = 'Public Health Matters Blog';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -2163,10 +2229,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('PHMblogCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, PHMblogsData, PHMblogsContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     $scope.data = PHMblogsData.get($stateParams.idx);
@@ -2233,10 +2301,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/directorblog/';
     $scope.name = 'CDC Directors Blog';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -2291,10 +2361,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('DirectorsBlogCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, DirectorsBlogsData, DirectorsBlogsContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     $scope.data = DirectorsBlogsData.get($stateParams.idx);
@@ -2352,10 +2424,12 @@ angular.module('mycdc.controllers', [])
  */
 
 .controller('DYKCtrl', function($scope, $stateParams, $ionicLoading, $ionicPopup, $ionicViewService, $sce, DidYouKnowData, DidYouKnowStorage, DidYouKnowContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     DidYouKnowData.async().then(
@@ -2443,10 +2517,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/Fact/';
     $scope.name = 'Fact of the Week';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
@@ -2501,10 +2577,12 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('FOTWCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, FactoftheWeekData, FactoftheWeekContent) {
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     $scope.data = FactoftheWeekData.get($stateParams.idx);
@@ -2574,10 +2652,12 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/YouTube/';
     $scope.name = 'YouTube';
 
-    $scope.loading = $ionicLoading.show({
-        template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
-        showBackdrop: false,
-        showDelay: 100
+   $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
     var getData = function() {
