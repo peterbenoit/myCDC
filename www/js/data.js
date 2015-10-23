@@ -172,7 +172,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     return service;
@@ -252,7 +257,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getSourceUrl = function(idx) {
-        return data[idx].sourceUrl;
+        if(data.length) {
+            return data[idx].sourceUrl;
+        }
+        else {
+            return '';
+        }
     };
 
     return service;
@@ -384,7 +394,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     return service;
@@ -532,11 +547,21 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     service.getSourceUrl = function(idx) {
-        return data[idx].sourceUrl;
+        if(data.length) {
+            return data[idx].sourceUrl;
+        }
+        else {
+            return '';
+        }
     };
 
     return service;
@@ -607,7 +632,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     return service;
@@ -699,9 +729,13 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
-
     return service;
 })
 
@@ -791,11 +825,21 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     service.getSourceUrl = function(idx) {
-        return data[idx].sourceUrl;
+        if(data.length) {
+            return data[idx].sourceUrl;
+        }
+        else {
+            return '';
+        }
     };
 
     return service;
@@ -876,7 +920,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     return service;
@@ -968,7 +1017,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     return service;
@@ -1047,7 +1101,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     return service;
@@ -1140,11 +1199,21 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     service.getSourceUrl = function(idx) {
-        return data[idx].sourceUrl;
+        if(data.length) {
+            return data[idx].sourceUrl;
+        }
+        else {
+            return '';
+        }
     };
 
     return service;
@@ -1218,11 +1287,21 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     service.getSourceUrl = function(idx) {
-        return data[idx].sourceUrl;
+        if(data.length) {
+            return data[idx].sourceUrl;
+        }
+        else {
+            return '';
+        }
     };
 
     return service;
@@ -1290,11 +1369,21 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     service.getSourceUrl = function(idx) {
-        return data[idx].sourceUrl;
+        if(data.length) {
+            return data[idx].sourceUrl;
+        }
+        else {
+            return '';
+        }
     };
 
     return service;
@@ -1374,7 +1463,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     service.getCount = function() {
@@ -1482,7 +1576,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     service.getCount = function() {
@@ -1572,7 +1671,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     return service;
@@ -1664,7 +1768,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     return service;
@@ -1818,7 +1927,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     return service;
@@ -1918,7 +2032,12 @@ angular.module('mycdc.data', [])
     };
 
     service.getId = function(idx) {
-        return data[idx].id;
+        if(data.length) {
+            return data[idx].id;
+        }
+        else {
+            return 0;
+        }
     };
 
     service.getCount = function() {
