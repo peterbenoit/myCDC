@@ -12,10 +12,10 @@
                     <div ng-if="data.isWarning" class="item item-notice warning"><b>Travel Notice</b> - Warning Level 3</div>
                     <div ng-if="data.isWatch" class="item item-notice watch"><b>Travel Notice</b> - Watch Level 1</div>
                     <div ng-if="data.isAlert" class="item item-notice alert"><b>Travel Notice</b> - Alert Level 2</div>
-                    <a ng-if="data.hasImage" class="item item-image" ng-href="{{data.url}}{{$index}}" ng-style="fullwidth()">
+                    <a ng-if="data.hasImage" class="item item-image" ng-href="{{data.url}}{{data.id}}" ng-style="fullwidth()">
                         <img ng-src="{{data.imageSrc}}" err-src="img/image-placeholder.png" fullwidth>
                     </a>
-                    <a class="item item-text-wrap item-body" ng-href="{{data.url}}{{$index}}">
+                    <a class="item item-text-wrap item-body" ng-href="{{data.url}}{{data.id}}">
                         <strong>{{data.name | words:10}}</strong>
                         <p class="date">{{data.datePublished}}</p>
                         <p>{{data.description | words:20}}</p>
@@ -32,8 +32,6 @@
                 </div>
             </div>
         </div>
-        <button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="showMoreItems()" >
-            Show more
-        </button>
+        <ion-infinite-scroll ng-if="hasMoreItems" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
     </ion-content>
 </ion-view>

@@ -57,6 +57,7 @@ angular.module('mycdc.controllers', [])
     $scope.goBack = function() {
         var sn = $ionicHistory.currentView().stateName;
 
+        // In these views, return to the source stream, not the previous item
         if (sn === 'app.YouTube' || sn === 'app.PHIL' || sn === 'app.Podcast') {
             // returnToState('app.home');
 
@@ -172,7 +173,7 @@ angular.module('mycdc.controllers', [])
         href: '#/app/FastStats',
         icon: 'ion-checkmark-circled'
     }, {
-        title: 'Weekly Disease Case Counts (No data)',
+        title: 'Disease Case Counts',
         href: '#/app/WeeklyDiseaseCaseCounts',
         icon: 'ion-close-circled'
     }, {
@@ -180,7 +181,7 @@ angular.module('mycdc.controllers', [])
         href: '#/app/DYK/0',
         icon: 'ion-checkmark-circled'
     }, {
-        title: 'Fact of the Week (Bad data)',
+        title: 'Fact of the Week',
         href: '#/app/FactoftheWeek',
         icon: 'ion-checkmark-circled'
     }, {
@@ -248,6 +249,26 @@ angular.module('mycdc.controllers', [])
         href: '#/app/civdemo',
         icon: 'ion-checkmark-circled'
     }];
+
+    var page = 1,
+        pageSize = 10;
+
+    $scope.doRefresh = function() {
+        getData();
+    };
+
+    $scope.paginationLimit = function(data) {
+        return pageSize * page;
+    };
+
+    $scope.hasMoreItems = function() {
+        return page < ($scope.datas.length / pageSize);
+    };
+
+    $scope.loadMore = function() {
+        page = page + 1;
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+    };
 })
 
 // ARTICLE: SOURCEURL w/ NOCHROME
@@ -314,11 +335,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -339,44 +358,55 @@ angular.module('mycdc.controllers', [])
         maxWidth: 200,
         showDelay: 0
     });
-    $scope.data = DotwData.get($stateParams.idx);
-    $scope.nochrome = false;
-    $scope.name = 'Disease of the Week';
-    $rootScope.showleft = true;
 
-    var sourceurl = DotwData.getSourceUrl($stateParams.idx),
-        filename = sourceurl.split('/').pop(),
-        newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
-        nochromeurl = sourceurl.replace(filename, newfilename);
+    DotwData.async().then(function(){
+        init();
+    });
 
-    DotwContent.getStatus(nochromeurl).then(
-        function(resp) {
-            if (resp.data.status === 200) {
-                $scope.nochrome = true;
-                $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
-            }
-            else {
+    var init = function() {
+        $ionicLoading.hide();
+        $scope.data = DotwData.get($stateParams.idx);
+        $scope.nochrome = false;
+        $scope.name = 'Disease of the Week';
+        $rootScope.showleft = true;
+
+        var sourceurl = DotwData.getSourceUrl($stateParams.idx),
+            filename = sourceurl.split('/').pop(),
+            newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
+            nochromeurl = sourceurl.replace(filename, newfilename);
+
+        DotwContent.getStatus(nochromeurl).then(
+            function(resp) {
+                if (resp.data.status === 200) {
+                    $scope.nochrome = true;
+                    $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
+                }
+                else {
+                    $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
+                }
+                $ionicLoading.hide();
+            },
+            function() {
                 $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
-            }
-            $ionicLoading.hide();
-        },
-        function() {
-            $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
-            $ionicLoading.hide();
-        },
-        function() {}
-    );
+                $ionicLoading.hide();
+            },
+            function() {}
+        );
+    }
+
+
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -396,7 +426,7 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('FluViewCtrl', function($scope, $stateParams, $ionicLoading, $ionicPopup, $ionicViewService, $sce, FluViewData, FluViewStorage, FluViewContent) {
+.controller('FluViewCtrl', function($scope, $stateParams, $ionicLoading, $ionicPopup, $ionicHistory, $sce, FluViewData, FluViewStorage, FluViewContent) {
    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -429,22 +459,26 @@ angular.module('mycdc.controllers', [])
         $scope.id = $scope.data.id;
         $scope.name = 'FluView Weekly Summary';
 
-        if (window.device) {
-            $scope.devicePlatform = device.platform;
-        }
+        // if (window.device) {
+        //     $scope.devicePlatform = device.platform;
+        // }
 
         FluViewContent.getContent($scope.id).then(
             function(resp) {
-                $scope.content = $sce.trustAsHtml(resp.data.results.content);
-                $ionicLoading.hide();
+                if (_.isEmpty(resp.data.results)) {
+                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicLoading.hide();
+                    $ionicHistory.goBack();
+                }
+                else {
+                    $scope.content = $sce.trustAsHtml(resp.data.results.content);
+                    $ionicLoading.hide();
+                }
             },
             function() {
                 $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                 $ionicLoading.hide();
-                var backView = $ionicViewService.getBackView();
-                if (backView) {
-                    backView.go();
-                }
+                $ionicHistory.goBack();
             },
             function() {}
         );
@@ -454,12 +488,13 @@ angular.module('mycdc.controllers', [])
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -538,11 +573,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -566,44 +599,52 @@ angular.module('mycdc.controllers', [])
         maxWidth: 200,
         showDelay: 0
     });
-    $scope.data = HealthArticlesData.get($stateParams.idx);
-    $scope.nochrome = false;
-    $scope.name = 'Health Articles';
-    $rootScope.showleft = true;
 
-    var sourceurl = HealthArticlesData.getSourceUrl($stateParams.idx),
-        filename = sourceurl.split('/').pop(),
-        newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
-        nochromeurl = sourceurl.replace(filename, newfilename);
+    HealthArticlesData.async().then(function(){
+        init();
+    });
 
-    HealthArticlesContent.getStatus(nochromeurl).then(
-        function(resp) {
-            if (resp.data.status === 200) {
-                $scope.nochrome = true;
-                $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
-            }
-            else {
+    var init = function() {
+        $scope.data = HealthArticlesData.get($stateParams.idx);
+        $scope.nochrome = false;
+        $scope.name = 'Health Articles';
+        $rootScope.showleft = true;
+
+        var sourceurl = HealthArticlesData.getSourceUrl($scope.data.id),
+            filename = sourceurl.split('/').pop(),
+            newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
+            nochromeurl = sourceurl.replace(filename, newfilename);
+
+        HealthArticlesContent.getStatus(nochromeurl).then(
+            function(resp) {
+                if (resp.data.status === 200) {
+                    $scope.nochrome = true;
+                    $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
+                }
+                else {
+                    $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
+                }
+                $ionicLoading.hide();
+            },
+            function() {
                 $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
-            }
-            $ionicLoading.hide();
-        },
-        function() {
-            $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
-            $ionicLoading.hide();
-        },
-        function() {}
-    );
+                $ionicLoading.hide();
+            },
+            function() {}
+        );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -674,11 +715,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -691,7 +730,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('CDCAtwCtrl', function($scope, $rootScope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, CDCAtwsData, CDCAtwsContent) {
+.controller('CDCAtwCtrl', function($scope, $rootScope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, CDCAtwsData, CDCAtwsContent) {
    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -700,40 +739,48 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-    $scope.data = CDCAtwsData.get($stateParams.idx);
-    $scope.id = CDCAtwsData.getId($stateParams.idx);
-    $scope.name = 'CDC Around the World';
-    $scope.viewId = 'CDCAtwView';
-    $rootScope.showleft = true;
+    CDCAtwsData.async().then(function(){
+        init();
+    });
 
-    //console.log($scope.data);
+    var init = function() {
+        $scope.data = CDCAtwsData.get($stateParams.idx);
+        $scope.name = 'CDC Around the World';
+        $scope.viewId = 'CDCAtwView';
+        $rootScope.showleft = true;
 
-    CDCAtwsContent.getContent($scope.id).then(
-        function(resp) {
-            $scope.content = $sce.trustAsHtml(resp.data.results.content);
-            $ionicLoading.hide();
-        },
-        function() {
-            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-            $ionicLoading.hide();
-            var backView = $ionicViewService.getBackView();
-            if (backView) {
-                backView.go();
-            }
-        },
-        function() {}
-    );
+        CDCAtwsContent.getContent($scope.data.id).then(
+            function(resp) {
+                if (_.isEmpty(resp.data.results)) {
+                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicLoading.hide();
+                    $ionicHistory.goBack();
+                }
+                else {
+                    $scope.content = $sce.trustAsHtml(resp.data.results.content);
+                    $ionicLoading.hide();
+                }
+            },
+            function() {
+                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicLoading.hide();
+                $ionicHistory.goBack();
+            },
+            function() {}
+        );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -807,11 +854,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -824,7 +869,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('VitalSignCtrl', function($scope, $rootScope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, VitalSignsData, VitalSignsContent) {
+.controller('VitalSignCtrl', function($scope, $rootScope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, VitalSignsData, VitalSignsContent) {
    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -833,40 +878,50 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-    $scope.data = VitalSignsData.get($stateParams.idx);
-    $scope.id = VitalSignsData.getId($stateParams.idx);
-    $scope.name = 'Vital Signs';
-    $scope.viewId = 'VitalSign';
-    $rootScope.showleft = true;
+    VitalSignsData.async().then(function(){
+        init();
+    });
 
-    //console.log($scope.data);
+    var init = function() {
+        $scope.data = VitalSignsData.get($stateParams.idx);
+        $scope.name = 'Vital Signs';
+        $scope.viewId = 'VitalSign';
+        $rootScope.showleft = true;
 
-    VitalSignsContent.getContent($scope.id).then(
-        function(resp) {
-            $scope.content = $sce.trustAsHtml(resp.data.results.content);
-            $ionicLoading.hide();
-        },
-        function() {
-            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-            $ionicLoading.hide();
-            var backView = $ionicViewService.getBackView();
-            if (backView) {
-                backView.go();
-            }
-        },
-        function() {}
-    );
+        //console.log($scope.data);
+
+        VitalSignsContent.getContent($scope.data.id).then(
+            function(resp) {
+                if (_.isEmpty(resp.data.results)) {
+                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicLoading.hide();
+                    $ionicHistory.goBack();
+                }
+                else {
+                    $scope.content = $sce.trustAsHtml(resp.data.results.content);
+                    $ionicLoading.hide();
+                }
+            },
+            function() {
+                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicLoading.hide();
+                $ionicHistory.goBack();
+            },
+            function() {}
+        );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -937,11 +992,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -954,7 +1007,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FastStatCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, FastStatsData, FastStatsContent) {
+.controller('FastStatCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, FastStatsData, FastStatsContent) {
    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -963,37 +1016,47 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-    $scope.data = FastStatsData.get($stateParams.idx);
-    $scope.id = FastStatsData.getId($stateParams.idx);
-    $scope.name = 'FastStats';
-    $scope.viewId = 'FastStat';
+    FastStatsData.async().then(function(){
+        init();
+    });
 
-    FastStatsContent.getContent($scope.id).then(
-        function(resp) {
-            $scope.content = $sce.trustAsHtml(resp.data.results.content);
-            $ionicLoading.hide();
-        },
-        function() {
-            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-            $ionicLoading.hide();
-            var backView = $ionicViewService.getBackView();
-            if (backView) {
-                backView.go();
-            }
-        },
-        function() {}
-    );
+    var init = function() {
+        $scope.data = FastStatsData.get($stateParams.idx);
+        $scope.name = 'FastStats';
+        $scope.viewId = 'FastStat';
+
+        FastStatsContent.getContent($scope.data.id).then(
+            function(resp) {
+                if (_.isEmpty(resp.data.results)) {
+                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicLoading.hide();
+                    $ionicHistory.goBack();
+                }
+                else {
+                    $scope.content = $sce.trustAsHtml(resp.data.results.content);
+                    $ionicLoading.hide();
+                }
+            },
+            function() {
+                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicLoading.hide();
+                $ionicHistory.goBack();
+            },
+            function() {}
+        );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -1020,7 +1083,7 @@ angular.module('mycdc.controllers', [])
     $scope.datas = [];
     $scope.storage = '';
     $scope.url = '#/app/WeeklyDiseaseCaseCount/';
-    $scope.name = 'Weekly Disease Case Counts';
+    $scope.name = 'Disease Case Counts';
 
    $scope.loading = $ionicLoading.show({
         content: 'Loading',
@@ -1064,11 +1127,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -1093,42 +1154,49 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-    $scope.data = WeeklyCaseCountsData.get($stateParams.idx);
-    $scope.name = 'Weekly Disease Case Counts';
-    $scope.viewId = 'WeeklyDiseaseCaseCount';
+    WeeklyCaseCountsData.async().then(function(){
+        init();
+    });
 
-    var sourceurl = WeeklyCaseCountsData.getSourceUrl($stateParams.idx),
-        filename = sourceurl.split('/').pop(),
-        newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
-        nochromeurl = sourceurl.replace(filename, newfilename);
+    var init = function() {
+        $scope.data = WeeklyCaseCountsData.get($stateParams.idx);
+        $scope.name = 'Weekly Disease Case Counts';
+        $scope.viewId = 'WeeklyDiseaseCaseCount';
 
-    WeeklyCaseCountsContent.getStatus(nochromeurl).then(
-        function(resp) {
-            if (resp.data.status === 200) {
-                $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
-            }
-            else {
+        var sourceurl = WeeklyCaseCountsData.getSourceUrl($stateParams.idx),
+            filename = sourceurl.split('/').pop(),
+            newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
+            nochromeurl = sourceurl.replace(filename, newfilename);
+
+        WeeklyCaseCountsContent.getStatus(nochromeurl).then(
+            function(resp) {
+                if (resp.data.status === 200) {
+                    $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
+                }
+                else {
+                    $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
+                }
+                $ionicLoading.hide();
+            },
+            function() {
                 $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
-            }
-            $ionicLoading.hide();
-        },
-        function() {
-            $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
-            $ionicLoading.hide();
-        },
-        function() {}
-    );
+                $ionicLoading.hide();
+            },
+            function() {}
+        );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -1201,11 +1269,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -1218,9 +1284,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('EIDCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, EIDsData, EIDsContent) {
-    var backView = $ionicViewService.getBackView();
-
+.controller('EIDCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, EIDsData, EIDsContent) {
     $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -1229,37 +1293,47 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-    $scope.data = EIDsData.get($stateParams.idx);
-    $scope.id = EIDsData.getId($stateParams.idx);
-    $scope.name = 'Emerging Infectious Disease (EID)';
-    $scope.viewId = 'EID';
+    EIDsData.async().then(function(){
+        init();
+    });
 
-    EIDsContent.getContent($scope.id).then(
-        function(resp) {
-            $scope.content = $sce.trustAsHtml(resp.data.results.content);
-            $ionicLoading.hide();
-        },
-        function() {
-            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-            $ionicLoading.hide();
+    var init = function() {
+        $scope.data = EIDsData.get($stateParams.idx);
+        $scope.name = 'Emerging Infectious Disease (EID)';
+        $scope.viewId = 'EID';
 
-            if (backView) {
-                backView.go();
-            }
-        },
-        function() {}
-    );
+        EIDsContent.getContent($scope.data.id).then(
+            function(resp) {
+                if (_.isEmpty(resp.data.results)) {
+                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicLoading.hide();
+                    $ionicHistory.goBack();
+                }
+                else {
+                    $scope.content = $sce.trustAsHtml(resp.data.results.content);
+                    $ionicLoading.hide();
+                }
+            },
+            function() {
+                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicLoading.hide();
+                $ionicHistory.goBack();
+            },
+            function() {}
+        );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -1330,11 +1404,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -1347,7 +1419,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('MMWRCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, MMWRsData, MMWRsContent) {
+.controller('MMWRCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, MMWRsData, MMWRsContent) {
    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -1356,36 +1428,46 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-    $scope.data = MMWRsData.get($stateParams.idx);
-    $scope.id = MMWRsData.getId($stateParams.idx);
-    $scope.name = 'Morbidity and Mortality Weekly Report (MMWR)';
+    MMWRsData.async().then(function(){
+        init();
+    });
 
-    MMWRsContent.getContent($scope.id).then(
-        function(resp) {
-            $scope.content = $sce.trustAsHtml(resp.data.results.content);
-            $ionicLoading.hide();
-        },
-        function() {
-            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-            $ionicLoading.hide();
-            var backView = $ionicViewService.getBackView();
-            if (backView) {
-                backView.go();
-            }
-        },
-        function() {}
-    );
+    var init = function() {
+        $scope.data = MMWRsData.get($stateParams.idx);
+        $scope.name = 'Morbidity and Mortality Weekly Report (MMWR)';
+
+        MMWRsContent.getContent($scope.data.id).then(
+            function(resp) {
+                if (_.isEmpty(resp.data.results)) {
+                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicLoading.hide();
+                    $ionicHistory.goBack();
+                }
+                else {
+                    $scope.content = $sce.trustAsHtml(resp.data.results.content);
+                    $ionicLoading.hide();
+                }
+            },
+            function() {
+                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicLoading.hide();
+                $ionicHistory.goBack();
+            },
+            function() {}
+        );
+    };
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -1461,11 +1543,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -1478,7 +1558,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PCDCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, PCDsData, PCDsContent) {
+.controller('PCDCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, PCDsData, PCDsContent) {
    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -1487,37 +1567,47 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-    $scope.data = PCDsData.get($stateParams.idx);
-    $scope.id = PCDsData.getId($stateParams.idx);
-    $scope.name = 'Preventing Chronic Disease (PCD)';
-    $scope.viewId = 'PDC';
+    PCDsData.async().then(function(){
+        init();
+    });
 
-    PCDsContent.getContent($scope.id).then(
-        function(resp) {
-            $scope.content = $sce.trustAsHtml(resp.data.results.content);
-            $ionicLoading.hide();
-        },
-        function() {
-            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-            $ionicLoading.hide();
-            var backView = $ionicViewService.getBackView();
-            if (backView) {
-                backView.go();
-            }
-        },
-        function() {}
-    );
+    var init = function() {
+        $scope.data = PCDsData.get($stateParams.idx);
+        $scope.name = 'Preventing Chronic Disease (PCD)';
+        $scope.viewId = 'PDC';
+
+        PCDsContent.getContent($scope.data.id).then(
+            function(resp) {
+                if (_.isEmpty(resp.data.results)) {
+                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicLoading.hide();
+                    $ionicHistory.goBack();
+                }
+                else {
+                    $scope.content = $sce.trustAsHtml(resp.data.results.content);
+                    $ionicLoading.hide();
+                }
+            },
+            function() {
+                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicLoading.hide();
+                $ionicHistory.goBack();
+            },
+            function() {}
+        );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -1588,11 +1678,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -1616,44 +1704,52 @@ angular.module('mycdc.controllers', [])
         maxWidth: 200,
         showDelay: 0
     });
-    $scope.news = NewsroomsData.get($stateParams.idx);
-    $scope.nochrome = false;
-    $scope.name = 'Newsroom';
-    $scope.viewId = 'Newsroom';
 
-    var sourceurl = NewsroomsData.getSourceUrl($stateParams.idx),
-        filename = sourceurl.split('/').pop(),
-        newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
-        nochromeurl = sourceurl.replace(filename, newfilename);
+    NewsroomsData.async().then(function(){
+        init();
+    });
 
-    NewsroomsContent.getStatus(nochromeurl).then(
-        function(resp) {
-            if (resp.data.status === 200) {
-                $scope.nochrome = true;
-                $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
-            }
-            else {
+    var init = function() {
+        $scope.news = NewsroomsData.get($stateParams.idx);
+        $scope.nochrome = false;
+        $scope.name = 'Newsroom';
+        $scope.viewId = 'Newsroom';
+
+        var sourceurl = NewsroomsData.getSourceUrl($stateParams.idx),
+            filename = sourceurl.split('/').pop(),
+            newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
+            nochromeurl = sourceurl.replace(filename, newfilename);
+
+        NewsroomsContent.getStatus(nochromeurl).then(
+            function(resp) {
+                if (resp.data.status === 200) {
+                    $scope.nochrome = true;
+                    $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
+                }
+                else {
+                    $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
+                }
+                $ionicLoading.hide();
+            },
+            function() {
                 $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
-            }
-            $ionicLoading.hide();
-        },
-        function() {
-            $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
-            $ionicLoading.hide();
-        },
-        function() {}
-    );
+                $ionicLoading.hide();
+            },
+            function() {}
+        );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -1724,11 +1820,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -1752,26 +1846,34 @@ angular.module('mycdc.controllers', [])
         maxWidth: 200,
         showDelay: 0
     });
-    $scope.data = OutbreaksData.get($stateParams.idx);
-    $scope.name = 'Outbreaks';
-    $scope.viewId = 'Outbreak';
 
-    var sourceurl = OutbreaksData.getSourceUrl($stateParams.idx);
+    OutbreaksData.async().then(function(){
+        init();
+    });
 
-    $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
+    var init = function() {
+        $scope.data = OutbreaksData.get($stateParams.idx);
+        $scope.name = 'Outbreaks';
+        $scope.viewId = 'Outbreak';
 
-    $ionicLoading.hide();
+        var sourceurl = OutbreaksData.getSourceUrl($stateParams.idx);
+
+        $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
+
+        $ionicLoading.hide();
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -1842,11 +1944,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -1870,26 +1970,34 @@ angular.module('mycdc.controllers', [])
         maxWidth: 200,
         showDelay: 0
     });
-    $scope.data = TravelNoticesData.get($stateParams.idx);
-    $scope.name = 'Travel Notices';
-    $scope.viewId = 'TravelNotice';
 
-    var sourceurl = TravelNoticesData.getSourceUrl($stateParams.idx);
+    TravelNoticesData.async().then(function(){
+        init();
+    });
 
-    $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
+    var init = function() {
+        $scope.data = TravelNoticesData.get($stateParams.idx);
+        $scope.name = 'Travel Notices';
+        $scope.viewId = 'TravelNotice';
 
-    $ionicLoading.hide();
+        var sourceurl = TravelNoticesData.getSourceUrl($stateParams.idx);
+
+        $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
+
+        $ionicLoading.hide();
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -1963,11 +2071,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -1984,39 +2090,44 @@ angular.module('mycdc.controllers', [])
     var position = $stateParams.idx,
         count = PodcastsData.getCount();
 
-    $scope.data = PodcastsData.get(position);
-    $scope.id = PodcastsData.getId(position);
-    $scope.name = 'Podcasts';
-    $scope.viewId = 'Podcast';
+    PodcastsData.async().then(function(){
+        init();
+    });
 
-    var audio = PodcastsData.getAudio(position);
+    var init = function() {
+        $scope.data = PodcastsData.get(position);
+        $scope.id = PodcastsData.getId(position);
+        $scope.name = 'Podcasts';
+        $scope.viewId = 'Podcast';
 
-    $scope.previous = {
-        'visible': position > 0,
-        'position': parseInt(position) - 1
+        var audio = PodcastsData.getAudio(position);
+
+        $scope.previous = {
+            'visible': position > 0,
+            'position': parseInt(position) - 1
+        };
+
+        $scope.next = {
+            'visible': position < count - 1,
+            'position': parseInt(position) + 1
+        };
+
+        $scope.transcript = PodcastsData.getTranscript(position);
+        $scope.audio = $sce.trustAsResourceUrl(audio[0]);
+        $scope.type = audio[1];
     };
-
-    $scope.next = {
-        'visible': position < count - 1,
-        'position': parseInt(position) + 1
-    };
-
-    //console.log(position);
-
-    $scope.transcript = PodcastsData.getTranscript(position);
-    $scope.audio = $sce.trustAsResourceUrl(audio[0]);
-    $scope.type = audio[1];
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -2087,11 +2198,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -2108,21 +2217,29 @@ angular.module('mycdc.controllers', [])
     var position = $stateParams.idx,
         count = PHILsData.getCount();
 
-    $scope.data = PHILsData.get(position);
-    $scope.id = PHILsData.getId(position);
-    $scope.name = 'Public Health Image Library';
-    $scope.viewId = 'PHIL';
+    PHILsData.async().then(function(){
+        init();
+    });
 
-    $scope.image = $scope.data.enclosures[0].resourceUrl;
+    var init = function() {
+        $scope.data = PHILsData.get($stateParams.idx);
 
-    $scope.previous = {
-        'visible': position > 0,
-        'position': parseInt(position) - 1
-    };
+        // $scope.data = PHILsData.get(position);
+        // $scope.id = PHILsData.getId(position);
+        $scope.name = 'Public Health Image Library';
+        $scope.viewId = 'PHIL';
 
-    $scope.next = {
-        'visible': position < count - 1,
-        'position': parseInt(position) + 1
+        $scope.image = $scope.data.enclosures[0].resourceUrl;
+
+        $scope.previous = {
+            'visible': position > 0,
+            'position': parseInt(position) - 1
+        };
+
+        $scope.next = {
+            'visible': position < count - 1,
+            'position': parseInt(position) + 1
+        };
     };
 
     $scope.shareData = function() {
@@ -2214,11 +2331,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -2231,7 +2346,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('PHMblogCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, PHMblogsData, PHMblogsContent) {
+.controller('PHMblogCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, PHMblogsData, PHMblogsContent) {
    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -2240,38 +2355,40 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-    $scope.data = PHMblogsData.get($stateParams.idx);
-    $scope.id = PHMblogsData.getId($stateParams.idx);
-    $scope.name = 'Public Health Matters Blog';
-    $scope.viewId = 'PHM';
+    PHMblogsData.async().then(function(){
+        init();
+    });
 
+    var init = function() {
+        $scope.data = PHMblogsData.get($stateParams.idx);
+        $scope.name = 'Public Health Matters Blog';
+        $scope.viewId = 'PHM';
 
-    PHMblogsContent.getContent($scope.id).then(
-        function(resp) {
-            $scope.content = $sce.trustAsHtml(resp.data.results.content);
-            $ionicLoading.hide();
-        },
-        function() {
-            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-            $ionicLoading.hide();
-            var backView = $ionicViewService.getBackView();
-            if (backView) {
-                backView.go();
-            }
-        },
-        function() {}
-    );
+        PHMblogsContent.getContent($scope.data.id).then(
+            function(resp) {
+                $scope.content = $sce.trustAsHtml(resp.data.results.content);
+                $ionicLoading.hide();
+            },
+            function() {
+                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicLoading.hide();
+                $ionicHistory.goBack();
+            },
+            function() {}
+        );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -2346,11 +2463,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -2363,7 +2478,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DirectorsBlogCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, DirectorsBlogsData, DirectorsBlogsContent) {
+.controller('DirectorsBlogCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, DirectorsBlogsData, DirectorsBlogsContent) {
    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -2372,37 +2487,47 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-    $scope.data = DirectorsBlogsData.get($stateParams.idx);
-    $scope.id = DirectorsBlogsData.getId($stateParams.idx);
-    $scope.name = 'CDC Directors Blog';
-    $scope.viewId = 'DirectorsBlog';
+    DirectorsBlogsData.async().then(function(){
+        init();
+    });
 
-    DirectorsBlogsContent.getContent($scope.id).then(
-        function(resp) {
-            $scope.content = $sce.trustAsHtml(resp.data.results.content);
-            $ionicLoading.hide();
-        },
-        function() {
-            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-            $ionicLoading.hide();
-            var backView = $ionicViewService.getBackView();
-            if (backView) {
-                backView.go();
-            }
-        },
-        function() {}
-    );
+    var init = function() {
+        $scope.data = DirectorsBlogsData.get($stateParams.idx);
+        $scope.name = 'CDC Directors Blog';
+        $scope.viewId = 'DirectorsBlog';
+
+        DirectorsBlogsContent.getContent($scope.data.id).then(
+            function(resp) {
+                if (_.isEmpty(resp.data.results)) {
+                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicLoading.hide();
+                    $ionicHistory.goBack();
+                }
+                else {
+                    $scope.content = $sce.trustAsHtml(resp.data.results.content);
+                    $ionicLoading.hide();
+                }
+            },
+            function() {
+                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicLoading.hide();
+                $ionicHistory.goBack();
+            },
+            function() {}
+        );
+    }
 
     $scope.shareData = function() {
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -2418,15 +2543,13 @@ angular.module('mycdc.controllers', [])
 })
 
 
-
-
 /**
  * *******************************************************************************************
  *                                      FACTS
  * *******************************************************************************************
  */
 
-.controller('DYKCtrl', function($scope, $stateParams, $ionicLoading, $ionicPopup, $ionicViewService, $sce, DidYouKnowData, DidYouKnowStorage, DidYouKnowContent) {
+.controller('DYKCtrl', function($scope, $stateParams, $ionicLoading, $ionicPopup, $ionicHistory, $sce, DidYouKnowData, DidYouKnowStorage, DidYouKnowContent) {
    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -2456,7 +2579,6 @@ angular.module('mycdc.controllers', [])
     );
 
     getContent = function() {
-        $scope.id = $scope.data.id;
         $scope.name = 'Did You Know?';
         $scope.viewId = 'DidYouKnow';
 
@@ -2464,18 +2586,22 @@ angular.module('mycdc.controllers', [])
             $scope.devicePlatform = device.platform;
         }
 
-        DidYouKnowContent.getContent($scope.id).then(
+        DidYouKnowContent.getContent($scope.data.id).then(
             function(resp) {
-                $scope.content = $sce.trustAsHtml(resp.data.results.content);
-                $ionicLoading.hide();
+                if (_.isEmpty(resp.data.results)) {
+                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicLoading.hide();
+                    $ionicHistory.goBack();
+                }
+                else {
+                    $scope.content = $sce.trustAsHtml(resp.data.results.content);
+                    $ionicLoading.hide();
+                }
             },
             function() {
                 $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                 $ionicLoading.hide();
-                var backView = $ionicViewService.getBackView();
-                if (backView) {
-                    backView.go();
-                }
+                $ionicHistory.goBack();
             },
             function() {}
         );
@@ -2485,12 +2611,13 @@ angular.module('mycdc.controllers', [])
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -2562,11 +2689,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -2579,7 +2704,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('FOTWCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicViewService, $stateParams, $sce, FactoftheWeekData, FactoftheWeekContent) {
+.controller('FOTWCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, FactoftheWeekData, FactoftheWeekContent) {
    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -2588,8 +2713,13 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-    $scope.data = FactoftheWeekData.get($stateParams.idx);
-    $scope.id = FactoftheWeekData.getId($stateParams.idx);
+    if($stateParams.idx.length < 6) {
+        $scope.data = FactoftheWeekData.get($stateParams.idx);
+        $scope.id = FactoftheWeekData.getId($stateParams.idx);
+    }
+    else {
+        $scope.id = $stateParams.idx;
+    }
     $scope.name = 'Fact of the Week';
 
     FactoftheWeekContent.getContent($scope.id).then(
@@ -2600,10 +2730,7 @@ angular.module('mycdc.controllers', [])
         function() {
             $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
             $ionicLoading.hide();
-            var backView = $ionicViewService.getBackView();
-            if (backView) {
-                backView.go();
-            }
+            $ionicHistory.goBack();
         },
         function() {}
     );
@@ -2612,12 +2739,13 @@ angular.module('mycdc.controllers', [])
         if (window.plugins && window.plugins.socialsharing) {
             var subject = $scope.data.name,
                 message = $scope.data.description,
-                link = $scope.data.sourceUrl;
+                link = $scope.data.sourceUrl,
+                image = $scope.data.imageSrc;
             message = message.replace(/(<([^>]+)>)/ig, '');
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});
@@ -2628,7 +2756,6 @@ angular.module('mycdc.controllers', [])
         window.open($scope.data.sourceUrl, '_system');
     };
 })
-
 
 
 /**
@@ -2697,11 +2824,9 @@ angular.module('mycdc.controllers', [])
         return page < ($scope.datas.length / pageSize);
     };
 
-    $scope.showMoreItems = function() {
+    $scope.loadMore = function() {
         page = page + 1;
-        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-            $scope.$apply();
-        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 })
 
@@ -2718,19 +2843,31 @@ angular.module('mycdc.controllers', [])
     var position = $stateParams.idx,
         count = YouTubesData.getCount();
 
-    $scope.data = YouTubesData.get($stateParams.idx);
-    $scope.id = YouTubesData.getId($stateParams.idx);
-    $scope.name = 'YouTube';
+    YouTubesData.async().then(function(){
+        init();
+    });
 
-    $scope.previous = {
-        'visible': position > 0,
-        'position': parseInt(position) - 1
-    };
+    var init = function() {
+        $scope.data = YouTubesData.getById($stateParams.idx);
+        $scope.id = $stateParams.idx;
+        $scope.name = 'YouTube';
 
-    $scope.next = {
-        'visible': position < count - 1,
-        'position': parseInt(position) + 1
-    };
+        // TODO: interesting that other similiar paging use this instead of that
+        // $scope.data = PHILsData.get(position);
+        // $scope.id = PHILsData.getId(position);
+
+        $scope.previous = {
+            'visible': position > 0,
+            'position': parseInt(position) - 1
+        };
+
+        $scope.next = {
+            'visible': position < count - 1,
+            'position': parseInt(position) + 1
+        };
+    }
+
+
 
     // YouTubesContent.getContent($scope.id).then(
     //     function(resp) {
@@ -2753,7 +2890,7 @@ angular.module('mycdc.controllers', [])
 
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-            window.plugins.socialsharing.share(message, subject, null, link);
+            window.plugins.socialsharing.share(message, subject, image, link);
         }
         else {
             $ionicPopup.alert({title: 'Social Sharing not available.'});

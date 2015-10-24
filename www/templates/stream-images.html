@@ -6,20 +6,18 @@
         </ion-refresher>
         <div class="image-stream" resize>
             <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row" ng-if="$index % 2 === 0">
-                <a href="{{url}}{{$index}}" ng-if="$index < datas.length">
+                <a href="{{url}}{{$index}}" ng-if="$index < datas.length" class="ng-enter-stagger">
                     <div class="item item-image" ng-style="halfwidth()">
                         <img ng-src="{{datas[$index].imageSrc}}" class="horizontal" newresize>
                     </div>
                 </a>
-                <a href="{{url}}{{$index + 1}}" ng-if="$index + 1 < datas.length">
+                <a href="{{url}}{{$index + 1}}" ng-if="$index + 1 < datas.length" class="ng-enter-stagger">
                     <div class="item item-image" ng-style="halfwidth()">
                         <img ng-src="{{datas[$index + 1].imageSrc}}" class="horizontal" newresize>
                     </div>
                 </a>
             </div>
         </div>
-        <button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="showMoreItems()" >
-            Show more
-        </button>
+        <ion-infinite-scroll ng-if="hasMoreItems" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
     </ion-content>
 </ion-view>
