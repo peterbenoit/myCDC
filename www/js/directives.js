@@ -34,18 +34,18 @@ angular.module('mycdc.directives', [])
 .directive('yarp', function() {
     return {
             link: function(scope, element, attrs) {
-                console.log(scope);
-                console.log(element);
-                console.log(attrs);
+                // console.log(scope);
+                // console.log(element);
+                // console.log(attrs);
             }
     };
 })
 .directive('narp', function() {
     return {
             link: function(scope, element, attrs) {
-                console.log(scope);
-                console.log(element);
-                console.log(attrs);
+                // console.log(scope);
+                // console.log(element);
+                // console.log(attrs);
             }
     };
 })
@@ -98,7 +98,7 @@ angular.module('mycdc.directives', [])
         }
     };
  })
- .directive('newresize', function(){
+ .directive('halfsize', function(){
     return {
         link: function(scope, element, attrs) {
             element.on('load', function(e) {
@@ -114,6 +114,28 @@ angular.module('mycdc.directives', [])
                 parent.style.width = newwidth + 'px';
                 parent.style.height = newheight + 'px';
                 parent.style.backgroundImage = 'url('+src+')';
+            });
+        }
+    };
+ })
+ .directive('fullsize', function(){
+    return {
+        link: function(scope, element, attrs) {
+            element.on('load', function(e) {
+                var w = $(window),
+                    newwidth = (w.width() - 20),                // half the screen - padding
+                    newheight = (newwidth / 16) * 9,            // maintian 16x9 aspect ratio
+                    parent = this.parentElement,
+                    src = $(element).attr('src');
+
+                    $(element).remove();
+
+                // apply the new sizes to the parent element
+                parent.style.width = newwidth + 'px';
+                parent.style.height = newheight + 'px';
+                parent.style.backgroundImage = 'url('+src+')';
+                parent.style.backgroundRepeat = 'no-repeat';
+                parent.style.backgroundSize = 'cover';
             });
         }
     };
