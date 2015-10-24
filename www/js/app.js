@@ -11,6 +11,7 @@ angular.module('mycdc', [
     'mycdc.services',
     'mycdc.storage',
     'ngCordova',
+    'ngAnimate',
     'angular.filter',
     'ngIOS9UIWebViewPatch'
     ])
