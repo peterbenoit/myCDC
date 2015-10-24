@@ -258,8 +258,12 @@ angular.module('mycdc.data', [])
                                 break;
                             }
 
-
-
+                            if (datum.contentGroup === 'Newsroom') {
+                                datum.home = '#/app/Newsrooms';
+                                datum.url = '#/app/Newsroom/';
+                                datum.name = '';
+                                break;
+                            }
 
 
 
