@@ -123,11 +123,11 @@ add to body class: platform-wp8
         }
 
         if (window.plugins && window.plugins.toast) {
-            window.plugins.toast.showLongCenter('App Loaded', function(a) {
-                console.log('toast success: ' + a);
-            }, function(b) {
-                console.log('toast error: ' + b);
-            });
+            // window.plugins.toast.showLongCenter('App Loaded', function(a) {
+            //     console.log('toast success: ' + a);
+            // }, function(b) {
+            //     console.log('toast error: ' + b);
+            // });
         }
 
         rs.deviceinfo = DeviceInfo;
@@ -227,13 +227,13 @@ add to body class: platform-wp8
             'menuContent': {
                 templateUrl: function() {
                     if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/home-tablet.html';
+                        return 'templates/stream-home-tablet.html';
                     }
                     if (ionic.Platform.isAndroid()) {
                         return 'templates/stream-home.html';
                     }
                     if (ionic.Platform.isIPad()) {
-                        return 'templates/home-tablet.html';
+                        return 'templates/stream-home-tablet.html';
                     }
                     if (ionic.Platform.isIOS()) {
                         return 'templates/stream-home.html';
