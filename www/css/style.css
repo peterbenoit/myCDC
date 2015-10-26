@@ -150,8 +150,13 @@ colors
 }
 
 
+.stream {
+    background-color: #f8f8f8;
+}
+
 .content-stable {
     background-color: #f8f8f8;
+    /*background: url(/img/card-placeholder.png)*/
 }
 
 /**
