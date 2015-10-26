@@ -92,7 +92,7 @@ angular.module('mycdc.data', [])
         // WARN: social cards should not be configured here
         var getRandom = function(max, min) {
                 return Math.floor(Math.random() * (max - min + 1));
-            };,
+            },
             socialcards = [
             {
                 name: 'Facebook',
