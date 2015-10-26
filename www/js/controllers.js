@@ -438,7 +438,7 @@ angular.module('mycdc.controllers', [])
 
         DotwContent.getStatus(nochromeurl).then(
             function(resp) {
-                if (resp.data.status === 200) {
+                if (resp.data.status === '200') {
                     $scope.nochrome = true;
                     $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
                 }
@@ -676,7 +676,7 @@ angular.module('mycdc.controllers', [])
 
         HealthArticlesContent.getStatus(nochromeurl).then(
             function(resp) {
-                if (resp.data.status === 200) {
+                if (resp.data.status === '200') {
                     $scope.nochrome = true;
                     $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
                 }
@@ -1229,7 +1229,7 @@ angular.module('mycdc.controllers', [])
 
         WeeklyCaseCountsContent.getStatus(nochromeurl).then(
             function(resp) {
-                if (resp.data.status === 200) {
+                if (resp.data.status === '200') {
                     $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
                 }
                 else {
@@ -1781,7 +1781,7 @@ angular.module('mycdc.controllers', [])
 
         NewsroomsContent.getStatus(nochromeurl).then(
             function(resp) {
-                if (resp.data.status === 200) {
+                if (resp.data.status === '200') {
                     $scope.nochrome = true;
                     $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
                 }
