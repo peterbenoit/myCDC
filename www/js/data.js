@@ -17,13 +17,21 @@ angular.module('mycdc.data', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.factory('MenuData', function($http, $q, MenuStorage) {
+.factory('MenuData', function($http, $q, MenuStorage, $cordovaNetwork) {
       var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
         service = {};
 
+        // if (window.device) {
+        //     alert(rs.isOnline);
+        // }
+
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'json/conf.json',
@@ -31,6 +39,16 @@ angular.module('mycdc.data', [])
         }).
         then(function(d) {
             data = d;
+
+            end = new Date().getTime();
+            time = (end - start) / 1000;
+
+            if (window.plugins && window.plugins.toast) {
+                window.plugins.toast.showShortTop(time);
+            }
+            else {
+                console.log(time);
+            }
 
             MenuStorage.save(data);
             deferred.resolve();
@@ -71,64 +89,54 @@ angular.module('mycdc.data', [])
         service = {},
         hasImage = false;
 
+        // WARN: social cards should not be configured here
+        var getRandom = function(max, min) {
+                return Math.floor(Math.random() * (max - min + 1));
+            };,
+            socialcards = [
+            {
+                name: 'Facebook',
+                description: '',
+                url: '#/app/Facebook',
+                image: 'img/facebook.png'
+            },
+            {
+                name: 'Twitter',
+                description: '',
+                url: '#/app/Twitter',
+                image: 'img/twitter.png'
+            },
+            {
+                name: 'Instagram',
+                description: '',
+                url: 'https://instagram.com/cdcgov/',
+                image: 'img/instagram.png'
+            },
+            {
+                name: 'Google+',
+                description: '',
+                url: 'https://plus.google.com/+CDC/posts',
+                image: 'img/googleplus.png'
+            },
+            {
+                name: 'Pinterest',
+                description: '',
+                url: 'https://www.pinterest.com/cdcgov/',
+                image: 'img/pinterest.png'
+            },
+            {
+                name: 'Flickr',
+                description: '',
+                url: 'https://www.flickr.com/photos/CDCsocialmedia',
+                image: 'img/flickr.png'
+            }];
 
-            // var getRandom = function(max, min) {
-            //         return Math.floor(Math.random() * (max - min + 1));
-            //     },
-            //     socialcards = [
-            //     {
-            //         name: 'Facebook',
-            //         description: '',
-            //         href: '#/app/Facebook',
-            //         image: 'img/facebook.png'
-            //     },
-            //     {
-            //         name: 'Twitter',
-            //         description: '',
-            //         href: '#/app/Twitter',
-            //         image: 'img/twitter.png'
-            //     },
-            //     {
-            //         name: 'Instagram',
-            //         description: '',
-            //         href: 'https://instagram.com/cdcgov/',
-            //         image: 'img/instagram.png'
-            //     },
-            //     {
-            //         name: 'Google+',
-            //         description: '',
-            //         href: 'https://plus.google.com/+CDC/posts',
-            //         image: 'img/googleplus.png'
-            //     },
-            //     {
-            //         name: 'Pinterest',
-            //         description: '',
-            //         href: 'https://www.pinterest.com/cdcgov/',
-            //         image: 'img/pinterest.png'
-            //     },
-            //     {
-            //         name: 'Flickr',
-            //         description: '',
-            //         href: 'https://www.flickr.com/photos/CDCsocialmedia',
-            //         image: 'img/flickr.png'
-            //     }];
-
-            // for (var k = data.length - 1; k >= 0; k--) {
-            //     if (k % 10 === 0) {
-            //         var newdatum = {},
-            //             socialrandom = socialcards[getRandom(socialcards.length, 1)];
-
-            //         newdatum.description = socialrandom.description;
-            //         newdatum.type = 'social';
-            //         newdatum.name = socialrandom.name;
-            //         newdatum.enclosures = [];
-            //         newdatum.image = socialrandom.image;
-            //         newdatum.href = socialrandom.href;
-            //         data.splice(k, 0, newdatum);
-            //     }
-            // }
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'http://prototype.cdc.gov/api/v2/resources/media?parentId=150686&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=100',
@@ -168,13 +176,14 @@ angular.module('mycdc.data', [])
                 if (datum.tags.length) {
                     var tags = datum.tags;
 
-                    // look for the ContentGroup enclosure
+                    // look for the ContentGroup enclosure and set the same rules that apply to it in their individual controllers
+                    // also set a path to navigate
                     for (var k = tags.length - 1; k >= 0; k--) {
                         if (tags[k].type === 'ContentGroup') {
                             datum.contentGroup = tags[k].name;
 
 
-                            // TODO: This is terrible!!!!!!!!!!!!!!!!!!!!!!!!!
+                            // TODO: consider using config.json for this data
                             if (datum.contentGroup === 'EID') {
                                 hasImage = false;
                                 datum.home = '#/app/EIDS';
@@ -265,14 +274,48 @@ angular.module('mycdc.data', [])
                                 break;
                             }
 
-
-
                             // WARN: Watch for CGs which don't have a source stream
                         }
                     }
                 }
 
                 datum.hasImage = hasImage;
+            }
+
+            end = new Date().getTime();
+            time = (end - start) / 1000;
+
+            if (window.plugins && window.plugins.toast) {
+                window.plugins.toast.showShortTop(time);
+            }
+            else {
+                console.log(time);
+            }
+
+            for (var k = data.length - 1; k >= 0; k--) {
+                if (k % 10 === 0) {
+                    var prevrandnum;
+
+                    // essetially, store the previous number
+                    if (typeof randnum !== 'undefined') {
+                        prevrandnum = randnum;
+                    }
+
+                    var newdatum = {},
+                        rand = getRandom(socialcards.length, 1),
+                        // and check to see if it was used before
+                        randnum = rand === prevrandnum ? getRandom(socialcards.length, 1) : rand,
+                        socialrandom = socialcards[randnum];
+
+                    newdatum.description = socialrandom.description;
+                    newdatum.type = 'social';
+                    newdatum.name = socialrandom.name;
+                    newdatum.enclosures = [];
+                    newdatum.image = socialrandom.image;
+                    newdatum.url = socialrandom.url;
+                    newdatum.tags = [];
+                    data.splice(k + 3, 0, newdatum);
+                }
             }
 
             HomeStreamStorage.save(data);
@@ -287,7 +330,21 @@ angular.module('mycdc.data', [])
         return promise;
     };
 
-    service.getAll = function() {
+    service.getAll = function(arr) {
+        var newdata = [];
+
+console.log(arr);
+
+
+        // for (var i = 0; i < data.length; i++) {
+        //     if (arr.indexOf(data[i].contentGroup) > -1) {
+        //         newdata.push(data[i]);
+        //         break;
+        //     }
+        // }
+        // console.log(newdata);
+
+
         return data;
     };
 
@@ -325,6 +382,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Disease%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -357,6 +418,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 DotwStorage.save(data);
@@ -451,6 +522,10 @@ angular.module('mycdc.data', [])
         service = {};
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=FluView%20Weekly%20Report&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -462,6 +537,17 @@ angular.module('mycdc.data', [])
             if (d.data.results.length) {
                 time = moment(data.datePublished);
                 data.datePublished = time.format('MMMM Do, YYYY');
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
+                }
+
                 FluViewStorage.save(data);
                 deferred.resolve();
             }
@@ -528,6 +614,10 @@ angular.module('mycdc.data', [])
     };
 
     var getData = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Global%20Health&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -546,7 +636,18 @@ angular.module('mycdc.data', [])
                     datum.hasImage = hasImage;
                 }
 
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
+                }
+
                 isDirty = true;
+
                 CDCAtwsStorage.save(data);
                 deferred.resolve();
             }
@@ -641,6 +742,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Featured%20Health%20Articles&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -673,6 +778,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 HealthArticlesStorage.save(data);
@@ -766,6 +881,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Vital%20Signs&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -781,6 +900,16 @@ angular.module('mycdc.data', [])
                     time = moment(datum.datePublished);
                     datum.datePublished = time.format('MMMM Do, YYYY');
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 VitalSignsStorage.save(data);
@@ -879,6 +1008,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=FastStats&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -911,6 +1044,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 FastStatsStorage.save(data);
@@ -1009,6 +1152,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'json/sources/WeeklyCaseCounts.json',
@@ -1041,6 +1188,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 WeeklyCaseCountsStorage.save(data);
@@ -1136,6 +1293,10 @@ angular.module('mycdc.data', [])
         isDirty = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=EID&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -1160,6 +1321,17 @@ angular.module('mycdc.data', [])
 
                     // WE ARE NOT SHOWING EID IMAGES
                     datum.hasImage = false;
+                }
+
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 isDirty = true;
@@ -1262,6 +1434,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=MMWR%202016&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -1294,6 +1470,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 MMWRsStorage.save(data);
@@ -1393,6 +1579,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=PCD&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -1411,6 +1601,16 @@ angular.module('mycdc.data', [])
 
                     // WE ARE NOT SHOWING PCD images
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 PCDsStorage.save(data);
@@ -1509,6 +1709,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Newsroom&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -1542,6 +1746,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 NewsroomsStorage.save(data);
@@ -1634,6 +1848,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Outbreaks&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -1653,6 +1871,16 @@ angular.module('mycdc.data', [])
                     time = moment(datum.datePublished);
                     datum.datePublished = time.format('MMMM Do, YYYY');
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 OutbreaksStorage.save(data);
@@ -1737,6 +1965,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Travel%20Notices&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -1758,6 +1990,16 @@ angular.module('mycdc.data', [])
                     datum.isWatch = datum.name.indexOf('Watch') > -1;
                     datum.isWarning = datum.name.indexOf('Warning') > -1;
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 TravelNoticesStorage.save(data);
@@ -1843,6 +2085,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Podcasts&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -1875,6 +2121,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 PodcastsStorage.save(data);
@@ -1962,6 +2218,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Image%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -1996,6 +2256,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 PHILsStorage.save(data);
@@ -2091,6 +2361,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Public%20Health%20Matters%20Blog&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -2123,6 +2397,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 PHMblogsStorage.save(data);
@@ -2221,6 +2505,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=CDC%20Director%20Blog&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -2253,6 +2541,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 DirectorsBlogsStorage.save(data);
@@ -2355,6 +2653,10 @@ angular.module('mycdc.data', [])
         service = {};
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Did%20You%20Know&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -2366,6 +2668,17 @@ angular.module('mycdc.data', [])
             if (d.data.results.length) {
                 time = moment(data.datePublished);
                 data.datePublished = time.format('MMMM Do, YYYY');
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
+                }
+
                 DidYouKnowStorage.save(data);
                 deferred.resolve();
             }
@@ -2424,6 +2737,10 @@ angular.module('mycdc.data', [])
         hasImage = false;
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=24%2F7%20Facts%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -2461,6 +2778,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 FactoftheWeekStorage.save(data);
@@ -2600,6 +2927,16 @@ angular.module('mycdc.data', [])
                     datum.hasImage = hasImage;
                 }
 
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
+                }
+
                 YouTubesStorage.save(data);
                 deferred.resolve();
             }
@@ -2620,6 +2957,10 @@ angular.module('mycdc.data', [])
     };
 
     service.async = function() {
+        var start = new Date().getTime(),
+            end,
+            time;
+
         $http({
             method: 'GET',
             url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=YouTube&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language',
@@ -2654,6 +2995,16 @@ angular.module('mycdc.data', [])
                     }
 
                     datum.hasImage = hasImage;
+                }
+
+                end = new Date().getTime();
+                time = (end - start) / 1000;
+
+                if (window.plugins && window.plugins.toast) {
+                    window.plugins.toast.showShortTop(time);
+                }
+                else {
+                    console.log(time);
                 }
 
                 YouTubesStorage.save(data);

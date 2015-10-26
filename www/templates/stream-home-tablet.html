@@ -12,8 +12,8 @@
                     <div ng-if="data.isWarning" class="item item-notice warning"><b>Travel Notice</b> - Warning Level 3</div>
                     <div ng-if="data.isWatch" class="item item-notice watch"><b>Travel Notice</b> - Watch Level 1</div>
                     <div ng-if="data.isAlert" class="item item-notice alert"><b>Travel Notice</b> - Alert Level 2</div>
-                    <a ng-if="data.hasImage" class="item item-image" ng-href="{{url}}{{$index}}" ng-style="halfwidth()">
-                        <img ng-src="{{data.imageSrc}}" err-src="img/image-placeholder.png" halfwidth>
+                    <a ng-if="data.hasImage" class="item item-image" ng-href="{{url}}{{$index}}">
+                        <img ng-src="{{data.imageSrc}}" err-src="img/image-placeholder.png" newresize>
                     </a>
                     <a class="item item-text-wrap item-body" ng-href="{{url}}{{$index}}">
                         <strong>{{data.name | words:10}}</strong>
@@ -29,8 +29,8 @@
                     <div ng-if="data.isWarning" class="item item-notice warning"><b>Travel Notice</b> - Warning Level 3</div>
                     <div ng-if="data.isWatch" class="item item-notice watch"><b>Travel Notice</b> - Watch Level 1</div>
                     <div ng-if="data.isAlert" class="item item-notice alert"><b>Travel Notice</b> - Alert Level 2</div>
-                    <a ng-if="data.hasImage" class="item item-image" ng-href="{{url}}{{$index + 1}}" ng-style="halfwidth()">
-                        <img ng-src="{{datas[$index + 1].imageSrc}}" err-src="img/image-placeholder.png" halfwidth>
+                    <a ng-if="data.hasImage" class="item item-image" ng-href="{{url}}{{$index + 1}}">
+                        <img ng-src="{{datas[$index + 1].imageSrc}}" err-src="img/image-placeholder.png" newresize>
                     </a>
                     <a class="item item-text-wrap item-body" ng-href="{{url}}{{$index + 1}}">
                         <strong>{{datas[$index + 1].name | words:10}}</strong>

@@ -81,3 +81,42 @@
 #CDCAtwView .contentarea {
 
 }
+
+.tabs, .toTop {
+  display: none;
+}
+
+.contentarea a, .article .source {
+  color: #075290;
+}
+
+.article .source {
+  margin-bottom: 20px;
+}
+
+.article .contentarea h1 {
+  display: none;
+}
+
+.article .source, .article .datepub, .contentarea {
+  font-size: 16px;
+}
+
+.contentarea h1 {
+  font-size: 26px;
+}
+.contentarea h2 {
+  font-size: 24px;
+}
+.contentarea h3 {
+  font-size: 22px;
+}
+.contentarea h4 {
+  font-size: 20px;
+}
+.contentarea h5 {
+  font-size: 18px;
+}
+.contentarea h6 {
+  font-size: 16px; font-weight: bold;
+}

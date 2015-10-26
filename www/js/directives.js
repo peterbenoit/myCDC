@@ -31,6 +31,20 @@ angular.module('mycdc.directives', [])
         }
     };
 })
+.directive('managecontent', function($timeout) {
+    return {
+        link: function(scope, element, attrs) {
+            $timeout(function() {
+                $('.contentarea').find('table').each(function() {
+                    $(this).replaceWith('<img src="http://www.ikea.com/PIAimages/0106117_PE253936_S5.JPG">');
+                });
+                $('.contentarea').find('a[href^=#]').each(function() {
+                    $(this).replaceWith('<span>' + $(this).text() + '</span>');
+                });
+            });
+        }
+    };
+})
 .directive('yarp', function() {
     return {
             link: function(scope, element, attrs) {
@@ -98,7 +112,7 @@ angular.module('mycdc.directives', [])
         }
     };
  })
- .directive('halfsize', function(){
+ .directive('halfsize', function() {
     return {
         link: function(scope, element, attrs) {
             element.on('load', function(e) {
@@ -113,12 +127,12 @@ angular.module('mycdc.directives', [])
                 // apply the new sizes to the parent element
                 parent.style.width = newwidth + 'px';
                 parent.style.height = newheight + 'px';
-                parent.style.backgroundImage = 'url('+src+')';
+                parent.style.backgroundImage = 'url(' + src + ')';
             });
         }
     };
  })
- .directive('fullsize', function(){
+ .directive('fullsize', function() {
     return {
         link: function(scope, element, attrs) {
             element.on('load', function(e) {
@@ -133,7 +147,7 @@ angular.module('mycdc.directives', [])
                 // apply the new sizes to the parent element
                 parent.style.width = newwidth + 'px';
                 parent.style.height = newheight + 'px';
-                parent.style.backgroundImage = 'url('+src+')';
+                parent.style.backgroundImage = 'url(' + src + ')';
                 parent.style.backgroundRepeat = 'no-repeat';
                 parent.style.backgroundSize = 'cover';
             });

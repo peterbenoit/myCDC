@@ -27,7 +27,7 @@ add to body class: platform-wp8
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams) {
+.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup) {
     var rs = $rootScope,
         href = window.location.href;
 
@@ -41,7 +41,49 @@ add to body class: platform-wp8
     document.addEventListener('deviceready', onDeviceReady, false);
     function onDeviceReady() {
         window.open = cordova.InAppBrowser.open;
+
+        rs.type = $cordovaNetwork.getNetwork();
+        rs.isOnline = $cordovaNetwork.isOnline();
+        rs.isOffline = $cordovaNetwork.isOffline();
+
+        if (rs.isOffline) {
+            $ionicPopup.alert({
+                title: 'No Connection',
+                template: 'You do not appear to be connected to the Internet. Some content you have downloaded may be out of date.'
+            });
+        }
+
+        // listen for Online event
+        rs.$on('$cordovaNetwork:online', function(event, networkState) {
+            var onlineState = networkState;
+
+            // if (window.plugins && window.plugins.toast) {
+            //     window.plugins.toast.showShortCenter('Welcome Back!');
+            // }
+        });
+
+        // listen for Offline event
+        rs.$on('$cordovaNetwork:offline', function(event, networkState) {
+            var offlineState = networkState,
+                isDirty = false;
+
+                console.log(offlineState);
+
+            // if(!isDirty) {
+            //     var alertnotice = $ionicPopup.alert({
+            //         title: 'No Connection',
+            //         template: 'You do not appear to be connected to the Internet. Some content you have downloaded may be out of date.'
+            //     });
+            //     alertnotice.then(function(res) {
+            //         isDirty = true;
+            //     });
+            // }
+        });
     }
+
+    window.onerror = function(error) {
+        console.error('ERROR ', error);
+    };
 
     rs.doSomething = function() {
         var doingSomething = ['app.disease', 'app.vitalsign', 'app.healtharticle', 'app.cdcatw', 'app.FastStat', 'app.WeeklyDiseaseCaseCount', 'app.EID'];
@@ -96,6 +138,7 @@ add to body class: platform-wp8
             var t = $(this),
                 href = t.attr('href');
 
+                console.log('Opening ', href);
 
             var ref = window.open(href, '_system');
 
@@ -114,20 +157,11 @@ add to body class: platform-wp8
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             cordova.plugins.Keyboard.disableScroll(true);
-
         }
 
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
-        }
-
-        if (window.plugins && window.plugins.toast) {
-            // window.plugins.toast.showLongCenter('App Loaded', function(a) {
-            //     console.log('toast success: ' + a);
-            // }, function(b) {
-            //     console.log('toast error: ' + b);
-            // });
         }
 
         rs.deviceinfo = DeviceInfo;

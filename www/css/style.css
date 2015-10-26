@@ -83,12 +83,23 @@ colors
     border-color: #075290
 }
 
+.border .padding {
+    float:right;
+    padding-right: 0;
+}
 
+.border .padding button:first-child {
+    margin-right:10px;
+}
 
+.border {
+    margin-top: 15px;
+    border-top: 1px solid #e0e0e0;
+}
 
-
-
-
+.scroll {
+    /*border-bottom: 5px solid #075290;*/
+}
 
 .button.button-positive.activated {
     background-color:#075290;
@@ -111,8 +122,8 @@ colors
 }
 
 .image-stream .ng-enter-stagger {
-  -webkit-animation-delay:200ms;
-  animation-delay:200ms;
+  -webkit-animation-delay:100ms;
+  animation-delay:100ms;
 
   /* override to make sure it's not inherited from other styles */
   -webkit-animation-duration:0;
@@ -126,7 +137,7 @@ colors
 
 
 .content-stable {
-  background-color: #f8f8f8;
+    background-color: #f8f8f8;
 }
 
 /**
@@ -136,29 +147,32 @@ colors
 /* make CIV of PHIL = 100% */
 
 .item-image {
-  position: relative;
-  width: auto;
+/*    width: 100%;
+    height: 240px;*/
+    overflow: hidden;
+  /*position: relative;*/
+  /*width: auto;*/
 /*  width: 150px; *//*300px;*/
   /*height: 100px;*/ /*200px;*/
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
-.item-image img {
-  position: absolute;
+.card .item-image img {
+/*  position: absolute;
   left: 50%;
   top: 50%;
   height: 100%;
-  width: 100%; /*auto;*/
-  -webkit-transform: translate(-50%,-50%);
+  width: 100%;
+ -webkit-transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);*/
 }
 
-.item-image img.portrait {
+/*.item-image img.portrait {
   width: 100%;
   height: auto;
 }
-
+*/
 .item-image {
     margin: 3px;
     text-align: center;
@@ -174,7 +188,9 @@ colors
     background-size: cover;
 }
 
-
+.settings .list {
+    margin-bottom: 0;
+}
 
 /**
  * iframe
@@ -270,7 +286,7 @@ margin-bottom: -10px;
 }
 
 .stream .row + .row {
-    margin-top: -30px;
+    /*margin-top: -30px;*/
     padding-top: 0;
 }
 
@@ -281,6 +297,7 @@ margin-bottom: -10px;
     width: 100%;
     box-shadow: none;
     border:1px solid #e0e0e0;
+    padding-top: -1px!important;
 /*    height: 300px;
     background: url(/img/placeholder.png) no-repeat;
     background-size: 100%;*/
@@ -336,6 +353,12 @@ a.item.item-footer {
 
 .item-body p {
     margin-top: 6px;
+    font-size: 16px;
+}
+
+.item-footer {
+    font-size: 14px;
+    color: #075290!important;
 }
 
 .card .item:last-child, .list-inset .item:last-child {
@@ -374,8 +397,8 @@ a.item.item-footer {
 .card .item:first-child {
     border-bottom: 0;
     margin: 0;
-    margin-top: -3px;
-    margin-left: -1px;
+/*    margin-top: -3px;
+    margin-left: -1px;*/
 }
 
 
@@ -389,6 +412,7 @@ popover
     height: 160px!important;
     /*width: 200px!important;*/
     padding:16px;
+    background: #e3f2fe;
 }
 body.platform-ios #popper {
     height: 180px!important;
@@ -430,7 +454,7 @@ body.platform-ios #popper {
 
 /* keep the card background from turning gray when tapped */
 .card .item.activated {
-    background:#fff!important;
+    background-color:#fff!important;
 }
 
 .nav-bar-block .bar, .menu-left .bar {

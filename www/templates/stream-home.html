@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view view-title="CDC">
     <ion-content ng-init="init()" class="content-stable">
         <ion-refresher
             pulling-text="Pull to refresh..."
@@ -12,8 +12,8 @@
                     <div ng-if="data.isWarning" class="item item-notice warning"><b>Travel Notice</b> - Warning Level 3</div>
                     <div ng-if="data.isWatch" class="item item-notice watch"><b>Travel Notice</b> - Watch Level 1</div>
                     <div ng-if="data.isAlert" class="item item-notice alert"><b>Travel Notice</b> - Alert Level 2</div>
-                    <a ng-if="data.hasImage" class="item item-image" ng-href="{{data.url}}{{data.id}}" ng-style="fullwidth()">
-                        <img ng-src="{{data.imageSrc}}" err-src="img/image-placeholder.png" fullwidth>
+                    <a ng-if="data.hasImage" class="item item-image" ng-href="{{data.url}}{{data.id}}">
+                        <img ng-src="{{data.imageSrc}}" err-src="img/image-placeholder.png" fullsize>
                     </a>
                     <a class="item item-text-wrap item-body" ng-href="{{data.url}}{{data.id}}">
                         <strong>{{data.name | words:10}}</strong>

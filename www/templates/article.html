@@ -6,12 +6,12 @@
         <div ng-attr-id="{{viewId}}" class="padding data civ article">
             <h1 class="title">{{data.name}}</h1>
             <div class="datepub">{{data.datePublished}}</div>
-            <div class="source">Source: {{name}}</div>
-            <p class="contentarea" ng-bind-html="content"></p>
+            <div class="source">{{name}}</div>
+            <p class="contentarea" ng-bind-html="content" managecontent></p>
             <div class="border">
                 <p class="padding">
-                    <button alt="Footer Share Menu Button" class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
-                    <button alt="View on CDC.gov Button" class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
+                    <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+                    <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
                 </p>
             </div>
         </div>

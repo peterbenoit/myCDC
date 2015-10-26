@@ -6,9 +6,6 @@
             <ion-nav-buttons side="left">
                 <button alt="Menu Button" class="button button-icon button-clear ion-navicon" menu-toggle="left" id="navicon"></button>
             </ion-nav-buttons>
-            <ion-nav-title side="left">
-                CDC
-            </ion-nav-title>
             <ion-nav-buttons side="right">
                 <a alt="Settings Button" class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
             </ion-nav-buttons>
@@ -17,7 +14,7 @@
     </ion-side-menu-content>
     <ion-side-menu side="left" ng-if="orientation == 'portrait'" expose-aside-when="(orientation: landscape)" yarp>
         <ion-header-bar class="bar-positive">
-            <button alt="Close Button" class="button button-icon button-clear ion-android-close" menu-toggle="left"></button>
+            <button alt="Close Button" class="button button-icon button-clear ion-android-close" menu-toggle="left" ng-click="alert('')"></button>
         </ion-header-bar>
         <ion-content>
             <ion-list can-swipe="listCanSwipe">
@@ -53,7 +50,7 @@
                 <ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'Social'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
                     <i class="icon {{i.icon}}"></i> {{ i.title }}
                 </ion-checkbox>
-                <h4 class="cdc-blue primary">Audio &amp; Video</h4>
+                <h4 class="cdc-blue primary">Video &amp; Audio</h4>
                 <ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'AudioVideo'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
                     <i class="icon {{i.icon}}"></i> {{ i.title }}
                 </ion-checkbox>
@@ -66,7 +63,7 @@
         <ion-content>
             <ion-list can-swipe="listCanSwipe">
                 <div class="item">
-                  A few {{showleft}}
+                  A few
                 </div>
                 <div class="item">
                   of my
