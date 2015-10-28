@@ -124,3 +124,101 @@
 .contentarea h6 {
   font-size: 16px; font-weight: bold;
 }
+.contentarea ol, .contentarea ul, .contentarea li {
+  list-style: disc;
+}
+
+.contentarea div,
+.contentarea span,
+.contentarea applet,
+.contentarea object,
+.contentarea iframe,
+.contentarea h1,
+.contentarea h2,
+.contentarea h3,
+.contentarea h4,
+.contentarea h5,
+.contentarea h6,
+.contentarea p,
+.contentarea blockquote,
+.contentarea pre,
+.contentarea a,
+.contentarea abbr,
+.contentarea acronym,
+.contentarea address,
+.contentarea big,
+.contentarea cite,
+.contentarea code,
+.contentarea del,
+.contentarea dfn,
+.contentarea em,
+.contentarea img,
+.contentarea ins,
+.contentarea kbd,
+.contentarea q,
+.contentarea s,
+.contentarea samp,
+.contentarea small,
+.contentarea strike,
+.contentarea strong,
+.contentarea sub,
+.contentarea sup,
+.contentarea tt,
+.contentarea var,
+.contentarea b,
+.contentarea i,
+.contentarea u,
+.contentarea center,
+.contentarea dl,
+.contentarea dt,
+.contentarea dd,
+.contentarea ol,
+.contentarea ul,
+.contentarea li,
+.contentarea fieldset,
+.contentarea form,
+.contentarea label,
+.contentarea legend,
+.contentarea table,
+.contentarea caption,
+.contentarea tbody,
+.contentarea tfoot,
+.contentarea thead,
+.contentarea tr,
+.contentarea th,
+.contentarea td,
+.contentarea article,
+.contentarea aside,
+.contentarea canvas,
+.contentarea details,
+.contentarea embed,
+.contentarea fieldset,
+.contentarea figure,
+.contentarea figcaption,
+.contentarea footer,
+.contentarea header,
+.contentarea hgroup,
+.contentarea menu,
+.contentarea nav,
+.contentarea output,
+.contentarea ruby,
+.contentarea section,
+.contentarea summary,
+.contentarea time,
+.contentarea mark,
+.contentarea audio,
+.contentarea video {
+  margin: auto!important;
+  padding: auto!important;
+  border: auto!important;
+}
+
+.contentrea ul {
+    padding-left:1em;
+    margin-left:0;
+}
+
+.contentarea h1, .contentarea h2, .contentarea h3, .contentarea h4, .contentarea h5, .contentarea h6, .contentarea p, .contentarea blockquote,
+ .contentarea form, .contentarea label, .contentarea ul, .contentarea ol, .contentarea dl, .contentarea fieldset, .contentarea address {
+    margin-bottom: 1em;
+}

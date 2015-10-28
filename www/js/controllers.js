@@ -78,7 +78,6 @@ angular.module('mycdc.controllers', [])
             $rootScope.HomeCtrlLoad = true;
             window.localStorage['runonce'] = true;
 
-
             // Show the popover only on first load
             $ionicPopover.fromTemplateUrl('templates/popover.html', {
                 scope: $scope,
@@ -98,19 +97,7 @@ angular.module('mycdc.controllers', [])
         }
     });
 
-
-    // MENU (only), if something is already stored in localstorage, use it
-    if (MenuStorage.all().statusText === 'OK') {
-        $scope.menu = MenuStorage.all();
-        $scope.sources = $scope.menu.data.sources;
-        $scope.$broadcast('scroll.refreshComplete');
-        $scope.checked = [];
-        for (var i = $scope.sources.length - 1; i >= 0; i--) {
-            if ($scope.sources[i].checked) {
-                $scope.checked.push($scope.sources[i].contentGroup);
-            }
-        }
-
+    var getData = function() {
         $scope.loading = $ionicLoading.show({
             content: 'Loading',
             animation: 'fade-in',
@@ -134,6 +121,21 @@ angular.module('mycdc.controllers', [])
             function() {}
         );
     }
+
+    // MENU (only), if something is already stored in localstorage, use it
+    if (MenuStorage.all().statusText === 'OK') {
+        $scope.menu = MenuStorage.all();
+        $scope.sources = $scope.menu.data.sources;
+        $scope.$broadcast('scroll.refreshComplete');
+        $scope.checked = [];
+        for (var i = $scope.sources.length - 1; i >= 0; i--) {
+            if ($scope.sources[i].checked) {
+                $scope.checked.push($scope.sources[i].contentGroup);
+            }
+        }
+
+        getData();
+    }
     else {
         MenuData.async().then(
             function() {
@@ -147,28 +149,7 @@ angular.module('mycdc.controllers', [])
                 }
                 $scope.$broadcast('scroll.refreshComplete');
 
-                $scope.loading = $ionicLoading.show({
-                    content: 'Loading',
-                    animation: 'fade-in',
-                    showBackdrop: true,
-                    maxWidth: 200,
-                    showDelay: 0
-                });
-
-                HomeStreamData.async().then(
-                    function() {
-                        $scope.datas = HomeStreamData.getAll($scope.checked);
-                        $ionicLoading.hide();
-                        $scope.$broadcast('scroll.refreshComplete');
-                    },
-                    function() {
-                        $scope.datas = HomeStreamStorage.all();
-                        $ionicLoading.hide();
-                        $scope.storage = 'Data from local storage';
-                        $scope.$broadcast('scroll.refreshComplete');
-                    },
-                    function() {}
-                );
+                getData();
             },
             function() {
                 $scope.menu = MenuStorage.all();
