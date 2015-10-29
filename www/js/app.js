@@ -207,8 +207,7 @@ add to body class: platform-wp8
                 //portrait
                 rs.orientation = 'portrait';
                 $ionicBody.addClass('portrait');
-            }
-            else {
+            } else {
                 //landscape
                 rs.orientation = 'landscape';
                 $ionicBody.addClass('landscape');
@@ -220,8 +219,7 @@ add to body class: platform-wp8
                     console.log('changed to portrait');
                     rs.orientation = 'portrait';
                     $ionicBody.removeClass('landscape').addClass('portrait');
-                }
-                else {
+                } else {
                     console.log('changed to landscape');
                     rs.orientation = 'landscape';
                     $ionicBody.removeClass('portrait').addClass('landscape');
@@ -244,12 +242,42 @@ add to body class: platform-wp8
     // TODO: consider using this for "lower" end devices
     // $ionicConfigProvider.views.transition('none');      // keep the views from animating
 
+  var templateHandler = function(strMode, strPrefix, strPath) {
+    strMode = strMode || 'static';
+    strPrefix = strPrefix || 'stream';
+    strPath = strPath || 'templates/';
+    // DYNAMIC HANDLER (MULTIPLE TEMPLATES BASED ON OS & ORIENTATION)
+    if (strMode === 'dynamic') {
+      // RETURN HANDLER METHOD
+      return function() {
+        if (ionic.Platform.is('androidtablet')) {
+          return strPath + strPrefix + '-tablet.html';
+        }
+        if (ionic.Platform.isAndroid()) {
+          return strPath + strPrefix + '.html';
+        }
+        if (ionic.Platform.isIPad()) {
+          return strPath + strPrefix + '-tablet.html';
+        }
+        if (ionic.Platform.isIOS()) {
+          return strPath + strPrefix + '.html';
+        }
+        if (ionic.Platform.isWindowsPhone()) {
+          return strPath + strPrefix + '.html';
+        }
+      };
+    } else {
+      // STATIC MODE (strMode becomes the path and file name of template to be used)
+      // RETURN FILE PATH & NAME
+      return strMode
+    }
+  };
     $stateProvider
 
     .state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: 'templates/menu.html',
+    templateUrl: templateHandler('templates/menu.html'),
         controller: 'HomeCtrl'
         // controller: 'AppCtrl'
     })
@@ -259,25 +287,7 @@ add to body class: platform-wp8
         url: '/homestream',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-home-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream-home.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-home-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream-home.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream-home.html';
-                    }
-
-                    return 'templates/stream-home.html';
-                },
+            	templateUrl: templateHandler('dynamic','stream-home'),
                 controller: 'HomeCtrl'
             }
         }
@@ -287,25 +297,7 @@ add to body class: platform-wp8
         url: '/home',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/home-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/home.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/home-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/home.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/home.html';
-                    }
-
-                    return 'templates/home.html';
-                },
+        	templateUrl: templateHandler('dynamic','home'),
                 controller: 'HomeCtrl'
             }
         }
@@ -315,7 +307,7 @@ add to body class: platform-wp8
         url: '/settings',
         views: {
             'menuContent': {
-                templateUrl: 'templates/settings.html',
+        	templateUrl: templateHandler('templates/settings.html'),
                 controller: 'SettingsCtrl'
             }
         }
@@ -325,7 +317,7 @@ add to body class: platform-wp8
         url: '/civdemo',
         views: {
             'menuContent': {
-                templateUrl: 'templates/civ-demo.html'
+        	templateUrl: templateHandler('templates/civ-demo.html')
             }
         }
     })
@@ -342,25 +334,7 @@ add to body class: platform-wp8
         url: '/cdcatws',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'CDCAtwsCtrl'
             }
         }
@@ -369,7 +343,7 @@ add to body class: platform-wp8
         url: '/cdcatw/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/article.html',
+          	templateUrl: templateHandler('templates/article.html'),
                 controller: 'CDCAtwCtrl'
             }
         }
@@ -381,25 +355,7 @@ add to body class: platform-wp8
         url: '/dotw',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'DotwCtrl'
             }
         }
@@ -408,7 +364,7 @@ add to body class: platform-wp8
         url: '/disease/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/embed.html',
+          	templateUrl: templateHandler('templates/embed.html'),
                 controller: 'DiseaseCtrl'
             }
         }
@@ -420,7 +376,7 @@ add to body class: platform-wp8
         url: '/fluview/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/article.html',
+          	templateUrl: templateHandler('templates/article.html'),
                 controller: 'FluViewCtrl'
             }
         }
@@ -432,25 +388,7 @@ add to body class: platform-wp8
         url: '/healtharticles',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'HealthArticlesCtrl'
             }
         }
@@ -459,7 +397,7 @@ add to body class: platform-wp8
         url: '/healtharticle/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/embed.html',
+          	templateUrl: templateHandler('templates/embed.html'),
                 controller: 'HealthArticleCtrl'
             }
         }
@@ -471,25 +409,7 @@ add to body class: platform-wp8
         url: '/vitalsigns',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'VitalSignsCtrl'
             }
         }
@@ -498,7 +418,7 @@ add to body class: platform-wp8
         url: '/vitalsign/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/article.html',
+          	templateUrl: templateHandler('templates/article.html'),
                 controller: 'VitalSignCtrl'
             }
         }
@@ -510,25 +430,7 @@ add to body class: platform-wp8
         url: '/cdcdirectorsblog',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'DirectorsBlogsCtrl'
             }
         }
@@ -537,7 +439,7 @@ add to body class: platform-wp8
         url: '/directorblog/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/blog.html',
+          	templateUrl: templateHandler('templates/blog.html'),
                 controller: 'DirectorsBlogCtrl'
             }
         }
@@ -549,25 +451,7 @@ add to body class: platform-wp8
         url: '/247blogs',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'StreamCtrl'
             }
         }
@@ -576,7 +460,7 @@ add to body class: platform-wp8
         url: '/247blog/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/blog.html',
+          	templateUrl: templateHandler('templates/blog.html'),
                 controller: 'BlogCtrl'
             }
         }
@@ -588,25 +472,7 @@ add to body class: platform-wp8
         url: '/PHMblogs',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'PHMblogsCtrl'
             }
         }
@@ -615,7 +481,7 @@ add to body class: platform-wp8
         url: '/PHMblog/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/blog.html',
+          	templateUrl: templateHandler('templates/blog.html'),
                 controller: 'PHMblogCtrl'
             }
         }
@@ -627,25 +493,7 @@ add to body class: platform-wp8
         url: '/FastStats',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'FastStatsCtrl'
             }
         }
@@ -654,7 +502,7 @@ add to body class: platform-wp8
         url: '/FastStat/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/data.html',
+          	templateUrl: templateHandler('templates/data.html'),
                 controller: 'FastStatCtrl'
             }
         }
@@ -666,25 +514,7 @@ add to body class: platform-wp8
         url: '/WeeklyDiseaseCaseCounts',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'WeeklyDiseaseCaseCountsCtrl'
             }
         }
@@ -693,7 +523,7 @@ add to body class: platform-wp8
         url: '/WeeklyDiseaseCaseCount/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/data.html',
+          	templateUrl: templateHandler('templates/data.html'),
                 controller: 'WeeklyDiseaseCaseCountCtrl'
             }
         }
@@ -705,7 +535,7 @@ add to body class: platform-wp8
         url: '/DYK/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/fact.html',
+          	templateUrl: templateHandler('templates/fact.html'),
                 controller: 'DYKCtrl'
             }
         }
@@ -717,25 +547,7 @@ add to body class: platform-wp8
         url: '/FactoftheWeek',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'FactoftheWeekCtrl'
             }
         }
@@ -744,7 +556,7 @@ add to body class: platform-wp8
         url: '/Fact/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/fact.html',
+          	templateUrl: templateHandler('templates/fact.html'),
                 controller: 'FOTWCtrl'
             }
         }
@@ -756,25 +568,7 @@ add to body class: platform-wp8
         url: '/EIDS',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'EIDsCtrl'
             }
         }
@@ -783,7 +577,7 @@ add to body class: platform-wp8
         url: '/EID/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/journal.html',
+          	templateUrl: templateHandler('templates/journal.html'),
                 controller: 'EIDCtrl'
             }
         }
@@ -795,25 +589,7 @@ add to body class: platform-wp8
         url: '/MMWRS',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'MMWRsCtrl'
             }
         }
@@ -822,7 +598,7 @@ add to body class: platform-wp8
         url: '/MMWR/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/journal.html',
+          	templateUrl: templateHandler('templates/journal.html'),
                 controller: 'MMWRCtrl'
             }
         }
@@ -834,25 +610,7 @@ add to body class: platform-wp8
         url: '/PCDS',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'PCDsCtrl'
             }
         }
@@ -861,7 +619,7 @@ add to body class: platform-wp8
         url: '/PCD/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/journal.html',
+          	templateUrl: templateHandler('templates/journal.html'),
                 controller: 'PCDCtrl'
             }
         }
@@ -873,25 +631,7 @@ add to body class: platform-wp8
         url: '/Newsrooms',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'NewsroomsCtrl'
             }
         }
@@ -900,7 +640,7 @@ add to body class: platform-wp8
         url: '/Newsroom/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/embed.html',
+          	templateUrl: templateHandler('templates/embed.html'),
                 controller: 'NewsroomCtrl'
             }
         }
@@ -912,25 +652,7 @@ add to body class: platform-wp8
         url: '/Outbreaks',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'OutbreaksCtrl'
             }
         }
@@ -939,7 +661,7 @@ add to body class: platform-wp8
         url: '/Outbreak/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/embed.html',
+          	templateUrl: templateHandler('templates/embed.html'),
                 controller: 'OutbreakCtrl'
             }
         }
@@ -951,25 +673,7 @@ add to body class: platform-wp8
         url: '/TravelNotices',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'TravelNoticesCtrl'
             }
         }
@@ -978,7 +682,7 @@ add to body class: platform-wp8
         url: '/TravelNotice/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/embed.html',
+          	templateUrl: templateHandler('templates/embed.html'),
                 controller: 'TravelNoticeCtrl'
             }
         }
@@ -990,7 +694,7 @@ add to body class: platform-wp8
         url: '/PHILs',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream-images.html',
+          	templateUrl: templateHandler('templates/stream-images.html'),
                 controller: 'PHILsCtrl'
             }
         }
@@ -999,7 +703,7 @@ add to body class: platform-wp8
         url: '/PHIL/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/image.html',
+          	templateUrl: templateHandler('templates/image.html'),
                 controller: 'PHILCtrl'
             }
         }
@@ -1011,7 +715,7 @@ add to body class: platform-wp8
         url: '/Instagrams',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream-images.html',
+          	templateUrl: templateHandler('templates/stream-images.html'),
                 controller: 'InstagramCtrl'
             }
         }
@@ -1020,7 +724,7 @@ add to body class: platform-wp8
         url: '/Instagram/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/image.html',
+          	templateUrl: templateHandler('templates/image.html'),
                 controller: 'ImageCtrl'
             }
         }
@@ -1032,7 +736,7 @@ add to body class: platform-wp8
         url: '/Flickrs',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream-images.html',
+          	templateUrl: templateHandler('templates/stream-images.html'),
                 controller: 'FlickrCtrl'
             }
         }
@@ -1041,7 +745,7 @@ add to body class: platform-wp8
         url: '/Flickr/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/image.html',
+          	templateUrl: templateHandler('templates/image.html'),
                 controller: 'ImageCtrl'
             }
         }
@@ -1053,25 +757,7 @@ add to body class: platform-wp8
         url: '/Podcasts',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'PodcastsCtrl'
             }
         }
@@ -1080,7 +766,7 @@ add to body class: platform-wp8
         url: '/Podcast/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/audio.html',
+          	templateUrl: templateHandler('templates/audio.html'),
                 controller: 'PodcastCtrl'
             }
         }
@@ -1092,25 +778,7 @@ add to body class: platform-wp8
         url: '/YouTubes',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.is('androidtablet')) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/stream-tablet.html';
-                    }
-                    if (ionic.Platform.isIOS()) {
-                        return 'templates/stream.html';
-                    }
-                    if (ionic.Platform.isWindowsPhone()) {
-                        return 'templates/stream.html';
-                    }
-
-                    return 'templates/stream.html';
-                },
+          	templateUrl: templateHandler('dynamic','stream'),
                 controller: 'YouTubesCtrl'
             }
         }
@@ -1119,7 +787,7 @@ add to body class: platform-wp8
         url: '/YouTube/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/video.html',
+          	templateUrl: templateHandler('templates/video.html'),
                 controller: 'YouTubeCtrl'
             }
         }
@@ -1128,7 +796,7 @@ add to body class: platform-wp8
         url: '/Facebook',
         views: {
             'menuContent': {
-                templateUrl: 'templates/landing-facebook.html',
+          	templateUrl: templateHandler('templates/landing-facebook.html'),
                 controller: 'FacebookCtrl'
             }
         }
@@ -1137,7 +805,7 @@ add to body class: platform-wp8
         url: '/Twitter',
         views: {
             'menuContent': {
-                templateUrl: 'templates/landing-twitter.html',
+          	templateUrl: templateHandler('templates/landing-twitter.html'),
                 controller: 'TwitterCtrl'
             }
         }
