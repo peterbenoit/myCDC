@@ -1,0 +1,2777 @@
+﻿{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "c30d0eae-7867-4d42-bfa7-b67e909bfd16"
+        },
+        "pagination": {
+            "total": 25,
+            "count": 100,
+            "max": 2147483647,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 0,
+            "sort": "-datepublished,mediaid",
+            "previousUrl": "",
+            "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media?fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=2147483647&pagenum=1&parentid=350213",
+            "nextUrl": ""
+        }
+    },
+    "results": [{
+        "id": 350212,
+        "name": "Observation: Pointing to Body Parts",
+        "description": "Toddler works with teacher identifying body parts and using joint attention.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/15_observation-pointing-to-body-parts_935911.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=yM7idYylncM",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350212/syndicate.json",
+        "datePublished": "2015-10-09T12:49:57Z",
+        "dateModified": "2015-10-09T20:47:55Z",
+        "enclosures": [{
+            "id": 2299,
+            "resourceUrl": "https://i2.ytimg.com/vi/yM7idYylncM/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 25342
+        }]
+    }, {
+        "id": 350211,
+        "name": "Observation: Response to Name: Kyle, 12 months",
+        "description": "Typical response to name, demonstrates joint attention. [Pairs well with \"Observation: Lack of Response To Name: Evan, 18 months\"]\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/17_observation-response-to-name-kyle-12-months_935916.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=M9LCahr6BSs",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350211/syndicate.json",
+        "datePublished": "2015-10-09T12:50:19Z",
+        "dateModified": "2015-10-09T20:47:51Z",
+        "enclosures": [{
+            "id": 2298,
+            "resourceUrl": "https://i2.ytimg.com/vi/M9LCahr6BSs/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 5866
+        }]
+    }, {
+        "id": 350210,
+        "name": "Observation: Shyness: Akifa, 38 months",
+        "description": "Demonstrates shyness in a typical child, despite not speaking, she shows good social referencing and responds to the interviewer.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/18_observation-shyness-akifa-38-months_935918.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=quMxuPxrnFs",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350210/syndicate.json",
+        "datePublished": "2015-10-09T12:50:37Z",
+        "dateModified": "2015-10-09T20:47:47Z",
+        "enclosures": [{
+            "id": 2297,
+            "resourceUrl": "https://i2.ytimg.com/vi/quMxuPxrnFs/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 4730
+        }]
+    }, {
+        "id": 350209,
+        "name": "Observation: Speech Milestones at 2 years",
+        "description": "Typical speech and language including age appropriate conversation between toddler and mother. [Pairs well with \"Observation: Echolalia\"]\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/19_observation-speech-milestones-at-2-years_935922.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=OTBv3F8Uu6o",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350209/syndicate.json",
+        "datePublished": "2015-10-09T12:50:52Z",
+        "dateModified": "2015-10-09T20:47:43Z",
+        "enclosures": [{
+            "id": 2296,
+            "resourceUrl": "https://i4.ytimg.com/vi/OTBv3F8Uu6o/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 6390
+        }]
+    }, {
+        "id": 350208,
+        "name": "Observation: Temper Tantrum: Harrison, 3 years 6 months",
+        "description": "Shows temper tantrum in a typically developing child.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/20_observation-temper-tantrum-harrison-3-years-6-months_935926.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=ev4dWfd6__0",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350208/syndicate.json",
+        "datePublished": "2015-10-09T12:51:10Z",
+        "dateModified": "2015-10-09T20:47:40Z",
+        "enclosures": [{
+            "id": 2295,
+            "resourceUrl": "https://i2.ytimg.com/vi/ev4dWfd6__0/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 5869
+        }]
+    }, {
+        "id": 350207,
+        "name": "Observation: Typical Play: Kyle, 13 months",
+        "description": "Typical play in 12-months-old: stacking cups. [Pairs well with \"Observation: Inappropriate Play: Evan, 17 months\"]\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/21_observation-typical-play-kyle-13-months_935930.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=ciSIxoDXDpM",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350207/syndicate.json",
+        "datePublished": "2015-10-09T12:51:18Z",
+        "dateModified": "2015-10-09T20:47:36Z",
+        "enclosures": [{
+            "id": 2294,
+            "resourceUrl": "https://i4.ytimg.com/vi/ciSIxoDXDpM/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 5430
+        }]
+    }, {
+        "id": 350206,
+        "name": "Observation: Typical Play: Richard, 30 months",
+        "description": "Demonstrates appropriate play with toy cars.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/22_observation-typical-play-richard-30-months_936039.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=4CBc1m-JaL4",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350206/syndicate.json",
+        "datePublished": "2015-10-09T12:51:32Z",
+        "dateModified": "2015-10-09T20:47:33Z",
+        "enclosures": [{
+            "id": 2293,
+            "resourceUrl": "https://i1.ytimg.com/vi/4CBc1m-JaL4/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 5602
+        }]
+    }, {
+        "id": 350205,
+        "name": "Interview: Comments on Getting Diagnosis: Caryn, Mom of Riley",
+        "description": "Mother describes how she was alerted to her daughter's delays when her older son was getting early intervention therapy. Highlights the importance of looking early for warning signs in younger siblings especially when an older sibling has delays.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/23_interview-comments-on-getting-diagnosis-caryn-mom-of-riley_936040.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=rHa2OYfNBYc",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350205/syndicate.json",
+        "datePublished": "2015-10-09T12:51:52Z",
+        "dateModified": "2015-10-09T20:47:29Z",
+        "enclosures": [{
+            "id": 2292,
+            "resourceUrl": "https://i3.ytimg.com/vi/rHa2OYfNBYc/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 7227
+        }]
+    }, {
+        "id": 350204,
+        "name": "Interview: Comments on Getting Diagnosis: Lynda and David, Parents of Wynston",
+        "description": "Parents describe the preliminary screening results of their son via the M-CHAT and subsequent autism diagnosis and their difficulties interpreting due to son's positive performance in all areas but language.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/24_interview-comments-on-getting-diagnosis-lynda-and-david-parents-of-wynston_936042.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=GtoKVm58iz8",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350204/syndicate.json",
+        "datePublished": "2015-10-09T12:52:08Z",
+        "dateModified": "2015-10-09T20:47:26Z",
+        "enclosures": [{
+            "id": 2291,
+            "resourceUrl": "https://i4.ytimg.com/vi/GtoKVm58iz8/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 8432
+        }]
+    }, {
+        "id": 350203,
+        "name": "Communicating Concerns: Screening and Diagnosis Results Part I",
+        "description": "Shows Part I dialogue between physician and parents.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/27_communicating-concerns-screening-and-diagnosis-results-part-i_936052.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=egWPYXAro_8",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350203/syndicate.json",
+        "datePublished": "2015-10-09T12:52:32Z",
+        "dateModified": "2015-10-09T20:47:22Z",
+        "enclosures": [{
+            "id": 2290,
+            "resourceUrl": "https://i2.ytimg.com/vi/egWPYXAro_8/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 4654
+        }]
+    }, {
+        "id": 350202,
+        "name": "Communicating Concerns: Screening and Diagnosis Results Part IIA",
+        "description": "Shows Part IIA dialogue between physician and parents.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/28_communicating-concerns-screening-and-diagnosis-results-part-iia_936054.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=6t5LNrT1JNI",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350202/syndicate.json",
+        "datePublished": "2015-10-09T12:52:47Z",
+        "dateModified": "2015-10-09T20:47:19Z",
+        "enclosures": [{
+            "id": 2289,
+            "resourceUrl": "https://i3.ytimg.com/vi/6t5LNrT1JNI/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 4654
+        }]
+    }, {
+        "id": 350201,
+        "name": "Communicating Concerns: Screening and Diagnosis Results Part IIB",
+        "description": "Shows Part IIB dialogue between physician and parents.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/29_communicating-concerns-screening-and-diagnosis-results-part-iib_936055.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=F3Oyil9A7AQ",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350201/syndicate.json",
+        "datePublished": "2015-10-09T12:53:03Z",
+        "dateModified": "2015-10-09T20:47:15Z",
+        "enclosures": [{
+            "id": 2288,
+            "resourceUrl": "https://i3.ytimg.com/vi/F3Oyil9A7AQ/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 4654
+        }]
+    }, {
+        "id": 350200,
+        "name": "Interview: Comments on Getting Diagnosis: Raquel and Anthony, Parents of Sal, Ethan, and Evan",
+        "description": "Parents describe their initial shock and surprise to their young son's diagnosis.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/30_interview-comments-on-getting-diagnosis-raquel-and-anthony-parents-of-sal-ethan-and-evan_936056.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=BXWmB2L-Uvc",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350200/syndicate.json",
+        "datePublished": "2015-10-09T12:53:19Z",
+        "dateModified": "2015-10-09T20:47:11Z",
+        "enclosures": [{
+            "id": 2287,
+            "resourceUrl": "https://i3.ytimg.com/vi/BXWmB2L-Uvc/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 9150
+        }]
+    }, {
+        "id": 350199,
+        "name": "Observation: ABA: Stephon, 2 years 6 months",
+        "description": "Demonstrates ABA therapy session focusing on imitation, joint attention, and following simple instructions using positive reinforcement.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/31_observation-aba-stephon-2-years-6-months_936057.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=pBI319P2fjQ",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350199/syndicate.json",
+        "datePublished": "2015-10-09T12:53:33Z",
+        "dateModified": "2015-10-09T20:47:07Z",
+        "enclosures": [{
+            "id": 2286,
+            "resourceUrl": "https://i1.ytimg.com/vi/pBI319P2fjQ/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 18713
+        }]
+    }, {
+        "id": 350198,
+        "name": "Observation: Feeding Problems",
+        "description": "Mother of child with autism talks about her child's feeding problems while his nanny feeds him.\n\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/38_observation-feeding-problems_936081.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=JzjbTLTDn1A",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350198/syndicate.json",
+        "datePublished": "2015-10-09T13:22:02Z",
+        "dateModified": "2015-10-09T20:47:03Z",
+        "enclosures": [{
+            "id": 2285,
+            "resourceUrl": "https://i3.ytimg.com/vi/JzjbTLTDn1A/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 6293
+        }]
+    }, {
+        "id": 344174,
+        "name": "Ebola Hemorrhagic Fever Outbreak in Uganda",
+        "description": "As of December 2, 2012, the Ugandan Ministry of Health reported 7 cumulative cases (probable and confirmed) of Ebola virus infection, including 4 deaths, in the Luwero District of central Uganda.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8630762",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344174/syndicate.json",
+        "datePublished": "2012-07-02T16:00:00Z",
+        "dateModified": "2015-10-09T20:43:43Z",
+        "enclosures": []
+    }, {
+        "id": 344173,
+        "name": "Ebola Hemorrhagic Fever Outbreak in Democratic Republic of Congo",
+        "description": "As of December 2, 2012, the Ugandan Ministry of Health reported 7 cumulative cases (probable and confirmed) of Ebola virus infection, including 4 deaths, in the Luwero District of central Uganda.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8630760",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344173/syndicate.json",
+        "datePublished": "2012-08-16T16:00:00Z",
+        "dateModified": "2015-10-09T20:43:38Z",
+        "enclosures": []
+    }, {
+        "id": 344172,
+        "name": "Avian Influenza A (H7N9) Virus",
+        "description": "Human infections with a new avian influenza A (H7N9) virus were first reported in China in March 2013.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8630759",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344172/syndicate.json",
+        "datePublished": "2013-03-15T16:00:00Z",
+        "dateModified": "2015-10-09T20:43:34Z",
+        "enclosures": []
+    }, {
+        "id": 344171,
+        "name": "Ebola Outbreak in West Africa",
+        "description": "Ebola Outbreak in West Africa",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8631760",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344171/syndicate.json",
+        "datePublished": "2014-03-25T16:00:00Z",
+        "dateModified": "2015-10-09T20:43:29Z",
+        "enclosures": []
+    }, {
+        "id": 344170,
+        "name": "MERS-CoV",
+        "description": "MERS-CoV Reported in Traveler to US",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8632197",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344170/syndicate.json",
+        "datePublished": "2014-05-02T09:17:00Z",
+        "dateModified": "2015-10-09T20:43:25Z",
+        "enclosures": []
+    }, {
+        "id": 344168,
+        "name": "Barber Foods Raw, Frozen, Stuffed Chicken Entrees – Salmonella Enteritidis",
+        "description": "The Minnesota Department of Health and the Minnesota Department of Agriculture, along with CDC and the U.S. Department of Agriculture's Food Safety and Inspection Service (USDA-FSIS), are investigating two outbreaks of Salmonella Enteritidis infections linked to raw, frozen, breaded and pre-browned stuffed chicken entrees.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8637774",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344168/syndicate.json",
+        "datePublished": "2015-07-08T07:15:00Z",
+        "dateModified": "2015-10-09T20:43:20Z",
+        "enclosures": []
+    }, {
+        "id": 344167,
+        "name": "Aspen Foods Raw, Frozen Chicken Entrees – Salmonella Enteritidis",
+        "description": "CDC, several states, and the U.S. Department of Agriculture’s Food Safety and Inspection Service are currently investigating two separate outbreaks of Salmonella Enteritidis infections linked to raw, frozen, stuffed chicken entrees.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8637866",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344167/syndicate.json",
+        "datePublished": "2015-07-17T16:00:00Z",
+        "dateModified": "2015-10-09T20:43:16Z",
+        "enclosures": []
+    }, {
+        "id": 344166,
+        "name": "Unknown – Cyclospora Infections",
+        "description": "As of July 30, 2015 (11am EDT), a total of 358 ill persons with confirmed Cyclospora infection were reported to CDC in 2015. Most (199; 56%) ill persons reported onset of illness on or after May 1, 2015 and no international travel.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8638036",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344166/syndicate.json",
+        "datePublished": "2015-08-03T09:00:00Z",
+        "dateModified": "2015-10-09T20:43:11Z",
+        "enclosures": []
+    }, {
+        "id": 344165,
+        "name": "Pork – Salmonella I 4,[5],12:i:-",
+        "description": "The Washington State Department of Health (DOH) and Public Health—Seattle & King County (SKC), with CDC and the U.S. Department of Agriculture's Food Safety and Inspection Service (USDA-FSIS), are investigating an outbreak of Salmonella I 4,[5],12:i:- infections linked to pork",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8638222",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344165/syndicate.json",
+        "datePublished": "2015-08-24T08:00:00Z",
+        "dateModified": "2015-10-09T20:43:07Z",
+        "enclosures": []
+    }, {
+        "id": 344164,
+        "name": "Cucumbers – Salmonella Poona",
+        "description": "CDC, multiple states, and the U.S. Food and Drug Administration (FDA) are investigating a multistate outbreak of Salmonella Poona infections linked to imported cucumbers from Mexico and distributed by Andrew & Williamson Fresh Produce.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8638392",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344164/syndicate.json",
+        "datePublished": "2015-09-04T10:00:00Z",
+        "dateModified": "2015-10-09T20:43:02Z",
+        "enclosures": []
+    }, {
+        "id": 344163,
+        "name": "Soft Cheeses – Listeria monocytogenes",
+        "description": "Soft Cheeses – Listeria monocytogenes",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8638515",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344163/syndicate.json",
+        "datePublished": "2015-09-18T15:04:00Z",
+        "dateModified": "2015-10-09T20:42:58Z",
+        "enclosures": []
+    }, {
+        "id": 344169,
+        "name": "Live Poultry – Human Salmonella Infections",
+        "description": "CDC, public health, veterinary, and agriculture officials in many states and the U.S. Department of Agriculture's Animal and Plant Health Inspection Service (USDA-APHIS) are investigating four multistate outbreaks of human Salmonella infections linked to contact with live poultry.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8637775",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344169/syndicate.json",
+        "datePublished": "2015-07-08T07:00:00Z",
+        "dateModified": "2015-10-09T20:42:54Z",
+        "enclosures": []
+    }, {
+        "id": 344015,
+        "name": "Watch - Malaria in Brazil",
+        "description": "The Centers for Disease Control and Prevention (CDC) received information that 23 locally transmitted malaria (Plasmodium vivax) cases have been reported in the state of Rio de Janerio from January 17 through February 25, 2015. Also, from March 3 through March 13, 2015, 5 locally transmitted (Plasmodium vivax) cases have been reported in the state of Goias. Local transmission means that mosquitoes have been infected with malaria and are spreading it to people. CDC recommends that travelers to the central, mountainous, forested areas of Rio de Janiero State and Goias State in Brazil protect the",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/malaria-brazil",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344015/syndicate.json",
+        "datePublished": "2015-05-14T08:00:00Z",
+        "dateModified": "2015-10-09T20:38:01Z",
+        "enclosures": []
+    }, {
+        "id": 344013,
+        "name": "Watch - Measles in Bosnia and Herzegovina",
+        "description": "As of February 2015, the Federal Institute of Public Health in the Federation of Bosnia and Herzegovina has reported more than 3,800 cases since January 2014. Most of the cases have been in 3 Central Bosnia Canton municipalities: Bugojno, Fojnica, and Travnik. CDC recommends that travelers to Bosnia and Herzegovina protect themselves by making sure they are vaccinated against measles. Clinicians should keep measles in mind when treating patients with fever and rash, especially if the patient has recently traveled internationally.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/measles-bosnia-herzegovina",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344013/syndicate.json",
+        "datePublished": "2015-05-14T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:56Z",
+        "enclosures": []
+    }, {
+        "id": 344014,
+        "name": "Watch - 2015 World Expo in Milan, Italy",
+        "description": "The 2015 World Exposition will be held in Milan, Italy, from May 1, 2015, through October 31, 2015. Take some simple precautions to help you stay safe and healthy.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/2015-world-expo-milan-italy",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344014/syndicate.json",
+        "datePublished": "2015-05-14T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:51Z",
+        "enclosures": []
+    }, {
+        "id": 344012,
+        "name": "Watch - Chikungunya in Central America",
+        "description": "In June 2014, El Salvador reported locally transmitted cases for the first time in Central America. Local transmission means that mosquitoes in the area have been infected with chikungunya and are spreading it to people. Local transmission of chikungunya is now being reported in other countries in Central America. CDC recommends that travelers to the Central America protect themselves from mosquito bites. ",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/chikungunya-central-america",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344012/syndicate.json",
+        "datePublished": "2015-05-14T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:47Z",
+        "enclosures": []
+    }, {
+        "id": 344009,
+        "name": "Watch - Chikungunya in the Caribbean",
+        "description": "In December 2013, the World Health Organization (WHO) reported cases of chikungunya in Saint Martin. Additional cases were reported in other islands in the Caribbean. This is the first time that local transmission of chikungunya has been reported in the Americas. CDC recommends that travelers to the Caribbean protect themselves from mosquito bites.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/chikungunya-caribbean",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344009/syndicate.json",
+        "datePublished": "2015-05-14T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:43Z",
+        "enclosures": []
+    }, {
+        "id": 344011,
+        "name": "Watch - Chikungunya in South America",
+        "description": "In December 2013, French Guiana reported locally transmitted cases for the first time in South America. Local transmission means that mosquitoes in the area have been infected with chikungunya and are spreading it to people. CDC recommends that travelers to the South America protect themselves from mosquito bites. ",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/chikungunya-south-america",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344011/syndicate.json",
+        "datePublished": "2015-05-14T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:39Z",
+        "enclosures": []
+    }, {
+        "id": 344010,
+        "name": "Alert - MERS in the Arabian Peninsula",
+        "description": "Cases of MERS (Middle East Respiratory Syndrome) have been identified in multiple countries in the Arabian Peninsula. There have also been cases in several other countries in travelers who have been to the Arabian Peninsula and, in some instances, their close contacts.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/alert/coronavirus-saudi-arabia-qatar",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344010/syndicate.json",
+        "datePublished": "2015-05-14T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:35Z",
+        "enclosures": []
+    }, {
+        "id": 344008,
+        "name": "Watch - Mumps in Scotland",
+        "description": "As of March 22, 2015, Health Protection Scotland has reported 242 confirmed mumps cases in 2015. CDC recommends that travelers to Scotland protect themselves by making sure they are vaccinated against mumps before travel. \n",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/mumps-scotland",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344008/syndicate.json",
+        "datePublished": "2015-05-15T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:30Z",
+        "enclosures": []
+    }, {
+        "id": 344006,
+        "name": "Watch - Dengue in Brazil",
+        "description": "According to Pan American Health Organization (PAHO), as of May 8, 2015, 745,957 cases of dengue fever, including 229 deaths, have been reported in Brazil in 2015. Travelers to Brazil should protect themselves against mosquito bites to avoid getting dengue.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/dengue-brazil",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344006/syndicate.json",
+        "datePublished": "2015-05-26T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:26Z",
+        "enclosures": []
+    }, {
+        "id": 344004,
+        "name": "Watch - Avian Flu (H7N9) in China",
+        "description": "According to the World Health Organization, 665 cases and 229 deaths from H7N9 flu have been reported globally from March 2013 through May 9, 2015, most from the mainland of China. Smaller numbers of cases have been identified in travelers from Hong Kong, Taiwan, Malaysia, and Canada. CDC advises people traveling to China to avoid contact with poultry (including poultry markets and farms), birds, and their droppings. There are no recommendations against travel to China.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/avian-flu-h7n9-china",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344004/syndicate.json",
+        "datePublished": "2015-05-26T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:21Z",
+        "enclosures": []
+    }, {
+        "id": 344007,
+        "name": "Watch - Measles in Kyrgyzstan",
+        "description": "Kyrgyzstan is experiencing an ongoing measles outbreak. CDC recommends that travelers to Kyrgyzstan protect themselves by making sure they are vaccinated against measles, particularly infants and children. Clinicians should keep measles in mind when treating patients with fever and rash, especially if the patient has recently traveled internationally.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/measles-kyrgyzstan",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344007/syndicate.json",
+        "datePublished": "2015-05-26T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:16Z",
+        "enclosures": []
+    }, {
+        "id": 344005,
+        "name": "Watch - Measles in Ethiopia",
+        "description": "According to the World Health Organization, Ethiopia is experiencing an ongoing measles outbreak. CDC recommends that travelers to Ethiopia protect themselves by making sure they are vaccinated against measles. Clinicians should keep measles in mind when treating patients with fever and rash, especially if the patient has recently traveled internationally.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/measles-ethiopia",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344005/syndicate.json",
+        "datePublished": "2015-05-26T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:11Z",
+        "enclosures": []
+    }, {
+        "id": 344002,
+        "name": "Watch - H5N1 Bird Flu in Egypt",
+        "description": "CDC recommends that travelers to Egypt protect themselves from H5N1 by avoiding contact with wild birds, live or uncooked poultry, and body fluids from birds and poultry. ",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/h5n1-bird-flu-egypt",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344002/syndicate.json",
+        "datePublished": "2015-05-26T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:06Z",
+        "enclosures": []
+    }, {
+        "id": 344000,
+        "name": "Watch - Measles in Germany",
+        "description": "As of May 11, 2015, the Berlin Senate Department of Health and Social Affairs has reported more than 1,700 cases of measles. CDC recommends that travelers to Germany protect themselves by making sure they are vaccinated against measles. Clinicians should keep measles in mind when treating patients with fever and rash, especially if the patient has recently traveled internationally.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/measles-germany",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344000/syndicate.json",
+        "datePublished": "2015-05-26T08:00:00Z",
+        "dateModified": "2015-10-09T20:37:01Z",
+        "enclosures": []
+    }, {
+        "id": 344001,
+        "name": "Watch - Dengue in Malaysia",
+        "description": "According to the World Health Organization, as of April 11,, 2015, more than 35,700 cases of dengue fever, including 108 deaths, have been reported in Malaysia in 2015. Travelers to Malaysia should protect themselves against mosquito bites to avoid getting dengue.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/dengue-malaysia",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344001/syndicate.json",
+        "datePublished": "2015-05-26T08:00:00Z",
+        "dateModified": "2015-10-09T20:36:56Z",
+        "enclosures": []
+    }, {
+        "id": 343999,
+        "name": "Watch - Zika in Brazil ",
+        "description": "On May 14, 2015, the Ministry of Health in Brazil confirmed 16 locally transmitted cases of Zika. Local transmission means that mosquitoes in Brazil have been infected with Zika and are spreading it to people.  infected with Zika and are spreading it to people. Cases have been reported in several states throughout the country. CDC recommends that travelers to Brazil protect themselves from mosquito bites. \n",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/zika-brazil",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343999/syndicate.json",
+        "datePublished": "2015-06-11T08:00:00Z",
+        "dateModified": "2015-10-09T20:36:52Z",
+        "enclosures": []
+    }, {
+        "id": 343998,
+        "name": "Alert - Hajj and Umrah in Saudi Arabia",
+        "description": "The annual Hajj pilgrimage to Mecca, Saudi Arabia, is among the largest mass gatherings in the world. If you plan to travel to Saudi Arabia for Hajj or Umrah, follow CDC’s recommendations, such as being up-to-date on your vaccines, to help keep you safe and healthy.  ",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/alert/hajj-umrah-saudi-arabia-2015",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343998/syndicate.json",
+        "datePublished": "2015-06-17T08:00:00Z",
+        "dateModified": "2015-10-09T20:36:47Z",
+        "enclosures": []
+    }, {
+        "id": 343997,
+        "name": "Watch - MERS in the Republic of Korea",
+        "description": "On May 20, the Republic of Korea reported its first laboratory-confirmed case of Middle East respiratory syndrome (MERS). All transmission has been linked to health care facilities where MERS patients were treated.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/mers-republic-of-korea",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343997/syndicate.json",
+        "datePublished": "2015-06-29T08:00:00Z",
+        "dateModified": "2015-10-09T20:36:42Z",
+        "enclosures": []
+    }, {
+        "id": 343996,
+        "name": "Watch - Chikungunya in the Pacific Islands",
+        "description": "The Pacific Public Health Surveillance Network (PacNet) has reported local transmission of chikungunya in several islands in the central and south Pacific Ocean. Local transmission means that mosquitoes in the area have been infected with chikungunya and are spreading it to people. ",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/chikungunya-french-polynesia",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343996/syndicate.json",
+        "datePublished": "2015-07-06T08:00:00Z",
+        "dateModified": "2015-10-09T20:36:37Z",
+        "enclosures": []
+    }, {
+        "id": 343995,
+        "name": "Watch - Earthquake in Nepal",
+        "description": "On Saturday, April 25, 2015, a 7.8 magnitude earthquake struck 48 miles (77 km) northwest of Nepal’s capital, Kathmandu, causing avalanches around Mount Everest and several aftershocks. In Kathmandu, conditions are returning to normal. In the worst-affected areas outside Kathmandu, damage is more widespread and severe. Recovery efforts in these areas are ongoing, and access to basic resources, such as food, water, fuel, and communications, could be limited.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/earthquake-nepal",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343995/syndicate.json",
+        "datePublished": "2015-07-08T08:00:00Z",
+        "dateModified": "2015-10-09T20:36:32Z",
+        "enclosures": []
+    }, {
+        "id": 343994,
+        "name": "Watch - Measles in Democratic Republic of the Congo",
+        "description": "An ongoing measles outbreak has been reported in the Democratic Republic of the Congo. CDC recommends that travelers to the Democratic Republic of the Congo protect themselves by making sure they are vaccinated against measles. Clinicians should keep measles in mind when treating patients with fever and rash, especially if the patient has recently traveled internationally.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/measles-democratic-republic-of-the-congo",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343994/syndicate.json",
+        "datePublished": "2015-08-27T08:00:00Z",
+        "dateModified": "2015-10-09T20:36:27Z",
+        "enclosures": []
+    }, {
+        "id": 343989,
+        "name": "Watch - Hand, Foot, and Mouth Disease (HFMD) in Singapore",
+        "description": "According to the World Health Organization, Singapore has reported more than 18,000 cases of hand, foot, and mouth disease (HFMD) in 2015. CDC recommends that travelers to Singapore follow recommendations for hygiene and cleanliness to avoid HFMD.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/hand-foot-mouth-singapore",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343989/syndicate.json",
+        "datePublished": "2015-09-11T08:00:00Z",
+        "dateModified": "2015-10-09T20:36:22Z",
+        "enclosures": []
+    }, {
+        "id": 343990,
+        "name": "Watch - Hand, Foot, and Mouth Disease (HFMD) in Japan",
+        "description": "According to the World Health Organization, Japan has reported more than 264,500 cases of hand, foot, and mouth disease (HFMD) in 2015. Since the middle of March, weekly case numbers of HFMD have increased but have been declining since August. CDC recommends that travelers to Japan follow recommendations for hygiene and cleanliness to avoid HFMD.\n",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/watch/hfmd-japan",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343990/syndicate.json",
+        "datePublished": "2015-09-11T08:00:00Z",
+        "dateModified": "2015-10-09T20:36:18Z",
+        "enclosures": []
+    }, {
+        "id": 343988,
+        "name": "Alert - Polio in Mali",
+        "description": "CDC recommends that all travelers to Mali be fully vaccinated against polio. In addition, adults who have been fully vaccinated should receive a single lifetime booster dose of polio vaccine.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/alert/polio-mali",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343988/syndicate.json",
+        "datePublished": "2015-09-18T08:00:00Z",
+        "dateModified": "2015-10-09T20:36:13Z",
+        "enclosures": []
+    }, {
+        "id": 343987,
+        "name": "Alert - Polio in Ukraine",
+        "description": "CDC recommends that all travelers to Ukraine be fully vaccinated against polio. In addition, adults who have been fully vaccinated should receive a single lifetime booster dose of polio vaccine.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 26238,
+            "name": "Travelers' Health",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35026,
+            "name": "Travel Notices",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://wwwnc.cdc.gov/travel/notices/alert/polio-ukraine",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343987/syndicate.json",
+        "datePublished": "2015-09-18T08:00:00Z",
+        "dateModified": "2015-10-09T20:36:08Z",
+        "enclosures": []
+    }, {
+        "id": 344963,
+        "name": "Severe Weather Can Threaten Summer Fun, Safety and Health - Digital Press Kit",
+        "description": "Extreme weather in the summer can include soaring temperatures, thunderstorms, and dry conditions. Extreme weather poses serious health risks, causing illnesses, injuries and sometimes death.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/dpk/2015/dpk-summer-weather.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344963/syndicate.json",
+        "datePublished": "2015-07-28T09:15:00Z",
+        "dateModified": "2015-10-09T20:32:34Z",
+        "enclosures": [{
+            "id": 2284,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-summer-weather/dpk-summer-weather-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 65795
+        }]
+    }, {
+        "id": 344962,
+        "name": "CDC Telebriefing: CDC officials to discuss National Immunization Survey-Teen results - Media Advisory",
+        "description": "CDC will host a media telebriefing to discuss the latest coverage rate estimates for vaccines recommended for adolescents in the United States.\n",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0730-nis.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344962/syndicate.json",
+        "datePublished": "2015-07-29T16:01:00Z",
+        "dateModified": "2015-10-09T20:32:30Z",
+        "enclosures": []
+    }, {
+        "id": 344961,
+        "name": "CDC: 53 million adults in the US live with a disability - Press Release",
+        "description": "In the United States, one out of every five adults has a disability, according to a new study published by the Centers for Disease Control and Prevention. The most common functional disability type was a mobility limitation – defined as serious difficulty walking or climbing stairs -- reported by one in eight adults, followed by disability in thinking and/or memory, independent living, vision, and self-care.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0730-us-disability.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344961/syndicate.json",
+        "datePublished": "2015-07-30T13:02:00Z",
+        "dateModified": "2015-10-09T20:32:26Z",
+        "enclosures": [{
+            "id": 2283,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0730-us-disability-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 93422
+        }]
+    }, {
+        "id": 344960,
+        "name": "Many adolescents still not getting HPV vaccine - Press Release",
+        "description": "The number of 13- to 17-year-old boys and girls getting the human papillomavirus (HPV) vaccine increased slightly for the second year in a row, according to data from CDC’s 2014 National Immunization Survey-Teen (NIS-Teen), published in this week’s Morbidity and Mortality Weekly Report (MMWR).",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0730-hpv.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344960/syndicate.json",
+        "datePublished": "2015-07-30T13:03:00Z",
+        "dateModified": "2015-10-09T20:32:22Z",
+        "enclosures": [{
+            "id": 2282,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0730-hpv-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 74552
+        }]
+    }, {
+        "id": 344959,
+        "name": "CDC funding helps states address infectious disease threats  - Press Release",
+        "description": "The Centers for Disease Control and Prevention (CDC) today announced awards of nearly $110 million to help states and communities strengthen their capacity to track and respond to infectious diseases. The awards represent an increase of about $13 million over fiscal year 2014 funding, with increases going to vaccine-preventable-disease surveillance, foodborne-disease prevention and advanced molecular detection, among other projects.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0803-cdc-funding.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344959/syndicate.json",
+        "datePublished": "2015-08-03T12:16:00Z",
+        "dateModified": "2015-10-09T20:32:18Z",
+        "enclosures": []
+    }, {
+        "id": 344958,
+        "name": "CDC Telebriefing: New Vital Signs Report - With improved infection control, how many antibiotic-resistant related infections and deaths does CDC predict could be averted in 5 years? - Media Advisory",
+        "description": "We’re at a tipping point: an increasing number of germs no longer respond to the drugs designed to kill them. The latest CDC Vital Signs report includes mathematical modeling showing that the spread of drug-resistant infections and Clostridium difficile (C. difficile) will increase without immediate improvements in infection control and antibiotic prescribing. ",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0803-hai-control.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344958/syndicate.json",
+        "datePublished": "2015-08-04T09:46:00Z",
+        "dateModified": "2015-10-09T20:32:14Z",
+        "enclosures": []
+    }, {
+        "id": 344957,
+        "name": "CDC Modeling Predicts Growth of Drug-resistant Infections and C. difficile - Digital Press Kit",
+        "description": "The latest CDC Vital Signs includes mathematical modeling that predicts increases in drug-resistant infections and Clostridium difficile (C. difficile) without immediate, nationwide improvements in infection control and antibiotic prescribing.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/dpk/2015/dpk-vs-hai.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344957/syndicate.json",
+        "datePublished": "2015-08-04T15:31:00Z",
+        "dateModified": "2015-10-09T20:32:10Z",
+        "enclosures": [{
+            "id": 2281,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-vs-hai/hai-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 42522
+        }]
+    }, {
+        "id": 344956,
+        "name": "CDC modeling projects growth of drug-resistant infections and C. difficile  - Press Release",
+        "description": "The latest CDC Vital Signs includes mathematical modeling that projects increases in drug-resistant infections and Clostridium difficile (C. difficile) without immediate, nationwide improvements in infection control and antibiotic prescribing.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0804-hai-modeling.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344956/syndicate.json",
+        "datePublished": "2015-08-04T15:32:00Z",
+        "dateModified": "2015-10-09T20:32:06Z",
+        "enclosures": []
+    }, {
+        "id": 344955,
+        "name": "Transcript for CDC Telebriefing: With improved infection control, how many antibiotic-resistant related infections and deaths does CDC predict could be averted in 5 years? - Transcript",
+        "description": "The latest CDC Vital Signs report includes mathematical modeling showing that the spread of drug-resistant infections and Clostridium difficile (C. difficile) will increase without immediate improvements in infection control and antibiotic prescribing.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/t0804-hai-control.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344955/syndicate.json",
+        "datePublished": "2015-08-05T08:16:00Z",
+        "dateModified": "2015-10-09T20:32:02Z",
+        "enclosures": []
+    }, {
+        "id": 344954,
+        "name": "Most US middle and high schools start the school day too early - Press Release",
+        "description": "Fewer than 1 in 5 middle and high schools in the U.S. began the school day at the recommended 8:30 AM start time or later during the 2011-2012 school year, according to data published today in the Centers for Disease Control and Prevention’s Morbidity and Mortality Weekly Report.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0806-school-sleep.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344954/syndicate.json",
+        "datePublished": "2015-08-06T13:03:00Z",
+        "dateModified": "2015-10-09T20:31:58Z",
+        "enclosures": [{
+            "id": 2280,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0806-school-sleep-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 90047
+        }]
+    }, {
+        "id": 344953,
+        "name": "Class is In: Essential Tips before going back to school - Digital Press Kit",
+        "description": "It’s that time again! This is an exciting time of year for students and families. As students go back to school, it is important that parents and students recognize key health and safety information that will help ensure a great start to the school year.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/dpk/2015/dpk-back-to-school.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344953/syndicate.json",
+        "datePublished": "2015-08-11T14:02:00Z",
+        "dateModified": "2015-10-09T20:31:54Z",
+        "enclosures": [{
+            "id": 2279,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-back-to-school/back-to-school-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 120198
+        }]
+    }, {
+        "id": 344952,
+        "name": "Million Hearts launches annual blood pressure control challenge - Press Release",
+        "description": "The U.S. Department of Health and Human Services today launched an annual challenge designed to identify and honor clinicians and health care teams that have helped their patients control high blood pressure and prevent heart attacks and strokes.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0818-million-hearts.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344952/syndicate.json",
+        "datePublished": "2015-08-18T10:46:00Z",
+        "dateModified": "2015-10-09T20:31:51Z",
+        "enclosures": [{
+            "id": 2278,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0818-million-hearts-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 105863
+        }]
+    }, {
+        "id": 344951,
+        "name": "Make all Public Places 100% Smoke-free to Protect Public Health - Press Release",
+        "description": "Smoke-free environments are crucial for protecting the public from the harms of secondhand smoke, and there is very strong public support for making public places smoke-free in China. Strong laws are needed – and where they exist and are rigorously enforced, they work. These are the key findings from the results of the China City Adult Tobacco Survey, released in Beijing today.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0818-china-smoking.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344951/syndicate.json",
+        "datePublished": "2015-08-18T22:00:00Z",
+        "dateModified": "2015-10-09T20:31:47Z",
+        "enclosures": [{
+            "id": 2277,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0818-china-smoking-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 84350
+        }]
+    }, {
+        "id": 344950,
+        "name": "New CDC tool illustrates changes in antibiotic resistance - Media Advisory",
+        "description": "CDC is unveiling an interactive tool that makes it quicker and easier to see how antibiotic resistance for four bacteria transmitted commonly through food—Campylobacter, E. coli O157, Salmonella, and Shigella—has changed during the past 18 years.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0819-antibiotic-resistance.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344950/syndicate.json",
+        "datePublished": "2015-08-19T12:01:00Z",
+        "dateModified": "2015-10-09T20:31:43Z",
+        "enclosures": []
+    }, {
+        "id": 344949,
+        "name": "Emerging Infectious Diseases Conference to Draw Scientists to Atlanta - Media Advisory",
+        "description": "Since 1998, ICEID has brought together international scientists and public health professionals to foster an exchange of innovative research and ideas on emerging infectious disease topics.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0820-eid-conference.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344949/syndicate.json",
+        "datePublished": "2015-08-20T09:31:00Z",
+        "dateModified": "2015-10-09T20:31:38Z",
+        "enclosures": []
+    }, {
+        "id": 344948,
+        "name": "Nearly all contact lens wearers in national survey report risky eye care behaviors that can lead to eye infections - Press Release",
+        "description": "Almost all of the 41 million estimated contact lens wearers in the United States may be engaging in at least one behavior known to increase their risk of eye infections, according to a report published today by the Centers for Disease Control and Prevention.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0820-contact-lens.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344948/syndicate.json",
+        "datePublished": "2015-08-20T13:02:00Z",
+        "dateModified": "2015-10-09T20:31:33Z",
+        "enclosures": [{
+            "id": 2276,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0820-contact-lens-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 43471
+        }]
+    }, {
+        "id": 344947,
+        "name": "CDC Telebriefing: CDC officials to discuss vaccine exemption levels and infant vaccination coverage - Media Advisory",
+        "description": "CDC will host a media telebriefing to discuss estimates of vaccine exemption levels among children entering kindergarten for the 2014-2015 school year.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0826-vaccination.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344947/syndicate.json",
+        "datePublished": "2015-08-26T16:01:00Z",
+        "dateModified": "2015-10-09T20:31:27Z",
+        "enclosures": []
+    }, {
+        "id": 344946,
+        "name": "America’s schools make positive changes to create healthier school meals - Press Release",
+        "description": "Most schools in the U.S. are implementing healthy practices to help meet federal school meal standards by offering whole grains, more fruits and vegetables, and reducing sodium content, according to data published today in the Centers for Disease Control and Prevention’s (CDC) Morbidity and Mortality Weekly Report.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0827-school-meals.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344946/syndicate.json",
+        "datePublished": "2015-08-27T13:02:00Z",
+        "dateModified": "2015-10-09T20:31:22Z",
+        "enclosures": [{
+            "id": 2275,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0827-school-meals-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 84878
+        }]
+    }, {
+        "id": 344945,
+        "name": "State exemption levels low, national vaccination rates high - Press Release",
+        "description": "Vaccine exemption levels for kindergarteners are low for most states and infant vaccination rates are high nationally, according to data from two reports published in this week’s Morbidity and Mortality Weekly Report (MMWR).",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0827-vaccination-rates.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344945/syndicate.json",
+        "datePublished": "2015-08-27T13:02:00Z",
+        "dateModified": "2015-10-09T20:31:17Z",
+        "enclosures": [{
+            "id": 2274,
+            "resourceUrl": "http://www.cdc.gov/media/images/releases/2015/p0827-vaccination-rates-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 97040
+        }]
+    }, {
+        "id": 344944,
+        "name": "Transcript for CDC Telebriefing: CDC officials to discuss vaccine exemption levels and infant vaccination coverage",
+        "description": "CDC hosted a media telebriefing to discuss estimates of vaccine exemption levels among children entering kindergarten for the 2014-2015 school year. The telebriefing also covered data from the 2014 National Immunization Survey, which details vaccination coverage estimates among children ages 19 through 35 months.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/t0827-vaccination.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344944/syndicate.json",
+        "datePublished": "2015-08-27T17:31:00Z",
+        "dateModified": "2015-10-09T20:31:11Z",
+        "enclosures": []
+    }, {
+        "id": 344943,
+        "name": "CDC Telebriefing: New Vital Signs Report - Heart age: Is your heart older than you? - Media Advisory",
+        "description": "Your heart may be older than you are – and that’s not good. This new CDC Vital Signs report shows that heart age varies by race/ethnicity, gender, region, and other sociodemographic characteristics.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/a0831-heart-age.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344943/syndicate.json",
+        "datePublished": "2015-08-31T12:32:00Z",
+        "dateModified": "2015-10-09T20:31:06Z",
+        "enclosures": []
+    }, {
+        "id": 344942,
+        "name": "Most Americans' hearts are older than their age - Press Release",
+        "description": "Your heart may be older than you are – and that’s not good. According to a new CDC Vital Signs report, 3 out of 4 U.S. adults have a predicted heart age that is older than their actual age. This means they are at higher risk for heart attacks and stroke.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0901-heart-age.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344942/syndicate.json",
+        "datePublished": "2015-09-01T13:02:00Z",
+        "dateModified": "2015-10-09T20:31:01Z",
+        "enclosures": [{
+            "id": 2273,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-vs-heart-age/heart-age-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 56271
+        }]
+    }, {
+        "id": 344941,
+        "name": "Analyzing America’s Heart Age - Digital Press Kit",
+        "description": "A majority of U.S. adults have a heart age that is older than their chronological age—evidence that they could be at greater risk for heart attacks and stroke. ",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/dpk/2015/dpk-vs-heart-age.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344941/syndicate.json",
+        "datePublished": "2015-09-01T13:03:00Z",
+        "dateModified": "2015-10-09T20:30:56Z",
+        "enclosures": [{
+            "id": 2272,
+            "resourceUrl": "http://www.cdc.gov/media/images/dpk/2015/dpk-vs-heart-age/heart-age-300x200px.jpg",
+            "contentType": "image/jpeg",
+            "size": 56271
+        }]
+    }, {
+        "id": 344940,
+        "name": "Transcript for CDC Telebriefing: Most Americans' hearts are older than their age - Transcript",
+        "description": "Transcript for CDC Telebriefing:Most Americans' hearts are older than their age",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/t0901-heart-age.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344940/syndicate.json",
+        "datePublished": "2015-09-01T17:01:00Z",
+        "dateModified": "2015-10-09T20:30:52Z",
+        "enclosures": []
+    }, {
+        "id": 344939,
+        "name": "Early flu treatment reduces hospitalization time, disability risk in older people - Press Release",
+        "description": "Early treatment of flu-hospitalized people 65 and older with flu antiviral medications cuts the duration of their hospital stay and reduces their risk of needing extended care after discharge, a new CDC study finds.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25386,
+            "name": "CDC Newsroom",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34516,
+            "name": "Newsroom",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/media/releases/2015/p0902-early-flu-treatment.html",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344939/syndicate.json",
+        "datePublished": "2015-09-02T18:30:00Z",
+        "dateModified": "2015-10-09T20:30:47Z",
+        "enclosures": []
+    }, {
+        "id": 344055,
+        "name": "Diets of Childbearing Women",
+        "description": "Researchers compared diet quality among childbearing women with a history of gestational diabetes mellitus (GDM) with the diet quality of childbearing women without a history of GDM.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0360.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344055/syndicate.json",
+        "datePublished": "2015-03-25T01:00:00Z",
+        "dateModified": "2015-10-09T20:25:48Z",
+        "enclosures": [{
+            "id": 2260,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344054,
+        "name": "Communications Program Teaches About Health",
+        "description": "This study outlines a communications project in Lima, Peru, aimed at helping students learn about noncommunicable disease prevention and how to promote health-related messages to their peers.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0416.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344054/syndicate.json",
+        "datePublished": "2015-03-25T02:00:00Z",
+        "dateModified": "2015-10-09T20:25:44Z",
+        "enclosures": [{
+            "id": 2259,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344053,
+        "name": "Memory Loss Affects Millions in US",
+        "description": "Based on the results of this study, researchers found that an estimated 4 million households in 13 US states have a member suffering with increased confusion or memory loss, potentially affecting more than 10 million people.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0430.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344053/syndicate.json",
+        "datePublished": "2015-03-25T03:00:00Z",
+        "dateModified": "2015-10-09T20:25:40Z",
+        "enclosures": [{
+            "id": 2258,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344052,
+        "name": "Physical Activity of Urban Public School Children",
+        "description": "Racial/ethnic minority children residing in low-resource areas of St. Louis, Missouri, may benefit the most from school-based opportunities for moderate-to-vigorous physical activity, according to this study.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0458.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344052/syndicate.json",
+        "datePublished": "2015-03-25T04:00:00Z",
+        "dateModified": "2015-10-09T20:25:36Z",
+        "enclosures": [{
+            "id": 2257,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344051,
+        "name": "Program Leads to Better Nutrition Habits",
+        "description": "Researchers find that areas in California with the greatest amount of residents receiving Supplemental Nutrition Assistance Program–Education was associated with adults and children eating more fruits and vegetables and adults eating fast food less frequently.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0449.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344051/syndicate.json",
+        "datePublished": "2015-03-25T05:00:00Z",
+        "dateModified": "2015-10-09T20:25:32Z",
+        "enclosures": [{
+            "id": 2256,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344050,
+        "name": "Program Teaches Latinos About Heart Health",
+        "description": "The objective of this study was to implement cardiovascular health promotion and disease prevention activities of the Salud para su Corazón model in a high-risk, impoverished, urban community in Mexico City.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0292.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344050/syndicate.json",
+        "datePublished": "2015-03-25T06:00:00Z",
+        "dateModified": "2015-10-09T20:25:28Z",
+        "enclosures": [{
+            "id": 2255,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344049,
+        "name": "Secondhand Smoke Among Pregnant Women in China",
+        "description": "According to this study, 60% to 70% of pregnant women in the Henan and Sichuan Provinces of China are exposed to secondhand smoke and 50% to 60% of pregnant women are exposed to secondhand smoke at home.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0377.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344049/syndicate.json",
+        "datePublished": "2015-03-25T07:00:00Z",
+        "dateModified": "2015-10-09T20:25:24Z",
+        "enclosures": [{
+            "id": 2254,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344048,
+        "name": "Disparities in Idaho Breast Cancer Diagnosis",
+        "description": "This study suggests that disparities may exist for Idaho Women’s Health Check enrollees in the timely diagnosis of breast cancer.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0439.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344048/syndicate.json",
+        "datePublished": "2015-03-25T08:00:00Z",
+        "dateModified": "2015-10-09T20:25:19Z",
+        "enclosures": [{
+            "id": 2253,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344047,
+        "name": "Reducing Chronic Disease Through Policy Changes",
+        "description": "In this process evaluation researchers identified specific challenges and facilitators to building and implementing a regional public health model to reduce chronic disease risk factors through policy, environment, and systems changes.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0446.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344047/syndicate.json",
+        "datePublished": "2015-03-25T09:00:00Z",
+        "dateModified": "2015-10-09T20:25:15Z",
+        "enclosures": [{
+            "id": 2252,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344046,
+        "name": "Depression and Unemployed Young Adults",
+        "description": "The findings from this study suggest that unemployed emerging adults have 3 times greater odds of reporting depression compared with employed emerging adults.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0451.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344046/syndicate.json",
+        "datePublished": "2015-03-25T10:00:00Z",
+        "dateModified": "2015-10-09T20:25:11Z",
+        "enclosures": [{
+            "id": 2251,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344045,
+        "name": "Smoking in Georgia Restaurants and Bars",
+        "description": "Researchers found that the percentage of restaurants and bars in Georgia that allowed smoking nearly doubled, from 9.1% in 2006 to 17.6% in 2012.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0520.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344045/syndicate.json",
+        "datePublished": "2015-06-25T01:00:00Z",
+        "dateModified": "2015-10-09T20:25:07Z",
+        "enclosures": [{
+            "id": 2250,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344044,
+        "name": "The Most Distinctive Causes of Death by State",
+        "description": "This GIS map depicts a variety of distinctive causes of death based on a wide range of number of deaths, from 15,000 deaths from HIV in Florida to 679 deaths from tuberculosis in Texas.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0395.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344044/syndicate.json",
+        "datePublished": "2015-06-25T02:00:00Z",
+        "dateModified": "2015-10-09T20:25:02Z",
+        "enclosures": [{
+            "id": 2249,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344043,
+        "name": "Program Could Help Reduce Childhood Obesity",
+        "description": "The objective of this study was to evaluate the impact of the Alliance for a Healthier Generation’s Healthy Schools Program on the prevalence of overweight and obesity in California schools, from inception in 2006 through 2012.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0020.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344043/syndicate.json",
+        "datePublished": "2015-06-25T03:00:00Z",
+        "dateModified": "2015-10-09T20:24:59Z",
+        "enclosures": [{
+            "id": 2248,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344042,
+        "name": "Colonoscopy Screening Rates",
+        "description": "Despite a 5-fold increase in colonoscopy screening rates since 2005, rates among first-degree relatives younger than the conventional screening age of 50 have lagged, researchers find.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0533.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344042/syndicate.json",
+        "datePublished": "2015-06-25T04:00:00Z",
+        "dateModified": "2015-10-09T20:24:54Z",
+        "enclosures": [{
+            "id": 2247,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344041,
+        "name": "Alcohol Outlets’ Impact on Violent Crime",
+        "description": "Reducing the number and concentration of bars, restaurants, and other locations where people can go to drink in the Buckhead neighborhood of Atlanta, Georgia significantly reduced violent crime, researchers find.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0317.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344041/syndicate.json",
+        "datePublished": "2015-06-25T05:00:00Z",
+        "dateModified": "2015-10-09T20:24:50Z",
+        "enclosures": [{
+            "id": 2246,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344040,
+        "name": "NYC Adults Report Sitting 7-Plus Hours Every Day",
+        "description": "The average New Yorker reports sitting for more than 7 hours per day—and may actually sit still even longer, according to this study. ",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0488.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344040/syndicate.json",
+        "datePublished": "2015-06-25T06:00:00Z",
+        "dateModified": "2015-10-09T20:24:45Z",
+        "enclosures": [{
+            "id": 2245,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344039,
+        "name": "Drinking Water Availability in Child Care Sites",
+        "description": "The aims of this study were to identify how water was provided to young children in child care and to determine the extent to which water access changed after a federal and state child care beverage policy was instituted in 2011 and 2012 in California.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0548.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344039/syndicate.json",
+        "datePublished": "2015-06-25T07:00:00Z",
+        "dateModified": "2015-10-09T20:24:40Z",
+        "enclosures": [{
+            "id": 2244,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344038,
+        "name": "Nutrition Practices in Family Child-Care Homes",
+        "description": "Researchers explored nutrition-related practices and attitudes of family child-care home providers in Rhode Island and assessed whether these differed by provider ethnicity or socioeconomic status of the enrolled children.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0587.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344038/syndicate.json",
+        "datePublished": "2015-06-25T08:00:00Z",
+        "dateModified": "2015-10-09T20:24:36Z",
+        "enclosures": [{
+            "id": 2243,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344037,
+        "name": "Cigarette Use and Smoking Prevalence in Kansas",
+        "description": "Researchers find that smoking prevalence declined in Kansas between 1999 and 2010 – but the average annual number of cigarettes smoked stayed the same.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0011.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344037/syndicate.json",
+        "datePublished": "2015-06-25T09:00:00Z",
+        "dateModified": "2015-10-09T20:24:31Z",
+        "enclosures": [{
+            "id": 2242,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344036,
+        "name": "Many Children Not Protected by Smoke-Free Home Rules",
+        "description": "Voluntary smoke-free home rules protect children from dangerous secondhand cigarette smoke – yet more than a third of US homes with a parent who smokes have no such rule, researchers find.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0553.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344036/syndicate.json",
+        "datePublished": "2015-06-25T10:00:00Z",
+        "dateModified": "2015-10-09T20:24:27Z",
+        "enclosures": [{
+            "id": 2241,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344035,
+        "name": "Smoke-Free Policies in Multiunit Housing",
+        "description": "In this study, researchers found that people living in multiunit housing with smoke-free policies engaged in less use of various tobacco products. ",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0479.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344035/syndicate.json",
+        "datePublished": "2015-07-28T01:00:00Z",
+        "dateModified": "2015-10-09T20:24:23Z",
+        "enclosures": [{
+            "id": 2240,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344034,
+        "name": "National Asian-Language Smokers’ Quitline",
+        "description": "The objective of this study was to examine characteristics of callers of the national Asian Smokers’ Quitline, how they heard about the quitline, and their use of the service.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0584.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344034/syndicate.json",
+        "datePublished": "2015-07-28T02:00:00Z",
+        "dateModified": "2015-10-09T20:24:19Z",
+        "enclosures": [{
+            "id": 2239,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 344033,
+        "name": "A Guide to Health Care Study Design",
+        "description": "This article focuses on a fundamental question: which types of health care studies are most trustworthy? That is, which study designs are most immune to the many biases and alternative explanations that may produce unreliable results?",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0187.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344033/syndicate.json",
+        "datePublished": "2015-07-28T03:00:00Z",
+        "dateModified": "2015-10-09T20:24:15Z",
+        "enclosures": [{
+            "id": 2238,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }]
+}

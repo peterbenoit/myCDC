@@ -1,30 +1,27 @@
 <ion-view>
-
+    <ion-nav-buttons side="right">
+        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
+    </ion-nav-buttons>
     <ion-content class="has-header">
-
-    <!-- <img src="{{data.enclosures[0].resourceUrl}}"> -->
-
-    <div class="padding data">
-        <h2 class="title">{{data.name}}</h2>
-
-        <div style="padding:0 0 20px 0;">
-        Published {{data.datePublished | date:'fullDate'}}
+        <div class="paging">
+            <a alt="Next Button" class="button icon-right ion-chevron-right button-clear button-dark" ng-class="{'button-negative':!next.visible, 'button-dark':next.visible}" ng-disabled="!next.visible" href="#/app/Podcast/{{next.position}}">Next</a>
+            <a alt="Previous Button" class="button icon-left ion-chevron-left button-clear button-dark" ng-class="{'button-negative':!previous.visible, 'button-dark':previous.visible}" ng-disabled="!previous.visible" href="#/app/Podcast/{{previous.position}}">Prev</a>
         </div>
-
+        <div class="padding data civ audio">
+            <h1 class="title">{{data.name}}</h1>
+            <div class="datepub">{{data.datePublished}}</div>
+            <div class="source">Source: {{name}}</div>
             <audio controls>
                 <source src="{{audio}}" type="{{type}}">
             </audio>
-
-        <p ng-bind-html="data.description"></p>
-        <p><a href="{{transcript}}">Transcript</a></p>
-
-        <a class="button icon-left ion-ios-arrow-back button-outline" ng-class="{'button-negative':!previous.visible, 'button-positive':previous.visible}" ng-disabled="!previous.visible" href="#/app/Podcast/{{previous.position}}">Previous</a>
-        <a class="button icon-left ion-ios-arrow-forward button-outline" ng-class="{'button-negative':!next.visible, 'button-positive':next.visible}" ng-disabled="!next.visible" href="#/app/Podcast/{{next.position}}">Next</a>
-
-        <p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
-        <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC</button></p>
-
-    </div>
-
+            <p ng-bind-html="data.description"></p>
+            <p><a href="{{transcript}}">Transcript</a></p>
+            <div class="border">
+                <p class="padding">
+                    <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+                    <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
+                </p>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

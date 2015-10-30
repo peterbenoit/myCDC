@@ -4,3 +4,17 @@
 node_modules/
 platforms/
 plugins/
+
+*.log
+
+*.sublime-workspace
+
+*.sublime-project
+
+*.log
+
+*.log
+
+*.sublime-workspace
+
+*.sublime-workspace

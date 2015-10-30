@@ -1,22 +1,20 @@
 <ion-view>
-
+    <ion-nav-buttons side="right">
+        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
+    </ion-nav-buttons>
     <ion-content class="has-header">
-
-    <!-- <img src="{{data.enclosures[0].resourceUrl}}"> -->
-
-    <div class="padding data blog">
-        <h2 class="title">{{data.name}}</h2>
-
-        <div style="padding:0 0 20px 0;">
-        Published {{data.datePublished | date:'fullDate'}}
+        <div class="padding data civ blog">
+            <h1 class="title">{{data.name}}</h1>
+            <div class="datepub">{{data.datePublished}}</div>
+            <div class="source">Source: {{name}}</div>
+            <p class="contentarea" ng-bind-html="content"></p>
+            <div class="post"><i class="ion ion-social-rss"></i> <a href="javascript:void(0)" ng-click="postComment()">Post a Comment on CDC.gov</a></div>
+            <div class="border">
+                <p class="padding">
+                    <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+                    <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
+                </p>
+            </div>
         </div>
-
-        <p ng-bind-html="content"></p>
-
-        <p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
-        <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC</button></p>
-
-    </div>
-
     </ion-content>
 </ion-view>

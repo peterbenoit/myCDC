@@ -4,23 +4,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.cdc.gov"> -->
+    <meta name="format-detection" content="telephone=no">
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/syndicated-content-overrides.css" rel="stylesheet">
+    <!-- Content related css updates for the app. The app should NOT depend on these to function -->
+    <link href="http://www.cdc.gov/mobileapp/style.css" rel="stylesheet">
+
+    <!-- may not use this -->
     <link href="css/platform.css" rel="stylesheet">
     <!-- this might get placed somewhere else -->
     <link href="css/mq-phone.css" rel="stylesheet">
 
     <!-- ionic/angularjs js -->
+    <!-- WARN: switch to .min. -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
+    <script src="js/libs/jquery-2.1.4.min.js"></script>
     <script src="js/libs/lodash.min.js"></script>
     <script src="js/libs/moment-min.js"></script>
-    <script src="js/libs/angular-moment-min.js"></script>
     <script src="js/libs/angular-filter-min.js"></script>
     <script src="js/libs/ng-cordova.min.js"></script>
+    <!--<script src="lib/ngCordova/dist/ng-cordova.js"></script>-->
+
+    <!--http://stackoverflow.com/questions/31875594/angular-routing-on-ios9-rootscopeinfdig-error-->
+    <script src="js/libs/angular-ios9-uiwebview.patch.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>

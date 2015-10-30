@@ -5,69 +5,210 @@
 
 /* Fonts */
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("../font/SourceSansPro-Regular.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-Regular.ttf");
 }
 
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("../font/SourceSansPro-Italic.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-Italic.ttf");
     font-style:italic;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../font/SourceSansPro-Light.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-Light.ttf");
     font-weight: 300;
 }
 
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("../font/SourceSansPro-LightItalic.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-LightItalic.ttf");
     font-weight: 300;
     font-style:italic;
 }
 
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("../font/SourceSansPro-Bold.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-Bold.ttf");
     font-weight: 600;
 }
 
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("../font/SourceSansPro-BoldItalic.ttf");
+    font-family: "Roboto";
+    src: url("../font/Roboto-BoldItalic.ttf");
     font-weight: 600;
     font-style:italic;
 }
 
-body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Source Sans Pro', sans-serif; }
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Roboto', sans-serif; color:#303030; }
+
+/* ... */
+i, cite, em, var, address, dfn {
+    font-style: italic;
+}
+
+.list i {
+    font-size: 24px;
+}
+
+/* useful */
+body.platform-ios {}
+body.platform-ipad {}
+body.platform-android {}
+body.platform-windowsphone {}
+
+/*
+colors
+ */
+
+.cdc-blue.primary {
+    background-color: #b1dafb
+}
+.cdc-blue.primary.border {
+    border-color: #b1dafb
+}
+
+.cdc-blue.secondary {
+    background-color: #e3f2fe;
+}
+.cdc-blue.secondary.border {
+    border-color: #e3f2fe
+}
+
+.cdc-blue.selected {
+    background-color: #075290;
+}
+.cdc-blue.selected.border {
+    border-color: #075290
+}
+
+.border .padding {
+    float:right;
+    padding-right: 0;
+}
+
+.border .padding button:first-child {
+    margin-right:10px;
+}
+
+.border {
+    margin-top: 15px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.scroll {
+    /*border-bottom: 5px solid #075290;*/
+}
+
+.button.button-positive.activated {
+    background-color:#075290;
+}
+.button.button-positive.button-clear {
+    color: #075290;
+}
+.button.button-positive.button-outline {
+    border-color: #075290;
+    color: #075290;
+}
+.button.button-positive.button-outline.active,
+.button.button-positive.button-outline.activated {
+    background-color: #075290;
+}
 
 
-/*images*/
+.civ.image img {
+    width: 100%;
+}
+
+.image-stream .ng-enter-stagger {
+  -webkit-animation-delay:100ms;
+  animation-delay:100ms;
+
+  /* override to make sure it's not inherited from other styles */
+  -webkit-animation-duration:0;
+  animation-duration:0;
+}
+
+.image-stream .ng-enter {
+    -webkit-animation: fadeInLeft 1s;
+    animation: fadeInLeft 1s;
+}
+
+.stream .ng-enter-stagger {
+  -webkit-animation-delay:100ms;
+  animation-delay:100ms;
+
+  /* override to make sure it's not inherited from other styles */
+  -webkit-animation-duration:0;
+  animation-duration:0;
+}
+
+.stream .ng-enter {
+    -webkit-animation: fadeInUp 1s;
+    animation: fadeInUp 1s;
+}
+
+
+.stream {
+    background-color: #f8f8f8;
+}
+
+.content-stable {
+    background-color: #f8f8f8;
+    /*background: url(/img/card-placeholder.png)*/
+}
+
+/**
+ * Images
+ */
+
 /* make CIV of PHIL = 100% */
 
-.image-stream .item-image {
-  position: relative;
-  width: 150px; /*300px;*/
-  height: 100px; /*200px;*/
-  overflow: hidden;
+.item-image {
+/*    width: 100%;
+    height: 240px;*/
+    overflow: hidden;
+  /*position: relative;*/
+  /*width: auto;*/
+/*  width: 150px; *//*300px;*/
+  /*height: 100px;*/ /*200px;*/
+  /*overflow: hidden;*/
 }
 
-.image-stream .item-image img {
-  position: absolute;
+.card .item-image img {
+/*  position: absolute;
   left: 50%;
   top: 50%;
   height: 100%;
-  width: 100%; /*auto;*/
-  -webkit-transform: translate(-50%,-50%);
+  width: 100%;
+ -webkit-transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);*/
 }
 
-.image-stream .item-image img.portrait {
+/*.item-image img.portrait {
   width: 100%;
   height: auto;
+}
+*/
+.item-image {
+    margin: 3px;
+    text-align: center;
+    padding: 0;
+    border: 0;
+}
+
+
+.image-stream .item-image {
+    overflow:hidden;
+    float:left;
+    background-position: center;
+    background-size: cover;
+}
+
+.settings .list {
+    margin-bottom: 0;
 }
 
 /**
@@ -82,26 +223,132 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, text
    height: 100%;
  }
 
+/*http://stackoverflow.com/questions/23533646/content-within-an-iframe-in-ios-7-mobile-keeps-scrolling-to-top-always*/
+/*https://github.com/kbwood/countdown/issues/50*/
 .iframe-wrapper {
-    -webkit-overflow-scrolling: touch!important;
+    /*-webkit-overflow-scrolling: touch!important;*/
     overflow-y: scroll!important;
 }
 
-
-/*
-
+/**
+ * random
  */
+
+
+.top-border {
+    border-top: 1px solid #e0e0e0;
+}
+.bottom-border {
+    float:right;
+}
+
+.bar .title {
+    font-size: 24px;
+}
+
+/* content area adjustments */
+/*p.contentarea img {
+    float: left;
+    margin:0 10px 10px 0;
+    clear: right;
+}*/
+
+/*.scroll-content {
+    overflow: visible;
+}
+
+.padding {
+    outline:1px solid red;
+}*/
+
+/* stream */
+
+.paging {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    background:#fff;
+    float: left;
+    width: 100%;
+}
+
+.paging a {
+    float: right;
+}
+
+.video-paging {
+    border-bottom: 1px solid #e0e0e0;
+    background:#fff;
+    float: left;
+    width: 100%;
+}
+.video-paging a {
+    float: right;
+}
+
+.stream > h3 {
+margin-bottom: -10px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.padding.heading {
+    margin-bottom: 0;
+    border-bottom: 1px solid #e0e0e0;
+    background:#fff;
+}
+
+.settings .list {
+    margin-bottom: 0;
+}
+
 .stream .row + .row {
     margin-top: -30px;
     padding-top: 0;
 }
+
+/* cards are roughly square. The background image is 300x300 by default
+    TODO: detect screen width, apply height to cards so background image appears
+*/
 .stream .row .card {
     width: 100%;
+    box-shadow: none;
+    border:1px solid #e0e0e0;
+    padding-top: 0!important;
+/*    height: 300px;
+    background: url(/img/placeholder.png) no-repeat;
+    background-size: 100%;*/
+}
+
+a.item.item-footer {
+    padding: 4px 16px 0;
+    border-top: 0;
+    margin-top:16px;
 }
 
 .card.col.home, .card.col.home .item-note { text-align: center; float:none; }
 
 /*.card { margin:7.5px 10px 7.5px; position:relative;}*/
+
+.card.social {}
+.card.social a {
+    margin: 0!important;
+    top: 0!important;
+    min-height: 60px!important;
+    padding: 0;
+}
+.card.social a strong{
+    line-height: 60px;
+    margin-left: 15px;
+}
+.card.social a > img:first-child {
+    max-width: 40px;
+    max-height: 40px;
+    top: 10px;
+    right: 10px;
+}
 
 .source a {
     color:#444;
@@ -109,7 +356,7 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, text
 }
 
 .card .item .date {
-    color:#d0d0d0;
+    color:#c0c0c0;
     font-size: 14px;
     margin:0;
 }
@@ -125,6 +372,12 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, text
 
 .item-body p {
     margin-top: 6px;
+    font-size: 16px;
+}
+
+.item-footer {
+    font-size: 14px;
+    color: #075290!important;
 }
 
 .card .item:last-child, .list-inset .item:last-child {
@@ -162,66 +415,143 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, text
 
 .card .item:first-child {
     border-bottom: 0;
-    margin-bottom: 5px;
-}
-
-.image-stream .item-image {
-    margin: 3px;
-    text-align: center;
-    padding: 0;
-    border: 0;
-}
-
-.type-t3 .item-notice {
-    background: pink;
-    border-top: 2px solid red!important;
-}
-
-.type-t2 .item-notice {
-    background: lightyellow;
-    border-top: 2px solid orange!important;
-}
-
-.type-t1 .item-notice {
-    background: lightgreen;
-    border-top: 2px solid green!important;
+    margin: 0;
+/*    margin-top: -3px;
+    margin-left: -1px;*/
 }
 
 
-.type-t3a .item-notice {
-    background: pink;
-    padding-left: 60px;
-    /*border-top: 2px solid red!important;*/
+/*
+popover
+ */
+#popper {
+    position: fixed!important;
+    top: 50px!important;
+    left: 6px!important;
+    height: 160px!important;
+    /*width: 200px!important;*/
+    padding:16px;
+    background: #e3f2fe;
 }
-.type-t3a .item-notice span {
-    background: red;
+body.platform-ios #popper {
+    height: 180px!important;
+}
+#popper p {
+    padding: 16px;
 }
 
-[class*='type-t'] .item-notice span {
+#popper a {
     display: inline-block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 12px;
-    font-size: 30px;
+    width: 50%;
+    background: #075290;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+}
+
+#popper div.popover-arrow {
+    left: 0!important;
+}
+
+#popper #popbut {
+    text-align: center;
+}
+
+/*
+    adjustments
+*/
+
+.right { float: right;}
+
+.padding .title {
+    font-size: 24px;
+}
+
+.item-body {
+    padding-bottom: 0;
+}
+
+/* keep the card background from turning gray when tapped */
+.card .item.activated {
+    background-color:#fff!important;
+}
+
+.nav-bar-block .bar, .menu-left .bar {
+    background-color:#075290!important;
+    border-color: #e3f2fe;
+}
+
+ion-side-menu h4 {
+    color:#303030;
+    margin:0;
+    padding:10px;
+    padding-left:14px;
+}
+
+/* hiding first heading in content area */
+/*.contentarea h1:first-child,
+.contentarea .h1:first-child,
+.contentarea h2:first-child,
+.contentarea .h2:first-child,
+.contentarea h3:first-child,
+.contentarea .h3:first-child {
+    display:none;
+}*/
+
+/*
+    hiding content
+ */
+
+/*.civ table,
+.civ table + .caption,
+.civ .civ [class*="onthis"], .civ [id*="onthis"],
+.civ a[href="#"],
+.civ a[href^="#"],
+.civ .figure, .civ .figure-story,
+.civ .table, .civ .table-story,
+.civ .box-frieden,
+.civ [class*="table"], .civ [id*="table"],
+.civ [class*="figure"], .civ [id*="figure"],
+.civ [class*="comments"], .civ [id*="comments"],
+.civ .cat-links, .civ .tags-links,
+.civ hr {
+    display:none!important;
+}*/
+
+/*
+side menu wrap
+*/
+
+ion-side-menu.menu.menu-left .item-content {
+    overflow: visible;
+    white-space: normal;
 }
 
 
-
-.type-t2a .item-notice {
-    background: lightyellow;
-    padding-left: 60px;
-    /*border-top: 2px solid orange!important;*/
-}
-.type-t2a .item-notice span {
-    background: orange;
+/*
+    travel notices/outbreaks
+ */
+.item-notice {
+    margin-top: -1px!important;
+    padding-left: 15px;
 }
 
-.type-t1a .item-notice {
-    background: lightgreen;
-    padding-left: 60px;
-    /*border-top: 2px solid green!important;*/
+.item-notice.outbreak {
+    background: #e1b8b8;
+    border-top: 2px solid #ce2029!important;
 }
-.type-t1a .item-notice span {
-    background: green;
+
+.item-notice.alert {
+    background: #fbd69a;
+    border-top: 2px solid #fcb514!important;
+}
+
+.item-notice.warning {
+    background: #e1b8b8;
+    border-top: 2px solid #ce2029!important;
+}
+
+.item-notice.watch {
+    background: #d7e4cc;
+    border-top: 2px solid #77933c!important;
 }

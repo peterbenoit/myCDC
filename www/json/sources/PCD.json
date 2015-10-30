@@ -3,11 +3,11 @@
         "status": 200,
         "message": [],
         "resultSet": {
-            "id": "032b9725-0ace-4ded-98e5-72f7d1c2645e"
+            "id": "c5712cb2-133a-4634-a5b7-74d829b5de85"
         },
         "pagination": {
-            "total": 50,
-            "count": 50,
+            "total": 60,
+            "count": 60,
             "max": 100,
             "offset": 0,
             "pageNum": 1,
@@ -19,6 +19,306 @@
         }
     },
     "results": [{
+        "id": 350172,
+        "name": "Integration of Community Health Workers Into Health Care Teams",
+        "description": "The objective of this study was to provide insight on the challenges and the support required for optimal community health workers integration and answer the question, how are community health workers integrated into their health care organization?",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0199.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350172/syndicate.json",
+        "datePublished": "2015-10-01T10:00:00Z",
+        "dateModified": "2015-10-09T20:22:30Z",
+        "enclosures": [{
+            "id": 2211,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 350173,
+        "name": "Snack Foods in Appalachian Virginia Middle Schools",
+        "description": "The objective of this study was to examine the nutritional quality of competitive foods and beverages available to rural middle school students, before implementation of the US Department of Agriculture’s Smart Snacks in School standards in July 2014.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0051.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350173/syndicate.json",
+        "datePublished": "2015-10-01T09:00:00Z",
+        "dateModified": "2015-10-09T20:22:34Z",
+        "enclosures": [{
+            "id": 2212,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 350174,
+        "name": "Preventable Hospitalizations Among Korean Americans",
+        "description": "Older Korean American patients may have significant disparities in preventable hospitalizations, suggesting poor access to or poor quality of health care. Researchers conclude that improving primary care for Korean Americans may prevent unnecessary hospitalizations, improve quality of life, and reduce health care costs.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0057.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350174/syndicate.json",
+        "datePublished": "2015-10-01T08:00:00Z",
+        "dateModified": "2015-10-09T20:22:38Z",
+        "enclosures": [{
+            "id": 2213,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 350175,
+        "name": "The Process of Smoking Cessation",
+        "description": "In this study, researchers analyzed data from the Global Adult Tobacco Survey from 21 countries to categorize smokers by stages of cessation and highlight interventions that could be tailored to each stage.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0146.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350175/syndicate.json",
+        "datePublished": "2015-10-01T07:00:00Z",
+        "dateModified": "2015-10-09T20:22:42Z",
+        "enclosures": [{
+            "id": 2214,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 350176,
+        "name": "Health Care Travel Among Congestive Heart Failure Patients",
+        "description": "This article explores the nonclinical factors that prompt congestive heart failure patients to seek distant instead of local hospitalization.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0079.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350176/syndicate.json",
+        "datePublished": "2015-10-01T06:00:00Z",
+        "dateModified": "2015-10-09T20:22:46Z",
+        "enclosures": [{
+            "id": 2215,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 350177,
+        "name": "Impact of Healthy Beverage Policy in Boston",
+        "description": "Researchers found that after the implementation of the Healthy Beverage Executive Order for city agencies in Boston, Massachusetts, the average number of high-sugar beverages available to city workers decreased.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0549.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350177/syndicate.json",
+        "datePublished": "2015-10-01T05:00:00Z",
+        "dateModified": "2015-10-09T20:22:49Z",
+        "enclosures": [{
+            "id": 2216,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 350178,
+        "name": "Food Environments, Diet, and Obesity in LA County ",
+        "description": "In this article, researchers examined the association between the number and type of food outlets in a neighborhood and the dietary intake and body mass index of adults in Los Angeles County, California.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0078.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350178/syndicate.json",
+        "datePublished": "2015-10-01T04:00:00Z",
+        "dateModified": "2015-10-09T20:22:52Z",
+        "enclosures": [{
+            "id": 2217,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 350179,
+        "name": "The Costs of Chronic Diseases ",
+        "description": "The purpose of this article is to demonstrate the Centers for Disease Control and Prevention’s Chronic Disease Cost Calculator by providing an example of chronic disease costs across all states and payers.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0131.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350179/syndicate.json",
+        "datePublished": "2015-10-01T03:00:00Z",
+        "dateModified": "2015-10-09T20:22:55Z",
+        "enclosures": [{
+            "id": 2218,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 350180,
+        "name": "Parental Education and Tooth Sealant Prevalence",
+        "description": "Despite marked improvements in US children’s oral health over the past decades, cavities remains one of the most common chronic childhood diseases. This study examined the association between dental sealant prevalence and parental education among varying family incomes. ",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0037.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350180/syndicate.json",
+        "datePublished": "2015-10-01T02:00:00Z",
+        "dateModified": "2015-10-09T20:22:59Z",
+        "enclosures": [{
+            "id": 2219,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
+        "id": 350181,
+        "name": "Lack of Healthy Foods Among SNAP Retailers",
+        "description": "This study measured the number of healthy foods stocked in small-size to mid-size retailers who accept the Supplemental Nutrition Assistant Program.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25715,
+            "name": "Health and Wellness",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34517,
+            "name": "PCD",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0171.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350181/syndicate.json",
+        "datePublished": "2015-10-01T01:00:00Z",
+        "dateModified": "2015-10-09T20:23:03Z",
+        "enclosures": [{
+            "id": 2220,
+            "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
+            "contentType": "image/jpeg",
+            "size": 20912
+        }]
+    }, {
         "id": 344016,
         "name": "Trends in Obesity Among Pennsylvania Students",
         "description": "In an analysis of childhood obesity rates among students in Philadelphia Pennsylvania, researchers found that over 7 school years, the prevalence of childhood obesity declined about 1%. ",
@@ -41,9 +341,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0185.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344016/syndicate.json",
         "datePublished": "2015-09-01T10:00:00Z",
-        "dateModified": "2015-09-18T20:37:44Z",
+        "dateModified": "2015-10-09T20:23:07Z",
         "enclosures": [{
-            "id": 1175,
+            "id": 2221,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -71,9 +371,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0070.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344017/syndicate.json",
         "datePublished": "2015-09-01T09:00:00Z",
-        "dateModified": "2015-09-18T20:37:49Z",
+        "dateModified": "2015-10-09T20:23:11Z",
         "enclosures": [{
-            "id": 1176,
+            "id": 2222,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -101,9 +401,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0529.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344018/syndicate.json",
         "datePublished": "2015-09-01T08:00:00Z",
-        "dateModified": "2015-09-18T20:37:53Z",
+        "dateModified": "2015-10-09T20:23:15Z",
         "enclosures": [{
-            "id": 1177,
+            "id": 2223,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -131,9 +431,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0139.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344019/syndicate.json",
         "datePublished": "2015-09-01T07:00:00Z",
-        "dateModified": "2015-09-18T20:37:58Z",
+        "dateModified": "2015-10-09T20:23:19Z",
         "enclosures": [{
-            "id": 1178,
+            "id": 2224,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -161,9 +461,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0027.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344020/syndicate.json",
         "datePublished": "2015-09-01T06:00:00Z",
-        "dateModified": "2015-09-18T20:38:01Z",
+        "dateModified": "2015-10-09T20:23:23Z",
         "enclosures": [{
-            "id": 1179,
+            "id": 2225,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -191,9 +491,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0158.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344021/syndicate.json",
         "datePublished": "2015-09-01T05:00:00Z",
-        "dateModified": "2015-09-18T20:38:05Z",
+        "dateModified": "2015-10-09T20:23:28Z",
         "enclosures": [{
-            "id": 1180,
+            "id": 2226,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -221,9 +521,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0065.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344022/syndicate.json",
         "datePublished": "2015-09-01T04:00:00Z",
-        "dateModified": "2015-09-18T20:38:08Z",
+        "dateModified": "2015-10-09T20:23:32Z",
         "enclosures": [{
-            "id": 1181,
+            "id": 2227,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -251,9 +551,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0088.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344023/syndicate.json",
         "datePublished": "2015-09-01T03:00:00Z",
-        "dateModified": "2015-09-18T20:38:12Z",
+        "dateModified": "2015-10-09T20:23:35Z",
         "enclosures": [{
-            "id": 1182,
+            "id": 2228,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -281,9 +581,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0121.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344024/syndicate.json",
         "datePublished": "2015-09-01T02:00:00Z",
-        "dateModified": "2015-09-18T20:38:15Z",
+        "dateModified": "2015-10-09T20:23:39Z",
         "enclosures": [{
-            "id": 1183,
+            "id": 2229,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -311,9 +611,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0140.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344025/syndicate.json",
         "datePublished": "2015-09-01T01:00:00Z",
-        "dateModified": "2015-09-18T20:38:19Z",
+        "dateModified": "2015-10-09T20:23:42Z",
         "enclosures": [{
-            "id": 1184,
+            "id": 2230,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -341,9 +641,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0562.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344026/syndicate.json",
         "datePublished": "2015-07-28T10:00:00Z",
-        "dateModified": "2015-09-18T20:38:22Z",
+        "dateModified": "2015-10-09T20:23:46Z",
         "enclosures": [{
-            "id": 1185,
+            "id": 2231,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -371,9 +671,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0491.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344027/syndicate.json",
         "datePublished": "2015-07-28T09:00:00Z",
-        "dateModified": "2015-09-18T20:38:26Z",
+        "dateModified": "2015-10-09T20:23:50Z",
         "enclosures": [{
-            "id": 1186,
+            "id": 2232,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -401,9 +701,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0100.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344028/syndicate.json",
         "datePublished": "2015-07-28T08:00:00Z",
-        "dateModified": "2015-09-18T20:38:30Z",
+        "dateModified": "2015-10-09T20:23:54Z",
         "enclosures": [{
-            "id": 1187,
+            "id": 2233,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -431,9 +731,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0511.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344029/syndicate.json",
         "datePublished": "2015-07-28T07:00:00Z",
-        "dateModified": "2015-09-18T20:38:33Z",
+        "dateModified": "2015-10-09T20:23:58Z",
         "enclosures": [{
-            "id": 1188,
+            "id": 2234,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -461,9 +761,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0547.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344030/syndicate.json",
         "datePublished": "2015-07-28T06:00:00Z",
-        "dateModified": "2015-09-18T20:38:37Z",
+        "dateModified": "2015-10-09T20:24:02Z",
         "enclosures": [{
-            "id": 1189,
+            "id": 2235,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -491,9 +791,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0111.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344031/syndicate.json",
         "datePublished": "2015-07-28T05:00:00Z",
-        "dateModified": "2015-09-18T20:38:40Z",
+        "dateModified": "2015-10-09T20:24:07Z",
         "enclosures": [{
-            "id": 1190,
+            "id": 2236,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -521,9 +821,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0482.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344032/syndicate.json",
         "datePublished": "2015-07-28T04:00:00Z",
-        "dateModified": "2015-09-18T20:38:44Z",
+        "dateModified": "2015-10-09T20:24:11Z",
         "enclosures": [{
-            "id": 1191,
+            "id": 2237,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -551,9 +851,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0187.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344033/syndicate.json",
         "datePublished": "2015-07-28T03:00:00Z",
-        "dateModified": "2015-09-18T20:38:49Z",
+        "dateModified": "2015-10-09T20:24:15Z",
         "enclosures": [{
-            "id": 1192,
+            "id": 2238,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -581,9 +881,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0584.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344034/syndicate.json",
         "datePublished": "2015-07-28T02:00:00Z",
-        "dateModified": "2015-09-18T20:38:53Z",
+        "dateModified": "2015-10-09T20:24:19Z",
         "enclosures": [{
-            "id": 1193,
+            "id": 2239,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -611,9 +911,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0479.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344035/syndicate.json",
         "datePublished": "2015-07-28T01:00:00Z",
-        "dateModified": "2015-09-18T20:38:58Z",
+        "dateModified": "2015-10-09T20:24:23Z",
         "enclosures": [{
-            "id": 1194,
+            "id": 2240,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -641,9 +941,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0553.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344036/syndicate.json",
         "datePublished": "2015-06-25T10:00:00Z",
-        "dateModified": "2015-09-18T20:39:03Z",
+        "dateModified": "2015-10-09T20:24:27Z",
         "enclosures": [{
-            "id": 1195,
+            "id": 2241,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -671,9 +971,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/15_0011.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344037/syndicate.json",
         "datePublished": "2015-06-25T09:00:00Z",
-        "dateModified": "2015-09-18T20:39:07Z",
+        "dateModified": "2015-10-09T20:24:31Z",
         "enclosures": [{
-            "id": 1196,
+            "id": 2242,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -701,9 +1001,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0587.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344038/syndicate.json",
         "datePublished": "2015-06-25T08:00:00Z",
-        "dateModified": "2015-09-18T20:39:10Z",
+        "dateModified": "2015-10-09T20:24:36Z",
         "enclosures": [{
-            "id": 1197,
+            "id": 2243,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912
@@ -731,9 +1031,9 @@
         "sourceUrl": "http://www.cdc.gov/pcd/issues/2015/14_0548.htm",
         "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344039/syndicate.json",
         "datePublished": "2015-06-25T07:00:00Z",
-        "dateModified": "2015-09-18T20:39:13Z",
+        "dateModified": "2015-10-09T20:24:40Z",
         "enclosures": [{
-            "id": 1198,
+            "id": 2244,
             "resourceUrl": "http://www.cdc.gov/pcd/images/PCD_ipad_carousel.jpg",
             "contentType": "image/jpeg",
             "size": 20912

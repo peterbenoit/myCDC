@@ -1,13 +1,19 @@
 <ion-view>
+    <ion-nav-buttons side="right">
+        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
+    </ion-nav-buttons>
     <ion-content scroll="true" overflow-scroll="true" class="iframe-wrapper">
-        <div ng-if="nochrome">
-            <h2 class="title">{{data.name}}</h2>
-            <p>Published {{data.datePublished | date:'fullDate'}}</p>
-            <p>Source: [Source Name]</p>
+        <div ng-if="nochrome" class="padding data civ embed">
+            <h1 class="title">{{data.name}}</h1>
+            <div class="datepub">{{data.datePublished}}</div>
+            <div class="source">Source: {{name}}</div>
         </div>
-       <iframe data-tap-disabled="true" src="{{frameUrl}}"></iframe>
-
-        <p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareData()">Share</button>
-        <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC</button></p>
+        <iframe data-tap-disabled="true" src="{{frameUrl}}" id="contentframe" onload="frameready()"></iframe>
+            <div class="border">
+                <p class="padding">
+                    <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+                    <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
+                </p>
+            </div>
     </ion-content>
 </ion-view>

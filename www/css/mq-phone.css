@@ -1,16 +1,16 @@
 /**
- * NOTE: just using colors to identify which MQ is active;
+ * NOTE: just using colors to identify which MQ is active; they are not actually applied
  */
 
 @media screen and (max-width: 630px) {
     body {
-        color: red;
+        /*color: red;*/
     }
 }
 /* iphone 5c */
 @media only screen and (max-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
     body {
-        color: blue;
+        /*color: blue;*/
     }
 }
 
@@ -18,6 +18,6 @@
 @media only screen and (max-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
 
     body {
-        color: orange;
+        /*color: orange;*/
     }
 }

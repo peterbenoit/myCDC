@@ -1,5 +1,6 @@
 /**
  *  myCDC
+ *  TODO: info.plist NSAppTransportSecurity key needs to be corrected before deployment
  */
 angular.module('mycdc', [
     'ionic',
@@ -10,8 +11,9 @@ angular.module('mycdc', [
     'mycdc.services',
     'mycdc.storage',
     'ngCordova',
+    'ngAnimate',
     'angular.filter',
-    'angularMoment',
+    'ngIOS9UIWebViewPatch'
     ])
 /*
 add to body class: platform-android
@@ -25,35 +27,218 @@ add to body class: platform-wp8
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, Orientation) {
+.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup) {
+    var rs = $rootScope,
+        href = window.location.href;
+
+    rs.$state = $state;
+    rs.$stateParams = $stateParams;
+    rs.HomeCtrlLoad = false;        // for whatever reason, the HomeCtrl controller loads multiple times; setting a flag here, which is modified in the controller, so it only loads once.
+    rs.existsUrl = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
+    rs.showleft = false;
+
+    // window.open should use inappbrowser
+    document.addEventListener('deviceready', onDeviceReady, false);
+
+    function onDeviceReady() {
+        window.open = cordova.InAppBrowser.open;
+
+        rs.type = $cordovaNetwork.getNetwork();
+        rs.isOnline = $cordovaNetwork.isOnline();
+        rs.isOffline = $cordovaNetwork.isOffline();
+        rs.stateClasses = {};
+
+        if (rs.isOffline) {
+            $ionicPopup.alert({
+                title: 'No Connection',
+                template: 'You do not appear to be connected to the Internet. Some content you have downloaded may be out of date.'
+            });
+        }
+
+        // listen for Online event
+        rs.$on('$cordovaNetwork:online', function(event, networkState) {
+            var onlineState = networkState;
+
+            // if (window.plugins && window.plugins.toast) {
+            //     window.plugins.toast.showShortCenter('Welcome Back!');
+            // }
+        });
+
+        // listen for Offline event
+        rs.$on('$cordovaNetwork:offline', function(event, networkState) {
+            var offlineState = networkState,
+                isDirty = false;
+
+                console.log(offlineState);
+
+            // if(!isDirty) {
+            //     var alertnotice = $ionicPopup.alert({
+            //         title: 'No Connection',
+            //         template: 'You do not appear to be connected to the Internet. Some content you have downloaded may be out of date.'
+            //     });
+            //     alertnotice.then(function(res) {
+            //         isDirty = true;
+            //     });
+            // }
+        });
+    }
+
+    window.onerror = function(error) {
+        console.error('ERROR ', error);
+    };
+
+    rs.doSomething = function() {
+        var doingSomething = ['app.disease', 'app.vitalsign', 'app.healtharticle', 'app.cdcatw', 'app.FastStat', 'app.WeeklyDiseaseCaseCount', 'app.EID'];
+        if (doingSomething.indexOf(rs.$state.current.name) > -1) {
+            return true;
+        }
+        return false;
+    };
+
+    // frameready() is called in embed.html, when the iframe has loaded
+    // NOTE: this only works on a device
+    window.frameready = function() {
+        var iframe = $('#contentframe');
+            anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
+            //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
+
+        // Capture any anchors clicked in the iframe document
+        anchors.on('click', function(e) {
+            e.preventDefault();
+
+            var framesrc = iframe.attr('src'),
+                href = $(this).attr('href'),
+                anchor = document.createElement('a');
+                anchor.href = href;
+            var anchorhost = anchor.hostname;
+
+            // create an anchor with the href set to the iframe src to fetch the domain & protocol
+            // WARN: cannot assume "http" || "www.cdc.gov"
+            var frameanchor = document.createElement('a');
+                frameanchor.href = framesrc;
+            var framehost = frameanchor.hostname,
+                frameprotocol = frameanchor.protocol;
+
+            // if this anchor doesn't have a hostname
+            if (anchorhost === '') {
+                href = frameprotocol + '//' + framehost + href;
+            }
+
+            window.open(href, '_system');
+        });
+    };
+
     $ionicPlatform.ready(function() {
+        if (window.device) {
+            window.open = cordova.InAppBrowser.open;
+        }
+
+        // Open any EXTERNAL link with InAppBrowser Plugin
+        $(document).on('click', '[href^=http], [href^=https]', function(e) {
+            e.preventDefault();
+
+            var t = $(this),
+                href = t.attr('href');
+
+                console.log('Opening ', href);
+
+            var ref = window.open(href, '_system');
+
+            //TODO: not working in iOS
+            // if (href.indexOf('cdc.gov') >= 0) {
+            //     ref.addEventListener('loadstop', function() {
+            //         ref.insertCSS({
+            //             code: 'header#header { display: none; }footer#footer {display:none} div#socialMediaShareContainer.dd {display:none}'
+            //         });
+            //     });
+            // }
+        });
+
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             cordova.plugins.Keyboard.disableScroll(true);
-
         }
+
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
 
-        console.log(DeviceInfo);
+        rs.deviceinfo = DeviceInfo;
+        rs.screensize = ScreenSize;
+
+        rs.scrollTop = function() {
+            $ionicScrollDelegate.scrollTop();
+        };
 
         /**
          * https://github.com/gbenvenuti/cordova-plugin-screen-orientation
          */
         if (window.cordova && window.cordova.plugins) {
-            // lock all devices into portrait mode, except for ipads
+            // lock all devices into portrait mode, except for tablets
             screen.lockOrientation('portrait');
-            if (ionic.Platform.isIPad()) {
+            if (ionic.Platform.isIPad() || ionic.Platform.is('androidtablet')) {
                 // unlocking screen for orientation change
                 screen.unlockOrientation();
             }
         }
 
-        console.log(Orientation);
+        // rs.$on('resize', function() {
+        //     console.log('rs resize');
+        // })
+
+        // angular.element($(window)).bind('resize', _.debounce(function() {
+        //     rs.orientation = $('body').hasClass('portrait') ? 'portrait' : 'landscape';
+        //     // rs.$broadcast("resize");
+        //     // rs.$apply();
+
+        //     // rs.$state.reload();..
+        //     //
+        //     // window.document.location.reload();
+
+        // }, 150));
+
+        rs.resizeHandler = function () {
+
+            var objClasses = {};
+
+            if (ionic.Platform.is('androidtablet') || ionic.Platform.isIPad()) {
+                objClasses.deviceType = 'tablet';
+            } else {
+                objClasses.deviceType = 'phone';
+            }
+
+            if ($('body.landscape').length > 0) {
+                objClasses.deviceOrientation = 'landscape';
+            } else {
+                objClasses.deviceOrientation = 'portrait';
+            }
+
+            if (ionic.Platform.isAndroid()) {
+                objClasses.deviceOs = 'android';
+            } else if (ionic.Platform.isIOS()) {
+                objClasses.deviceOs = 'apple';
+            } else if (ionic.Platform.isWindowsPhone()) {
+                objClasses.deviceOs = 'windows';
+            } else {
+                objClasses.deviceOs = 'browser';
+                objClasses.deviceType = 'desktop';
+                objClasses.deviceOrientation = 'unknown';
+            }
+
+            rs.stateClasses = objClasses;
+
+            console.log(rs.stateClasses);
+        };
+
+        angular.element($(window)).bind('resize', _.debounce(function() {
+            rs.resizeHandler();
+        }, 150));
+        window.setTimeout(function(){
+            rs.resizeHandler();
+        },0)
 
         // kick off a media query listener to tag the body with a class
         var mq;
@@ -62,22 +247,26 @@ add to body class: platform-wp8
 
             if (mq.matches) {
                 //portrait
+                rs.orientation = 'portrait';
                 $ionicBody.addClass('portrait');
-            }
-            else {
+            } else {
                 //landscape
+                rs.orientation = 'landscape';
                 $ionicBody.addClass('landscape');
             }
+            rs.$apply();
 
             mq.addListener(function(m) {
                 if (m.matches) {
                     console.log('changed to portrait');
+                    rs.orientation = 'portrait';
                     $ionicBody.removeClass('landscape').addClass('portrait');
-                }
-                else {
+                } else {
                     console.log('changed to landscape');
+                    rs.orientation = 'landscape';
                     $ionicBody.removeClass('portrait').addClass('landscape');
                 }
+                rs.$apply();
             });
         }
     });
@@ -88,45 +277,120 @@ add to body class: platform-wp8
  * @param  {[type]}
  * @return {[type]}
  */
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+    $ionicConfigProvider.navBar.transition('none');     // keep the navbar from animating
+
+    // TODO: consider using this for "lower" end devices
+    // $ionicConfigProvider.views.transition('none');      // keep the views from animating
+
+    var templateHandler = function(strMode, strPrefix, strPath) {
+        strMode = strMode || 'static';
+        strPrefix = strPrefix || 'stream';
+        strPath = strPath || 'templates/';
+        // DYNAMIC HANDLER (MULTIPLE TEMPLATES BASED ON OS & ORIENTATION)
+        if (strMode === 'dynamic') {
+            // RETURN HANDLER METHOD
+            return function() {
+                if (ionic.Platform.is('androidtablet')) {
+                    return strPath + strPrefix + '-tablet.html';
+                }
+                if (ionic.Platform.isAndroid()) {
+                    return strPath + strPrefix + '.html';
+                }
+                if (ionic.Platform.isIPad()) {
+                    return strPath + strPrefix + '-tablet.html';
+                }
+                if (ionic.Platform.isIOS()) {
+                    return strPath + strPrefix + '.html';
+                }
+                if (ionic.Platform.isWindowsPhone()) {
+                    return strPath + strPrefix + '.html';
+                }
+            };
+        } else {
+            // STATIC MODE (strMode becomes the path and file name of template to be used)
+            // RETURN FILE PATH & NAME
+            return strMode
+        }
+    };
 
     $stateProvider
 
     .state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: 'templates/menu.html',
+        templateUrl: templateHandler('templates/menu.html'),
         controller: 'HomeCtrl'
         // controller: 'AppCtrl'
+    })
+
+    // WARN: this is temporary
+    .state('app.homestream', {
+        url: '/homestream',
+        views: {
+            'menuContent': {
+                templateUrl: templateHandler('dynamic','stream-home'),
+                controller: 'HomeCtrl'
+            }
+        }
     })
 
     .state('app.home', {
         url: '/home',
         views: {
             'menuContent': {
-                templateUrl: function() {
-                    if (ionic.Platform.isAndroid()) {
-                        return 'templates/home-android.html';
-                    }
-                    if (ionic.Platform.isIPad()) {
-                        return 'templates/home-ipad.html';
-                    }
-                    else {
-                        if (ionic.Platform.isIOS()) {
-                            return 'templates/home-ios.html';
-                        }
-                    }
-                    return 'templates/home.html';
-                },
+                templateUrl: templateHandler('dynamic','home'),
                 controller: 'HomeCtrl'
             }
         }
     })
 
+    .state('app.settings', {
+        url: '/settings',
+        views: {
+            'menuContent': {
+                templateUrl: templateHandler('templates/settings.html'),
+                controller: 'SettingsCtrl'
+            }
+        }
+    })
+
+    .state('app.civdemo', {
+        url: '/civdemo',
+        views: {
+            'menuContent': {
+                templateUrl: templateHandler('templates/civ-demo.html')
+            }
+        }
+    })
+
+
 /**
  * Source States
  * Ideally, these would all be dynamic, based off some config file. But I don't know if Angular works that way - yet .
  */
+    // *******************************************************************************************
+    // CDC Around the World
+    // *******************************************************************************************
+    .state('app.cdcatws', {
+        url: '/cdcatws',
+        views: {
+            'menuContent': {
+                templateUrl: templateHandler('dynamic','stream'),
+                controller: 'CDCAtwsCtrl'
+            }
+        }
+    })
+    .state('app.cdcatw', {
+        url: '/cdcatw/:idx',
+        views: {
+            'menuContent': {
+                templateUrl: templateHandler('templates/article.html'),
+                controller: 'CDCAtwCtrl'
+            }
+        }
+    })
     // *******************************************************************************************
     // Disease of the Week
     // *******************************************************************************************
@@ -134,7 +398,7 @@ add to body class: platform-wp8
         url: '/dotw',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'DotwCtrl'
             }
         }
@@ -143,7 +407,7 @@ add to body class: platform-wp8
         url: '/disease/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/embed.html',
+                templateUrl: templateHandler('templates/embed.html'),
                 controller: 'DiseaseCtrl'
             }
         }
@@ -151,20 +415,11 @@ add to body class: platform-wp8
     // *******************************************************************************************
     // FluView Weekly Summary
     // *******************************************************************************************
-    .state('app.fluviews', {
-        url: '/fluviews',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/stream.html',
-                controller: 'FluViewsCtrl'
-            }
-        }
-    })
     .state('app.fluview', {
         url: '/fluview/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/article.html',
+                templateUrl: templateHandler('templates/article.html'),
                 controller: 'FluViewCtrl'
             }
         }
@@ -176,7 +431,7 @@ add to body class: platform-wp8
         url: '/healtharticles',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'HealthArticlesCtrl'
             }
         }
@@ -185,7 +440,7 @@ add to body class: platform-wp8
         url: '/healtharticle/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/embed.html',
+                templateUrl: templateHandler('templates/embed.html'),
                 controller: 'HealthArticleCtrl'
             }
         }
@@ -197,7 +452,7 @@ add to body class: platform-wp8
         url: '/vitalsigns',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'VitalSignsCtrl'
             }
         }
@@ -206,7 +461,7 @@ add to body class: platform-wp8
         url: '/vitalsign/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/article.html',
+                templateUrl: templateHandler('templates/article.html'),
                 controller: 'VitalSignCtrl'
             }
         }
@@ -218,8 +473,8 @@ add to body class: platform-wp8
         url: '/cdcdirectorsblog',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
-                controller: 'DirectorsBlogCtrl'
+                templateUrl: templateHandler('dynamic','stream'),
+                controller: 'DirectorsBlogsCtrl'
             }
         }
     })
@@ -227,19 +482,19 @@ add to body class: platform-wp8
         url: '/directorblog/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/blog.html',
-                controller: 'DirectorBlogCtrl'
+                templateUrl: templateHandler('templates/blog.html'),
+                controller: 'DirectorsBlogCtrl'
             }
         }
     })
     // *******************************************************************************************
-    // CDC Works for You 24/7 Blog
+    // CDC Works for You 24/7 Blog - currently unused
     // *******************************************************************************************
     .state('app.247blogs', {
         url: '/247blogs',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'StreamCtrl'
             }
         }
@@ -248,7 +503,7 @@ add to body class: platform-wp8
         url: '/247blog/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/blog.html',
+                templateUrl: templateHandler('templates/blog.html'),
                 controller: 'BlogCtrl'
             }
         }
@@ -260,7 +515,7 @@ add to body class: platform-wp8
         url: '/PHMblogs',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'PHMblogsCtrl'
             }
         }
@@ -269,7 +524,7 @@ add to body class: platform-wp8
         url: '/PHMblog/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/blog.html',
+                templateUrl: templateHandler('templates/blog.html'),
                 controller: 'PHMblogCtrl'
             }
         }
@@ -281,7 +536,7 @@ add to body class: platform-wp8
         url: '/FastStats',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'FastStatsCtrl'
             }
         }
@@ -290,7 +545,7 @@ add to body class: platform-wp8
         url: '/FastStat/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/data.html',
+                templateUrl: templateHandler('templates/data.html'),
                 controller: 'FastStatCtrl'
             }
         }
@@ -302,7 +557,7 @@ add to body class: platform-wp8
         url: '/WeeklyDiseaseCaseCounts',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'WeeklyDiseaseCaseCountsCtrl'
             }
         }
@@ -311,7 +566,7 @@ add to body class: platform-wp8
         url: '/WeeklyDiseaseCaseCount/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/data.html',
+                templateUrl: templateHandler('templates/data.html'),
                 controller: 'WeeklyDiseaseCaseCountCtrl'
             }
         }
@@ -319,20 +574,11 @@ add to body class: platform-wp8
     // *******************************************************************************************
     // Did You Know
     // *******************************************************************************************
-    .state('app.DidYouKnow', {
-        url: '/DidYouKnow',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/stream.html',
-                controller: 'DidYouKnowCtrl'
-            }
-        }
-    })
     .state('app.DYK', {
         url: '/DYK/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/fact.html',
+                templateUrl: templateHandler('templates/fact.html'),
                 controller: 'DYKCtrl'
             }
         }
@@ -344,7 +590,7 @@ add to body class: platform-wp8
         url: '/FactoftheWeek',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'FactoftheWeekCtrl'
             }
         }
@@ -353,7 +599,7 @@ add to body class: platform-wp8
         url: '/Fact/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/fact.html',
+                templateUrl: templateHandler('templates/fact.html'),
                 controller: 'FOTWCtrl'
             }
         }
@@ -365,7 +611,7 @@ add to body class: platform-wp8
         url: '/EIDS',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'EIDsCtrl'
             }
         }
@@ -374,7 +620,7 @@ add to body class: platform-wp8
         url: '/EID/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/journal.html',
+                templateUrl: templateHandler('templates/journal.html'),
                 controller: 'EIDCtrl'
             }
         }
@@ -386,7 +632,7 @@ add to body class: platform-wp8
         url: '/MMWRS',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'MMWRsCtrl'
             }
         }
@@ -395,7 +641,7 @@ add to body class: platform-wp8
         url: '/MMWR/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/journal.html',
+                templateUrl: templateHandler('templates/journal.html'),
                 controller: 'MMWRCtrl'
             }
         }
@@ -407,7 +653,7 @@ add to body class: platform-wp8
         url: '/PCDS',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'PCDsCtrl'
             }
         }
@@ -416,7 +662,7 @@ add to body class: platform-wp8
         url: '/PCD/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/journal.html',
+                templateUrl: templateHandler('templates/journal.html'),
                 controller: 'PCDCtrl'
             }
         }
@@ -428,7 +674,7 @@ add to body class: platform-wp8
         url: '/Newsrooms',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'NewsroomsCtrl'
             }
         }
@@ -437,7 +683,7 @@ add to body class: platform-wp8
         url: '/Newsroom/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/embed.html',
+                templateUrl: templateHandler('templates/embed.html'),
                 controller: 'NewsroomCtrl'
             }
         }
@@ -449,7 +695,7 @@ add to body class: platform-wp8
         url: '/Outbreaks',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'OutbreaksCtrl'
             }
         }
@@ -458,7 +704,7 @@ add to body class: platform-wp8
         url: '/Outbreak/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/embed.html',
+                templateUrl: templateHandler('templates/embed.html'),
                 controller: 'OutbreakCtrl'
             }
         }
@@ -470,7 +716,7 @@ add to body class: platform-wp8
         url: '/TravelNotices',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'TravelNoticesCtrl'
             }
         }
@@ -479,7 +725,7 @@ add to body class: platform-wp8
         url: '/TravelNotice/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/embed.html',
+                templateUrl: templateHandler('templates/embed.html'),
                 controller: 'TravelNoticeCtrl'
             }
         }
@@ -491,7 +737,7 @@ add to body class: platform-wp8
         url: '/PHILs',
         views: {
             'menuContent': {
-                templateUrl: 'templates/image_stream.html',
+                templateUrl: templateHandler('templates/stream-images.html'),
                 controller: 'PHILsCtrl'
             }
         }
@@ -500,7 +746,7 @@ add to body class: platform-wp8
         url: '/PHIL/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/image.html',
+                templateUrl: templateHandler('templates/image.html'),
                 controller: 'PHILCtrl'
             }
         }
@@ -512,7 +758,7 @@ add to body class: platform-wp8
         url: '/Instagrams',
         views: {
             'menuContent': {
-                templateUrl: 'templates/images.html',
+                templateUrl: templateHandler('templates/stream-images.html'),
                 controller: 'InstagramCtrl'
             }
         }
@@ -521,7 +767,7 @@ add to body class: platform-wp8
         url: '/Instagram/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/image.html',
+                templateUrl: templateHandler('templates/image.html'),
                 controller: 'ImageCtrl'
             }
         }
@@ -533,7 +779,7 @@ add to body class: platform-wp8
         url: '/Flickrs',
         views: {
             'menuContent': {
-                templateUrl: 'templates/images.html',
+                templateUrl: templateHandler('templates/stream-images.html'),
                 controller: 'FlickrCtrl'
             }
         }
@@ -542,7 +788,7 @@ add to body class: platform-wp8
         url: '/Flickr/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/image.html',
+                templateUrl: templateHandler('templates/image.html'),
                 controller: 'ImageCtrl'
             }
         }
@@ -554,7 +800,7 @@ add to body class: platform-wp8
         url: '/Podcasts',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'PodcastsCtrl'
             }
         }
@@ -563,7 +809,7 @@ add to body class: platform-wp8
         url: '/Podcast/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/audio.html',
+                templateUrl: templateHandler('templates/audio.html'),
                 controller: 'PodcastCtrl'
             }
         }
@@ -575,7 +821,7 @@ add to body class: platform-wp8
         url: '/YouTubes',
         views: {
             'menuContent': {
-                templateUrl: 'templates/stream.html',
+                templateUrl: templateHandler('dynamic','stream'),
                 controller: 'YouTubesCtrl'
             }
         }
@@ -584,8 +830,26 @@ add to body class: platform-wp8
         url: '/YouTube/:idx',
         views: {
             'menuContent': {
-                templateUrl: 'templates/video.html',
+                templateUrl: templateHandler('templates/video.html'),
                 controller: 'YouTubeCtrl'
+            }
+        }
+    })
+    .state('app.Facebook', {
+        url: '/Facebook',
+        views: {
+            'menuContent': {
+                templateUrl: templateHandler('templates/landing-facebook.html'),
+                controller: 'FacebookCtrl'
+            }
+        }
+    })
+    .state('app.Twitter', {
+        url: '/Twitter',
+        views: {
+            'menuContent': {
+                templateUrl: templateHandler('templates/landing-twitter.html'),
+                controller: 'TwitterCtrl'
             }
         }
     });

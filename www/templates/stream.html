@@ -1,32 +1,37 @@
 <ion-view>
-  <ion-content ng-init="init()">
-
+    <ion-content ng-init="init()" class="content-stable">
         <ion-refresher
-        pulling-text="Pull to refresh..."
-        on-refresh="doRefresh()">
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
         </ion-refresher>
-
-            <div class="stream">
-                <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row">
-                    <!-- <div data-ng-include="selectTemplate(data)"></div> -->
-                    <div class="card">
-                        <a class="item item-text-wrap item-body animated" href="{{url}}{{$index}}">
-
-                            <div ng-if="data.enclosures.length && data.enclosures | hasImageEnclosure" class="item item-image">
-                                <img ng-src="{{datas[$index].enclosures[0].resourceUrl}}">
-                                <!-- <img src="{{data.enclosures | hasImageEnclosure}}"> -->
-                            </div>
-                            <strong>{{data.name | words:10}}</strong>
-                            <p class="date">{{data.dateModified | amDateFormat:'MMMM Do, YYYY'}}</p>
-                            <p>{{data.description | words:20}}</p>
-                        </a>
-                    </div>
+        <div class="stream" resize>
+            <h3 class="padding">{{name}}</h3>
+            <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row">
+                <div class="card" ng-if="!data.type">
+                    <div ng-if="data.isOutbreak" class="item item-notice outbreak"><b>Outbreak</b></div>
+                    <div ng-if="data.isWarning" class="item item-notice warning"><b>Travel Notice</b> - Warning Level 3</div>
+                    <div ng-if="data.isWatch" class="item item-notice watch"><b>Travel Notice</b> - Watch Level 1</div>
+                    <div ng-if="data.isAlert" class="item item-notice alert"><b>Travel Notice</b> - Alert Level 2</div>
+                    <a ng-if="data.hasImage" class="item item-image" ng-href="{{url}}{{$index}}" ng-style="fullwidth()">
+                        <img ng-src="{{data.imageSrc}}" err-src="img/image-placeholder.png" fullwidth>
+                    </a>
+                    <a class="item item-text-wrap item-body" ng-href="{{url}}{{$index}}">
+                        <strong>{{data.name | words:10}}</strong>
+                        <p class="date">{{data.datePublished}}</p>
+                        <p>{{data.description | words:20}}</p>
+                    </a>
+                    <a class="item item-footer" ng-if="name" ng-click="scrollTop()">
+                        {{name}}
+                    </a>
+                </div>
+                <div class="card social" ng-if="data.type == 'social'">
+                    <a class="item item-thumbnail-right" ng-href="{{data.href}}">
+                        <img ng-src="{{data.image}}">
+                        <strong>{{data.name | words:8}}</strong>
+                    </a>
                 </div>
             </div>
-
-    <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()" >
-        Show more
-    </button>
-
-  </ion-content>
+        </div>
+        <ion-infinite-scroll ng-if="hasMoreItems" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+    </ion-content>
 </ion-view>

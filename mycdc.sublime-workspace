@@ -4,334 +4,94 @@
 		"selected_items":
 		[
 			[
-				"Hom",
-				"HomeCtrl"
+				"contt",
+				"contentGroup"
 			],
 			[
-				"di",
-				"display"
+				"News",
+				"Newsroom"
 			],
 			[
-				"defer",
-				"deferred2"
+				"conten",
+				"contentGroup	(data.js)"
 			],
 			[
-				"Vita",
-				"VitalSignsData"
+				"new",
+				"newheight"
 			],
 			[
-				"state",
-				"stateProvider"
+				"Hea",
+				"HealthArticlesStorage"
 			],
 			[
-				"Health",
+				"Heal",
 				"HealthArticlesData"
 			],
 			[
-				"Menu",
-				"MenuStorage"
+				"Vita",
+				"VitalSignsStorage"
 			],
 			[
-				"Con",
-				"console"
+				"TD",
+				"TODO"
 			],
 			[
-				"for",
-				"forEach"
+				"$ioi",
+				"$ionicHistory"
 			],
 			[
-				"cdc",
-				"cdcgeneralapp"
+				"de",
+				"description"
 			],
 			[
-				"cordova",
-				"cordovaFile"
+				"$ionic",
+				"$ionicHistory"
 			],
 			[
-				"instagr",
-				"instagramCard"
+				"$ioni",
+				"$ionicHistory"
 			],
 			[
-				"pin",
-				"pinterestCard"
+				"ioni",
+				"ionicHistory"
 			],
 			[
-				"nail",
-				"nailthumb-image"
+				"$ion",
+				"$ionicHistory"
 			],
 			[
-				"re",
-				"restrict"
-			],
-			[
-				"temp",
-				"templates"
-			],
-			[
-				"me",
-				"menuContent"
-			],
-			[
-				"entry",
-				"entryId"
-			],
-			[
-				"url",
-				"urlarray"
-			],
-			[
-				"find",
-				"findUrls"
+				"max-",
+				"max-height"
 			],
 			[
 				"max",
-				"maxResults"
+				"max-width"
 			],
 			[
-				"text-",
-				"text-transform"
+				"Facebook",
+				"FacebookCtrl	(controllers.js)"
 			],
 			[
-				"page",
-				"pageitems"
-			],
-			[
-				"image",
-				"imageSize"
-			],
-			[
-				"template",
-				"templateUrl"
-			],
-			[
-				"templ",
-				"templateId"
-			],
-			[
-				"t",
-				"template"
-			],
-			[
-				"tm",
-				"templates"
-			],
-			[
-				"type-",
-				"type-d2"
-			],
-			[
-				"last",
-				"lastCardType"
-			],
-			[
-				"fac",
-				"facebookCard"
-			],
-			[
-				"previou",
-				"previouscard"
-			],
-			[
-				"inline",
-				"inline-block"
-			],
-			[
-				"HomeStrea",
-				"HomeStreamData"
-			],
-			[
-				"templa",
-				"templateUrl"
-			],
-			[
-				"pr",
-				"products"
-			],
-			[
-				"mei",
-				"mediaType"
-			],
-			[
-				"media",
-				"mediaType"
-			],
-			[
-				"c",
-				"console"
-			],
-			[
-				"en",
-				"enableScroll"
-			],
-			[
-				"clas",
-				"classNameArray"
+				"showl",
+				"showleft	(controllers.js)"
 			],
 			[
 				"fon",
 				"font-size"
 			],
 			[
-				"md-card",
-				"md-card-content"
-			],
-			[
-				"mix",
-				"mixpanelclick"
-			],
-			[
-				"pro",
-				"process"
-			],
-			[
-				"resul",
-				"resultsData"
-			],
-			[
-				"te",
-				"templatefile"
-			],
-			[
-				"I",
-				"important"
-			],
-			[
-				"text",
-				"text-decoration"
-			],
-			[
-				"top",
-				"topic-blurb"
-			],
-			[
-				"respon",
-				"responsive"
-			],
-			[
-				"update",
-				"updateViewPort"
-			],
-			[
-				"toggle",
-				"toggleClass"
-			],
-			[
-				"method",
-				"methodTwo"
-			],
-			[
-				"list-",
-				"list-ordered"
-			],
-			[
-				"list",
-				"listContainer"
-			],
-			[
-				"col",
-				"column1"
-			],
-			[
-				"ele",
-				"element"
-			],
-			[
-				"item",
-				"itemTitle"
-			],
-			[
-				"new",
-				"newItem"
-			],
-			[
-				"elem",
-				"elementId"
-			],
-			[
-				"el",
-				"element"
-			],
-			[
-				"feed",
-				"feedUrl"
-			],
-			[
-				"a2z",
-				"a2z-bar"
-			],
-			[
-				"down",
-				"downArrowWhite16"
-			],
-			[
-				"font-",
-				"font-variant"
-			],
-			[
-				"font",
-				"font-family"
-			],
-			[
-				"fun",
-				"function"
-			],
-			[
-				"meth",
-				"methods"
-			],
-			[
-				"l",
-				"length"
-			],
-			[
-				"in",
-				"inline-block"
-			],
-			[
-				"some",
-				"somemore"
-			],
-			[
-				"mar",
-				"margin-right"
-			],
-			[
-				"over",
-				"overflow-x"
-			],
-			[
-				"d3",
-				"d3obj"
-			],
-			[
-				"d",
-				"d3obj"
-			],
-			[
-				"responsive",
-				"responsive-map"
-			],
-			[
-				"preven",
-				"preventDefault"
-			],
-			[
-				"controln",
-				"controlNavScaffold"
-			],
-			[
-				"out",
-				"outline-style"
+				"$root",
+				"$rootScope	AngularJS"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "www/js/app.js",
+			"file": "www/js/data.js",
 			"settings":
 			{
-				"buffer_size": 16969,
+				"buffer_size": 92530,
 				"line_ending": "Unix"
 			}
 		},
@@ -339,55 +99,15 @@
 			"file": "www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 44001,
+				"buffer_size": 91398,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "www/js/data.js",
+			"file": "www/js/directives.js",
 			"settings":
 			{
-				"buffer_size": 18999,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/js/local-storage.js",
-			"settings":
-			{
-				"buffer_size": 9381,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/templates/news.html",
-			"settings":
-			{
-				"buffer_size": 691,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/templates/data.html",
-			"settings":
-			{
-				"buffer_size": 673,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/json/content/343984.json",
-			"settings":
-			{
-				"buffer_size": 5380,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/templates/menu.html",
-			"settings":
-			{
-				"buffer_size": 975,
+				"buffer_size": 6643,
 				"line_ending": "Unix"
 			}
 		}
@@ -399,51 +119,31 @@
 		"selected_items":
 		[
 			[
-				"list",
-				"Package Control: List Packages"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
-				"instal",
-				"Package Control: Install Package"
-			],
-			[
-				"in",
-				"Package Control: Install Package"
-			],
-			[
-				"dele",
-				"Trailing Spaces: Delete Trailing Spaces"
-			],
-			[
-				"tailin",
-				"Trailing Spaces: Delete Trailing Spaces"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
+				"package",
+				"Package Control: Disable Package"
 			],
 			[
 				"inst",
 				"Package Control: Install Package"
 			],
 			[
-				"pretty",
-				"Pretty JSON: Format (Pretty Print) JSON"
+				"install",
+				"Package Control: Install Package"
 			],
 			[
-				"js",
-				"Javascript Beautify"
+				"install ",
+				"Package Control: Install Package"
 			],
 			[
-				"bea",
-				"Javascript Beautify"
+				"insall",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"About"
 			]
 		],
-		"width": 521.0
+		"width": 593.0
 	},
 	"console":
 	{
@@ -460,269 +160,79 @@
 	},
 	"file_history":
 	[
-		"/Users/peterbenoit/DEV/myCDC/www/templates/article.html",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/FastStats.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/controllers.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/data.js",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/Outbreaks.json",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/home.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/journal.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/fact.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/menu.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/menu.html",
-		"/Users/peterbenoit/DEV/myCDC/bower.json",
-		"/Users/peterbenoit/DEV/myCDC/tools/exists.php",
-		"/Users/peterbenoit/DEV/myCDC/exists.php",
-		"/Users/peterbenoit/DEV/myCDC/www/js/app.js",
-		"/Users/peterbenoit/DEV/myCDC/www/js/controllers.js",
-		"/Users/peterbenoit/Library/Application Support/Sublime Text 2/Packages/Theme - Soda/README.md",
-		"/Users/peterbenoit/DEV/myCDC/www/js/data.js",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/embed.html",
-		"/Users/peterbenoit/DEV/myCDC/www/css/style.css",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/HealthArticles.json",
-		"/Users/peterbenoit/Dropbox/bash_profile.txt",
-		"/Users/peterbenoit/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/peterbenoit/DEV/myCDC/platforms/ios/build/device/myCDC.app/_CodeSignature/CodeResources",
-		"/Users/peterbenoit/DEV/mobionic/www/js/data.js",
-		"/Users/peterbenoit/DEV/myCDC/www/js/local-storage.js",
-		"/Users/peterbenoit/DEV/myCDC/www/js/filters.js",
-		"/Users/peterbenoit/DEV/myCDC/www/js/directives.js",
-		"/Users/peterbenoit/DEV/myCDC/www/js/services.js",
-		"/Users/peterbenoit/DEV/mobionic/www/templates/menu.html",
-		"/Users/peterbenoit/DEV/myCDC/www/json/content/343933.json",
-		"/Users/peterbenoit/DEV/myCDC/www/json/content/344732.json",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/stream.html",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/FluView.json",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/DOTW.json",
-		"/Users/peterbenoit/DEV/myCDC/platforms/wp8/App.xaml",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/Blogs.json",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/EID.json",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/instagram.json",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/PHIL.json",
-		"/Users/peterbenoit/DEV/myCDC/www/json/sources/VitalSigns.json",
-		"/Users/peterbenoit/DEV/mobionic/ionic.project",
-		"/Users/peterbenoit/DEV/mobionic/www/js/controllers.js",
-		"/Users/peterbenoit/DEV/mobionic-2.0.0/ionic-1.0.0/com.hybridapps.mobionic/www/json/news.json",
-		"/Users/peterbenoit/DEV/mobionic-2.0.0/ionic-1.0.0/com.hybridapps.mobionic/www/js/data.js",
-		"/Users/peterbenoit/DEV/mobionic-2.0.0/ionic-1.0.0/com.hybridapps.mobionic/www/json/about.json",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/playlist.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/data.html",
-		"/Users/peterbenoit/DEV/myCDC/www/index.html",
-		"/Users/peterbenoit/DEV/myCDC/www/templates/blog.html",
-		"/Users/peterbenoit/DEV/myCDC/www/js/filters",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/config.json",
-		"/Users/peterbenoit/DEV/myCDC/www/json/config.json",
-		"/Users/peterbenoit/DEV/GeneralApp/platforms/android/assets/www/js/controllers.js",
-		"/Users/peterbenoit/DEV/GeneralApp/platforms/ios/build/emulator/CDC General App.app/Info.plist",
-		"/Users/peterbenoit/DEV/GeneralApp/www/lib/ionic/js/ionic.bundle.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/index.html",
-		"/Users/peterbenoit/DEV/GeneralApp/config.xml",
-		"/Users/peterbenoit/DEV/GeneralApp/gulpfile.js",
-		"/Users/peterbenoit/DEV/GeneralApp/fixjsstyle.sh",
-		"/Users/peterbenoit/DEV/GeneralApp/gjslint.sh",
-		"/Users/peterbenoit/DEV/GeneralApp/plugins/browser.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/lib/ionic/js/angular-ui/angular-ui-router.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/angular-route.min.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/angular-google-maps.min.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/podcasts.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/DirectorVideos.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/css/style.css",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/local-storage.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/app.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-demo.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/external.html",
-		"/Users/peterbenoit/DEV/GeneralApp3/www/js/controllers.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-grid-2a.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/img/emoji.png",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/source-stream.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/thumbnails.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/vital-signs.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/youtube-videos.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/dotw.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/elements.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/form-quiz.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/gallery2.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/gallery3.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/gallery4.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/grid.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/guided-quiz.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/health-articles.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-grid-2.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-grid-2b.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-grid-3.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-rows.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-stream-phone-portrait.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-tablet-landscape.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-tablet-portrait.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/home-typeface.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/sources.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/about.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/disease.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/settings.html",
-		"/Users/peterbenoit/DEV/GeneralApp3/www/js/local-storage.js",
-		"/Users/peterbenoit/DEV/GeneralApp3/www/templates/settings.html",
-		"/Users/peterbenoit/DEV/GeneralApp3/ionic.project",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/youtube-video.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/DOTW.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/social-left.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/menu.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/YouTube.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/c1.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/filters.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/directives.js",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/YouTube-all.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/img/video-placeholder.jpg",
-		"/Users/peterbenoit/DEV/GeneralApp3/www/js/data.js",
-		"/Users/peterbenoit/DEV/GeneralApp3/www/templates/menu.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/json/health-articles.json",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t3a.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t2a.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t1a.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/stream-home.html",
+		"/Users/peterbenoit/Development/myCDC/www/json/conf.json",
+		"/Users/peterbenoit/Development/myCDC/www/templates/settings.html",
+		"/Users/peterbenoit/Development/myCDC/www/js/local-storage.js",
+		"/Users/peterbenoit/Development/myCDC/www/templates/menu.html",
+		"/Users/peterbenoit/Development/myCDC/www/css/style.css",
+		"/Users/peterbenoit/Development/myCDC/www/templates/home.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/stream.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/stream-tablet.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/stream-images.html",
+		"/Users/peterbenoit/Development/myCDC/www/js/app.js",
+		"/Users/peterbenoit/Development/myCDC/www/templates/news.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/video.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/article.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/journal.html",
+		"/Users/peterbenoit/Development/myCDC/www/css/syndicated-content-overrides.css",
+		"/Users/peterbenoit/Development/myCDC/www/templates/stream-home-tablet.html",
+		"/Users/peterbenoit/Development/GeneralApp/www/js/controllers.js",
+		"/Users/peterbenoit/Development/myCDC/www/templates/data.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/home-tablet.html",
+		"/Users/peterbenoit/Development/myCDC/www/index.html",
+		"/Users/peterbenoit/Development/myCDC/www/js/controllers.js",
+		"/Users/peterbenoit/Development/myCDC/www/js/directives.js",
+		"/Users/peterbenoit/Development/myCDC/www/templates/popover.html",
+		"/Users/peterbenoit/Development/myCDC/www/json/sources/DOTW.json",
+		"/Users/peterbenoit/Development/myCDC/www/json/sources/FastStats.json",
+		"/Users/peterbenoit/Development/myCDC/www/templates/image.html",
+		"/Users/peterbenoit/Development/myCDC/www/json/sources/PHIL.json",
+		"/Users/peterbenoit/Development/myCDC/www/templates/landing-twitter.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/landing-facebook.html",
+		"/Users/peterbenoit/Development/myCDC/www/js/data.js",
+		"/Users/peterbenoit/Development/myCDC/www/templates/cards/social-right.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/cards/landing-facebook.html",
+		"/Users/peterbenoit/Development/myCDC/www/lib/ionic/js/ionic.bundle.js",
+		"/Users/peterbenoit/Development/ionic/js/angular/directive/checkbox.js",
+		"/Users/peterbenoit/Development/myCDC/www/templates/audio.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/blog.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/embed.html",
+		"/Users/peterbenoit/Development/myCDC/www/templates/fact.html",
+		"/Users/peterbenoit/Development/myCDC/www/js/services.js",
+		"/Users/peterbenoit/Development/myCDC/www/lib/ionic/css/ionic.css",
+		"/Users/peterbenoit/Development/myCDC/www/templates/home-android.html",
+		"/Users/peterbenoit/Development/myCDC/www/README.md",
+		"/Users/peterbenoit/Development/GeneralApp/www/index.html",
+		"/Users/peterbenoit/Development/myCDC/tools/fixjsstyle.sh",
+		"/Users/peterbenoit/Development/myCDC/config.xml",
+		"/Users/peterbenoit/Development/myCDC/www/json/sources/YouTube.json",
+		"/Users/peterbenoit/Development/myApp/www/js/app.js",
+		"/Users/peterbenoit/Development/myCDC/platforms/android/AndroidManifest.xml",
+		"/Users/peterbenoit/Development/myCDC/platforms/ios/CDC/CDC-Info.plist",
+		"/Users/peterbenoit/Development/myCDC/README.md",
+		"/Users/peterbenoit/Development/myCDC/www/js/libs/jquery-2.1.4.min.js",
+		"/Users/peterbenoit/Development/myCDC/www/js/libs/angular-moment-min.js",
 		"/Users/peterbenoit/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/peterbenoit/DEV/GeneralApp/www/js/services.js",
-		"/Users/peterbenoit/DEV/GeneralApp/update_plugins.sh",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t3.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t2.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/t1.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/social-top.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/social-right.html",
-		"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/d2.html"
+		"/Users/peterbenoit/Development/myCDC/mycdc.sublime-project",
+		"/Users/peterbenoit/Dropbox/bash_profile.txt",
+		"/Users/peterbenoit/Development/dotfiles-3/.osx",
+		"/Users/peterbenoit/.bash_profile",
+		"/Users/peterbenoit/Development/dotfiles-3/setup-a-new-machine.sh"
 	],
 	"find":
 	{
-		"height": 105.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
-			"<project>",
-			"/Users/peterbenoit/DEV/myCDC/",
-			"/Users/peterbenoit/DEV/myCDC/www/js",
-			"/Users/peterbenoit/DEV/myCDC/www",
-			"/Users/peterbenoit/DEV/myCDC/www/js",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js",
-			"/Users/peterbenoit/DEV/GeneralApp/js",
-			"<project>",
-			"",
-			"/Users/peterbenoit/DEV/GeneralApp/www/",
-			"/Users/peterbenoit/DEV/GeneralApp3/www/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js",
-			"/Users/peterbenoit/DEV/GeneralApp/www/",
-			"/Users/peterbenoit/DEV/GeneralApp3/www/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js/controllers.js",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js",
-			"/Users/peterbenoit/DEV/GeneralApp/www/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js",
-			"/Users/peterbenoit/DEV/GeneralApp3/www/js",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js",
-			"/Users/peterbenoit/DEV/GeneralApp/www/templates",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/templates/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js",
-			"/Users/peterbenoit/DEV/GeneralApp/www/templates",
-			"/Users/peterbenoit/DEV/GeneralApp/www",
-			"<open files>",
-			"",
-			"/Users/peterbenoit/DEV/GeneralApp/www/templates",
-			"/Users/peterbenoit/DEV/GeneralApp/www/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/templates",
-			"/Users/peterbenoit/DEV/GeneralApp/www",
-			"/Users/peterbenoit/DEV/GeneralApp",
-			"<open folders>",
-			"<open files>",
-			"/Users/peterbenoit/DEV/GeneralApp/www",
-			"/Users/peterbenoit/DEV/GeneralApp3",
-			"/Users/peterbenoit/DEV/GeneralApp",
-			"/Users/peterbenoit/DEV/GeneralApp/www",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js",
-			"/Users/peterbenoit/DEV/GeneralApp/www/templates",
-			"/Users/peterbenoit/DEV/GeneralApp/templates",
-			"/Users/peterbenoit/DEV/GeneralApp/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js",
-			"/Users/peterbenoit/DEV/GeneralApp/www/templates",
-			"/Users/peterbenoit/DEV/GeneralApp/www/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/",
-			"/Users/peterbenoit/DEV/GeneralApp/www/js",
-			"/Users/peterbenoit/DEV/GeneralApp/www/templates/cards/",
-			"/Users/peterbenoit/DEV/GeneralApp/www",
-			"/Users/peterbenoit/DEV/GeneralApp/www,*.html",
-			"/Users/peterbenoit/DEV/GeneralApp/www/*.html",
-			"/Users/peterbenoit/DEV/GeneralApp/www",
-			"/Users/peterbenoit/DEV/GeneralApp",
-			"/Users/peterbenoit/DEV/pw3",
-			"/Users/peterbenoit/DEV/GeneralApp",
-			"/Users/peterbenoit/DEV/pw3",
-			"/Users/peterbenoit/DEV/pw2",
-			"/Users/peterbenoit/DEV/GeneralApp/www/templates",
-			"/Users/peterbenoit/DEV/GeneralApp",
-			"/Users/peterbenoit/DEV/PushNotificationSample",
-			"Hello",
-			"/Users/peterbenoit/DEV/TemplatePackage/contrib/widgets/tp-lms",
-			"/Users/peterbenoit/DEV/cdc-general",
-			"<project>",
-			"/Users/peterbenoit/DEV/cordova_HW/Mixpanel1/www/js",
-			"/Users/peterbenoit/DEV/TemplatePackage/4.0",
-			"*.html",
-			"*.js",
-			"*.less",
-			"",
-			"*.js",
-			"*.html",
-			"/Users/peterbenoit/Downloads/bootstrap-3.2.0/less",
-			"",
-			"/Users/peterbenoit/Dropbox/TemplatePackage/3.2",
-			"*.php",
-			"*.js",
-			"/Users/peterbenoit/Dropbox/templatepackage/3.0/less",
-			"/Users/peterbenoit/Dropbox/templatepackage/3.0/js",
-			"/Users/peterbenoit/Dropbox/templatepackage/3.0/j3",
-			"/Users/peterbenoit/Dropbox/templatepackage/3.0",
-			"/Users/peterbenoit/Dropbox/homepage",
-			"/Users/peterbenoit/Dropbox/TemplatePackage/3.0",
-			"",
-			"*.html",
-			"*.js",
-			"*.less",
-			"*.js",
-			"*.less",
-			"*.html",
-			"*.js",
-			"*.less",
-			"*",
-			"*.less",
-			"homepage2.less",
-			"*.less",
-			"*.html",
-			"*.less",
-			"*.html",
-			"*.js",
-			"/Users/peterbenoit/Dropbox/TemplatePackage/3.0/js/modules",
-			"*.js",
-			"*.html",
-			"*.js",
-			"*.less",
-			"*.js",
-			"*.html",
-			"*.js",
-			"*.html",
-			"*.js",
-			"*.html",
-			"*.js",
-			"*.less",
-			"*.js",
-			"*.less",
-			"*.html",
-			"*.js",
-			"*",
-			"*.js"
+			"/Users/peterbenoit/Development/myCDC/www/js",
+			"/Users/peterbenoit/Development/myCDC/www/",
+			"/Users/peterbenoit/Development/myCDC/www/templates",
+			"/Users/peterbenoit/Development/myCDC/www"
 		]
 	},
 	"find_state":
@@ -730,134 +240,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			" -'",
-			"article",
-			"ob",
-			"Outbreaks",
-			"journalIdx",
-			"factIdx",
-			"dataIdx",
-			"blogIdx",
-			"articleIdx",
-			"audioIdx",
-			"imageIdx",
-			"newsIdx",
-			"Idx'",
-			"articleIdx",
-			"newsIdx",
-			"articleIdx",
-			"ionicLoading",
-			"Id'",
-			"nr",
-			"Newsrooms",
-			"pcd",
-			"WeeklyCaseCounts",
-			"Newsroom",
-			"HealthArticles",
-			"PDCs",
-			"mmwr",
-			"MMWRs",
-			"eid",
-			"EIDsStorage",
-			"EIDs",
-			"fotw",
-			"FactoftheWeek",
-			"dyk",
-			"DidYouKnow",
-			"faststats",
-			"FastStats",
-			"HealthArticles",
-			"HealthArticlesData",
-			"cdcdirectorsblog",
-			"HealthArticles",
-			"VitalSignsData",
-			"VitalSigns",
-			"HealthArticlesData",
-			"$cordovaFileTransfer,",
-			"id:",
-			"plist",
-			"bitcode",
-			"getcontent",
-			"HealthArticles",
-			"FluViewData",
-			"HealthArticlesData",
-			"catch",
-			"trying",
-			"async",
-			"result",
-			"scope",
-			"articleId",
-			"Disease",
-			"function(id)",
-			"id]",
-			"news",
-			"newId",
-			"console.log(\"data",
-			"console.log('data",
-			"console.log",
-			"HealthArticle",
-			"healtharticle",
+			" ng-change=\"menuSelectionChange(i.title)\"",
+			"ng-disabled=\"i.readonly\"",
+			".indexOf",
+			"\"checked\": true,",
+			"phil",
+			"imageof",
+			"image",
+			" \"title\":",
+			"'Check out this article from CDC: ' + $scope.name,",
+			"subject = $scope.name",
+			"PHM",
+			"end = new Date().getTime();",
+			".border",
+			"border",
+			"isDirty = ",
+			"message = $scope.description,",
+			"health",
+			"'Check out this article from CDC:' ",
+			"image = $scope.imageSrc;",
+			"$scope.sourceUrl",
 			"disease",
-			"phmblog",
-			"PublicHealthMattersBlog",
+			"$scope.data.imageSrc",
+			"$scope.data.sourceUrl",
+			"$scope.data.description",
+			"subject = $scope.data.name",
+			"save(data)",
+			"    service.async = function() {\n",
+			"            \"checked\": true,\n            \"readonly\": false,\n",
+			"first-child",
+			"newresize",
+			" ng-style=\"newresize()\"",
+			"halfwidth",
+			"fullwidth",
+			"halfwidth",
+			"home-tablet",
+			"app launch",
+			"datum.hasImage",
+			"    $scope.showMoreItems = function() {\n        page = page + 1;\n        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {\n            $scope.$apply();\n        }\n    };",
+			"    $scope.showMoreItems = function() {\n        page = page + 1;\n\n        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {\n            $scope.$apply();\n        }\n    };",
+			"hasMoreItems",
+			"window.plugins.socialsharing.share(message, subject, null, link);",
+			"            var subject = $scope.data.name,\n                message = $scope.data.description,\n                link = $scope.data.sourceUrl;\n",
+			"disea",
+			"phm",
+			"        console.log('getall');",
 			"VitalSigns",
-			"HealthArticles",
-			"FluView",
-			"Dotw",
-			"DotwStreamData",
-			";\n    var ",
-			"starter",
-			"cdcgeneralapp",
+			"VitalSignsData",
 			"vitalsigns",
-			"healtharticles",
-			"fluview",
-			"appdatastorage",
-			"healtharticles",
-			"fluview",
-			"dotw",
-			"menu",
-			"healtharticles",
-			"HealthArticles",
-			"DOTW",
-			"device",
-			"nsapp",
-			"bower",
-			"<div class=\"item",
-			"video",
-			"\\n",
-			"MenuStorage",
-			"watch",
-			"menu",
-			".data",
-			".sources",
-			"menu",
-			".data.sources",
-			"/disease/",
-			"externa",
-			"inAppBrowser",
-			"location.href",
-			"externalctrl",
-			"externalctl",
-			"external",
-			"Open any external link with InAppBrowser Plugin",
-			"/external/",
-			"external.html",
-			"iframe",
-			";\n            var ",
-			"pete",
-			"scope.menu",
-			"config",
-			"arr.forEach",
-			"success",
-			"error",
-			"MenuStorage",
-			"LS menu exists",
-			"MenuStorage.save",
-			"Saving Menu",
-			"AppData.",
-			"AppCtrl Menu Scope",
-			"angular.",
-			"angular.js"
+			"HealthArticlesStorage",
+			"YouTubesData.getById",
+			"EIDsData.async",
+			"HealthArticlesContent",
+			"health",
+			"$stateParams.idx",
+			"ionicviewservice",
+			"eid",
+			"service.getId",
+			"getContent",
+			"weekly",
+			"Factof",
+			"fOTW",
+			"data = d.data",
+			"getContent",
+			".existsUrl",
+			"rs.existsUrl",
+			"http://www2c.cdc.gov/podcasts/checkurl.asp",
+			"ionicviewservice",
+			"'json/content/' + id + '.json'",
+			"disea",
+			"health",
+			"vital",
+			"FACT",
+			"FOTW",
+			"24",
+			"24/7",
+			"getSourceUrl",
+			"getId",
+			"$scope.loading ",
+			"    $scope.loading = $ionicLoading.show({\n        template: '<ion-spinner icon=\"spiral\"></ion-spinner> Loading Data',\n        showBackdrop: false,\n        showDelay: 100\n    });",
+			"EID",
+			"EID\n\nEID\n",
+			"EID",
+			"home.html",
+			"i",
+			"j",
+			"MenuData",
+			"CDCAtwsStorage",
+			"atw",
+			"we could not load that content. Please try again",
+			"We could not load that content. Please try again.",
+			"content not ",
+			"alert",
+			"alert('Could not load URL');",
+			"alert",
+			"alert('Content not available.');",
+			"alert('Social Sharing not available in Ionic View');",
+			"alert",
+			"closepop",
+			"halfwidth",
+			"halfsize",
+			"image-stream",
+			"<<<<<<<",
+			"i",
+			"'                                ",
+			":",
+			"social-Twitter",
+			"www.Twitter",
+			"facebook",
+			"Facebook",
+			"facebook",
+			"Facebook",
+			"facebook",
+			"Facebook",
+			"facebook",
+			"Facebook",
+			"facebook",
+			"Facebook",
+			"facebook",
+			"Facebook",
+			"facebook",
+			"Facebook",
+			"facebook",
+			"Facebook",
+			"facebook",
+			"Facebook",
+			"facebook",
+			"Facebook",
+			"facebook"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -865,54 +375,8 @@
 		"regex": false,
 		"replace_history":
 		[
-			"    <button menu-toggle=\"left\" class=\"button button-icon icon ion-navicon\"> Menu</button>\n    <img src=\"img/mycdc.png\">",
-			"		<button menu-toggle=\"left\" class=\"button button-icon icon ion-navicon\"> Menu</button>\n		<img src=\"img/mycdc.png\">",
-			"img/mycdc.png",
-			"if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {\n    $scope.$apply();\n}",
-			"catch(function(response) {",
-			"console.error('Response Error: ', response.status, response.data);",
-			"catch(function(response) {",
-			"console.error('Response Error: ', data, status);",
-			"catch(function(data, status) {",
-			"#app/source/{{stream.source}}",
-			"#app/source/{{stream.sourcetype}}/{{stream.source}}",
-			"#app/source/{{stream.sourcetype}}",
-			"words:10",
-			"",
-			"{{stream.title | words:8}}",
-			"</a>",
-			"",
-			"class=\"item item-divider source\"",
-			"{{stream.title}}",
-			"<p class=\"line-clamp line-clamp-4\">{{stream.description}}</p>",
-			"{{stream.title}}",
-			"<strong class=\"line-clamp line-clamp-2\">{{stream.name}}",
-			"#app/source/{{stream.source}}",
-			"<a href=\"#app/source/{{$index}}\">{{stream.source}}</a>",
-			"",
-			"title=\"\"",
-			"MMMM Do, YYYY",
-			"",
-			"<a href=\"#\">{{stream.source}}</a>",
-			"{{stream.source}}</p>",
-			"<strong>{{stream.name}}({{stream.cardtype}})</strong>",
-			"    <ion-nav-buttons side=\"left\">\n    <img src=\"img/cdclogo.png\">\n    <button menu-toggle=\"left\" class=\"button button-icon icon ion-navicon\"> Menu</button> \n    </ion-nav-buttons>",
-			"<ion-spinner icon=\"spiral\"></ion-spinner>",
-			"ion-loading-c",
-			"ion-load-c",
-			"com.peterbenoit.pushwoosh",
-			"title=\"CDC General App\"",
-			"com.cdc.generalapp",
-			"cdcgeneralapp",
-			"com.peterbenoit.pushwoosh",
-			"cdcgeneralapp",
-			"CDCGeneralApp",
-			"pushnotification",
-			"PushNotification",
-			"/3.2/",
-			"//",
-			"",
-			"gray3"
+			"$rootScope.existsUrl",
+			"rs.existsUrl"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -923,28 +387,34 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "www/js/app.js",
+					"file": "www/js/data.js",
 					"settings":
 					{
-						"buffer_size": 16969,
+						"buffer_size": 92530,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7117,
-								7121
+								10217,
+								10217
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
 							"bh_regions":
 							[
 								"bh_regex",
@@ -992,12 +462,97 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2190.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1007,56 +562,26 @@
 					"file": "www/js/controllers.js",
 					"settings":
 					{
-						"buffer_size": 44001,
+						"buffer_size": 91398,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1847,
-								1847
-							],
-							[
-								1959,
-								1959
-							],
-							[
-								2091,
-								2091
-							],
-							[
-								2225,
-								2225
-							],
-							[
-								2348,
-								2348
-							],
-							[
-								2783,
-								2783
-							],
-							[
-								2891,
-								2891
-							],
-							[
-								2993,
-								2993
-							],
-							[
-								3094,
-								3094
-							],
-							[
-								3195,
-								3195
+								3318,
+								3318
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
 							"bh_regions":
 							[
 								"bh_regex",
@@ -1104,35 +629,126 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 728.0,
+						"translation.y": 9019.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "www/js/data.js",
+					"file": "www/js/directives.js",
 					"settings":
 					{
-						"buffer_size": 18999,
+						"buffer_size": 6643,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15381,
-								15381
+								1390,
+								1390
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
 							"bh_regions":
 							[
 								"bh_regex",
@@ -1180,392 +796,97 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1089.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "www/js/local-storage.js",
-					"settings":
-					{
-						"buffer_size": 9381,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8926,
-								8926
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4854.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "www/templates/news.html",
-					"settings":
-					{
-						"buffer_size": 691,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								691,
-								691
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "www/templates/data.html",
-					"settings":
-					{
-						"buffer_size": 673,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								477,
-								477
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "www/json/content/343984.json",
-					"settings":
-					{
-						"buffer_size": 5380,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "www/templates/menu.html",
-					"settings":
-					{
-						"buffer_size": 975,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								975,
-								975
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 211.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1579,7 +900,7 @@
 	},
 	"input":
 	{
-		"height": 33.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -1606,7 +927,7 @@
 	"menu_visible": true,
 	"replace":
 	{
-		"height": 64.0
+		"height": 0.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1615,532 +936,44 @@
 		"selected_items":
 		[
 			[
-				"app",
-				"www/js/app.js"
-			],
-			[
 				"app.js",
 				"myCDC/www/js/app.js"
+			],
+			[
+				"app",
+				"myCDC/www/js/app.js"
+			],
+			[
+				"local-stor",
+				"myCDC/www/js/local-storage.js"
 			],
 			[
 				"data",
 				"myCDC/www/js/data.js"
 			],
 			[
-				"local",
-				"www/js/local-storage.js"
-			],
-			[
-				".plist",
-				"platforms/ios/CDC General App/CDC General App-Info.plist"
+				"controllers",
+				"myCDC/www/js/controllers.js"
 			],
 			[
 				"index",
 				"www/index.html"
-			],
-			[
-				"pod",
-				"www/templates/podcasts.html"
-			],
-			[
-				"controll",
-				"www/js/controllers.js"
-			],
-			[
-				"lo",
-				"www/js/local-storage.js"
-			],
-			[
-				"menu",
-				"www/templates/menu.html"
-			],
-			[
-				"style",
-				"www/css/style.css"
-			],
-			[
-				"controller",
-				"www/js/controllers.js"
-			],
-			[
-				"menu.h",
-				"www/templates/menu.html"
-			],
-			[
-				"config.j",
-				"www/json/config.json"
-			],
-			[
-				"loca",
-				"www/js/local-storage.js"
-			],
-			[
-				"app.",
-				"www/js/app.js"
-			],
-			[
-				"controllers",
-				"www/js/controllers.js"
-			],
-			[
-				"dir",
-				"GeneralApp/www/js/directives.js"
-			],
-			[
-				"dire",
-				"GeneralApp/www/js/directives.js"
-			],
-			[
-				"inter",
-				"3.0/js/interstitial.js"
-			],
-			[
-				"bread",
-				"3.0/js/modules/breadcrumbs.js"
-			],
-			[
-				"glo",
-				"3.0/js/global.js"
-			],
-			[
-				"gl",
-				"3.0/js/global.js"
-			],
-			[
-				"leftnav.js",
-				"3.0/js/modules/leftnav.js"
-			],
-			[
-				"samplecontent",
-				"3.0/modules/other/sampleContentPage.html"
-			],
-			[
-				"js-app-i",
-				"3.0/includes/js-app-init.html"
-			],
-			[
-				"grunt",
-				"build/Gruntfile.js"
-			],
-			[
-				"media.html",
-				"modules/other/media.html"
-			],
-			[
-				"resp",
-				"js/modules/responsive.js"
-			],
-			[
-				"two",
-				"3.0/less/twocolumn.less"
-			],
-			[
-				"one",
-				"3.0i/less/onecolumn.less"
-			],
-			[
-				"boots",
-				"css/lib/bootstrap24.css"
-			],
-			[
-				"bootstra",
-				"css/lib/bootstrap24.css"
-			],
-			[
-				"print",
-				"less/print.less"
-			],
-			[
-				"four",
-				"less/fourcolumn.less"
-			],
-			[
-				"thre",
-				"less/threecolumn.less"
-			],
-			[
-				"bootstr",
-				"css/lib/bootstrap24.css"
-			],
-			[
-				"hori",
-				"modules/other/horizontalNav.html"
-			],
-			[
-				"gadgets.js",
-				"js/modules/dynamic/gadgets.js"
-			],
-			[
-				"tabs",
-				"modules/gadgets/tabs.html"
-			],
-			[
-				"accor",
-				"modules/gadgets/accordion.html"
-			],
-			[
-				"leftnav",
-				"local/includes/leftNav.html"
-			],
-			[
-				"",
-				"js/jquery-funcs.js"
-			],
-			[
-				"mobile",
-				"js/modules/dynamic/mobile.js"
-			],
-			[
-				"jquery-ui",
-				"less/jquery-ui.less"
-			],
-			[
-				"retina",
-				"less/retina.less"
-			],
-			[
-				"global",
-				"js/global.js"
-			],
-			[
-				"retin",
-				"less/retina.less"
-			],
-			[
-				"search.js",
-				"js/modules/search.js"
-			],
-			[
-				"search",
-				"less/search.less"
-			],
-			[
-				"reti",
-				"less/retina.less"
-			],
-			[
-				"bootstrap3.",
-				"3.2/css/lib/bootstrap3.2.css"
-			],
-			[
-				"head",
-				"3.2/includes/head.html"
-			],
-			[
-				"coll",
-				"3.0/modules/demo/collapsibleContent.html"
-			],
-			[
-				"search.less",
-				"3.0/less/search.less"
-			],
-			[
-				"search2",
-				"3.0/less/search2.less"
-			],
-			[
-				"localsearch",
-				"3.0/local/includes/localSearch.html"
-			],
-			[
-				"media.js",
-				"3.0/js/modules/dynamic/media.js"
-			],
-			[
-				"socialmediashare",
-				"3.0/includes/socialMediaShare.html"
-			],
-			[
-				"socialmedia.html",
-				"3.0/modules/gadgets/socialMedia.html"
-			],
-			[
-				"media.s",
-				"js/modules/dynamic/media.js"
-			],
-			[
-				"sprites",
-				"less/sprites.less"
-			],
-			[
-				"media-",
-				"js/libs/mediaelement-and-player.min.js"
-			],
-			[
-				"searchpage",
-				"3.0/modules/demo/searchPage.html"
-			],
-			[
-				"con",
-				"3.0/js/constants.js"
-			],
-			[
-				"g",
-				"3.0/js/global.js"
-			],
-			[
-				"jquer",
-				"3.0/includes/jquery-ui-css.html"
-			],
-			[
-				"res",
-				"3.0/js/modules/responsive.js"
-			],
-			[
-				"glob",
-				"3.0/js/global.js"
-			],
-			[
-				"featurehome",
-				"modules/demo/featureHomePage.html"
-			],
-			[
-				"leftnavh",
-				"3.0/modules/local/includes/leftNavHuge.html"
-			],
-			[
-				"left",
-				"local/includes/leftNav.html"
-			],
-			[
-				"leftnavsm",
-				"modules/local/includes/leftNavSmall.html"
-			],
-			[
-				"fourth",
-				"modules/spec/fourthLevelNav.html"
-			],
-			[
-				"respon",
-				"js/modules/responsive.js"
-			],
-			[
-				"respons",
-				"js/modules/responsive.js"
-			],
-			[
-				"block",
-				"modules/flex/block.html"
-			],
-			[
-				"mobil",
-				"js/modules/dynamic/mobile.js"
-			],
-			[
-				"colors",
-				"less/colors.less"
-			],
-			[
-				"a2z",
-				"less/a2z.less"
-			],
-			[
-				"a",
-				"includes/a2z.html"
-			],
-			[
-				"sprit",
-				"less/sprites.less"
-			],
-			[
-				"mixin",
-				"less/mixins.less"
-			],
-			[
-				"consta",
-				"less/constants.less"
-			],
-			[
-				"search.html",
-				"includes/search.html"
-			],
-			[
-				"featu",
-				"3.0/modules/demo/featureHomePage.html"
-			],
-			[
-				"feat",
-				"3.0/modules/demo/featureHomePage.html"
-			],
-			[
-				"pictur",
-				"3.0/js/libs/picturefill.js"
-			],
-			[
-				"blo",
-				"3.0/modules/flex/block.html"
-			],
-			[
-				"f",
-				"3.0/less/fonts.less"
-			],
-			[
-				"fon",
-				"less/fonts.less"
-			],
-			[
-				"core",
-				"js/core.js"
-			],
-			[
-				"common",
-				"less/common.less"
-			],
-			[
-				"ex",
-				"modules/tests/boundary/externalIcons.html"
-			],
-			[
-				"exter",
-				"modules/tests/boundary/externalIcons.html"
-			],
-			[
-				"social",
-				"js/modules/socialmedia.js"
-			],
-			[
-				"non-res",
-				"less/non-responsive.less"
-			],
-			[
-				"three",
-				"less/threecolumn.less"
-			],
-			[
-				"const",
-				"less/constants.less"
-			],
-			[
-				"m",
-				"less/mixins.less"
-			],
-			[
-				"page",
-				"js/modules/pageoptions.js"
-			],
-			[
-				"breadr",
-				"js/modules/breadcrumbs.js"
-			],
-			[
-				"modules",
-				"prototype1a/less/modules.less"
-			],
-			[
-				"images.l",
-				"less/images.less"
-			],
-			[
-				"index1",
-				"homepage/index1.html"
-			],
-			[
-				"index3",
-				"homepage/index3.html"
-			],
-			[
-				"homepage2a",
-				"less/homepage2a.less"
-			],
-			[
-				"index2a",
-				"homepage/index2a.html"
-			],
-			[
-				"homepage2.l",
-				"less/homepage2.less"
-			],
-			[
-				"index2",
-				"homepage/index2.html"
-			],
-			[
-				"homepage3",
-				"less/homepage3.less"
-			],
-			[
-				"slider",
-				"modules/gadgets/flexSlider.html"
-			],
-			[
-				"var",
-				"less/variables.less"
-			],
-			[
-				"inde",
-				"homepage/index.html"
-			],
-			[
-				"home",
-				"less/homepage2.less"
-			],
-			[
-				"single",
-				"modules/spec/single.html"
-			],
-			[
-				"d",
-				"homepage/js/d3.v3.min.js"
-			],
-			[
-				"d3",
-				"homepage/js/d3.v3.min.js"
-			],
-			[
-				"reson",
-				"js/modules/responsive.js"
-			],
-			[
-				"intera",
-				"homepage/js/interactive_map.js"
-			],
-			[
-				"homepage2",
-				"less/homepage2.less"
-			],
-			[
-				"patten",
-				"modules/spec/pattern.html"
-			],
-			[
-				"homepage",
-				"less/homepage.less"
-			],
-			[
-				"homepage/index",
-				"homepage/index2.html"
-			],
-			[
-				"homepage.less",
-				"less/homepage.less"
-			],
-			[
-				"globa",
-				"js/global.js"
-			],
-			[
-				"homepage/inde",
-				"3.0/homepage/index.html"
-			],
-			[
-				"policy",
-				"3.0/js/modules/policy.js"
 			]
 		],
 		"width": 0.0
 	},
 	"select_project":
 	{
-		"height": 500.0,
+		"height": 0.0,
 		"selected_items":
 		[
 		],
-		"width": 380.0
+		"width": 0.0
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 307.0,
+	"side_bar_width": 296.0,
 	"status_bar_visible": true
 }

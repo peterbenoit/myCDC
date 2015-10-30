@@ -6,6 +6,32 @@ angular.module('mycdc.storage', [])
 /**
  * @return {[type]}
  */
+.factory('LocalStorage', function(storeName) {
+
+    var storePrefix = 'myCDC-';
+
+    storeName = storePrefix + storeName;
+
+    return {
+        all: function() {
+            var appdata = window.localStorage['appdata'];
+            if (appdata) {
+                return angular.fromJson(appdata);
+            }
+            return {};
+        },
+        save: function(appdata) {
+            window.localStorage['appdata'] = angular.toJson(appdata);
+        },
+        clear: function() {
+            window.localStorage.removeItem('appdata');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
 .factory('AppStorage', function() {
     return {
         all: function() {
@@ -20,6 +46,44 @@ angular.module('mycdc.storage', [])
         },
         clear: function() {
             window.localStorage.removeItem('appdata');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('SettingsStorage', function() {
+    return {
+        all: function() {
+            var settings = window.localStorage['settings'];
+            if (settings) {
+                return angular.fromJson(settings);
+            }
+            return {
+                // Initial App Setting Values
+                options: [
+                {
+                    name: 'First Option',
+                    checked: true
+                },
+                {
+                    name: 'Second Option',
+                    checked: false
+                },
+                {
+                    name: 'Third Option',
+                    checked: false
+                }],
+                sorting: 'A',
+                range: 30
+            };
+        },
+        save: function(settings) {
+            window.localStorage['settings'] = angular.toJson(settings);
+        },
+        clear: function() {
+            window.localStorage.removeItem('settings');
         }
     };
 })
@@ -156,26 +220,14 @@ angular.module('mycdc.storage', [])
     };
 })
 
+
+
+
 /**
- * @return {[type]}
+ * *******************************************************************************************
+ *                                      BLOGS
+ * *******************************************************************************************
  */
-.factory('DirectorsBlogStorage', function() {
-    return {
-        all: function() {
-            var cdcdirectorsblog = window.localStorage['cdcdirectorsblog'];
-            if (cdcdirectorsblog) {
-                return angular.fromJson(cdcdirectorsblog);
-            }
-            return {};
-        },
-        save: function(cdcdirectorsblog) {
-            window.localStorage['cdcdirectorsblog'] = angular.toJson(cdcdirectorsblog);
-        },
-        clear: function() {
-            window.localStorage.removeItem('cdcdirectorsblog');
-        }
-    };
-})
 
 /**
  * @return {[type]}
@@ -218,6 +270,77 @@ angular.module('mycdc.storage', [])
         }
     };
 })
+
+/**
+ * @return {[type]}
+ */
+.factory('DirectorsBlogsStorage', function() {
+    return {
+        all: function() {
+            var directors = window.localStorage['directors'];
+            if (directors) {
+                return angular.fromJson(directors);
+            }
+            return {};
+        },
+        save: function(directors) {
+            window.localStorage['directors'] = angular.toJson(directors);
+        },
+        clear: function() {
+            window.localStorage.removeItem('directors');
+        }
+    };
+})
+
+
+/**
+ * *******************************************************************************************
+ *                                      AUDIO/VIDEO
+ * *******************************************************************************************
+ */
+
+/**
+ * @return {[type]}
+ */
+.factory('PodcastsStorage', function() {
+    return {
+        all: function() {
+            var pod = window.localStorage['pod'];
+            if (pod) {
+                return angular.fromJson(pod);
+            }
+            return {};
+        },
+        save: function(pod) {
+            window.localStorage['pod'] = angular.toJson(pod);
+        },
+        clear: function() {
+            window.localStorage.removeItem('pod');
+        }
+    };
+})
+/**
+ * @return {[type]}
+ */
+.factory('YouTubesStorage', function() {
+    return {
+        all: function() {
+            var youtube = window.localStorage['youtube'];
+            if (youtube) {
+                return angular.fromJson(youtube);
+            }
+            return {};
+        },
+        save: function(youtube) {
+            window.localStorage['youtube'] = angular.toJson(youtube);
+        },
+        clear: function() {
+            window.localStorage.removeItem('youtube');
+        }
+    };
+})
+
+
 
 /**
  * @return {[type]}
@@ -409,26 +532,6 @@ angular.module('mycdc.storage', [])
     };
 })
 
-/**
- * @return {[type]}
- */
-.factory('PodcastsStorage', function() {
-    return {
-        all: function() {
-            var pod = window.localStorage['pod'];
-            if (pod) {
-                return angular.fromJson(pod);
-            }
-            return {};
-        },
-        save: function(pod) {
-            window.localStorage['pod'] = angular.toJson(pod);
-        },
-        clear: function() {
-            window.localStorage.removeItem('pod');
-        }
-    };
-})
 
 /**
  * @return {[type]}
@@ -449,5 +552,51 @@ angular.module('mycdc.storage', [])
             window.localStorage.removeItem('phil');
         }
     };
-});
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('CDCAtwsStorage', function() {
+    return {
+        all: function() {
+            var atw = window.localStorage['atw'];
+            if (atw) {
+                return angular.fromJson(atw);
+            }
+            return {};
+        },
+        save: function(atw) {
+            window.localStorage['atw'] = angular.toJson(atw);
+        },
+        clear: function() {
+            window.localStorage.removeItem('atw');
+        }
+    };
+})
+
+/**
+ * @return {[type]}
+ */
+.factory('HomeStreamStorage', function() {
+    return {
+        all: function() {
+            var homestream = window.localStorage['homestream'];
+            if (homestream) {
+                return angular.fromJson(homestream);
+            }
+            return {};
+        },
+        save: function(homestream) {
+            window.localStorage['homestream'] = angular.toJson(homestream);
+        },
+        clear: function() {
+            window.localStorage.removeItem('homestream');
+        }
+    };
+})
+
+
+
+;
 
