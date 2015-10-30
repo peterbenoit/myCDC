@@ -9,23 +9,90 @@ angular.module('mycdc.data', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.factory('AppData', function($http, $q, AppStorage) {})
 
-/**
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
- * @return {[type]}
- */
+.factory('DataFactory', function($http, $cordovaNetwork, $timeout, LocalStorageFactory) {
+
+    return function (strName, objHttpOptions, fctProcessor, fctError) {
+
+        var promise, factoryData = [], service = {};
+
+        service.factoryName = strName + 'Factory';
+        service.dataName = strName + 'Data';
+        service.storeName = strName + 'Store';
+        service.store = LocalStorageFactory(service.factoryName);
+
+        fctProcessor = fctProcessor || function(d){
+            return d.data;
+        };
+
+        // HTTP DEFAULT
+        objHttpOptions = objHttpOptions || {};
+        objHttpOptions.method = objHttpOptions.method || 'GET';
+        objHttpOptions.timeout = objHttpOptions.timeout || 5000;
+        objHttpOptions.url = objHttpOptions.url || 'json/conf.json';
+
+        service.async = function(blnRefresh) {
+            blnRefresh = blnRefresh || false;
+
+            if (blnRefresh || !service.promise) {
+
+                // CREATE THE PROMISE
+                if (objHttpOptions.url) {
+                    service.promise = $http(objHttpOptions);
+                } else {
+                    service.promise = $timeout(function(){
+                        console.log('NO URL PROVIDED FOR FACTORY ' + service.factoryName)
+                    }, 0);
+                }
+
+                if (fctProcessor) {
+                    service.promise.then(function(d) {
+                        factoryData = fctProcessor(d);
+                    });
+                };
+
+                service.promise.then(function(d) {
+                    service.store.save(factoryData);
+                });
+
+                service.promise.catch(function() {
+                    factoryData = service.store.all();
+
+                    if (fctError) {
+                        fctError();
+                    }
+
+                    service.promise.reject();
+                });
+
+                service.promise.finally(function() {});
+
+            }
+
+            return service.promise;
+        };
+
+        service.getAll = function() {
+            return factoryData;
+        };
+
+        service.get = function(idx) {
+            return factoryData[idx];
+        };
+
+        return service;
+    };
+})
+/*
 .factory('MenuData', function($http, $q, MenuStorage, $cordovaNetwork) {
-      var deferred = $q.defer(),
+    var deferred = $q.defer(),
         promise = deferred.promise,
         data = [],
         service = {};
 
-        // if (window.device) {
-        //     alert(rs.isOnline);
-        // }
+    // if (window.device) {
+    //     alert(rs.isOnline);
+    // }
 
     service.async = function() {
         var start = new Date().getTime(),
@@ -45,8 +112,7 @@ angular.module('mycdc.data', [])
 
             if (window.plugins && window.plugins.toast) {
                 window.plugins.toast.showShortTop(time);
-            }
-            else {
+            } else {
                 console.log(time);
             }
 
@@ -71,7 +137,7 @@ angular.module('mycdc.data', [])
     };
 
     return service;
-})
+})*/
 
 /**
  * @param  {[type]}
@@ -89,47 +155,41 @@ angular.module('mycdc.data', [])
         service = {},
         hasImage = false;
 
-        // WARN: social cards should not be configured here
-        var getRandom = function(max, min) {
-                return Math.floor(Math.random() * (max - min + 1));
-            },
-            socialcards = [
-            {
-                name: 'Facebook',
-                description: '',
-                url: '#/app/Facebook',
-                image: 'img/facebook.png'
-            },
-            {
-                name: 'Twitter',
-                description: '',
-                url: '#/app/Twitter',
-                image: 'img/twitter.png'
-            },
-            {
-                name: 'Instagram',
-                description: '',
-                url: 'https://instagram.com/cdcgov/',
-                image: 'img/instagram.png'
-            },
-            {
-                name: 'Google+',
-                description: '',
-                url: 'https://plus.google.com/+CDC/posts',
-                image: 'img/googleplus.png'
-            },
-            {
-                name: 'Pinterest',
-                description: '',
-                url: 'https://www.pinterest.com/cdcgov/',
-                image: 'img/pinterest.png'
-            },
-            {
-                name: 'Flickr',
-                description: '',
-                url: 'https://www.flickr.com/photos/CDCsocialmedia',
-                image: 'img/flickr.png'
-            }];
+    // WARN: social cards should not be configured here
+    var getRandom = function(max, min) {
+            return Math.floor(Math.random() * (max - min + 1));
+        },
+        socialcards = [{
+            name: 'Facebook',
+            description: '',
+            url: '#/app/Facebook',
+            image: 'img/facebook.png'
+        }, {
+            name: 'Twitter',
+            description: '',
+            url: '#/app/Twitter',
+            image: 'img/twitter.png'
+        }, {
+            name: 'Instagram',
+            description: '',
+            url: 'https://instagram.com/cdcgov/',
+            image: 'img/instagram.png'
+        }, {
+            name: 'Google+',
+            description: '',
+            url: 'https://plus.google.com/+CDC/posts',
+            image: 'img/googleplus.png'
+        }, {
+            name: 'Pinterest',
+            description: '',
+            url: 'https://www.pinterest.com/cdcgov/',
+            image: 'img/pinterest.png'
+        }, {
+            name: 'Flickr',
+            description: '',
+            url: 'https://www.flickr.com/photos/CDCsocialmedia',
+            image: 'img/flickr.png'
+        }];
 
 
     service.async = function() {
@@ -148,29 +208,11 @@ angular.module('mycdc.data', [])
             for (var i = data.length - 1; i >= 0; i--) {
                 datum = data[i];
 
-                // format the dateModified
-                time = moment(datum.datePublished);
-                datum.datePublished = time.format('MMMM Do, YYYY');
-
                 // remove html from name
                 datum.name = datum.name.replace(/<[^>]+>/gm, '');
 
                 // remove html from description
                 datum.description = datum.description.replace(/<[^>]+>/gm, '');
-
-                // if there's an enclosure
-                if (datum.enclosures.length) {
-                    var enclosures = datum.enclosures;
-
-                    // look for the image enclosure
-                    for (var j = enclosures.length - 1; j >= 0; j--) {
-                        if (enclosures[j].contentType.indexOf('image') > -1) {
-                            hasImage = true;
-                            datum.imageSrc = enclosures[j].resourceUrl;
-                            break;
-                        }
-                    }
-                }
 
                 // If there are any tags, look for the ContentGroup to identify it (and it's path) here for use in the template
                 if (datum.tags.length) {
@@ -287,8 +329,7 @@ angular.module('mycdc.data', [])
 
             if (window.plugins && window.plugins.toast) {
                 window.plugins.toast.showShortTop(time);
-            }
-            else {
+            } else {
                 console.log(time);
             }
 
@@ -333,7 +374,7 @@ angular.module('mycdc.data', [])
     service.getAll = function(arr) {
         var newdata = [];
 
-console.log(arr);
+        console.log(arr);
 
 
         // for (var i = 0; i < data.length; i++) {
@@ -355,8 +396,7 @@ console.log(arr);
     service.getId = function(idx) {
         if (data.length) {
             return data[idx].id;
-        }
-        else {
+        } else {
             return 0;
         }
     };
@@ -394,46 +434,12 @@ console.log(arr);
         then(function(d) {
             data = d.data.results;
 
-            if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
+            if (1 == 1) {
+                /*NORMALIZER*/
 
                 DotwStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = DotwStorage.all();
                 deferred.reject();
 
@@ -460,8 +466,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -479,8 +484,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -532,26 +536,15 @@ console.log(arr);
             timeout: 5000
         }).
         then(function(d) {
-            data = d.data.results[0];   // ONLY THE FIRST
+            data = d.data.results[0]; // ONLY THE FIRST
 
             if (d.data.results.length) {
-                time = moment(data.datePublished);
-                data.datePublished = time.format('MMMM Do, YYYY');
 
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
+                /* FEEDNORMALIZER */
 
                 FluViewStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = FluViewStorage.all();
                 deferred.reject();
 
@@ -590,7 +583,6 @@ console.log(arr);
     };
 })
 
-
 /**
  * @param  {[type]}
  * @param  {[type]}
@@ -627,31 +619,12 @@ console.log(arr);
             data = d.data.results;
 
             if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
 
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
-                isDirty = true;
+                /* FEEDNORMALIZER */
 
                 CDCAtwsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = CDCAtwsStorage.all();
                 deferred.reject();
 
@@ -676,8 +649,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -695,8 +667,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -754,46 +725,12 @@ console.log(arr);
         then(function(d) {
             data = d.data.results;
 
-            if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
+            if (1 == 1) {
+                /* FEED NORMALIZER */
 
                 HealthArticlesStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = HealthArticlesStorage.all();
                 deferred.reject();
 
@@ -820,8 +757,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -839,8 +775,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -894,28 +829,10 @@ console.log(arr);
             data = d.data.results;
 
             if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
+                /* FEED NORMALIZER */
                 VitalSignsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = VitalSignsStorage.all();
                 deferred.reject();
 
@@ -942,8 +859,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -961,8 +877,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1020,46 +935,12 @@ console.log(arr);
         then(function(d) {
             data = d.data.results;
 
-            if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
+            if (1 == 1) {
+                /*NORMALIZER*/
 
                 FastStatsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = FastStatsStorage.all();
                 deferred.reject();
 
@@ -1086,8 +967,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1105,8 +985,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1164,46 +1043,12 @@ console.log(arr);
         then(function(d) {
             data = d.data.results;
 
-            if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
+            if (1 == 1) {
+                /*NORMALIZER*/
 
                 WeeklyCaseCountsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = WeeklyCaseCountsStorage.all();
                 deferred.reject();
 
@@ -1230,8 +1075,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1249,8 +1093,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1306,39 +1149,10 @@ console.log(arr);
             data = d.data.results;
 
             if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // remove html from name
-                    datum.name = datum.name.replace(/<[^>]+>/gm, '');
-
-                    // remove html from description
-                    datum.description = datum.description.replace(/<[^>]+>/gm, '');
-
-                    // WE ARE NOT SHOWING EID IMAGES
-                    datum.hasImage = false;
-                }
-
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
-                isDirty = true;
+                /*stripHtml*/
                 EIDsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = EIDsStorage.all();
                 deferred.reject();
 
@@ -1365,8 +1179,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1375,8 +1188,7 @@ console.log(arr);
                     }
                 }
             }
-        }
-        else {
+        } else {
             debugger;
         }
     };
@@ -1387,8 +1199,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1446,46 +1257,12 @@ console.log(arr);
         then(function(d) {
             data = d.data.results;
 
-            if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
+            if (1 == 1) {
+                /*NORMALIZER*/
 
                 MMWRsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = MMWRsStorage.all();
                 deferred.reject();
 
@@ -1512,8 +1289,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1531,8 +1307,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1592,31 +1367,10 @@ console.log(arr);
             data = d.data.results;
 
             if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // WE ARE NOT SHOWING PCD images
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
+                /*feedNormalizer*/
                 PCDsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = PCDsStorage.all();
                 deferred.reject();
 
@@ -1643,8 +1397,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1662,8 +1415,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1722,46 +1474,10 @@ console.log(arr);
             data = d.data.results;
 
             if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                console.log(enclosures[j].contentType);
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
+                /*feedNormalizer*/
                 NewsroomsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = NewsroomsStorage.all();
                 deferred.reject();
 
@@ -1788,8 +1504,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1807,8 +1522,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1861,32 +1575,10 @@ console.log(arr);
             data = d.data.results;
 
             if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-
-                    // flag these as outbreaks
-                    datum.isOutbreak = true;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
+               /* FLAGOUTBREAK */
                 OutbreaksStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = NewsroomsStorage.all();
                 deferred.reject();
 
@@ -1913,8 +1605,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1932,8 +1623,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -1997,15 +1687,13 @@ console.log(arr);
 
                 if (window.plugins && window.plugins.toast) {
                     window.plugins.toast.showShortTop(time);
-                }
-                else {
+                } else {
                     console.log(time);
                 }
 
                 TravelNoticesStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = TravelNoticesStorage.all();
                 deferred.reject();
 
@@ -2032,8 +1720,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -2051,8 +1738,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -2097,46 +1783,12 @@ console.log(arr);
         then(function(d) {
             data = d.data.results;
 
-            if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
+            if (1 == 1) {
+                /*NORMALIZER*/
 
                 PodcastsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = PodcastsStorage.all();
                 deferred.reject();
 
@@ -2163,8 +1815,7 @@ console.log(arr);
     service.getId = function(idx) {
         if (data.length) {
             return data[idx].id;
-        }
-        else {
+        } else {
             return 0;
         }
     };
@@ -2231,47 +1882,10 @@ console.log(arr);
             data = d.data.results;
 
             if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    datum.name = '';
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
+                /* FEED NORMALIZER */
                 PHILsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = PHILsStorage.all();
                 deferred.reject();
 
@@ -2298,8 +1912,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -2317,8 +1930,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -2373,46 +1985,11 @@ console.log(arr);
         then(function(d) {
             data = d.data.results;
 
-            if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
+            if (1 == 1) {
+                /*FEED NORMALIZER*/
                 PHMblogsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = PHMblogsStorage.all();
                 deferred.reject();
 
@@ -2439,8 +2016,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -2458,8 +2034,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -2517,46 +2092,11 @@ console.log(arr);
         then(function(d) {
             data = d.data.results;
 
-            if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
+            if (1 == 1) {
+                /*NORMALIZER*/
                 DirectorsBlogsStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = DirectorsBlogsStorage.all();
                 deferred.reject();
 
@@ -2583,8 +2123,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -2602,8 +2141,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -2663,26 +2201,11 @@ console.log(arr);
             timeout: 5000
         }).
         then(function(d) {
-            data = d.data.results[0];   // only the first (and only?) record
-
-            if (d.data.results.length) {
-                time = moment(data.datePublished);
-                data.datePublished = time.format('MMMM Do, YYYY');
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
+            if (1 == 1) {
+                /* FIRSTONLY */
                 DidYouKnowStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = DidYouKnowStorage.all();
                 deferred.reject();
 
@@ -2750,50 +2273,10 @@ console.log(arr);
             data = d.data.results;
 
             if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    // remove encoding from description
-                    var txt = document.createElement('textarea');
-                    txt.innerHTML = datum.description;
-                    datum.description = txt.value;
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
+                /* STRIPENCODING */
                 FactoftheWeekStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = FactoftheWeekStorage.all();
                 deferred.reject();
 
@@ -2819,8 +2302,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx];
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -2838,8 +2320,7 @@ console.log(arr);
             // data by index
             if (typeof data[idx] !== 'undefined') {
                 return data[idx].sourceUrl;
-            }
-            else {
+            } else {
                 // look for the data by ID
                 for (var i = data.length - 1; i >= 0; i--) {
                     if (data[i].id == idx) {
@@ -2900,47 +2381,10 @@ console.log(arr);
             data = d.data.results;
 
             if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    datum.description = datum.description.split('Comments on this video')[0].trim();
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
+                /* EXTRACTVIDEOCOMMENTS */
                 YouTubesStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = YouTubesStorage.all();
                 deferred.reject();
 
@@ -2970,47 +2414,10 @@ console.log(arr);
             data = d.data.results;
 
             if (d.data.results.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    datum = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(datum.datePublished);
-                    datum.datePublished = time.format('MMMM Do, YYYY');
-
-                    datum.description = datum.description.split('Comments on this video')[0].trim();
-
-                    // if there's an enclosure
-                    if (datum.enclosures.length) {
-                        enclosures = datum.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                datum.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-
-                    datum.hasImage = hasImage;
-                }
-
-                end = new Date().getTime();
-                time = (end - start) / 1000;
-
-                if (window.plugins && window.plugins.toast) {
-                    window.plugins.toast.showShortTop(time);
-                }
-                else {
-                    console.log(time);
-                }
-
+                /* EXTRACTVIDEOCOMMENTS */
                 YouTubesStorage.save(data);
                 deferred.resolve();
-            }
-            else {
+            } else {
                 data = YouTubesStorage.all();
                 deferred.reject();
 
@@ -3037,8 +2444,7 @@ console.log(arr);
     service.getId = function(idx) {
         if (data.length) {
             return data[idx].id;
-        }
-        else {
+        } else {
             return 0;
         }
     };
@@ -3052,8 +2458,7 @@ console.log(arr);
                     return data[i];
                 }
             }
-        }
-        else {
+        } else {
             getData().then(
                 function() {
                     for (var i = data.length - 1; i >= 0; i--) {

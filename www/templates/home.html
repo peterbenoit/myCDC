@@ -1,11 +1,9 @@
 <ion-view view-title="CDC">
     <ion-content class="has-header">
         <ion-list>
-              <ion-item ng-repeat="source in tmpsources" href="{{source.href}}">
+              <ion-item ng-repeat="source in sourceList" href="{{source.href}}">
                     <i class="icon {{source.icon}}"></i> {{source.title}}
               </ion-item>
         </ion-list>
     </ion-content>
 </ion-view>
-
-

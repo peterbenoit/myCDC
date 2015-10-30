@@ -3,37 +3,35 @@
  *  TODO: info.plist NSAppTransportSecurity key needs to be corrected before deployment
  */
 angular.module('mycdc', [
-    'ionic',
-    'mycdc.controllers',
-    'mycdc.data',
-    'mycdc.directives',
-    'mycdc.filters',
-    'mycdc.services',
-    'mycdc.storage',
-    'ngCordova',
-    'ngAnimate',
-    'angular.filter',
-    'ngIOS9UIWebViewPatch'
+        'ionic',
+        'mycdc.controllers',
+        'mycdc.data',
+        'mycdc.directives',
+        'mycdc.filters',
+        'mycdc.services',
+        'mycdc.storage',
+        'ngCordova',
+        'ngAnimate',
+        'angular.filter',
+        'ngIOS9UIWebViewPatch'
     ])
-/*
-add to body class: platform-android
-add to body class: platform-browser
-add to body class: platform-ios
-add to body class: platform-wp8
-*/
+    /*
+    add to body class: platform-android
+    add to body class: platform-browser
+    add to body class: platform-ios
+    add to body class: platform-wp8
+    */
 
 /**
  * @param  {[type]}
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $rootScope, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup) {
-    var rs = $rootScope,
-        href = window.location.href;
+.run(function($ionicPlatform, $rootScope, $location, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup, DataFactory, $http, $filter) {
+    var rs = $rootScope, href = window.location.href;
 
     rs.$state = $state;
     rs.$stateParams = $stateParams;
-    rs.HomeCtrlLoad = false;        // for whatever reason, the HomeCtrl controller loads multiple times; setting a flag here, which is modified in the controller, so it only loads once.
     rs.existsUrl = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
     rs.showleft = false;
 
@@ -41,7 +39,7 @@ add to body class: platform-wp8
     document.addEventListener('deviceready', onDeviceReady, false);
 
     function onDeviceReady() {
-        window.open = cordova.InAppBrowser.open;
+        //window.open = cordova.InAppBrowser.open;
 
         rs.type = $cordovaNetwork.getNetwork();
         rs.isOnline = $cordovaNetwork.isOnline();
@@ -58,28 +56,13 @@ add to body class: platform-wp8
         // listen for Online event
         rs.$on('$cordovaNetwork:online', function(event, networkState) {
             var onlineState = networkState;
-
-            // if (window.plugins && window.plugins.toast) {
-            //     window.plugins.toast.showShortCenter('Welcome Back!');
-            // }
         });
 
         // listen for Offline event
         rs.$on('$cordovaNetwork:offline', function(event, networkState) {
             var offlineState = networkState,
                 isDirty = false;
-
                 console.log(offlineState);
-
-            // if(!isDirty) {
-            //     var alertnotice = $ionicPopup.alert({
-            //         title: 'No Connection',
-            //         template: 'You do not appear to be connected to the Internet. Some content you have downloaded may be out of date.'
-            //     });
-            //     alertnotice.then(function(res) {
-            //         isDirty = true;
-            //     });
-            // }
         });
     }
 
@@ -185,21 +168,6 @@ add to body class: platform-wp8
             }
         }
 
-        // rs.$on('resize', function() {
-        //     console.log('rs resize');
-        // })
-
-        // angular.element($(window)).bind('resize', _.debounce(function() {
-        //     rs.orientation = $('body').hasClass('portrait') ? 'portrait' : 'landscape';
-        //     // rs.$broadcast("resize");
-        //     // rs.$apply();
-
-        //     // rs.$state.reload();..
-        //     //
-        //     // window.document.location.reload();
-
-        // }, 150));
-
         rs.resizeHandler = function () {
 
             var objClasses = {};
@@ -270,6 +238,420 @@ add to body class: platform-wp8
             });
         }
     });
+
+
+
+    rs.dataProcessors = {
+        feedNormalizer: function(d) {
+
+            var time, currItem;
+            var data = d;
+
+            if (data.length) {
+                for (var i = data.length - 1; i >= 0; i--) {
+                    currItem = data[i];
+                    hasImage = false;
+
+                    // format the dateModified
+                    time = moment(currItem.datePublished);
+                    currItem.datePublished = time.format('MMMM Do, YYYY');
+
+                    // if there's an enclosure
+                    if (currItem.enclosures.length) {
+                        enclosures = currItem.enclosures;
+
+                        // look for the image enclosure
+                        for (var j = enclosures.length - 1; j >= 0; j--) {
+                            if (enclosures[j].contentType.indexOf('image') > -1) {
+                                hasImage = true;
+                                currItem.imageSrc = enclosures[j].resourceUrl;
+                                break;
+                            }
+                        }
+                    }
+                    // Add image indicator
+                    currItem.hasImage = hasImage;
+                }
+
+                return data;
+            }
+
+            return [];
+        },
+        processTags: function(d) {
+            var currItem, data = d;
+
+            if (data.length) {
+                for (var i = data.length - 1; i >= 0; i--) {
+                    currItem = data[i];
+
+                    // If there are any tags, look for the ContentGroup to identify it (and it's path) here for use in the template
+                    if (currItem.tags.length) {
+                        var tags = currItem.tags;
+
+                        // look for the ContentGroup enclosure and set the same rules that apply to it in their individual controllers
+                        // also set a path to navigate
+                        for (var k = tags.length - 1; k >= 0; k--) {
+                            if (tags[k].type === 'ContentGroup') {
+                                currItem.contentGroup = tags[k].name;
+
+                                // TODO: consider using config.json for this data
+                                if (currItem.contentGroup === 'EID') {
+                                    currItem.hasImage = false;
+                                    currItem.home = '#/app/EIDS';
+                                    currItem.url = '#/app/EID/';
+                                    break;
+                                }
+
+                                if (currItem.contentGroup === 'Vital Signs') {
+                                    currItem.hasImage = false;
+                                    currItem.home = '#/app/VitalSigns';
+                                    currItem.url = '#/app/VitalSign/';
+                                    break;
+                                }
+
+                                if (currItem.contentGroup === 'Image of the Week') {
+                                    currItem.name = '';
+                                    currItem.home = '#/app/PHILs';
+                                    currItem.url = '#/app/PHIL/';
+                                    break;
+                                }
+
+                                if (currItem.contentGroup === 'YouTube') {
+                                    currItem.name = '';
+                                    currItem.home = '#/app/YouTubes';
+                                    currItem.url = '#/app/YouTube/';
+                                    break;
+                                }
+
+                                if (currItem.contentGroup === 'MMWR' || currItem.contentGroup === 'MMWR 2016') {
+                                    currItem.name = '';
+                                    currItem.home = '#/app/MMWRS';
+                                    currItem.url = '#/app/MMWR/';
+                                    break;
+                                }
+
+                                if (currItem.contentGroup === 'Public Health Matters Blog') {
+                                    currItem.name = '';
+                                    currItem.home = '#/app/PHMblogs';
+                                    currItem.url = '#/app/PHMblog/';
+                                    break;
+                                }
+
+                                if (currItem.contentGroup === 'Featured Health Articles') {
+                                    currItem.name = '';
+                                    currItem.home = '#/app/healtharticles';
+                                    currItem.url = '#/app/healtharticle/';
+                                    break;
+                                }
+
+                                if (currItem.contentGroup === 'Did You Know?') {
+                                    currItem.name = '';
+                                    currItem.home = '#/app/DYK/0';
+                                    currItem.url = '#/app/DYK/0';
+                                    break;
+                                }
+
+                                if (currItem.contentGroup === 'Outbreaks') {
+                                    currItem.name = '';
+                                    currItem.isOutbreak = true;
+                                    currItem.hasImage = false;
+                                    currItem.home = '#/app/Outbreaks';
+                                    currItem.url = '#/app/Outbreak/';
+                                    break;
+                                }
+
+                                if (currItem.contentGroup === 'Disease of the Week') {
+                                    currItem.name = '';
+                                    currItem.home = '#/app/dotw';
+                                    currItem.url = '#/app/disease/';
+                                    break;
+                                }
+
+                                if (currItem.contentGroup === 'Travel Notices') {
+                                    currItem.home = '#/app/TravelNotices';
+                                    currItem.url = '#/app/TravelNotice/';
+                                    //Warning, Watch, Alert, based off text in the name
+                                    currItem.isAlert = currItem.name.indexOf('Alert') > -1;
+                                    currItem.isWatch = currItem.name.indexOf('Watch') > -1;
+                                    currItem.isWarning = currItem.name.indexOf('Warning') > -1;
+                                    currItem.name = '';
+                                    break;
+                                }
+
+                                if (currItem.contentGroup === 'Newsroom') {
+                                    currItem.home = '#/app/Newsrooms';
+                                    currItem.url = '#/app/Newsroom/';
+                                    currItem.name = '';
+                                    break;
+                                }
+
+                                // WARN: Watch for CGs which don't have a source stream
+                            }
+                        }
+                    }
+                }
+
+                return data;
+            }
+
+            return [];
+        },
+        parseEncoding: function(d) {
+            var currItem, data = d.data.results;
+
+            if (data.length) {
+                for (var i = data.length - 1; i >= 0; i--) {
+                    currItem = data[i];
+                    if (currItem.description) {
+                        // remove encoding from description
+                        var txt = document.createElement('textarea');
+                        txt.innerHTML = currItem.description;
+                        currItem.description = txt.value;
+                    }
+                }
+
+                return data;
+            }
+
+            return [];
+        },
+        stripHtml: function(d) {
+            var currItem, data = d;
+
+            if (data.length) {
+                for (var i = data.length - 1; i >= 0; i--) {
+                    currItem = data[i];
+
+                    // remove html from name
+                    currItem.name = currItem.name.replace(/<[^>]+>/gm, '');
+
+                    // remove html from description
+                    currItem.description = currItem.description.replace(/<[^>]+>/gm, '');
+                }
+
+                return data;
+            }
+
+            return [];
+        },
+        extractVideoComments: function(d) {
+            var currItem, data = d.data.results;
+
+            if (data.length) {
+                for (var i = data.length - 1; i >= 0; i--) {
+                    currItem = data[i];
+                    if (currItem.description) {
+                        currItem.description = currItem.description.split('Comments on this video')[0].trim();
+                    }
+                }
+
+                return data;
+            }
+
+            return [];
+        },
+        flagOutbreak: function(d) {
+            var currItem, data = d.data.results;
+
+            if (data.length) {
+                for (var i = data.length - 1; i >= 0; i--) {
+                    currItem = data[i];
+                    currItem.isOutbreak = true;
+                }
+
+                return data;
+            }
+
+            return [];
+        },
+        firstOnly: function(d) {
+            if (d.data && d.data.results && d.data.results.length) {
+                return d.data.results[0];
+            }
+
+            return null;
+        },
+        defaultHandler: function() {
+            return [];
+        }
+    };
+
+    rs.getLocalStore = (function() {
+
+        var storePrefix = 'myCDC-';
+
+        return function(stateParams) {
+
+            var storeName = storePrefix + stateParams.storeName;
+
+            return {
+                all: function() {
+                    var appdata = window.localStorage[storeName];
+                    if (appdata) {
+                        return angular.fromJson(appdata);
+                    }
+                    return [];
+                },
+                save: function(appdata) {
+                    window.localStorage[storeName] = angular.toJson(appdata);
+                },
+                clear: function() {
+                    window.localStorage.removeItem(storeName);
+                }
+            };
+        };
+    }());
+
+    rs.remoteApi = (function() {
+        var apiDefaults = {
+                    method: 'GET',
+                    timeout: 5000
+                };
+
+        return function(options) {
+            options.method = options.method || apiDefaults.method;
+            options.timeout = options.timeout || apiDefaults.timeout
+            return $http(options);
+        }
+    }());
+
+    // GET SOURCE METADATA FROM SOURCELIST BY NAME (In Route Params)
+    rs.getSourceMeta = function(stateParams) {
+        // PARAMS
+        var arySourceInfo, strSourceName = stateParams.sourceName || stateParams || "";
+
+        // FILTER HERE
+        arySourceInfo = $filter('filter')(rs.sourceList, {
+            name: strSourceName
+        });
+
+        // DID WE FIND IT?
+        if (arySourceInfo.length === 1) {
+
+            // RETURN IT
+            return arySourceInfo[0];
+        }
+
+        // ELSE RETURN FALSE
+        return false;
+    };
+
+    rs.getSourceList = function() {
+        return rs.remoteApi({
+            url: 'json/sources.json'
+        });
+    };
+
+    rs.getSourceIndex = function(stateParams) {
+
+        var localStore, objMetaData, sourceIndexPromise, data;
+
+        objMetaData = rs.getSourceMeta(stateParams);
+        localStore = rs.getLocalStore(stateParams);
+
+        if (objMetaData) {
+
+            sourceIndexPromise = rs.remoteApi({
+                url: objMetaData.url
+            });
+
+            sourceIndexPromise.then(function(d) {
+
+                var processor;
+
+                data = (d.data && d.data.results) ? d.data.results : [];
+                console.log(data);
+
+                // DID WE GET DATA?
+                if (data.length > 0) {
+
+                    // PROCESS DATA (IF NEEDED)
+                    if (objMetaData.processors && objMetaData.processors.length) {
+
+                        // REVERSE ARRA SINCE FOR REVERSE LOOP
+                        objMetaData.processors.reverse();
+
+                        // REVERSE LOOP THROUGH PROCESSORS
+                        for (var i = objMetaData.processors.length - 1; i >= 0; i--) {
+                            processor = objMetaData.processors[i];
+                            data = rs.dataProcessors[processor].call(this, data);
+                        };
+                    }
+
+                    //SAVE IT TO LOCAL
+                    localStore.save(data);
+
+                    // SAVE IT TO RS
+                    rs.sourceIndex = data;
+                }
+
+                //RETURN IT IN THE PROMISE CHAIN
+                return data;
+            }, function(e) {
+
+                // ON ERROR, RETURN WHAT WE HAVE IN LOCAL STORAGE
+                return localStore.all();
+            });
+
+            return sourceIndexPromise;
+        }
+    };
+
+    rs.getSourceDetail = function(stateParams) {
+        var objMetaData, sourceDetailPromise, data;
+
+        objMetaData = rs.getSourceMeta(stateParams);
+
+        if (1 == 1) {
+            sourceDetailPromise = rs.remoteApi({
+                url: rs.getNoChromeUrl()
+            });
+        }
+    };
+
+    rs.getNoChromeUrl = function(url) {
+        var sourceurl = DotwData.getSourceUrl($stateParams.idx),
+            filename = sourceurl.split('/').pop(),
+            newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
+            nochromeurl = sourceurl.replace(filename, newfilename);
+
+        return nochromeurl;
+    };
+
+    rs.appInit = function(blnRefresh) {
+
+        // REFRESH REQUESTED?
+        if (blnRefresh || !rs.sourceListPromise || false) {
+
+            console.log('appInit Refresh');
+
+            // GET & SAVE THE SOURCE LIST PROMISE
+            rs.sourceListPromise = rs.getSourceList();
+
+            // CONTINUE PROMISE CHAIN
+            rs.sourceListPromise.then(function(d) {
+
+                //TRIM OUT UNNESESSARY DATA FROM RETURN
+                rs.sourceList = d.data;
+
+                // RETURN TRIMMED DATA TO CHAIN
+                return rs.sourceList;
+            });
+        }
+
+        // RETURN THE SOURCE LIST PROMISE
+        return rs.sourceListPromise;
+    };
+
+    /*
+    $ionicPlatform.ready(function() {
+         rs.appInit(function(d) {
+              console.log('d');
+              console.log(d);
+         });
+    });
+    */
 })
 
 /**
@@ -279,577 +661,233 @@ add to body class: platform-wp8
  */
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-    $ionicConfigProvider.navBar.transition('none');     // keep the navbar from animating
+    $ionicConfigProvider.navBar.transition('none'); // keep the navbar from animating
 
     // TODO: consider using this for "lower" end devices
     // $ionicConfigProvider.views.transition('none');      // keep the views from animating
 
-    var templateHandler = function(strMode, strPrefix, strPath) {
+    // STANDARD TEMPLATE HANDLER
+    var defaultTemplateHandler = function(strMode, strPrefix, strPath) {
+
         strMode = strMode || 'static';
         strPrefix = strPrefix || 'stream';
         strPath = strPath || 'templates/';
+        var strReturn;
+
         // DYNAMIC HANDLER (MULTIPLE TEMPLATES BASED ON OS & ORIENTATION)
         if (strMode === 'dynamic') {
+
             // RETURN HANDLER METHOD
-            return function() {
-                if (ionic.Platform.is('androidtablet')) {
-                    return strPath + strPrefix + '-tablet.html';
-                }
-                if (ionic.Platform.isAndroid()) {
-                    return strPath + strPrefix + '.html';
-                }
-                if (ionic.Platform.isIPad()) {
-                    return strPath + strPrefix + '-tablet.html';
-                }
-                if (ionic.Platform.isIOS()) {
-                    return strPath + strPrefix + '.html';
-                }
-                if (ionic.Platform.isWindowsPhone()) {
-                    return strPath + strPrefix + '.html';
-                }
-            };
+            if (ionic.Platform.is('androidtablet')) {
+                strReturn = strPath + strPrefix + '-tablet.html';
+            }
+            if (ionic.Platform.isAndroid()) {
+                strReturn = strPath + strPrefix + '.html';
+            }
+            if (ionic.Platform.isIPad()) {
+                strReturn = strPath + strPrefix + '-tablet.html';
+            }
+            if (ionic.Platform.isIOS()) {
+                strReturn = strPath + strPrefix + '.html';
+            }
+            if (ionic.Platform.isWindowsPhone()) {
+                strReturn = strPath + strPrefix + '.html';
+            }
+
         } else {
+
             // STATIC MODE (strMode becomes the path and file name of template to be used)
             // RETURN FILE PATH & NAME
-            return strMode
+            strReturn = strMode
         }
+
+        console.log('Derived Template is ' + strReturn);
+
+        return strReturn;
     };
 
-    $stateProvider
+    // PARAMETERIZED IIFE FOR TEMPLATE SELECTION BY STATE PARAMS
+    var stateTemplateHandler = (function(fctDefaultHandler) {
 
-    .state('app', {
+        var defaultHandler = fctDefaultHandler;
+
+        return function($stateParams) {
+
+            var strMode, strPrefix,
+                sourceIndexMode = "dynamic",
+                sourceIndexPrefix = "stream",
+                sourceDetailMode = "static",
+                sourceDetailPrefix = "templates/article.html";
+
+            switch ($stateParams.sourceName.toLowerCase()) {
+
+                // FACT SHEETS
+                case 'dyk':
+                case 'factoftheweek':
+                    sourceDetailMode = "static";
+                    sourceDetailMode = "templates/fact.html";
+                    break;
+
+                    // EMBEDS
+                case 'dotw':
+                case 'healtharticles':
+                case 'newsrooms':
+                case 'outbreaks':
+                case 'travelnotices':
+                    sourceDetailMode = "static";
+                    sourceDetailPrefix = "templates/embed.html";
+                    break;
+
+                    // BLOGS
+                case 'cdcdirectorsblog':
+                case '247blogs':
+                case 'phmblogs':
+                    sourceDetailMode = "static";
+                    sourceDetailPrefix = "templates/blog.html";
+                    break;
+
+                    // DATA SHEETS
+                case 'faststats':
+                case 'weeklydiseasecasecounts':
+                    sourceDetailMode = "static";
+                    sourceDetailPrefix = "templates/data.html";
+                    break;
+
+                    // JOURNALS
+                case 'eids':
+                case 'mmwr':
+                case 'pcds':
+                    sourceDetailMode = "static";
+                    sourceDetailPrefix = "templates/journal.html";
+                    break;
+
+                    // IMAGES
+                case 'phils':
+                case 'flickrs':
+                    sourceIndexMode = "static",
+                        sourceIndexPrefix = "stream-images",
+                        sourceDetailMode = "static";
+                    sourceDetailPrefix = "templates/journal.html";
+                    break;
+
+                    // PODCASTS
+                case 'podcasts':
+                    sourceDetailMode = "static";
+                    sourceDetailPrefix = "templates/audio.html";
+                    break;
+
+                    // YOUTUBE
+                case 'youtube':
+                    sourceDetailMode = "static";
+                    sourceDetailPrefix = "templates/video.html";
+                    break;
+
+                    // FACEBOOK
+                case 'facebook':
+                    sourceDetailMode = "static";
+                    sourceDetailPrefix = "templates/landing-facebook.html";
+                    break;
+
+                    // TWITTER
+                case 'twitter':
+                    sourceDetailMode = "static";
+                    sourceDetailPrefix = "templates/landing-twitter.html";
+                    break;
+
+                    // ARTICLES
+                default:
+                    // cdcatws, vitalsigns, fluview
+                    break;
+            }
+
+            if ($stateParams.sourceDetail || false) {
+                strMode = sourceDetailMode;
+                strPrefix = sourceDetailPrefix;
+            } else {
+                strMode = sourceIndexMode;
+                strPrefix = sourceIndexPrefix;
+            }
+
+            console.log('$stateParams from stateTemplateHandler');
+            console.log($stateParams);
+            console.log('strMode from stateTemplateHandler');
+            console.log(strMode);
+            console.log('strPrefix from stateTemplateHandler');
+            console.log(strPrefix);
+            console.log(defaultHandler(strMode, strPrefix));
+
+            return defaultHandler(strMode, strPrefix);
+        }
+    }(defaultTemplateHandler));
+
+
+    var sp = $stateProvider;
+
+    sp.state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: templateHandler('templates/menu.html'),
+        templateUrl: defaultTemplateHandler('templates/menu.html'),
         controller: 'HomeCtrl'
-        // controller: 'AppCtrl'
-    })
+    });
 
     // WARN: this is temporary
-    .state('app.homestream', {
+    sp.state('app.homestream', {
         url: '/homestream',
         views: {
             'menuContent': {
-                templateUrl: templateHandler('dynamic','stream-home'),
+                templateUrl: defaultTemplateHandler('dynamic', 'stream-home'),
                 controller: 'HomeCtrl'
             }
         }
-    })
+    });
 
-    .state('app.home', {
+    sp.state('app.home', {
         url: '/home',
         views: {
             'menuContent': {
-                templateUrl: templateHandler('dynamic','home'),
+                templateUrl: defaultTemplateHandler('templates/home.html'),
                 controller: 'HomeCtrl'
             }
         }
-    })
+    });
 
-    .state('app.settings', {
+    sp.state('app.settings', {
         url: '/settings',
         views: {
             'menuContent': {
-                templateUrl: templateHandler('templates/settings.html'),
+                templateUrl: defaultTemplateHandler('templates/settings.html'),
                 controller: 'SettingsCtrl'
             }
         }
-    })
+    });
 
-    .state('app.civdemo', {
+    sp.state('app.civdemo', {
         url: '/civdemo',
         views: {
             'menuContent': {
-                templateUrl: templateHandler('templates/civ-demo.html')
+                templateUrl: defaultTemplateHandler('templates/civ-demo.html')
             }
         }
-    })
+    });
 
+    sp.state('app.sourceIndex', {
+        url: '/source/:sourceName',
+        views: {
+            'menuContent': {
+                //templateUrl: templateHandler('templates/test.html'),
+                templateUrl: stateTemplateHandler,
+                controller: 'CommonSourceCtrl'
+            }
+        }
+    });
 
-/**
- * Source States
- * Ideally, these would all be dynamic, based off some config file. But I don't know if Angular works that way - yet .
- */
-    // *******************************************************************************************
-    // CDC Around the World
-    // *******************************************************************************************
-    .state('app.cdcatws', {
-        url: '/cdcatws',
+    sp.state('app.sourceDetail', {
+        url: '/source/:sourceName/:sourceDetail',
         views: {
             'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'CDCAtwsCtrl'
-            }
-        }
-    })
-    .state('app.cdcatw', {
-        url: '/cdcatw/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/article.html'),
-                controller: 'CDCAtwCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Disease of the Week
-    // *******************************************************************************************
-    .state('app.DOTW', {
-        url: '/dotw',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'DotwCtrl'
-            }
-        }
-    })
-    .state('app.disease', {
-        url: '/disease/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/embed.html'),
-                controller: 'DiseaseCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // FluView Weekly Summary
-    // *******************************************************************************************
-    .state('app.fluview', {
-        url: '/fluview/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/article.html'),
-                controller: 'FluViewCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Health Articles
-    // *******************************************************************************************
-    .state('app.healtharticles', {
-        url: '/healtharticles',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'HealthArticlesCtrl'
-            }
-        }
-    })
-    .state('app.healtharticle', {
-        url: '/healtharticle/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/embed.html'),
-                controller: 'HealthArticleCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Vital Signs
-    // *******************************************************************************************
-    .state('app.vitalsigns', {
-        url: '/vitalsigns',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'VitalSignsCtrl'
-            }
-        }
-    })
-    .state('app.vitalsign', {
-        url: '/vitalsign/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/article.html'),
-                controller: 'VitalSignCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // CDC Director Blog
-    // *******************************************************************************************
-    .state('app.cdcdirectorsblog', {
-        url: '/cdcdirectorsblog',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'DirectorsBlogsCtrl'
-            }
-        }
-    })
-    .state('app.directorblog', {
-        url: '/directorblog/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/blog.html'),
-                controller: 'DirectorsBlogCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // CDC Works for You 24/7 Blog - currently unused
-    // *******************************************************************************************
-    .state('app.247blogs', {
-        url: '/247blogs',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'StreamCtrl'
-            }
-        }
-    })
-    .state('app.247blog', {
-        url: '/247blog/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/blog.html'),
-                controller: 'BlogCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Public Health Matters Blog
-    // *******************************************************************************************
-    .state('app.PHMblogs', {
-        url: '/PHMblogs',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'PHMblogsCtrl'
-            }
-        }
-    })
-    .state('app.PHMblog', {
-        url: '/PHMblog/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/blog.html'),
-                controller: 'PHMblogCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // FastStats
-    // *******************************************************************************************
-    .state('app.FastStats', {
-        url: '/FastStats',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'FastStatsCtrl'
-            }
-        }
-    })
-    .state('app.FastStat', {
-        url: '/FastStat/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/data.html'),
-                controller: 'FastStatCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Weekly Disease Case Counts
-    // *******************************************************************************************
-    .state('app.WeeklyDiseaseCaseCounts', {
-        url: '/WeeklyDiseaseCaseCounts',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'WeeklyDiseaseCaseCountsCtrl'
-            }
-        }
-    })
-    .state('app.WeeklyDiseaseCaseCount', {
-        url: '/WeeklyDiseaseCaseCount/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/data.html'),
-                controller: 'WeeklyDiseaseCaseCountCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Did You Know
-    // *******************************************************************************************
-    .state('app.DYK', {
-        url: '/DYK/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/fact.html'),
-                controller: 'DYKCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Fact of the Week
-    // *******************************************************************************************
-    .state('app.FactoftheWeek', {
-        url: '/FactoftheWeek',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'FactoftheWeekCtrl'
-            }
-        }
-    })
-    .state('app.Fact', {
-        url: '/Fact/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/fact.html'),
-                controller: 'FOTWCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Emerging Infectious Disease (EID)
-    // *******************************************************************************************
-    .state('app.EIDS', {
-        url: '/EIDS',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'EIDsCtrl'
-            }
-        }
-    })
-    .state('app.EIDx', {
-        url: '/EID/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/journal.html'),
-                controller: 'EIDCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Morbidity and Mortality Weekly Report (MMWR)
-    // *******************************************************************************************
-    .state('app.MMWRS', {
-        url: '/MMWRS',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'MMWRsCtrl'
-            }
-        }
-    })
-    .state('app.MMWR', {
-        url: '/MMWR/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/journal.html'),
-                controller: 'MMWRCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Preventing Chronic Disease (PCD)
-    // *******************************************************************************************
-    .state('app.PCDS', {
-        url: '/PCDS',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'PCDsCtrl'
-            }
-        }
-    })
-    .state('app.PCD', {
-        url: '/PCD/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/journal.html'),
-                controller: 'PCDCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Newsroom
-    // *******************************************************************************************
-    .state('app.Newsrooms', {
-        url: '/Newsrooms',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'NewsroomsCtrl'
-            }
-        }
-    })
-    .state('app.Newsroom', {
-        url: '/Newsroom/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/embed.html'),
-                controller: 'NewsroomCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Outbreaks
-    // *******************************************************************************************
-    .state('app.Outbreaks', {
-        url: '/Outbreaks',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'OutbreaksCtrl'
-            }
-        }
-    })
-    .state('app.Outbreak', {
-        url: '/Outbreak/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/embed.html'),
-                controller: 'OutbreakCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Travel Notices
-    // *******************************************************************************************
-    .state('app.TravelNotices', {
-        url: '/TravelNotices',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'TravelNoticesCtrl'
-            }
-        }
-    })
-    .state('app.TravelNotice', {
-        url: '/TravelNotice/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/embed.html'),
-                controller: 'TravelNoticeCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Image Library
-    // *******************************************************************************************
-    .state('app.PHILs', {
-        url: '/PHILs',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/stream-images.html'),
-                controller: 'PHILsCtrl'
-            }
-        }
-    })
-    .state('app.PHIL', {
-        url: '/PHIL/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/image.html'),
-                controller: 'PHILCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Instagram
-    // *******************************************************************************************
-    .state('app.Instagrams', {
-        url: '/Instagrams',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/stream-images.html'),
-                controller: 'InstagramCtrl'
-            }
-        }
-    })
-    .state('app.Instagram', {
-        url: '/Instagram/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/image.html'),
-                controller: 'ImageCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Flickr
-    // *******************************************************************************************
-    .state('app.Flickrs', {
-        url: '/Flickrs',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/stream-images.html'),
-                controller: 'FlickrCtrl'
-            }
-        }
-    })
-    .state('app.Flickr', {
-        url: '/Flickr/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/image.html'),
-                controller: 'ImageCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // Podcasts
-    // *******************************************************************************************
-    .state('app.Podcasts', {
-        url: '/Podcasts',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'PodcastsCtrl'
-            }
-        }
-    })
-    .state('app.Podcast', {
-        url: '/Podcast/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/audio.html'),
-                controller: 'PodcastCtrl'
-            }
-        }
-    })
-    // *******************************************************************************************
-    // YouTube
-    // *******************************************************************************************
-    .state('app.YouTubes', {
-        url: '/YouTubes',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('dynamic','stream'),
-                controller: 'YouTubesCtrl'
-            }
-        }
-    })
-    .state('app.YouTube', {
-        url: '/YouTube/:idx',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/video.html'),
-                controller: 'YouTubeCtrl'
-            }
-        }
-    })
-    .state('app.Facebook', {
-        url: '/Facebook',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/landing-facebook.html'),
-                controller: 'FacebookCtrl'
-            }
-        }
-    })
-    .state('app.Twitter', {
-        url: '/Twitter',
-        views: {
-            'menuContent': {
-                templateUrl: templateHandler('templates/landing-twitter.html'),
-                controller: 'TwitterCtrl'
+                //templateUrl: templateHandler('templates/test.html'),
+                templateUrl: stateTemplateHandler,
+                controller: 'CommonSourceCtrl'
             }
         }
     });

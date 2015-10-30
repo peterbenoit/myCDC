@@ -18,10 +18,11 @@ angular.module('mycdc.controllers', [])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 })
+
 /**
- * @param  {[type]}
- * @param  {[type]}
- * @param  {[type]}
+ * @param {[type]}
+ * @param {[type]}
+ * @param {[type]}
  * @return {[type]}
  */
 .controller('SettingsCtrl', function($scope, SettingsStorage, $cordovaNetwork) {
@@ -50,7 +51,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  * Note: This should really be AppCtrl and HomeCtrl saved for the home stream
  */
-.controller('HomeCtrl', function($scope, $ionicPlatform, $ionicLoading, $timeout, $rootScope, $ionicPopover, $ionicHistory, returnToState, MenuData, MenuStorage, HomeStreamData, HomeStreamStorage, $cordovaNetwork) {
+.controller('HomeCtrl', function($scope, $ionicPlatform, $ionicLoading, $timeout, $rootScope, $ionicPopover, $ionicHistory, returnToState, $stateParams, $cordovaNetwork) {
     $scope.menu = [];
     $scope.storage = '';
 
@@ -63,8 +64,7 @@ angular.module('mycdc.controllers', [])
 
             // source streams are always the statename + s
             returnToState(sn + 's');
-        }
-        else {
+        } else {
             $ionicHistory.goBack();
         }
     };
@@ -72,12 +72,14 @@ angular.module('mycdc.controllers', [])
     // This little bit of nonsense checks for the existance of the runonce localstorage key and if the Home Controller has already loaded (it loads 2x for some reason)
     // If they key doesn't exist, and the Home Controller hasn't already loaded, load the modal
     $ionicPlatform.ready(function() {
+
+        // DETECT FIRST RUN
         var runonce = window.localStorage.getItem('runonce');
 
+        // NAV MENU POP OVER (SHOW ON FIRST LOAD)
         if (runonce === null && $rootScope.HomeCtrlLoad === false) {
             $rootScope.HomeCtrlLoad = true;
             window.localStorage['runonce'] = true;
-
             // Show the popover only on first load
             $ionicPopover.fromTemplateUrl('templates/popover.html', {
                 scope: $scope,
@@ -90,228 +92,118 @@ angular.module('mycdc.controllers', [])
                     $scope.popover.hide();
                     $scope.popover.remove();
                 };
-                // $scope.$on('$destroy', function() {
-                //     $scope.popover.remove();
-                // });
             });
         }
+
+        // CONTROLLER INIT METHOD
+        $scope.ctrlInit = function(blnRefresh) {
+
+            blnRefresh = blnRefresh || false;
+
+            // REFRESH NEEDED?
+            if (blnRefresh) {
+
+                // APP INIT WILL REFRESH SOURCE LIST
+                $scope.appInit().then(function(d) {
+
+                    // DEBUG
+                    console.log('appInit completed');
+
+                     // CONTINUE ANY NECESSARY PROCESSING AFTER SOURCE LIST PROMISE IS RETURNED
+                    $scope.sourceListPromise.then(function(data) {
+
+                        // DEBUG
+                        console.log('ctrlInit Refresh');
+                        console.log($scope.sourceList);
+                    });
+                });
+            }
+        };
+
+        // EXECUTE INIT
+        $scope.ctrlInit(!$scope.sourceListPromise);
+
+    });
+})
+
+/**
+ * Common Source Controller
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {[type]}
+ * @param  {Object}
+ * @return {[type]}
+ */
+.controller('CommonSourceCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $ionicPopup, $sce, $cordovaNetwork) {
+    $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
     });
 
-    var getData = function() {
-        $scope.loading = $ionicLoading.show({
-            content: 'Loading',
-            animation: 'fade-in',
-            showBackdrop: true,
-            maxWidth: 200,
-            showDelay: 0
-        });
+    $scope.ctrlInit = function(blnRefresh) {
 
-        HomeStreamData.async().then(
-            function() {
-                $scope.datas = HomeStreamData.getAll($scope.checked);
-                $ionicLoading.hide();
-                $scope.$broadcast('scroll.refreshComplete');
-            },
-            function() {
-                $scope.datas = HomeStreamStorage.all();
-                $ionicLoading.hide();
-                $scope.storage = 'Data from local storage';
-                $scope.$broadcast('scroll.refreshComplete');
-            },
-            function() {}
-        );
-    }
+        var blnRefresh = blnRefresh || false;
 
-    // MENU (only), if something is already stored in localstorage, use it
-    if (MenuStorage.all().statusText === 'OK') {
-        $scope.menu = MenuStorage.all();
-        $scope.sources = $scope.menu.data.sources;
-        $scope.$broadcast('scroll.refreshComplete');
-        $scope.checked = [];
-        for (var i = $scope.sources.length - 1; i >= 0; i--) {
-            if ($scope.sources[i].checked) {
-                $scope.checked.push($scope.sources[i].contentGroup);
+        $scope.sourceName = $stateParams.sourceName;
+
+        $scope.sourceListPromise.then(function(data) {
+
+            // REFRESH REQUESTED SOURCE INDEX DATA?
+            if (blnRefresh || !$scope.sourceIndexPromise || false) {
+
+                console.log('ctrlInit Refresh');
+                console.log($scope.sourceList);
+
+                var sourceMeta = $rootScope.getSourceMeta($stateParams);
+
+                console.log('sourceMeta');
+                console.log(sourceMeta);
+
+                // GET & SAVE THE SOURCE LIST PROMISE
+                $scope.sourceIndexPromise = $rootScope.getSourceIndex($stateParams);
+
+                // CONTINUE PROMISE CHAIN
+                $scope.sourceIndexPromise.then(function(d) {
+
+                    $scope.datas = $scope.sourceIndex;
+                    console.log('$scope.datas');
+                    console.log($scope.datas);
+                    $ionicLoading.hide();
+
+                    // RETURN TRIMMED DATA TO CHAIN
+                    return d.data;
+                });
             }
-        }
-
-        getData();
-    }
-    else {
-        MenuData.async().then(
-            function() {
-                $scope.menu = MenuData.getAll();
-                $scope.sources = $scope.menu.data.sources;
-                $scope.checked = [];
-                for (var i = $scope.sources.length - 1; i >= 0; i--) {
-                    if ($scope.sources[i].checked) {
-                        $scope.checked.push($scope.sources[i].contentGroup);
-                    }
-                }
-                $scope.$broadcast('scroll.refreshComplete');
-
-                getData();
-            },
-            function() {
-                $scope.menu = MenuStorage.all();
-                $scope.$broadcast('scroll.refreshComplete');
-            },
-            function() {}
-        );
-    }
-
-    // Save updates to the menu
-    $scope.$watch('menu', function() {
-        MenuStorage.save($scope.menu);
-    }, true);
-
-    $scope.menuFilter = function(item) {
-        // console.log(item.contentGroup);
-        // if (typeof $scope.checked !== 'undefined') {
-        //     console.log(item.contentGroup === "Featured Health Articles");
-        //     if($scope.checked.indexOf(item.contentGroup) > -1) {
-        //         console.log('here')
-        //     }
-        // }
-        return true;
+        });
     };
 
-    // app sources, should be maintained by config(conf).json
-    $scope.tmpsources = [
-    {
-        title: 'Home (Aggregate) Stream',
-        href: '#/app/homestream',
-        icon: 'ion-checkmark-circled'
-    },
-    {
-        title: 'CDC Around the World',
-        href: '#/app/cdcatws',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Disease of the Week',
-        href: '#/app/dotw',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'FluView Weekly Summary',
-        href: '#/app/fluview/0',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Health Articles',
-        href: '#/app/healtharticles',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Vital Signs',
-        href: '#/app/vitalsigns',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'CDC Director Blog',
-        href: '#/app/cdcdirectorsblog',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Public Health Matters Blog',
-        href: '#/app/PHMblogs',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'FastStats',
-        href: '#/app/FastStats',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Disease Case Counts',
-        href: '#/app/WeeklyDiseaseCaseCounts',
-        icon: 'ion-close-circled'
-    }, {
-        title: 'Did You Know?',
-        href: '#/app/DYK/0',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Fact of the Week',
-        href: '#/app/FactoftheWeek',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Emerging Infectious Disease (EID)',
-        href: '#/app/EIDS',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Morbidity and Mortality Weekly Report (MMWR)',
-        href: '#/app/MMWRS',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Preventing Chronic Disease (PCD)',
-        href: '#/app/PCDS',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Newsroom',
-        href: '#/app/Newsrooms',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Outbreaks',
-        href: '#/app/Outbreaks',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Travel Notices',
-        href: '#/app/TravelNotices',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Image Library',
-        href: '#/app/PHILs',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Podcasts',
-        href: '#/app/Podcasts',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'YouTube',
-        href: '#/app/YouTubes',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Instagram',
-        href: 'https://instagram.com/cdcgov/',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Flickr',
-        href: 'https://www.flickr.com/photos/CDCsocialmedia',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Facebook',
-        href: '#/app/Facebook',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Google+',
-        href: 'https://plus.google.com/+CDC/posts',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Twitter',
-        href: '#/app/Twitter',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'Pinterest',
-        href: 'https://www.pinterest.com/cdcgov/',
-        icon: 'ion-checkmark-circled'
-    }, {
-        title: 'CIV Demo Page',
-        href: '#/app/civdemo',
-        icon: 'ion-checkmark-circled'
-    }];
+    // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
+    $scope.ctrlInit($scope.sourceName || ($stateParams.sourceName !== $scope.sourceName));
 
-    var page = 1,
-        pageSize = 10;
-
-    $scope.doRefresh = function() {
-        getData();
-    };
-
-    $scope.paginationLimit = function(data) {
-        return pageSize * page;
-    };
-
-    $scope.hasMoreItems = function() {
-        return page < ($scope.datas.length / pageSize);
-    };
-
-    $scope.loadMore = function() {
-        page = page + 1;
-        $scope.$broadcast('scroll.infiniteScrollComplete');
-    };
 })
+
+
+
+
+
+
+
+
+
+
+/********************************************************************************
+!!!!!!!!!!!!!!!!!!!!!!!!     NOT USING ANY OF THIS BELOW       !!!!!!!!!!!!!!!!!!!!
+*********************************************************************************/
+
+
+
+
+
+
 
 // ARTICLE: SOURCEURL w/ NOCHROME
 /**
@@ -324,7 +216,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('DotwCtrl', function($scope, $rootScope, $location, $ionicLoading, DotwData, DotwStorage, $cordovaNetwork) {
+.controller('DotwCtrl', function($scope, $rootScope, $location, $ionicLoading, DataFactory, LocalStorageFactory, $cordovaNetwork) {
     $scope.viewId = 'DotwView';
     $scope.datas = [];
     $scope.storage = '';
@@ -332,7 +224,7 @@ angular.module('mycdc.controllers', [])
     $scope.name = 'Disease of the Week';
     $rootScope.showleft = false;
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -340,13 +232,68 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
+    var DotwData = DataFactory('Dotw', {
+        url: 'https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Disease%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language'
+    }, function(d) {
+
+        var start = new Date().getTime(),
+            end, time, datum;
+
+        console.log('d!!');
+        console.log(d);
+
+        var data = d.data.results;
+
+        if (data.length) {
+            for (var i = data.length - 1; i >= 0; i--) {
+                datum = data[i];
+                hasImage = false;
+
+                // format the dateModified
+                time = moment(datum.datePublished);
+                datum.datePublished = time.format('MMMM Do, YYYY');
+
+                // if there's an enclosure
+                if (datum.enclosures.length) {
+                    enclosures = datum.enclosures;
+
+                    // look for the image enclosure
+                    for (var j = enclosures.length - 1; j >= 0; j--) {
+                        if (enclosures[j].contentType.indexOf('image') > -1) {
+                            hasImage = true;
+                            datum.imageSrc = enclosures[j].resourceUrl;
+                            break;
+                        }
+                    }
+                }
+
+                datum.hasImage = hasImage;
+            }
+
+            end = new Date().getTime();
+            time = (end - start) / 1000;
+
+            if (window.plugins && window.plugins.toast) {
+                window.plugins.toast.showShortTop(time);
+            } else {
+                console.log(time);
+            }
+
+            return datum;
+        }
+
+        return [];
+    });
+
     var getData = function() {
         DotwData.async().then(
             // successCallback
             function() {
-                $scope.datas = DotwData.getAll();
+                $scope.datas = DotwData.getAll(true);
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
+                console.log('YAY $scope.datas');
+                console.log($scope.datas);
             },
             // errorCallback
             function() {
@@ -354,6 +301,8 @@ angular.module('mycdc.controllers', [])
                 $scope.storage = 'Data from local storage';
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
+                console.log('NAY $scope.datas');
+                console.log($scope.datas);
             },
             // notifyCallback
             function() {}
@@ -393,7 +342,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('DiseaseCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $ionicPopup, $sce, DotwData, DotwContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -422,8 +371,7 @@ angular.module('mycdc.controllers', [])
                 if (resp.data.status === '200') {
                     $scope.nochrome = true;
                     $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
-                }
-                else {
+                } else {
                     $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
                 }
                 $ionicLoading.hide();
@@ -447,9 +395,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -467,7 +416,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('FluViewCtrl', function($scope, $stateParams, $ionicLoading, $ionicPopup, $ionicHistory, $sce, FluViewData, FluViewStorage, FluViewContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -506,17 +455,22 @@ angular.module('mycdc.controllers', [])
         FluViewContent.getContent($scope.id).then(
             function(resp) {
                 if (_.isEmpty(resp.data.results)) {
-                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicPopup.alert({
+                        title: 'Content not available.',
+                        template: 'Sorry, we could not seem to find that content. Please try again.'
+                    });
                     $ionicLoading.hide();
                     $ionicHistory.goBack();
-                }
-                else {
+                } else {
                     $scope.content = $sce.trustAsHtml(resp.data.results.content);
                     $ionicLoading.hide();
                 }
             },
             function() {
-                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicPopup.alert({
+                    title: 'Content not available.',
+                    template: 'Sorry, we could not seem to find that content. Please try again.'
+                });
                 $ionicLoading.hide();
                 $ionicHistory.goBack();
             },
@@ -535,9 +489,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -564,7 +519,7 @@ angular.module('mycdc.controllers', [])
     $scope.name = 'Health Articles';
     $scope.hasloaded = true;
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -632,7 +587,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('HealthArticleCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $ionicPopup, $sce, HealthArticlesData, HealthArticlesContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -660,8 +615,7 @@ angular.module('mycdc.controllers', [])
                 if (resp.data.status === '200') {
                     $scope.nochrome = true;
                     $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
-                }
-                else {
+                } else {
                     $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
                 }
                 $ionicLoading.hide();
@@ -685,9 +639,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -713,7 +668,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/cdcatw/';
     $scope.name = 'CDC Around the World';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -771,7 +726,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('CDCAtwCtrl', function($scope, $rootScope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, CDCAtwsData, CDCAtwsContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -792,17 +747,22 @@ angular.module('mycdc.controllers', [])
         CDCAtwsContent.getContent($scope.data.id).then(
             function(resp) {
                 if (_.isEmpty(resp.data.results)) {
-                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicPopup.alert({
+                        title: 'Content not available.',
+                        template: 'Sorry, we could not seem to find that content. Please try again.'
+                    });
                     $ionicLoading.hide();
                     $ionicHistory.goBack();
-                }
-                else {
+                } else {
                     $scope.content = $sce.trustAsHtml(resp.data.results.content);
                     $ionicLoading.hide();
                 }
             },
             function() {
-                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicPopup.alert({
+                    title: 'Content not available.',
+                    template: 'Sorry, we could not seem to find that content. Please try again.'
+                });
                 $ionicLoading.hide();
                 $ionicHistory.goBack();
             },
@@ -821,9 +781,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -852,7 +813,7 @@ angular.module('mycdc.controllers', [])
     $scope.name = 'Vital Signs';
     $rootScope.showleft = false;
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -910,7 +871,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('VitalSignCtrl', function($scope, $rootScope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, VitalSignsData, VitalSignsContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -933,17 +894,22 @@ angular.module('mycdc.controllers', [])
         VitalSignsContent.getContent($scope.data.id).then(
             function(resp) {
                 if (_.isEmpty(resp.data.results)) {
-                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicPopup.alert({
+                        title: 'Content not available.',
+                        template: 'Sorry, we could not seem to find that content. Please try again.'
+                    });
                     $ionicLoading.hide();
                     $ionicHistory.goBack();
-                }
-                else {
+                } else {
                     $scope.content = $sce.trustAsHtml(resp.data.results.content);
                     $ionicLoading.hide();
                 }
             },
             function() {
-                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicPopup.alert({
+                    title: 'Content not available.',
+                    template: 'Sorry, we could not seem to find that content. Please try again.'
+                });
                 $ionicLoading.hide();
                 $ionicHistory.goBack();
             },
@@ -962,9 +928,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -990,7 +957,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/FastStat/';
     $scope.name = 'FastStats';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1048,7 +1015,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('FastStatCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, FastStatsData, FastStatsContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1068,17 +1035,22 @@ angular.module('mycdc.controllers', [])
         FastStatsContent.getContent($scope.data.id).then(
             function(resp) {
                 if (_.isEmpty(resp.data.results)) {
-                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicPopup.alert({
+                        title: 'Content not available.',
+                        template: 'Sorry, we could not seem to find that content. Please try again.'
+                    });
                     $ionicLoading.hide();
                     $ionicHistory.goBack();
-                }
-                else {
+                } else {
                     $scope.content = $sce.trustAsHtml(resp.data.results.content);
                     $ionicLoading.hide();
                 }
             },
             function() {
-                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicPopup.alert({
+                    title: 'Content not available.',
+                    template: 'Sorry, we could not seem to find that content. Please try again.'
+                });
                 $ionicLoading.hide();
                 $ionicHistory.goBack();
             },
@@ -1125,7 +1097,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/WeeklyDiseaseCaseCount/';
     $scope.name = 'Disease Case Counts';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1186,7 +1158,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('WeeklyDiseaseCaseCountCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, WeeklyCaseCountsData, WeeklyCaseCountsContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1212,8 +1184,7 @@ angular.module('mycdc.controllers', [])
             function(resp) {
                 if (resp.data.status === '200') {
                     $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
-                }
-                else {
+                } else {
                     $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
                 }
                 $ionicLoading.hide();
@@ -1345,17 +1316,22 @@ angular.module('mycdc.controllers', [])
         EIDsContent.getContent($scope.data.id).then(
             function(resp) {
                 if (_.isEmpty(resp.data.results)) {
-                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicPopup.alert({
+                        title: 'Content not available.',
+                        template: 'Sorry, we could not seem to find that content. Please try again.'
+                    });
                     $ionicLoading.hide();
                     $ionicHistory.goBack();
-                }
-                else {
+                } else {
                     $scope.content = $sce.trustAsHtml(resp.data.results.content);
                     $ionicLoading.hide();
                 }
             },
             function() {
-                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicPopup.alert({
+                    title: 'Content not available.',
+                    template: 'Sorry, we could not seem to find that content. Please try again.'
+                });
                 $ionicLoading.hide();
                 $ionicHistory.goBack();
             },
@@ -1374,9 +1350,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -1402,7 +1379,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/MMWR/';
     $scope.name = 'Morbidity and Mortality Weekly Report (MMWR)';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1460,7 +1437,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('MMWRCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, MMWRsData, MMWRsContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1479,17 +1456,22 @@ angular.module('mycdc.controllers', [])
         MMWRsContent.getContent($scope.data.id).then(
             function(resp) {
                 if (_.isEmpty(resp.data.results)) {
-                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicPopup.alert({
+                        title: 'Content not available.',
+                        template: 'Sorry, we could not seem to find that content. Please try again.'
+                    });
                     $ionicLoading.hide();
                     $ionicHistory.goBack();
-                }
-                else {
+                } else {
                     $scope.content = $sce.trustAsHtml(resp.data.results.content);
                     $ionicLoading.hide();
                 }
             },
             function() {
-                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicPopup.alert({
+                    title: 'Content not available.',
+                    template: 'Sorry, we could not seem to find that content. Please try again.'
+                });
                 $ionicLoading.hide();
                 $ionicHistory.goBack();
             },
@@ -1508,9 +1490,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -1536,7 +1519,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/PCD/';
     $scope.name = 'Preventing Chronic Disease (PCD)';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1599,7 +1582,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('PCDCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, PCDsData, PCDsContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1619,17 +1602,22 @@ angular.module('mycdc.controllers', [])
         PCDsContent.getContent($scope.data.id).then(
             function(resp) {
                 if (_.isEmpty(resp.data.results)) {
-                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicPopup.alert({
+                        title: 'Content not available.',
+                        template: 'Sorry, we could not seem to find that content. Please try again.'
+                    });
                     $ionicLoading.hide();
                     $ionicHistory.goBack();
-                }
-                else {
+                } else {
                     $scope.content = $sce.trustAsHtml(resp.data.results.content);
                     $ionicLoading.hide();
                 }
             },
             function() {
-                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicPopup.alert({
+                    title: 'Content not available.',
+                    template: 'Sorry, we could not seem to find that content. Please try again.'
+                });
                 $ionicLoading.hide();
                 $ionicHistory.goBack();
             },
@@ -1648,9 +1636,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -1676,7 +1665,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/Newsroom/';
     $scope.name = 'Newsroom';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1737,7 +1726,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('NewsroomCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, NewsroomsData, NewsroomsContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1765,8 +1754,7 @@ angular.module('mycdc.controllers', [])
                 if (resp.data.status === '200') {
                     $scope.nochrome = true;
                     $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
-                }
-                else {
+                } else {
                     $scope.frameUrl = $sce.trustAsResourceUrl(sourceurl);
                 }
                 $ionicLoading.hide();
@@ -1790,9 +1778,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -1818,7 +1807,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/Outbreak/';
     $scope.name = 'Outbreaks';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1879,7 +1868,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('OutbreakCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, OutbreaksData, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -1914,9 +1903,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -1942,7 +1932,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/TravelNotice/';
     $scope.name = 'Travel Notices';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2003,7 +1993,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('TravelNoticeCtrl', function($scope, $stateParams, $sce, $ionicLoading, $ionicPopup, TravelNoticesData, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2038,9 +2028,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -2069,7 +2060,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/Podcast/';
     $scope.name = 'Podcasts';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2168,9 +2159,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -2196,7 +2188,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/PHIL/';
     $scope.name = 'Public Health Image Library';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2293,9 +2285,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, 'Public Health Image Library', image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -2329,7 +2322,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/PHMblog/';
     $scope.name = 'Public Health Matters Blog';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2387,7 +2380,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('PHMblogCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, PHMblogsData, PHMblogsContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2410,7 +2403,10 @@ angular.module('mycdc.controllers', [])
                 $ionicLoading.hide();
             },
             function() {
-                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicPopup.alert({
+                    title: 'Content not available.',
+                    template: 'Sorry, we could not seem to find that content. Please try again.'
+                });
                 $ionicLoading.hide();
                 $ionicHistory.goBack();
             },
@@ -2429,9 +2425,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -2461,7 +2458,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/directorblog/';
     $scope.name = 'CDC Directors Blog';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2519,7 +2516,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('DirectorsBlogCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, DirectorsBlogsData, DirectorsBlogsContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2539,17 +2536,22 @@ angular.module('mycdc.controllers', [])
         DirectorsBlogsContent.getContent($scope.data.id).then(
             function(resp) {
                 if (_.isEmpty(resp.data.results)) {
-                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicPopup.alert({
+                        title: 'Content not available.',
+                        template: 'Sorry, we could not seem to find that content. Please try again.'
+                    });
                     $ionicLoading.hide();
                     $ionicHistory.goBack();
-                }
-                else {
+                } else {
                     $scope.content = $sce.trustAsHtml(resp.data.results.content);
                     $ionicLoading.hide();
                 }
             },
             function() {
-                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicPopup.alert({
+                    title: 'Content not available.',
+                    template: 'Sorry, we could not seem to find that content. Please try again.'
+                });
                 $ionicLoading.hide();
                 $ionicHistory.goBack();
             },
@@ -2568,9 +2570,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -2590,7 +2593,7 @@ angular.module('mycdc.controllers', [])
  */
 
 .controller('DYKCtrl', function($scope, $stateParams, $ionicLoading, $ionicPopup, $ionicHistory, $sce, DidYouKnowData, DidYouKnowStorage, DidYouKnowContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2629,17 +2632,22 @@ angular.module('mycdc.controllers', [])
         DidYouKnowContent.getContent($scope.data.id).then(
             function(resp) {
                 if (_.isEmpty(resp.data.results)) {
-                    $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                    $ionicPopup.alert({
+                        title: 'Content not available.',
+                        template: 'Sorry, we could not seem to find that content. Please try again.'
+                    });
                     $ionicLoading.hide();
                     $ionicHistory.goBack();
-                }
-                else {
+                } else {
                     $scope.content = $sce.trustAsHtml(resp.data.results.content);
                     $ionicLoading.hide();
                 }
             },
             function() {
-                $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                $ionicPopup.alert({
+                    title: 'Content not available.',
+                    template: 'Sorry, we could not seem to find that content. Please try again.'
+                });
                 $ionicLoading.hide();
                 $ionicHistory.goBack();
             },
@@ -2658,9 +2666,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -2687,7 +2696,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/Fact/';
     $scope.name = 'Fact of the Week';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2745,7 +2754,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('FOTWCtrl', function($scope, $ionicLoading, $ionicPopup, $ionicHistory, $stateParams, $sce, FactoftheWeekData, FactoftheWeekContent, $cordovaNetwork) {
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2756,8 +2765,7 @@ angular.module('mycdc.controllers', [])
     if ($stateParams.idx.length < 6) {
         $scope.data = FactoftheWeekData.get($stateParams.idx);
         $scope.id = FactoftheWeekData.getId($stateParams.idx);
-    }
-    else {
+    } else {
         $scope.id = $stateParams.idx;
     }
     $scope.name = 'Fact of the Week';
@@ -2768,7 +2776,10 @@ angular.module('mycdc.controllers', [])
             $ionicLoading.hide();
         },
         function() {
-            $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+            $ionicPopup.alert({
+                title: 'Content not available.',
+                template: 'Sorry, we could not seem to find that content. Please try again.'
+            });
             $ionicLoading.hide();
             $ionicHistory.goBack();
         },
@@ -2786,9 +2797,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -2822,7 +2834,7 @@ angular.module('mycdc.controllers', [])
     $scope.url = '#/app/YouTube/';
     $scope.name = 'YouTube';
 
-   $scope.loading = $ionicLoading.show({
+    $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -2931,9 +2943,10 @@ angular.module('mycdc.controllers', [])
             //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
             //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
             window.plugins.socialsharing.share(message, subject, image, link);
-        }
-        else {
-            $ionicPopup.alert({title: 'Social Sharing not available.'});
+        } else {
+            $ionicPopup.alert({
+                title: 'Social Sharing not available.'
+            });
         }
     };
 
@@ -2956,8 +2969,7 @@ angular.module('mycdc.controllers', [])
  */
 .controller('FacebookCtrl', function($scope, $stateParams, $cordovaNetwork) {
     $scope.viewId = 'Facebook';
-    $scope.sources = [
-    {
+    $scope.sources = [{
         title: 'CDC',
         href: 'https://www.facebook.com/CDC',
         icon: 'ion-social-facebook'
@@ -2976,8 +2988,7 @@ angular.module('mycdc.controllers', [])
  */
 .controller('TwitterCtrl', function($scope, $stateParams, $cordovaNetwork) {
     $scope.viewId = 'Twitter';
-    $scope.sources = [
-    {
+    $scope.sources = [{
         title: 'CDC',
         href: 'https://www.twitter.com/CDC',
         icon: 'ion-social-twitter'
