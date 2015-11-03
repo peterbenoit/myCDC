@@ -30,11 +30,6 @@ angular.module('mycdc', [
 .run(function($ionicPlatform, $rootScope, $location, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup, DataFactory, $http, $filter) {
     var rs = $rootScope, href = window.location.href;
 
-    rs.$state = $state;
-    rs.$stateParams = $stateParams;
-    rs.existsUrl = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
-    rs.showleft = false;
-
     // window.open should use inappbrowser
     document.addEventListener('deviceready', onDeviceReady, false);
 
@@ -65,24 +60,6 @@ angular.module('mycdc', [
                 console.log(offlineState);
         });
     }
-
-    window.onerror = function(error) {
-        console.error('ERROR ', error);
-    };
-
-    rs.doSomething = function() {
-        var doingSomething = ['app.disease', 'app.vitalsign', 'app.healtharticle', 'app.cdcatw', 'app.FastStat', 'app.WeeklyDiseaseCaseCount', 'app.EID'];
-        if (doingSomething.indexOf(rs.$state.current.name) > -1) {
-            return true;
-        }
-        return false;
-    };
-
-    /*
-    rs.contentGroupIdentifiers : {
-        "globalhealth" : ""
-    };
-    */
 
     // frameready() is called in embed.html, when the iframe has loaded
     // NOTE: this only works on a device
@@ -118,10 +95,14 @@ angular.module('mycdc', [
     };
 
     rs.streamTemplate = function (type, orientation) {
+        console.log('streamTemplate');
+        console.log(type);
         return 'templates/' + type + '-' + orientation +'.html';
     };
 
     rs.cardTemplate = function (type, orientation) {
+        console.log('cardTemplate');
+        console.log(type);
         return 'templates/' + type +'.html';
     };
 
@@ -234,40 +215,9 @@ angular.module('mycdc', [
 
                             obj1.contentGroupIdentifier = strCg;
                             obj1.appContentGroup = strCgStripped;
+                            obj1.templates = rs.templateMap[strCgStripped];
 
-                            switch (strCgStripped) {
-                                case "eid":
-                                    obj1.cardType = 'ui-content-card-default';
-                                break;
-                                case "featuredhealtharticles":
-                                    obj1.cardType = 'ui-content-card-default';
-                                break;
-                                case "publichealthmattersblog":
-                                    obj1.cardType = 'ui-content-card-default';
-                                break;
-                                case "imageoftheweek":
-                                    obj1.cardType = 'ui-content-card-default';
-                                break;
-                                case "mmwr":
-                                case "mmwr2016":
-                                    obj1.cardType = 'ui-content-card-default';
-                                break;
-                                case "outbreaks":
-                                    obj1.cardType = 'ui-content-card-default';
-                                break;
-                                case "youtube":
-                                    obj1.cardType = 'ui-content-card-default';
-                                break;
-                                case "globalhealth":
-                                    obj1.cardType = 'ui-content-card-default';
-                                break;
-                                case "didyouknow":
-                                    obj1.cardType = 'ui-content-card-default';
-                                break;
-                                case "diseaseoftheweek":
-                                    obj1.cardType = 'ui-content-card-default';
-                                break;
-                            }
+
 
                             if (tmp.indexOf(strCgStripped) == -1) {
                                 tmp.push(strCgStripped);
@@ -600,6 +550,7 @@ angular.module('mycdc', [
         // REFRESH REQUESTED?
         if (blnRefresh || !rs.sourceListPromise || false) {
 
+            // DEBUG
             console.log('appInit Refresh');
 
             // GET & SAVE THE SOURCE LIST PROMISE
@@ -611,6 +562,37 @@ angular.module('mycdc', [
                 //TRIM OUT UNNESESSARY DATA FROM RETURN
                 rs.sourceList = d.data;
 
+                // CREATE SOURCE TEMPLATE MAP
+                rs.templateMap = (function() {
+
+                    // LOCALS
+                    var i = rs.sourceList.length, objReturn = {}, objSrc;
+
+                    // LOOP SOURCES
+                    while (i--) {
+
+                        // GET THE CURRENT SOURCE
+                        objSrc = rs.sourceList[i];
+
+                        /* MAP TEMPLATES TO CONTENTGROUPIDENTIFIER
+                        if (objSrc.templates) {
+                            objReturn[objSrc.contentGroupIdentifier] = {};
+                            for (key in objSrc.templates) {
+                                objReturn[objSrc.contentGroupIdentifier][key] = objSrc.templates[key];
+                            }
+                        }
+                        */
+                        objReturn[objSrc.contentGroupIdentifier] = objSrc.templates;
+                    }
+
+                    // RETURN MAP
+                    return objReturn
+                } ());
+
+                //DEBUG
+                console.log('rs.templateMap');
+                console.log(rs.templateMap);
+
                 // RETURN TRIMMED DATA TO CHAIN
                 return rs.sourceList;
             });
@@ -619,15 +601,6 @@ angular.module('mycdc', [
         // RETURN THE SOURCE LIST PROMISE
         return rs.sourceListPromise;
     };
-
-    /*
-    $ionicPlatform.ready(function() {
-         rs.appInit(function(d) {
-              console.log('d');
-              console.log(d);
-         });
-    });
-    */
 })
 
 /**
@@ -682,7 +655,7 @@ angular.module('mycdc', [
         return strReturn;
     };
 
-    // PARAMETERIZED IIFE FOR TEMPLATE SELECTION BY STATE PARAMS
+    /* PARAMETERIZED IIFE FOR TEMPLATE SELECTION BY STATE PARAMS
     var stateTemplateHandler = (function(fctDefaultHandler) {
 
         var defaultHandler = fctDefaultHandler;
@@ -795,6 +768,7 @@ angular.module('mycdc', [
             return defaultHandler(strMode, strPrefix);
         }
     }(defaultTemplateHandler));
+    */
 
     var sp = $stateProvider;
 

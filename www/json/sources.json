@@ -6,6 +6,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer", "stripHtml", "processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "article"
     }
 }, {
@@ -17,6 +18,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "article"
     }
 }, {
@@ -28,6 +30,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "embed"
     }
 }, {
@@ -39,6 +42,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "article"
     }
 }, {
@@ -50,6 +54,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "embed"
     }
 }, {
@@ -61,6 +66,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "article"
     }
 }, {
@@ -72,6 +78,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "data"
     }
 }, {
@@ -83,6 +90,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer", "stripHtml"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "journal"
     }
 }, {
@@ -94,6 +102,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "blog"
     }
 }, {
@@ -105,6 +114,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "blog"
     }
 }, {
@@ -116,6 +126,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "data"
     }
 }, {
@@ -127,6 +138,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer", "firstOnly"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "fact"
     }
 }, {
@@ -138,6 +150,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer", "parseEncoding"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "fact"
     }
 }, {
@@ -149,6 +162,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "journal"
     }
 }, {
@@ -160,6 +174,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "journal"
     }
 }, {
@@ -170,6 +185,7 @@
     "getContentBy": "url",
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "embed"
     }
 }, {
@@ -181,6 +197,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer", "flagOutbreak"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "embed"
     }
 }, {
@@ -192,6 +209,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "embed"
     }
 }, {
@@ -203,6 +221,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-image",
+        "card" : "ui-content-card-default",
         "detail" : "journal"
     }
 }, {
@@ -214,6 +233,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-audio",
+        "card" : "ui-content-card-default",
         "detail" : "audio"
     }
 }, {
@@ -225,6 +245,7 @@
     "processors": ["cardTemplateInjector","feedNormalizer", "extractVideoComments"],
     "templates" : {
         "source" : "ui-stream-video",
+        "card" : "ui-content-card-default",
         "detail" : "video"
     }
 }, {
@@ -234,6 +255,7 @@
     "getContentBy": "na",
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "article"
     }
 }, {
@@ -243,6 +265,7 @@
     "getContentBy": "na",
     "templates" : {
         "source" : "ui-stream-image",
+        "card" : "ui-content-card-default",
         "detail" : "journal"
     }
 }, {
@@ -252,6 +275,7 @@
     "getContentBy": "na",
     "templates" : {
         "source" : "ui-stream-video",
+        "card" : "ui-content-card-default",
         "detail" : "video"
     }
 }, {
@@ -261,6 +285,7 @@
     "getContentBy": "na",
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "article"
     }
 }, {
@@ -270,6 +295,7 @@
     "getContentBy": "na",
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "landing-twitter"
     }
 }, {
@@ -279,6 +305,7 @@
     "getContentBy": "na",
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "article"
     }
 }, {
@@ -288,6 +315,7 @@
     "getContentBy": "na",
     "templates" : {
         "source" : "ui-stream-standard",
+        "card" : "ui-content-card-default",
         "detail" : "article"
     }
 }]
