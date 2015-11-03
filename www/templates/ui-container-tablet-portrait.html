@@ -1,0 +1,53 @@
+<!-- MOVE TO STYLE SHEET -->
+<style type="text/css">
+.ui-tablet-portrait .ui-list-view .horizontal-scroller {
+  position: absolute;
+  height: 300px;
+  top: 44px;
+  left:0;
+  right: 0;
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+.ui-tablet-portrait .ui-list-view .horizontal-scroller .row .card {
+  width: 300px;
+  white-space: normal;
+  display: inline-block;
+  vertical-align: top;
+  max-height: 300px;
+}
+
+.ui-tablet-portrait .ui-list-view .card img {
+  max-width: 100%;
+}
+
+.ui-tablet-portrait .ui-list-view .scroll {
+  padding: 0;
+}
+
+.ui-tablet-portrait .ui-detail-view {
+  position: absolute;
+  top: 344px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+</style>
+
+<!-- TABLET PORTRAIT MODE -->
+<div class="ui-tablet-portrait">
+
+  <!-- THE LIST VIEW -->
+  <div class="ui-list-view">
+    <ion-scroll direction="x" class="horizontal-scroller stream">
+      <div data-ng-include="streamTemplate(sourceMeta.templates.source, 'portrait')"></div>
+    </ion-scroll>
+  </div><!-- ui-list-view -->
+
+  <!-- THE DETAIL VIEW -->
+  <div class="ui-detail-view">
+    <div data-ng-include="detailTemplate(sourceMeta.templates.detail, 'portrait')"></div>
+  </div><!-- ui-detail-view -->
+
+</div><!-- ui-tablet-portrait -->

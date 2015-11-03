@@ -1,0 +1,45 @@
+<!-- MOVE TO STYLE SHEET -->
+<style type="text/css">
+.ui-tablet-landscape .ui-list-view .vertical-scroller {
+	position: absolute;
+	width: 300px;
+	top: 44px;
+	bottom: 0;
+}
+
+.ui-tablet-landscape .ui-list-view .row .card {
+	display: block;
+	height: 300px;
+	width: 100%;
+	white-space: normal;
+}
+
+.ui-tablet-landscape .ui-list-view .card img {
+	max-width: 100%;
+}
+
+.ui-tablet-landscape .ui-detail-view {
+	position: absolute;
+	top: 44px;
+	right: 0;
+	bottom: 0;
+	left: 300px;
+}
+</style>
+
+<!-- TABLET LANDSCAPE MODE -->
+<div class="ui-tablet-landscape">
+
+	<!-- THE LIST VIEW -->
+	<div class="ui-list-view">
+		<ion-scroll direction="y" class="vertical-scroller stream">
+			<div data-ng-include="streamTemplate(sourceMeta.templates.source, 'landscape')"></div>
+		</ion-scroll>
+	</div><!-- ui-list-view -->
+
+	<!-- THE DETAIL VIEW -->
+	<div class="ui-detail-view">
+		<div data-ng-include="detailTemplate(sourceMeta.templates.detail, 'landscape')"></div>
+	</div><!-- ui-detail-view -->
+
+</div><!-- ui-tablet-landscape -->

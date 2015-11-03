@@ -1,0 +1,45 @@
+<!-- MOVE TO STYLE SHEET -->
+<style type="text/css">
+.ui-phone .ui-list-view .vertical-scroller {
+  position: absolute;
+  width: 100%;
+  top: 44px;
+  bottom: 0;
+}
+
+.ui-phone .ui-list-view .row .card {
+  display: block;
+  height: 300px;
+  width: 100%;
+  white-space: normal;
+}
+
+.ui-phone .ui-list-view .card img {
+  max-width: 100%;
+}
+
+.ui-phone .ui-detail-view {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+</style>
+
+<!-- PHONE UNIVERSAL (PORTRAIT & LANDSCAPE) MODE -->
+<div class="ui-phone">
+
+  <!-- THE LIST VIEW (IF NO DETAIL SELECTED) -->
+  <div class="ui-list-view" data-ng-if="!sourceDetail">
+    <ion-scroll direction="y" class="vertical-scroller stream">
+      <div data-ng-include="streamTemplate(sourceMeta.templates.source, 'universal')"></div>
+    </ion-scroll>
+  </div><!-- .ui-list-view -->
+
+  <!-- THE DETAIL VIEW (IF DETAIL SELECTED) -->
+  <div class="ui-detail-view" data-ng-if="sourceDetail">
+    <div data-ng-include="detailTemplate(sourceMeta.templates.detail, 'portrait')"></div>
+  </div><!-- .ui-detail-view -->
+
+</div><!-- .ui-iphone -->

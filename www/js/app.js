@@ -78,6 +78,12 @@ angular.module('mycdc', [
         return false;
     };
 
+    /*
+    rs.contentGroupIdentifiers : {
+        "globalhealth" : ""
+    };
+    */
+
     // frameready() is called in embed.html, when the iframe has loaded
     // NOTE: this only works on a device
     window.frameready = function() {
@@ -109,6 +115,14 @@ angular.module('mycdc', [
 
             window.open(href, '_system');
         });
+    };
+
+    rs.streamTemplate = function (type, orientation) {
+        return 'templates/' + type + '-' + orientation +'.html';
+    };
+
+    rs.cardTemplate = function (type, orientation) {
+        return 'templates/' + type +'.html';
     };
 
     $ionicPlatform.ready(function() {
@@ -168,46 +182,6 @@ angular.module('mycdc', [
             }
         }
 
-        rs.resizeHandler = function () {
-
-            var objClasses = {};
-
-            if (ionic.Platform.is('androidtablet') || ionic.Platform.isIPad()) {
-                objClasses.deviceType = 'tablet';
-            } else {
-                objClasses.deviceType = 'phone';
-            }
-
-            if ($('body.landscape').length > 0) {
-                objClasses.deviceOrientation = 'landscape';
-            } else {
-                objClasses.deviceOrientation = 'portrait';
-            }
-
-            if (ionic.Platform.isAndroid()) {
-                objClasses.deviceOs = 'android';
-            } else if (ionic.Platform.isIOS()) {
-                objClasses.deviceOs = 'apple';
-            } else if (ionic.Platform.isWindowsPhone()) {
-                objClasses.deviceOs = 'windows';
-            } else {
-                objClasses.deviceOs = 'browser';
-                objClasses.deviceType = 'desktop';
-                objClasses.deviceOrientation = 'unknown';
-            }
-
-            rs.stateClasses = objClasses;
-
-            console.log(rs.stateClasses);
-        };
-
-        angular.element($(window)).bind('resize', _.debounce(function() {
-            rs.resizeHandler();
-        }, 150));
-        window.setTimeout(function(){
-            rs.resizeHandler();
-        },0)
-
         // kick off a media query listener to tag the body with a class
         var mq;
         if (window.matchMedia) {
@@ -239,9 +213,75 @@ angular.module('mycdc', [
         }
     });
 
-
+    rs.cgNormalize = function (contentgroup) {
+        return contentgroup.toLowerCase().replace(/ /g, '');
+    }
 
     rs.dataProcessors = {
+        cardTemplateInjector: function (d) {
+            var idx1 = d.length, idx2, obj1, obj2, strCg, strCgStripped;
+            var tmp = [];
+
+            while (idx1--) {
+                obj1 = d[idx1];
+                if (obj1.tags && obj1.tags.length) {
+                    idx2 = obj1.tags.length;
+                    while (idx2--) {
+                        obj2 = obj1.tags[idx2];
+                        if (obj2.type.toLowerCase() == 'contentgroup') {
+                            strCg = obj2.name;
+                            strCgStripped = rs.cgNormalize(strCg);
+
+                            obj1.contentGroupIdentifier = strCg;
+                            obj1.appContentGroup = strCgStripped;
+
+                            switch (strCgStripped) {
+                                case "eid":
+                                    obj1.cardType = 'ui-content-card-default';
+                                break;
+                                case "featuredhealtharticles":
+                                    obj1.cardType = 'ui-content-card-default';
+                                break;
+                                case "publichealthmattersblog":
+                                    obj1.cardType = 'ui-content-card-default';
+                                break;
+                                case "imageoftheweek":
+                                    obj1.cardType = 'ui-content-card-default';
+                                break;
+                                case "mmwr":
+                                case "mmwr2016":
+                                    obj1.cardType = 'ui-content-card-default';
+                                break;
+                                case "outbreaks":
+                                    obj1.cardType = 'ui-content-card-default';
+                                break;
+                                case "youtube":
+                                    obj1.cardType = 'ui-content-card-default';
+                                break;
+                                case "globalhealth":
+                                    obj1.cardType = 'ui-content-card-default';
+                                break;
+                                case "didyouknow":
+                                    obj1.cardType = 'ui-content-card-default';
+                                break;
+                                case "diseaseoftheweek":
+                                    obj1.cardType = 'ui-content-card-default';
+                                break;
+                            }
+
+                            if (tmp.indexOf(strCgStripped) == -1) {
+                                tmp.push(strCgStripped);
+                            }
+                        }
+                    }
+                }
+            }
+
+            console.log('Unique Content Groups Found');
+            console.log(tmp);
+
+            return d;
+        },
         feedNormalizer: function(d) {
 
             var time, currItem;
@@ -293,96 +333,32 @@ angular.module('mycdc', [
                         // also set a path to navigate
                         for (var k = tags.length - 1; k >= 0; k--) {
                             if (tags[k].type === 'ContentGroup') {
-                                currItem.contentGroup = tags[k].name;
+                                currItem.ContentGroup = tags[k].name;
+                                currItem.appContentGroup = rs.cgNormalize(tags[k].name);
+                                currItem.home = '#/app/source/' + currItem.appContentGroup;
+                                currItem.url = currItem.home + '/';
 
                                 // TODO: consider using config.json for this data
-                                if (currItem.contentGroup === 'EID') {
+                                if (currItem.appContentGroup === 'eid') {
                                     currItem.hasImage = false;
-                                    currItem.home = '#/app/EIDS';
-                                    currItem.url = '#/app/EID/';
                                     break;
                                 }
 
-                                if (currItem.contentGroup === 'Vital Signs') {
+                                if (currItem.appContentGroup === 'vitalsigns') {
                                     currItem.hasImage = false;
-                                    currItem.home = '#/app/VitalSigns';
-                                    currItem.url = '#/app/VitalSign/';
                                     break;
                                 }
 
-                                if (currItem.contentGroup === 'Image of the Week') {
-                                    currItem.name = '';
-                                    currItem.home = '#/app/PHILs';
-                                    currItem.url = '#/app/PHIL/';
-                                    break;
-                                }
-
-                                if (currItem.contentGroup === 'YouTube') {
-                                    currItem.name = '';
-                                    currItem.home = '#/app/YouTubes';
-                                    currItem.url = '#/app/YouTube/';
-                                    break;
-                                }
-
-                                if (currItem.contentGroup === 'MMWR' || currItem.contentGroup === 'MMWR 2016') {
-                                    currItem.name = '';
-                                    currItem.home = '#/app/MMWRS';
-                                    currItem.url = '#/app/MMWR/';
-                                    break;
-                                }
-
-                                if (currItem.contentGroup === 'Public Health Matters Blog') {
-                                    currItem.name = '';
-                                    currItem.home = '#/app/PHMblogs';
-                                    currItem.url = '#/app/PHMblog/';
-                                    break;
-                                }
-
-                                if (currItem.contentGroup === 'Featured Health Articles') {
-                                    currItem.name = '';
-                                    currItem.home = '#/app/healtharticles';
-                                    currItem.url = '#/app/healtharticle/';
-                                    break;
-                                }
-
-                                if (currItem.contentGroup === 'Did You Know?') {
-                                    currItem.name = '';
-                                    currItem.home = '#/app/DYK/0';
-                                    currItem.url = '#/app/DYK/0';
-                                    break;
-                                }
-
-                                if (currItem.contentGroup === 'Outbreaks') {
-                                    currItem.name = '';
+                                if (currItem.appContentGroup === 'outbreaks') {
                                     currItem.isOutbreak = true;
                                     currItem.hasImage = false;
-                                    currItem.home = '#/app/Outbreaks';
-                                    currItem.url = '#/app/Outbreak/';
                                     break;
                                 }
 
-                                if (currItem.contentGroup === 'Disease of the Week') {
-                                    currItem.name = '';
-                                    currItem.home = '#/app/dotw';
-                                    currItem.url = '#/app/disease/';
-                                    break;
-                                }
-
-                                if (currItem.contentGroup === 'Travel Notices') {
-                                    currItem.home = '#/app/TravelNotices';
-                                    currItem.url = '#/app/TravelNotice/';
-                                    //Warning, Watch, Alert, based off text in the name
+                                if (currItem.appContentGroup === 'travelnotices') {
                                     currItem.isAlert = currItem.name.indexOf('Alert') > -1;
                                     currItem.isWatch = currItem.name.indexOf('Watch') > -1;
                                     currItem.isWarning = currItem.name.indexOf('Warning') > -1;
-                                    currItem.name = '';
-                                    break;
-                                }
-
-                                if (currItem.contentGroup === 'Newsroom') {
-                                    currItem.home = '#/app/Newsrooms';
-                                    currItem.url = '#/app/Newsroom/';
-                                    currItem.name = '';
                                     break;
                                 }
 
@@ -523,7 +499,7 @@ angular.module('mycdc', [
 
         // FILTER HERE
         arySourceInfo = $filter('filter')(rs.sourceList, {
-            name: strSourceName
+            contentGroupIdentifier: strSourceName
         });
 
         // DID WE FIND IT?
@@ -740,7 +716,7 @@ angular.module('mycdc', [
 
                     // BLOGS
                 case 'cdcdirectorsblog':
-                case '247blogs':
+                //case '247blogs':
                 case 'phmblogs':
                     sourceDetailMode = "static";
                     sourceDetailPrefix = "templates/blog.html";
@@ -820,7 +796,6 @@ angular.module('mycdc', [
         }
     }(defaultTemplateHandler));
 
-
     var sp = $stateProvider;
 
     sp.state('app', {
@@ -874,8 +849,7 @@ angular.module('mycdc', [
         url: '/source/:sourceName',
         views: {
             'menuContent': {
-                //templateUrl: templateHandler('templates/test.html'),
-                templateUrl: stateTemplateHandler,
+                templateUrl: 'templates/ui-main.html',
                 controller: 'CommonSourceCtrl'
             }
         }
@@ -885,13 +859,72 @@ angular.module('mycdc', [
         url: '/source/:sourceName/:sourceDetail',
         views: {
             'menuContent': {
-                //templateUrl: templateHandler('templates/test.html'),
-                templateUrl: stateTemplateHandler,
+                templateUrl: 'templates/ui-main.html',
                 controller: 'CommonSourceCtrl'
             }
         }
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/home');
+    $urlRouterProvider.otherwise('/app/source/homestream');
+})
+
+.directive('uiManager', function($rootScope, $stateParams) {
+   return {
+        restrict: 'E',
+        scope : '*',
+        controller: function($scope, $element){
+
+            // CREATE MAIN TEMPALTE HANDLER (COULD USE IONIC FOR TABLE DETECTION, BUT THIS SEEMS MORE UNIVERSAL WITH LESS isThis, isThat CALLS)
+            $scope.uiMainTemplateHandler = function () {
+                // GET SCREEN SIZE
+                if (window.screen.width >= 1024 && window.screen.width > window.screen.height) {
+                    $scope.uiMainContentUrl = 'templates/ui-container-tablet-landscape.html';
+                    $scope.viewType = 'tablet';
+                    $scope.viewOrientation = 'landscape';
+                } else if (window.screen.width >= 768 && window.screen.width < window.screen.height) {
+                    $scope.uiMainContentUrl = 'templates/ui-container-tablet-portrait.html';
+                    $scope.viewType = 'tablet';
+                    $scope.viewOrientation = 'portrait';
+                } else {
+                    $scope.uiMainContentUrl = 'templates/ui-container-phone.html';
+                    $scope.viewType = 'phone';
+                    $scope.viewOrientation = 'portrait';
+                }
+            };
+
+            // IF DIRECTIVE NOT INITIALIZED
+            if (!$scope.uiMainInit) {
+                $scope.uiMainInit = true;
+
+                // Add Listener for resize changes
+                window.addEventListener("resize", function() {
+                    $scope.uiMainTemplateHandler();
+                }, false);
+            }
+
+            // DEBUG
+            console.log('UI-MAIN DIRECTIVE $scope');
+            console.log($scope);
+        },
+        link: function(scope, element, attrs) {
+           // ON LINK TO APP/DOM - FIRE TEMPLATE HANDLER TO SELECT APPROPRIATE TEMPLATE
+           scope.uiMainTemplateHandler();
+           // scope.$stateParams = $stateParams;
+        },
+        template: '<div ng-include="uiMainContentUrl"></div>'
+   }
+})
+
+.directive('uiContentCard', function($rootScope) {
+   return {
+        restrict: 'E',
+        scope : {
+            card : '=',
+            sourceId : '='
+        },
+        template: '<div>{{card}}</div>'
+   }
 });
+
+
