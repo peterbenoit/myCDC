@@ -45,24 +45,6 @@ angular.module('mycdc.directives', [])
         }
     };
 })
-.directive('yarp', function() {
-    return {
-            link: function(scope, element, attrs) {
-                // console.log(scope);
-                // console.log(element);
-                // console.log(attrs);
-            }
-    };
-})
-.directive('narp', function() {
-    return {
-            link: function(scope, element, attrs) {
-                // console.log(scope);
-                // console.log(element);
-                // console.log(attrs);
-            }
-    };
-})
 .directive('quarterwidth', function($window) {
     return {
         link: function(scope, element, attrs) {

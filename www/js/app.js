@@ -27,7 +27,7 @@ angular.module('mycdc', [
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $rootScope, $location, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup, DataFactory, $http, $filter) {
+.run(function($ionicPlatform, $rootScope, $location, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup, DataFactory, $http, $filter, $sce) {
     var rs = $rootScope, href = window.location.href;
 
     // window.open should use inappbrowser
@@ -95,14 +95,19 @@ angular.module('mycdc', [
     };
 
     rs.streamTemplate = function (type, orientation) {
-        console.log('streamTemplate');
-        console.log(type);
+        //console.log('streamTemplate');
+        //console.log(type);
         return 'templates/' + type + '-' + orientation +'.html';
     };
 
     rs.cardTemplate = function (type, orientation) {
-        console.log('cardTemplate');
-        console.log(type);
+        //console.log('cardTemplate');
+        //console.log(type);
+        return 'templates/' + type +'.html';
+    };
+    rs.detailTemplate = function (type, orientation) {
+        //console.log('detailTemplate');
+        //console.log(type);
         return 'templates/' + type +'.html';
     };
 
@@ -362,7 +367,7 @@ angular.module('mycdc', [
             return [];
         },
         extractVideoComments: function(d) {
-            var currItem, data = d.data.results;
+            var currItem, data = d;
 
             if (data.length) {
                 for (var i = data.length - 1; i >= 0; i--) {
@@ -524,20 +529,31 @@ angular.module('mycdc', [
         }
     };
 
-    rs.getSourceDetail = function(stateParams) {
-        var objMetaData, sourceDetailPromise, data;
+    rs.getSourceDetailUrl = function(stateParams) {
+        var aryCardData, objCardData, sourceDetailPromise, data;
 
         objMetaData = rs.getSourceMeta(stateParams);
+        aryCardData = $filter('filter')(rs.sourceIndex, {
+            id : stateParams.sourceDetail
+        });
 
-        if (1 == 1) {
-            sourceDetailPromise = rs.remoteApi({
-                url: rs.getNoChromeUrl()
-            });
-        }
+        objCardData = (aryCardData.length) ? aryCardData[0] : false;
+
+        console.log('objCardData');
+        console.log(objCardData);
+
+        if (objCardData) {
+            return {
+                url : $sce.trustAsResourceUrl(objCardData.sourceUrl),
+                nochromeurl : $sce.trustAsResourceUrl(rs.getNoChromeUrl(objCardData.sourceUrl))
+            }
+        };
+
+        return false;
     };
 
     rs.getNoChromeUrl = function(url) {
-        var sourceurl = DotwData.getSourceUrl($stateParams.idx),
+        var sourceurl = url,
             filename = sourceurl.split('/').pop(),
             newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
             nochromeurl = sourceurl.replace(filename, newfilename);
@@ -615,7 +631,7 @@ angular.module('mycdc', [
     // TODO: consider using this for "lower" end devices
     // $ionicConfigProvider.views.transition('none');      // keep the views from animating
 
-    // STANDARD TEMPLATE HANDLER
+    /* STANDARD TEMPLATE HANDLER
     var defaultTemplateHandler = function(strMode, strPrefix, strPath) {
 
         strMode = strMode || 'static';
@@ -654,6 +670,7 @@ angular.module('mycdc', [
 
         return strReturn;
     };
+    */
 
     /* PARAMETERIZED IIFE FOR TEMPLATE SELECTION BY STATE PARAMS
     var stateTemplateHandler = (function(fctDefaultHandler) {
@@ -775,11 +792,11 @@ angular.module('mycdc', [
     sp.state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: defaultTemplateHandler('templates/menu.html'),
-        controller: 'HomeCtrl'
+        templateUrl: 'templates/menu.html',
+        controller: 'SourceListCtrl'
     });
 
-    // WARN: this is temporary
+    /* WARN: this is temporary
     sp.state('app.homestream', {
         url: '/homestream',
         views: {
@@ -788,14 +805,14 @@ angular.module('mycdc', [
                 controller: 'HomeCtrl'
             }
         }
-    });
+    });*/
 
     sp.state('app.home', {
         url: '/home',
         views: {
             'menuContent': {
-                templateUrl: defaultTemplateHandler('templates/home.html'),
-                controller: 'HomeCtrl'
+                templateUrl: 'templates/home.html',
+                controller: 'SourceListCtrl'
             }
         }
     });
@@ -804,7 +821,7 @@ angular.module('mycdc', [
         url: '/settings',
         views: {
             'menuContent': {
-                templateUrl: defaultTemplateHandler('templates/settings.html'),
+                templateUrl: 'templates/settings.html',
                 controller: 'SettingsCtrl'
             }
         }
@@ -814,7 +831,7 @@ angular.module('mycdc', [
         url: '/civdemo',
         views: {
             'menuContent': {
-                templateUrl: defaultTemplateHandler('templates/civ-demo.html')
+                templateUrl: 'templates/civ-demo.html'
             }
         }
     });
@@ -873,6 +890,7 @@ angular.module('mycdc', [
 
                 // Add Listener for resize changes
                 window.addEventListener("resize", function() {
+                    console.log('uiMainTemplateHandler()');
                     $scope.uiMainTemplateHandler();
                 }, false);
             }

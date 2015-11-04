@@ -46,12 +46,12 @@ angular.module('mycdc.controllers', [])
 })
 
 /**
- * Home Controller
+ * Source List Controller
  * @param  {[type]}
  * @return {[type]}
  * Note: This should really be AppCtrl and HomeCtrl saved for the home stream
  */
-.controller('HomeCtrl', function($scope, $ionicPlatform, $ionicLoading, $timeout, $rootScope, $ionicPopover, $ionicHistory, returnToState, $stateParams, $cordovaNetwork) {
+.controller('SourceListCtrl', function($scope, $ionicPlatform, $ionicLoading, $timeout, $rootScope, $ionicPopover, $ionicHistory, returnToState, $stateParams, $cordovaNetwork) {
     $scope.menu = [];
     $scope.storage = '';
 
@@ -135,7 +135,7 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('CommonSourceCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, $ionicPopup, $sce, $cordovaNetwork, $ionicScrollDelegate) {
+.controller('CommonSourceCtrl', function($scope, $rootScope, $state, $stateParams, $ionicLoading, $ionicPopup, $sce, $cordovaNetwork, $ionicScrollDelegate) {
     $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
