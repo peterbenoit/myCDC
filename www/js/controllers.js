@@ -151,6 +151,8 @@ angular.module('mycdc.controllers', [])
         // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
         $scope.sourceName = $stateParams.sourceName;
         $scope.sourceDetail = $stateParams.sourceDetail || false;
+        $scope.showBackButton = true;
+        console.log('SHOW BACK BUTTON: ' + $scope.showBackButton + '-' + $scope.sourceName);
 
         // INHERITED PROMISE CHAINED TIMING
         $rootScope.sourceListPromise.then(function(data) {
@@ -164,11 +166,39 @@ angular.module('mycdc.controllers', [])
                 // GET & SAVE THE SOURCE LIST PROMISE
                 $scope.sourceIndexPromise = $rootScope.getSourceIndex($stateParams).then(function(d) {
 
+                    var pageSize = 10, page = 1;
+
                     // SET DATA TO "datas" SO TEMPLATE WILL PICK IT UP & DISPLAY IT
                     $scope.datas = $scope.sourceIndex;
 
+                    // SETUP PAGINATION
+                    $scope.paginationLimit = function(data) {
+                        return pageSize * page;
+                    };
+
+                    $scope.hasMoreItems = function() {
+                        return page < ($scope.datas.length / pageSize);
+                    };
+
+                    $scope.loadMore = function() {
+                        page = page + 1;
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+                    };
+
                     // BROADCAST REFRESH SO SCROLLER WILL RESIZE APPROPRIATELY
                     $scope.$broadcast('scroll.refreshComplete');
+
+                    // REDIRECT TO HOME IF NO SOURCE DEFINED
+                    if ($scope.sourceDetail) {
+
+                        //
+                        console.log('GET DETAIL DATA');
+                        $scope.frameUrl = $rootScope.getSourceDetailUrl($stateParams);
+
+                        console.log($scope.showBackButton);
+                        console.log($scope.sourceName);
+
+                    }
 
                     // HIDE THE LOADER
                     $ionicLoading.hide();
@@ -176,6 +206,15 @@ angular.module('mycdc.controllers', [])
                     // RETURN TRIMMED DATA TO CHAIN
                     return d.data;
                 });
+
+                /* AFTER ALL MAGIC - DETERMINE IF PHONE AND
+                $scope.sourceIndexPromise.then(function() {
+                    console.log($scope.viewType);
+                    if ($scope.datas.length && $scope.viewType != 'phone') {
+                        $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
+                    }
+                });
+                */
             }
         });
     };

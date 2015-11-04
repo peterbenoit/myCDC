@@ -1,0 +1,19 @@
+<ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh(true)">
+</ion-refresher>
+<div class="image-stream" resize>
+    <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row" ng-if="$index % 2 === 0">
+        <a href="{{url}}{{$index}}" ng-if="$index < datas.length" class="ng-enter-stagger">
+            <div class="item item-image" ng-style="halfwidth()">
+                <img ng-src="{{datas[$index].imageSrc}}" class="horizontal" halfsize>
+            </div>
+        </a>
+        <a href="{{url}}{{$index + 1}}" ng-if="$index + 1 < datas.length" class="ng-enter-stagger">
+            <div class="item item-image" ng-style="halfwidth()">
+                <img ng-src="{{datas[$index + 1].imageSrc}}" class="horizontal" halfsize>
+            </div>
+        </a>
+    </div>
+</div>
+<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>

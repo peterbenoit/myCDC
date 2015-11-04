@@ -7,19 +7,19 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "article"
+        "detail" : "ui-detail-article"
     }
 }, {
-    "contentGroupIdentifier": "globalhealth",
+    "contentGroupIdentifier": "aroundtheworld",
     "title": "CDC Around the World",
     "icon": "ion-checkmark-circled",
-    "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Global%20Health&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
+    "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Around%20The%20World&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "article"
+        "detail" : "ui-detail-article"
     }
 }, {
     "contentGroupIdentifier": "diseaseoftheweek",
@@ -31,7 +31,7 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "embed"
+        "detail" : "ui-detail-embed"
     }
 }, {
     "contentGroupIdentifier": "fluviewweeklysummary",
@@ -43,7 +43,7 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "article"
+        "detail" : "ui-detail-article"
     }
 }, {
     "contentGroupIdentifier": "featuredhealtharticles",
@@ -55,7 +55,7 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "embed"
+        "detail" : "ui-detail-embed"
     }
 }, {
     "contentGroupIdentifier": "vitalsigns",
@@ -67,7 +67,7 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "article"
+        "detail" : "ui-detail-article"
     }
 }, {
     "contentGroupIdentifier": "faststats",
@@ -79,10 +79,10 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "data"
+        "detail" : "ui-detail-data"
     }
 }, {
-    "contentGroupIdentifier": "emerginginfectiousdisease",
+    "contentGroupIdentifier": "eid",
     "title": "Emerging Infectious Disease (EID)",
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=EID&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
@@ -91,10 +91,10 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "journal"
+        "detail" : "ui-detail-journal"
     }
 }, {
-    "contentGroupIdentifier": "cdcdirectorsblog",
+    "contentGroupIdentifier": "cdcdirectorblog",
     "title": "CDC Director Blog",
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=CDC%20Director%20Blog&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
@@ -106,7 +106,7 @@
         "detail" : "blog"
     }
 }, {
-    "contentGroupIdentifier": "phmblogs",
+    "contentGroupIdentifier": "publichealthmattersblog",
     "title": "Public Health Matters Blog",
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Public%20Health%20Matters%20Blog&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
@@ -127,10 +127,10 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "data"
+        "detail" : "ui-detail-data"
     }
 }, {
-    "contentGroupIdentifier": "dyk",
+    "contentGroupIdentifier": "didyouknow",
     "title": "Did You Know?",
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Did%20You%20Know&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
@@ -139,10 +139,10 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "fact"
+        "detail" : "ui-detail-fact"
     }
 }, {
-    "contentGroupIdentifier": "factoftheweek",
+    "contentGroupIdentifier": "factsoftheweek",
     "title": "Fact of the Week",
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=24%2F7%20Facts%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
@@ -151,10 +151,10 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "fact"
+        "detail" : "ui-detail-fact"
     }
 }, {
-    "contentGroupIdentifier": "mmwr",
+    "contentGroupIdentifier": "mmwr2016",
     "title": "Morbidity and Mortality Weekly Report (MMWR)",
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=MMWR%202016&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
@@ -163,10 +163,10 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "journal"
+        "detail" : "ui-detail-journal"
     }
 }, {
-    "contentGroupIdentifier": "pcds",
+    "contentGroupIdentifier": "pcd",
     "title": "Preventing Chronic Disease (PCD)",
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=PCD&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
@@ -175,7 +175,7 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "journal"
+        "detail" : "ui-detail-journal"
     }
 }, {
     "contentGroupIdentifier": "newsroom",
@@ -186,7 +186,7 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "embed"
+        "detail" : "ui-detail-embed"
     }
 }, {
     "contentGroupIdentifier": "outbreaks",
@@ -198,7 +198,7 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "embed"
+        "detail" : "ui-detail-embed"
     }
 }, {
     "contentGroupIdentifier": "travelnotices",
@@ -210,7 +210,7 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "embed"
+        "detail" : "ui-detail-embed"
     }
 }, {
     "contentGroupIdentifier": "phils",
@@ -222,7 +222,7 @@
     "templates" : {
         "source" : "ui-stream-image",
         "card" : "ui-content-card-default",
-        "detail" : "journal"
+        "detail" : "ui-detail-journal"
     }
 }, {
     "contentGroupIdentifier": "podcasts",
@@ -234,7 +234,7 @@
     "templates" : {
         "source" : "ui-stream-audio",
         "card" : "ui-content-card-default",
-        "detail" : "audio"
+        "detail" : "ui-detail-audio"
     }
 }, {
     "contentGroupIdentifier": "youtube",
@@ -242,11 +242,11 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=YouTube&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "na",
-    "processors": ["cardTemplateInjector","feedNormalizer", "extractVideoComments"],
+    "processors": ["cardTemplateInjector","feedNormalizer","extractVideoComments"],
     "templates" : {
-        "source" : "ui-stream-video",
+        "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "video"
+        "detail" : "ui-detail-video"
     }
 }, {
     "contentGroupIdentifier": "cdcgov",
@@ -256,7 +256,7 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "article"
+        "detail" : "ui-detail-article"
     }
 }, {
     "contentGroupIdentifier": "cdcsocialmedia",
@@ -266,7 +266,7 @@
     "templates" : {
         "source" : "ui-stream-image",
         "card" : "ui-content-card-default",
-        "detail" : "journal"
+        "detail" : "ui-detail-journal"
     }
 }, {
     "contentGroupIdentifier": "facebook",
@@ -276,7 +276,7 @@
     "templates" : {
         "source" : "ui-stream-video",
         "card" : "ui-content-card-default",
-        "detail" : "video"
+        "detail" : "ui-detail-video"
     }
 }, {
     "contentGroupIdentifier": "posts",
@@ -286,7 +286,7 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "article"
+        "detail" : "ui-detail-article"
     }
 }, {
     "contentGroupIdentifier": "twitter",
@@ -306,7 +306,7 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "article"
+        "detail" : "ui-detail-article"
     }
 }, {
     "contentGroupIdentifier": "civdemo",
@@ -316,6 +316,6 @@
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "article"
+        "detail" : "ui-detail-article"
     }
 }]

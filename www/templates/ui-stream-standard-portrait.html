@@ -3,10 +3,10 @@
     on-refresh="doRefresh(true)">
 </ion-refresher>
 <!-- NOTE: This is temporary, and should reside in home.html when we're done testing -->
-<div class="row">
-    <div ng-repeat="(idx, data) in datas | limitTo:10">
+<div class="stream-standard">
+    <div ng-repeat="(idx, data) in datas | limitTo:paginationLimit()">
         <div data-ng-include="cardTemplate(data.templates.card)"></div>
     </div>
 </div>
-<ion-infinite-scroll ng-if="hasMoreItems" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
 

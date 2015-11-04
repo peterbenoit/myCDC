@@ -105,6 +105,7 @@ angular.module('mycdc', [
         //console.log(type);
         return 'templates/' + type +'.html';
     };
+
     rs.detailTemplate = function (type, orientation) {
         //console.log('detailTemplate');
         //console.log(type);
@@ -199,9 +200,29 @@ angular.module('mycdc', [
         }
     });
 
+    rs.getScreenState = function () {
+
+        // DEFAULT RETURN
+        var objReturn = {
+            viewType : 'phone',
+            viewOrientation : 'portrait'
+        };
+
+        // GET SCREEN SIZE & DETERMINE DEVICE "SCREEN TYPE" & ORIENTATION FROM THAT
+        if (window.screen.width >= 1024 && window.screen.width > window.screen.height) {
+            objReturn.viewType = 'tablet';
+            objReturn.viewOrientation = 'landscape';
+        } else if (window.screen.width >= 768 && window.screen.width < window.screen.height) {
+            objReturn.viewType = 'tablet';
+            objReturn.viewOrientation = 'portrait';
+        }
+
+        return objReturn;
+    };
+
     rs.cgNormalize = function (contentgroup) {
         return contentgroup.toLowerCase().replace(/ /g, '');
-    }
+    };
 
     rs.dataProcessors = {
         cardTemplateInjector: function (d) {
@@ -449,6 +470,7 @@ angular.module('mycdc', [
 
     // GET SOURCE METADATA FROM SOURCELIST BY NAME (In Route Params)
     rs.getSourceMeta = function(stateParams) {
+
         // PARAMS
         var arySourceInfo, strSourceName = stateParams.sourceName || stateParams || "";
 
@@ -868,6 +890,7 @@ angular.module('mycdc', [
 
             // CREATE MAIN TEMPALTE HANDLER (COULD USE IONIC FOR TABLE DETECTION, BUT THIS SEEMS MORE UNIVERSAL WITH LESS isThis, isThat CALLS)
             $scope.uiMainTemplateHandler = function () {
+
                 // GET SCREEN SIZE
                 if (window.screen.width >= 1024 && window.screen.width > window.screen.height) {
                     $scope.uiMainContentUrl = 'templates/ui-container-tablet-landscape.html';
@@ -901,8 +924,8 @@ angular.module('mycdc', [
         },
         link: function(scope, element, attrs) {
            // ON LINK TO APP/DOM - FIRE TEMPLATE HANDLER TO SELECT APPROPRIATE TEMPLATE
+           scope.$stateParams = $stateParams;
            scope.uiMainTemplateHandler();
-           // scope.$stateParams = $stateParams;
         },
         template: '<div ng-include="uiMainContentUrl"></div>'
    }
