@@ -94,7 +94,7 @@ angular.module('mycdc', [
         });
     };
 
-    rs.logLevel = 3;
+    rs.logLevel = 1;
 
     rs.log = function (anyVar, intLevel, anyLabel) {
         intLevel = intLevel || 10;
@@ -115,18 +115,18 @@ angular.module('mycdc', [
     };
 
     rs.cardTemplate = function (type, orientation) {
-        rs.log(type, 2, 'Card Template');
+        rs.log(type, 8, 'Card Template');
         return 'templates/' + type +'.html';
     };
 
     rs.getTemplate = function (type, card, orientation) {
-        rs.log(type, 2, 'Requested TemplateType');
-        rs.log(card, 2, 'Card Data Provided for Template Selection');
+        rs.log(type, 8, 'Requested TemplateType');
+        rs.log(card, 8, 'Card Data Provided for Template Selection');
         return 'templates/' + card.templates[type] +'.html';
     };
 
     rs.detailTemplate = function (type, orientation) {
-        rs.log(type, 2, 'detailTemplate');
+        rs.log(type, 8, 'detailTemplate');
         return '<' + '>';
     };
 
@@ -250,6 +250,7 @@ angular.module('mycdc', [
                 var idx1 = d.length, idx2, obj1, obj2, strCg, strCgStripped;
                 var tmp = [];
 
+                rs.log(d, 1, 'CURRENT SOURCE PRE FIX');
                 rs.log(objSourceMeta, 1, 'CURRENT SOURCE METADATA');
 
                 while (idx1--) {
@@ -278,6 +279,9 @@ angular.module('mycdc', [
                                 obj1.contentGroupIdentifier = strCg;
                                 obj1.appContentGroup = strCgStripped;
                                 obj1.templates = rs.templateMap[obj1.appContentGroup];
+                                obj1.detailType = objSourceMeta.detailType;
+                                obj1.home = '#/app/source/' + obj1.appContentGroup;
+                                obj1.url = obj1.home + '/';
 
                                 if (tmp.indexOf(strCgStripped) == -1) {
                                     tmp.push(strCgStripped);
@@ -289,6 +293,8 @@ angular.module('mycdc', [
 
                 rs.log('Unique Content Groups Found');
                 rs.log(tmp);
+
+                rs.log(d, 1, 'CURRENT SOURCE POST FIX');
 
                 return d;
             },
@@ -438,7 +444,7 @@ angular.module('mycdc', [
                 return [];
             },
             flagOutbreak: function(d) {
-                var currItem, data = d.data.results;
+                var currItem, data = d;
 
                 if (data.length) {
                     for (var i = data.length - 1; i >= 0; i--) {
@@ -452,8 +458,9 @@ angular.module('mycdc', [
                 return [];
             },
             firstOnly: function(d) {
-                if (d.data && d.data.results && d.data.results.length) {
-                    return d.data.results[0];
+                var data = d;
+                if (data.length) {
+                    return [data[0]];
                 }
 
                 return null;
@@ -865,23 +872,37 @@ angular.module('mycdc', [
 
             // HANDLE DIFFERENT TYPES OF CONTENT DETAIL PROCESSING
             var detailProcessors = {
+                video : function ($scope) {
+
+                    $scope.detailData = $scope.detailCard;
+                    $scope.getVideoUrl = function() {
+                        return $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + $scope.detailData.sourceUrl.split('?v=')[1]);
+                    };
+
+                },
                 iframe : function ($scope) {
                     console.log('IFRAME DETAIL PROCESSOR');
                     $scope.processer = 'IFRAME';
 
                     var noChromeUrl = createNoChromeUrl($scope.detailCard.sourceUrl);
 
-                    $rootScope.remoteApi({
+                    $scope.detailData = $scope.detailCard;
+
+                    foo = $rootScope.remoteApi({
                         url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + noChromeUrl
-                    }).then(function(resp) {
+                    });
+
+                    foo.then(function(resp) {
                         if (resp.data.status === '200') {
                             $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
                         } else {
                             $scope.frameUrl = $sce.trustAsResourceUrl(detailCard.sourceUrl);
                         }
+                        $rootScope.log($scope.frameUrl, 1, 'IFRAME URL');
                     },
                     function() {
-                        $scope.frameUrl = $sce.trustAsResourceUrl(detailCard.sourceUrl);
+                        $scope.frameUrl = $sce.trustAsResourceUrl($scope.detailCard.sourceUrl);
+                        $rootScope.log($scope.frameUrl, 1, 'IFRAME URL FROM ERROR HANDLER');
                     });
 
                 },

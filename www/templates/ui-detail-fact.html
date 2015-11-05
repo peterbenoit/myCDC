@@ -3,12 +3,11 @@
         <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
     </ion-nav-buttons>
     <ion-content class="has-header">
-        <div class="padding data civ blog">{{detailData}}
+        <div class="padding data fact civ">
             <h1 class="title">{{detailData.name}}</h1>
             <div class="datepub">{{detailData.datePublished}}</div>
             <div class="source">Source: {{detailData.name}}</div>
             <p class="contentarea" ng-bind-html="detailData.content"></p>
-            <div class="post"><i class="ion ion-social-rss"></i> <a href="javascript:void(0)" ng-click="postComment()">Post a Comment on CDC.gov</a></div>
             <div class="border">
                 <p class="padding">
                     <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>

@@ -63,13 +63,13 @@ angular.module('mycdc.controllers', [])
         if ($stateParams.sourceName && $stateParams.sourceDetail && $stateParams.sourceDetail.length) {
             $state.go('app.sourceIndex', $stateParams);
         } else {
-            if (!$stateParams.sourceName || $stateParams.sourceName == 'homestream') {
+            /*if (!$stateParams.sourceName || $stateParams.sourceName == 'homestream') {
                 $state.go('app.home');
-            } else {
+            } else {*/
                 $state.go('app.sourceIndex', {
                     sourceName : 'homestream'
                 });
-            }
+            //}
         }
     };
 
@@ -213,6 +213,7 @@ angular.module('mycdc.controllers', [])
 
                     // SET DATA TO "datas" SO TEMPLATE WILL PICK IT UP & DISPLAY IT
                     $scope.datas = $scope.sourceIndex;
+                    $rootScope.log($scope.datas, 1, 'CURRENT SOURCE DATA');
 
                     // SETUP PAGINATION
                     $scope.paginationLimit = function(data) {
@@ -234,30 +235,29 @@ angular.module('mycdc.controllers', [])
                     // REDIRECT TO HOME IF NO SOURCE DEFINED
                     if ($scope.sourceDetail) {
 
-                        $scope.detailCard = $scope.getDetailCard($scope.datas, $scope.sourceDetail);
-                        $rootScope.log($scope.detailCard, 1, 'CURRENT DETAIL CARD');
+                        if (!$scope.datas.length) {
 
-                        /*
-                        // DETERMINE DETAIL PROCESS / DISPLAY TYPE
-                        if ($scope.detailCard.detailType == 'iframe') {
-
-                            //
-                            $scope.detailUrls = $rootScope.getSourceDetailUrl($scope.detailCard);
-
-                            // HANDLE IFRAME DATA REQS
-                            $scope.frameUrl = $scope.detailUrls;
-                            $rootScope.log($scope.frameUrl, 2, 'DETAIL URL OBJECT');
+                            // NO CARD LIST: ALERT USER, THEN REDIRECT
+                            var noCardList = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                            noCardList.then(function() {
+                                $state.go('app.sourceIndex', {sourceName: $scope.sourceName, sourceDetail: 'homestream' });
+                            });
 
                         } else {
 
-                            // HANDLE DEFAULT DATA REQS (STANDARD GET)
-                            $rootScope.getDetailContent($scope.sourceMeta, $scope.detailCard).then(function(d) {
-                                $scope.data = d.data;
-                                $rootScope.log($scope.data, 2, 'DETAIL URL OBJECT');
-                            });
-                        }
-                        */
+                            $scope.detailCard = $scope.getDetailCard($scope.datas, $scope.sourceDetail);
+                            $rootScope.log($scope.detailCard, 1, 'CURRENT DETAIL CARD');
 
+                            if (!$scope.detailCard) {
+
+                                // NO DETAIL CARD FOUND IN CARD LIST: ALERT USER, THEN REDIRECT
+                                var noDetailCard = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                                noDetailCard.then(function() {
+                                    $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
+                                });
+                            }
+
+                        }
 
                         $rootScope.log($scope.showBackButton, 5, 'Show Back Button');
                     }

@@ -2,17 +2,19 @@
     <ion-nav-buttons side="right">
         <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
     </ion-nav-buttons>
-    <ion-content class="has-header">
+    <ion-content>
+        <!--
         <div class="video-paging">
             <a alt="Next Button"class="button icon-right ion-chevron-right button-clear button-dark" ng-class="{'button-negative':!next.visible, 'button-dark':next.visible}" ng-disabled="!next.visible" href="#/app/YouTube/{{next.position}}">Next</a>
             <a alt="Previous Button" class="button icon-left ion-chevron-left button-clear button-dark" ng-class="{'button-negative':!previous.visible, 'button-dark':previous.visible}" ng-disabled="!previous.visible" href="#/app/YouTube/{{previous.position}}">Prev</a>
         </div>
-        <iframe width="100%" height="215" ng-if="data.sourceUrl" ng-src="{{getVideoUrl()}}" frameborder="0" allowfullscreen="true"></iframe>
+        -->
+        <iframe width="100%" height="215" ng-if="detailData.sourceUrl" ng-src="{{getVideoUrl()}}" frameborder="0" allowfullscreen="true"></iframe>
         <div class="padding data civ video">
-            <h1 class="title">{{data.name}}</h1>
-            <div class="datepub">{{data.datePublished}}</div>
+            <h1 class="title">{{detailData.name}}</h1>
+            <div class="datepub">{{detailData.datePublished}}</div>
             <div class="source">Source: {{name}}</div>
-            <p ng-bind-html="data.description"></p>
+            <p ng-bind-html="detailData.description"></p>
             <!-- <p><a href="{{transcript}}">Transcript</a></p> -->
         </div>
         <div class="border">
