@@ -732,7 +732,7 @@ angular.module('mycdc', [
         url: '/home',
         views: {
             'menuContent': {
-                templateUrl: 'templates/home.html',
+                templateUrl: 'templates/ui-main-source-list.html',
                 controller: 'SourceListCtrl'
             }
         }
@@ -748,14 +748,14 @@ angular.module('mycdc', [
         }
     });
 
-    sp.state('app.civdemo', {
+    /*sp.state('app.civdemo', {
         url: '/civdemo',
         views: {
             'menuContent': {
                 templateUrl: 'templates/civ-demo.html'
             }
         }
-    });
+    });*/
 
     sp.state('app.sourceIndex', {
         url: '/source/:sourceName',
@@ -918,10 +918,11 @@ angular.module('mycdc', [
                         url : 'https://prototype.cdc.gov/api/v2/resources/media/' + $scope.detailCard.id + '/syndicate.json'
                     }).then(function(d){
                         $rootScope.log(d, 1, 'RETURNED DETAIL DATA');
-
+                        console.log('002');
                         // NORMALIZE DATA BY SOURCE SPECS
                         $scope.detailData = $rootScope.dataProcessor(d, $scope.sourceMeta);
                     });
+                    console.log('001');
 
                 }
             };

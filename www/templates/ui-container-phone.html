@@ -39,7 +39,7 @@
 
   <!-- THE DETAIL VIEW (IF DETAIL SELECTED) -->
   <div class="ui-detail-view" data-ng-if="sourceDetail">
-    <div data-ng-include="detailTemplate(sourceMeta.templates.detail, 'portrait')"></div>
+    <ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard"></ui-detail>
   </div><!-- .ui-detail-view -->
 
 </div><!-- .ui-iphone -->

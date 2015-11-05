@@ -7,7 +7,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
 }, {
@@ -20,7 +20,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
 }, {
@@ -33,7 +33,7 @@
     "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-embed"
     }
 }, {
@@ -46,7 +46,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
 }, {
@@ -59,7 +59,7 @@
     "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-embed"
     }
 }, {
@@ -72,7 +72,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
 }, {
@@ -85,7 +85,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-data"
     }
 }, {
@@ -98,7 +98,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-journal"
     }
 }, {
@@ -111,7 +111,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-blog"
     }
 }, {
@@ -124,7 +124,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-blog"
     }
 }, {
@@ -137,7 +137,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-data"
     }
 }, {
@@ -150,7 +150,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-fact"
     }
 }, {
@@ -163,7 +163,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-fact"
     }
 }, {
@@ -176,7 +176,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-journal"
     }
 }, {
@@ -189,7 +189,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-journal"
     }
 }, {
@@ -201,7 +201,7 @@
     "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-embed"
     }
 }, {
@@ -214,7 +214,7 @@
     "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-embed"
     }
 }, {
@@ -227,7 +227,7 @@
     "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-embed"
     }
 }, {
@@ -240,7 +240,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-image",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-journal"
     }
 }, {
@@ -253,7 +253,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-audio",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-audio"
     }
 }, {
@@ -266,7 +266,7 @@
     "detailType" : "video",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-video"
     }
 }, {
@@ -277,7 +277,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
 }, {
@@ -288,7 +288,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-image",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-journal"
     }
 }, {
@@ -299,7 +299,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-video",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-video"
     }
 }, {
@@ -310,7 +310,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
 }, {
@@ -321,7 +321,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "landing-twitter"
     }
 }, {
@@ -332,7 +332,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
 }, {
@@ -343,7 +343,7 @@
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
-        "card" : "ui-content-card-default",
+        "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
 }]

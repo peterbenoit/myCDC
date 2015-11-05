@@ -232,6 +232,8 @@ angular.module('mycdc.controllers', [])
                     // BROADCAST REFRESH SO SCROLLER WILL RESIZE APPROPRIATELY
                     $scope.$broadcast('scroll.refreshComplete');
 
+                    $rootScope.log($scope.showBackButton, 5, 'Show Back Button');
+
                     // REDIRECT TO HOME IF NO SOURCE DEFINED
                     if ($scope.sourceDetail) {
 
@@ -256,10 +258,7 @@ angular.module('mycdc.controllers', [])
                                     $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
                                 });
                             }
-
                         }
-
-                        $rootScope.log($scope.showBackButton, 5, 'Show Back Button');
                     }
 
                     // HIDE THE LOADER
@@ -275,14 +274,18 @@ angular.module('mycdc.controllers', [])
                     if ($scope.datas.length && $scope.viewType != 'phone') {
                         $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
                     }
-                });
-                */
+                }); */
             }
         });
     };
 
-    // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
-    $scope.ctrlInit($scope.sourceName || ($stateParams.sourceName !== $scope.sourceName));
+    // APP INIT WILL REFRESH SOURCE LIST
+    $scope.appInit().then(function(d) {
+
+        // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
+        $scope.ctrlInit($scope.sourceName || ($stateParams.sourceName !== $scope.sourceName));
+
+    });
 
     $scope.doRefresh = function () {
         $scope.ctrlInit(true);
