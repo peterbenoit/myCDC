@@ -40,7 +40,8 @@
 
 	<!-- THE DETAIL VIEW -->
 	<div class="ui-detail-view">
-		<div data-ng-include="detailTemplate(sourceMeta.templates.detail, 'landscape')"></div>
+		<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard"></ui-detail>
+		<!--<div data-ng-include="detailTemplate(sourceMeta.templates.detail, 'landscape')"></div>-->
 	</div><!-- ui-detail-view -->
 
 </div><!-- ui-tablet-landscape -->

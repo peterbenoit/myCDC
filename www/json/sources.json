@@ -4,6 +4,7 @@
     "icon": "ion-checkmark-circled",
     "url": "http://prototype.cdc.gov/api/v2/resources/media?parentId=150686&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=0",
     "processors": ["cardTemplateInjector","feedNormalizer", "stripHtml", "processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -16,6 +17,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Around%20The%20World&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -28,6 +30,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Disease%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "url",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -40,6 +43,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=FluView%20Weekly%20Report&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -52,6 +56,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Featured%20Health%20Articles&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "url",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -64,6 +69,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Vital%20Signs&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -76,6 +82,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=FastStats&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -88,6 +95,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=EID&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer", "stripHtml"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -100,10 +108,11 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=CDC%20Director%20Blog&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "blog"
+        "detail" : "ui-detail-blog"
     }
 }, {
     "contentGroupIdentifier": "publichealthmattersblog",
@@ -112,18 +121,20 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Public%20Health%20Matters%20Blog&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
-        "detail" : "blog"
+        "detail" : "ui-detail-blog"
     }
 }, {
-    "contentGroupIdentifier": "weeklydiseasecasecounts",
+    "contentGroupIdentifier": "weeklycasecounts",
     "title": "Disease Case Counts",
     "icon": "ion-close-circled",
     "url": "json/sources/WeeklyCaseCounts.json",
     "getContentBy": "url",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -136,6 +147,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Did%20You%20Know&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer", "firstOnly"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -148,6 +160,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=24%2F7%20Facts%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer", "parseEncoding"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -160,6 +173,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=MMWR%202016&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -172,6 +186,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=PCD&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -183,6 +198,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Newsroom&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "url",
+    "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -195,6 +211,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Outbreaks&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "na",
     "processors": ["cardTemplateInjector","feedNormalizer", "flagOutbreak"],
+    "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -207,6 +224,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Travel%20Notices&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "na",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -219,6 +237,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Image%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "na",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-image",
         "card" : "ui-content-card-default",
@@ -231,6 +250,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Podcasts&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "na",
     "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-audio",
         "card" : "ui-content-card-default",
@@ -243,6 +263,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=YouTube&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "na",
     "processors": ["cardTemplateInjector","feedNormalizer","extractVideoComments"],
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -253,6 +274,7 @@
     "title": "Instagram",
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -263,6 +285,7 @@
     "title": "Flickr",
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-image",
         "card" : "ui-content-card-default",
@@ -273,6 +296,7 @@
     "title": "Facebook",
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-video",
         "card" : "ui-content-card-default",
@@ -283,6 +307,7 @@
     "title": "Google+",
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -293,6 +318,7 @@
     "title": "Twitter",
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -303,6 +329,7 @@
     "title": "Pinterest",
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",
@@ -313,6 +340,7 @@
     "title": "CIV Demo Page",
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
+    "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
         "card" : "ui-content-card-default",

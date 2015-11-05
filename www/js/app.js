@@ -27,7 +27,7 @@ angular.module('mycdc', [
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $rootScope, $location, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup, DataFactory, $http, $filter, $sce) {
+.run(function($ionicPlatform, $rootScope, $location, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup, $http, $filter, $sce) {
     var rs = $rootScope, href = window.location.href;
 
     // window.open should use inappbrowser
@@ -57,7 +57,7 @@ angular.module('mycdc', [
         rs.$on('$cordovaNetwork:offline', function(event, networkState) {
             var offlineState = networkState,
                 isDirty = false;
-                console.log(offlineState);
+                rs.log(offlineState);
         });
     }
 
@@ -94,22 +94,40 @@ angular.module('mycdc', [
         });
     };
 
+    rs.logLevel = 3;
+
+    rs.log = function (anyVar, intLevel, anyLabel) {
+        intLevel = intLevel || 10;
+        if (rs.logLevel >= intLevel) {
+            if (anyLabel) {
+                console.log('*** ' + anyLabel + ' ***');
+            }
+            console.log(anyVar);
+            if (anyLabel) {
+                console.log('*** /' + anyLabel + ' ***');
+            }
+        }
+    };
+
     rs.streamTemplate = function (type, orientation) {
-        //console.log('streamTemplate');
-        //console.log(type);
+        rs.log(type, 9, 'Stream Template');
         return 'templates/' + type + '-' + orientation +'.html';
     };
 
     rs.cardTemplate = function (type, orientation) {
-        //console.log('cardTemplate');
-        //console.log(type);
+        rs.log(type, 2, 'Card Template');
         return 'templates/' + type +'.html';
     };
 
+    rs.getTemplate = function (type, card, orientation) {
+        rs.log(type, 2, 'Requested TemplateType');
+        rs.log(card, 2, 'Card Data Provided for Template Selection');
+        return 'templates/' + card.templates[type] +'.html';
+    };
+
     rs.detailTemplate = function (type, orientation) {
-        //console.log('detailTemplate');
-        //console.log(type);
-        return 'templates/' + type +'.html';
+        rs.log(type, 2, 'detailTemplate');
+        return '<' + '>';
     };
 
     $ionicPlatform.ready(function() {
@@ -124,7 +142,7 @@ angular.module('mycdc', [
             var t = $(this),
                 href = t.attr('href');
 
-                console.log('Opening ', href);
+                rs.log('Opening ', href);
 
             var ref = window.open(href, '_system');
 
@@ -169,6 +187,7 @@ angular.module('mycdc', [
             }
         }
 
+        /*
         // kick off a media query listener to tag the body with a class
         var mq;
         if (window.matchMedia) {
@@ -187,17 +206,18 @@ angular.module('mycdc', [
 
             mq.addListener(function(m) {
                 if (m.matches) {
-                    console.log('changed to portrait');
+                    rs.log('changed to portrait');
                     rs.orientation = 'portrait';
                     $ionicBody.removeClass('landscape').addClass('portrait');
                 } else {
-                    console.log('changed to landscape');
+                    rs.log('changed to landscape');
                     rs.orientation = 'landscape';
                     $ionicBody.removeClass('portrait').addClass('landscape');
                 }
                 rs.$apply();
             });
         }
+        */
     });
 
     rs.getScreenState = function () {
@@ -224,210 +244,254 @@ angular.module('mycdc', [
         return contentgroup.toLowerCase().replace(/ /g, '');
     };
 
-    rs.dataProcessors = {
-        cardTemplateInjector: function (d) {
-            var idx1 = d.length, idx2, obj1, obj2, strCg, strCgStripped;
-            var tmp = [];
+    rs.dataProcessor = (function () {
+        var processors = {
+            cardTemplateInjector: function (d, objSourceMeta) {
+                var idx1 = d.length, idx2, obj1, obj2, strCg, strCgStripped;
+                var tmp = [];
 
-            while (idx1--) {
-                obj1 = d[idx1];
-                if (obj1.tags && obj1.tags.length) {
-                    idx2 = obj1.tags.length;
-                    while (idx2--) {
-                        obj2 = obj1.tags[idx2];
-                        if (obj2.type.toLowerCase() == 'contentgroup') {
-                            strCg = obj2.name;
-                            strCgStripped = rs.cgNormalize(strCg);
+                rs.log(objSourceMeta, 1, 'CURRENT SOURCE METADATA');
 
-                            obj1.contentGroupIdentifier = strCg;
-                            obj1.appContentGroup = strCgStripped;
-                            obj1.templates = rs.templateMap[strCgStripped];
+                while (idx1--) {
+                    obj1 = d[idx1];
 
-
-
-                            if (tmp.indexOf(strCgStripped) == -1) {
-                                tmp.push(strCgStripped);
-                            }
-                        }
+                    // TEMPORARY FEED BUG WORKAROUND (DEFAULTS DATA WHICH SHOULD BE PRESENT IN TAG DATA)
+                    if (!obj1.contentgroup) {
+                        obj1.contentgroup = 'FEED ISSUE: ' + objSourceMeta.contentGroupIdentifier + 'doesnt not include a content group key';
+                        obj1.appContentGroup = objSourceMeta.contentGroupIdentifier;
+                        obj1.templates = rs.templateMap[obj1.appContentGroup];
+                        obj1.detailType = objSourceMeta.detailType;
+                        obj1.home = '#/app/source/' + obj1.appContentGroup;
+                        obj1.url = obj1.home + '/';
                     }
-                }
-            }
 
-            console.log('Unique Content Groups Found');
-            console.log(tmp);
+                    // LOOP TAG - LOOK FOR CONTENT GROUP MATCH
+                    if (obj1.tags && obj1.tags.length) {
+                        idx2 = obj1.tags.length;
+                        while (idx2--) {
+                            obj2 = obj1.tags[idx2];
+                            if (obj2.type.toLowerCase() == 'contentgroup') {
+                                strCg = obj2.name;
+                                strCgStripped = rs.cgNormalize(strCg);
 
-            return d;
-        },
-        feedNormalizer: function(d) {
+                                // UPDATE BASED ON TAG DATA
+                                obj1.contentGroupIdentifier = strCg;
+                                obj1.appContentGroup = strCgStripped;
+                                obj1.templates = rs.templateMap[obj1.appContentGroup];
 
-            var time, currItem;
-            var data = d;
-
-            if (data.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    currItem = data[i];
-                    hasImage = false;
-
-                    // format the dateModified
-                    time = moment(currItem.datePublished);
-                    currItem.datePublished = time.format('MMMM Do, YYYY');
-
-                    // if there's an enclosure
-                    if (currItem.enclosures.length) {
-                        enclosures = currItem.enclosures;
-
-                        // look for the image enclosure
-                        for (var j = enclosures.length - 1; j >= 0; j--) {
-                            if (enclosures[j].contentType.indexOf('image') > -1) {
-                                hasImage = true;
-                                currItem.imageSrc = enclosures[j].resourceUrl;
-                                break;
-                            }
-                        }
-                    }
-                    // Add image indicator
-                    currItem.hasImage = hasImage;
-                }
-
-                return data;
-            }
-
-            return [];
-        },
-        processTags: function(d) {
-            var currItem, data = d;
-
-            if (data.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    currItem = data[i];
-
-                    // If there are any tags, look for the ContentGroup to identify it (and it's path) here for use in the template
-                    if (currItem.tags.length) {
-                        var tags = currItem.tags;
-
-                        // look for the ContentGroup enclosure and set the same rules that apply to it in their individual controllers
-                        // also set a path to navigate
-                        for (var k = tags.length - 1; k >= 0; k--) {
-                            if (tags[k].type === 'ContentGroup') {
-                                currItem.ContentGroup = tags[k].name;
-                                currItem.appContentGroup = rs.cgNormalize(tags[k].name);
-                                currItem.home = '#/app/source/' + currItem.appContentGroup;
-                                currItem.url = currItem.home + '/';
-
-                                // TODO: consider using config.json for this data
-                                if (currItem.appContentGroup === 'eid') {
-                                    currItem.hasImage = false;
-                                    break;
+                                if (tmp.indexOf(strCgStripped) == -1) {
+                                    tmp.push(strCgStripped);
                                 }
-
-                                if (currItem.appContentGroup === 'vitalsigns') {
-                                    currItem.hasImage = false;
-                                    break;
-                                }
-
-                                if (currItem.appContentGroup === 'outbreaks') {
-                                    currItem.isOutbreak = true;
-                                    currItem.hasImage = false;
-                                    break;
-                                }
-
-                                if (currItem.appContentGroup === 'travelnotices') {
-                                    currItem.isAlert = currItem.name.indexOf('Alert') > -1;
-                                    currItem.isWatch = currItem.name.indexOf('Watch') > -1;
-                                    currItem.isWarning = currItem.name.indexOf('Warning') > -1;
-                                    break;
-                                }
-
-                                // WARN: Watch for CGs which don't have a source stream
                             }
                         }
                     }
                 }
 
-                return data;
-            }
+                rs.log('Unique Content Groups Found');
+                rs.log(tmp);
 
-            return [];
-        },
-        parseEncoding: function(d) {
-            var currItem, data = d.data.results;
+                return d;
+            },
+            feedNormalizer: function(d) {
 
-            if (data.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    currItem = data[i];
-                    if (currItem.description) {
-                        // remove encoding from description
-                        var txt = document.createElement('textarea');
-                        txt.innerHTML = currItem.description;
-                        currItem.description = txt.value;
+                var time, currItem;
+                var data = d;
+
+                if (data.length) {
+                    for (var i = data.length - 1; i >= 0; i--) {
+                        currItem = data[i];
+                        hasImage = false;
+
+                        // format the dateModified
+                        time = moment(currItem.datePublished);
+                        currItem.datePublished = time.format('MMMM Do, YYYY');
+
+                        // if there's an enclosure
+                        if (currItem.enclosures.length) {
+                            enclosures = currItem.enclosures;
+
+                            // look for the image enclosure
+                            for (var j = enclosures.length - 1; j >= 0; j--) {
+                                if (enclosures[j].contentType.indexOf('image') > -1) {
+                                    hasImage = true;
+                                    currItem.imageSrc = enclosures[j].resourceUrl;
+                                    break;
+                                }
+                            }
+                        }
+                        // Add image indicator
+                        currItem.hasImage = hasImage;
                     }
+
+                    return data;
                 }
 
-                return data;
-            }
+                return [];
+            },
+            processTags: function(d) {
+                var currItem, data = d;
 
-            return [];
-        },
-        stripHtml: function(d) {
-            var currItem, data = d;
+                if (data.length) {
+                    for (var i = data.length - 1; i >= 0; i--) {
+                        currItem = data[i];
 
-            if (data.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    currItem = data[i];
+                        // If there are any tags, look for the ContentGroup to identify it (and it's path) here for use in the template
+                        if (currItem.tags.length) {
+                            var tags = currItem.tags;
 
-                    // remove html from name
-                    currItem.name = currItem.name.replace(/<[^>]+>/gm, '');
+                            // look for the ContentGroup enclosure and set the same rules that apply to it in their individual controllers
+                            // also set a path to navigate
+                            for (var k = tags.length - 1; k >= 0; k--) {
+                                if (tags[k].type === 'ContentGroup') {
+                                    //currItem.ContentGroup = tags[k].name;
+                                    //currItem.appContentGroup = rs.cgNormalize(tags[k].name);
+                                    //currItem.home = '#/app/source/' + currItem.appContentGroup;
+                                    //currItem.url = currItem.home + '/';
 
-                    // remove html from description
-                    currItem.description = currItem.description.replace(/<[^>]+>/gm, '');
-                }
+                                    // TODO: consider using config.json for this data
+                                    if (currItem.appContentGroup === 'eid') {
+                                        currItem.hasImage = false;
+                                        break;
+                                    }
 
-                return data;
-            }
+                                    if (currItem.appContentGroup === 'vitalsigns') {
+                                        currItem.hasImage = false;
+                                        break;
+                                    }
 
-            return [];
-        },
-        extractVideoComments: function(d) {
-            var currItem, data = d;
+                                    if (currItem.appContentGroup === 'outbreaks') {
+                                        currItem.isOutbreak = true;
+                                        currItem.hasImage = false;
+                                        break;
+                                    }
 
-            if (data.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    currItem = data[i];
-                    if (currItem.description) {
-                        currItem.description = currItem.description.split('Comments on this video')[0].trim();
+                                    if (currItem.appContentGroup === 'travelnotices') {
+                                        currItem.isAlert = currItem.name.indexOf('Alert') > -1;
+                                        currItem.isWatch = currItem.name.indexOf('Watch') > -1;
+                                        currItem.isWarning = currItem.name.indexOf('Warning') > -1;
+                                        break;
+                                    }
+
+                                    // WARN: Watch for CGs which don't have a source stream
+                                }
+                            }
+                        }
                     }
+
+                    return data;
                 }
 
-                return data;
-            }
+                return [];
+            },
+            parseEncoding: function(d) {
+                var currItem, data = d.data.results;
 
-            return [];
-        },
-        flagOutbreak: function(d) {
-            var currItem, data = d.data.results;
+                if (data.length) {
+                    for (var i = data.length - 1; i >= 0; i--) {
+                        currItem = data[i];
+                        if (currItem.description) {
+                            // remove encoding from description
+                            var txt = document.createElement('textarea');
+                            txt.innerHTML = currItem.description;
+                            currItem.description = txt.value;
+                        }
+                    }
 
-            if (data.length) {
-                for (var i = data.length - 1; i >= 0; i--) {
-                    currItem = data[i];
-                    currItem.isOutbreak = true;
+                    return data;
                 }
 
-                return data;
+                return [];
+            },
+            stripHtml: function(d) {
+                var currItem, data = d;
+
+                if (data.length) {
+                    for (var i = data.length - 1; i >= 0; i--) {
+                        currItem = data[i];
+
+                        // remove html from name
+                        currItem.name = currItem.name.replace(/<[^>]+>/gm, '');
+
+                        // remove html from description
+                        currItem.description = currItem.description.replace(/<[^>]+>/gm, '');
+                    }
+
+                    return data;
+                }
+
+                return [];
+            },
+            extractVideoComments: function(d) {
+                var currItem, data = d;
+
+                if (data.length) {
+                    for (var i = data.length - 1; i >= 0; i--) {
+                        currItem = data[i];
+                        if (currItem.description) {
+                            currItem.description = currItem.description.split('Comments on this video')[0].trim();
+                        }
+                    }
+
+                    return data;
+                }
+
+                return [];
+            },
+            flagOutbreak: function(d) {
+                var currItem, data = d.data.results;
+
+                if (data.length) {
+                    for (var i = data.length - 1; i >= 0; i--) {
+                        currItem = data[i];
+                        currItem.isOutbreak = true;
+                    }
+
+                    return data;
+                }
+
+                return [];
+            },
+            firstOnly: function(d) {
+                if (d.data && d.data.results && d.data.results.length) {
+                    return d.data.results[0];
+                }
+
+                return null;
+            },
+            defaultHandler: function() {
+                return [];
+            }
+        };
+
+        return function (d, objMetaData) {
+
+            var processor;
+
+            data = (d.data && d.data.results) ? d.data.results : [];
+            rs.log(data);
+
+            // DID WE GET DATA?
+            if (data.length > 0) {
+
+                // PROCESS DATA (IF NEEDED)
+                if (objMetaData.processors && objMetaData.processors.length) {
+
+                    // REVERSE ARRA SINCE FOR REVERSE LOOP
+                    objMetaData.processors.reverse();
+
+                    // REVERSE LOOP THROUGH PROCESSORS
+                    for (var i = objMetaData.processors.length - 1; i >= 0; i--) {
+                        processor = objMetaData.processors[i];
+                        data = processors[processor].call(this, data, objMetaData);
+                    };
+                }
             }
 
-            return [];
-        },
-        firstOnly: function(d) {
-            if (d.data && d.data.results && d.data.results.length) {
-                return d.data.results[0];
-            }
+            //RETURN IT IN THE PROMISE CHAIN
+            return data;
 
-            return null;
-        },
-        defaultHandler: function() {
-            return [];
         }
-    };
+    } ());
 
     rs.getLocalStore = (function() {
 
@@ -511,36 +575,15 @@ angular.module('mycdc', [
 
             sourceIndexPromise.then(function(d) {
 
-                var processor;
+                // NORMALIZE DATA BY SOURCE SPECS
+                var data = rs.dataProcessor(d, objMetaData);
 
-                data = (d.data && d.data.results) ? d.data.results : [];
-                console.log(data);
+                //SAVE IT TO LOCAL
+                localStore.save(data);
 
-                // DID WE GET DATA?
-                if (data.length > 0) {
+                // SAVE IT TO RS
+                rs.sourceIndex = data;
 
-                    // PROCESS DATA (IF NEEDED)
-                    if (objMetaData.processors && objMetaData.processors.length) {
-
-                        // REVERSE ARRA SINCE FOR REVERSE LOOP
-                        objMetaData.processors.reverse();
-
-                        // REVERSE LOOP THROUGH PROCESSORS
-                        for (var i = objMetaData.processors.length - 1; i >= 0; i--) {
-                            processor = objMetaData.processors[i];
-                            data = rs.dataProcessors[processor].call(this, data);
-                        };
-                    }
-
-                    //SAVE IT TO LOCAL
-                    localStore.save(data);
-
-                    // SAVE IT TO RS
-                    rs.sourceIndex = data;
-                }
-
-                //RETURN IT IN THE PROMISE CHAIN
-                return data;
             }, function(e) {
 
                 // ON ERROR, RETURN WHAT WE HAVE IN LOCAL STORAGE
@@ -551,37 +594,45 @@ angular.module('mycdc', [
         }
     };
 
-    rs.getSourceDetailUrl = function(stateParams) {
-        var aryCardData, objCardData, sourceDetailPromise, data;
+    rs.getDetailContent = (function() {
 
-        objMetaData = rs.getSourceMeta(stateParams);
-        aryCardData = $filter('filter')(rs.sourceIndex, {
-            id : stateParams.sourceDetail
-        });
+        var getSourceDetailUrl = function(sourceMeta, sourceIndexCard) {
+            var url;
 
-        objCardData = (aryCardData.length) ? aryCardData[0] : false;
-
-        console.log('objCardData');
-        console.log(objCardData);
-
-        if (objCardData) {
-            return {
-                url : $sce.trustAsResourceUrl(objCardData.sourceUrl),
-                nochromeurl : $sce.trustAsResourceUrl(rs.getNoChromeUrl(objCardData.sourceUrl))
+            switch (sourceMeta.getContentBy) {
+                case 'id':
+                    url = 'https://prototype.cdc.gov/api/v2/resources/media/' + sourceIndexCard.id + '/syndicate.json';
+                break;
+                default: // ID
+                    url = sourceIndexCard.sourceUrl;
+                break;
             }
+
+            if (sourceIndexCard) {
+                return {
+                    url : $sce.trustAsResourceUrl(url),
+                    nochromeurl : $sce.trustAsResourceUrl(rs.getNoChromeUrl(url))
+                }
+            };
+
+            return false;
         };
 
-        return false;
-    };
+        return function (sourceMeta, sourceIndexCard) {
 
-    rs.getNoChromeUrl = function(url) {
-        var sourceurl = url,
-            filename = sourceurl.split('/').pop(),
-            newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1],
-            nochromeurl = sourceurl.replace(filename, newfilename);
+            var sourceDetailPromise, url;
 
-        return nochromeurl;
-    };
+            url = getSourceDetailUrl(sourceMeta, sourceIndexCard);
+
+            sourceDetailPromise = rs.remoteApi({
+                url: url
+            }).then(function(d) {
+                return d;
+            });
+
+            return sourceDetailPromise;
+        }
+    } ());
 
     rs.appInit = function(blnRefresh) {
 
@@ -589,7 +640,7 @@ angular.module('mycdc', [
         if (blnRefresh || !rs.sourceListPromise || false) {
 
             // DEBUG
-            console.log('appInit Refresh');
+            rs.log('appInit Refresh');
 
             // GET & SAVE THE SOURCE LIST PROMISE
             rs.sourceListPromise = rs.getSourceList();
@@ -628,8 +679,8 @@ angular.module('mycdc', [
                 } ());
 
                 //DEBUG
-                console.log('rs.templateMap');
-                console.log(rs.templateMap);
+                rs.log('rs.templateMap');
+                rs.log(rs.templateMap);
 
                 // RETURN TRIMMED DATA TO CHAIN
                 return rs.sourceList;
@@ -650,171 +701,12 @@ angular.module('mycdc', [
 
     $ionicConfigProvider.navBar.transition('none'); // keep the navbar from animating
 
-    // TODO: consider using this for "lower" end devices
-    // $ionicConfigProvider.views.transition('none');      // keep the views from animating
-
-    /* STANDARD TEMPLATE HANDLER
-    var defaultTemplateHandler = function(strMode, strPrefix, strPath) {
-
-        strMode = strMode || 'static';
-        strPrefix = strPrefix || 'stream';
-        strPath = strPath || 'templates/';
-        var strReturn;
-
-        // DYNAMIC HANDLER (MULTIPLE TEMPLATES BASED ON OS & ORIENTATION)
-        if (strMode === 'dynamic') {
-
-            // RETURN HANDLER METHOD
-            if (ionic.Platform.is('androidtablet')) {
-                strReturn = strPath + strPrefix + '-tablet.html';
-            }
-            if (ionic.Platform.isAndroid()) {
-                strReturn = strPath + strPrefix + '.html';
-            }
-            if (ionic.Platform.isIPad()) {
-                strReturn = strPath + strPrefix + '-tablet.html';
-            }
-            if (ionic.Platform.isIOS()) {
-                strReturn = strPath + strPrefix + '.html';
-            }
-            if (ionic.Platform.isWindowsPhone()) {
-                strReturn = strPath + strPrefix + '.html';
-            }
-
-        } else {
-
-            // STATIC MODE (strMode becomes the path and file name of template to be used)
-            // RETURN FILE PATH & NAME
-            strReturn = strMode
-        }
-
-        console.log('Derived Template is ' + strReturn);
-
-        return strReturn;
-    };
-    */
-
-    /* PARAMETERIZED IIFE FOR TEMPLATE SELECTION BY STATE PARAMS
-    var stateTemplateHandler = (function(fctDefaultHandler) {
-
-        var defaultHandler = fctDefaultHandler;
-
-        return function($stateParams) {
-
-            var strMode, strPrefix,
-                sourceIndexMode = "dynamic",
-                sourceIndexPrefix = "stream",
-                sourceDetailMode = "static",
-                sourceDetailPrefix = "templates/article.html";
-
-            switch ($stateParams.sourceName.toLowerCase()) {
-
-                // FACT SHEETS
-                case 'dyk':
-                case 'factoftheweek':
-                    sourceDetailMode = "static";
-                    sourceDetailMode = "templates/fact.html";
-                    break;
-
-                    // EMBEDS
-                case 'dotw':
-                case 'healtharticles':
-                case 'newsrooms':
-                case 'outbreaks':
-                case 'travelnotices':
-                    sourceDetailMode = "static";
-                    sourceDetailPrefix = "templates/embed.html";
-                    break;
-
-                    // BLOGS
-                case 'cdcdirectorsblog':
-                //case '247blogs':
-                case 'phmblogs':
-                    sourceDetailMode = "static";
-                    sourceDetailPrefix = "templates/blog.html";
-                    break;
-
-                    // DATA SHEETS
-                case 'faststats':
-                case 'weeklydiseasecasecounts':
-                    sourceDetailMode = "static";
-                    sourceDetailPrefix = "templates/data.html";
-                    break;
-
-                    // JOURNALS
-                case 'eids':
-                case 'mmwr':
-                case 'pcds':
-                    sourceDetailMode = "static";
-                    sourceDetailPrefix = "templates/journal.html";
-                    break;
-
-                    // IMAGES
-                case 'phils':
-                case 'flickrs':
-                    sourceIndexMode = "static",
-                        sourceIndexPrefix = "stream-images",
-                        sourceDetailMode = "static";
-                    sourceDetailPrefix = "templates/journal.html";
-                    break;
-
-                    // PODCASTS
-                case 'podcasts':
-                    sourceDetailMode = "static";
-                    sourceDetailPrefix = "templates/audio.html";
-                    break;
-
-                    // YOUTUBE
-                case 'youtube':
-                    sourceDetailMode = "static";
-                    sourceDetailPrefix = "templates/video.html";
-                    break;
-
-                    // FACEBOOK
-                case 'facebook':
-                    sourceDetailMode = "static";
-                    sourceDetailPrefix = "templates/landing-facebook.html";
-                    break;
-
-                    // TWITTER
-                case 'twitter':
-                    sourceDetailMode = "static";
-                    sourceDetailPrefix = "templates/landing-twitter.html";
-                    break;
-
-                    // ARTICLES
-                default:
-                    // cdcatws, vitalsigns, fluview
-                    break;
-            }
-
-            if ($stateParams.sourceDetail || false) {
-                strMode = sourceDetailMode;
-                strPrefix = sourceDetailPrefix;
-            } else {
-                strMode = sourceIndexMode;
-                strPrefix = sourceIndexPrefix;
-            }
-
-            console.log('$stateParams from stateTemplateHandler');
-            console.log($stateParams);
-            console.log('strMode from stateTemplateHandler');
-            console.log(strMode);
-            console.log('strPrefix from stateTemplateHandler');
-            console.log(strPrefix);
-            console.log(defaultHandler(strMode, strPrefix));
-
-            return defaultHandler(strMode, strPrefix);
-        }
-    }(defaultTemplateHandler));
-    */
-
     var sp = $stateProvider;
 
     sp.state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: 'templates/menu.html',
+        templateUrl: 'templates/ui-menu.html',
         controller: 'SourceListCtrl'
     });
 
@@ -885,26 +777,40 @@ angular.module('mycdc', [
 .directive('uiManager', function($rootScope, $stateParams) {
    return {
         restrict: 'E',
-        scope : '*',
         controller: function($scope, $element){
 
             // CREATE MAIN TEMPALTE HANDLER (COULD USE IONIC FOR TABLE DETECTION, BUT THIS SEEMS MORE UNIVERSAL WITH LESS isThis, isThat CALLS)
             $scope.uiMainTemplateHandler = function () {
 
+                var objReturn = {
+                    uiMainContentUrl : 'templates/ui-container-phone.html',
+                    viewType : 'phone',
+                    viewOrientation : 'portrait'
+                };
+
+                console.log('$scope.$stateParams');
+                console.log($scope.$stateParams);
+
                 // GET SCREEN SIZE
                 if (window.screen.width >= 1024 && window.screen.width > window.screen.height) {
-                    $scope.uiMainContentUrl = 'templates/ui-container-tablet-landscape.html';
-                    $scope.viewType = 'tablet';
-                    $scope.viewOrientation = 'landscape';
+                    objReturn.uiMainContentUrl = 'templates/ui-container-tablet-landscape.html';
+                    objReturn.viewType = 'tablet';
+                    objReturn.viewOrientation = 'landscape';
                 } else if (window.screen.width >= 768 && window.screen.width < window.screen.height) {
-                    $scope.uiMainContentUrl = 'templates/ui-container-tablet-portrait.html';
-                    $scope.viewType = 'tablet';
-                    $scope.viewOrientation = 'portrait';
-                } else {
-                    $scope.uiMainContentUrl = 'templates/ui-container-phone.html';
-                    $scope.viewType = 'phone';
-                    $scope.viewOrientation = 'portrait';
+                    objReturn.uiMainContentUrl = 'templates/ui-container-tablet-portrait.html';
+                    objReturn.viewType = 'tablet';
+                    objReturn.viewOrientation = 'portrait';
                 }
+
+                // UPDATE SCOPE
+                for (var key in objReturn) {
+                    $scope[key] = objReturn[key];
+                }
+
+                // WAIT FOR ANY DIGEST TO COMPLETE BEFORE APPLYING
+                setTimeout(function(){
+                    $scope.$apply();
+                }, 0);
             };
 
             // IF DIRECTIVE NOT INITIALIZED
@@ -931,7 +837,7 @@ angular.module('mycdc', [
    }
 })
 
-.directive('uiContentCard', function($rootScope) {
+.directive('uiCard', function($rootScope) {
    return {
         restrict: 'E',
         scope : {
@@ -940,6 +846,95 @@ angular.module('mycdc', [
         },
         template: '<div>{{card}}</div>'
    }
+})
+
+.directive('uiDetail', function($rootScope, $timeout, $sce) {
+   return {
+        restrict: 'E',
+        link : function (scope) {
+            scope.init();
+        },
+        controller : (function () {
+
+            var createNoChromeUrl = function (sourceUrl) {
+                sourceUrl = sourceUrl || '';
+                var filename = sourceUrl.split('/').pop();
+                var newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1];
+                return sourceUrl.replace(filename, newfilename);
+            };
+
+            // HANDLE DIFFERENT TYPES OF CONTENT DETAIL PROCESSING
+            var detailProcessors = {
+                iframe : function ($scope) {
+                    console.log('IFRAME DETAIL PROCESSOR');
+                    $scope.processer = 'IFRAME';
+
+                    var noChromeUrl = createNoChromeUrl($scope.detailCard.sourceUrl);
+
+                    $rootScope.remoteApi({
+                        url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + noChromeUrl
+                    }).then(function(resp) {
+                        if (resp.data.status === '200') {
+                            $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
+                        } else {
+                            $scope.frameUrl = $sce.trustAsResourceUrl(detailCard.sourceUrl);
+                        }
+                    },
+                    function() {
+                        $scope.frameUrl = $sce.trustAsResourceUrl(detailCard.sourceUrl);
+                    });
+
+                },
+                default : function ($scope) {
+                    console.log('DEFAULT DETAIL PROCESSOR');
+                    console.log($scope);
+                    $scope.processer = 'DEFAULT';
+
+                    console.log('$scope.detailCard');
+                    console.log($scope.detailCard);
+
+                    $rootScope.remoteApi({
+                        url : 'https://prototype.cdc.gov/api/v2/resources/media/' + $scope.detailCard.id + '/syndicate.json'
+                    }).then(function(d){
+                        $rootScope.log(d, 1, 'RETURNED DETAIL DATA');
+
+                        // NORMALIZE DATA BY SOURCE SPECS
+                        $scope.detailData = $rootScope.dataProcessor(d, $scope.sourceMeta);
+                    });
+
+                }
+            };
+
+            // RETURN ACTUAL CONTROLLER
+            return function ($scope) {
+
+                // SET CARD TEMPLATE
+                $scope.detailTemplateUrl = 'templates/' + $scope.sourceMeta.templates.detail + '.html';
+                $rootScope.log($scope, 2, 'UI-DETAIL-DIRECTIVE-SCOPE');
+
+                // DEFINE INIT METHOD (TO BE FIRED ON LINK)
+                $scope.init = function () {
+
+                    // FALL INLINE WITH PROMISE CHAIN (WAIT FOR SOURCE INDEX RESULTS)
+                    $scope.sourceIndexPromise.then(function() {
+
+                        // CONTINUE IF DETAIL CARD EXISTS IN SCOPE (AND NOT INITIALIZED ALREADY)
+                        if ($scope.detailCard && !$scope.initialized) {
+
+                            // FLAG INIT
+                            $scope.initialized = true;
+
+                            // CALL SPECIFIED PROCESSOR
+                            detailProcessors[$scope.sourceMeta.detailType].call(this, $scope);
+
+                            // DEBUG
+                            $rootScope.log($scope.processer, 2, 'UI-DETAIL-DIRECTIVE-PROCESSER');
+                            $rootScope.log($scope.detailTemplateUrl, 2, 'UI-DETAIL-DIRECTIVE-TEMPLATE');
+                        }
+                    });
+                }
+            }
+        } ()),
+        template: '<div ng-include="detailTemplateUrl"></div>'
+   }
 });
-
-

@@ -51,21 +51,25 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  * Note: This should really be AppCtrl and HomeCtrl saved for the home stream
  */
-.controller('SourceListCtrl', function($scope, $ionicPlatform, $ionicLoading, $timeout, $rootScope, $ionicPopover, $ionicHistory, returnToState, $stateParams, $cordovaNetwork) {
+.controller('SourceListCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate) {
     $scope.menu = [];
     $scope.storage = '';
 
     $scope.goBack = function() {
-        var sn = $ionicHistory.currentView().stateName;
 
-        // In these views, return to the source stream, not the previous item
-        if (sn === 'app.YouTube' || sn === 'app.PHIL' || sn === 'app.Podcast') {
-            // returnToState('app.home');
+        console.log('$stateParams');
+        console.log($stateParams);
 
-            // source streams are always the statename + s
-            returnToState(sn + 's');
+        if ($stateParams.sourceName && $stateParams.sourceDetail && $stateParams.sourceDetail.length) {
+            $state.go('app.sourceIndex', $stateParams);
         } else {
-            $ionicHistory.goBack();
+            if (!$stateParams.sourceName || $stateParams.sourceName == 'homestream') {
+                $state.go('app.home');
+            } else {
+                $state.go('app.sourceIndex', {
+                    sourceName : 'homestream'
+                });
+            }
         }
     };
 
@@ -135,7 +139,7 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('CommonSourceCtrl', function($scope, $rootScope, $state, $stateParams, $ionicLoading, $ionicPopup, $sce, $cordovaNetwork, $ionicScrollDelegate) {
+.controller('CommonSourceCtrl', function($scope, $rootScope, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate) {
     $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -143,6 +147,45 @@ angular.module('mycdc.controllers', [])
         maxWidth: 200,
         showDelay: 0
     });
+
+    $scope.goBack = function() {
+
+        console.log($stateParams);
+        console.log('$stateParams');
+
+        if ($stateParams.sourceName && $stateParams.sourceDetail && $stateParams.sourceDetail.length) {
+            $state.go('app.sourceIndex', $stateParams);
+        } else {
+            if (!$stateParams.sourceName || $stateParams.sourceName == 'homestream') {
+                $state.go('app.home');
+            } else {
+                $state.go('app.sourceIndex', {
+                    sourceName : 'homestream'
+                });
+            }
+        }
+    };
+
+    $scope.getDetailCard = function(cardList, contentID) {
+
+        // PARAMS
+        var arySourceInfo;
+
+        // FILTER HERE
+        arySourceInfo = $filter('filter')(cardList, {
+            id: contentID
+        });
+
+        // DID WE FIND IT?
+        if (arySourceInfo.length === 1) {
+
+            // RETURN IT
+            return arySourceInfo[0];
+        }
+
+        // ELSE RETURN FALSE
+        return false;
+    };
 
     $scope.ctrlInit = function(blnRefresh) {
 
@@ -191,13 +234,32 @@ angular.module('mycdc.controllers', [])
                     // REDIRECT TO HOME IF NO SOURCE DEFINED
                     if ($scope.sourceDetail) {
 
-                        //
-                        console.log('GET DETAIL DATA');
-                        $scope.frameUrl = $rootScope.getSourceDetailUrl($stateParams);
+                        $scope.detailCard = $scope.getDetailCard($scope.datas, $scope.sourceDetail);
+                        $rootScope.log($scope.detailCard, 1, 'CURRENT DETAIL CARD');
 
-                        console.log($scope.showBackButton);
-                        console.log($scope.sourceName);
+                        /*
+                        // DETERMINE DETAIL PROCESS / DISPLAY TYPE
+                        if ($scope.detailCard.detailType == 'iframe') {
 
+                            //
+                            $scope.detailUrls = $rootScope.getSourceDetailUrl($scope.detailCard);
+
+                            // HANDLE IFRAME DATA REQS
+                            $scope.frameUrl = $scope.detailUrls;
+                            $rootScope.log($scope.frameUrl, 2, 'DETAIL URL OBJECT');
+
+                        } else {
+
+                            // HANDLE DEFAULT DATA REQS (STANDARD GET)
+                            $rootScope.getDetailContent($scope.sourceMeta, $scope.detailCard).then(function(d) {
+                                $scope.data = d.data;
+                                $rootScope.log($scope.data, 2, 'DETAIL URL OBJECT');
+                            });
+                        }
+                        */
+
+
+                        $rootScope.log($scope.showBackButton, 5, 'Show Back Button');
                     }
 
                     // HIDE THE LOADER
