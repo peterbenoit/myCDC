@@ -172,7 +172,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=MMWR%202016&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector"],
+    "processors": ["cardTemplateInjector","stripHtml"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",

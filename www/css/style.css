@@ -154,14 +154,84 @@ colors
     background-color: #f8f8f8;
 }
 
+/* PHONE SCROLLER */
+.ui-phone .has-header {
+    top: 0;
+}
+
+.ui-phone .ui-list-view .vertical-scroller {
+  position: absolute;
+  width: 100%;
+  top: 44px;
+  bottom: 0;
+}
+
+.ui-phone .ui-list-view .card {
+  display: block;
+  width: 100%;
+  margin: 0;
+  white-space: normal;
+}
+
+.ui-phone .ui-list-view .card img {
+  max-width: 100%;
+}
+
+.ui-phone .ui-detail-view {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.stream-standard > div {
+    margin: 10px;
+}
+
+
 /* LANDSCAPE VERTICAL SCROLLER */
 .ui-tablet-landscape .stream-standard {
-    padding: 10px 0;
+    padding: 0;
 }
+
+.ui-tablet-landscape .stream-standard > div {
+    margin: 0;
+}
+
+.ui-tablet-landscape .card {
+    max-height: 350px;
+ }
 
 .ui-tablet-landscape .stream-standard .card{
     margin-bottom: 10px;
  }
+
+ .ui-tablet-landscape .ui-list-view .vertical-scroller {
+    position: absolute;
+    width: 300px;
+    top: 44px;
+    bottom: 0;
+}
+
+.ui-tablet-landscape .ui-list-view .card {
+    display: block;
+    max-height: 300px;
+    width: 100%;
+    white-space: normal;
+}
+
+.ui-tablet-landscape .ui-list-view .card img {
+    max-width: 100%;
+}
+
+.ui-tablet-landscape .ui-detail-view {
+    position: absolute;
+    top: 44px;
+    right: 0;
+    bottom: 0;
+    left: 300px;
+}
 
 /* PORTRAIT HORIZONTAL SCROLLER */
 .ui-tablet-landscape .stream-standard {
@@ -183,16 +253,16 @@ colors
   display: flex;
 }
 
-.ui-tablet-portrait .ui-list-view .horizontal-scroller .card {
+.ui-tablet-portrait .ui-list-view .horizontal-scroller .stream-standard .card {
   width: 280px;
   white-space: normal;
   display: inline-block;
   vertical-align: top;
-  max-height: 280px;
+  height: 280px;
 }
 
-.ui-tablet-portrait .ui-list-view .horizontal-scroller .card,
-.ui-tablet-landscape .ui-list-view .vertical-scroller .card {
+.ui-tablet-portrait .ui-list-view .horizontal-scroller .stream-standard .card,
+.ui-tablet-landscape .ui-list-view .vertical-scroller .stream-standard .card {
     margin: 0;
 }
 
@@ -201,23 +271,15 @@ colors
     margin-left: 10px;
 }
 
-.ui-tablet-portrait .stream-standard > div:first-of-type {
-    margin-left: 0;
-}
-
 .ui-tablet-landscape .stream-standard > div {
     margin-top: 10px;
 }
 
-.ui-tablet-landscape .stream-standard > div:first-of-type {
-    margin-top: 0;
-}
-
-.ui-tablet-portrait .ui-list-view .card img {
+.ui-tablet-portrait .ui-list-view .stream-standard .card img {
   max-width: 100%;
 }
 
-.ui-tablet-portrait .ui-list-view .scroll {
+.ui-tablet-portrait .ui-list-view .stream-standard .scroll {
   padding: 0;
 }
 
