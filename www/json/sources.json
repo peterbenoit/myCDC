@@ -131,7 +131,7 @@
     "contentGroupIdentifier": "weeklycasecounts",
     "title": "Disease Case Counts",
     "icon": "ion-close-circled",
-    "url": "json/sources/WeeklyCaseCounts.json",
+    "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Weekly%20Case%20Counts&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "url",
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",

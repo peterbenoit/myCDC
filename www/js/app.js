@@ -110,12 +110,12 @@ angular.module('mycdc', [
     };
 
     rs.streamTemplate = function (type, orientation) {
-        rs.log(type, 9, 'Stream Template');
+        rs.log(type, 2, 'Stream Template');
         return 'templates/' + type + '-' + orientation +'.html';
     };
 
     rs.cardTemplate = function (type, orientation) {
-        rs.log(type, 8, 'Card Template');
+        rs.log(type, 0, 'Card Template');
         return 'templates/' + type +'.html';
     };
 

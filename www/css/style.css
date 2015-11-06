@@ -149,10 +149,90 @@ colors
     animation: fadeInUp 1s;
 }
 
-
-.stream {
+.stream,
+.stream-standard {
     background-color: #f8f8f8;
 }
+
+/* LANDSCAPE VERTICAL SCROLLER */
+.ui-tablet-landscape .stream-standard {
+    padding: 10px 0;
+}
+
+.ui-tablet-landscape .stream-standard .card{
+    margin-bottom: 10px;
+ }
+
+/* PORTRAIT HORIZONTAL SCROLLER */
+.ui-tablet-landscape .stream-standard {
+    padding: 0 10px;
+}
+
+.ui-tablet-portrait .ui-list-view .horizontal-scroller {
+  position: absolute;
+  height: 300px;
+  top: 44px;
+  left:0;
+  right: 0;
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+.ui-tablet-portrait .ui-list-view .horizontal-scroller .stream-standard {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.ui-tablet-portrait .ui-list-view .horizontal-scroller .card {
+  width: 280px;
+  white-space: normal;
+  display: inline-block;
+  vertical-align: top;
+  max-height: 280px;
+}
+
+.ui-tablet-portrait .ui-list-view .horizontal-scroller .card,
+.ui-tablet-landscape .ui-list-view .vertical-scroller .card {
+    margin: 0;
+}
+
+.ui-tablet-portrait .stream-standard > div {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.ui-tablet-portrait .stream-standard > div:first-of-type {
+    margin-left: 0;
+}
+
+.ui-tablet-landscape .stream-standard > div {
+    margin-top: 10px;
+}
+
+.ui-tablet-landscape .stream-standard > div:first-of-type {
+    margin-top: 0;
+}
+
+.ui-tablet-portrait .ui-list-view .card img {
+  max-width: 100%;
+}
+
+.ui-tablet-portrait .ui-list-view .scroll {
+  padding: 0;
+}
+
+.ui-tablet-portrait .ui-detail-view {
+  position: absolute;
+  top: 344px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+
+
+
 
 .content-stable {
     background-color: #f8f8f8;
