@@ -1,0 +1,13 @@
+<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)">
+</ion-refresher>
+<div class="stream stream-tablet">
+	<div ng-repeat="data in datas | limitTo: paginationLimit()" class="row" ng-if="$index % 2 === 0">
+		<div class="card" ng-if="$index < datas.length">
+			<ui-card data-card-data="data"></ui-card>
+		</div>
+		<div class="card" ng-if="$index + 1 < datas.length">
+			<ui-card data-card-data="datas[$index + 1]"></ui-card>
+		</div>
+	</div>
+</div>
+<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>

@@ -4,11 +4,14 @@
 </ion-refresher>
 <div class="image-stream" resize>
     <div ng-repeat="data in datas | limitTo: paginationLimit()">
-        <a href="{{url}}{{$index}}" class="ng-enter-stagger">
+        <!--
+        <a href="{{url}}/{{index}}" class="ng-enter-stagger">
             <div class="item item-image" ng-style="halfwidth()">
                 <img ng-src="{{datas[$index].imageSrc}}" class="horizontal" halfsize>
             </div>
         </a>
+        -->
+        <ui-card data-card-data="data"></ui-card>
     </div>
 </div>
 <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>

@@ -1,17 +1,26 @@
 <!-- TABLET LANDSCAPE MODE -->
 <div class="ui-tablet-landscape">
 
-	<!-- THE LIST VIEW -->
-	<div class="ui-list-view">
-		<!-- STREAM VIEW -->
-		<ion-scroll direction="y" class="vertical-scroller stream">
-			<div data-ng-include="streamTemplate(sourceMeta.templates.source, 'landscape')"></div>
-		</ion-scroll>
-	</div><!-- ui-list-view -->
+	<!-- HOMESTREAM UPDATE -->
+	<ion-scroll direction="y" class="vertical-scroller stream" data-ng-if="sourceName == 'homestream'">
+		<div data-ng-include="streamTemplate('ui-stream-home', 'landscape')"></div>
+	</ion-scroll>
 
-	<!-- THE DETAIL VIEW -->
-	<div class="ui-detail-view">
-		<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard"></ui-detail>
-	</div><!-- ui-detail-view -->
+	<div data-ng-if="sourceName != 'homestream'">
+
+		<!-- THE LIST VIEW -->
+		<div class="ui-list-view">
+
+			<!-- STREAM VIEW -->
+			<ion-scroll direction="y" class="vertical-scroller stream">
+				<div data-ng-include="streamTemplate(sourceMeta.templates.source, 'landscape')"></div>
+			</ion-scroll>
+		</div><!-- ui-list-view -->
+
+		<!-- THE DETAIL VIEW -->
+		<div class="ui-detail-view">
+			<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard"></ui-detail>
+		</div><!-- ui-detail-view -->
+	</div>
 
 </div><!-- ui-tablet-landscape -->

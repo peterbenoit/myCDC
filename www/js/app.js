@@ -120,8 +120,6 @@ angular.module('mycdc', [
     };
 
     rs.getTemplate = function (type, card, orientation) {
-        rs.log(type, 2, 'Requested TemplateType');
-        rs.log(card, 2, 'Card Data Provided for Template Selection');
         return 'templates/' + card.templates[type] +'.html';
     };
 
@@ -260,7 +258,7 @@ angular.module('mycdc', [
                     if (!obj1.contentgroup) {
                         obj1.contentgroup = 'FEED ISSUE: ' + objSourceMeta.contentGroupIdentifier + 'doesnt not include a content group key';
                         obj1.appContentGroup = objSourceMeta.contentGroupIdentifier;
-                        obj1.templates = rs.templateMap[obj1.appContentGroup];
+                        obj1.templates = angular.extend({}, rs.templateMap[obj1.appContentGroup]);
                         obj1.detailType = objSourceMeta.detailType;
                         obj1.home = '#/app/source/' + obj1.appContentGroup;
                         obj1.url = obj1.home + '/';
@@ -788,15 +786,30 @@ angular.module('mycdc', [
    }
 })
 
-.directive('uiCard', function($rootScope) {
-   return {
-        restrict: 'E',
-        scope : {
-            card : '=',
-            sourceId : '='
+.directive("uiCard", function() {
+    return {
+        template: '<ng-include src="getTemplateUrl()"/>',
+        scope: {
+            cardData: '=',
+            template: '@'
         },
-        template: '<div>{{card}}</div>'
-   }
+        restrict: 'E',
+        controller: function($scope) {
+            $scope.getTemplateUrl = function() {
+                if ($scope.template) {
+                    return 'templates/' + $scope.template +'.html';
+                }
+                if ($scope.cardData.templates && $scope.cardData.templates.hasOwnProperty('card')) {
+                    return 'templates/' + $scope.cardData.templates.card +'.html';
+                }
+                return '<div>DEBUG - Missing Template for: {{cardData}}</div>';
+            }
+        },
+        link: function(scope, element, attrs) {
+            scope.template = attrs.template;
+            scope.getTemplateUrl();
+        },
+    };
 })
 
 .directive('uiDetail', function($rootScope, $timeout, $sce) {
