@@ -29,8 +29,6 @@ angular.module('mycdc.controllers', [])
 
     $scope.settings = SettingsStorage.all();
 
-    //console.log(SettingsStorage.all());
-
     $scope.saveSettings = function() {
         SettingsStorage.save($scope.settings);
     };
@@ -56,9 +54,6 @@ angular.module('mycdc.controllers', [])
     $scope.storage = '';
 
     $scope.goBack = function() {
-
-        console.log('$stateParams');
-        console.log($stateParams);
 
         if ($stateParams.sourceName && $stateParams.sourceDetail && $stateParams.sourceDetail.length) {
             $state.go('app.sourceIndex', $stateParams);
@@ -111,14 +106,14 @@ angular.module('mycdc.controllers', [])
                 $scope.appInit().then(function(d) {
 
                     // DEBUG
-                    console.log('appInit completed');
+                    $rootScope.log('appInit completed');
 
                      // CONTINUE ANY NECESSARY PROCESSING AFTER SOURCE LIST PROMISE IS RETURNED
                     $scope.sourceListPromise.then(function(data) {
 
                         // DEBUG
-                        console.log('ctrlInit Refresh');
-                        console.log($scope.sourceList);
+                        $rootScope.log('ctrlInit Refresh');
+                        $rootScope.log($scope.sourceList);
                     });
                 });
             }
@@ -140,6 +135,7 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('CommonSourceCtrl', function($scope, $rootScope, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate) {
+
     $scope.loading = $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
@@ -148,10 +144,12 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-    $scope.goBack = function() {
+    $scope.doRefresh = function () {
 
-        console.log($stateParams);
-        console.log('$stateParams');
+        $scope.ctrlInit(true);
+    };
+
+    $scope.goBack = function() {
 
         if ($stateParams.sourceName && $stateParams.sourceDetail && $stateParams.sourceDetail.length) {
             $state.go('app.sourceIndex', $stateParams);
@@ -191,104 +189,106 @@ angular.module('mycdc.controllers', [])
 
         var blnRefresh = blnRefresh || false;
 
-        // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
-        $scope.sourceName = $stateParams.sourceName;
-        $scope.sourceDetail = $stateParams.sourceDetail || false;
-        $scope.showBackButton = true;
-        console.log('SHOW BACK BUTTON: ' + $scope.showBackButton + '-' + $scope.sourceName);
+         // APP INIT WILL REFRESH SOURCE LIST
+        $scope.appInit().then(function(d) {
 
-        // INHERITED PROMISE CHAINED TIMING
-        $rootScope.sourceListPromise.then(function(data) {
+            // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
+            $scope.sourceName = $stateParams.sourceName;
+            $scope.sourceDetail = $stateParams.sourceDetail || false;
+            $scope.showBackButton = true;
 
-            // REFRESH REQUESTED SOURCE INDEX DATA?
-            if (blnRefresh || !$scope.sourceIndexPromise || false) {
+            // INHERITED PROMISE CHAINED TIMING
+            $rootScope.sourceListPromise.then(function(data) {
 
-                // GET / SET SOURCE META DATA TO SCOPE FROM STATE PARAMETERS
-                $scope.sourceMeta = $rootScope.getSourceMeta($stateParams);
+                // REFRESH REQUESTED SOURCE INDEX DATA?
+                if (blnRefresh || !$scope.sourceIndexPromise || false) {
 
-                // GET & SAVE THE SOURCE LIST PROMISE
-                $scope.sourceIndexPromise = $rootScope.getSourceIndex($stateParams).then(function(d) {
+                    // GET / SET SOURCE META DATA TO SCOPE FROM STATE PARAMETERS
+                    $scope.sourceMeta = $rootScope.getSourceMeta($stateParams);
 
-                    var pageSize = 10, page = 1;
+                    // GET & SAVE THE SOURCE LIST PROMISE
+                    $scope.sourceIndexPromise = $rootScope.getSourceIndex($stateParams).then(function(d) {
 
-                    // SET DATA TO "datas" SO TEMPLATE WILL PICK IT UP & DISPLAY IT
-                    $scope.datas = $scope.sourceIndex;
-                    $rootScope.log($scope.datas, 1, 'CURRENT SOURCE DATA');
+                        var pageSize = 10, page = 1;
 
-                    // SETUP PAGINATION
-                    $scope.paginationLimit = function(data) {
-                        return pageSize * page;
-                    };
+                        // SET DATA TO "datas" SO TEMPLATE WILL PICK IT UP & DISPLAY IT
+                        $scope.datas = $scope.sourceIndex;
+                        $rootScope.log($scope.datas, 1, 'CURRENT SOURCE DATA');
 
-                    $scope.hasMoreItems = function() {
-                        return page < ($scope.datas.length / pageSize);
-                    };
+                        // SETUP PAGINATION
+                        $scope.paginationLimit = function(data) {
+                            return pageSize * page;
+                        };
 
-                    $scope.loadMore = function() {
-                        page = page + 1;
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
-                    };
+                        $scope.hasMoreItems = function() {
+                            return page < ($scope.datas.length / pageSize);
+                        };
 
-                    // BROADCAST REFRESH SO SCROLLER WILL RESIZE APPROPRIATELY
-                    $scope.$broadcast('scroll.refreshComplete');
+                        $scope.loadMore = function() {
+                            page = page + 1;
+                            $scope.$broadcast('scroll.infiniteScrollComplete');
+                        };
 
-                    $rootScope.log($scope.showBackButton, 5, 'Show Back Button');
+                        // BROADCAST REFRESH SO SCROLLER WILL RESIZE APPROPRIATELY
+                        $scope.$broadcast('scroll.refreshComplete');
 
-                    // REDIRECT TO HOME IF NO SOURCE DEFINED
-                    if ($scope.sourceDetail) {
+                        $rootScope.log($scope.showBackButton, 5, 'Show Back Button');
 
-                        if (!$scope.datas.length) {
+                        // REDIRECT TO HOME IF NO SOURCE DEFINED
+                        if ($scope.sourceDetail) {
 
-                            // NO CARD LIST: ALERT USER, THEN REDIRECT
-                            var noCardList = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-                            noCardList.then(function() {
-                                $state.go('app.sourceIndex', {sourceName: $scope.sourceName, sourceDetail: 'homestream' });
-                            });
+                            if (!$scope.datas.length) {
 
+                                // HIDE THE LOADER
+                                $ionicLoading.hide();
+
+                                // NO CARD LIST: ALERT USER, THEN REDIRECT
+                                var noCardList = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                                noCardList.then(function() {
+                                    $state.go('app.sourceIndex', {sourceName: $scope.sourceName, sourceDetail: 'homestream' });
+                                });
+
+                            } else {
+
+                                $scope.detailCard = $scope.getDetailCard($scope.datas, $scope.sourceDetail);
+                                $rootScope.log($scope.detailCard, 1, 'CURRENT DETAIL CARD');
+
+                                // HIDE THE LOADER
+                                $ionicLoading.hide();
+
+                                if (!$scope.detailCard) {
+
+                                    // NO DETAIL CARD FOUND IN CARD LIST: ALERT USER, THEN REDIRECT
+                                    var noDetailCard = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                                    noDetailCard.then(function() {
+                                        $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
+                                    });
+                                }
+                            }
                         } else {
 
-                            $scope.detailCard = $scope.getDetailCard($scope.datas, $scope.sourceDetail);
-                            $rootScope.log($scope.detailCard, 1, 'CURRENT DETAIL CARD');
+                            // HIDE THE LOADER
+                            $ionicLoading.hide();
 
-                            if (!$scope.detailCard) {
-
-                                // NO DETAIL CARD FOUND IN CARD LIST: ALERT USER, THEN REDIRECT
-                                var noDetailCard = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-                                noDetailCard.then(function() {
-                                    $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
-                                });
-                            }
                         }
-                    }
 
-                    // HIDE THE LOADER
-                    $ionicLoading.hide();
+                        // RETURN TRIMMED DATA TO CHAIN
+                        return d.data;
+                    });
 
-                    // RETURN TRIMMED DATA TO CHAIN
-                    return d.data;
-                });
-
-                /* AFTER ALL MAGIC - DETERMINE IF PHONE AND
-                $scope.sourceIndexPromise.then(function() {
-                    console.log($scope.viewType);
-                    if ($scope.datas.length && $scope.viewType != 'phone') {
-                        $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
-                    }
-                }); */
-            }
+                    /* AFTER ALL MAGIC - DETERMINE IF PHONE AND
+                    $scope.sourceIndexPromise.then(function() {
+                        console.log($scope.viewType);
+                        if ($scope.datas.length && $scope.viewType != 'phone') {
+                            $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
+                        }
+                    }); */
+                }
+            });
         });
     };
 
-    // APP INIT WILL REFRESH SOURCE LIST
-    $scope.appInit().then(function(d) {
-
-        // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
-        $scope.ctrlInit($scope.sourceName || ($stateParams.sourceName !== $scope.sourceName));
-
-    });
-
-    $scope.doRefresh = function () {
-        $scope.ctrlInit(true);
-    }
+    // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
+    $scope.ctrlInit($scope.sourceName || ($stateParams.sourceName !== $scope.sourceName));
 
 });

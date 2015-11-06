@@ -94,7 +94,7 @@ angular.module('mycdc', [
         });
     };
 
-    rs.logLevel = 1;
+    rs.logLevel = 0;
 
     rs.log = function (anyVar, intLevel, anyLabel) {
         intLevel = intLevel || 10;
@@ -795,9 +795,6 @@ angular.module('mycdc', [
                     viewOrientation : 'portrait'
                 };
 
-                console.log('$scope.$stateParams');
-                console.log($scope.$stateParams);
-
                 // GET SCREEN SIZE
                 if (window.screen.width >= 1024 && window.screen.width > window.screen.height) {
                     objReturn.uiMainContentUrl = 'templates/ui-container-tablet-landscape.html';
@@ -826,14 +823,9 @@ angular.module('mycdc', [
 
                 // Add Listener for resize changes
                 window.addEventListener("resize", function() {
-                    console.log('uiMainTemplateHandler()');
                     $scope.uiMainTemplateHandler();
                 }, false);
             }
-
-            // DEBUG
-            console.log('UI-MAIN DIRECTIVE $scope');
-            console.log($scope);
         },
         link: function(scope, element, attrs) {
            // ON LINK TO APP/DOM - FIRE TEMPLATE HANDLER TO SELECT APPROPRIATE TEMPLATE
@@ -881,22 +873,20 @@ angular.module('mycdc', [
 
                 },
                 iframe : function ($scope) {
-                    console.log('IFRAME DETAIL PROCESSOR');
+                    $rootScope.log($scope.frameUrl, 1, 'IFRAME URL');
                     $scope.processer = 'IFRAME';
 
                     var noChromeUrl = createNoChromeUrl($scope.detailCard.sourceUrl);
 
                     $scope.detailData = $scope.detailCard;
 
-                    foo = $rootScope.remoteApi({
+                    $rootScope.remoteApi({
                         url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + noChromeUrl
-                    });
-
-                    foo.then(function(resp) {
+                    }).then(function(resp) {
                         if (resp.data.status === '200') {
-                            $scope.frameUrl = $sce.trustAsResourceUrl(nochromeurl);
+                            $scope.frameUrl = $sce.trustAsResourceUrl(noChromeUrl);
                         } else {
-                            $scope.frameUrl = $sce.trustAsResourceUrl(detailCard.sourceUrl);
+                            $scope.frameUrl = $sce.trustAsResourceUrl($scope.detailCard.sourceUrl);
                         }
                         $rootScope.log($scope.frameUrl, 1, 'IFRAME URL');
                     },
@@ -907,23 +897,18 @@ angular.module('mycdc', [
 
                 },
                 default : function ($scope) {
-                    console.log('DEFAULT DETAIL PROCESSOR');
-                    console.log($scope);
-                    $scope.processer = 'DEFAULT';
 
-                    console.log('$scope.detailCard');
-                    console.log($scope.detailCard);
+                    $rootScope.log($scope, 2, 'DEFAULT DETAIL PROCESSOR');
+                    $rootScope.log($scope.detailCard, 2, '$scope.detailCard');
+                    $scope.processer = 'DEFAULT';
 
                     $rootScope.remoteApi({
                         url : 'https://prototype.cdc.gov/api/v2/resources/media/' + $scope.detailCard.id + '/syndicate.json'
                     }).then(function(d){
                         $rootScope.log(d, 1, 'RETURNED DETAIL DATA');
-                        console.log('002');
                         // NORMALIZE DATA BY SOURCE SPECS
                         $scope.detailData = $rootScope.dataProcessor(d, $scope.sourceMeta);
                     });
-                    console.log('001');
-
                 }
             };
 
