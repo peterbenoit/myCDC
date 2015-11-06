@@ -58,13 +58,9 @@ angular.module('mycdc.controllers', [])
         if ($stateParams.sourceName && $stateParams.sourceDetail && $stateParams.sourceDetail.length) {
             $state.go('app.sourceIndex', $stateParams);
         } else {
-            /*if (!$stateParams.sourceName || $stateParams.sourceName == 'homestream') {
-                $state.go('app.home');
-            } else {*/
-                $state.go('app.sourceIndex', {
-                    sourceName : 'homestream'
-                });
-            //}
+            $state.go('app.sourceIndex', {
+                sourceName : 'homestream'
+            });
         }
     };
 
@@ -275,14 +271,6 @@ angular.module('mycdc.controllers', [])
                         // RETURN TRIMMED DATA TO CHAIN
                         return d.data;
                     });
-
-                    /* AFTER ALL MAGIC - DETERMINE IF PHONE AND
-                    $scope.sourceIndexPromise.then(function() {
-                        console.log($scope.viewType);
-                        if ($scope.datas.length && $scope.viewType != 'phone') {
-                            $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
-                        }
-                    }); */
                 }
             });
         });

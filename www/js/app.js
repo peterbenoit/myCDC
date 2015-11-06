@@ -3,18 +3,18 @@
  *  TODO: info.plist NSAppTransportSecurity key needs to be corrected before deployment
  */
 angular.module('mycdc', [
-        'ionic',
-        'mycdc.controllers',
-        'mycdc.data',
-        'mycdc.directives',
-        'mycdc.filters',
-        'mycdc.services',
-        'mycdc.storage',
-        'ngCordova',
-        'ngAnimate',
-        'angular.filter',
-        'ngIOS9UIWebViewPatch'
-    ])
+    'ionic',
+    'mycdc.controllers',
+    'mycdc.data',
+    'mycdc.directives',
+    'mycdc.filters',
+    'mycdc.services',
+    'mycdc.storage',
+    'ngCordova',
+    'ngAnimate',
+    'angular.filter',
+    'ngIOS9UIWebViewPatch'
+])
     /*
     add to body class: platform-android
     add to body class: platform-browser
@@ -120,8 +120,8 @@ angular.module('mycdc', [
     };
 
     rs.getTemplate = function (type, card, orientation) {
-        rs.log(type, 8, 'Requested TemplateType');
-        rs.log(card, 8, 'Card Data Provided for Template Selection');
+        rs.log(type, 2, 'Requested TemplateType');
+        rs.log(card, 2, 'Card Data Provided for Template Selection');
         return 'templates/' + card.templates[type] +'.html';
     };
 
@@ -266,7 +266,26 @@ angular.module('mycdc', [
                         obj1.url = obj1.home + '/';
                     }
 
-                    // LOOP TAG - LOOK FOR CONTENT GROUP MATCH
+                    // PARSE & NORMALIZE TIME(S)
+                    if (obj1.datePublished) {
+                        var time = moment(obj1.datePublished);
+                        obj1.datePublished = time.format('MMMM Do, YYYY');
+                    }
+
+                    // PROCESS ENCLOSURES
+                    obj1.hasImage = false;
+                    if (obj1.enclosures && obj1.enclosures.length) {
+                        idx2 = obj1.enclosures.length;
+                        while (idx2--) {
+                            obj2 = obj1.enclosures[idx2];
+                            if (obj2.contentType.indexOf('image') > -1) {
+                                obj1.hasImage = true;
+                                obj1.imageSrc = obj2.resourceUrl;
+                            }
+                        }
+                    }
+
+                    // PROCESS TAGS
                     if (obj1.tags && obj1.tags.length) {
                         idx2 = obj1.tags.length;
                         while (idx2--) {
@@ -283,111 +302,43 @@ angular.module('mycdc', [
                                 obj1.home = '#/app/source/' + obj1.appContentGroup;
                                 obj1.url = obj1.home + '/';
 
-                                if (tmp.indexOf(strCgStripped) == -1) {
-                                    tmp.push(strCgStripped);
+                                // TODO: consider using config.json for this data
+                                if (obj1.appContentGroup === 'eid') {
+                                    obj1.hasImage = false;
+                                    break;
+                                }
+
+                                if (obj1.appContentGroup === 'vitalsigns') {
+                                    obj1.hasImage = false;
+                                    break;
+                                }
+
+                                if (obj1.appContentGroup === 'outbreaks') {
+                                    obj1.isOutbreak = true;
+                                    obj1.hasImage = false;
+                                    break;
+                                }
+
+                                if (obj1.appContentGroup === 'travelnotices') {
+                                    obj1.isAlert = obj1.name.indexOf('Alert') > -1;
+                                    obj1.isWatch = obj1.name.indexOf('Watch') > -1;
+                                    obj1.isWarning = obj1.name.indexOf('Warning') > -1;
+                                    break;
                                 }
                             }
                         }
                     }
                 }
-
-                rs.log('Unique Content Groups Found');
-                rs.log(tmp);
 
                 rs.log(d, 1, 'CURRENT SOURCE POST FIX');
 
                 return d;
             },
             feedNormalizer: function(d) {
-
-                var time, currItem;
-                var data = d;
-
-                if (data.length) {
-                    for (var i = data.length - 1; i >= 0; i--) {
-                        currItem = data[i];
-                        hasImage = false;
-
-                        // format the dateModified
-                        time = moment(currItem.datePublished);
-                        currItem.datePublished = time.format('MMMM Do, YYYY');
-
-                        // if there's an enclosure
-                        if (currItem.enclosures.length) {
-                            enclosures = currItem.enclosures;
-
-                            // look for the image enclosure
-                            for (var j = enclosures.length - 1; j >= 0; j--) {
-                                if (enclosures[j].contentType.indexOf('image') > -1) {
-                                    hasImage = true;
-                                    currItem.imageSrc = enclosures[j].resourceUrl;
-                                    break;
-                                }
-                            }
-                        }
-                        // Add image indicator
-                        currItem.hasImage = hasImage;
-                    }
-
-                    return data;
-                }
-
-                return [];
+                return d;
             },
             processTags: function(d) {
-                var currItem, data = d;
-
-                if (data.length) {
-                    for (var i = data.length - 1; i >= 0; i--) {
-                        currItem = data[i];
-
-                        // If there are any tags, look for the ContentGroup to identify it (and it's path) here for use in the template
-                        if (currItem.tags.length) {
-                            var tags = currItem.tags;
-
-                            // look for the ContentGroup enclosure and set the same rules that apply to it in their individual controllers
-                            // also set a path to navigate
-                            for (var k = tags.length - 1; k >= 0; k--) {
-                                if (tags[k].type === 'ContentGroup') {
-                                    //currItem.ContentGroup = tags[k].name;
-                                    //currItem.appContentGroup = rs.cgNormalize(tags[k].name);
-                                    //currItem.home = '#/app/source/' + currItem.appContentGroup;
-                                    //currItem.url = currItem.home + '/';
-
-                                    // TODO: consider using config.json for this data
-                                    if (currItem.appContentGroup === 'eid') {
-                                        currItem.hasImage = false;
-                                        break;
-                                    }
-
-                                    if (currItem.appContentGroup === 'vitalsigns') {
-                                        currItem.hasImage = false;
-                                        break;
-                                    }
-
-                                    if (currItem.appContentGroup === 'outbreaks') {
-                                        currItem.isOutbreak = true;
-                                        currItem.hasImage = false;
-                                        break;
-                                    }
-
-                                    if (currItem.appContentGroup === 'travelnotices') {
-                                        currItem.isAlert = currItem.name.indexOf('Alert') > -1;
-                                        currItem.isWatch = currItem.name.indexOf('Watch') > -1;
-                                        currItem.isWarning = currItem.name.indexOf('Warning') > -1;
-                                        break;
-                                    }
-
-                                    // WARN: Watch for CGs which don't have a source stream
-                                }
-                            }
-                        }
-                    }
-
-                    return data;
-                }
-
-                return [];
+                return d;
             },
             parseEncoding: function(d) {
                 var currItem, data = d.data.results;
@@ -781,6 +732,7 @@ angular.module('mycdc', [
     $urlRouterProvider.otherwise('/app/source/homestream');
 })
 
+// THESE CAN BE MOVED TO DIRECTIVES FILE
 .directive('uiManager', function($rootScope, $stateParams) {
    return {
         restrict: 'E',

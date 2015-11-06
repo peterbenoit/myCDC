@@ -3,7 +3,7 @@
     "title": "Home (Aggregate) Stream",
     "icon": "ion-checkmark-circled",
     "url": "http://prototype.cdc.gov/api/v2/resources/media?parentId=150686&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=0",
-    "processors": ["cardTemplateInjector","feedNormalizer", "stripHtml", "processTags"],
+    "processors": ["cardTemplateInjector", "stripHtml"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -16,7 +16,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Around%20The%20World&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -29,7 +29,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Disease%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "url",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -42,7 +42,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=FluView%20Weekly%20Report&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -55,7 +55,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Featured%20Health%20Articles&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "url",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -68,7 +68,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Vital%20Signs&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -81,7 +81,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=FastStats&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -94,7 +94,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=EID&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector","feedNormalizer", "stripHtml"],
+    "processors": ["cardTemplateInjector", "stripHtml"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -107,7 +107,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=CDC%20Director%20Blog&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -120,7 +120,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Public%20Health%20Matters%20Blog&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -133,7 +133,7 @@
     "icon": "ion-close-circled",
     "url": "json/sources/WeeklyCaseCounts.json",
     "getContentBy": "url",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -146,7 +146,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Did%20You%20Know&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector","feedNormalizer", "firstOnly"],
+    "processors": ["cardTemplateInjector", "firstOnly"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -159,7 +159,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=24%2F7%20Facts%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector","feedNormalizer", "parseEncoding"],
+    "processors": ["cardTemplateInjector", "parseEncoding"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -172,7 +172,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=MMWR%202016&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -185,7 +185,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=PCD&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "id",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -210,7 +210,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Outbreaks&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "na",
-    "processors": ["cardTemplateInjector","feedNormalizer", "flagOutbreak"],
+    "processors": ["cardTemplateInjector", "flagOutbreak"],
     "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -223,7 +223,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Travel%20Notices&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "na",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "iframe",
     "templates" : {
         "source" : "ui-stream-standard",
@@ -231,12 +231,12 @@
         "detail" : "ui-detail-embed"
     }
 }, {
-    "contentGroupIdentifier": "phils",
+    "contentGroupIdentifier": "imageoftheweek",
     "title": "Image Library",
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Image%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "na",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-image",
@@ -249,7 +249,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Podcasts&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "na",
-    "processors": ["cardTemplateInjector","feedNormalizer","processTags"],
+    "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
         "source" : "ui-stream-audio",
@@ -262,7 +262,7 @@
     "icon": "ion-checkmark-circled",
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=YouTube&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language",
     "getContentBy": "na",
-    "processors": ["cardTemplateInjector","feedNormalizer","extractVideoComments"],
+    "processors": ["cardTemplateInjector","extractVideoComments"],
     "detailType" : "video",
     "templates" : {
         "source" : "ui-stream-standard",
