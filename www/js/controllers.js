@@ -53,17 +53,6 @@ angular.module('mycdc.controllers', [])
     $scope.menu = [];
     $scope.storage = '';
 
-    $scope.goBack = function() {
-
-        if ($stateParams.sourceName && $stateParams.sourceDetail && $stateParams.sourceDetail.length) {
-            $state.go('app.sourceIndex', $stateParams);
-        } else {
-            $state.go('app.sourceIndex', {
-                sourceName : 'homestream'
-            });
-        }
-    };
-
     // This little bit of nonsense checks for the existance of the runonce localstorage key and if the Home Controller has already loaded (it loads 2x for some reason)
     // If they key doesn't exist, and the Home Controller hasn't already loaded, load the modal
     $ionicPlatform.ready(function() {
@@ -118,6 +107,9 @@ angular.module('mycdc.controllers', [])
         // EXECUTE INIT
         $scope.ctrlInit(!$scope.sourceListPromise);
 
+        // SET BUTTONS
+        $scope.setButtonState();
+
     });
 })
 
@@ -143,21 +135,6 @@ angular.module('mycdc.controllers', [])
     $scope.doRefresh = function () {
 
         $scope.ctrlInit(true);
-    };
-
-    $scope.goBack = function() {
-
-        if ($stateParams.sourceName && $stateParams.sourceDetail && $stateParams.sourceDetail.length) {
-            $state.go('app.sourceIndex', $stateParams);
-        } else {
-            if (!$stateParams.sourceName || $stateParams.sourceName == 'homestream') {
-                $state.go('app.home');
-            } else {
-                $state.go('app.sourceIndex', {
-                    sourceName : 'homestream'
-                });
-            }
-        }
     };
 
     $scope.getDetailCard = function(cardList, contentID) {
@@ -279,4 +256,6 @@ angular.module('mycdc.controllers', [])
     // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
     $scope.ctrlInit($scope.sourceName || ($stateParams.sourceName !== $scope.sourceName));
 
+    // SET BUTTONS
+    $scope.setButtonState();
 });

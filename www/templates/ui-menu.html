@@ -4,8 +4,9 @@
             <!--<ion-nav-back-button alt="Back Button" ng-click="goBack()">
             </ion-nav-back-button>-->
             <ion-nav-buttons side="left">
-                <button alt="Menu Button" class="button button-icon button-clear ion-navicon" menu-toggle="left" id="navicon"></button>
-                <button alt="Back Button" class="button button-icon button-clear ion-chevron-left" data-ng-click="goBack()"> Back</button>
+                <button alt="Menu Button" class="button button-icon ion-navicon" menu-toggle="left" id="navicon"></button>
+                <button alt="Back Button" class="button button-icon ion-home" data-ng-show="buttons.show.home" data-ng-click="goHome()"> Home</button>
+                <button alt="Back Button" class="button button-icon ion-chevron-left" data-ng-show="buttons.show.back" data-ng-click="goBack()"> Back</button>
             </ion-nav-buttons>
             <ion-nav-buttons side="right">
                 <a alt="Settings Button" class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
@@ -56,6 +57,7 @@
                     <i class="icon {{i.icon}}"></i> {{ i.title }}
                 </ion-checkbox>
             </ion-list>
+            {{buttons}}
         </ion-content>
     </ion-side-menu>
 </ion-side-menus>

@@ -1,13 +1,5 @@
-<ion-refresher
-	pulling-text="Pull to refresh..."
-	on-refresh="doRefresh(true)">
-</ion-refresher>
-<!-- NOTE: This is temporary, and should reside in home.html when we're done testing -->
 <div class="stream-standard">
-	<h3 class="padding">{{sourceMeta.title}}</h3>
 	<div ng-repeat="(idx, data) in datas | limitTo:paginationLimit()">
 		<ui-card data-type="card" data-card-data="data"></ui-card>
 	</div>
 </div>
-<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
-

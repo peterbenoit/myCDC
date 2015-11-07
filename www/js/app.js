@@ -27,7 +27,7 @@ angular.module('mycdc', [
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $rootScope, $location, $ionicBody, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup, $http, $filter, $sce) {
+.run(function($ionicPlatform, $rootScope, $location, $ionicBody, $window, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup, $http, $filter, $sce) {
     var rs = $rootScope, href = window.location.href;
 
     // window.open should use inappbrowser
@@ -68,9 +68,13 @@ angular.module('mycdc', [
             anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
             //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
 
+        iframe.append('<style>header { display:none; }</style>')
+
         // Capture any anchors clicked in the iframe document
         anchors.on('click', function(e) {
             e.preventDefault();
+
+            alert('CLICK');
 
             var framesrc = iframe.attr('src'),
                 href = $(this).attr('href'),
@@ -94,7 +98,7 @@ angular.module('mycdc', [
         });
     };
 
-    rs.logLevel = 0;
+    rs.logLevel = -1;
 
     rs.log = function (anyVar, intLevel, anyLabel) {
         intLevel = intLevel || 10;
@@ -236,6 +240,29 @@ angular.module('mycdc', [
         }
 
         return objReturn;
+    };
+
+    rs.setButtonState = function () {
+        var buttons = {
+            show : {
+                home : ($stateParams.sourceName !== 'homestream'),
+                back : ($stateParams.sourceName !== 'homestream' && $stateParams.sourceDetail)
+            }
+        };
+
+        rs.buttons = buttons;
+    };
+
+    rs.goBack = function() {
+        $state.go('app.sourceIndex', {
+            sourceName : $stateParams.sourceName
+        });
+    };
+
+    rs.goHome = function() {
+        $state.go('app.sourceIndex', {
+            sourceName : 'homestream'
+        });
     };
 
     rs.cgNormalize = function (contentgroup) {
@@ -605,19 +632,19 @@ angular.module('mycdc', [
             rs.sourceListPromise.then(function(d) {
 
                 //TRIM OUT UNNESESSARY DATA FROM RETURN
-                rs.sourceList = d.data;
+                var sourceList = d.data;
 
                 // CREATE SOURCE TEMPLATE MAP
                 rs.templateMap = (function() {
 
                     // LOCALS
-                    var i = rs.sourceList.length, objReturn = {}, objSrc;
+                    var i = sourceList.length, objReturn = {}, objSrc;
 
                     // LOOP SOURCES
                     while (i--) {
 
                         // GET THE CURRENT SOURCE
-                        objSrc = rs.sourceList[i];
+                        objSrc = sourceList[i];
 
                         /* MAP TEMPLATES TO CONTENTGROUPIDENTIFIER
                         if (objSrc.templates) {
@@ -634,12 +661,15 @@ angular.module('mycdc', [
                     return objReturn
                 } ());
 
+                // SET SOURCE LIST TO ROOTSCOPE;
+                rs.sourceList = sourceList;
+
                 //DEBUG
-                rs.log('rs.templateMap');
-                rs.log(rs.templateMap);
+                console.log('RS.TEMPLATEMAP ******************');
+                console.log(rs.templateMap);
 
                 // RETURN TRIMMED DATA TO CHAIN
-                return rs.sourceList;
+                return rs.sourceListPromise;
             });
         }
 
@@ -731,7 +761,7 @@ angular.module('mycdc', [
 })
 
 // THESE CAN BE MOVED TO DIRECTIVES FILE
-.directive('uiManager', function($rootScope, $stateParams) {
+.directive('uiManager', function($window, $rootScope, $stateParams) {
    return {
         restrict: 'E',
         controller: function($scope, $element){
@@ -742,19 +772,25 @@ angular.module('mycdc', [
                 var objReturn = {
                     uiMainContentUrl : 'templates/ui-container-phone.html',
                     viewType : 'phone',
-                    viewOrientation : 'portrait'
+                    viewOrientation : 'portrait',
+                    width : $window.innerWidth,
+                    height : $window.innerHeight
                 };
 
                 // GET SCREEN SIZE
-                if (window.screen.width >= 1024 && window.screen.width > window.screen.height) {
+                if ($window.innerWidth >= 1024 && $window.innerWidth > $window.innerHeight) {
                     objReturn.uiMainContentUrl = 'templates/ui-container-tablet-landscape.html';
                     objReturn.viewType = 'tablet';
                     objReturn.viewOrientation = 'landscape';
-                } else if (window.screen.width >= 768 && window.screen.width < window.screen.height) {
+                } else if ($window.innerWidth >= 768 && $window.innerWidth < $window.innerHeight) {
                     objReturn.uiMainContentUrl = 'templates/ui-container-tablet-portrait.html';
                     objReturn.viewType = 'tablet';
                     objReturn.viewOrientation = 'portrait';
                 }
+
+                console.log('uiMainTemplateHandler Fired!');
+                console.log(objReturn);
+                console.log(window.screen);
 
                 // UPDATE SCOPE
                 for (var key in objReturn) {
@@ -767,14 +803,23 @@ angular.module('mycdc', [
                 }, 0);
             };
 
+            $('.stream.stream-vertical').width(300).height($window.innerHeight);
+            $('ui-detail-view').width($window.innerWidth - 300).height($window.innerHeight);
+
             // IF DIRECTIVE NOT INITIALIZED
             if (!$scope.uiMainInit) {
                 $scope.uiMainInit = true;
 
-                // Add Listener for resize changes
-                window.addEventListener("resize", function() {
+                var mq = window.matchMedia('(orientation: portrait)');
+
+                mq.addListener(function(m) {
                     $scope.uiMainTemplateHandler();
-                }, false);
+                });
+
+                window.addEventListener("orientationchange", $scope.uiMainTemplateHandler, true);
+
+                // Add Listener for resize changes
+                window.addEventListener("resize", $scope.uiMainTemplateHandler, false);
             }
         },
         link: function(scope, element, attrs) {

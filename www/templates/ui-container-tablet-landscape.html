@@ -2,18 +2,25 @@
 <div class="ui-tablet-landscape">
 
 	<!-- HOMESTREAM UPDATE -->
-	<ion-scroll direction="y" class="vertical-scroller stream" data-ng-if="sourceName == 'homestream'">
-		<div data-ng-include="streamTemplate('ui-stream-home', 'landscape')"></div>
-	</ion-scroll>
+	<!-- <div data-ng-if="sourceName == 'homestream'">
+		<h3 class="padding">{{sourceMeta.title}} TEST</h3>
+		<ion-scroll direction="y" class="vertical-scroller stream stream-home">
+			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+			<div data-ng-include="streamTemplate('ui-stream-home', 'landscape')"></div>
+			<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+		</ion-scroll>
+	</div>
 
-	<div data-ng-if="sourceName != 'homestream'">
+	<div data-ng-if="sourceName != 'homestream'"> -->
 
 		<!-- THE LIST VIEW -->
 		<div class="ui-list-view">
-
+			<h3 class="padding">{{sourceMeta.title}} TEST</h3>
 			<!-- STREAM VIEW -->
-			<ion-scroll direction="y" class="vertical-scroller stream">
+			<ion-scroll direction="y" class="vertical-scroller stream stream-vertical">
+				<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
 				<div data-ng-include="streamTemplate(sourceMeta.templates.source, 'landscape')"></div>
+				<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
 			</ion-scroll>
 		</div><!-- ui-list-view -->
 
@@ -21,6 +28,6 @@
 		<div class="ui-detail-view">
 			<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard"></ui-detail>
 		</div><!-- ui-detail-view -->
-	</div>
+	<!-- </div> -->
 
 </div><!-- ui-tablet-landscape -->

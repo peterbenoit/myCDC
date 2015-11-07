@@ -77,14 +77,27 @@
 }
 
 /* VIEW SPECIFIC CONTENT AREAS */
-#CDCAtwView .contentarea h1:first-of-type,
-#VitalSign .contentarea h1:first-of-type {
+.journal .contentarea h1:first-of-type,
+.detail-fact .contentarea h1:first-of-type {
   display: none;
 }
 
-#CDCAtwView .contentarea {
-
+/* FACT STYLES */
+.detail-fact .contentarea p {
+  display: block;
+  padding-bottom: 10px;
 }
+
+.detail-fact .contentarea p {
+  display: block;
+  padding-bottom: 10px;
+}
+/* FACT - HIDE FIRST IMAGE */
+.detail-fact .syndicate > div:first-of-type > p > img {
+  display: none;
+}
+
+
 
 .tabs, .toTop {
   display: none;

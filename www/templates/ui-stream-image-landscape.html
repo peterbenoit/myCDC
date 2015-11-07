@@ -1,7 +1,3 @@
-<ion-refresher
-    pulling-text="Pull to refresh..."
-    on-refresh="doRefresh(true)">
-</ion-refresher>
 <div class="image-stream" resize>
     <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row" ng-if="$index % 2 === 0">
         <a href="{{url}}{{$index}}" ng-if="$index < datas.length" class="ng-enter-stagger">
@@ -16,4 +12,3 @@
         </a>
     </div>
 </div>
-<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
