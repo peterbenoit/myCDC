@@ -1034,7 +1034,15 @@ angular.module('mycdc', [
 
                 } else {
 
-                    if ($stateParams.sourceIndex) {
+                    // DETAIL ID DETECTION LOGIC
+                    if (!$stateParams.sourceIndex) {
+
+                        // IF NO SOURCE INDEX (DETAIL ID) IS PRESENT, VERIFY INTENT (SHOULD WE REQUIRE ONE)
+                        if ($scope.screenState.viewType == 'tablet') {
+                            $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
+                        }
+
+                    } else {
 
                         // NO DETAIL CARD FOUND IN CARD LIST: ALERT USER, THEN REDIRECT
                         var noDetailCard = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
