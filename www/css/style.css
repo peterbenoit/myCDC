@@ -190,6 +190,24 @@ colors
 }
 
 
+.stream-home > div {
+  margin: 0;
+  padding: 0;
+}
+
+.stream-home table {
+  margin: 0;
+}
+
+.stream-home table tr td {
+  padding: 5px;
+  vertical-align: top;
+}
+
+.stream-home table tr td .card {
+  margin: 0;
+}
+
 /* LANDSCAPE VERTICAL SCROLLER */
 .ui-tablet-landscape .stream-standard {
     padding: 0;
@@ -700,4 +718,12 @@ ion-side-menu.menu.menu-left .item-content {
 .item-notice.watch {
     background: #d7e4cc;
     border-top: 2px solid #77933c!important;
+}
+
+/* IONIC SCOLL CSS FIX */
+ion-scroll[direction=x] {
+  width: 100vw;
+}
+ion-scroll[direction=y] {
+  height: 100vh;
 }

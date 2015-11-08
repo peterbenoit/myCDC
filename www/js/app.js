@@ -66,9 +66,16 @@ angular.module('mycdc', [
     window.frameready = function() {
         var iframe = $('#contentframe');
             anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
+
             //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
 
-        iframe.append('<style>header { display:none; }</style>')
+        $rootScope.$broadcast('source-detail-load-complete');
+
+        body = iframe.contents().find('body');
+        $(body).unbind("scroll");
+        /*if (body.length) {
+            body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
+        }*/
 
         // Capture any anchors clicked in the iframe document
         anchors.on('click', function(e) {
@@ -111,25 +118,6 @@ angular.module('mycdc', [
                 console.log('*** /' + anyLabel + ' ***');
             }
         }
-    };
-
-    rs.streamTemplate = function (type, orientation) {
-        rs.log(type, 2, 'Stream Template');
-        return 'templates/' + type + '-' + orientation +'.html';
-    };
-
-    rs.cardTemplate = function (type, orientation) {
-        rs.log(type, 0, 'Card Template');
-        return 'templates/' + type +'.html';
-    };
-
-    rs.getTemplate = function (type, card, orientation) {
-        return 'templates/' + card.templates[type] +'.html';
-    };
-
-    rs.detailTemplate = function (type, orientation) {
-        rs.log(type, 8, 'detailTemplate');
-        return '<' + '>';
     };
 
     $ionicPlatform.ready(function() {
@@ -221,53 +209,6 @@ angular.module('mycdc', [
         }
         */
     });
-
-    rs.getScreenState = function () {
-
-        // DEFAULT RETURN
-        var objReturn = {
-            viewType : 'phone',
-            viewOrientation : 'portrait'
-        };
-
-        // GET SCREEN SIZE & DETERMINE DEVICE "SCREEN TYPE" & ORIENTATION FROM THAT
-        if (window.screen.width >= 1024 && window.screen.width > window.screen.height) {
-            objReturn.viewType = 'tablet';
-            objReturn.viewOrientation = 'landscape';
-        } else if (window.screen.width >= 768 && window.screen.width < window.screen.height) {
-            objReturn.viewType = 'tablet';
-            objReturn.viewOrientation = 'portrait';
-        }
-
-        return objReturn;
-    };
-
-    rs.setButtonState = function () {
-        var buttons = {
-            show : {
-                home : ($stateParams.sourceName !== 'homestream'),
-                back : ($stateParams.sourceName !== 'homestream' && $stateParams.sourceDetail)
-            }
-        };
-
-        rs.buttons = buttons;
-    };
-
-    rs.goBack = function() {
-        $state.go('app.sourceIndex', {
-            sourceName : $stateParams.sourceName
-        });
-    };
-
-    rs.goHome = function() {
-        $state.go('app.sourceIndex', {
-            sourceName : 'homestream'
-        });
-    };
-
-    rs.cgNormalize = function (contentgroup) {
-        return contentgroup.toLowerCase().replace(/ /g, '');
-    };
 
     rs.dataProcessor = (function () {
         var processors = {
@@ -504,9 +445,9 @@ angular.module('mycdc', [
 
     rs.remoteApi = (function() {
         var apiDefaults = {
-                    method: 'GET',
-                    timeout: 5000
-                };
+            method: 'GET',
+            timeout: 30000
+        };
 
         return function(options) {
             options.method = options.method || apiDefaults.method;
@@ -515,6 +456,76 @@ angular.module('mycdc', [
         }
     }());
 
+    rs.refreshScreenState = function () {
+
+        $rootScope.$broadcast('screen-state-update-started');
+
+        $rootScope.sourceListPromise.then(function() {
+
+            var objReturn = {
+                width : $window.innerWidth,
+                height : $window.innerHeight
+            };
+
+            var sourceMeta = $rootScope.getSourceMeta($stateParams);
+            var containerSet = (sourceMeta.countainerSet || 'ui-container-default');
+
+            // GET SCREEN SIZE
+            if ($window.innerWidth >= 1024 && $window.innerWidth > $window.innerHeight) {
+                objReturn.uiMainContentUrl = 'templates/' + containerSet + '-landscape.html';
+                objReturn.viewType = 'tablet';
+                objReturn.viewOrientation = 'landscape';
+            } else if ($window.innerWidth >= 768 && $window.innerWidth < $window.innerHeight) {
+                objReturn.uiMainContentUrl = 'templates/' + containerSet + '-tablet-portrait.html';
+                objReturn.viewType = 'tablet';
+                objReturn.viewOrientation = 'portrait';
+            } else {
+                objReturn.uiMainContentUrl = 'templates/' + containerSet + '-phone.html';
+                objReturn.viewType = 'phone';
+                objReturn.viewOrientation = 'portrait';
+            }
+
+            // UPDATE SCOPE
+            $rootScope.screenState= objReturn;
+            $rootScope.sourceMeta = sourceMeta;
+
+            // WAIT FOR ANY DIGEST TO COMPLETE BEFORE APPLYING
+            setTimeout(function(){
+                $rootScope.$broadcast('screen-state-update-complete', {
+                    templates : sourceMeta.templates,
+                    screenState : objReturn
+                });
+            }, 0);
+        });
+    };
+
+    rs.setButtonState = function () {
+        var buttons = {
+            show : {
+                home : ($stateParams.sourceName !== 'homestream'),
+                back : ($stateParams.sourceName !== 'homestream' && $stateParams.sourceDetail)
+            }
+        };
+
+        rs.buttons = buttons;
+    };
+
+    rs.goBack = function() {
+        $state.go('app.sourceIndex', {
+            sourceName : $stateParams.sourceName
+        });
+    };
+
+    rs.goHome = function() {
+        $state.go('app.sourceIndex', {
+            sourceName : 'homestream'
+        });
+    };
+
+    rs.cgNormalize = function (contentgroup) {
+        return contentgroup.toLowerCase().replace(/ /g, '');
+    };
+
     // GET SOURCE METADATA FROM SOURCELIST BY NAME (In Route Params)
     rs.getSourceMeta = function(stateParams) {
 
@@ -522,9 +533,9 @@ angular.module('mycdc', [
         var arySourceInfo, strSourceName = stateParams.sourceName || stateParams || "";
 
         // FILTER HERE
-        arySourceInfo = $filter('filter')(rs.sourceList, {
+        arySourceInfo = $filter('filter')($rootScope.sourceList, {
             contentGroupIdentifier: strSourceName
-        });
+        }) || [];
 
         // DID WE FIND IT?
         if (arySourceInfo.length === 1) {
@@ -576,7 +587,7 @@ angular.module('mycdc', [
             return sourceIndexPromise;
         }
     };
-
+/*
     rs.getDetailContent = (function() {
 
         var getSourceDetailUrl = function(sourceMeta, sourceIndexCard) {
@@ -615,7 +626,7 @@ angular.module('mycdc', [
 
             return sourceDetailPromise;
         }
-    } ());
+    } ());*/
 
     rs.appInit = function(blnRefresh) {
 
@@ -646,14 +657,7 @@ angular.module('mycdc', [
                         // GET THE CURRENT SOURCE
                         objSrc = sourceList[i];
 
-                        /* MAP TEMPLATES TO CONTENTGROUPIDENTIFIER
-                        if (objSrc.templates) {
-                            objReturn[objSrc.contentGroupIdentifier] = {};
-                            for (key in objSrc.templates) {
-                                objReturn[objSrc.contentGroupIdentifier][key] = objSrc.templates[key];
-                            }
-                        }
-                        */
+                        // MAP TEMPLATES TO CONTENTGROUPIDENTIFIER
                         objReturn[objSrc.contentGroupIdentifier] = objSrc.templates;
                     }
 
@@ -664,13 +668,25 @@ angular.module('mycdc', [
                 // SET SOURCE LIST TO ROOTSCOPE;
                 rs.sourceList = sourceList;
 
-                //DEBUG
-                console.log('RS.TEMPLATEMAP ******************');
-                console.log(rs.templateMap);
-
                 // RETURN TRIMMED DATA TO CHAIN
                 return rs.sourceListPromise;
             });
+        }
+
+        var listenersAdded = listenersAdded || false;
+
+        if (!listenersAdded) {
+
+            var mq = window.matchMedia('(orientation: portrait)');
+
+            mq.addListener(function(m) {
+                $rootScope.refreshScreenState();
+            });
+
+            window.addEventListener("orientationchange", $rootScope.refreshScreenState, true);
+
+            // Add Listener for resize changes
+            window.addEventListener("resize", $rootScope.refreshScreenState, false);
         }
 
         // RETURN THE SOURCE LIST PROMISE
@@ -761,197 +777,296 @@ angular.module('mycdc', [
 })
 
 // THESE CAN BE MOVED TO DIRECTIVES FILE
-.directive('uiManager', function($window, $rootScope, $stateParams) {
+.directive('uiContainer', function($rootScope) {
+   return {
+        restrict: 'E',
+        controller: function($scope, $element){
+            $scope.getContainerTemplate = function () {
+
+                var uiContainerTemplateUrl;
+
+                if ($rootScope.screenState && $rootScope.sourceMeta) {
+                    if ($rootScope.screenState.viewType == 'phone') {
+                        uiContainerTemplateUrl = 'templates/' + $rootScope.sourceMeta.templates.containerSet + '-phone.html';
+                    } else {
+                        uiContainerTemplateUrl = 'templates/' + $rootScope.sourceMeta.templates.containerSet + '-tablet-' + $rootScope.screenState.viewOrientation + '.html';
+                    }
+                } else {
+                    uiContainerTemplateUrl = 'templates/ui-loader.html';
+                }
+
+                $rootScope.log(uiContainerTemplateUrl, 1, 'UI-CONTAINER-TEMPLATE');
+
+                return uiContainerTemplateUrl;
+            };
+
+            // SET LISTENER ONCE
+            if (!$scope.uiContainerInit) {
+                $scope.uiContainerInit = true;
+                $scope.$on('screen-state-update-complete', function(event, args) {
+                    $rootScope.log('UI CONTAINER DIRECTIVE RECEIVED screen-state-update-complete', 2, 'EVENT-LISTENER:');
+                    $scope.getContainerTemplate();
+                });
+            }
+        },
+        template: '<div ng-include="getContainerTemplate()"></div>'
+   }
+})
+
+.directive('uiStream', function($rootScope) {
    return {
         restrict: 'E',
         controller: function($scope, $element){
 
             // CREATE MAIN TEMPALTE HANDLER (COULD USE IONIC FOR TABLE DETECTION, BUT THIS SEEMS MORE UNIVERSAL WITH LESS isThis, isThat CALLS)
-            $scope.uiMainTemplateHandler = function () {
+            $scope.getStreamTemplate = function () {
 
-                var objReturn = {
-                    uiMainContentUrl : 'templates/ui-container-phone.html',
-                    viewType : 'phone',
-                    viewOrientation : 'portrait',
-                    width : $window.innerWidth,
-                    height : $window.innerHeight
-                };
+                var uiStreamTemplateUrl;
 
-                // GET SCREEN SIZE
-                if ($window.innerWidth >= 1024 && $window.innerWidth > $window.innerHeight) {
-                    objReturn.uiMainContentUrl = 'templates/ui-container-tablet-landscape.html';
-                    objReturn.viewType = 'tablet';
-                    objReturn.viewOrientation = 'landscape';
-                } else if ($window.innerWidth >= 768 && $window.innerWidth < $window.innerHeight) {
-                    objReturn.uiMainContentUrl = 'templates/ui-container-tablet-portrait.html';
-                    objReturn.viewType = 'tablet';
-                    objReturn.viewOrientation = 'portrait';
+                if ($rootScope.screenState && $rootScope.sourceMeta) {
+                    uiStreamTemplateUrl = 'templates/' + $rootScope.sourceMeta.templates.stream + '-' + $rootScope.screenState.viewOrientation + '.html';
+                } else {
+                    uiStreamTemplateUrl = 'templates/ui-loader.html';
                 }
 
-                console.log('uiMainTemplateHandler Fired!');
-                console.log(objReturn);
-                console.log(window.screen);
+                $rootScope.log(uiStreamTemplateUrl, 1, 'UI-STREAM-TEMPLATE');
 
-                // UPDATE SCOPE
-                for (var key in objReturn) {
-                    $scope[key] = objReturn[key];
-                }
-
-                // WAIT FOR ANY DIGEST TO COMPLETE BEFORE APPLYING
-                setTimeout(function(){
-                    $scope.$apply();
-                }, 0);
+                return uiStreamTemplateUrl;
             };
 
-            $('.stream.stream-vertical').width(300).height($window.innerHeight);
-            $('ui-detail-view').width($window.innerWidth - 300).height($window.innerHeight);
+            //$('.stream.stream-vertical').width(300).height($window.innerHeight);
+            //$('ui-detail-view').width($window.innerWidth - 300).height($window.innerHeight);
 
-            // IF DIRECTIVE NOT INITIALIZED
-            if (!$scope.uiMainInit) {
-                $scope.uiMainInit = true;
-
-                var mq = window.matchMedia('(orientation: portrait)');
-
-                mq.addListener(function(m) {
-                    $scope.uiMainTemplateHandler();
+            // SET LISTENER ONCE
+            if (!$scope.uiStreamInit) {
+                $scope.uiStreamInit = true;
+                $scope.$on('screen-state-update-complete', function(event, args) {
+                    $rootScope.log('UI STREAM DIRECTIVE RECEIVED screen-state-update-complete', 2, 'EVENT-LISTENER:');
+                    $scope.getStreamTemplate();
                 });
-
-                window.addEventListener("orientationchange", $scope.uiMainTemplateHandler, true);
-
-                // Add Listener for resize changes
-                window.addEventListener("resize", $scope.uiMainTemplateHandler, false);
             }
         },
-        link: function(scope, element, attrs) {
-           // ON LINK TO APP/DOM - FIRE TEMPLATE HANDLER TO SELECT APPROPRIATE TEMPLATE
-           scope.$stateParams = $stateParams;
-           scope.uiMainTemplateHandler();
-        },
-        template: '<div ng-include="uiMainContentUrl"></div>'
+        template: '<div ng-include="getStreamTemplate()"></div>'
    }
 })
 
-.directive("uiCard", function() {
+.directive("uiCard", function($rootScope) {
     return {
-        template: '<ng-include src="getTemplateUrl()"/>',
+        // ISOLATE SCOPE (RESTRIECT TO CARD DATA OBJECT AND TEMPLATE ATTR)
         scope: {
             cardData: '=',
             template: '@'
         },
         restrict: 'E',
         controller: function($scope) {
-            $scope.getTemplateUrl = function() {
-                if ($scope.template) {
-                    return 'templates/' + $scope.template +'.html';
+
+             $scope.getCardTemplate = function () {
+
+                // DEFAULT TO LOADER (IF STATE SCREEN STATE NOT READY, ETC.)
+                var uiCardTemplateUrl = 'templates/ui-loader.html';
+
+                // SCREEN STATE READY?
+                if ($rootScope.screenState) {
+                    // TEMPLATE LOGIC
+                    if ($scope.template) {
+                        // TEMPLATE OVERRIDE PROVIDED - USE IT
+                        uiCardTemplateUrl = 'templates/' + $scope.template+ '.html';
+                    } else if ($scope.cardData.templates && $scope.cardData.templates.hasOwnProperty('card')) {
+                        // USE DEFAULT TEMPLATE FOR CARD
+                        uiCardTemplateUrl = 'templates/' + $scope.cardData.templates.card + '.html';
+                    }
                 }
-                if ($scope.cardData.templates && $scope.cardData.templates.hasOwnProperty('card')) {
-                    return 'templates/' + $scope.cardData.templates.card +'.html';
-                }
-                return '<div>DEBUG - Missing Template for: {{cardData}}</div>';
-            }
+
+                $rootScope.log(uiCardTemplateUrl, 1, 'UI-CARD-TEMPLATE');
+
+                // RETURN TEMPLATE
+                return uiCardTemplateUrl;
+            };
         },
         link: function(scope, element, attrs) {
             scope.template = attrs.template;
-            scope.getTemplateUrl();
         },
+        template: '<ng-include src="getCardTemplate()"/>',
     };
 })
 
-.directive('uiDetail', function($rootScope, $timeout, $sce) {
-   return {
-        restrict: 'E',
-        link : function (scope) {
-            scope.init();
+.directive('uiDetail', function($rootScope, $timeout, $sce, $filter, $state, $stateParams, $ionicPopup) {
+
+    // HANDLE DIFFERENT TYPES OF CONTENT DETAIL PROCESSING
+    var detailProcessors = {
+        video : function ($scope) {
+
+            $scope.processer = 'VIDEO';
+            $scope.detailData = $scope.detailCard;
+
+            $scope.getVideoUrl = function() {
+                return $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + $scope.detailData.sourceUrl.split('?v=')[1]);
+            };
+
         },
-        controller : (function () {
+        iframe : function ($scope) {
+            $scope.processer = 'IFRAME';
 
-            var createNoChromeUrl = function (sourceUrl) {
-                sourceUrl = sourceUrl || '';
-                var filename = sourceUrl.split('/').pop();
-                var newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1];
-                return sourceUrl.replace(filename, newfilename);
-            };
 
-            // HANDLE DIFFERENT TYPES OF CONTENT DETAIL PROCESSING
-            var detailProcessors = {
-                video : function ($scope) {
+            var noChromeUrl = createNoChromeUrl($scope.detailCard.sourceUrl);
 
-                    $scope.detailData = $scope.detailCard;
-                    $scope.getVideoUrl = function() {
-                        return $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + $scope.detailData.sourceUrl.split('?v=')[1]);
-                    };
+            $scope.detailData = $scope.detailCard;
 
-                },
-                iframe : function ($scope) {
-                    $rootScope.log($scope.frameUrl, 1, 'IFRAME URL');
-                    $scope.processer = 'IFRAME';
-
-                    var noChromeUrl = createNoChromeUrl($scope.detailCard.sourceUrl);
-
-                    $scope.detailData = $scope.detailCard;
-
-                    $rootScope.remoteApi({
-                        url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + noChromeUrl
-                    }).then(function(resp) {
-                        if (resp.data.status === '200') {
-                            $scope.frameUrl = $sce.trustAsResourceUrl(noChromeUrl);
-                        } else {
-                            $scope.frameUrl = $sce.trustAsResourceUrl($scope.detailCard.sourceUrl);
-                        }
-                        $rootScope.log($scope.frameUrl, 1, 'IFRAME URL');
-                    },
-                    function() {
-                        $scope.frameUrl = $sce.trustAsResourceUrl($scope.detailCard.sourceUrl);
-                        $rootScope.log($scope.frameUrl, 1, 'IFRAME URL FROM ERROR HANDLER');
-                    });
-
-                },
-                default : function ($scope) {
-
-                    $rootScope.log($scope, 2, 'DEFAULT DETAIL PROCESSOR');
-                    $rootScope.log($scope.detailCard, 2, '$scope.detailCard');
-                    $scope.processer = 'DEFAULT';
-
-                    $rootScope.remoteApi({
-                        url : 'https://prototype.cdc.gov/api/v2/resources/media/' + $scope.detailCard.id + '/syndicate.json'
-                    }).then(function(d){
-                        $rootScope.log(d, 1, 'RETURNED DETAIL DATA');
-                        // NORMALIZE DATA BY SOURCE SPECS
-                        $scope.detailData = $rootScope.dataProcessor(d, $scope.sourceMeta);
-                    });
+            $rootScope.remoteApi({
+                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + noChromeUrl
+            }).then(function(resp) {
+                if (resp.data.status === '200') {
+                    $scope.frameUrl = $sce.trustAsResourceUrl(noChromeUrl);
+                } else {
+                    $scope.frameUrl = $sce.trustAsResourceUrl($scope.detailCard.sourceUrl);
                 }
-            };
+                $rootScope.log($scope.frameUrl, -1, 'IFRAME URL');
+                return resp;
+            },
+            function(resp) {
+                $scope.frameUrl = $sce.trustAsResourceUrl($scope.detailCard.sourceUrl);
+                $rootScope.log($scope.frameUrl, -1, 'IFRAME URL FROM ERROR HANDLER');
+                return resp
+            });
 
-            // RETURN ACTUAL CONTROLLER
-            return function ($scope) {
+            // NOTE: $rootScope.$broadcast('source-detail-load-complete'); DELEGATED TO IFRAME LOAD
 
-                // SET CARD TEMPLATE
-                $scope.detailTemplateUrl = 'templates/' + $scope.sourceMeta.templates.detail + '.html';
-                $rootScope.log($scope, 2, 'UI-DETAIL-DIRECTIVE-SCOPE');
+        },
+        default : function ($scope) {
 
-                // DEFINE INIT METHOD (TO BE FIRED ON LINK)
-                $scope.init = function () {
+            $rootScope.log($scope, -1, 'DEFAULT DETAIL PROCESSOR');
+            $rootScope.log($scope.detailCard, -1, '$scope.detailCard');
+            $scope.processer = 'DEFAULT';
 
-                    // FALL INLINE WITH PROMISE CHAIN (WAIT FOR SOURCE INDEX RESULTS)
-                    $scope.sourceIndexPromise.then(function() {
+            $rootScope.remoteApi({
+                url : 'https://prototype.cdc.gov/api/v2/resources/media/' + $scope.detailCard.id + '/syndicate.json'
+            }).then(function(d){
+                $rootScope.log(d, 1, 'RETURNED DETAIL DATA');
+                // NORMALIZE DATA BY SOURCE SPECS
+                $scope.detailData = $rootScope.dataProcessor(d, $scope.sourceMeta);
+                $rootScope.$broadcast('source-detail-load-complete');
+            });
+        }
+    };
 
-                        // CONTINUE IF DETAIL CARD EXISTS IN SCOPE (AND NOT INITIALIZED ALREADY)
-                        if ($scope.detailCard && !$scope.initialized) {
+    var createNoChromeUrl = function (sourceUrl) {
+        sourceUrl = sourceUrl || '';
+        var filename = sourceUrl.split('/').pop();
+        var newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1];
+        return sourceUrl.replace(filename, newfilename);
+    };
 
-                            // FLAG INIT
-                            $scope.initialized = true;
+    var getDetailCard = function(cardList, contentID) {
 
-                            // CALL SPECIFIED PROCESSOR
-                            detailProcessors[$scope.sourceMeta.detailType].call(this, $scope);
+        console.log(arguments);
 
-                            // DEBUG
-                            $rootScope.log($scope.processer, 2, 'UI-DETAIL-DIRECTIVE-PROCESSER');
-                            $rootScope.log($scope.detailTemplateUrl, 2, 'UI-DETAIL-DIRECTIVE-TEMPLATE');
-                        }
-                    });
-                }
+        // PARAMS
+        var arySourceInfo;
+
+        // FILTER HERE
+        arySourceInfo = $filter('filter')(cardList, {
+            id: contentID
+        });
+
+        // DID WE FIND IT?
+        if (arySourceInfo.length === 1) {
+
+            // RETURN IT
+            return arySourceInfo[0];
+        }
+
+        // ELSE RETURN FALSE
+        return false;
+    };
+
+    return {
+        restrict: 'E',
+        controller : function ($scope) {
+
+            // SET LISTENER ONCE
+            if (!$scope.uiDetailnit) {
+                $scope.uiDetailnit = true;
+                console.log(0);
+                $rootScope.$on('screen-state-update-complete', function () {
+                    $scope.getDetailTemplate();
+                    console.log(0.5);
+                });
+                $rootScope.$on('source-detail-load-started', function(event, args) {
+                    $rootScope.log('UI DETAIL DIRECTIVE RECEIVED source-detail-load-STARTED', -1, 'EVENT-LISTENER:');
+                    $rootScope.log($scope.detailCard, -1, 'SCOPE DETAIL CARD');
+                    $rootScope.log($scope.detailData, -1, 'SCOPE DETAIL DATA');
+                    console.log(1);
+                });
+                $rootScope.$on('source-detail-load-complete', function(event, args) {
+                    $rootScope.log('UI DETAIL DIRECTIVE RECEIVED source-detail-load-COMPLETED', -1, 'EVENT-LISTENER:');
+                    $rootScope.log($scope.detailCard, -1, 'SCOPE DETAIL CARD');
+                    $rootScope.log($scope.detailData, -1, 'SCOPE DETAIL DATA');
+                    console.log(2);
+                    $scope.getDetailTemplate();
+                });
             }
-        } ()),
-        template: '<div ng-include="detailTemplateUrl"></div>'
-   }
-});
+
+            $scope.sourceIndexPromise.then(function(d){
+
+                $scope.detailCard = getDetailCard($scope.datas, $scope.sourceDetail);
+                $rootScope.$broadcast('content-card-ready');
+                $rootScope.log($scope.detailCard, -1, 'CURRENT DETAIL CARD');
+                // SET CARD TEMPLATE
+                $scope.detailTemplateUrl = 'templates/' + $rootScope.sourceMeta.templates.detail + '.html';
+                $rootScope.log($scope.detailTemplateUrl, -1, 'UI-DETAIL-TEMPLATE');
+
+                // CONTINUE IF DETAIL CARD EXISTS IN SCOPE (AND NOT INITIALIZED ALREADY)
+                if ($scope.detailCard) {
+
+                    console.log('!!!!!!!!!!!!!');
+
+                    // FLAG INIT
+                    $scope.initialized = false;
+
+                    $rootScope.$broadcast('source-detail-load-started');
+
+                    // CALL SPECIFIED PROCESSOR
+                    detailProcessors[$rootScope.sourceMeta.detailType].call(this, $scope);
+
+                    // DEBUG
+                    $rootScope.log($scope.processer, -1, 'UI-DETAIL-DIRECTIVE-PROCESSER');
+                    $rootScope.log($scope.detailTemplateUrl, -1, 'UI-DETAIL-DIRECTIVE-TEMPLATE');
+
+                } else {
+
+                    if ($stateParams.sourceIndex) {
+
+                        // NO DETAIL CARD FOUND IN CARD LIST: ALERT USER, THEN REDIRECT
+                        var noDetailCard = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                        noDetailCard.then(function() {
+                            $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
+                        });
+                    }
+
+                }
+
+                return d;
+
+            });
+
+
+            $scope.getDetailTemplate = function () {
+
+                // DEFAULT TO LOADER (IF STATE SCREEN STATE NOT READY, ETC.)
+                var uiDetailTemplateUrl = 'templates/ui-loader.html';
+
+                // SCREEN STATE READY?
+                if ($rootScope.screenState && $scope.detailCard && $scope.detailData) {
+                    // TEMPLATE LOGIC
+                    uiDetailTemplateUrl = 'templates/' + $scope.detailCard.templates.detail + '.html';
+                }
+
+                $rootScope.log(uiDetailTemplateUrl, 1, 'UI-DETAIL-TEMPLATE');
+
+                // RETURN TEMPLATE
+                return uiDetailTemplateUrl;
+            };
+        },
+        template: '<div ng-include="getDetailTemplate()"></div>'
+    }
+})

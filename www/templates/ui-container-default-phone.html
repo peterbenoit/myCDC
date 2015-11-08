@@ -6,7 +6,7 @@
 		<h3 class="padding">{{sourceMeta.title}}</h3>
 		<ion-scroll direction="y" class="vertical-scroller stream">
 			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
-			<div data-ng-include="streamTemplate(sourceMeta.templates.source, 'universal')"></div>
+			<ui-stream></ui-stream>
 			<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
 		</ion-scroll>
 	</div><!-- .ui-list-view -->

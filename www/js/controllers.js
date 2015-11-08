@@ -187,6 +187,7 @@ angular.module('mycdc.controllers', [])
                         // SET DATA TO "datas" SO TEMPLATE WILL PICK IT UP & DISPLAY IT
                         $scope.datas = $scope.sourceIndex;
                         $rootScope.log($scope.datas, 1, 'CURRENT SOURCE DATA');
+                        //$rootScope.refreshScreenState();
 
                         // SETUP PAGINATION
                         $scope.paginationLimit = function(data) {
@@ -223,22 +224,18 @@ angular.module('mycdc.controllers', [])
 
                             } else {
 
-                                $scope.detailCard = $scope.getDetailCard($scope.datas, $scope.sourceDetail);
-                                $rootScope.log($scope.detailCard, 1, 'CURRENT DETAIL CARD');
-
                                 // HIDE THE LOADER
                                 $ionicLoading.hide();
 
-                                if (!$scope.detailCard) {
+                                // REFRESH SCREEN STATE
+                                $rootScope.refreshScreenState();
 
-                                    // NO DETAIL CARD FOUND IN CARD LIST: ALERT USER, THEN REDIRECT
-                                    var noDetailCard = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-                                    noDetailCard.then(function() {
-                                        $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
-                                    });
-                                }
                             }
+
                         } else {
+
+                            // REFRESH SCREEN STATE
+                            $rootScope.refreshScreenState();
 
                             // HIDE THE LOADER
                             $ionicLoading.hide();

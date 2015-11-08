@@ -1,0 +1,13 @@
+<div class="stream stream-tablet">
+  <table>
+    <tr ng-repeat="data in datas | limitTo: paginationLimit()" ng-if="$index % 2 === 0">
+      <td class="card-container" ng-if="$index < datas.length" width="50%">
+        <ui-card data-card-data="data"></ui-card>
+      </td>
+      <td class="card-container" ng-if="$index + 1 < datas.length" width="50%">
+        <ui-card data-card-data="datas[$index + 1]"></ui-card>
+      </td>
+    </tr>
+    </table>
+</div>
+

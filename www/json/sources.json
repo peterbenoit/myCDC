@@ -6,7 +6,8 @@
     "processors": ["cardTemplateInjector", "stripHtml"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-home",
+        "stream" : "ui-stream-home",
         "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
@@ -19,7 +20,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
@@ -32,7 +34,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "iframe",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-embed"
     }
@@ -45,7 +48,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
@@ -58,7 +62,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "iframe",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-embed"
     }
@@ -71,7 +76,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
@@ -84,7 +90,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-data"
     }
@@ -97,7 +104,8 @@
     "processors": ["cardTemplateInjector", "stripHtml"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-journal"
     }
@@ -110,7 +118,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-blog"
     }
@@ -123,7 +132,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-blog"
     }
@@ -136,7 +146,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-data"
     }
@@ -149,7 +160,8 @@
     "processors": ["cardTemplateInjector", "firstOnly"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-fact"
     }
@@ -162,7 +174,8 @@
     "processors": ["cardTemplateInjector", "parseEncoding"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-fact"
     }
@@ -175,7 +188,8 @@
     "processors": ["cardTemplateInjector","stripHtml"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-journal"
     }
@@ -188,7 +202,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-journal"
     }
@@ -200,7 +215,8 @@
     "getContentBy": "url",
     "detailType" : "iframe",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-embed"
     }
@@ -213,7 +229,8 @@
     "processors": ["cardTemplateInjector", "flagOutbreak"],
     "detailType" : "iframe",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-embed"
     }
@@ -226,7 +243,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "iframe",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-embed"
     }
@@ -239,7 +257,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-image",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-image",
         "card" : "ui-card-default",
         "detail" : "ui-detail-journal"
     }
@@ -252,7 +271,8 @@
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-audio",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-audio",
         "card" : "ui-card-default",
         "detail" : "ui-detail-audio"
     }
@@ -265,7 +285,8 @@
     "processors": ["cardTemplateInjector","extractVideoComments"],
     "detailType" : "video",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-video"
     }
@@ -276,7 +297,8 @@
     "getContentBy": "na",
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
@@ -287,7 +309,8 @@
     "getContentBy": "na",
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-image",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-image",
         "card" : "ui-card-default",
         "detail" : "ui-detail-journal"
     }
@@ -298,7 +321,8 @@
     "getContentBy": "na",
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-video",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-video",
         "card" : "ui-card-default",
         "detail" : "ui-detail-video"
     }
@@ -309,7 +333,8 @@
     "getContentBy": "na",
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
@@ -320,7 +345,8 @@
     "getContentBy": "na",
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "landing-twitter"
     }
@@ -331,7 +357,8 @@
     "getContentBy": "na",
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }
@@ -342,7 +369,8 @@
     "getContentBy": "na",
     "detailType" : "default",
     "templates" : {
-        "source" : "ui-stream-standard",
+        "containerSet" : "ui-container-default",
+        "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "detail" : "ui-detail-article"
     }

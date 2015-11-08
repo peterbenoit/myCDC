@@ -1,0 +1,9 @@
+<!-- TABLET PORTRAIT MODE  -->
+<div class="ui-tablet-portrait">
+	<!-- HOMESTREAM -->
+	<ion-scroll direction="y" class="vertical-scroller stream stream-home has-header">
+		<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+		<ui-stream><!-- STREAM HANDLER --></ui-stream>
+		<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+	</ion-scroll>
+</div><!-- ui-tablet-portrait -->

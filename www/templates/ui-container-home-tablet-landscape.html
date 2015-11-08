@@ -1,0 +1,9 @@
+<!-- TABLET LANDSCAPE MODE -->
+<div class="ui-tablet-landscape">
+	<!-- HOMESTREAM -->
+	<ion-scroll direction="y" class="vertical-scroller stream stream-home has-header">
+		<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+		<ui-stream></ui-stream>
+		<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+	</ion-scroll>
+</div><!-- ui-tablet-landscape -->
