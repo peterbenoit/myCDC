@@ -168,7 +168,6 @@ angular.module('mycdc.controllers', [])
             // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
             $scope.sourceName = $stateParams.sourceName;
             $scope.sourceDetail = $stateParams.sourceDetail || false;
-            $scope.showBackButton = true;
 
             // INHERITED PROMISE CHAINED TIMING
             $rootScope.sourceListPromise.then(function(data) {

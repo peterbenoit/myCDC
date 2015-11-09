@@ -2,7 +2,7 @@
 <div class="ui-phone">
 
 	<!-- THE LIST VIEW (IF NO DETAIL SELECTED) -->
-	<div class="ui-list-view" data-ng-if="!sourceDetail.length">
+	<div class="ui-list-view" data-ng-if="!sourceDetail">
 		<h3 class="padding">{{sourceMeta.title}}</h3>
 		<ion-scroll direction="y" class="vertical-scroller stream">
 			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
@@ -12,7 +12,7 @@
 	</div><!-- .ui-list-view -->
 
 	<!-- THE DETAIL VIEW (IF DETAIL SELECTED) -->
-	<div class="ui-detail-view" data-ng-if="sourceDetail.length">
+	<div class="ui-detail-view" data-ng-if="sourceDetail">
 		<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard"></ui-detail>
 	</div><!-- .ui-detail-view -->
 

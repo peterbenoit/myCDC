@@ -1,9 +1,9 @@
-<div class="card" ng-if="!cardData.type">
+<div class="card" ng-if="!cardData.type" id="card-{{cardData.id}}">
     <div ng-if="cardData.isOutbreak" class="item item-notice outbreak"><b>Outbreak</b></div>
     <div ng-if="cardData.isWarning" class="item item-notice warning"><b>Travel Notice</b> - Warning Level 3</div>
     <div ng-if="cardData.isWatch" class="item item-notice watch"><b>Travel Notice</b> - Watch Level 1</div>
     <div ng-if="cardData.isAlert" class="item item-notice alert"><b>Travel Notice</b> - Alert Level 2</div>
-    <a ng-if="cardData.hasImage" class="item item-image" ng-href="{{cardData.url}}{{cardData.id}}">
+    <a ng-if="cardData.hasImage" class="item item-image" ng-href="{{cardData.url}}{{cardData.id}}" data-ngdisabled-click="setState(cardData.appContentGroup,  cardData.id)">
         <img ng-src="{{cardData.imageSrc}}" err-src="img/image-placeholder.png"  style="max-width:100%;">
     </a>
     <a class="item item-text-wrap item-body" ng-href="{{cardData.url}}{{cardData.id}}">
@@ -11,7 +11,7 @@
         <p class="date">{{cardData.datePublished}}</p>
         <p>{{cardData.description | words:20}}</p>
     </a>
-    <a class="item item-footer" ng-if="cardData.contentGroup" ng-href="{{cardData.home}}">
+    <a class="item item-footer" ng-if="cardData.contentGroup" ng-href="{{cardData.home}}"  data-ngngdisabled-click="setState(cardData.appContentGroup)">
         {{cardData.contentGroup}}
     </a>
 </div>
@@ -21,7 +21,7 @@
         <strong>{{cardData.name | words:8}}</strong>
     </a>
 </div>
-<a href="{{cardData.url}}/{{cardData.id}}" class="ng-enter-stagger" ng-if="cardData.type == 'image'">
+<a href="{{cardData.url}}/{{cardData.id}}" class="ng-enter-stagger" ng-if="cardData.type == 'image'"  data-ngngdisabled-click="setState(cardData.appContentGroup,  cardData.id)">
     <div class="item item-image" ng-style="halfwidth()">
         <img ng-src="{{cardData.imageSrc}}" class="horizontal" halfsize>
     </div>
