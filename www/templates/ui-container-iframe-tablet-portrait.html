@@ -1,17 +1,18 @@
 <!-- TABLET PORTRAIT MODE -->
-<div class="ui-default ui-tablet-portrait has-list-header">
+<div class="ui-tablet-portrait ui-iframe has-list-header">
 
-	<!-- THE LIST VIEW -->
+	<!-- THE LIST VIEW - ->
 	<div class="ui-list-view">
 		<h3>{{sourceMeta.title}}</h3>
 
-		<!-- STREAM VIEW -->
+		<!-- STREAM VIEW - ->
 		<ion-scroll direction="x" class="horizontal-scroller stream" delegate-handle="streamScrollHorizontal">
-			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
-			<ui-stream></ui-stream>
-			<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+		<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+		<ui-stream></ui-stream>
+		<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
 		</ion-scroll>
-	</div><!-- ui-list-view -->
+	</div><!-- ui-list-view - ->
+	-->
 
 	<!-- THE DETAIL VIEW -->
 	<div class="ui-detail-view">

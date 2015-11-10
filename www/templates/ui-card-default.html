@@ -9,7 +9,7 @@
     <a class="item item-text-wrap item-body" ng-href="{{cardData.url}}{{cardData.id}}">
         <strong>{{cardData.name | words:10}}</strong>
         <p class="date">{{cardData.datePublished}}</p>
-        <p>{{cardData.description | words:20}}</p>
+        <p ng-bind-html="cardData.description | words:20"></p>
     </a>
     <a class="item item-footer" ng-if="cardData.contentGroup" ng-href="{{cardData.home}}"  data-ngngdisabled-click="setState(cardData.appContentGroup)">
         {{cardData.contentGroup}}

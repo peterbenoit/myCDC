@@ -1,5 +1,6 @@
 <!-- PHONE UNIVERSAL (PORTRAIT & LANDSCAPE) MODE -->
-<div class="ui-phone">
+<div ng-if="containerLoading" class="ui-phone ui-home">LOADING YO!</div>
+<div ng-if="!containerLoading" class="ui-phone ui-home">
 
 	<!-- THE LIST VIEW (IF NO DETAIL SELECTED) -->
 	<div class="ui-list-view" data-ng-if="!sourceDetail">

@@ -121,201 +121,32 @@ colors
     width: 100%;
 }
 
-.image-stream .ng-enter-stagger {
+/*
+.disabled.image-stream .ng-enter-stagger {
   -webkit-animation-delay:100ms;
   animation-delay:100ms;
 
-  /* override to make sure it's not inherited from other styles */
   -webkit-animation-duration:0;
   animation-duration:0;
 }
 
-.image-stream .ng-enter {
+.disabled.image-stream .ng-enter {
     -webkit-animation: fadeInLeft 1s;
     animation: fadeInLeft 1s;
 }
 
-.stream .ng-enter-stagger {
+.disabled.stream .ng-enter-stagger {
   -webkit-animation-delay:100ms;
   animation-delay:100ms;
 
-  /* override to make sure it's not inherited from other styles */
   -webkit-animation-duration:0;
   animation-duration:0;
 }
-
 .stream .ng-enter {
     -webkit-animation: fadeInUp 1s;
     animation: fadeInUp 1s;
 }
-
-.stream,
-.stream-standard {
-    background-color: #f8f8f8;
-}
-
-/* PHONE SCROLLER */
-.ui-phone .has-header {
-    top: 0;
-}
-
-.ui-phone .ui-list-view .vertical-scroller {
-  position: absolute;
-  width: 100%;
-  top: 44px;
-  bottom: 0;
-}
-
-.ui-phone .ui-list-view .card {
-  display: block;
-  width: 100%;
-  margin: 0;
-  white-space: normal;
-}
-
-.ui-phone .ui-list-view .card img {
-  max-width: 100%;
-}
-
-.ui-phone .ui-detail-view {
-  position: absolute;
-  top: 44px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.stream-standard > div {
-    margin: 10px;
-}
-
-
-.stream-home > div {
-  margin: 0;
-  padding: 0;
-}
-
-.stream-home table {
-  margin: 0;
-}
-
-.stream-home table tr td {
-  padding: 5px;
-  vertical-align: top;
-}
-
-.stream-home table tr td .card {
-  margin: 0;
-}
-
-/* LANDSCAPE VERTICAL SCROLLER */
-.ui-tablet-landscape .stream-standard {
-    padding: 0;
-}
-
-.ui-tablet-landscape .stream-standard > div {
-    margin: 0;
-}
-
-.ui-tablet-landscape .card {
-    max-height: 350px;
- }
-
-.ui-tablet-landscape .stream-standard .card{
-    margin-bottom: 10px;
- }
-
- .ui-tablet-landscape .ui-list-view .vertical-scroller {
-    position: absolute;
-    width: 300px;
-    top: 44px;
-    bottom: 0;
-}
-
-.ui-tablet-landscape .ui-list-view .card {
-    display: block;
-    max-height: 300px;
-    width: 100%;
-    white-space: normal;
-}
-
-.ui-tablet-landscape .ui-list-view .card img {
-    max-width: 100%;
-}
-
-.ui-tablet-landscape .ui-detail-view {
-    position: absolute;
-    top: 44px;
-    right: 0;
-    bottom: 0;
-    left: 300px;
-}
-
-/* PORTRAIT HORIZONTAL SCROLLER */
-.ui-tablet-landscape .stream-standard {
-    padding: 0 10px;
-}
-
-.ui-tablet-portrait .ui-list-view .horizontal-scroller {
-  position: absolute;
-  height: 300px;
-  top: 44px;
-  left:0;
-  right: 0;
-  overflow: scroll;
-  white-space: nowrap;
-}
-
-.ui-tablet-portrait .ui-list-view .horizontal-scroller .stream-standard {
-  display: -webkit-flex;
-  display: flex;
-}
-
-.ui-tablet-portrait .ui-list-view .horizontal-scroller .stream-standard > div{
-  display: inline-table !important;
-}
-
-.ui-tablet-portrait .ui-list-view .horizontal-scroller .stream-standard .card {
-  width: 280px;
-  white-space: normal;
-  display: block;
-  vertical-align: top;
-  height: 280px;
-}
-
-.ui-tablet-portrait .ui-list-view .horizontal-scroller .stream-standard .card,
-.ui-tablet-landscape .ui-list-view .vertical-scroller .stream-standard .card {
-    margin: 0;
-}
-
-.ui-tablet-portrait .stream-standard > div {
-    margin: 10px 0 0 10px;
-}
-
-.ui-tablet-landscape .stream-standard > div {
-    margin: 10px 0 0 0;
-}
-
-.ui-tablet-portrait .ui-list-view .stream-standard .card img {
-  max-width: 100%;
-}
-
-.ui-tablet-portrait .ui-list-view .stream-standard .scroll {
-  padding: 0;
-}
-
-.ui-tablet-portrait .ui-detail-view {
-  position: absolute;
-  top: 344px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-
-
-
-
+*/
 
 .content-stable {
     background-color: #f8f8f8;
@@ -726,3 +557,183 @@ ion-scroll[direction=x] {
 ion-scroll[direction=y] {
   height: 100vh;
 }
+
+/* LIST VIEWS FOR PHONE, TABLET LANDSCAPE, TABLET PORTRAIT */
+.ui-phone .ui-list-view,
+.ui-tablet-landscape .ui-list-view,
+.ui-tablet-portrait .ui-list-view {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #f8f8f8;
+}
+.ui-phone .ui-list-view {
+  top: 44px;
+  width: 100%;
+}
+.ui-tablet-landscape .ui-list-view {
+    width: 300px;
+    top: 44px;
+}
+.ui-tablet-landscape .ui-list-view {
+    width: 300px;
+    top: 44px;
+}
+.ui-tablet-portrait .ui-list-view {
+  height: 300px;
+  top: 44px;
+}
+.ui-tablet-portrait.has-list-header .ui-list-view {
+  height: 340px;
+}
+.ui-tablet-portrait.has-list-header .ui-list-view h3 {
+  margin: 0;
+  height: 40px;
+}
+
+.ui-list-view .horizontal-scroller,
+.ui-list-view .vertical-scroller {
+  overflow: scroll;
+  white-space: nowrap;
+}
+.ui-list-view .horizontal-scroller {
+  height: 300px;
+}
+.ui-list-view .vertical-scroller {
+  width: 300px;
+}
+
+
+/* STREAM VIEWS */
+/*
+.ui-tablet-portrait .stream-standard {
+  height: 300px;
+}
+*/
+
+/* CARD CONTAINERS */
+.card-container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ui-tablet-portrait .ui-list-view .card-container {
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  height: 300px;
+  min-height: 300px;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.stream-row {
+  font-size: 0; /* CSS FIX: https://css-tricks.com/fighting-the-space-between-inline-block-elements/ */
+}
+.stream-row .card-container {
+    display: -webkit-flex;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* DETAIL VIEW */
+.ui-phone .ui-detail-view {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.ui-tablet-landscape .ui-detail-view {
+    position: absolute;
+    top: 44px;
+    right: 0;
+    bottom: 0;
+    left: 300px;
+}
+
+.ui-tablet-portrait .ui-detail-view {
+  position: absolute;
+  top: 344px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.ui-tablet-portrait.has-list-header .ui-detail-view {
+  top: 384px;
+}
+
+.ui-tablet-portrait.ui-iframe .ui-detail-view {
+  top: 44px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.card-container .card {
+  padding: 0;
+  margin: 0;
+}
+
+/* CARD CONTAINER CARD DEFAULTS */
+.card-container .card-container-pad {
+  padding: 0 10px 10px 10px;
+}
+.card-container .card-container-pad .card {
+  width: 100%;
+}
+
+/* STREAM SPECIFIC CARD CONTAINER CARDS */
+.ui-tablet-landscape .card-container .card-container-pad,
+.ui-tablet-portrait .card-container .card-container-pad {
+  padding: 0 5px 10px 5px;
+}
+
+
+.stream-home .card {
+  height: 325px;
+  overflow: hidden;
+}
+
+
+
+
+
+/* PHONE SCROLLER */
+.ui-phone .has-header {
+    top: 0;
+}
+
+.ui-phone .ui-list-view .card {
+  display: block;
+  width: 100%;
+  margin: 0;
+  white-space: normal;
+}
+
+.ui-phone .ui-list-view .card img {
+  max-width: 100%;
+}
+
+/* LANDSCAPE VERTICAL SCROLLER
+.card-container .card {
+    display: block;
+    white-space: normal;
+}
+
+.ui-tablet-landscape .card-container .card {
+    display: block;
+    max-height: 300px;
+    width: 100%;
+    white-space: normal;
+}
+
+.ui-tablet-landscape .card-container .card img {
+    max-width: 100%;
+} */
