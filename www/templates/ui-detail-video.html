@@ -9,7 +9,9 @@
             <a alt="Previous Button" class="button icon-left ion-chevron-left button-clear button-dark" ng-class="{'button-negative':!previous.visible, 'button-dark':previous.visible}" ng-disabled="!previous.visible" href="#/app/YouTube/{{previous.position}}">Prev</a>
         </div>
         -->
-        <iframe width="100%" height="215" ng-if="detailData.sourceUrl" ng-src="{{getVideoUrl()}}" frameborder="0" allowfullscreen="true"></iframe>
+        <div ng-if="detailData.sourceUrl">
+            <iframe ng-src="{{getVideoUrl()}}" frameborder="0" allowfullscreen="true" data-split-by="1" data-reference="parent" set-ratio="16:9"></iframe>
+        </div>
         <div class="padding data civ video">
             <h1 class="title">{{detailData.name}}</h1>
             <div class="datepub">{{detailData.datePublished}}</div>

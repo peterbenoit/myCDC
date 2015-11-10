@@ -1,5 +1,5 @@
 <div class="stream-standard">
-	<div class="card-container" ng-repeat="(idx, data) in datas | limitTo:paginationLimit()">
+	<div class="card-container" ng-repeat="data in datas | limitTo:paginationLimit()" item-height="310">
 		<ui-card data-type="card" data-card-data="data"></ui-card>
 	</div>
 </div>

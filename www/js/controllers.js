@@ -125,8 +125,8 @@ angular.module('mycdc.controllers', [])
 .controller('CommonSourceCtrl', function($scope, $rootScope, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate) {
 
     var   initialLoad = (!$scope.sourceName),
-            sourceChange = ($stateParams.sourceName !== $scope.sourceName),
-            detailChange = ($stateParams.sourceDetail !== $scope.sourceDetail);
+    sourceChange = ($stateParams.sourceName !== $scope.sourceName),
+    detailChange = ($stateParams.sourceDetail !== $scope.sourceDetail);
 
     if (initialLoad) {
 
@@ -138,9 +138,85 @@ angular.module('mycdc.controllers', [])
             showDelay: 0
         });
 
-        $scope.doRefresh = function () {
+        // SETUP PAGINATION
+        $scope.paginationLimit = function(type) {
+            var objSizes = {
+                tabletPortrait : 20,
+                tabletLandscape : 24,
+                defaultLimit : 10
+            };
 
-            $scope.ctrlInit(true);
+            return (objSizes[type] || objSizes.defaultLimit) * $scope.page;
+        };
+
+        $scope.hasMoreItems = function() {
+            // QUICK CHECK TO SEE IF ALL AVAILABLE CARDS ARE SHOWN
+            if ($scope.datas) {
+                return $scope.page < ($scope.datas.length / $scope.pageSize);
+            }
+            return false;
+        };
+
+        $scope.loadMore = function() {
+            $scope.page = $scope.page + 1;
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+        };
+
+        $scope.getSourceList = function (blnRefresh) {
+
+            blnRefresh = blnRefresh || false;
+
+            // GET & SAVE THE SOURCE LIST PROMISE
+            $scope.sourceIndexPromise = $rootScope.getSourceIndex(blnRefresh).then(function(d) {
+
+                // RESET PAGING
+                $scope.pageSize = 10
+                $scope.page = 1;
+
+                // SET DATA TO "datas" SO TEMPLATE WILL PICK IT UP & DISPLAY IT
+                $scope.datas = d;
+                $rootScope.log($scope.datas, 1, 'CURRENT SOURCE DATA');
+
+                // BROADCAST REFRESH SO SCROLLER WILL RESIZE APPROPRIATELY
+                $scope.$broadcast('scroll.refreshComplete');
+
+                // REDIRECT TO HOME IF NO SOURCE DEFINED
+                if ($scope.sourceDetail) {
+
+                    if (!$scope.datas.length) {
+
+                        // HIDE THE LOADER
+                        $ionicLoading.hide();
+
+                        // NO CARD LIST: ALERT USER, THEN REDIRECT
+                        var noCardList = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                        noCardList.then(function() {
+                            $state.go('app.sourceIndex', {sourceName: $scope.sourceName, sourceDetail: 'homestream' });
+                        });
+
+                    } else {
+
+                        // REFRESH SCREEN STATE
+                        $rootScope.refreshScreenState();
+
+                        // HIDE THE LOADER
+                        $ionicLoading.hide();
+
+                    }
+
+                } else {
+
+                    // REFRESH SCREEN STATE
+                    $rootScope.refreshScreenState();
+
+                    // HIDE THE LOADER
+                    $ionicLoading.hide();
+
+                }
+
+                // RETURN TRIMMED DATA TO CHAIN
+                return d.data;
+            });
         };
 
         $scope.getDetailCard = function(cardList, contentID) {
@@ -184,83 +260,14 @@ angular.module('mycdc.controllers', [])
                         // GET / SET SOURCE META DATA TO SCOPE FROM STATE PARAMETERS
                         $scope.sourceMeta = $rootScope.getSourceMeta($stateParams);
 
-                        // GET & SAVE THE SOURCE LIST PROMISE
-                        $scope.sourceIndexPromise = $rootScope.getSourceIndex($stateParams).then(function(d) {
-
-                            var pageSize = 10, page = 1;
-
-                            // SET DATA TO "datas" SO TEMPLATE WILL PICK IT UP & DISPLAY IT
-                            $scope.datas = $scope.sourceIndex;
-                            $rootScope.log($scope.datas, 1, 'CURRENT SOURCE DATA');
-                            //$rootScope.refreshScreenState();
-
-                            // SETUP PAGINATION
-                            $scope.paginationLimit = function(type) {
-                                var objSizes = {
-                                    tabletPortrait : 20,
-                                    tabletLandscape : 24,
-                                    defaultLimit : 10
-                                };
-
-                                return (objSizes[type] || objSizes.defaultLimit) * page;
-                            };
-
-                            $scope.hasMoreItems = function() {
-                                return page < ($scope.datas.length / pageSize);
-                            };
-
-                            $scope.loadMore = function() {
-                                page = page + 1;
-                                $scope.$broadcast('scroll.infiniteScrollComplete');
-                            };
-
-                            // BROADCAST REFRESH SO SCROLLER WILL RESIZE APPROPRIATELY
-                            $scope.$broadcast('scroll.refreshComplete');
-
-                            $rootScope.log($scope.showBackButton, 5, 'Show Back Button');
-
-                            // REDIRECT TO HOME IF NO SOURCE DEFINED
-                            if ($scope.sourceDetail) {
-
-                                if (!$scope.datas.length) {
-
-                                    // HIDE THE LOADER
-                                    $ionicLoading.hide();
-
-                                    // NO CARD LIST: ALERT USER, THEN REDIRECT
-                                    var noCardList = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-                                    noCardList.then(function() {
-                                        $state.go('app.sourceIndex', {sourceName: $scope.sourceName, sourceDetail: 'homestream' });
-                                    });
-
-                                } else {
-
-                                    // HIDE THE LOADER
-                                    $ionicLoading.hide();
-
-                                    // REFRESH SCREEN STATE
-                                    $rootScope.refreshScreenState();
-
-                                }
-
-                            } else {
-
-                                // REFRESH SCREEN STATE
-                                $rootScope.refreshScreenState();
-
-                                // HIDE THE LOADER
-                                $ionicLoading.hide();
-
-                            }
-
-                            // RETURN TRIMMED DATA TO CHAIN
-                            return d.data;
-                        });
+                        $scope.getSourceList();
                     }
                 });
             });
         };
 
+        // POINTER FOR TEMPLATES
+        $scope.doRefresh = $scope.getSourceList;
     }
 
     // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED

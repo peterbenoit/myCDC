@@ -5,6 +5,8 @@
     "url": "http://prototype.cdc.gov/api/v2/resources/media?parentId=150686&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=100",
     "processors": ["cardTemplateInjector", "stripHtml"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-home",
         "stream" : "ui-stream-home",
@@ -20,6 +22,8 @@
     "getContentBy": "id",
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -35,6 +39,8 @@
     "getContentBy": "url",
     "processors": ["cardTemplateInjector"],
     "detailType" : "iframe",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -50,6 +56,8 @@
     "getContentBy": "id",
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -65,6 +73,8 @@
     "getContentBy": "url",
     "processors": ["cardTemplateInjector"],
     "detailType" : "iframe",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-iframe",
         "stream" : "ui-stream-standard",
@@ -80,6 +90,8 @@
     "getContentBy": "id",
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -95,6 +107,8 @@
     "getContentBy": "id",
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -110,6 +124,8 @@
     "getContentBy": "id",
     "processors": ["cardTemplateInjector", "stripHtml"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -125,6 +141,8 @@
     "getContentBy": "id",
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -140,6 +158,8 @@
     "getContentBy": "id",
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -155,6 +175,8 @@
     "getContentBy": "url",
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -170,6 +192,8 @@
     "getContentBy": "id",
     "processors": ["cardTemplateInjector", "firstOnly"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -185,6 +209,8 @@
     "getContentBy": "id",
     "processors": ["cardTemplateInjector", "parseEncoding"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -200,6 +226,8 @@
     "getContentBy": "id",
     "processors": ["cardTemplateInjector","stripHtml"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -215,6 +243,8 @@
     "getContentBy": "id",
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -229,6 +259,8 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Newsroom&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=100",
     "getContentBy": "url",
     "detailType" : "iframe",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -244,6 +276,8 @@
     "getContentBy": "na",
     "processors": ["cardTemplateInjector", "flagOutbreak"],
     "detailType" : "iframe",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -259,6 +293,8 @@
     "getContentBy": "na",
     "processors": ["cardTemplateInjector"],
     "detailType" : "iframe",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -274,6 +310,8 @@
     "getContentBy": "na",
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-image",
@@ -289,6 +327,8 @@
     "getContentBy": "na",
     "processors": ["cardTemplateInjector"],
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-audio",
@@ -304,6 +344,8 @@
     "getContentBy": "na",
     "processors": ["cardTemplateInjector","extractVideoComments"],
     "detailType" : "video",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -317,6 +359,8 @@
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -330,6 +374,8 @@
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-image",
@@ -343,6 +389,8 @@
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-video",
@@ -356,6 +404,8 @@
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -369,6 +419,8 @@
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -382,6 +434,8 @@
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",
@@ -395,6 +449,8 @@
     "icon": "ion-checkmark-circled",
     "getContentBy": "na",
     "detailType" : "default",
+    "showByDefault" : true,
+    "allowFiltering" : true,
     "templates" : {
         "containerSet" : "ui-container-default",
         "stream" : "ui-stream-standard",

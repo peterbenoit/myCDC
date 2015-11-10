@@ -639,6 +639,9 @@ ion-scroll[direction=y] {
     display: inline-block;
     vertical-align: top;
 }
+.stream-row .card-container.fade-bottom .card {
+  -webkit-mask-image: -webkit-gradient(linear, left 5%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
 
 /* DETAIL VIEW */
 .ui-phone .ui-detail-view {
@@ -700,10 +703,6 @@ ion-scroll[direction=y] {
   height: 325px;
   overflow: hidden;
 }
-
-
-
-
 
 /* PHONE SCROLLER */
 .ui-phone .has-header {

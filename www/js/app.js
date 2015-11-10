@@ -15,12 +15,12 @@ angular.module('mycdc', [
     'angular.filter',
     'ngIOS9UIWebViewPatch'
 ])
-    /*
-    add to body class: platform-android
-    add to body class: platform-browser
-    add to body class: platform-ios
-    add to body class: platform-wp8
-    */
+/*
+add to body class: platform-android
+add to body class: platform-browser
+add to body class: platform-ios
+add to body class: platform-wp8
+*/
 
 /**
  * @param  {[type]}
@@ -431,46 +431,75 @@ angular.module('mycdc', [
         }
     } ());
 
-    rs.getLocalStore = (function() {
+    rs.getLocalStoreByAppState = (function() {
 
         var storePrefix = 'myCDC-';
+        var dateFormat = 'YYYY-MM-DD-HH-mm-ss';
+        var dataTimeoutInMinutes = 1;
 
-        var isFresh = function (storeAgingName) {
+        var isExpired = function (ageStoreKey) {
+
+            // EXIT IF AGE STORE DOES NOT EXIST
+            if (!window.localStorage.hasOwnProperty(ageStoreKey)) {
+                rs.log(ageStoreKey + ' does not exist, returning expired', 1);
+                return true;
+            }
+
+            // STORE EXISTS, CONTINUE
+            var then, now, diff;
 
             // Find the duration between two dates
-            var now = moment().unix();
-            var savedTime = moment(window.localStorage[storeAgingName]).unix();
-            var diff = moment.duration(now - savedTime);
-            if (diff == 0) {
+            now = moment();
+            then = moment(window.localStorage[ageStoreKey], dateFormat);
+            diff = moment.duration(now - then).asMinutes();
 
-            }
-            console.log(moment.duration(now - savedTime) + ' in age' )
+            rs.log(ageStoreKey + ' is ' + diff + ' minutes old', 1);
 
-            if (!window.localStorage.hasOwnProperty(storeAgingName)) {
-                return false;
-            }
+            // RETURN EXPIRED FLAG
+            return diff >= dataTimeoutInMinutes;
         };
 
-        return function(stateParams) {
+        return function(strType) {
+            strType = strType || 'sourceIndex'; // Supports sourceIndex or sourceDetail
+            var storeName, storeAgingName;
 
-            var storeName = storePrefix + stateParams.storeName;
-            var storeAgingName = storeName + '-age';
-                    isFresh(storeAgingName);
+            if (strType == 'sourceDetail') {
+                storeName = storePrefix + $stateParams.sourceName + '-' + $stateParams.sourceDetail;
+            } else {
+                storeName = storePrefix + $stateParams.sourceName;
+            }
+            storeAgingName = storeName + '-saved';
 
             return {
                 all: function() {
 
-                    var appdata = window.localStorage[storeName];
-                    if (appdata) {
-                        return angular.fromJson(appdata);
+                    // TRY TO GET SAVED DATA
+                    var jsonData = window.localStorage[storeName];
+
+                    // RETRUN IT IF FOUND
+                    if (jsonData) {
+                        var objReturn = {
+                            expired : isExpired(storeAgingName),
+                            data : angular.fromJson(jsonData)
+                        }
+
+                        rs.log(jsonData, 1, storeAgingName + ' data');
+
+                        return objReturn;
                     }
-                    return [];
+
+                    // DEFAULT RETURN
+                    return {
+                        expired : true,
+                        data : []
+                    };
                 },
                 save: function(appdata) {
-                    window.localStorage[storeAgingName] = moment().unix();
+                    window.localStorage[storeAgingName] = moment().format(dateFormat);
                     window.localStorage[storeName] = angular.toJson(appdata);
                 },
                 clear: function() {
+                    window.localStorage.removeItem(storeName);
                     window.localStorage.removeItem(storeName);
                 }
             };
@@ -501,7 +530,7 @@ angular.module('mycdc', [
                 height : $window.innerHeight
             };
 
-            var sourceMeta = $rootScope.getSourceMeta($stateParams);
+            var sourceMeta = $rootScope.getSourceMeta();
             var containerSet = (sourceMeta.countainerSet || 'ui-container-default');
 
             // GET SCREEN SIZE
@@ -532,6 +561,7 @@ angular.module('mycdc', [
         });
     };
 
+    rs.scrollers = {};
     rs.streamScroller = function (blnScroll) {
 
         var id, deviceType, orientation;
@@ -561,7 +591,12 @@ angular.module('mycdc', [
         objProperties[objProperties.offsetSetter] = angular.element(document.querySelector(objProperties.selector)).prop(objProperties.offsetGetter);
 
         // SCROLL TO IT
-        $ionicScrollDelegate.$getByHandle(objProperties.scrollHandle).scrollTo(objProperties.offsetSetterLeft, objProperties.offsetSetterTop, true);
+        if (rs.scrollers.hasOwnProperty(objProperties.scrollHandle)) {
+            rs.scrollers[objProperties.scrollHandle] = $ionicScrollDelegate.$getByHandle(objProperties.scrollHandle);
+        }
+
+        rs.scrollers[objProperties.scrollHandle].scrollTo(objProperties.offsetSetterLeft, objProperties.offsetSetterTop, true);
+        console.log(rs.scrollers[objProperties.scrollHandle]);
 
     };
     rs.setButtonState = function () {
@@ -593,10 +628,10 @@ angular.module('mycdc', [
     };
 
     // GET SOURCE METADATA FROM SOURCELIST BY NAME (In Route Params)
-    rs.getSourceMeta = function(stateParams) {
+    rs.getSourceMeta = function() {
 
         // PARAMS
-        var arySourceInfo, strSourceName = stateParams.sourceName || stateParams || "";
+        var arySourceInfo, strSourceName = $stateParams.sourceName || $stateParams || "";
 
         // FILTER HERE
         arySourceInfo = $filter('filter')($rootScope.sourceList, {
@@ -615,27 +650,202 @@ angular.module('mycdc', [
     };
 
     rs.getSourceList = function() {
-        var deferredPromise = $q.defer;
-
         return rs.remoteApi({
             url: 'json/sources.json'
         });
     };
 
-    rs.getSourceIndex = function(stateParams) {
+    rs.getSourceIndex = function(blnRefresh) {
 
-        var localStore, objMetaData, sourceIndexPromise, data;
+        blnRefresh = blnRefresh || false;
 
-        objMetaData = rs.getSourceMeta(stateParams);
-        localStore = rs.getLocalStore(stateParams);
+        var defer, localStore, localData, objMetaData, data;
 
-        if (objMetaData.url) {
+        defer = $q.defer(),
+        objMetaData = rs.getSourceMeta();
+        localStore = rs.getLocalStoreByAppState();
+        localData = localStore.all();
 
-            sourceIndexPromise = rs.remoteApi({
-                url: objMetaData.url
+        // CHECK IF WE NEED TO REFRESH OR NOT
+        if (!blnRefresh && !localData.expired) {
+
+            // LOCAL DATA IS GOOD
+            // RESOLVE PROMISE WITH THE STORED DATA
+            rs.log('Using Local Stream Data (Still Fresh)', 1);
+            defer.resolve(localData.data);
+
+        } else {
+
+            // REMOTE DATA NEEDED
+
+            // CAN WE FIND URL?
+            if (objMetaData.url) {
+
+                rs.remoteApi({
+                    url: objMetaData.url
+                }).then(function(d) {
+
+                    // NORMALIZE DATA BY SOURCE SPECS
+                    var data = rs.dataProcessor(d, objMetaData);
+
+                    //SAVE IT TO LOCAL
+                    localStore.save(data);
+
+                    // RESOLVE WITH PROCESSED DATA
+                    rs.log('Using New Stream Data (Remote)', 1);
+                    defer.resolve(data);
+
+                }, function(e) {
+
+                    // ON ERROR
+                    if (localData.data && localData.data.length) {
+
+                        // FALLBACK TO SAVED DATA
+                        rs.log('Using Local Stream Data (Not Fresh)', 1);
+                        defer.resolve(localData.data);
+
+                    } else {
+
+                        // ALL FAILED RETURN WHAT WE HAVE IN LOCAL STORAGE
+                        rs.log('Could Not Find And Data (Local, Remote, or Default)', 1);
+                        defer.reject();
+                    }
+                });
+
+            } else {
+
+                // LOCAL DATA IS OLD BUT URL UNAVAILABLE, RESOLVE PROMISE WITH THE STORED DATA
+                rs.log('Using Local Stream Data (Not Fresh)', 1);
+                defer.resolve(data);
+            }
+        }
+
+        // SAVE RETURNED DATA (WHATEVER IT IS) AS THE SOURCE INDEX
+        defer.promise.then(function(data){
+
+            // SAVE IT TO RS
+            rs.sourceIndex = data;
+
+        });
+
+        return defer.promise;
+    };
+
+    rs.getSourceCard = function (sourceDetailId) {
+
+        var arySourceInfo;
+
+        // GET OR DEFAULT SOURCE DETAIL ID
+        sourceDetailId = sourceDetailId || $stateParams.sourceDetail;
+
+        // FILTER HERE
+        arySourceInfo = $filter('filter')(rs.sourceIndex, {
+            id: sourceDetailId
+        });
+
+        // DID WE FIND IT?
+        if (arySourceInfo.length === 1) {
+
+            // RETURN IT
+            return arySourceInfo[0];
+        }
+
+        // ELSE RETURN FALSE
+        return false;
+    };
+
+    rs.getSourceHtmlUrl = function(blnRefresh) {
+
+        var defer, localStore, localData, objMetaData, noChromeUrl;
+
+        defer = $q.defer(),
+        objMetaData = rs.getSourceMeta();
+        localStore = rs.getLocalStoreByAppState('sourceDetail');
+        localData = localStore.all();
+        objTemp = {};
+
+        // CHECK IF WE NEED TO REFRESH OR NOT
+        if (!blnRefresh && !localData.expired) {
+
+            // LOCAL DATA IS GOOD
+            // RESOLVE PROMISE WITH THE STORED DATA
+            rs.log(localData.data, 1, 'Using Local Detail Data (Still Fresh)');
+            defer.resolve(localData.data);
+
+        } else {
+
+            // CREATE NOCHROME URL
+            objTemp.sourceUrl = $rootScope.getSourceCard().sourceUrl;
+            objTemp.filename = objTemp.sourceUrl.split('/').pop();
+            objTemp.noChromeUrl = objTemp.filename.split('.')[0] + '_nochrome.' + objTemp.filename.split('.')[1];
+            objTemp.noChromeUrl = objTemp.sourceUrl.replace(objTemp.filename, objTemp.noChromeUrl);
+
+            // URL CHECK NEEDED
+            $rootScope.remoteApi({
+                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + objTemp.noChromeUrl
+            }).then(function(resp) {
+                var urlToUse;
+
+                // DETERMINE URL BASED ON SERVER STATUS RETURN
+                if (resp.data.status === '200') {
+                    urlToUse = objTemp.noChromeUrl
+                } else {
+                    urlToUse = objTemp.sourceUrl
+                }
+
+                //SAVE IT TO LOCAL
+                localStore.save(urlToUse);
+
+                // RESOLVE THE PROMISE WITH THE NEW DATA
+                defer.resolve(urlToUse);
+
+                return resp
+            },
+            function(resp) {
+                console.log('resp');
+                console.log(resp);
+
+                // TEMP - SAVE IT TO LOCAL
+                localStore.save(objTemp.sourceUrl);
+
+                defer.resolve(objTemp.sourceUrl);
+                return resp
             });
+        }
 
-            sourceIndexPromise.then(function(d) {
+        // RETURN THE PROMISE
+        return defer.promise;
+    };
+
+    rs.getSourceDetail = function(blnRefresh) {
+
+        var defer, localStore, localData, objMetaData;
+
+        defer = $q.defer(),
+        objMetaData = rs.getSourceMeta();
+        localStore = rs.getLocalStoreByAppState('sourceDetail');
+        localData = localStore.all();
+
+        // CHECK IF WE NEED TO REFRESH OR NOT
+        if (!blnRefresh && !localData.expired) {
+
+            // LOCAL DATA IS GOOD
+            // RESOLVE PROMISE WITH THE STORED DATA
+            rs.log(localData.data, 1, 'Using Local Detail Data (Still Fresh)');
+            defer.resolve(localData.data);
+
+        } else {
+
+            //objCurrentCard = rs.getSourceCard();
+
+            var detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/' + $stateParams.sourceDetail + '/syndicate.json';
+
+            // REMOTE DATA NEEDED
+
+            // GET DATA
+            rs.remoteApi({
+                url: detailUrl
+            }).then(function(d) {
 
                 // NORMALIZE DATA BY SOURCE SPECS
                 var data = rs.dataProcessor(d, objMetaData);
@@ -643,64 +853,30 @@ angular.module('mycdc', [
                 //SAVE IT TO LOCAL
                 localStore.save(data);
 
-                // SAVE IT TO RS
-                rs.sourceIndex = data;
+                // RESOLVE WITH PROCESSED DATA
+                rs.log('Using New Detail Data (Remote)', 1);
+                defer.resolve(data);
 
             }, function(e) {
 
-                // ON ERROR, RETURN WHAT WE HAVE IN LOCAL STORAGE
-                return localStore.all();
-            });
+                // ON ERROR
+                if (localData.data && localData.data.length) {
 
-            return sourceIndexPromise;
-        } else {
-            return $timeout(function(){
-                return {
-                    data : []
-                };
-            }, 0);
-        }
-    };
-/*
-    rs.getDetailContent = (function() {
+                    // FALLBACK TO SAVED DATA
+                    rs.log(localData.data, 1, 'Using Local Detail Data (Not Fresh)');
+                    defer.resolve(localData.data);
 
-        var getSourceDetailUrl = function(sourceMeta, sourceIndexCard) {
-            var url;
+                } else {
 
-            switch (sourceMeta.getContentBy) {
-                case 'id':
-                    url = 'https://prototype.cdc.gov/api/v2/resources/media/' + sourceIndexCard.id + '/syndicate.json';
-                break;
-                default: // ID
-                    url = sourceIndexCard.sourceUrl;
-                break;
-            }
-
-            if (sourceIndexCard) {
-                return {
-                    url : $sce.trustAsResourceUrl(url),
-                    nochromeurl : $sce.trustAsResourceUrl(rs.getNoChromeUrl(url))
+                    // ALL FAILED RETURN WHAT WE HAVE IN LOCAL STORAGE
+                    rs.log('Could Not Find And Data (Local, Remote, or Default)', 1);
+                    defer.reject();
                 }
-            };
-
-            return false;
-        };
-
-        return function (sourceMeta, sourceIndexCard) {
-
-            var sourceDetailPromise, url;
-
-            url = getSourceDetailUrl(sourceMeta, sourceIndexCard);
-
-            sourceDetailPromise = rs.remoteApi({
-                url: url
-            }).then(function(d) {
-                return d;
             });
-
-            return sourceDetailPromise;
         }
-    } ());*/
+
+        return defer.promise;
+    };
 
     rs.appInit = function(blnRefresh) {
 
@@ -819,15 +995,6 @@ angular.module('mycdc', [
         }
     });
 
-    /*sp.state('app.civdemo', {
-        url: '/civdemo',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/civ-demo.html'
-            }
-        }
-    });*/
-
     sp.state('app.sourceIndex', {
         url: '/source/:sourceName',
         views: {
@@ -901,10 +1068,35 @@ angular.module('mycdc', [
    }
 })
 
-.directive('uiStream', function($rootScope, $state) {
+.directive('uiStream', function($rootScope, $state, $timeout, $ionicScrollDelegate, $ionicPosition, $stateParams) {
    return {
         restrict: 'E',
         controller: function($scope, $element){
+
+            console.log($rootScope.screenState);
+
+            if (!sv && $rootScope.screenState.viewOrientation == 'landscape') {
+                var sv = true;
+                $timeout(function(){
+                    var element = angular.element(document.getElementById('card-'+$stateParams.sourceDetail));
+                    var quotePosition = $ionicPosition.position(element);
+                    console.log(quotePosition);
+                    sv = $ionicScrollDelegate.$getByHandle('streamScrollVertical');
+                    sv.scrollTo(quotePosition.left, quotePosition.top);
+                }, 1000);
+            }
+
+            if (!hv && $rootScope.screenState.viewOrientation == 'portrait') {
+                var hv = true;
+                $timeout(function(){
+                    var element = angular.element(document.getElementById('card-'+$stateParams.sourceDetail));
+                    var quotePosition = $ionicPosition.position(element);
+                    console.log(quotePosition);
+                    console.log(quotePosition);
+                    hv = $ionicScrollDelegate.$getByHandle('streamScrollHorizontal');
+                    hv.scrollTo(quotePosition.left, quotePosition.top);
+                }, 1000);
+            }
 
             // CREATE MAIN TEMPALTE HANDLER (COULD USE IONIC FOR TABLE DETECTION, BUT THIS SEEMS MORE UNIVERSAL WITH LESS isThis, isThat CALLS)
             $scope.getStreamTemplate = function () {
@@ -925,9 +1117,6 @@ angular.module('mycdc', [
 
                 return uiStreamTemplateUrl;
             };
-
-            //$('.stream.stream-vertical').width(300).height($window.innerHeight);
-            //$('ui-detail-view').width($window.innerWidth - 300).height($window.innerHeight);
 
             // SET LISTENER ONCE
             if (!$scope.uiStreamInit) {
@@ -1018,96 +1207,43 @@ angular.module('mycdc', [
     var detailProcessors = {
         video : function ($scope) {
 
-            $scope.processer = 'VIDEO';
+            // VIDEOS - NO ADDITIONAL SERVICE CALLS NEEDED
+            // SIMPLY SET DETAIL DATA FROM CURRENT CARD
             $scope.detailData = $scope.detailCard;
 
+            // PROVIDE A VIDEO URL HELPER FOR THE VIDEO PARTIAL
             $scope.getVideoUrl = function() {
-                return $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + $scope.detailData.sourceUrl.split('?v=')[1]);
+                return $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + $scope.detailData.sourceUrl.split('?v=')[1] + '?rel=0');
             };
 
-            return $timeout(function(){
-                return $scope.detailData;
-            },0);
         },
         iframe : function ($scope) {
-            $scope.processer = 'IFRAME';
 
+            // IFRAME - NEED TO DETERMINE CHROME OR NO CHROME URL (CACHED TO LOCAL STORAGE FOR SPEED)
 
-            var noChromeUrl = createNoChromeUrl($scope.detailCard.sourceUrl);
-
+            // SIMPLY SET DETAIL DATA FROM CURRENT CARD
             $scope.detailData = $scope.detailCard;
 
-            $rootScope.remoteApi({
-                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + noChromeUrl
-            }).then(function(resp) {
-                if (resp.data.status === '200') {
-                    $scope.frameUrl = $sce.trustAsResourceUrl(noChromeUrl);
-                } else {
-                    $scope.frameUrl = $sce.trustAsResourceUrl($scope.detailCard.sourceUrl);
-                }
-                $rootScope.log($scope.frameUrl, 10, 'IFRAME URL');
-                return resp;
-            },
-            function(resp) {
-                $scope.frameUrl = $sce.trustAsResourceUrl($scope.detailCard.sourceUrl);
-                $rootScope.log($scope.frameUrl, 10, 'IFRAME URL FROM ERROR HANDLER');
-                return resp
+            // GET NO CHROME URL
+            return $rootScope.getSourceHtmlUrl().then(function(iframeUrl){
+
+                // SET RESPONSE FOR USE BY HTML PARTIAL (AS IFRAME SRC)
+                $scope.frameUrl = $sce.trustAsResourceUrl(iframeUrl);
             });
-
-            // NOTE: $rootScope.$broadcast('source-detail-load-complete'); DELEGATED TO IFRAME LOAD
-            return $timeout(function(){
-                return $scope.detailData;
-            },0);
-
         },
         default : function ($scope) {
 
-            $rootScope.log($scope, 10, 'DEFAULT DETAIL PROCESSOR');
-            $rootScope.log($scope.detailCard, 10, '$scope.detailCard');
-            $scope.processer = 'DEFAULT';
+            // GET SOURCE DETAIL DATA
+            return $rootScope.getSourceDetail().then(function(d){
 
-            $rootScope.remoteApi({
-                url : 'https://prototype.cdc.gov/api/v2/resources/media/' + $scope.detailCard.id + '/syndicate.json'
-            }).then(function(d){
-                $rootScope.log(d, 1, 'RETURNED DETAIL DATA');
-                // NORMALIZE DATA BY SOURCE SPECS
-                $scope.detailData = $rootScope.dataProcessor(d, $scope.sourceMeta);
+                // NORMALIZE DATA BY SOURCE SPECS?
+                $scope.detailData = d;
+
+                // BROADCAST DATA IS READY
                 $rootScope.$broadcast('source-detail-load-complete');
             });
-            return $timeout(function(){
-                return $scope.detailData;
-            },0);
+
         }
-    };
-
-    var createNoChromeUrl = function (sourceUrl) {
-        sourceUrl = sourceUrl || '';
-        var filename = sourceUrl.split('/').pop();
-        var newfilename = filename.split('.')[0] + '_nochrome.' + filename.split('.')[1];
-        return sourceUrl.replace(filename, newfilename);
-    };
-
-    var getDetailCard = function(cardList, contentID) {
-
-
-
-        // PARAMS
-        var arySourceInfo;
-
-        // FILTER HERE
-        arySourceInfo = $filter('filter')(cardList, {
-            id: contentID
-        });
-
-        // DID WE FIND IT?
-        if (arySourceInfo.length === 1) {
-
-            // RETURN IT
-            return arySourceInfo[0];
-        }
-
-        // ELSE RETURN FALSE
-        return false;
     };
 
     return {
@@ -1118,19 +1254,24 @@ angular.module('mycdc', [
             if (!$scope.uiDetailnit) {
                 $scope.uiDetailnit = true;
 
+                // LISTEN FOR SCREEN UPDATE
                 $rootScope.$on('screen-state-update-complete', function () {
                     $scope.getDetailTemplate();
-
                 });
+
+                // LISTEN FOR DETAIL CHANGE
                 $rootScope.$on('source-detail-changed', function () {
-                    $scope.loadDetailData($scope.getDetailTemplate);
-
+                    $scope.loadDetailData();
                 });
+
+                /* LISTEN FOR DETAIL LOAD START
                 $rootScope.$on('source-detail-load-started', function(event, args) {
                     $rootScope.log('UI DETAIL DIRECTIVE RECEIVED source-detail-load-STARTED', 10, 'EVENT-LISTENER:');
                     $rootScope.log($scope.detailCard, 10, 'SCOPE DETAIL CARD');
                     $rootScope.log($scope.detailData, 10, 'SCOPE DETAIL DATA');
-                });
+                });*/
+
+                // LISTEN FOR DETAIL LOAD COMPLETE
                 $rootScope.$on('source-detail-load-complete', function(event, args) {
                     $rootScope.log('UI DETAIL DIRECTIVE RECEIVED source-detail-load-COMPLETED', 10, 'EVENT-LISTENER:');
                     $rootScope.log($scope.detailCard, 10, 'SCOPE DETAIL CARD');
@@ -1145,16 +1286,19 @@ angular.module('mycdc', [
                 $scope.loadDetailData();
 
                 return d;
-
             });
 
-
             $scope.loadDetailData = function (callback) {
-                $scope.detailCard = getDetailCard($scope.datas, $scope.sourceDetail);
+
+                $scope.detailCard = $rootScope.getSourceCard();
+
                 $rootScope.$broadcast('content-card-ready');
+
                 $rootScope.log($scope.detailCard, 10, 'CURRENT DETAIL CARD');
+
                 // SET CARD TEMPLATE
                 $scope.detailTemplateUrl = 'templates/' + $rootScope.sourceMeta.templates.detail + '.html';
+
                 $rootScope.log($scope.detailTemplateUrl, 10, 'UI-DETAIL-TEMPLATE');
 
                 // CONTINUE IF DETAIL CARD EXISTS IN SCOPE (AND NOT INITIALIZED ALREADY)
@@ -1173,7 +1317,7 @@ angular.module('mycdc', [
                     $rootScope.log($scope.detailTemplateUrl, 10, 'UI-DETAIL-DIRECTIVE-TEMPLATE');
 
                     if (callback) {
-                        callback.apply();
+                        //callback.apply();
                     }
 
                 } else {
@@ -1194,7 +1338,6 @@ angular.module('mycdc', [
                             $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
                         });
                     }
-
                 }
             };
 
@@ -1240,13 +1383,21 @@ angular.module('mycdc', [
         // SET RATIO (HEIGHT)?
         if (setRatio) {
 
-            // DETERMINE NEW RATION SPECIFIC HEIGHT
-            var newHeight = Math.floor((newWidth / 16) * 9);
+            var aryArgs = setRatio.split(':');
 
-            console.log(newHeight);
+            if (aryArgs.length == 2) {
 
-            // APPLY NEW HEIGHT
-            $(element).height(newHeight);
+                var rW = aryArgs[0];
+                var rH = aryArgs[1];
+
+                // DETERMINE NEW RATION SPECIFIC HEIGHT
+                var newHeight = Math.floor((newWidth / rW) * rH);
+
+                console.log(newHeight);
+
+                // APPLY NEW HEIGHT
+                $(element).height(newHeight);
+            }
         }
     };
 
@@ -1256,11 +1407,11 @@ angular.module('mycdc', [
         scope : {
             splitBy : '@',
             reference : '@', // 'parent' or 'screen',
-            setRatio : '@' // 'true' or 'false' (default)
+            setRatio : '@' // '16:9' or 'false' (default)
         },
         link: function(scope, element, attrs) {
             attrs.reference = attrs.reference || 'screen';
-            attrs.setRatio = attrs.setRatio || false;
+            attrs.setRatio = attrs.setRatio || '';
             setDimensions(element, attrs.reference, attrs.splitBy, attrs.setRatio);
         }
     };
