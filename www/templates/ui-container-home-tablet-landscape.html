@@ -1,10 +1,8 @@
 <!-- TABLET LANDSCAPE MODE -->
-<div ng-if="containerLoading" class="ui-phone ui-home">LOADING YO!</div>
 <div ng-if="!containerLoading" class="ui-tablet-landscape ui-home">
 	<!-- HOMESTREAM -->
 	<ion-scroll direction="y" class="vertical-scroller stream stream-home has-header">
 		<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
-		{{foozBall}}
 		<ui-stream></ui-stream>
 		<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
 	</ion-scroll>

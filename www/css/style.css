@@ -170,22 +170,6 @@ colors
   /*overflow: hidden;*/
 }
 
-.card .item-image img {
-/*  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 100%;
-  width: 100%;
- -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);*/
-}
-
-/*.item-image img.portrait {
-  width: 100%;
-  height: auto;
-}
-*/
 .item-image {
     margin: 3px;
     text-align: center;
@@ -550,14 +534,6 @@ ion-side-menu.menu.menu-left .item-content {
     border-top: 2px solid #77933c!important;
 }
 
-/* IONIC SCOLL CSS FIX */
-ion-scroll[direction=x] {
-  width: 100vw;
-}
-ion-scroll[direction=y] {
-  height: 100vh;
-}
-
 /* LIST VIEWS FOR PHONE, TABLET LANDSCAPE, TABLET PORTRAIT */
 .ui-phone .ui-list-view,
 .ui-tablet-landscape .ui-list-view,
@@ -588,10 +564,6 @@ ion-scroll[direction=y] {
 .ui-tablet-portrait.has-list-header .ui-list-view {
   height: 340px;
 }
-.ui-tablet-portrait.has-list-header .ui-list-view h3 {
-  margin: 0;
-  height: 40px;
-}
 
 .ui-list-view .horizontal-scroller,
 .ui-list-view .vertical-scroller {
@@ -606,6 +578,12 @@ ion-scroll[direction=y] {
 }
 .ui-list-view .horizontal-scroller {
   height: 300px;
+}
+
+/* Could have styles the H#, but needed explicit handle for the H4 for JS, so uging the class to style as well */
+.ui-list-view h3.scroll-header,
+.ui-detail-view h3.content-header {
+  margin: 10px;
 }
 
 /* STREAM VIEWS */
@@ -641,8 +619,8 @@ ion-scroll[direction=y] {
     display: inline-block;
     vertical-align: top;
 }
-.stream-row .card-container.fade-bottom .card {
-  -webkit-mask-image: -webkit-gradient(linear, left 5%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+.stream-row .card-container .card-container-pad {
+  -webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
 /* DETAIL VIEW */
@@ -700,7 +678,6 @@ ion-scroll[direction=y] {
   padding: 0 5px 10px 5px;
 }
 
-
 .stream-home .card {
   height: 325px;
   overflow: hidden;
@@ -738,3 +715,38 @@ ion-scroll[direction=y] {
 .ui-tablet-landscape .card-container .card img {
     max-width: 100%;
 } */
+
+/* IMAGE STREAM, CARDS, ETC */
+
+.ui-images.ui-tablet-portrait .ui-list-view .horizontal-scroller,
+.ui-images.ui-tablet-portrait .ui-list-view {
+  height: 185px;
+}
+.ui-images.ui-tablet-portrait .ui-list-view .card-container {
+  width: 225px;
+  height: 185px;
+}
+hj {
+  position: absolute;
+  top: 264px;
+}
+
+.stream-row .card.image-card {
+  height: 180px;
+  overflow: hidden;
+}
+.stream-row .card.image-card img {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* IONIC SCOLL CSS FIX
+ion-scroll[direction=x] {
+  width: 100vw;
+}
+ion-scroll[direction=y] {
+  height: 100vh;
+}
+*/
+
+

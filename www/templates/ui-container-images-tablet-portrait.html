@@ -1,12 +1,11 @@
-<!-- TABLET LANDSCAPE MODE -->
-<div class="ui-tablet-landscape ui-iframe">
+<!-- TABLET PORTRAIT MODE -->
+<div class="ui-images ui-tablet-portrait has-list-header">
 
 	<!-- THE LIST VIEW -->
 	<div class="ui-list-view">
 		<h3 class="scroll-header">{{sourceMeta.title}}</h3>
-
 		<!-- STREAM VIEW -->
-		<ion-scroll direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
+		<ion-scroll direction="x" class="horizontal-scroller stream" delegate-handle="streamScrollHorizontal">
 			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
 			<ui-stream></ui-stream>
 			<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
@@ -18,4 +17,4 @@
 		<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard"></ui-detail>
 	</div><!-- ui-detail-view -->
 
-</div><!-- ui-tablet-landscape -->
+</div><!-- ui-tablet-portrait

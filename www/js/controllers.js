@@ -128,18 +128,6 @@ angular.module('mycdc.controllers', [])
     sourceChange = ($stateParams.sourceName !== $scope.sourceName),
     detailChange = ($stateParams.sourceDetail !== $scope.sourceDetail);
 
-    /*
-    $rootScope.setState({
-        sourceName : 'asdasd'
-    });
-
-    $rootScope.$on('source-state-name-change', function (event, args) {
-        console.log('source-state-name-change');
-        console.log($scope.stateParams);
-        console.log(event);
-        console.log(args);
-    });*/
-
     if (initialLoad) {
 
         $scope.loading = $ionicLoading.show({
@@ -155,6 +143,8 @@ angular.module('mycdc.controllers', [])
             var objSizes = {
                 tabletPortrait : 20,
                 tabletLandscape : 24,
+                imageTabletPortrait: 20,
+                imageTabletLandscape: 48,
                 defaultLimit : 10
             };
 

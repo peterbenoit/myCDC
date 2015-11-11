@@ -27,7 +27,7 @@ add to body class: platform-wp8
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $cordovaStatusbar, $rootScope, $location, $ionicBody, $timeout, $window, DeviceInfo, ScreenSize, $ionicScrollDelegate, $state, $stateParams, $cordovaNetwork, $ionicPopup, $http, $filter, $sce, $q) {
+.run(function($ionicPlatform, $cordovaStatusbar, $rootScope, $location, $ionicBody, $timeout, $window, DeviceInfo, ScreenSize, $state, $stateParams, $cordovaNetwork, $ionicPopup, $http, $filter, $sce, $q) {
 
     var rs = $rootScope, href = window.location.href;
 
@@ -169,13 +169,6 @@ add to body class: platform-wp8
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
-
-        rs.deviceinfo = DeviceInfo;
-        rs.screensize = ScreenSize;
-
-        rs.scrollTop = function() {
-            $ionicScrollDelegate.scrollTop();
-        };
 
         /**
          * https://github.com/gbenvenuti/cordova-plugin-screen-orientation
@@ -519,6 +512,15 @@ add to body class: platform-wp8
         }
     }());
 
+
+    // FROM 'DeviceInfo' DEPENDENCY
+    //rs.deviceinfo = DeviceInfo;
+    //console.log(rs.deviceinfo);
+
+    // FROM 'ScreenSize' DEPENDENCY
+    //rs.screensize = ScreenSize;
+    //console.log(rs.screensize);
+
     rs.refreshScreenState = function () {
 
         $rootScope.$broadcast('screen-state-update-started');
@@ -546,7 +548,7 @@ add to body class: platform-wp8
             }
 
             // UPDATE SCOPE
-            $rootScope.screenState= objReturn;
+            $rootScope.screenState = objReturn;
             $rootScope.sourceMeta = sourceMeta;
 
             // WAIT FOR ANY DIGEST TO COMPLETE BEFORE APPLYING
@@ -561,44 +563,6 @@ add to body class: platform-wp8
         });
     };
 
-    rs.scrollers = {};
-    rs.streamScroller = function (blnScroll) {
-
-        var id, deviceType, orientation;
-
-        id = id || $stateParams.sourceDetail;
-        deviceType = deviceType || rs.screenState.deviceType;
-        orientation = orientation || rs.screenState.orientation;
-
-        var objProperties = {
-            scrollHandle : "streamScrollVertical",
-            offsetGetter : "offsetTop",
-            offsetSetter : 'offsetSetterTop',
-            offsetSetterTop : 0,
-            offsetSetterLeft : 0,
-            selector : "#card-" + id,
-            destination : null
-        };
-
-        // CHANGE PROPERTIES FOR PORTRAIT (HORIZONTAL SCROLLER)
-        if (deviceType == 'tablet' && orientation == 'portrait') {
-            objProperties.scrollHandle = 'streamScrollHorizontal';
-            objProperties.offsetSetter = 'offsetSetterLeft';
-            objProperties.offsetGetter = 'offsetLeft';
-        }
-
-        // GET LOCATION OF DESTINATION ELEMENT
-        objProperties[objProperties.offsetSetter] = angular.element(document.querySelector(objProperties.selector)).prop(objProperties.offsetGetter);
-
-        // SCROLL TO IT
-        if (rs.scrollers.hasOwnProperty(objProperties.scrollHandle)) {
-            rs.scrollers[objProperties.scrollHandle] = $ionicScrollDelegate.$getByHandle(objProperties.scrollHandle);
-        }
-
-        rs.scrollers[objProperties.scrollHandle].scrollTo(objProperties.offsetSetterLeft, objProperties.offsetSetterTop, true);
-        console.log(rs.scrollers[objProperties.scrollHandle]);
-
-    };
     rs.setButtonState = function () {
         var buttons = {
             show : {
@@ -745,6 +709,10 @@ add to body class: platform-wp8
 
         // DID WE FIND IT?
         if (arySourceInfo.length === 1) {
+
+            // THIS FLAGS THE CURRENT CARD AS ACTIVE
+            // DOING SO MAKES IT THE FIRST IN THE SCROLLER LIST
+            arySourceInfo[0].isCurrent = 1;
 
             // RETURN IT
             return arySourceInfo[0];
@@ -1059,7 +1027,6 @@ add to body class: platform-wp8
                 $scope.$on('screen-state-update-complete', function(event, args) {
                     $rootScope.log('UI CONTAINER DIRECTIVE RECEIVED screen-state-update-complete', 2, 'EVENT-LISTENER:');
                     $timeout($scope.getContainerTemplate, 0);
-
                 });
             }
         },
@@ -1068,35 +1035,12 @@ add to body class: platform-wp8
    }
 })
 
-.directive('uiStream', function($rootScope, $state, $timeout, $ionicScrollDelegate, $ionicPosition, $stateParams) {
+.directive('uiStream', function($rootScope, $state, $timeout, $ionicPosition, $stateParams) {
+   var vsd, hsd;
+
    return {
         restrict: 'E',
-        controller: function($scope, $element){
-
-            console.log($rootScope.screenState);
-
-            if (!sv && $rootScope.screenState.viewOrientation == 'landscape') {
-                var sv = true;
-                $timeout(function(){
-                    var element = angular.element(document.getElementById('card-'+$stateParams.sourceDetail));
-                    var quotePosition = $ionicPosition.position(element);
-                    console.log(quotePosition);
-                    sv = $ionicScrollDelegate.$getByHandle('streamScrollVertical');
-                    sv.scrollTo(quotePosition.left, quotePosition.top);
-                }, 1000);
-            }
-
-            if (!hv && $rootScope.screenState.viewOrientation == 'portrait') {
-                var hv = true;
-                $timeout(function(){
-                    var element = angular.element(document.getElementById('card-'+$stateParams.sourceDetail));
-                    var quotePosition = $ionicPosition.position(element);
-                    console.log(quotePosition);
-                    console.log(quotePosition);
-                    hv = $ionicScrollDelegate.$getByHandle('streamScrollHorizontal');
-                    hv.scrollTo(quotePosition.left, quotePosition.top);
-                }, 1000);
-            }
+        controller: ['$scope', '$element', function($scope, $element){
 
             // CREATE MAIN TEMPALTE HANDLER (COULD USE IONIC FOR TABLE DETECTION, BUT THIS SEEMS MORE UNIVERSAL WITH LESS isThis, isThat CALLS)
             $scope.getStreamTemplate = function () {
@@ -1113,7 +1057,37 @@ add to body class: platform-wp8
                     uiStreamTemplateUrl = 'templates/ui-loader.html';
                 }
 
-                $rootScope.log(uiStreamTemplateUrl, -1, 'UI-STREAM-TEMPLATE');
+                //$rootScope.log($('.vertical-scroller').length, -100, 'VERTICAL SCROLLER');
+                //$rootScope.log($('.horizontal-scroller').length, -100, 'HORIZONTAL SCROLLER');
+
+                // SCROLLER HEIGHT / WIDTH FIX - IMPORTANT
+                var jqVs = $('.vertical-scroller');
+                if (jqVs.length) {
+                    var intMenuHeight = 44;
+                    var jqH3 = $('h3.scroll-header');
+                    if (jqVs) {
+                        var newHeight = $rootScope.screenState.height - intMenuHeight;
+                        if (jqH3.length) {
+                            newHeight = newHeight - jqH3.outerHeight();
+                        }
+                        jqVs.height(newHeight);
+                    }
+                }
+
+                var jqHs = $('.horizontal-scroller');
+                if (jqHs.length) {
+                    var newWidth = $rootScope.screenState.width;
+                    jqHs.width(newWidth);
+                }
+
+                /*
+                $rootScope.log($rootScope.screenState.height, -100, 'SCREEN HEIGHT');
+                $rootScope.log($('> h3', jsLv).outerHeight(), -100, 'H3 HEIGHT');
+                $rootScope.log(newHeight, -100, 'FINAL HEIGHT');
+                */
+                // END SCROLLER HEIGHT / WIDTH FIX
+
+                $rootScope.log($rootScope.screenState.height, -1, 'SCREEN HEIGHT');
 
                 return uiStreamTemplateUrl;
             };
@@ -1130,7 +1104,7 @@ add to body class: platform-wp8
                     $state.go('app.sourceDetail', {sourceName: $rootScope.sourceName, sourceDetail: $rootScope.sourceDetail });
                 });
             }
-        },
+        }],
         template: '<div ng-include="getStreamTemplate()"></div>'
    }
 })
@@ -1362,7 +1336,7 @@ add to body class: platform-wp8
     }
 })
 
-.directive("splitBy", function($rootScope, $timeout, $state) {
+.directive("splitBy", function($rootScope) {
 
     var setDimensions = function (element, reference, columns, setRatio) {
         // DETERMINE DIVISOR
@@ -1415,4 +1389,16 @@ add to body class: platform-wp8
             setDimensions(element, attrs.reference, attrs.splitBy, attrs.setRatio);
         }
     };
-});
+})
+
+/* WIP
+.directive('uiDump', function() {
+   var vsd, hsd;
+   return {
+        restrict: 'E',
+        scope : {
+            variable : '='
+        },
+        template: '<div>{{variable}}</div>'
+   }
+})*/;

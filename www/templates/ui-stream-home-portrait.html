@@ -1,10 +1,10 @@
 <div class="stream stream-home stream-tablet stream-tablet-portrait">
-  <div class="stream-row" ng-repeat="data in datas | limitTo: paginationLimit('tabletPortrait')" ng-if="$index % 3 === 0">
-    <div class="card-container" data-split-by="2">
-      <ui-card data-card-data="data" ng-if="$index < datas.length"></ui-card>
-    </div><!-- card-container -->
-    <div class="card-container" data-split-by="2">
-      <ui-card ng-if="$index + 1 < datas.length" data-card-data="datas[$index + 1]"></ui-card>
-    </div><!-- card-container -->
-  </div><!-- stream-row -->
+	<div class="stream-row" ng-repeat="data in datas | limitTo: paginationLimit('tabletPortrait')" ng-if="$index % 3 === 0">
+		<div class="card-container" data-split-by="2">
+			<ui-card data-card-data="data" ng-if="$index < datas.length"></ui-card>
+		</div><!-- card-container -->
+		<div class="card-container" data-split-by="2">
+			<ui-card ng-if="$index + 1 < datas.length" data-card-data="datas[$index + 1]"></ui-card>
+		</div><!-- card-container -->
+	</div><!-- stream-row -->
 </div><!--stream stream-tablet-->

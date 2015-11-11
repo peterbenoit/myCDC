@@ -313,11 +313,11 @@
     "showByDefault" : true,
     "allowFiltering" : true,
     "templates" : {
-        "containerSet" : "ui-container-default",
+        "containerSet" : "ui-container-images",
         "stream" : "ui-stream-image",
         "card" : "ui-card-default",
         "homeCard" : "ui-card-default",
-        "detail" : "ui-detail-journal"
+        "detail" : "ui-detail-image"
     }
 }, {
     "contentGroupIdentifier": "podcasts",

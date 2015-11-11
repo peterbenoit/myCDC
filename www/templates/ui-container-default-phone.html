@@ -3,7 +3,7 @@
 
 	<!-- THE LIST VIEW (IF NO DETAIL SELECTED) -->
 	<div class="ui-list-view" data-ng-if="!sourceDetail.length">
-		<h3 class="padding">{{sourceMeta.title}}</h3>
+		<h3 class="scroll-header">{{sourceMeta.title}}</h3>
 		<ion-scroll direction="y" class="vertical-scroller stream">
 			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
 			<ui-stream></ui-stream>
