@@ -3,7 +3,7 @@
 
 	<!-- THE LIST VIEW -->
 	<div class="ui-list-view">
-		<h3 class="scroll-header">{{sourceMeta.title}}</h3>
+		<div class="scroll-header"><h3>{{sourceMeta.title}}</h3></div>
 		<!-- STREAM VIEW -->
 		<ion-scroll direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
 			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
