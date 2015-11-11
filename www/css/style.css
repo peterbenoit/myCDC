@@ -598,13 +598,15 @@ ion-scroll[direction=y] {
   overflow: scroll;
   white-space: nowrap;
 }
+.ui-list-view .vertical-scroller {
+  width: 100%;
+}
+.ui-tablet-landscape .ui-list-view .vertical-scroller {
+  width: 300px;
+}
 .ui-list-view .horizontal-scroller {
   height: 300px;
 }
-.ui-list-view .vertical-scroller {
-  width: 300px;
-}
-
 
 /* STREAM VIEWS */
 /*
