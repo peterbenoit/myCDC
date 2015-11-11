@@ -1197,7 +1197,7 @@ add to body class: platform-wp8
         link: function(scope, element, attrs) {
             scope.template = attrs.template;
         },
-        template: '<div class="card-container-pad" ng-include src="getCardTemplate()"></div>',
+        template: '<div id="card-{{cardData.id}}" class="card-container-pad" ng-include src="getCardTemplate()"></div>',
     };
 })
 
