@@ -3,8 +3,7 @@
 
 	<!-- THE LIST VIEW -->
 	<div class="ui-list-view">
-		<h3 class="scroll-header">{{sourceMeta.title}}</h3>
-
+		<div class="scroll-header"><h3>{{sourceMeta.title}}</h3></div>
 		<!-- STREAM VIEW -->
 		<ion-scroll direction="x" class="horizontal-scroller stream" delegate-handle="streamScrollHorizontal">
 			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
@@ -14,7 +13,7 @@
 	</div><!-- ui-list-view -->
 
 	<!-- THE DETAIL VIEW -->
-	<div class="ui-detail-view">
+	<div class="ui-detail-view">asdasd
 		<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard"></ui-detail>
 	</div><!-- ui-detail-view -->
 

@@ -605,13 +605,14 @@ ion-side-menu.menu.menu-left .item-content {
 .ui-tablet-portrait .ui-list-view .card-container {
   width: 300px;
   min-width: 300px;
-  max-width: 300px;
   height: 300px;
   min-height: 300px;
+}
+.ui-default.ui-tablet-portrait .ui-list-view .card-container {
+  max-width: 300px;
   max-height: 300px;
   overflow: hidden;
 }
-
 .stream-row {
   font-size: 0; /* CSS FIX: https://css-tricks.com/fighting-the-space-between-inline-block-elements/ */
 }
@@ -620,20 +621,28 @@ ion-side-menu.menu.menu-left .item-content {
     display: inline-block;
     vertical-align: top;
 }
-.stream-row .card-container .card-container-pad {
+.ui-default .card-container .card-container-pad {
   -webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
+
 /* HOME OVERLOADS */
 .ui-home .stream-row {
-  height: 335px;
+    overflow: visible;
 }
+.ui-home.ui-tablet-portrait .ui-list-view,
 .ui-home.ui-tablet-landscape .ui-list-view {
     top: 0;
     width: 100%;
 }
 .ui-home.ui-tablet-landscape .ui-list-view .vertical-scroller {
   width: 100%;
+}
+.ui-home.ui-tablet-portrait .ui-list-view .card-container,
+.ui-home.ui-tablet-landscape .ui-list-view .card-container {
+  height: 325px;
+  /*min-height: 200px;*/
+  overflow: visible;
 }
 
 
@@ -645,7 +654,6 @@ ion-side-menu.menu.menu-left .item-content {
   bottom: 0;
   left: 0;
 }
-
 .ui-tablet-landscape .ui-detail-view {
     position: absolute;
     top: 44px;
@@ -653,7 +661,6 @@ ion-side-menu.menu.menu-left .item-content {
     bottom: 0;
     left: 300px;
 }
-
 .ui-tablet-portrait .ui-detail-view {
   position: absolute;
   top: 344px;
@@ -693,8 +700,8 @@ ion-side-menu.menu.menu-left .item-content {
 }
 
 .stream-home .card {
-  height: 325px;
-  overflow: hidden;
+  min-height: 325px;
+  overflow: auto;
 }
 
 /* PHONE SCROLLER */

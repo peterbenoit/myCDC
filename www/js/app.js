@@ -77,6 +77,7 @@ add to body class: platform-wp8
 
         body = iframe.contents().find('body');
         $(body).unbind("scroll");
+      //  $(body).unbind("click");
         /*if (body.length) {
             body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
         }*/
@@ -227,16 +228,6 @@ add to body class: platform-wp8
                 while (idx1--) {
                     obj1 = d[idx1];
 
-                    // TEMPORARY FEED BUG WORKAROUND (DEFAULTS DATA WHICH SHOULD BE PRESENT IN TAG DATA)
-                    if (!obj1.contentgroup) {
-                        obj1.contentgroup = 'FEED ISSUE: ' + objSourceMeta.contentGroupIdentifier + 'doesnt not include a content group key';
-                        obj1.appContentGroup = objSourceMeta.contentGroupIdentifier;
-                        obj1.templates = angular.extend({}, rs.templateMap[obj1.appContentGroup]);
-                        obj1.detailType = objSourceMeta.detailType;
-                        obj1.contentType = objSourceMeta.contentType;
-                        obj1.home = '#/app/source/' + obj1.appContentGroup;
-                        obj1.url = obj1.home + '/';
-                    }
 
                     // PARSE & NORMALIZE TIME(S)
                     if (obj1.datePublished) {
@@ -257,6 +248,18 @@ add to body class: platform-wp8
                         }
                     }
 
+                    // SET STREAM TITLE
+                    obj1.streamTitle = objSourceMeta.title;
+                    // TEMPORARY FEED BUG WORKAROUND (DEFAULTS DATA WHICH SHOULD BE PRESENT IN TAG DATA)
+                    if (!obj1.contentgroup) {
+                        obj1.contentgroup = 'FEED ISSUE: ' + objSourceMeta.contentGroupIdentifier + 'doesnt not include a content group key';
+                        obj1.appContentGroup = objSourceMeta.contentGroupIdentifier;
+                        obj1.templates = angular.extend({}, rs.templateMap[obj1.appContentGroup]);
+                        obj1.detailType = objSourceMeta.detailType;
+                        obj1.contentType = objSourceMeta.contentType;
+                        obj1.home = '#/app/source/' + obj1.appContentGroup;
+                        obj1.url = obj1.home + '/';
+                    }
                     // PROCESS TAGS
                     if (obj1.tags && obj1.tags.length) {
                         idx2 = obj1.tags.length;
@@ -274,6 +277,11 @@ add to body class: platform-wp8
                                 obj1.contentType = objSourceMeta.contentType;
                                 obj1.home = '#/app/source/' + obj1.appContentGroup;
                                 obj1.url = obj1.home + '/';
+
+                                // SET STREAM TITLE
+                                if (rs.sourceMetaMap.hasOwnProperty(obj1.appContentGroup)) {
+                                    obj1.streamTitle = rs.sourceMetaMap[obj1.appContentGroup].title;
+                                }
 
                                 // TODO: consider using config.json for this data
                                 if (obj1.appContentGroup === 'eid') {
@@ -298,9 +306,19 @@ add to body class: platform-wp8
                                     obj1.isWarning = obj1.name.indexOf('Warning') > -1;
                                     break;
                                 }
+                                break;
                             }
                         }
                     }
+
+                    console.log(obj1);
+
+                }
+
+                // LIMIT FINAL RESULTS TO 100
+                if (d.length > 100) {
+                    rs.log('Trimming array from ' + d.length + ' to 100' , -100);
+                    d.splice(100)
                 }
 
                 rs.log(d, -1, 'CURRENT SOURCE POST FIX');
@@ -428,7 +446,7 @@ add to body class: platform-wp8
 
         var storePrefix = 'myCDC-';
         var dateFormat = 'YYYY-MM-DD-HH-mm-ss';
-        var dataTimeoutInMinutes = 1;
+        var dataTimeoutInMinutes = 60;
 
         var isExpired = function (ageStoreKey) {
 
@@ -502,7 +520,7 @@ add to body class: platform-wp8
     rs.remoteApi = (function() {
         var apiDefaults = {
             method: 'GET',
-            timeout: 30000
+            timeout: 7000
         };
 
         return function(options) {
@@ -883,6 +901,21 @@ add to body class: platform-wp8
                     return objReturn
                 } ());
 
+                // CREATE SOURCE META DATA
+                rs.sourceMetaMap = (function() {
+                    // LOCALS
+                    var i = sourceList.length, objReturn = {}, objSrc;
+                    // LOOP SOURCES
+                    while (i--) {
+                        // GET THE CURRENT SOURCE
+                        objSrc = sourceList[i];
+                        // MAP TEMPLATES TO CONTENTGROUPIDENTIFIER
+                        objReturn[objSrc.contentGroupIdentifier] = objSrc;
+                    }
+                    // RETURN MAP
+                    return objReturn
+                } ());
+                //console.log(rs.sourceMetaMap);
                 // SET SOURCE LIST TO ROOTSCOPE;
                 rs.sourceList = sourceList;
 
@@ -1340,7 +1373,7 @@ add to body class: platform-wp8
 
     var setDimensions = function (element, reference, columns, setRatio) {
         // DETERMINE DIVISOR
-        columns = columns || 3;
+        columns = columns || null;
 
         // DETERMINE WIDTH TO DIVIDE BY (SCREEN OR PARENT ELEMENT WIDTH)
         var parentWidth = $rootScope.screenState.width;
@@ -1348,8 +1381,11 @@ add to body class: platform-wp8
             parentWidth = $(element).parent().innerWidth();
         }
 
-        // DETERMINE NEW WIDTHE
+        // DETERMINE IF WE NEED TO SET EXPLICIT WIDTH
+        if (columns) {
+            // DETERMINE NEW WIDTH
         var newWidth = Math.floor((parentWidth - columns) / columns);
+        }
 
         // APPLY NEW WIDTH
         $(element).width(newWidth);

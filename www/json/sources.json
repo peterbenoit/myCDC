@@ -1,8 +1,8 @@
 [{
     "contentGroupIdentifier": "homestream",
-    "title": "Home (Aggregate) Stream",
+    "title": "Home",
     "icon": "ion-checkmark-circled",
-    "url": "http://prototype.cdc.gov/api/v2/resources/media?parentId=150686&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=100",
+    "url": "http://prototype.cdc.gov/api/v2/resources/media?parentId=150686&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=0",
     "processors": ["cardTemplateInjector", "stripHtml"],
     "detailType" : "default",
     "showByDefault" : true,
@@ -309,7 +309,7 @@
     "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Image%20of%20the%20Week&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=100",
     "getContentBy": "na",
     "processors": ["cardTemplateInjector"],
-    "detailType" : "default",
+    "detailType" : "image",
     "showByDefault" : true,
     "allowFiltering" : true,
     "templates" : {
