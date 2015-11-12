@@ -229,7 +229,7 @@
     "showByDefault" : true,
     "allowFiltering" : true,
     "templates" : {
-        "containerSet" : "ui-container-default",
+        "containerSet" : "ui-container-iframe",
         "stream" : "ui-stream-standard",
         "card" : "ui-card-default",
         "homeCard" : "ui-card-default",

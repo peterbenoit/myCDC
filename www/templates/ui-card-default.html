@@ -1,12 +1,12 @@
 <div class="card" ng-if="!cardData.type">
-	<div ng-if="cardData.isOutbreak" class="item item-notice outbreak"><b>Outbreak</b></div>
-	<div ng-if="cardData.isWarning" class="item item-notice warning"><b>Travel Notice</b> - Warning Level 3</div>
-	<div ng-if="cardData.isWatch" class="item item-notice watch"><b>Travel Notice</b> - Watch Level 1</div>
-	<div ng-if="cardData.isAlert" class="item item-notice alert"><b>Travel Notice</b> - Alert Level 2</div>
+	<div ng-if="cardData.isOutbreak" class="item item-notice outbreak"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Outbreak</strong></a></div>
+	<div ng-if="cardData.isWarning" class="item item-notice warning"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Warning Level 3</a></div>
+	<div ng-if="cardData.isWatch" class="item item-notice watch"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Watch Level 1</a></div>
+	<div ng-if="cardData.isAlert" class="item item-notice alert"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Alert Level 2</a></div>
 	<a ng-if="cardData.hasImage" class="item item-image" ng-href="{{cardData.url}}{{cardData.id}}">
 		<img ng-src="{{cardData.imageSrc}}" err-src="img/image-placeholder.png"  style="max-width:100%;">
 	</a>
-	<a class="item item-text-wrap item-body" ng-href="{{cardData.url}}/{{cardData.id}}">
+	<a class="item item-text-wrap item-body" ng-href="{{cardData.url}}{{cardData.id}}">
 		<strong data-ng-if="cardData.detailType != 'image'">{{cardData.name | words:10}}</strong>
 		<p class="date">{{cardData.datePublished}}</p>
 		<p ng-bind-html="cardData.description | words:20"></p>
@@ -21,7 +21,7 @@
 		<strong>{{cardData.name | words:8}}</strong>
 	</a>
 </div>
-<!-- <a href="{{cardData.url}}/{{cardData.id}}" class="ng-enter-stagger" ng-if="cardData.type == 'image'" >
+<!-- <a href="{{cardData.url}}{{cardData.id}}" class="ng-enter-stagger" ng-if="cardData.type == 'image'" >
 	<div class="item item-image" ng-style="halfwidth()">
 		<img ng-src="{{cardData.imageSrc}}" class="horizontal">
 	</div>

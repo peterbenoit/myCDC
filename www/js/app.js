@@ -77,7 +77,7 @@ add to body class: platform-wp8
 
         body = iframe.contents().find('body');
         $(body).unbind("scroll");
-      //  $(body).unbind("click");
+        //  $(body).unbind("click");
         /*if (body.length) {
             body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
         }*/
@@ -86,7 +86,7 @@ add to body class: platform-wp8
         anchors.on('click', function(e) {
             e.preventDefault();
 
-            alert('CLICK');
+            //alert('CLICK');
 
             var framesrc = iframe.attr('src'),
                 href = $(this).attr('href'),
