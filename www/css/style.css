@@ -629,6 +629,8 @@ ion-side-menu.menu.menu-left .item-content {
 /* HOME OVERLOADS */
 .ui-home .stream-row {
     overflow: visible;
+    margin-bottom: 10px;
+    /*-webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));*/
 }
 .ui-home.ui-tablet-portrait .ui-list-view,
 .ui-home.ui-tablet-landscape .ui-list-view {
@@ -641,8 +643,8 @@ ion-side-menu.menu.menu-left .item-content {
 .ui-home.ui-tablet-portrait .ui-list-view .card-container,
 .ui-home.ui-tablet-landscape .ui-list-view .card-container {
   height: 325px;
-  /*min-height: 200px;*/
-  overflow: visible;
+  /*min-height: 200px;
+  overflow: visible;*/
 }
 
 

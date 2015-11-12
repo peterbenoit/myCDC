@@ -248,18 +248,6 @@ add to body class: platform-wp8
                         }
                     }
 
-                    // SET STREAM TITLE
-                    obj1.streamTitle = objSourceMeta.title;
-                    // TEMPORARY FEED BUG WORKAROUND (DEFAULTS DATA WHICH SHOULD BE PRESENT IN TAG DATA)
-                    if (!obj1.contentgroup) {
-                        obj1.contentgroup = 'FEED ISSUE: ' + objSourceMeta.contentGroupIdentifier + 'doesnt not include a content group key';
-                        obj1.appContentGroup = objSourceMeta.contentGroupIdentifier;
-                        obj1.templates = angular.extend({}, rs.templateMap[obj1.appContentGroup]);
-                        obj1.detailType = objSourceMeta.detailType;
-                        obj1.contentType = objSourceMeta.contentType;
-                        obj1.home = '#/app/source/' + obj1.appContentGroup;
-                        obj1.url = obj1.home + '/';
-                    }
                     // PROCESS TAGS
                     if (obj1.tags && obj1.tags.length) {
                         idx2 = obj1.tags.length;
@@ -278,9 +266,15 @@ add to body class: platform-wp8
                                 obj1.home = '#/app/source/' + obj1.appContentGroup;
                                 obj1.url = obj1.home + '/';
 
+                                obj1.delete = !obj1.templates;
+                                if (obj1.delete) {
+                                    rs.log(obj1, -999, 'UNABLE TO FIND CONTENT GROUP FOR THIS ARTICLE');
+                                }
+
                                 // SET STREAM TITLE
                                 if (rs.sourceMetaMap.hasOwnProperty(obj1.appContentGroup)) {
                                     obj1.streamTitle = rs.sourceMetaMap[obj1.appContentGroup].title;
+                                    obj1.detailType = rs.sourceMetaMap[obj1.appContentGroup].detailType;
                                 }
 
                                 // TODO: consider using config.json for this data
@@ -311,9 +305,33 @@ add to body class: platform-wp8
                         }
                     }
 
-                    console.log(obj1);
+                    // SAFETY DEFAULTS (SHOULD BE TEMPORARY UNTIL ALL FEEDS ARE STABILIZED)
+                    obj1.contentgroup = obj1.contentgroup || 'homestream';
+                    obj1.appContentGroup = obj1.appContentGroup || objSourceMeta.contentGroupIdentifier;
+                    obj1.contentType = obj1.contentType || objSourceMeta.contentType;
+                    obj1.streamTitle = obj1.streamTitle || objSourceMeta.title;
+                    obj1.detailType = obj1.detailType || objSourceMeta.detailType;
+                    obj1.templates = obj1.templates || angular.extend({}, rs.templateMap[obj1.appContentGroup]);
+                    obj1.home = obj1.home || '#/app/source/' + obj1.appContentGroup;
+                    obj1.url = obj1.url || obj1.home + '/';
 
+
+                    //if (!obj1.contentgroup) {
+                        //obj1.contentgroup = 'FEED ISSUE: ' + objSourceMeta.contentGroupIdentifier + 'doesnt not include a content group key';
+                        //obj1.appContentGroup = objSourceMeta.contentGroupIdentifier;
+                        //obj1.templates = angular.extend({}, rs.templateMap[obj1.appContentGroup]);
+                        //obj1.streamTitle = objSourceMeta.title;
+                        //obj1.detailType = objSourceMeta.detailType;
+                        //obj1.contentType = objSourceMeta.contentType;
+                        //obj1.home = '#/app/source/' + obj1.appContentGroup;
+                        //obj1.url = obj1.home + '/';
+                    //}
                 }
+
+                // DELETE BAD EGGS (MORE ACCURATELY, KEEP GOOD EGGS)
+                d = $filter('filter')(d, {
+                    delete: false
+                });
 
                 // LIMIT FINAL RESULTS TO 100
                 if (d.length > 100) {
@@ -446,7 +464,7 @@ add to body class: platform-wp8
 
         var storePrefix = 'myCDC-';
         var dateFormat = 'YYYY-MM-DD-HH-mm-ss';
-        var dataTimeoutInMinutes = 60;
+        var dataTimeoutInMinutes = 10;
 
         var isExpired = function (ageStoreKey) {
 
@@ -606,7 +624,7 @@ add to body class: platform-wp8
     };
 
     rs.cgNormalize = function (contentgroup) {
-        return contentgroup.toLowerCase().replace(/ /g, '');
+        return contentgroup.toLowerCase().replace(/ /g, '').replace(/\//g, '').replace(/\d/g, '');
     };
 
     // GET SOURCE METADATA FROM SOURCELIST BY NAME (In Route Params)
@@ -915,6 +933,7 @@ add to body class: platform-wp8
                     // RETURN MAP
                     return objReturn
                 } ());
+
                 //console.log(rs.sourceMetaMap);
                 // SET SOURCE LIST TO ROOTSCOPE;
                 rs.sourceList = sourceList;
@@ -1173,7 +1192,12 @@ add to body class: platform-wp8
                 // DEFAULT TO LOADER (IF STATE SCREEN STATE NOT READY, ETC.)
                 var uiCardTemplateUrl = 'templates/ui-loader.html';
 
-                if (!blnLoader) {
+                if (blnLoader) {
+                    return uiCardTemplateUrl;
+                }
+
+                if (!tplInit) {
+                    var tplInit = true;
 
                     // SCREEN STATE READY?
                     if ($rootScope.screenState) {
@@ -1190,9 +1214,10 @@ add to body class: platform-wp8
                         }
                     }
 
-                    if ($scope.cardData.id == '152263') {
-                        $rootScope.log($scope.cardData, 1, 'UI-CARD-DATA');
-                        $rootScope.log(uiCardTemplateUrl, 1, 'UI-CARD-TEMPLATE');
+                    if ($scope.cardData.id == '152266') {
+                        console.log($scope.cardData);
+                        $rootScope.log($scope.cardData, -1000, 'UI-CARD-DATA');
+                        $rootScope.log(uiCardTemplateUrl, -1000, 'UI-CARD-TEMPLATE');
                     }
 
                 }
@@ -1317,7 +1342,12 @@ add to body class: platform-wp8
                     $rootScope.$broadcast('source-detail-load-started');
 
                     // CALL SPECIFIED PROCESSOR
-                    detailProcessors[$rootScope.sourceMeta.detailType].call(this, $scope);
+                    if (detailProcessors.hasOwnProperty($rootScope.sourceMeta.detailType)) {
+                        detailProcessors[$rootScope.sourceMeta.detailType].call(this, $scope);
+                    } else {
+                        detailProcessors.default.call(this, $scope);
+                        $rootScope.log('UNABLE TO FIND CARD DETAIL PROCESSOR FOR DETAIL TYPE ' + $rootScope.sourceMeta.detailType, -999);
+                    }
 
                     // DEBUG
                     $rootScope.log($scope.processer, 10, 'UI-DETAIL-DIRECTIVE-PROCESSER');
