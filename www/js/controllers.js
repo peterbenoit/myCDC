@@ -93,13 +93,9 @@ angular.module('mycdc.controllers', [])
                     // DEBUG
                     $rootScope.log('appInit completed');
 
-                     // CONTINUE ANY NECESSARY PROCESSING AFTER SOURCE LIST PROMISE IS RETURNED
-                    $scope.sourceListPromise.then(function(data) {
-
-                        // DEBUG
-                        $rootScope.log('ctrlInit Refresh');
-                        $rootScope.log($scope.sourceList);
-                    });
+                     // DEBUG
+                    $rootScope.log('ctrlInit Refresh');
+                    $rootScope.log($scope.sourceList);
                 });
             }
         };
@@ -122,21 +118,13 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('CommonSourceCtrl', function($scope, $rootScope, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate) {
+.controller('CommonSourceCtrl', function($scope, $rootScope, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate) {
 
     var   initialLoad = (!$scope.sourceName),
     sourceChange = ($stateParams.sourceName !== $scope.sourceName),
     detailChange = ($stateParams.sourceDetail !== $scope.sourceDetail);
 
     if (initialLoad) {
-
-        $scope.loading = $ionicLoading.show({
-            content: 'Loading',
-            animation: 'fade-in',
-            showBackdrop: true,
-            maxWidth: 200,
-            showDelay: 0
-        });
 
         // SETUP PAGINATION
         $scope.paginationLimit = function(type) {
@@ -164,12 +152,18 @@ angular.module('mycdc.controllers', [])
             $scope.$broadcast('scroll.infiniteScrollComplete');
         };
 
-        $scope.getSourceList = function (blnRefresh) {
+        $scope.getSourceListLocal = function (blnRefresh) {
 
             blnRefresh = blnRefresh || false;
 
+            var defer = $q.defer();
+
+            // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
+            $scope.sourceName = $stateParams.sourceName;
+            $scope.sourceDetail = $stateParams.sourceDetail || false;
+
             // GET & SAVE THE SOURCE LIST PROMISE
-            $scope.sourceIndexPromise = $rootScope.getSourceIndex(blnRefresh).then(function(d) {
+            $rootScope.getSourceIndex(blnRefresh).then(function(d) {
 
                 // RESET PAGING
                 $scope.pageSize = 10
@@ -184,41 +178,20 @@ angular.module('mycdc.controllers', [])
 
                 // REDIRECT TO HOME IF NO SOURCE DEFINED
                 if ($scope.sourceDetail) {
-
                     if (!$scope.datas.length) {
-
-                        // HIDE THE LOADER
-                        $ionicLoading.hide();
-
                         // NO CARD LIST: ALERT USER, THEN REDIRECT
                         var noCardList = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                         noCardList.then(function() {
                             $state.go('app.sourceIndex', {sourceName: $scope.sourceName, sourceDetail: 'homestream' });
                         });
-
-                    } else {
-
-                        // REFRESH SCREEN STATE
-                        $rootScope.refreshScreenState();
-
-                        // HIDE THE LOADER
-                        $ionicLoading.hide();
-
                     }
-
-                } else {
-
-                    // REFRESH SCREEN STATE
-                    $rootScope.refreshScreenState();
-
-                    // HIDE THE LOADER
-                    $ionicLoading.hide();
-
                 }
 
-                // RETURN TRIMMED DATA TO CHAIN
-                return d.data;
+                defer.resolve(d);
             });
+
+            // RETURN TRIMMED DATA TO CHAIN
+            return defer.promise;
         };
 
         $scope.getDetailCard = function(cardList, contentID) {
@@ -244,37 +217,66 @@ angular.module('mycdc.controllers', [])
 
         $scope.ctrlInit = function(blnRefresh) {
 
+            var defer = $q.defer();
+
             var blnRefresh = blnRefresh || false;
 
-             // APP INIT WILL REFRESH SOURCE LIST
-            $scope.appInit().then(function(d) {
+            if (blnRefresh) {
 
-                // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
-                $scope.sourceName = $stateParams.sourceName;
-                $scope.sourceDetail = $stateParams.sourceDetail || false;
-
-                // INHERITED PROMISE CHAINED TIMING
-                $rootScope.sourceListPromise.then(function(data) {
+                // APP INIT WILL REFRESH SOURCE LIST
+                $scope.appInit().then(function(d) {
 
                     // REFRESH REQUESTED SOURCE INDEX DATA?
                     if (blnRefresh || !$scope.sourceIndexPromise || false) {
 
                         // GET / SET SOURCE META DATA TO SCOPE FROM STATE PARAMETERS
                         $scope.sourceMeta = $rootScope.getSourceMeta($stateParams);
+                        $scope.getSourceListLocal(blnRefresh).then(function(d){
 
-                        $scope.getSourceList();
+                            // RESOLVE PROMISE
+                            defer.resolve(d);
+                        });
                     }
                 });
-            });
+            }
+
+            return defer.promise;
         };
 
         // POINTER FOR TEMPLATES
-        $scope.doRefresh = $scope.getSourceList;
+        $scope.doRefresh = function (blnRefresh) {
+            $scope.getSourceListLocal(blnRefresh);
+        };
     }
 
-    // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
-    $scope.ctrlInit(initialLoad || sourceChange);
+    $scope.loading = $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
+    });
 
-    // SET BUTTONS
-    $scope.setButtonState();
+
+    $timeout(function(){
+
+        // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
+        $scope.ctrlInit(initialLoad || sourceChange).then(function(d){
+
+            $scope.sourceList = $rootScope.app.sourceList;
+            $scope.sourceTypes = $rootScope.app.sourceTypes;
+            $scope.templateMap = $rootScope.app.templateMap;
+            $scope.sourceMetaMap = $rootScope.app.sourceMetaMap;
+
+            // REFRESH SCREEN STATE
+            $rootScope.refreshScreenState();
+
+            // HIDE THE LOADER
+            $ionicLoading.hide();
+
+            return d;
+        });
+
+        console.log('YO');
+    });
 });

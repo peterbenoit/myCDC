@@ -161,6 +161,56 @@ angular.module('mycdc.filters', [])
 
         return typeof resource !== 'undefined' ? $sce.trustAsResourceUrl(resource) : false;
     };
+}])
+
+
+.filter('spliceAtDetailId', ['$filter','$stateParams', function($filter, $stateParams) {
+    return function(sourceArray) {
+        sourceArray = sourceArray || [];
+
+        var objTmp = {};
+
+        // DO WE HAVE SOMETHING TO FILTER?
+        if (sourceArray.length) {
+            // DO WE HAVE FILTER CRITERIA?
+            if ($stateParams.sourceDetail) {
+                objTmp.aryReturn = sourceArray.slice(0).reverse();
+                objTmp.srcIndex = sourceArray.length;
+                objTmp.detailId = $stateParams.sourceDetail;
+
+                // LOOP TO FIND CURRENT DETAIL
+                while (objTmp.srcIndex--) {
+
+                    // GRAB CURRENT ITEM
+                    objTmp.objCurrItem = sourceArray[objTmp.srcIndex];
+
+                    // CHECK ITS ID AGAINS PASSED ID
+                    if (objTmp.objCurrItem.id == objTmp.detailId) {
+
+                        // IF ITEM FOUND - BREAK OUT OF LOOP (LEAVING THIS AT FIRST POSITION)
+                        break;
+                    }
+
+                    // ELSE - PUSH CURRENT ITEM TO END
+                    objTmp.aryReturn.push(objTmp.aryReturn.shift());
+                }
+
+                if (objTmp.aryReturn.length) {
+
+                    /* DEBUG
+                    console.log('FILTER');
+                    console.log(sourceArray.length);
+                    console.log(sourceArray);
+                    console.log(objTmp.aryReturn.length);
+                    console.log(objTmp.aryReturn);
+                    */
+
+                    return objTmp.aryReturn;
+                }
+            }
+        }
+
+        // JUST RETURN WHAT WAS PASSED (DEFAULT)
+        return sourceArray;
+    }
 }]);
-
-

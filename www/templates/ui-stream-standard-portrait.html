@@ -1,5 +1,5 @@
 <div class="stream-standard stream-row">
-	<div class="card-container" ng-repeat="data in datas | orderBy: 'isCurrent' | limitTo:paginationLimit()">
+	<div class="card-container" ng-repeat="data in datas | spliceAtDetailId:data | limitTo:paginationLimit()">
 		<ui-card data-card-data="data"></ui-card>
 	</div>
 </div>
