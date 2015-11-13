@@ -261,80 +261,73 @@ add to body class: platform-wp8
                                 strCgStripped = rs.cgNormalize(strCg);
 
                                 // UPDATE BASED ON TAG DATA
-                                obj1.contentGroupIdentifier = strCg;
-                                obj1.appContentGroup = strCgStripped;
-                                obj1.templates = app.templateMap[obj1.appContentGroup];
+                                obj1.feedIdentifier = strCgStripped;
+                                obj1.feedIdentifier = strCgStripped;
+                                obj1.templates = app.templateMap[obj1.feedIdentifier];
                                 obj1.detailType = objSourceMeta.detailType;
                                 obj1.contentType = objSourceMeta.contentType;
-                                obj1.home = '#/app/source/' + obj1.appContentGroup;
+                                obj1.home = '#/app/source/' + obj1.feedIdentifier;
                                 obj1.url = obj1.home + '/';
 
-                                obj1.delete = !obj1.templates;
-                                if (obj1.delete) {
-                                    rs.log(obj1, -999, 'UNABLE TO FIND CONTENT GROUP FOR THIS ARTICLE');
-                                }
-
                                 // SET STREAM TITLE
-                                if (app.sourceMetaMap.hasOwnProperty(obj1.appContentGroup)) {
-                                    obj1.streamTitle = app.sourceMetaMap[obj1.appContentGroup].title;
-                                    obj1.detailType = app.sourceMetaMap[obj1.appContentGroup].detailType;
+                                if (app.sourceMetaMap.hasOwnProperty(obj1.feedIdentifier)) {
+                                    obj1.streamTitle = app.sourceMetaMap[obj1.feedIdentifier].title;
+                                    obj1.detailType = app.sourceMetaMap[obj1.feedIdentifier].detailType;
+                                    obj1.typeIdentifier = app.sourceMetaMap[obj1.feedIdentifier].typeIdentifier;
                                 }
 
                                 // TODO: consider using config.json for this data
-                                if (obj1.appContentGroup === 'eid') {
+                                if (obj1.feedIdentifier === 'eid') {
                                     obj1.hasImage = false;
-                                    break;
                                 }
 
-                                if (obj1.appContentGroup === 'vitalsigns') {
+                                if (obj1.feedIdentifier === 'vitalsigns') {
                                     obj1.hasImage = false;
-                                    break;
                                 }
 
-                                if (obj1.appContentGroup === 'outbreaks') {
+                                if (obj1.feedIdentifier === 'outbreaks') {
                                     obj1.isOutbreak = true;
                                     obj1.hasImage = false;
-                                    break;
                                 }
 
-                                if (obj1.appContentGroup === 'travelnotices') {
+                                if (obj1.feedIdentifier === 'travelnotices') {
                                     obj1.isAlert = obj1.name.indexOf('Alert') > -1;
                                     obj1.isWatch = obj1.name.indexOf('Watch') > -1;
                                     obj1.isWarning = obj1.name.indexOf('Warning') > -1;
-                                    break;
                                 }
-                                break;
                             }
                         }
                     }
 
                     // SAFETY DEFAULTS (SHOULD BE TEMPORARY UNTIL ALL FEEDS ARE STABILIZED)
                     obj1.contentgroup = obj1.contentgroup || 'homestream';
-                    obj1.appContentGroup = obj1.appContentGroup || objSourceMeta.contentGroupIdentifier;
+                    obj1.feedIdentifier = obj1.feedIdentifier || objSourceMeta.feedIdentifier;
+                    obj1.typeIdentifier = obj1.typeIdentifier || objSourceMeta.typeIdentifier;
                     obj1.contentType = obj1.contentType || objSourceMeta.contentType;
                     obj1.streamTitle = obj1.streamTitle || objSourceMeta.title;
                     obj1.detailType = obj1.detailType || objSourceMeta.detailType;
-                    obj1.templates = obj1.templates || angular.extend({}, app.templateMap[obj1.appContentGroup]);
-                    obj1.home = obj1.home || '#/app/source/' + obj1.appContentGroup;
+                    obj1.templates = obj1.templates || angular.extend({}, app.templateMap[obj1.feedIdentifier]);
+                    obj1.home = obj1.home || '#/app/source/' + obj1.feedIdentifier;
                     obj1.url = obj1.url || obj1.home + '/';
 
+                    // IF NO TEMPLATES CAN BE FOUND, THE CONTENT GROUP IS INVALID, FLAG FOR DELETE
+                    obj1.delete = !obj1.templates;
+                    if (obj1.delete) {
+                        rs.log(obj1, -999, 'UNABLE TO FIND CONTENT GROUP FOR THIS ARTICLE');
+                    }
 
-                    //if (!obj1.contentgroup) {
-                        //obj1.contentgroup = 'FEED ISSUE: ' + objSourceMeta.contentGroupIdentifier + 'doesnt not include a content group key';
-                        //obj1.appContentGroup = objSourceMeta.contentGroupIdentifier;
-                        //obj1.templates = angular.extend({}, rs.templateMap[obj1.appContentGroup]);
-                        //obj1.streamTitle = objSourceMeta.title;
-                        //obj1.detailType = objSourceMeta.detailType;
-                        //obj1.contentType = objSourceMeta.contentType;
-                        //obj1.home = '#/app/source/' + obj1.appContentGroup;
-                        //obj1.url = obj1.home + '/';
-                    //}
                 }
 
                 // DELETE BAD EGGS (MORE ACCURATELY, KEEP GOOD EGGS)
+                console.log(d);
+                console.log('I was able to filter ' + d.length);
                 d = $filter('filter')(d, {
                     delete: false
                 });
+                console.log('down to' + d.length);
+
+                // APPLY SOURCE FILTERS
+                d = $filter('applySourceFilters')(d, rs.app.sourceFilters);
 
                 // LIMIT FINAL RESULTS TO 100
                 if (d.length > 100) {
@@ -463,9 +456,41 @@ add to body class: platform-wp8
         }
     } ());
 
+    rs.getSimpleLocalStore = (function() {
+
+        var storePrefix = 'myCdc';
+
+        return function (storeKey) {
+
+            var storeName = storePrefix + storeKey;
+
+            return {
+                get: function() {
+
+                    // TRY TO GET SAVED DATA
+                    var jsonData = window.localStorage[storeName];
+
+                    // RETURN IT IF FOUND
+                    if (jsonData) {
+                        return angular.fromJson(jsonData);
+                    }
+
+                    // DEFAULT RETURN
+                    return false;
+                },
+                set: function(appdata) {
+                    window.localStorage[storeName] = angular.toJson(appdata);
+                },
+                clear: function() {
+                    window.localStorage.removeItem(storeName);
+                }
+            };
+        };
+    } ());
+
     rs.getLocalStoreByAppState = (function() {
 
-        var storePrefix = 'myCDC-';
+        var storePrefix = 'myCdc';
         var dateFormat = 'YYYY-MM-DD-HH-mm-ss';
         var dataTimeoutInMinutes = 10;
 
@@ -492,7 +517,7 @@ add to body class: platform-wp8
         };
 
         return function(strType) {
-            strType = strType || 'sourceIndex'; // Supports sourceIndex or sourceDetail
+            strType = strType || 'sourceIndex'; // Supports sourceIndex, sourceDetail
             var storeName, storeAgingName;
 
             if (strType == 'sourceDetail') {
@@ -500,7 +525,7 @@ add to body class: platform-wp8
             } else {
                 storeName = storePrefix + $stateParams.sourceName;
             }
-            storeAgingName = storeName + '-saved';
+            storeAgingName = storeName + 'Saved';
 
             return {
                 all: function() {
@@ -508,7 +533,7 @@ add to body class: platform-wp8
                     // TRY TO GET SAVED DATA
                     var jsonData = window.localStorage[storeName];
 
-                    // RETRUN IT IF FOUND
+                    // RETURN IT IF FOUND
                     if (jsonData) {
                         var objReturn = {
                             expired : isExpired(storeAgingName),
@@ -575,9 +600,6 @@ add to body class: platform-wp8
             objReturn.viewOrientation = 'portrait';
         }
 
-
-
-
         // UPDATE SCOPE
         $rootScope.screenState = objReturn;
         $rootScope.sourceMeta = sourceMeta;
@@ -591,7 +613,6 @@ add to body class: platform-wp8
                 screenState : objReturn
             });
         }, 0);
-
     };
 
     rs.setButtonState = function () {
@@ -630,11 +651,8 @@ add to body class: platform-wp8
 
         // FILTER HERE
         arySourceInfo = $filter('filter')($rootScope.app.sourceList, {
-            contentGroupIdentifier: strSourceName
+            feedIdentifier: strSourceName
         }) || [];
-
-
-
 
         // DID WE FIND IT?
         if (arySourceInfo.length === 1) {
@@ -663,7 +681,7 @@ add to body class: platform-wp8
 
             // LOCAL DATA IS GOOD
             // RESOLVE PROMISE WITH THE STORED DATA
-            rs.log('Using Local Stream Data (Still Fresh)', 1);
+            rs.log('Using Local Stream Data (Still Fresh)', -999);
             defer.resolve(localData.data);
 
         } else {
@@ -684,7 +702,7 @@ add to body class: platform-wp8
                     localStore.save(data);
 
                     // RESOLVE WITH PROCESSED DATA
-                    rs.log('Using New Stream Data (Remote)', 1);
+                    rs.log('Using New Stream Data (Remote)', -999);
                     defer.resolve(data);
 
                 }, function(e) {
@@ -693,13 +711,13 @@ add to body class: platform-wp8
                     if (localData.data && localData.data.length) {
 
                         // FALLBACK TO SAVED DATA
-                        rs.log('Using Local Stream Data (Not Fresh)', 1);
+                        rs.log('Using Local Stream Data (Not Fresh)', -999);
                         defer.resolve(localData.data);
 
                     } else {
 
                         // ALL FAILED RETURN WHAT WE HAVE IN LOCAL STORAGE
-                        rs.log('Could Not Find And Data (Local, Remote, or Default)', 1);
+                        rs.log('Could Not Find And Data (Local, Remote, or Default)', -999);
                         defer.reject();
                     }
                 });
@@ -889,15 +907,16 @@ add to body class: platform-wp8
             // CONTINUE PROMISE CHAIN
             sourceListPromise.then(function(d) {
 
-
-
                 var objApp = {
                     // SET SOURCE TYPES
                     sourceTypes : d.data.sourceTypes,
                     // SET SOURCE LIST
                     sourceList : d.data.sourceList,
+                    // DEFAULT EMPTY OBJECTS
                     templateMap : {},
-                    sourceMetaMap : {}
+                    sourceMetaMap : {},
+                    sourceFilters : {},
+                    sourceFiltersLocks : {}
                 };
 
                 // LOCALS
@@ -909,16 +928,51 @@ add to body class: platform-wp8
                     // GET THE CURRENT SOURCE
                     objSrc = objApp.sourceList[i];
 
-                    // MAP TEMPLATES TO CONTENTGROUPIDENTIFIER
-                    objApp.templateMap[objSrc.contentGroupIdentifier] = objSrc.templates;
+                    // MAP TEMPLATES TO feedIDENTIFIER
+                    objApp.templateMap[objSrc.feedIdentifier] = objSrc.templates;
 
-                    // MAP TEMPLATES TO CONTENTGROUPIDENTIFIER
-                    objApp.sourceMetaMap[objSrc.contentGroupIdentifier] = objSrc;
+                    // MAP TEMPLATES TO feedIDENTIFIER
+                    objApp.sourceMetaMap[objSrc.feedIdentifier] = objSrc;
+
+                    // MAP SOURCE FILTER DEFAULTS (LOCAL STORAGE WILL BE MERGED AND OVERRIDE THESE)
+                    if (!objApp.sourceFilters.hasOwnProperty(objSrc.typeIdentifier)) {
+                        // DEFAULT FEEDTYPE CONTAINER
+                        objApp.sourceFilters[objSrc.typeIdentifier] = {};
+                    }
+                    // FEEDTYPE > FEEDID > FEEDSETTINGS (FROM SOURCES.JSON)
+                    objApp.sourceFilters[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
+                        isEnabled : objSrc.showByDefault
+                    };
+                    // MAP SOURCE FILTER DEFAULTS (LOCAL STORAGE WILL BE MERGED AND OVERRIDE THESE)
+                    if (!objApp.sourceFiltersLocks.hasOwnProperty(objSrc.typeIdentifier)) {
+                        // DEFAULT FEEDTYPE CONTAINER
+                        objApp.sourceFiltersLocks[objSrc.typeIdentifier] = {};
+                    }
+                    objApp.sourceFiltersLocks[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
+                        allowFiltering : objSrc.allowFiltering
+                    };
                 }
+
+                // TRY TO GET LOCAL SETTINGS OVERRIDES
+                var localFilters = rs.getSimpleLocalStore('settings').get() || {};
+
+                //console.log('objApp.sourceFilters');
+                //console.log(objApp.sourceFilters);
+
+                // IF WE FOUND LOCAL SETTINGS, MERGE THEM IN
+                if (localFilters) {
+                    objApp.sourceFilters = angular.extend(objApp.sourceFilters, localFilters);
+                }
+
+                //console.log('objApp.sourceFilters');
+                //console.log(objApp.sourceFilters);
 
                 // SAVE DATA TO ROOTSCOPE
                 rs.app = objApp;
                 rs.app.initialized = true;
+
+                //console.log('rs.app.sourceFilters');
+                //console.log(rs.app.sourceFilters);
 
                 // RESOLVE PROMISE WITH THE NEW DATA
                 defer.resolve(objApp);

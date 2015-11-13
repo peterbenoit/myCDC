@@ -2,7 +2,7 @@
     <ion-nav-buttons side="right">
         <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
     </ion-nav-buttons>
-    <ion-content>
+    <ion-content class="iframe-wrapper">
         <!--
         <div class="video-paging">
             <a alt="Next Button"class="button icon-right ion-chevron-right button-clear button-dark" ng-class="{'button-negative':!next.visible, 'button-dark':next.visible}" ng-disabled="!next.visible" href="#/app/YouTube/{{next.position}}">Next</a>

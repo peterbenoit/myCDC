@@ -59,6 +59,30 @@ body.platform-android {}
 body.platform-windowsphone {}
 
 /*
+.iframe-holder {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+.iframe-holder {
+  height: 750px;
+ -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+.iframe-holder iframe {
+  height: 100%;
+  width: 100%;
+}
+.iframe-issue {
+  -webkit-overflow-scrolling: touch !important;
+  overflow: scroll !important;
+}
+*/
+/*
 colors
  */
 
@@ -160,14 +184,9 @@ colors
 /* make CIV of PHIL = 100% */
 
 .item-image {
-/*    width: 100%;
-    height: 240px;*/
     overflow: hidden;
-  /*position: relative;*/
-  /*width: auto;*/
-/*  width: 150px; *//*300px;*/
-  /*height: 100px;*/ /*200px;*/
-  /*overflow: hidden;*/
+    background-position: center;
+    background-size: cover;
 }
 
 .item-image {
@@ -177,13 +196,11 @@ colors
     border: 0;
 }
 
-
-.image-stream .item-image {
+/*.image-stream .item-image {
     overflow:hidden;
-    float:left;
     background-position: center;
     background-size: cover;
-}
+}*/
 
 .settings .list {
     margin-bottom: 0;
@@ -605,12 +622,12 @@ ion-side-menu.menu.menu-left .item-content {
 .ui-tablet-portrait .ui-list-view .card-container {
   width: 300px;
   min-width: 300px;
-  height: 300px;
+  /*height: 300px;*/
   min-height: 300px;
 }
 .ui-default.ui-tablet-portrait .ui-list-view .card-container {
-  max-width: 300px;
-  max-height: 300px;
+  /*max-width: 300px;*/
+  /*max-height: 300px;*/
   overflow: hidden;
 }
 .stream-row {
@@ -629,8 +646,6 @@ ion-side-menu.menu.menu-left .item-content {
 /* HOME OVERLOADS */
 .ui-home .stream-row {
     overflow: visible;
-    margin-bottom: 10px;
-    /*-webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));*/
 }
 .ui-home.ui-tablet-portrait .ui-list-view,
 .ui-home.ui-tablet-landscape .ui-list-view {
@@ -640,12 +655,32 @@ ion-side-menu.menu.menu-left .item-content {
 .ui-home.ui-tablet-landscape .ui-list-view .vertical-scroller {
   width: 100%;
 }
-.ui-home.ui-tablet-portrait .ui-list-view .card-container,
-.ui-home.ui-tablet-landscape .ui-list-view .card-container {
-  height: 325px;
-  /*min-height: 200px;
-  overflow: visible;*/
+
+.ui-home.ui-tablet-portrait .ui-list-view .card-container {
+  width: 50vw;
 }
+.ui-home.ui-tablet-landscape .ui-list-view .card-container {
+  width: 33.33vw;
+}
+
+.ui-home.ui-tablet-portrait .ui-list-view .card-container .card {
+  height: 55vw;
+}
+.ui-home.ui-tablet-landscape .ui-list-view .card-container .card {
+  height: 38vw;
+}
+
+.ui-home.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
+  width: 33.3vw;
+  height: 21vh;
+}
+
+.ui-home.ui-tablet-portrait .ui-list-view .card-container .card .item-image {
+  width: 50vw;
+  height: 19vh;
+}
+
+
 
 
 /* DETAIL VIEW */
@@ -746,8 +781,8 @@ ion-side-menu.menu.menu-left .item-content {
   height: 185px;
 }
 .ui-images.ui-tablet-portrait .ui-list-view .card-container {
-  width: 225px;
-  height: 185px;
+  /*width: 225px;*/
+  /*height: 185px;*/
 }
 .ui-images.ui-tablet-portrait .ui-detail-view{
   top: 200px;
@@ -774,4 +809,7 @@ ion-scroll[direction=y] {
 }
 */
 
-
+/* TEST */
+.stream-home .card-container {
+  float: left;
+}

@@ -317,7 +317,7 @@ angular.module('mycdc.directives', [])
                     if (!$stateParams.sourceIndex) {
 
                         // IF NO SOURCE INDEX (DETAIL ID) IS PRESENT, VERIFY INTENT (SHOULD WE REQUIRE ONE)
-                        if ($scope.screenState.viewType == 'tablet') {
+                        if ($scope.screenState.viewType == 'tablet' && $scope.datas && $scope.datas.length) {
                             $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
                         }
 
@@ -355,6 +355,7 @@ angular.module('mycdc.directives', [])
         template: '<div ng-include="getDetailTemplate()"></div>'
     }
 })
+/*
 .directive("splitBy", function($rootScope) {
 
     var setDimensions = function (element, reference, columns, setRatio) {
@@ -370,7 +371,7 @@ angular.module('mycdc.directives', [])
         // DETERMINE IF WE NEED TO SET EXPLICIT WIDTH
         if (columns) {
             // DETERMINE NEW WIDTH
-        var newWidth = Math.floor((parentWidth - columns) / columns);
+            var newWidth = Math.floor((parentWidth - columns) / columns);
         }
 
         // APPLY NEW WIDTH
@@ -412,8 +413,60 @@ angular.module('mycdc.directives', [])
         }
     };
 })
+ .directive('imageRatio', function() {
 
+    var fixImageRatio = function(element, columns, ratio) {
 
+        var aryArgs = ratio.split(':');
+
+        if (aryArgs.length == 2) {
+
+            var parent, rW, rH, parent, parentWidth, newWidth, newHeight, imgSrc;
+
+            // GET RATIO ARGS
+            rW = aryArgs[0];
+            rH = aryArgs[1];
+
+            // GET PARENT
+            jqParent = $(element).parent();
+
+            // GET WIDTH OF PARENT ELEMENT
+            parentWidth = jqParent.innerWidth();
+
+            // DETERMINE NEW WIDTH
+            newWidth = Math.floor((parentWidth) / columns);
+
+            // DETERMINE NEW RATION SPECIFIC HEIGHT
+            newHeight = Math.floor((newWidth / rW) * rH);
+
+            // GET IMAGE SOURCE
+            imgSrc = $(element).attr('src');
+
+            // REMOVE THE ELEMENT
+            $(element).remove();
+
+            // APPLY THE NEW SIZES & BACKGROUND IMG TO THE PARENT ELEMENT
+            //jqParent.width(newWidth);
+            //jqParent.height(newHeight);
+            jqParent[0].style.backgroundImage = 'url(' + imgSrc + ')';
+        }
+    };
+
+    return {
+        scope : {
+            imageRatio : '@',
+            columns : '@'
+        },
+        link: function(scope, element, attrs) {
+            element.on('load', function(e) {
+                attrs.columns = attrs.columns || '1';
+                attrs.imageRatio = attrs.imageRatio || '16:9';
+                fixImageRatio(element, attrs.columns, attrs.imageRatio);
+            });
+        }
+    };
+ })
+*/
 .directive('orientation', function() {
     return {
         link: function(scope, element, attrs) {

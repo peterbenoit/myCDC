@@ -9,7 +9,7 @@ angular.module('mycdc.controllers', [])
  * @param  {[type]}
  * @return {[type]}
  */
-.controller('AppCtrl', function($scope, $timeout, $cordovaNetwork) {
+.controller('AppCtrl', function($rootScope, $scope, $timeout, $cordovaNetwork) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -17,6 +17,20 @@ angular.module('mycdc.controllers', [])
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
+    $rootScope.appInit().then(function(d) {
+        $scope.sourceMetaMap = $rootScope.app.sourceMetaMap;
+        $scope.sourceFilters = $rootScope.app.sourceFilters;
+        $scope.sourceFilterLocks = $rootScope.app.sourceFilterLocks;
+        $scope.sourceList = $rootScope.app.sourceList;
+        $scope.sourceTypes = $rootScope.app.sourceTypes;
+    });
+
+    $scope.saveFilters = function () {
+        $timeout(function(){
+            var settingsStorage = $rootScope.getSimpleLocalStore('settings');
+            settingsStorage.set($scope.sourceFilters);
+        });
+    };
 })
 
 /**
@@ -25,22 +39,21 @@ angular.module('mycdc.controllers', [])
  * @param {[type]}
  * @return {[type]}
  */
-.controller('SettingsCtrl', function($scope, SettingsStorage, $cordovaNetwork) {
-
-    $scope.settings = SettingsStorage.all();
-
-    $scope.saveSettings = function() {
-        SettingsStorage.save($scope.settings);
-    };
-
-    $scope.$watch('settings', function() {
-        SettingsStorage.save($scope.settings);
-    }, true);
-
-    $scope.resetSettings = function() {
-        SettingsStorage.clear();
+.controller('SettingsCtrl', function($scope, $rootScope, $cordovaNetwork) {
+    $rootScope.appInit().then(function(d) {
+        $scope.sourceFilters = $rootScope.sourceFilters;
         $scope.settings = SettingsStorage.all();
-    };
+        $scope.saveSettings = function() {
+            SettingsStorage.save($scope.settings);
+        };
+        $scope.$watch('settings', function() {
+            SettingsStorage.save($scope.settings);
+        }, true);
+        $scope.resetSettings = function() {
+            SettingsStorage.clear();
+            $scope.settings = SettingsStorage.all();
+        };
+    });
 })
 
 /**
@@ -50,8 +63,6 @@ angular.module('mycdc.controllers', [])
  * Note: This should really be AppCtrl and HomeCtrl saved for the home stream
  */
 .controller('SourceListCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate) {
-    $scope.menu = [];
-    $scope.storage = '';
 
     // This little bit of nonsense checks for the existance of the runonce localstorage key and if the Home Controller has already loaded (it loads 2x for some reason)
     // If they key doesn't exist, and the Home Controller hasn't already loaded, load the modal

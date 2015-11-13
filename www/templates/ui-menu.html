@@ -1,73 +1,40 @@
 <ion-side-menus> <!--enable-menu-with-back-views="false"-->
 	<ion-side-menu-content>
 		<ion-nav-bar class="bar-positive" align-title="left" animation="no-animation">
-
-			<ion-nav-back-button alt="Back Button" ng-click="goBack()"></ion-nav-back-button>
-	            <ion-nav-buttons side="left">
+			<ion-nav-buttons side="left">
 	                <button alt="Menu Button" class="button button-icon button-clear ion-navicon" menu-toggle="left" id="navicon"></button>
-	                <a alt="Source Button" class="button button-clear" href="#/app/home"><i class="icon ion-gear-a"></i></a>
 	                <button alt="Back Button" class="button button-icon ion-home" data-ng-show="buttons.show.home" data-ng-click="goHome()"> Home</button>
-			    <button alt="Back Button" class="button button-icon ion-chevron-left" data-ng-show="buttons.show.back" data-ng-click="goBack()"> Back</button>
+			    <!-- <button alt="Back Button" class="button button-icon ion-chevron-left" data-ng-show="buttons.show.back" data-ng-click="goBack()"> Back</button> -->
 	            </ion-nav-buttons>
 	            <ion-nav-buttons side="right">
 	                <a alt="Settings Button" class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
 	            </ion-nav-buttons>
-
-			<!-- <ion-nav-buttons side="left">
-				<!- -<a alt="Source Button" class="button button-clear" href="#/app/home"><i class="icon ion-gear-a"></i></a>- ->
-				<button alt="Back Button" class="button button-icon ion-home" data-ng-show="buttons.show.home" data-ng-click="goHome()"> Home</button>
-				<button alt="Back Button" class="button button-icon ion-chevron-left" data-ng-show="buttons.show.back" data-ng-click="goBack()"> Back</button>
-			</ion-nav-buttons>
-			<ion-nav-buttons side="right">
-				<a alt="Settings Button" class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
-			</ion-nav-buttons> -->
 		</ion-nav-bar>
 		<ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
 	</ion-side-menu-content>
 	<ion-side-menu side="left">
 		<ion-header-bar class="bar-positive">
-			<button alt="Close Button" class="button button-icon button-clear ion-android-close" menu-toggle="left" ng-click="alert('')"></button>
+			<button alt="Close Button" class="button button-icon button-clear ion-android-close" menu-toggle="left"></button>
 		</ion-header-bar>
 		<ion-content>
 			<ion-list can-swipe="listCanSwipe">
-				<h4 class="cdc-blue primary">Articles</h4>
-				<ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'Articles'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
-					<i class="icon {{i.icon}}"></i> {{ i.title }}
-				</ion-checkbox>
-				<h4 class="cdc-blue primary">Blogs</h4>
-				<ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'Blogs'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
-					<i class="icon {{i.icon}}"></i> {{ i.title }}
-				</ion-checkbox>
-				<h4 class="cdc-blue primary">Data &amp; Statistics</h4>
-				<ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'Data'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
-					<i class="icon {{i.icon}}"></i> {{ i.title }}
-				</ion-checkbox>
-				<h4 class="cdc-blue primary">Facts</h4>
-				<ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'Facts'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
-					<i class="icon {{i.icon}}"></i> {{ i.title }}
-				</ion-checkbox>
-				<h4 class="cdc-blue primary">Journals</h4>
-				<ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'Journals'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
-					<i class="icon {{i.icon}}"></i> {{ i.title }}
-				</ion-checkbox>
-				<h4 class="cdc-blue primary">News</h4>
-				<ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'News'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
-					<i class="icon {{i.icon}}"></i> {{ i.title }}
-				</ion-checkbox>
-				<h4 class="cdc-blue primary">Photos</h4>
-				<ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'Photos'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
-					<i class="icon {{i.icon}}"></i> {{ i.title }}
-				</ion-checkbox>
-				<h4 class="cdc-blue primary">Social</h4>
-				<ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'Social'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
-					<i class="icon {{i.icon}}"></i> {{ i.title }}
-				</ion-checkbox>
-				<h4 class="cdc-blue primary">Video &amp; Audio</h4>
-				<ion-checkbox ng-repeat="i in menu.data.sources | filter:{'contenttype':'AudioVideo'}" ng-model="i.checked" ng-checked="i.checked" ng-disabled="i.readonly" nav-clear nav-transition="ios">
-					<i class="icon {{i.icon}}"></i> {{ i.title }}
-				</ion-checkbox>
+				<!-- STRUCTURE IS THIS
+				 $scope.sourceFilters[typeIdentifier][feedIdentifier] = {
+	                        isEnabled : [DEFAULTED SETTING YOU UPDATE],
+	                        allowFiltering : [SETTING FROM JSON FILE],
+	                   };
+				-->
+				<div data-ng-repeat="sourceType in sourceTypes">
+					<h4 class="cdc-blue primary">{{sourceType.typeName}}</h4>
+					<ion-checkbox ng-repeat="objFeed in sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier}"
+						ng-model="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
+						ng-checked="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
+						ng-disabled="!app.sourceFilterLocks[objFeed.typeIdentifier][objFeed.feedIdentifier].allowFiltering" nav-clear nav-transition="ios" data-ng-click="saveFilters()">
+						{{objFeed.title}}
+					</ion-checkbox>
+				</div>
+				<a alt="Sources Button" class="button button-clear" href="#/app/home">Source List</a>
 			</ion-list>
-			<a ng-href="#/app/home">Source List</a>
 		</ion-content>
 	</ion-side-menu>
 </ion-side-menus>
