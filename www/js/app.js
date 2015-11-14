@@ -916,7 +916,7 @@ add to body class: platform-wp8
                     templateMap : {},
                     sourceMetaMap : {},
                     sourceFilters : {},
-                    sourceFiltersLocks : {}
+                    sourceFilterLocks : {}
                 };
 
                 // LOCALS
@@ -944,13 +944,15 @@ add to body class: platform-wp8
                         isEnabled : objSrc.showByDefault
                     };
                     // MAP SOURCE FILTER DEFAULTS (LOCAL STORAGE WILL BE MERGED AND OVERRIDE THESE)
-                    if (!objApp.sourceFiltersLocks.hasOwnProperty(objSrc.typeIdentifier)) {
+                    if (!objApp.sourceFilterLocks.hasOwnProperty(objSrc.typeIdentifier)) {
                         // DEFAULT FEEDTYPE CONTAINER
-                        objApp.sourceFiltersLocks[objSrc.typeIdentifier] = {};
+                        objApp.sourceFilterLocks[objSrc.typeIdentifier] = {};
                     }
-                    objApp.sourceFiltersLocks[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
-                        allowFiltering : objSrc.allowFiltering
+                    objApp.sourceFilterLocks[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
+                        filterLocked : objSrc.filterLocked
                     };
+
+                    console.log(objApp.sourceFiltersLocks);
                 }
 
                 // TRY TO GET LOCAL SETTINGS OVERRIDES

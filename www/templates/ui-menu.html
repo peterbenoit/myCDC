@@ -19,17 +19,18 @@
 		<ion-content>
 			<ion-list can-swipe="listCanSwipe">
 				<!-- STRUCTURE IS THIS
-				 $scope.sourceFilters[typeIdentifier][feedIdentifier] = {
-	                        isEnabled : [DEFAULTED SETTING YOU UPDATE],
-	                        allowFiltering : [SETTING FROM JSON FILE],
-	                   };
+				$scope.sourceFilters[typeIdentifier][feedIdentifier] = {
+				isEnabled : [DEFAULTED SETTING YOU UPDATE],
+				allowFiltering : [SETTING FROM JSON FILE],
+				};
 				-->
 				<div data-ng-repeat="sourceType in sourceTypes">
 					<h4 class="cdc-blue primary">{{sourceType.typeName}}</h4>
 					<ion-checkbox ng-repeat="objFeed in sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier}"
 						ng-model="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
 						ng-checked="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
-						ng-disabled="!sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].allowFiltering" nav-clear nav-transition="ios" data-ng-click="saveFilters()">
+						ng-disabled="sourceFilterLocks[objFeed.typeIdentifier][objFeed.feedIdentifier].filterLocked"
+						nav-clear nav-transition="ios" data-ng-click="saveFilters()">
 						{{objFeed.title}}
 					</ion-checkbox>
 				</div>
