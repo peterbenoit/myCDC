@@ -656,31 +656,32 @@ ion-side-menu.menu.menu-left .item-content {
   width: 100%;
 }
 
+
+/* !!! V2 STYLES !!! */
 .ui-home.ui-tablet-portrait .ui-list-view .card-container {
   width: 50vw;
 }
 .ui-home.ui-tablet-landscape .ui-list-view .card-container {
   width: 33.33vw;
 }
-
 .ui-home.ui-tablet-portrait .ui-list-view .card-container .card {
   height: 55vw;
 }
 .ui-home.ui-tablet-landscape .ui-list-view .card-container .card {
   height: 38vw;
 }
-
 .ui-home.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
   width: 33.3vw;
   height: 21vh;
 }
-
 .ui-home.ui-tablet-portrait .ui-list-view .card-container .card .item-image {
   width: 50vw;
   height: 19vh;
 }
-
-
+.ui-home.ui-phone .ui-list-view .card-container .card .item-image {
+  height: 31vh;
+  width: 100vw;
+}
 
 
 /* DETAIL VIEW */
