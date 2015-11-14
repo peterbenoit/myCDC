@@ -39,19 +39,19 @@ angular.module('mycdc.controllers', [])
  * @param {[type]}
  * @return {[type]}
  */
-.controller('SettingsCtrl', function($scope, $rootScope, $cordovaNetwork) {
+.controller('SettingsCtrl', function($scope, $rootScope, $cordovaNetwork, $ionicPopup) {
     $rootScope.appInit().then(function(d) {
-        $scope.sourceFilters = $rootScope.sourceFilters;
-        $scope.settings = SettingsStorage.all();
-        $scope.saveSettings = function() {
-            SettingsStorage.save($scope.settings);
-        };
-        $scope.$watch('settings', function() {
-            SettingsStorage.save($scope.settings);
-        }, true);
         $scope.resetSettings = function() {
-            SettingsStorage.clear();
-            $scope.settings = SettingsStorage.all();
+            var confirmPopup = $ionicPopup.confirm({
+                title: 'Reset Application Data',
+                template: 'Clear all application settings and data?'
+            });
+            confirmPopup.then(function(res) {
+                if(res) {
+                    window.localStorage.clear();
+                    $rootScope.appInit(true);
+                }
+            });
         };
     });
 })
@@ -238,11 +238,11 @@ angular.module('mycdc.controllers', [])
                 $scope.appInit().then(function(d) {
 
                     // REFRESH REQUESTED SOURCE INDEX DATA?
-                    if (blnRefresh || !$scope.sourceIndexPromise || false) {
+                    if (blnRefresh || false) {
 
                         // GET / SET SOURCE META DATA TO SCOPE FROM STATE PARAMETERS
                         $scope.sourceMeta = $rootScope.getSourceMeta($stateParams);
-                        $scope.getSourceListLocal(blnRefresh).then(function(d){
+                        $scope.getSourceListLocal().then(function(d){
 
                             // RESOLVE PROMISE
                             defer.resolve(d);
@@ -288,6 +288,6 @@ angular.module('mycdc.controllers', [])
             return d;
         });
 
-        console.log('YO');
+        console.log('Contoller Load');
     });
 });

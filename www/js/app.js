@@ -319,12 +319,12 @@ add to body class: platform-wp8
                 }
 
                 // DELETE BAD EGGS (MORE ACCURATELY, KEEP GOOD EGGS)
-                console.log(d);
-                console.log('I was able to filter ' + d.length);
+                //console.log(d);
+                //console.log('I was able to filter ' + d.length);
                 d = $filter('filter')(d, {
                     delete: false
                 });
-                console.log('down to' + d.length);
+                //console.log('down to' + d.length);
 
                 // APPLY SOURCE FILTERS
                 d = $filter('applySourceFilters')(d, rs.app.sourceFilters);
@@ -458,11 +458,11 @@ add to body class: platform-wp8
 
     rs.getSimpleLocalStore = (function() {
 
-        var storePrefix = 'myCdc';
+        var storePrefix = 'myCDC';
 
         return function (storeKey) {
 
-            var storeName = storePrefix + storeKey;
+            var storeName = storePrefix + '_' + storeKey;
 
             return {
                 get: function() {
@@ -490,7 +490,7 @@ add to body class: platform-wp8
 
     rs.getLocalStoreByAppState = (function() {
 
-        var storePrefix = 'myCdc';
+        var storePrefix = 'myCDC';
         var dateFormat = 'YYYY-MM-DD-HH-mm-ss';
         var dataTimeoutInMinutes = 10;
 
@@ -498,7 +498,7 @@ add to body class: platform-wp8
 
             // EXIT IF AGE STORE DOES NOT EXIST
             if (!window.localStorage.hasOwnProperty(ageStoreKey)) {
-                rs.log(ageStoreKey + ' does not exist, returning expired', 1);
+                rs.log(ageStoreKey + ' does not exist, returning expired', 0);
                 return true;
             }
 
@@ -510,7 +510,7 @@ add to body class: platform-wp8
             then = moment(window.localStorage[ageStoreKey], dateFormat);
             diff = moment.duration(now - then).asMinutes();
 
-            rs.log(ageStoreKey + ' is ' + diff + ' minutes old', 1);
+            rs.log(ageStoreKey + ' indicates corresponing data is ' + Math.floor(diff) + ' minutes old', 0);
 
             // RETURN EXPIRED FLAG
             return diff >= dataTimeoutInMinutes;
@@ -521,11 +521,11 @@ add to body class: platform-wp8
             var storeName, storeAgingName;
 
             if (strType == 'sourceDetail') {
-                storeName = storePrefix + $stateParams.sourceName + '-' + $stateParams.sourceDetail;
+                storeName = storePrefix + '_' + $stateParams.sourceName + '_' + $stateParams.sourceDetail;
             } else {
-                storeName = storePrefix + $stateParams.sourceName;
+                storeName = storePrefix + '_' + $stateParams.sourceName;
             }
-            storeAgingName = storeName + 'Saved';
+            storeAgingName = storeName + '_saved';
 
             return {
                 all: function() {
@@ -536,17 +536,19 @@ add to body class: platform-wp8
                     // RETURN IT IF FOUND
                     if (jsonData) {
                         var objReturn = {
+                            name : storeName,
                             expired : isExpired(storeAgingName),
                             data : angular.fromJson(jsonData)
                         }
 
-                        rs.log(jsonData, 1, storeAgingName + ' data');
+                        rs.log(objReturn, 0, storeName + ' data');
 
                         return objReturn;
                     }
 
                     // DEFAULT RETURN
                     return {
+                        name : storeName,
                         expired : true,
                         data : []
                     };
@@ -676,12 +678,17 @@ add to body class: platform-wp8
         localStore = rs.getLocalStoreByAppState();
         localData = localStore.all();
 
+        //console.log('localData');
+        console.log(localData);
+        //console.log('blnRefresh');
+        //console.log(blnRefresh);
+
         // CHECK IF WE NEED TO REFRESH OR NOT
         if (!blnRefresh && !localData.expired) {
 
             // LOCAL DATA IS GOOD
             // RESOLVE PROMISE WITH THE STORED DATA
-            rs.log('Using Local Stream Data (Still Fresh)', -999);
+            rs.log('Using Local Stream Data for ' + localData.name + ' (Still Fresh)', -999);
             defer.resolve(localData.data);
 
         } else {
@@ -702,7 +709,7 @@ add to body class: platform-wp8
                     localStore.save(data);
 
                     // RESOLVE WITH PROCESSED DATA
-                    rs.log('Using New Stream Data (Remote)', -999);
+                    rs.log('Using New Stream Data for ' + localData.name + ' (Refresh Requested)', -999);
                     defer.resolve(data);
 
                 }, function(e) {
@@ -711,13 +718,13 @@ add to body class: platform-wp8
                     if (localData.data && localData.data.length) {
 
                         // FALLBACK TO SAVED DATA
-                        rs.log('Using Local Stream Data (Not Fresh)', -999);
+                        rs.log('Using Local Stream Data for ' + localData.name + ' (Data Is Expired)', -999);
                         defer.resolve(localData.data);
 
                     } else {
 
                         // ALL FAILED RETURN WHAT WE HAVE IN LOCAL STORAGE
-                        rs.log('Could Not Find And Data (Local, Remote, or Default)', -999);
+                        rs.log('Could Not Find Any Data for ' + localData.name + '  (Local, Remote, or Default)', -999);
                         defer.reject();
                     }
                 });
@@ -725,7 +732,7 @@ add to body class: platform-wp8
             } else {
 
                 // LOCAL DATA IS OLD BUT URL UNAVAILABLE, RESOLVE PROMISE WITH THE STORED DATA
-                rs.log('Using Local Stream Data (Not Fresh)', 1);
+                rs.log('Using Local Stream Data for ' + localData.name + ' (URL NOT DEFINED)', -999);
                 defer.resolve(data);
             }
         }
@@ -845,7 +852,7 @@ add to body class: platform-wp8
 
             // LOCAL DATA IS GOOD
             // RESOLVE PROMISE WITH THE STORED DATA
-            rs.log(localData.data, 1, 'Using Local Detail Data (Still Fresh)');
+            rs.log(localData.data, -100, 'Using Local Detail Data (Still Fresh)');
             defer.resolve(localData.data);
 
         } else {
@@ -868,7 +875,7 @@ add to body class: platform-wp8
                 localStore.save(data);
 
                 // RESOLVE WITH PROCESSED DATA
-                rs.log('Using New Detail Data (Remote)', 1);
+                rs.log('Using New Detail Data (Remote)', -100);
                 defer.resolve(data);
 
             }, function(e) {
@@ -877,13 +884,14 @@ add to body class: platform-wp8
                 if (localData.data && localData.data.length) {
 
                     // FALLBACK TO SAVED DATA
-                    rs.log(localData.data, 1, 'Using Local Detail Data (Not Fresh)');
+                    rs.log('Using Local Detail Data (Not Fresh)', -100);
+                    //rs.log(localData.data, -100, 'Using Local Detail Data (Not Fresh)');
                     defer.resolve(localData.data);
 
                 } else {
 
                     // ALL FAILED RETURN WHAT WE HAVE IN LOCAL STORAGE
-                    rs.log('Could Not Find And Data (Local, Remote, or Default)', 1);
+                    rs.log('Could Not Find And Data (Local, Remote, or Default)', -100);
                     defer.reject();
                 }
             });
@@ -951,8 +959,6 @@ add to body class: platform-wp8
                     objApp.sourceFilterLocks[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
                         filterLocked : objSrc.filterLocked
                     };
-
-                    console.log(objApp.sourceFiltersLocks);
                 }
 
                 // TRY TO GET LOCAL SETTINGS OVERRIDES
@@ -960,6 +966,8 @@ add to body class: platform-wp8
 
                 //console.log('objApp.sourceFilters');
                 //console.log(objApp.sourceFilters);
+                //console.log('objApp.sourceFilterLocks');
+                //console.log(objApp.sourceFilterLocks);
 
                 // IF WE FOUND LOCAL SETTINGS, MERGE THEM IN
                 if (localFilters) {

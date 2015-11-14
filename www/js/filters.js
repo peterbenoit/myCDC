@@ -252,7 +252,7 @@ angular.module('mycdc.filters', [])
                         if (sourceFilters[objTmp.objCurrItem.typeIdentifier][objTmp.objCurrItem.feedIdentifier].isEnabled) {
                             // PUSH IT TO RETURN IF IT CHECKS OUT
                             objTmp.aryReturn.push(objTmp.objCurrItem);
-                            console.log('PASS');
+                            //console.log('PASS');
                         }
                         // else {
                         //     console.log('fail 3');
@@ -278,7 +278,7 @@ angular.module('mycdc.filters', [])
                 console.log(objTmp.aryReturn);
                 */
 
-                console.log('I was able to filter ' + sourceArray.length + ' down to ' + objTmp.aryReturn.length);
+                //console.log('I was able to filter ' + sourceArray.length + ' down to ' + objTmp.aryReturn.length);
 
                 return objTmp.aryReturn.reverse();
             //}
