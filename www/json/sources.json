@@ -38,7 +38,7 @@
         "processors": ["cardTemplateInjector", "stripHtml"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-home",
             "stream" : "ui-stream-home",
@@ -56,7 +56,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -74,7 +74,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "iframe",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-iframe",
             "stream" : "ui-stream-standard",
@@ -92,7 +92,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -128,7 +128,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -146,7 +146,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -164,7 +164,7 @@
         "processors": ["cardTemplateInjector", "stripHtml"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -182,7 +182,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -200,7 +200,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -218,7 +218,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -236,7 +236,7 @@
         "processors": ["cardTemplateInjector", "firstOnly"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -254,7 +254,7 @@
         "processors": ["cardTemplateInjector", "parseEncoding"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -272,7 +272,7 @@
         "processors": ["cardTemplateInjector","stripHtml"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-iframe",
             "stream" : "ui-stream-standard",
@@ -290,7 +290,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -307,7 +307,7 @@
         "getContentBy": "url",
         "detailType" : "iframe",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -325,7 +325,7 @@
         "processors": ["cardTemplateInjector", "flagOutbreak"],
         "detailType" : "iframe",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -343,7 +343,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "iframe",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -361,7 +361,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "image",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-images",
             "stream" : "ui-stream-image",
@@ -379,7 +379,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-audio",
@@ -397,7 +397,7 @@
         "processors": ["cardTemplateInjector","extractVideoComments"],
         "detailType" : "video",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -413,7 +413,7 @@
         "getContentBy": "na",
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -429,7 +429,7 @@
         "getContentBy": "na",
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-image",
@@ -445,7 +445,7 @@
         "getContentBy": "na",
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-video",
@@ -461,7 +461,7 @@
         "getContentBy": "na",
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -477,7 +477,7 @@
         "getContentBy": "na",
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -493,7 +493,7 @@
         "getContentBy": "na",
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
@@ -509,7 +509,7 @@
         "getContentBy": "na",
         "detailType" : "default",
         "showByDefault" : true,
-        "allowFiltering" : false,
+        "allowFiltering" : true,
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",

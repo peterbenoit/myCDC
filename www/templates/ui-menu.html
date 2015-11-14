@@ -29,7 +29,7 @@
 					<ion-checkbox ng-repeat="objFeed in sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier}"
 						ng-model="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
 						ng-checked="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
-						ng-disabled="!app.sourceFilterLocks[objFeed.typeIdentifier][objFeed.feedIdentifier].allowFiltering" nav-clear nav-transition="ios" data-ng-click="saveFilters()">
+						ng-disabled="!sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].allowFiltering" nav-clear nav-transition="ios" data-ng-click="saveFilters()">
 						{{objFeed.title}}
 					</ion-checkbox>
 				</div>
