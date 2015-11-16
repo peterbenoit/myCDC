@@ -166,6 +166,14 @@
     margin-left: 10px;
     margin-bottom: 10px;
 }
+
+.civ li li {
+    list-style: circle;
+}
+
+.civ li li li {
+    list-style: square;
+}
 /*.contentarea div,
 .contentarea span,
 .contentarea applet,
