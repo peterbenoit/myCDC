@@ -582,6 +582,11 @@ add to body class: platform-wp8
         };
     }());
 
+    rs.viewOnCDC = function () {
+        alert('THIS NEEDS WIRED UP');
+        // window.open($scope.data.sourceUrl, '_system');
+    };
+
     rs.remoteApi = (function() {
         var apiDefaults = {
             method: 'GET',
@@ -590,7 +595,7 @@ add to body class: platform-wp8
 
         return function(options) {
             options.method = options.method || apiDefaults.method;
-            options.timeout = options.timeout || apiDefaults.timeout
+            options.timeout = options.timeout || apiDefaults.timeout;
             return $http(options);
         }
     }());
