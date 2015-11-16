@@ -599,9 +599,10 @@ ion-side-menu.menu.menu-left .item-content {
 .ui-detail-view .content-header {
   height: 40px;
 }
-.ui-list-view .scroll-header h3,
-.ui-detail-view .content-header h3 {
-  margin: 8px 0 0 8px;
+.ui-list-view h3,
+.ui-detail-view h3 {
+  margin: 8px;
+  white-space: normal;
 }
 
 /* STREAM VIEWS */
@@ -830,7 +831,7 @@ ion-scroll[direction=y] {
   width: 29vw;
   height: 16.3vw;
 }
-
+x`
 
 /*
 .ui-tablet-landscape .ui-list-view .card-container .card .item-image {
