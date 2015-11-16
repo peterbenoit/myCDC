@@ -389,7 +389,7 @@ add to body class: platform-wp8
                         // TODO: need to talk with Sarah about this, Scientific names will need to be italic in a card name/title
 
                         // remove html from name
-                        // currItem.name = currItem.name.replace(/<[^>]+>/gm, '');
+                        currItem.name = currItem.name.replace(/<[^>]+>/gm, '');
 
                         // remove html from description
                         currItem.description = currItem.description.replace(/<[^>]+>/gm, '');
