@@ -452,6 +452,9 @@ body.platform-ios #popper {
     text-align: center;
 }
 
+.card .item a {
+  text-decoration: none;
+}
 
 /* keep the card background from turning gray when tapped */
 .card .item.activated {
