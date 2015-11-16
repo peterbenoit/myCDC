@@ -343,10 +343,25 @@ add to body class: platform-wp8
                 return d;
             },
             processTags: function(d) {
+                // var currItem, data = d;
+
+                // if (data.length) {
+                //     for (var i = data.length - 1; i >= 0; i--) {
+                //         currItem = data[i];
+
+                //         // remove html from name
+                //         currItem.name = $sce.trustAsHtml(currItem.name);
+                //     }
+
+                //     return data;
+                // }
+
+                // return [];
+                //
                 return d;
             },
             parseEncoding: function(d) {
-                var currItem, data = d.data.results;
+                var currItem, data = d.data.results;    //TODO: breaking for fact of the week
 
                 if (data.length) {
                     for (var i = data.length - 1; i >= 0; i--) {
@@ -370,6 +385,8 @@ add to body class: platform-wp8
                 if (data.length) {
                     for (var i = data.length - 1; i >= 0; i--) {
                         currItem = data[i];
+
+                        // TODO: need to talk with Sarah about this, Scientific names will need to be italic in a card name/title
 
                         // remove html from name
                         currItem.name = currItem.name.replace(/<[^>]+>/gm, '');
@@ -565,6 +582,11 @@ add to body class: platform-wp8
         };
     }());
 
+    rs.viewOnCDC = function () {
+        alert('THIS NEEDS WIRED UP');
+        // window.open($scope.data.sourceUrl, '_system');
+    };
+
     rs.remoteApi = (function() {
         var apiDefaults = {
             method: 'GET',
@@ -573,9 +595,9 @@ add to body class: platform-wp8
 
         return function(options) {
             options.method = options.method || apiDefaults.method;
-            options.timeout = options.timeout || apiDefaults.timeout
+            options.timeout = options.timeout || apiDefaults.timeout;
             return $http(options);
-        }
+        };
     }());
 
     rs.refreshScreenState = function () {
@@ -675,7 +697,7 @@ add to body class: platform-wp8
 
         var defer, localStore, localData, objMetaData, data;
 
-        defer = $q.defer(),
+        defer = $q.defer();
         objMetaData = rs.getSourceMeta();
         localStore = rs.getLocalStoreByAppState();
         localData = localStore.all();
@@ -781,7 +803,7 @@ add to body class: platform-wp8
 
         var defer, localStore, localData, objMetaData, noChromeUrl;
 
-        defer = $q.defer(),
+        defer = $q.defer();
         objMetaData = rs.getSourceMeta();
         localStore = rs.getLocalStoreByAppState('sourceDetail');
         localData = localStore.all();
@@ -805,15 +827,15 @@ add to body class: platform-wp8
 
             // URL CHECK NEEDED
             $rootScope.remoteApi({
-                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + objTemp.noChromeUrl
+                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=http://' + objTemp.noChromeUrl
             }).then(function(resp) {
                 var urlToUse;
 
                 // DETERMINE URL BASED ON SERVER STATUS RETURN
                 if (resp.data.status === '200') {
-                    urlToUse = objTemp.noChromeUrl
+                    urlToUse = objTemp.noChromeUrl;
                 } else {
-                    urlToUse = objTemp.sourceUrl
+                    urlToUse = objTemp.sourceUrl;
                 }
 
                 //SAVE IT TO LOCAL
@@ -822,7 +844,7 @@ add to body class: platform-wp8
                 // RESOLVE THE PROMISE WITH THE NEW DATA
                 defer.resolve(urlToUse);
 
-                return resp
+                return resp;
             },
             function(resp) {
 
@@ -832,7 +854,7 @@ add to body class: platform-wp8
                 localStore.save(objTemp.sourceUrl);
 
                 defer.resolve(objTemp.sourceUrl);
-                return resp
+                return resp;
             });
         }
 

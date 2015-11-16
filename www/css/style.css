@@ -108,7 +108,7 @@ colors
 }
 
 .border .padding {
-    float:right;
+    /*float:right;*/
     padding-right: 0;
 }
 
@@ -452,18 +452,21 @@ body.platform-ios #popper {
     text-align: center;
 }
 
-/*
-    adjustments
-*/
-
-.right { float: right;}
-
-.padding .title {
-    font-size: 24px;
+.card .item a {
+  text-decoration: none;
 }
 
-.item-body {
-    padding-bottom: 0;
+.detail-images h1 {
+  font-size: 26px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.video-paging span {
+    font-size: 26px;
+    margin-top: 13px;
+    display: inline-block;
+    margin-left: 10px;
 }
 
 /* keep the card background from turning gray when tapped */
@@ -531,6 +534,9 @@ ion-side-menu.menu.menu-left .item-content {
     padding-left: 15px;
 }
 
+.item-notice a {
+  color: #444;
+}
 .item-notice.outbreak {
     background: #e1b8b8;
     border-top: 2px solid #ce2029!important;
@@ -843,4 +849,3 @@ ion-scroll[direction=y] {
 .stream-home .card-container {
   float: left;
 }
-
