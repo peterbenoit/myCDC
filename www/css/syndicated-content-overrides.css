@@ -101,6 +101,10 @@
 }
 
 
+.fact .contentarea .rx-row:first-of-type, .fact .contentarea h3 {
+    display:none;
+}
+
 /* CONTENT AREA RESPONSIVE */
 @media only screen and (max-width: 320px) {
     .contentarea .row img {
