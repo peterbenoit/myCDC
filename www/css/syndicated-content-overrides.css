@@ -100,7 +100,8 @@
     display:none;
 }
 
-.journal .contentarea {
+.journal .contentarea,
+.fact .contentarea {
     margin-top: 10px;
 }
 
@@ -108,6 +109,13 @@
 .journal .contentarea .table-story + br,
 .journal .contentarea .figure-story,
 .journal .contentarea .figure-story + br {
+    display:none;
+}
+
+.journal .contentarea .tablestyle,
+.journal .contentarea .tablestyle + .caption,
+.journal .contentarea h5,
+.journal .contentarea h2:last-of-type {
     display:none;
 }
 
