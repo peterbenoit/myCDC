@@ -38,6 +38,7 @@
     display: block;
     padding: 10px 0;
     clear: left;
+    float: left;
 }
 .contentarea .padding .title {
     font-size: 24px;
