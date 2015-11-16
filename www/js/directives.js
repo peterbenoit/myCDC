@@ -503,7 +503,8 @@ angular.module('mycdc.directives', [])
                 //     $(this).replaceWith('<img src="http://www.ikea.com/PIAimages/0106117_PE253936_S5.JPG">');
                 // });
                 $('.contentarea').find('a[href^=#]').each(function() {
-                    $(this).replaceWith('<span>' + $(this).text() + '</span>');
+                    $(this).replaceWith($(this).text());
+                    // .replace(/(\r\n|\n|\r)/gm,"");
                 });
             });
         }
