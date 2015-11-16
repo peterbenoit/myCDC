@@ -597,7 +597,7 @@ add to body class: platform-wp8
             options.method = options.method || apiDefaults.method;
             options.timeout = options.timeout || apiDefaults.timeout;
             return $http(options);
-        }
+        };
     }());
 
     rs.refreshScreenState = function () {
@@ -695,7 +695,7 @@ add to body class: platform-wp8
 
         var defer, localStore, localData, objMetaData, data;
 
-        defer = $q.defer(),
+        defer = $q.defer();
         objMetaData = rs.getSourceMeta();
         localStore = rs.getLocalStoreByAppState();
         localData = localStore.all();
