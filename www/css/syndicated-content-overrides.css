@@ -91,6 +91,16 @@
     padding: 0;
 }
 
+.contentarea .onThisPageAnchor {
+    display:none;
+}
+
+.contentarea .stat-wrapper + h2,
+.contentarea .stat-wrapper + h2 + ul {
+    display:none;
+}
+
+
 /* CONTENT AREA RESPONSIVE */
 @media only screen and (max-width: 320px) {
     .contentarea .row img {
