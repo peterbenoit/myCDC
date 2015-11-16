@@ -801,7 +801,7 @@ add to body class: platform-wp8
 
         var defer, localStore, localData, objMetaData, noChromeUrl;
 
-        defer = $q.defer(),
+        defer = $q.defer();
         objMetaData = rs.getSourceMeta();
         localStore = rs.getLocalStoreByAppState('sourceDetail');
         localData = localStore.all();
@@ -842,7 +842,7 @@ add to body class: platform-wp8
                 // RESOLVE THE PROMISE WITH THE NEW DATA
                 defer.resolve(urlToUse);
 
-                return resp
+                return resp;
             },
             function(resp) {
 
