@@ -161,7 +161,7 @@
         "icon": "ion-checkmark-circled",
         "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=EID&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=100",
         "getContentBy": "id",
-        "processors": ["cardTemplateInjector", "stripHtml"],
+        "processors": ["cardTemplateInjector", "stripHtml", "processTags"],
         "detailType" : "default",
         "showByDefault" : true,
         "filterLocked" : false,
