@@ -825,15 +825,15 @@ add to body class: platform-wp8
 
             // URL CHECK NEEDED
             $rootScope.remoteApi({
-                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + objTemp.noChromeUrl
+                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=http://' + objTemp.noChromeUrl
             }).then(function(resp) {
                 var urlToUse;
 
                 // DETERMINE URL BASED ON SERVER STATUS RETURN
                 if (resp.data.status === '200') {
-                    urlToUse = objTemp.noChromeUrl
+                    urlToUse = objTemp.noChromeUrl;
                 } else {
-                    urlToUse = objTemp.sourceUrl
+                    urlToUse = objTemp.sourceUrl;
                 }
 
                 //SAVE IT TO LOCAL
