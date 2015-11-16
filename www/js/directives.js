@@ -177,7 +177,7 @@ angular.module('mycdc.directives', [])
                     }
 
                     if ($scope.cardData.id == '152266') {
-                        console.log($scope.cardData);
+                        // console.log($scope.cardData);
                         $rootScope.log($scope.cardData, -1000, 'UI-CARD-DATA');
                         $rootScope.log(uiCardTemplateUrl, -1000, 'UI-CARD-TEMPLATE');
                     }
@@ -499,9 +499,9 @@ angular.module('mycdc.directives', [])
     return {
         link: function(scope, element, attrs) {
             $timeout(function() {
-                $('.contentarea').find('table').each(function() {
-                    $(this).replaceWith('<img src="http://www.ikea.com/PIAimages/0106117_PE253936_S5.JPG">');
-                });
+                // $('.contentarea').find('table').each(function() {
+                //     $(this).replaceWith('<img src="http://www.ikea.com/PIAimages/0106117_PE253936_S5.JPG">');
+                // });
                 $('.contentarea').find('a[href^=#]').each(function() {
                     $(this).replaceWith('<span>' + $(this).text() + '</span>');
                 });
