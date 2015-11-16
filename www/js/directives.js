@@ -499,13 +499,14 @@ angular.module('mycdc.directives', [])
     return {
         link: function(scope, element, attrs) {
             $timeout(function() {
-                // $('.contentarea').find('table').each(function() {
-                //     $(this).replaceWith('<img src="http://www.ikea.com/PIAimages/0106117_PE253936_S5.JPG">');
-                // });
                 $('.contentarea').find('a[href^=#]').each(function() {
                     $(this).replaceWith($(this).text());
                     // .replace(/(\r\n|\n|\r)/gm,"");
                 });
+
+                // remove all figures and tables (and following hrs)
+                // using jQuery remove instead of hiding with CSS, hoping removal of large HTML markup from the DOM will help with performance
+                $('.figure, .table, .figure + hr, .table + hr').remove();
             });
         }
     };
