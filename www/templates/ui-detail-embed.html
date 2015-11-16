@@ -6,7 +6,7 @@
         <div ng-if="nochrome" class="padding data civ embed">
             <h1 class="title">{{detailCard.name}}</h1>
             <div class="datepub">{{detailCard.datePublished}}</div>
-            <div class="source">Source: {{detailCard.name}}</div>
+            <div class="source">{{detailCard.name}}</div>
         </div>
         <iframe data-tap-disabled="true" src="{{frameUrl}}" id="contentframe" onload="frameready()"></iframe>
         <!--
