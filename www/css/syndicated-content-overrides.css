@@ -100,6 +100,25 @@
     display:none;
 }
 
+.journal .contentarea {
+    margin-top: 10px;
+}
+
+.journal .contentarea .table-story,
+.journal .contentarea .table-story + br,
+.journal .contentarea .figure-story,
+.journal .contentarea .figure-story + br {
+    display:none;
+}
+
+.contentarea a[href$='.xml'] {
+    display:none;
+}
+
+.superscript {
+    vertical-align: super;
+    font-size: smaller;
+}
 
 .fact .contentarea .rx-row:first-of-type, .fact .contentarea h3 {
     display:none;
