@@ -5,11 +5,11 @@
 angular.module('mycdc', [
     'ionic',
     'mycdc.controllers',
-    'mycdc.data',
+    //'mycdc.data',
     'mycdc.directives',
     'mycdc.filters',
     'mycdc.services',
-    'mycdc.storage',
+    //'mycdc.storage',
     'ngCordova',
     'ngAnimate',
     'angular.filter',
@@ -33,6 +33,8 @@ add to body class: platform-wp8
 
     // APP CONTAINER
     rs.app = {};
+    rs.logLevel = -99;
+    rs.aryHistory = [{}];
 
     // window.open should use inappbrowser
     document.addEventListener('deviceready', onDeviceReady, false);
@@ -120,8 +122,6 @@ add to body class: platform-wp8
         currentView: null,
         disabledRegistrableTagNames: []
     };
-
-    rs.logLevel = -99;
 
     rs.log = function (anyVar, intLevel, anyLabel) {
         intLevel = intLevel || 10;
@@ -313,7 +313,7 @@ add to body class: platform-wp8
                     // IF NO TEMPLATES CAN BE FOUND, THE CONTENT GROUP IS INVALID, FLAG FOR DELETE
                     obj1.delete = !obj1.templates;
                     if (obj1.delete) {
-                        rs.log(obj1, -999, 'UNABLE TO FIND CONTENT GROUP FOR THIS ARTICLE');
+                        rs.log(obj1, -1, 'UNABLE TO FIND CONTENT GROUP FOR THIS ARTICLE');
                     }
 
                 }
@@ -628,6 +628,7 @@ add to body class: platform-wp8
         rs.buttons = buttons;
     };
 
+    /*
     rs.goBack = function() {
         $state.go('app.sourceIndex', {
             sourceName : $stateParams.sourceName
@@ -640,12 +641,13 @@ add to body class: platform-wp8
             sourceName : 'homestream'
         });
     };
+    */
 
     rs.cgNormalize = function (contentgroup) {
         return contentgroup.toLowerCase().replace(/ /g, '').replace(/\//g, '').replace(/\d/g, '');
     };
 
-    // GET SOURCE METADATA FROM SOURCELIST BY NAME (In Route Params)
+    // SOURCE DATA HANDLERS (LIST CFG, SOURCE STREAMS, DETAIL HANDLERS, ETC)
     rs.getSourceMeta = function() {
 
         // PARAMS
@@ -688,7 +690,7 @@ add to body class: platform-wp8
 
             // LOCAL DATA IS GOOD
             // RESOLVE PROMISE WITH THE STORED DATA
-            rs.log('Using Local Stream Data for ' + localData.name + ' (Still Fresh)', -999);
+            rs.log('Using Local Stream Data for ' + localData.name + ' (Still Fresh)', -1);
             defer.resolve(localData.data);
 
         } else {
@@ -709,7 +711,7 @@ add to body class: platform-wp8
                     localStore.save(data);
 
                     // RESOLVE WITH PROCESSED DATA
-                    rs.log('Using New Stream Data for ' + localData.name + ' (Refresh Requested)', -999);
+                    rs.log('Using New Stream Data for ' + localData.name + ' (Refresh Requested)', -1);
                     defer.resolve(data);
 
                 }, function(e) {
@@ -718,13 +720,13 @@ add to body class: platform-wp8
                     if (localData.data && localData.data.length) {
 
                         // FALLBACK TO SAVED DATA
-                        rs.log('Using Local Stream Data for ' + localData.name + ' (Data Is Expired)', -999);
+                        rs.log('Using Local Stream Data for ' + localData.name + ' (Data Is Expired)', -1);
                         defer.resolve(localData.data);
 
                     } else {
 
                         // ALL FAILED RETURN WHAT WE HAVE IN LOCAL STORAGE
-                        rs.log('Could Not Find Any Data for ' + localData.name + '  (Local, Remote, or Default)', -999);
+                        rs.log('Could Not Find Any Data for ' + localData.name + '  (Local, Remote, or Default)', -1);
                         defer.reject();
                     }
                 });
@@ -732,7 +734,7 @@ add to body class: platform-wp8
             } else {
 
                 // LOCAL DATA IS OLD BUT URL UNAVAILABLE, RESOLVE PROMISE WITH THE STORED DATA
-                rs.log('Using Local Stream Data for ' + localData.name + ' (URL NOT DEFINED)', -999);
+                rs.log('Using Local Stream Data for ' + localData.name + ' (URL NOT DEFINED)', -1);
                 defer.resolve(data);
             }
         }
@@ -900,6 +902,98 @@ add to body class: platform-wp8
         return defer.promise;
     };
 
+    // HISTORY HANDLERS
+    rs.saveHistory = function(stateParams) {
+        // HAVE WE BEEN SENT HERE FROM HISTORY BACK?
+        if (rs.historyRedirect) {
+
+            // IGNORE SAVE AND FLAG REDIRECT TO FALSE
+            rs.historyRedirect = false;
+
+        } else {
+
+            // SAVE THE STATE TO HISTORY (IF NEW)
+            var thisState = angular.extend({},stateParams);
+
+            // SHOULD WE SAVE IT?
+            if (!rs.aryHistory.length) {
+                // NO HISTORY? SAVE CURRENT
+                rs.aryHistory.push(thisState);
+            } else if (!(rs.aryHistory[rs.aryHistory.length - 1] == thisState)) {
+                // IS THIS SAME DIFFERENT FROM THE LAST? SAVE CURRENT
+                rs.aryHistory.push(thisState);
+            }
+        };
+
+        //console.log('BEGIN HISTORY LOGIC *************');
+        //console.log(rs.aryHistory);
+        //console.log('END HISTORY LOGIC *************');
+    };
+
+    rs.historyBack = function() {
+
+        // ARE THERE ANY SATSTES TO STEP BACK TO?
+        if (rs.aryHistory && rs.aryHistory.length) {
+
+            // NOW GET THE NEXT STATE (& POP IT OFF THE ARRAY)
+            var objLastState = rs.aryHistory.pop();
+
+            // IS THE LAST STATE THIS STATE?
+            if (objLastState == $stateParams && rs.aryHistory.length) {
+
+                // IF SO GET THE PRIOR STATE (BACK BUTTON GETS US HERE)
+                objLastState = rs.aryHistory.pop();
+            }
+
+            // FLAG REDIRECT
+            rs.historyRedirect = true;
+
+            // DETERMINE AND SET APPROPRIATE STATE
+            if (objLastState.sourceDetail && objLastState.sourceDetail.length) {
+                $state.go('app.sourceDetail', objLastState);
+            } else if (objLastState.sourceName && objLastState.sourceName.length) {
+                $state.go('app.sourceIndex', objLastState);
+            }
+        }
+    };
+
+    rs.backButtonDisplay = function (stateParams) {
+        var objReturn = {
+            show : false,
+            icon : '',
+            text : ''
+        };
+
+        console.log('BEGIN HISTORY LOGIC *************');
+        console.log(stateParams.sourceName);
+        if (stateParams.sourceName == 'homestream') {
+            console.log('home stream - no icon');
+        } else {
+            console.log(objReturn.show);
+            if (rs.aryHistory.length >= 0) {
+                objReturn.show = true;
+
+                console.log(rs.aryHistory);
+                var objLastState = rs.aryHistory[rs.aryHistory.length - 2] || {};
+                console.log('objLastState');
+                console.log(objLastState);
+                if (objLastState.hasOwnProperty('sourceName')) {
+                    if (objLastState.sourceName == 'homestream') {
+                        objReturn.icon = 'ion-home';
+                        objReturn.text = 'Home';
+                    } else {
+                        objReturn.icon = 'ion-chevron-left';
+                        objReturn.text = 'Back';
+                    }
+                }
+                console.log(objLastState);
+            }
+        }
+        console.log('END HISTORY LOGIC *************');
+        return objReturn;
+    }
+
+    // APP INIT
     rs.appInit = function(blnRefresh) {
 
         var defer = $q.defer();
@@ -1063,6 +1157,16 @@ add to body class: platform-wp8
             'menuContent': {
                 templateUrl: 'templates/settings.html',
                 controller: 'SettingsCtrl'
+            }
+        }
+    });
+
+    sp.state('app.test', {
+        url: '/test/:sourceName',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/ui-master.html',
+                controller: 'CommonSourceCtrl'
             }
         }
     });

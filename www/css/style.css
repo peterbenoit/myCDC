@@ -656,34 +656,6 @@ ion-side-menu.menu.menu-left .item-content {
   width: 100%;
 }
 
-
-/* !!! V2 STYLES !!! */
-.ui-home.ui-tablet-portrait .ui-list-view .card-container {
-  width: 50vw;
-}
-.ui-home.ui-tablet-landscape .ui-list-view .card-container {
-  width: 33.33vw;
-}
-.ui-home.ui-tablet-portrait .ui-list-view .card-container .card {
-  height: 55vw;
-}
-.ui-home.ui-tablet-landscape .ui-list-view .card-container .card {
-  height: 38vw;
-}
-.ui-home.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
-  width: 33.3vw;
-  height: 21vh;
-}
-.ui-home.ui-tablet-portrait .ui-list-view .card-container .card .item-image {
-  width: 50vw;
-  height: 19vh;
-}
-.ui-home.ui-phone .ui-list-view .card-container .card .item-image {
-  height: 31vh;
-  width: 100vw;
-}
-
-
 /* DETAIL VIEW */
 .ui-phone .ui-detail-view {
   position: absolute;
@@ -810,7 +782,65 @@ ion-scroll[direction=y] {
 }
 */
 
+/* !!! V2 STYLES !!! */
+
+/* HOME CARDS */
+/* PHONE (PORTRAIT ONLY)*/
+.ui-home.ui-phone .ui-list-view .card-container {
+  width: 100vw;
+}
+.ui-home.ui-phone .ui-list-view .card-container .card {
+  height: 120vw;
+}
+.ui-home.ui-phone .ui-list-view .card-container .card .item-image {
+  width: 100vw;
+  height: 56vw;
+}
+/* TABLE PORTRAIT */
+.ui-home.ui-tablet-portrait .ui-list-view .card-container {
+  width: 50vw;
+}
+.ui-home.ui-tablet-portrait .ui-list-view .card-container .card {
+  height: 60vw;
+}
+.ui-home.ui-tablet-portrait .ui-list-view .card-container .card .item-image {
+  width: 50vw;
+  height: 28vw;
+}
+/* TABLE LANDSCAPE */
+.ui-home.ui-tablet-landscape .ui-list-view .card-container {
+  width: 33.33vw;
+}
+.ui-home.ui-tablet-landscape .ui-list-view .card-container .card {
+  height: 39.66vw;
+}
+.ui-home.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
+  width: 33.33vw;
+  height: 18.55vw;
+}
+
+/* CARD DEFAULTS */
+.ui-tablet-landscape .ui-list-view .card-container {
+  width: 29vw;
+}
+.ui-tablet-landscape .ui-list-view .card-container .card {
+  height: 34.8vw;
+}
+.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
+  width: 29vw;
+  height: 16.3vw;
+}
+
+
+/*
+.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
+  height: 21vw;
+  width: 11.25vw;
+}
+*/
+
 /* TEST */
 .stream-home .card-container {
   float: left;
 }
+

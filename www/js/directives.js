@@ -176,11 +176,11 @@ angular.module('mycdc.directives', [])
                         }
                     }
 
-                    if ($scope.cardData.id == '152266') {
+                    /*if ($scope.cardData.id == '152266') {
                         console.log($scope.cardData);
                         $rootScope.log($scope.cardData, -1000, 'UI-CARD-DATA');
                         $rootScope.log(uiCardTemplateUrl, -1000, 'UI-CARD-TEMPLATE');
-                    }
+                    }*/
 
                 }
 

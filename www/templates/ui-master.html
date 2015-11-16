@@ -1,0 +1,41 @@
+<!--
+"containerSet" : "ui-container-home",
+"stream" : "ui-stream-home",
+"card" : "ui-card-default",
+"homeCard" : "ui-card-default",
+"detail" : "ui-detail-article"
+-->
+
+<ion-view>
+	<ion-content>
+		<div class="{{sourceMeta.templates.containerSet}} ui-master {{screenState.viewOrientation}}">
+			<div class="ui-stream-container {{sourceMeta.templates.stream}}" style="background-color: cyan">
+				<ion-scroll ng-if="screenState.viewType == 'tablet' && screenState.viewOrientation == 'portrait'" direction="x" class="horizontal-scroller stream stream-horizontal" delegate-handle="streamScrollVertical">
+					<div class="ui-stream-container-pad">
+						<div ng-repeat="card in streamItems">
+							<ui-card data-card-data="card"></ui-card>
+						</div>
+					</div>
+					<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+				</ion-scroll>
+				<ion-scroll ng-if="screenState.viewType != 'tablet' || (screenState.viewType == 'tablet'  && screenState.viewOrientation != 'portrait')" direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
+					<div class="ui-stream-container-pad">
+						<div ng-repeat="card in streamItems">
+							<ui-card data-card-data="card"></ui-card>
+						</div>
+					</div>
+					<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+				</ion-scroll>
+				<!-- <div class="ui-stream-container-pad">
+					<div ng-repeat="card in streamItems">{{card}}</div>
+				</div> -->
+			</div>
+			<div class="ui-detail-container {{sourceMeta.templates.detail}}"  style="background-color: magenta">
+				<div class="ui-stream-container-pad">
+					DETAIL
+					{{screenState}}
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

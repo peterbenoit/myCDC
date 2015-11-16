@@ -131,7 +131,7 @@ angular.module('mycdc.controllers', [])
  */
 .controller('CommonSourceCtrl', function($scope, $rootScope, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate) {
 
-    var   initialLoad = (!$scope.sourceName),
+    var  initialLoad = (!$scope.sourceName),
     sourceChange = ($stateParams.sourceName !== $scope.sourceName),
     detailChange = ($stateParams.sourceDetail !== $scope.sourceDetail);
 
@@ -182,6 +182,7 @@ angular.module('mycdc.controllers', [])
 
                 // SET DATA TO "datas" SO TEMPLATE WILL PICK IT UP & DISPLAY IT
                 $scope.datas = d;
+                $scope.streamItems = $scope.datas;
                 $rootScope.log($scope.datas, 1, 'CURRENT SOURCE DATA');
 
                 // BROADCAST REFRESH SO SCROLLER WILL RESIZE APPROPRIATELY
@@ -258,6 +259,8 @@ angular.module('mycdc.controllers', [])
         $scope.doRefresh = function (blnRefresh) {
             $scope.getSourceListLocal(blnRefresh);
         };
+
+        console.log('Contoller Initial Load');
     }
 
     $scope.loading = $ionicLoading.show({
@@ -273,6 +276,9 @@ angular.module('mycdc.controllers', [])
 
         // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
         $scope.ctrlInit(initialLoad || sourceChange).then(function(d){
+
+            $rootScope.saveHistory($stateParams);
+            $rootScope.objBackButton = $rootScope.backButtonDisplay($stateParams);
 
             $scope.sourceList = $rootScope.app.sourceList;
             $scope.sourceTypes = $rootScope.app.sourceTypes;
