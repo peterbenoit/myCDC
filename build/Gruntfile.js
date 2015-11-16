@@ -39,28 +39,16 @@ module.exports = function(grunt) {
 
   // SET PRIVATE VARS: ENVIRONMENT CONFIG, DESIRED GRUNT OPTIONS, ETC
   var ENVS = {
-      LOCAL: {
+      PROTOTYPE: {
         load: ['grunt-contrib-less'],
         task: ['less:development']
       },
-      DEV: {
-        load: ['grunt-contrib-less'],
-        task: ['less:development','less:wcms']
-      },
-      PROTOTYPE: {
-        load: ['grunt-contrib-less','grunt-contrib-copy','grunt-contrib-uglify','grunt-text-replace'],
-        task: ['less:development','copy:dev','less:wcms','uglify','replace','update']
-      },
-      QA: {
-        load: ['grunt-contrib-less','grunt-contrib-copy','grunt-contrib-uglify','grunt-text-replace'],
-        task: ['less:production','copy:production','less:wcms','uglify','replace','update']
-      },
       PROD: {
-        load: ['grunt-contrib-less','grunt-contrib-copy','grunt-contrib-uglify','grunt-text-replace'],
-        task: ['less:production','copy:production','less:wcms','uglify','replace','update']
+        load: ['grunt-contrib-less'],
+        task: ['less:development']
       }
     },
-    target = (grunt.option('target') || 'PROD'),
+    target = (grunt.option('target') || 'PROTOTYPE'),
     lessOptions = require('./grunt_options/less');
 
 

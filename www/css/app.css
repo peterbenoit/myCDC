@@ -1,0 +1,36 @@
+/*
+.ui-stream-container {
+	.ui-stream-container-pad,
+	.ui-detail-container-pad {
+		overflow: hidden;
+	}
+}
+*/
+.has-header {
+  top: 0;
+}
+.landscape .ui-stream-container,
+.landscape .ui-detail-container {
+  float: left;
+  height: 100vh;
+  overflow: hidden;
+  /*padding-bottom: 45px;  OFFSET FOR HEADER HEIGHT */
+}
+.landscape .ui-stream-container {
+  width: 35vw;
+}
+.landscape .ui-detail-container {
+  width: 65vw;
+}
+.portrait .ui-stream-container,
+.portrait .ui-detail-container {
+  float: none;
+  width: 100vw;
+}
+.portrait .ui-stream-container {
+  height: 30vh;
+  padding-top: 44px;
+}
+.portrait .ui-detail-container {
+  height: 70vh;
+}
