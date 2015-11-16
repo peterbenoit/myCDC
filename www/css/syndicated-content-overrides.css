@@ -37,13 +37,22 @@
 /* CONTENT AREA GENERAL */
 .contentarea .row {
   display: block;
-  padding: 0;
+  padding: 10px 0;
   clear: left;
+}
+
+.contentarea .padding .title {
+    font-size: 24px;
+}
+
+.contentarea .item-body {
+    padding-bottom: 0;
 }
 
 .contentarea .pull-left {
   float: left;
 }
+.contentarea .right, .contentarea .pull-right { float: right;}
 
 .contentarea img {
   float: left;
@@ -51,6 +60,10 @@
   width: auto !important;
   height: auto !important;
   margin-right: 10px;
+}
+
+.contentarea p {
+    line-height: normal;
 }
 
 .contentarea .toTop {
@@ -68,7 +81,7 @@
   .contentarea .row img {
     margin: 0;
     display: block;
-  }
+}
 }
 
 /* VIEW TYPE SPECIFIC AREAS */
@@ -115,33 +128,35 @@
   display: none;
 }
 
-.article .source, .article .datepub, .contentarea {
+.article .source, .article .datepub, .civ {
   font-size: 16px;
 }
 
-.contentarea h1 {
+.civ h1 {
   font-size: 26px;
 }
-.contentarea h2 {
+.civ h2 {
   font-size: 24px;
 }
-.contentarea h3 {
+.civ h3 {
   font-size: 22px;
 }
-.contentarea h4 {
+.civ h4 {
   font-size: 20px;
 }
-.contentarea h5 {
+.civ h5 {
   font-size: 18px;
 }
-.contentarea h6 {
+.civ h6 {
   font-size: 16px; font-weight: bold;
 }
-.contentarea ol, .contentarea ul, .contentarea li {
+.civ ol, .civ ul, .civ li {
   list-style: disc;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
-.contentarea div,
+/*.contentarea div,
 .contentarea span,
 .contentarea applet,
 .contentarea object,
@@ -224,14 +239,14 @@
   margin: auto!important;
   padding: auto!important;
   border: auto!important;
-}
+  }*/
 
-.contentrea ul {
+  .contentrea ul {
     padding-left:1em;
     margin-left:0;
 }
 
 .contentarea h1, .contentarea h2, .contentarea h3, .contentarea h4, .contentarea h5, .contentarea h6, .contentarea p, .contentarea blockquote,
- .contentarea form, .contentarea label, .contentarea ul, .contentarea ol, .contentarea dl, .contentarea fieldset, .contentarea address {
+.contentarea form, .contentarea label, .contentarea ul, .contentarea ol, .contentarea dl, .contentarea fieldset, .contentarea address {
     margin-bottom: 1em;
 }
