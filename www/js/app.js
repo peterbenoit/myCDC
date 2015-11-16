@@ -361,7 +361,7 @@ add to body class: platform-wp8
                 return d;
             },
             parseEncoding: function(d) {
-                var currItem, data = d.data.results;
+                var currItem, data = d.data.results;    //TODO: breaking for fact of the week
 
                 if (data.length) {
                     for (var i = data.length - 1; i >= 0; i--) {
@@ -852,7 +852,7 @@ add to body class: platform-wp8
                 localStore.save(objTemp.sourceUrl);
 
                 defer.resolve(objTemp.sourceUrl);
-                return resp
+                return resp;
             });
         }
 
