@@ -343,6 +343,21 @@ add to body class: platform-wp8
                 return d;
             },
             processTags: function(d) {
+                // var currItem, data = d;
+
+                // if (data.length) {
+                //     for (var i = data.length - 1; i >= 0; i--) {
+                //         currItem = data[i];
+
+                //         // remove html from name
+                //         currItem.name = $sce.trustAsHtml(currItem.name);
+                //     }
+
+                //     return data;
+                // }
+
+                // return [];
+                //
                 return d;
             },
             parseEncoding: function(d) {
@@ -371,8 +386,10 @@ add to body class: platform-wp8
                     for (var i = data.length - 1; i >= 0; i--) {
                         currItem = data[i];
 
+                        // TODO: need to talk with Sarah about this, Scientific names will need to be italic in a card name/title
+
                         // remove html from name
-                        currItem.name = currItem.name.replace(/<[^>]+>/gm, '');
+                        // currItem.name = currItem.name.replace(/<[^>]+>/gm, '');
 
                         // remove html from description
                         currItem.description = currItem.description.replace(/<[^>]+>/gm, '');
