@@ -108,7 +108,7 @@ colors
 }
 
 .border .padding {
-    float:right;
+    /*float:right;*/
     padding-right: 0;
 }
 
