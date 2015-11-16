@@ -506,7 +506,7 @@ angular.module('mycdc.directives', [])
 
                 // remove all figures and tables (and following hrs)
                 // using jQuery remove instead of hiding with CSS, hoping removal of large HTML markup from the DOM will help with performance
-                $('.figure, .table, .figure + hr, .table + hr').remove();
+                $('.figure, .table, hr').remove();
             });
         }
     };
