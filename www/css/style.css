@@ -521,6 +521,9 @@ ion-side-menu.menu.menu-left .item-content {
     padding-left: 15px;
 }
 
+.item-notice a {
+  color: #444;
+}
 .item-notice.outbreak {
     background: #e1b8b8;
     border-top: 2px solid #ce2029!important;
