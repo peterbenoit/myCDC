@@ -1157,6 +1157,7 @@ add to body class: platform-wp8
     $ionicConfigProvider.navBar.transition('none'); // keep the navbar from animating
     $ionicConfigProvider.views.transition('fade');
 
+    // http://forum.ionicframework.com/t/scrolling-lags-significantly-on-android/28727/2
     if (!ionic.Platform.isIOS()) {
         $ionicConfigProvider.scrolling.jsScrolling(false);
     }

@@ -8,7 +8,10 @@
 				<ion-scroll direction="y" class="vertical-scroller stream stream-home has-header">
 					<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
 					<ui-stream><!-- STREAM HANDLER --></ui-stream>
-					<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
+			        <button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="loadMore()" >
+			            Show more
+			        </button>
 				</ion-scroll>
 			</div>
 		</div><!-- ui-tablet-portrait -->
