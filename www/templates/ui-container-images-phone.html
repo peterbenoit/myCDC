@@ -3,9 +3,9 @@
 
 	<!-- THE LIST VIEW (IF NO DETAIL SELECTED) -->
 	<div class="ui-list-view" data-ng-if="!sourceDetail.length">
-		<div class="scroll-header"><h3>{{sourceMeta.title}}</h3></div>
 		<ion-scroll direction="y" class="vertical-scroller stream">
 			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+			<h3>{{sourceMeta.title}}</h3>
 			<ui-stream></ui-stream>
 			<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
 	        <button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="loadMore()" >
