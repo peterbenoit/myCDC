@@ -361,7 +361,7 @@ add to body class: platform-wp8
                 return d;
             },
             parseEncoding: function(d) {
-                var currItem, data = d.data.results;    //TODO: breaking for fact of the week
+                var currItem, data = d;
 
                 if (data.length) {
                     for (var i = data.length - 1; i >= 0; i--) {
@@ -1017,7 +1017,7 @@ add to body class: platform-wp8
 
                 if (objLastState.hasOwnProperty('sourceName')) {
                     if (objLastState.sourceName == 'homestream') {
-                        objReturn.icon = 'ion-home';
+                        objReturn.icon = 'ion-chevron-left';
                         objReturn.text = 'Home';
                     } else {
                         objReturn.icon = 'ion-chevron-left';

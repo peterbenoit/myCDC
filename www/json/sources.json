@@ -204,8 +204,8 @@
         "templates" : {
             "containerSet" : "ui-container-default",
             "stream" : "ui-stream-standard",
-            "card" : "ui-card-image",
-            "homeCard" : "ui-card-image",
+            "card" : "ui-card-default",
+            "homeCard" : "ui-card-default",
             "detail" : "ui-detail-blog"
         }
     }, {
