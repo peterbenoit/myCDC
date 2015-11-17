@@ -15,8 +15,8 @@
 	"installation": "npm install",
 	"main": "Gruntfile.js",
 	"directories": {
-		"src": "../www/",
-		"dest": "../www/"
+		"src": "../www/less/",
+		"dest": "../www/css/"
 	},
 	"scripts": {
 		"test": "npm run test-pre",

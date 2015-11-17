@@ -8,9 +8,15 @@ module.exports = {
       compress: false,  //Compress output by removing some whitespaces.
       cleancss: false   //Compress output using clean-css.
     },
-    files: {
-      '<%= pkg.directories.src %>css/app.css': '<%= pkg.directories.src %>less/app.less',
-    }
+    files: [
+      {
+        expand: true,
+        cwd: '<%= pkg.directories.src %>',
+        src: '*.less',
+        dest: '<%= pkg.directories.dest %>',
+        ext: '.css'
+      }
+    ]
   },
   production: {
     options: {
@@ -19,8 +25,17 @@ module.exports = {
       compress: true, //Compress output by removing some whitespaces.
       cleancss: true    //Compress output using clean-css.
     }, // idea is that copy task will move these files for production...
-    files: {
-      '<%= pkg.directories.src %>css/app.css': '<%= pkg.directories.src %>less/app.less',
-     }
+    files: [
+      {
+        expand: true,
+        cwd: '<%= pkg.directories.src %>',
+        src: '*.less',
+        dest: '<%= pkg.directories.dest %>',
+        ext: '.css'
+      }
+    ]
   }
 }
+
+
+
