@@ -16,7 +16,10 @@
 							<ui-card data-card-data="card"></ui-card>
 						</div>
 					</div>
-					<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
+			        <button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="loadMore()" >
+			            Show more
+			        </button>
 				</ion-scroll>
 				<ion-scroll ng-if="screenState.viewType != 'tablet' || (screenState.viewType == 'tablet'  && screenState.viewOrientation != 'portrait')" direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
 					<div class="ui-stream-container-pad">
@@ -24,7 +27,10 @@
 							<ui-card data-card-data="card"></ui-card>
 						</div>
 					</div>
-					<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
+			        <button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="loadMore()" >
+			            Show more
+			        </button>
 				</ion-scroll>
 				<!-- <div class="ui-stream-container-pad">
 					<div ng-repeat="card in streamItems">{{card}}</div>
