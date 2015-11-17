@@ -34,7 +34,7 @@ add to body class: platform-wp8
     // APP CONTAINER
     rs.app = {};
     rs.logLevel = -99;
-    rs.aryHistory = [{}];
+    rs.aryHistory = [];
 
     // window.open should use inappbrowser
     document.addEventListener('deviceready', onDeviceReady, false);
@@ -590,7 +590,7 @@ add to body class: platform-wp8
     rs.remoteApi = (function() {
         var apiDefaults = {
             method: 'GET',
-            timeout: 7000
+            timeout: 30000
         };
 
         return function(options) {
@@ -925,56 +925,65 @@ add to body class: platform-wp8
     };
 
     // HISTORY HANDLERS
-    rs.saveHistory = function(stateParams) {
-        // HAVE WE BEEN SENT HERE FROM HISTORY BACK?
-        if (rs.historyRedirect) {
+    rs.saveHistory = function() {
 
-            // IGNORE SAVE AND FLAG REDIRECT TO FALSE
-            rs.historyRedirect = false;
+        // ENSURE HOME IS ALWAYS THE FIRST SPOT IN THE HISTORY ARRAY
+        if (!rs.aryHistory.length) {
+            rs.aryHistory.push({
+                sourceName : 'homestream',
+                sourceDetail : false
+            });
+        }
 
-        } else {
+        // GET THE LAST STATE IN HISTORY
+        var objLastState = rs.aryHistory[rs.aryHistory.length - 1] || {};
 
-            // SAVE THE STATE TO HISTORY (IF NEW)
-            var thisState = angular.extend({},stateParams);
-
-            // SHOULD WE SAVE IT?
-            if (!rs.aryHistory.length) {
-                // NO HISTORY? SAVE CURRENT
-                rs.aryHistory.push(thisState);
-            } else if (!(rs.aryHistory[rs.aryHistory.length - 1] == thisState)) {
-                // IS THIS SAME DIFFERENT FROM THE LAST? SAVE CURRENT
-                rs.aryHistory.push(thisState);
-            }
+        // SAVE THE STATE TO HISTORY (IF NEW)
+        var objThisState = {
+            sourceName : $stateParams.sourceName || false ,
+            sourceDetail : $stateParams.sourceDetail || false
         };
 
-        //console.log('BEGIN HISTORY LOGIC *************');
-        //console.log(rs.aryHistory);
-        //console.log('END HISTORY LOGIC *************');
+        // SHOULD WE SAVE IT?
+        if (objThisState.sourceName != objLastState.sourceName || objThisState.sourceDetail != objLastState.sourceDetail) {
+            // IS THIS SAME DIFFERENT FROM THE LAST? SAVE CURRENT
+            rs.aryHistory.push(objThisState);
+        }
     };
 
     rs.historyBack = function() {
 
+        console.log('HISTORY BACK CLICKED');
+
         // ARE THERE ANY SATSTES TO STEP BACK TO?
         if (rs.aryHistory && rs.aryHistory.length) {
 
-            // NOW GET THE NEXT STATE (& POP IT OFF THE ARRAY)
+            // GE THIS STATE
+            var objThisState = {
+                sourceName : $stateParams.sourceName || false ,
+                sourceDetail : $stateParams.sourceDetail || false
+            };
+
+            // GET THE LAST STATE (& POP IT OFF THE ARRAY)
             var objLastState = rs.aryHistory.pop();
 
-            // IS THE LAST STATE THIS STATE?
-            if (objLastState == $stateParams && rs.aryHistory.length) {
-
-                // IF SO GET THE PRIOR STATE (BACK BUTTON GETS US HERE)
-                objLastState = rs.aryHistory.pop();
+            // IS THE LAST STATE THE SAME AS THE CURRENT STATE?
+            if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
+                // THEN WE NEED TO GO BACK ONE MORE
+                if (rs.aryHistory.length) {
+                    // GET THE NEXT IN LINE
+                    objLastState = rs.aryHistory.pop();
+                }
             }
 
-            // FLAG REDIRECT
-            rs.historyRedirect = true;
-
-            // DETERMINE AND SET APPROPRIATE STATE
-            if (objLastState.sourceDetail && objLastState.sourceDetail.length) {
-                $state.go('app.sourceDetail', objLastState);
-            } else if (objLastState.sourceName && objLastState.sourceName.length) {
-                $state.go('app.sourceIndex', objLastState);
+            // IS THE LAST STATE DIFFERENT FROM THE CURRENT STATE?
+            if (objLastState.sourceName != objThisState.sourceName || objLastState.sourceDetail != objThisState.sourceDetail) {
+                // DETERMINE AND SET APPROPRIATE STATE (INDEX OR DETAIL)
+                if (objLastState.sourceDetail && objLastState.sourceDetail) {
+                    $state.go('app.sourceDetail', objLastState);
+                } else if (objLastState.sourceName && objLastState.sourceName.length) {
+                    $state.go('app.sourceIndex', objLastState);
+                }
             }
         }
     };
@@ -986,19 +995,26 @@ add to body class: platform-wp8
             text : ''
         };
 
-        console.log('BEGIN HISTORY LOGIC *************');
-        console.log(stateParams.sourceName);
         if (stateParams.sourceName == 'homestream') {
             console.log('home stream - no icon');
         } else {
             console.log(objReturn.show);
-            if (rs.aryHistory.length >= 0) {
+            if (rs.aryHistory.length > 0) {
                 objReturn.show = true;
 
-                console.log(rs.aryHistory);
-                var objLastState = rs.aryHistory[rs.aryHistory.length - 2] || {};
-                console.log('objLastState');
-                console.log(objLastState);
+                // GET THIS STATE
+                var objThisState = {
+                    sourceName : $stateParams.sourceName || false ,
+                    sourceDetail : $stateParams.sourceDetail || false
+                };
+                // GET THE LAST STATE IN HISTORY
+                var objLastState = rs.aryHistory[rs.aryHistory.length - 1] || {};
+                // ARE THEY THE SAME?
+                if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
+                    // YES, GO BACK ONE MORE
+                    objLastState = rs.aryHistory[rs.aryHistory.length - 2] || {};
+                }
+
                 if (objLastState.hasOwnProperty('sourceName')) {
                     if (objLastState.sourceName == 'homestream') {
                         objReturn.icon = 'ion-home';
@@ -1008,10 +1024,8 @@ add to body class: platform-wp8
                         objReturn.text = 'Back';
                     }
                 }
-                console.log(objLastState);
             }
         }
-        console.log('END HISTORY LOGIC *************');
         return objReturn;
     }
 

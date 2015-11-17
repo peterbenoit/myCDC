@@ -355,7 +355,7 @@ angular.module('mycdc.directives', [])
         template: '<div ng-include="getDetailTemplate()"></div>'
     }
 })
-/*
+
 .directive("splitBy", function($rootScope) {
 
     var setDimensions = function (element, reference, columns, setRatio) {
@@ -413,6 +413,7 @@ angular.module('mycdc.directives', [])
         }
     };
 })
+/*
  .directive('imageRatio', function() {
 
     var fixImageRatio = function(element, columns, ratio) {

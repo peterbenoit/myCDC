@@ -196,7 +196,7 @@ angular.module('mycdc.controllers', [])
                         // NO CARD LIST: ALERT USER, THEN REDIRECT
                         var noCardList = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                         noCardList.then(function() {
-                            $state.go('app.sourceIndex', {sourceName: $scope.sourceName, sourceDetail: 'homestream' });
+                            $state.go('app.sourceIndex', {sourceName: 'homestream'});
                         });
                     }
                 }

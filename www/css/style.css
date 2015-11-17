@@ -649,7 +649,6 @@ ion-side-menu.menu.menu-left .item-content {
   -webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
-
 /* HOME OVERLOADS */
 .ui-home .stream-row {
     overflow: visible;
@@ -793,13 +792,13 @@ ion-scroll[direction=y] {
 
 /* HOME CARDS */
 /* PHONE (PORTRAIT ONLY)*/
-.ui-home.ui-phone .ui-list-view .card-container {
+.ui-phone .ui-list-view .card-container {
   width: 100vw;
 }
-.ui-home.ui-phone .ui-list-view .card-container .card {
+.ui-phone .ui-list-view .card-container .card {
   height: 120vw;
 }
-.ui-home.ui-phone .ui-list-view .card-container .card .item-image {
+.ui-phone .ui-list-view .card-container .card .item-image {
   width: 100vw;
   height: 56vw;
 }
