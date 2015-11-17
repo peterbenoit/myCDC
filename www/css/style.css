@@ -607,7 +607,7 @@ ion-side-menu.menu.menu-left .item-content {
 }
 .ui-list-view h3,
 .ui-detail-view h3 {
-  margin: 8px;
+  margin: 8px;  /* WARN: this is adjusting h3's in the content area! */
   white-space: normal;
 }
 
