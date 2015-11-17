@@ -1,0 +1,16 @@
+<div class="stream stream-home stream-tablet stream-tablet-portrait">
+	<!--
+	<div class="stream-row" ng-repeat="data in datas | limitTo: paginationLimit('tabletPortrait')" ng-if="$index % 3 === 0">
+		<div class="card-container">
+			<ui-card data-card-data="data" ng-if="$index < datas.length"></ui-card>
+		</div><!-- card-container - ->
+		<div class="card-container">
+			<ui-card ng-if="$index + 1 < datas.length" data-card-data="datas[$index + 1]"></ui-card>
+		</div><!-- card-container - ->
+	</div><!-- stream-row - ->
+	-->
+	<!-- V2 - WILL IT WORK???? -->
+	<div class="card-container" ng-repeat="data in datas | limitTo: paginationLimit('tabletLandscape')">
+		<ui-card data-card-data="data"></ui-card>
+	</div>
+</div><!--stream stream-tablet-->

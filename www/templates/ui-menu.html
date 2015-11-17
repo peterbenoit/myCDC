@@ -1,0 +1,43 @@
+<ion-side-menus enable-menu-with-back-views="true">
+	<ion-side-menu-content>
+		<ion-nav-bar class="bar-positive" align-title="center" animation="no-animation">
+			<ion-nav-buttons side="left">
+	                <button alt="Menu Button" class="button button-icon button-clear ion-navicon" menu-toggle="left" id="navicon"></button>
+				<button alt="Back Button" class="button button-icon {{objBackButton.icon}}" data-ng-show="objBackButton.show" data-ng-click="historyBack()"> {{objBackButton.text}}</button>
+
+	                <!--<button alt="Back Button" class="button button-icon ion-home" data-ng-show="buttons.show.home" data-ng-click="goHome()"> Home</button>-->
+			    <!-- <button alt="Back Button" class="button button-icon ion-chevron-left" data-ng-show="buttons.show.back" data-ng-click="goBack()"> Back</button> -->
+	            </ion-nav-buttons>
+	            <ion-nav-buttons side="right">
+	                <a alt="Settings Button" class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
+	            </ion-nav-buttons>
+		</ion-nav-bar>
+		<ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+	</ion-side-menu-content>
+	<ion-side-menu side="left">
+		<ion-header-bar class="bar-positive">
+			<button alt="Close Button" class="button button-icon button-clear ion-android-close" menu-toggle="left"></button>
+		</ion-header-bar>
+		<ion-content>
+			<ion-list can-swipe="listCanSwipe">
+				<!-- STRUCTURE IS THIS
+				$scope.sourceFilters[typeIdentifier][feedIdentifier] = {
+				isEnabled : [DEFAULTED SETTING YOU UPDATE],
+				allowFiltering : [SETTING FROM JSON FILE],
+				};
+				-->
+				<div data-ng-repeat="sourceType in sourceTypes">
+					<h4 class="cdc-blue primary">{{sourceType.typeName}}</h4>
+					<ion-checkbox ng-repeat="objFeed in sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier}"
+						ng-model="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
+						ng-checked="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
+						ng-disabled="sourceFilterLocks[objFeed.typeIdentifier][objFeed.feedIdentifier].filterLocked"
+						nav-clear nav-transition="ios" data-ng-click="saveFilters()">
+						{{objFeed.title}}
+					</ion-checkbox>
+				</div>
+				<a alt="Sources Button" class="button button-clear" href="#/app/home">Source List</a>
+			</ion-list>
+		</ion-content>
+	</ion-side-menu>
+</ion-side-menus>

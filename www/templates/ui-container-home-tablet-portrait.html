@@ -1,0 +1,19 @@
+<!-- TABLET PORTRAIT MODE  -->
+<ion-view>
+	<ion-nav-title>CDC</ion-nav-title>
+	<ion-content>
+		<div ng-if="!containerLoading" class="ui-tablet-portrait ui-home">
+			<div class="ui-list-view">
+				<!-- HOMESTREAM -->
+				<ion-scroll direction="y" class="vertical-scroller stream stream-home has-header">
+					<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+					<ui-stream><!-- STREAM HANDLER --></ui-stream>
+					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
+			        <button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="loadMore()" >
+			            Show more
+			        </button>
+				</ion-scroll>
+			</div>
+		</div><!-- ui-tablet-portrait -->
+	</ion-content>
+</ion-view>

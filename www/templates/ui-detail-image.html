@@ -1,0 +1,27 @@
+<ion-view class="detail-images">
+    <ion-nav-buttons side="right">
+        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <h1 class="padding">Image Library</h1>
+        <div class="paging">
+            <a alt="Next Button" class="button icon-right ion-chevron-right button-clear button-dark" ng-class="{'button-negative':!next.visible, 'button-dark':next.visible}" ng-disabled="!next.visible" href="#/app/PHIL/{{next.position}}">Next</a>
+            <a alt="Previous Button" class="button icon-left ion-chevron-left button-clear button-dark" ng-class="{'button-negative':!previous.visible, 'button-dark':previous.visible}" ng-disabled="!previous.visible" href="#/app/PHIL/{{previous.position}}">Prev</a>
+        </div>
+        <div class="padding data civ image">
+            <img ng-src="{{detailCard.imageSrc}}" />
+            <div class="datepub">{{detailData.datePublished}} DATE IS MISSING</div>
+            DESCRIPTION IS MISSING
+            <p ng-bind-html="data.description"></p>
+            <div class="top-border">
+                <p class="padding">
+                    <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+                    <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
+                </p>
+            </div>
+        </div>
+        <!--<div>DETAIL DATA {{detailData}}</div>-->
+        <!--<ui-dump data-variable="{{detailCard}}"></ui-dump>-->
+        <!-- <div ng-repeat="key in detailCard">{{key}}</div> -->
+    </ion-content>
+</ion-view>

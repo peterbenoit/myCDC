@@ -1,0 +1,30 @@
+<div class="card" ng-if="!cardData.type">
+	<div ng-if="cardData.isOutbreak" class="item item-notice outbreak"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Outbreak</strong></a></div>
+	<div ng-if="cardData.isWarning" class="item item-notice warning"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Warning Level 3</a></div>
+	<div ng-if="cardData.isWatch" class="item item-notice watch"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Watch Level 1</a></div>
+	<div ng-if="cardData.isAlert" class="item item-notice alert"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Alert Level 2</a></div>
+	<a ng-if="cardData.hasImage" class="item item-image" ng-href="{{cardData.url}}{{cardData.id}}" style="background-image: url({{cardData.imageSrc}})">
+		<!--<img ng-src="{{cardData.imageSrc}}" err-src="img/image-placeholder.png" data-image-ratio="2:1">-->
+	</a>
+	<a class="item item-text-wrap item-body" ng-href="{{cardData.url}}{{cardData.id}}">
+		<strong data-ng-if="cardData.detailType != 'image'">{{cardData.name | words:10}}</strong>
+		<p class="date">{{cardData.datePublished}}</p>
+		<p ng-bind-html="cardData.description | words:20"></p>
+	</a>
+	<a class="item item-footer" ng-if="cardData.streamTitle" ng-href="{{cardData.url}}" >
+		{{cardData.streamTitle}}
+	</a>
+</div>
+<!--
+<div class="card social" ng-if="cardData.type == 'social'">
+	<a class="item item-thumbnail-right" ng-href="{{cardData.url}}">
+		<img ng-src="{{cardData.image}}">
+		<strong>{{cardData.name | words:8}}</strong>
+	</a>
+</div>
+-->
+<!-- <a href="{{cardData.url}}{{cardData.id}}" class="ng-enter-stagger" ng-if="cardData.type == 'image'" >
+	<div class="item item-image" ng-style="halfwidth()">
+		<img ng-src="{{cardData.imageSrc}}" class="horizontal">
+	</div>
+</a> -->

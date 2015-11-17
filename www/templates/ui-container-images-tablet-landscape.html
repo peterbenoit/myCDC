@@ -1,0 +1,20 @@
+<!-- TABLET LANDSCAPE MODE -->
+<div class="ui-images ui-tablet-landscape">
+
+	<!-- THE LIST VIEW -->
+	<div class="ui-list-view">
+		<!-- STREAM VIEW -->
+		<ion-scroll direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
+			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+			<h3>{{sourceMeta.title}}</h3>
+			<ui-stream></ui-stream>
+			<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+		</ion-scroll>
+	</div><!-- ui-list-view -->
+
+	<!-- THE DETAIL VIEW -->
+	<div class="ui-detail-view">
+		<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard"></ui-detail>
+	</div><!-- ui-detail-view -->
+
+</div><!-- ui-tablet-landscape -->

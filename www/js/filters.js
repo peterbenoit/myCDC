@@ -161,6 +161,130 @@ angular.module('mycdc.filters', [])
 
         return typeof resource !== 'undefined' ? $sce.trustAsResourceUrl(resource) : false;
     };
+}])
+
+
+.filter('spliceAtDetailId', ['$filter','$stateParams', function($filter, $stateParams) {
+    return function(sourceArray) {
+        sourceArray = sourceArray || [];
+
+        var objTmp = {};
+
+        // DO WE HAVE SOMETHING TO FILTER?
+        if (sourceArray.length) {
+            // DO WE HAVE FILTER CRITERIA?
+            if ($stateParams.sourceDetail) {
+                objTmp.aryReturn = sourceArray.slice(0).reverse();
+                objTmp.srcIndex = sourceArray.length;
+                objTmp.detailId = $stateParams.sourceDetail;
+
+                // LOOP TO FIND CURRENT DETAIL
+                while (objTmp.srcIndex--) {
+
+                    // GRAB CURRENT ITEM
+                    objTmp.objCurrItem = sourceArray[objTmp.srcIndex];
+
+                    // CHECK ITS ID AGAINS PASSED ID
+                    if (objTmp.objCurrItem.id == objTmp.detailId) {
+
+                        // IF ITEM FOUND - BREAK OUT OF LOOP (LEAVING THIS AT FIRST POSITION)
+                        break;
+                    }
+
+                    // ELSE - PUSH CURRENT ITEM TO END
+                    objTmp.aryReturn.push(objTmp.aryReturn.shift());
+                }
+
+                if (objTmp.aryReturn.length) {
+
+                    /* DEBUG
+                    console.log('FILTER');
+                    console.log(sourceArray.length);
+                    console.log(sourceArray);
+                    console.log(objTmp.aryReturn.length);
+                    console.log(objTmp.aryReturn);
+                    */
+
+                    return objTmp.aryReturn;
+                }
+            }
+        }
+
+        // JUST RETURN WHAT WAS PASSED (DEFAULT)
+        return sourceArray;
+    }
+}])
+
+.filter('applySourceFilters', ['$filter', function($filter) {
+    return function(sourceArray, sourceFilters) {
+        sourceArray = sourceArray || [];
+
+        var objTmp = {};
+
+        // console.log('sourceArray');
+        // console.log(sourceArray);
+        // console.log('sourceArray.length');
+        // console.log(sourceArray.length);
+        // console.log('sourceFilters');
+        // console.log(sourceFilters);
+
+        // DO WE HAVE SOMETHING TO FILTER?
+        if (sourceArray.length) {
+            objTmp.aryReturn = [];
+            objTmp.srcIndex = sourceArray.length;
+
+            // LOOP TO FIND CURRENT DETAIL
+            while (objTmp.srcIndex--) {
+
+                // GRAB CURRENT ITEM
+                objTmp.objCurrItem = sourceArray[objTmp.srcIndex];
+
+                // console.log(objTmp.objCurrItem);
+                // console.log(sourceFilters);
+                // console.log(objTmp.objCurrItem.typeIdentifier);
+                // console.log(sourceFilters[objTmp.objCurrItem.typeIdentifier]);
+                // console.log(objTmp.objCurrItem.feedIdentifier);
+                // console.log(sourceFilters[objTmp.objCurrItem.typeIdentifier][objTmp.objCurrItem.feedIdentifier]);
+
+                // CHECK OBJECT DATA AGAINST FILTERS
+                if (sourceFilters.hasOwnProperty(objTmp.objCurrItem.typeIdentifier)) {
+                    if (sourceFilters[objTmp.objCurrItem.typeIdentifier].hasOwnProperty(objTmp.objCurrItem.feedIdentifier)) {
+                        if (sourceFilters[objTmp.objCurrItem.typeIdentifier][objTmp.objCurrItem.feedIdentifier].isEnabled) {
+                            // PUSH IT TO RETURN IF IT CHECKS OUT
+                            objTmp.aryReturn.push(objTmp.objCurrItem);
+                            //console.log('PASS');
+                        }
+                        // else {
+                        //     console.log('fail 3');
+                        // }
+                    }
+                    // else {
+                    //     console.log('fail 2');
+                    // }
+                }
+                // else {
+                //     console.log('fail 1');
+                // }
+            }
+
+            // SAFETY - DO WE HAVE ANY RESULTS?
+            //if (objTmp.aryReturn.length) {
+
+                /* DEBUG
+                console.log('FILTER');
+                console.log(sourceArray.length);
+                console.log(sourceArray);
+                console.log(objTmp.aryReturn.length);
+                console.log(objTmp.aryReturn);
+                */
+
+                //console.log('I was able to filter ' + sourceArray.length + ' down to ' + objTmp.aryReturn.length);
+
+                return objTmp.aryReturn.reverse();
+            //}
+        }
+
+        // JUST RETURN WHAT WAS PASSED (DEFAULT)
+        return sourceArray;
+    }
 }]);
-
-

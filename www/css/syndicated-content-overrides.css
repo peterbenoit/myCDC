@@ -1,4 +1,3 @@
-
 /*
 #DotwView,
 #HealthArticlesView,
@@ -33,102 +32,196 @@
 #FactoftheWeekView,
 #YouTubesView,
 */
-
 /* CONTENT AREA GENERAL */
+
 .contentarea .row {
-  display: block;
-  padding: 0;
-  clear: left;
+    display: block;
+    padding: 10px 0;
+    clear: left;
+    float: left;
 }
-
+.contentarea .padding .title {
+    font-size: 24px;
+}
+.contentarea .item-body {
+    padding-bottom: 0;
+}
 .contentarea .pull-left {
-  float: left;
+    float: left;
 }
-
+.contentarea .right,
+.contentarea .pull-right {
+    float: right;
+}
 .contentarea img {
-  float: left;
-  max-width: 100%;
-  width: auto !important;
-  height: auto !important;
-  margin-right: 10px;
+    float: left;
+    max-width: 100%;
+    width: auto !important;
+    height: auto !important;
 }
+.contentarea a strong {
+    font-weight: normal;
+}
+.contentarea .module-typeG,
+.contentarea .emailupdates {
+    display: none!important;
+}
+.ui-phone {}
+.ui-tablet-landscape {}
+.ui-tablet-portrait {}
 
+.ui-phone .contentarea img {
+    margin: 10px 10px 10px 0;
+}
+.ui-tablet-landscape .contentarea img {
+    margin: 10px;
+}
+.ui-tablet-portrait .contentarea img {
+    margin: 10px;
+}
+.contentarea p {
+    line-height: normal;
+}
 .contentarea .toTop {
-  display: none;
+    display: none;
+}
+.contentarea .row [class*="span"] {
+    display: block;
+    float: none;
+    padding: 0;
 }
 
-.contentarea .row [class*="span"] {
-  display: block;
-  float: none;
-  padding: 0;
+.contentarea .onThisPageAnchor {
+    display:none;
+}
+
+.contentarea .stat-wrapper + h2,
+.contentarea .stat-wrapper + h2 + ul {
+    display:none;
+}
+
+.journal .contentarea,
+.fact .contentarea {
+    margin-top: 10px;
+}
+
+.journal .contentarea .table-story,
+.journal .contentarea .table-story + br,
+.journal .contentarea .figure-story,
+.journal .contentarea .figure-story + br {
+    display:none;
+}
+
+.journal .contentarea .tablestyle,
+.journal .contentarea .tablestyle + .caption,
+.journal .contentarea h5,
+.journal .contentarea h2:last-of-type {
+    display:none;
+}
+
+.contentarea a[href$='.xml'] {
+    display:none;
+}
+
+.superscript {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+.fact .contentarea .rx-row:first-of-type, .fact .contentarea h3 {
+    display:none;
 }
 
 /* CONTENT AREA RESPONSIVE */
 @media only screen and (max-width: 320px) {
-  .contentarea .row img {
-    margin: 0;
-    display: block;
-  }
+    .contentarea .row img {
+        margin: 0;
+        display: block;
+    }
 }
 
 /* VIEW TYPE SPECIFIC AREAS */
 .article .contentarea img:first-of-type {
-  /*display: none;*/
+    /*display: none;*/
 }
 
 /* VIEW SPECIFIC CONTENT AREAS */
-#CDCAtwView .contentarea h1:first-of-type,
-#VitalSign .contentarea h1:first-of-type {
-  display: none;
+.journal .contentarea h1:first-of-type,
+.detail-fact .contentarea h1:first-of-type {
+    display: none;
 }
 
-#CDCAtwView .contentarea {
-
+/* FACT STYLES */
+.detail-fact .contentarea p {
+    display: block;
+    padding-bottom: 10px;
+}
+.detail-fact .contentarea p {
+    display: block;
+    padding-bottom: 10px;
 }
 
-.tabs, .toTop {
-  display: none;
+/* FACT - HIDE FIRST IMAGE */
+.detail-fact .syndicate > div:first-of-type > p > img {
+    display: none;
 }
-
-.contentarea a, .article .source {
-  color: #075290;
+.tabs,
+.toTop {
+    display: none;
 }
-
+.contentarea a,
 .article .source {
-  margin-bottom: 20px;
+    color: #075290;
 }
-
 .article .contentarea h1 {
-  display: none;
+    display: none;
+}
+.article .source,
+.article .datepub,
+.civ {
+    font-size: 16px;
+}
+.civ h1 {
+    font-size: 26px;
+    margin-left:0!important;
+}
+.civ h2 {
+    font-size: 24px;
+    margin-left:0!important;
+}
+.civ h3 {
+    font-size: 22px;
+    margin-left:0!important;
+}
+.civ h4 {
+    font-size: 20px;
+    margin-left:0!important;
+}
+.civ h5 {
+    font-size: 18px;
+    margin-left:0!important;
+}
+.civ h6 {
+    font-size: 16px;
+    margin-left:0!important;
+    font-weight: bold;
+}
+.civ ol,
+.civ ul,
+.civ li {
+    list-style: disc;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
-.article .source, .article .datepub, .contentarea {
-  font-size: 16px;
+.civ li li {
+    list-style: circle;
 }
 
-.contentarea h1 {
-  font-size: 26px;
+.civ li li li {
+    list-style: square;
 }
-.contentarea h2 {
-  font-size: 24px;
-}
-.contentarea h3 {
-  font-size: 22px;
-}
-.contentarea h4 {
-  font-size: 20px;
-}
-.contentarea h5 {
-  font-size: 18px;
-}
-.contentarea h6 {
-  font-size: 16px; font-weight: bold;
-}
-.contentarea ol, .contentarea ul, .contentarea li {
-  list-style: disc;
-}
-
-.contentarea div,
+/*.contentarea div,
 .contentarea span,
 .contentarea applet,
 .contentarea object,
@@ -211,14 +304,26 @@
   margin: auto!important;
   padding: auto!important;
   border: auto!important;
-}
+  }*/
 
 .contentrea ul {
-    padding-left:1em;
-    margin-left:0;
+    padding-left: 1em;
+    margin-left: 0;
 }
-
-.contentarea h1, .contentarea h2, .contentarea h3, .contentarea h4, .contentarea h5, .contentarea h6, .contentarea p, .contentarea blockquote,
- .contentarea form, .contentarea label, .contentarea ul, .contentarea ol, .contentarea dl, .contentarea fieldset, .contentarea address {
-    margin-bottom: 1em;
+.contentarea h1,
+.contentarea h2,
+.contentarea h3,
+.contentarea h4,
+.contentarea h5,
+.contentarea h6,
+.contentarea p,
+.contentarea blockquote,
+.contentarea form,
+.contentarea label,
+.contentarea ul,
+.contentarea ol,
+.contentarea dl,
+.contentarea fieldset,
+.contentarea address {
+    /*margin-bottom: 1em;*/
 }

@@ -1,0 +1,18 @@
+<div class="stream image-stream" resize>
+	<div class="stream-row" ng-repeat="data in datas | limitTo: paginationLimit('imageTabletLandscape')" ng-if="$index % 2 === 0">
+		<div class="card-container" data-split-by="2" data-set-ratio="145:100" data-reference="parent">
+			<a href="{{datas[$index].url}}{{datas[$index].id}}" ng-if="$index < datas.length">
+				<div class="item item-image">
+					<img ng-src="{{datas[$index].imageSrc}}" class="horizontal">
+				</div>
+			</a>
+		</div>
+		<div class="card-container" data-split-by="2" data-set-ratio="145:100" data-reference="parent">
+			<a href="{{datas[$index + 1].url}}{{datas[$index + 1].id}}" ng-if="$index + 1 < datas.length">
+				<div class="item item-image">
+					<img ng-src="{{datas[$index + 1].imageSrc}}" class="horizontal">
+				</div>
+			</a>
+		</div>
+	</div>
+</div>

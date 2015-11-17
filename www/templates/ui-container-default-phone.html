@@ -1,0 +1,19 @@
+<!-- PHONE UNIVERSAL (PORTRAIT & LANDSCAPE) MODE -->
+<div class="ui-default ui-phone">
+
+	<!-- THE LIST VIEW (IF NO DETAIL SELECTED) -->
+	<div class="ui-list-view" data-ng-if="!sourceDetail.length">
+		<ion-scroll direction="y" class="vertical-scroller stream">
+			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+			<h3>{{sourceMeta.title}}</h3>
+			<ui-stream></ui-stream>
+			<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+		</ion-scroll>
+	</div><!-- .ui-list-view -->
+
+	<!-- THE DETAIL VIEW (IF DETAIL SELECTED) -->
+	<div class="ui-detail-view" data-ng-if="sourceDetail.length">
+		<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard"></ui-detail>
+	</div><!-- .ui-detail-view -->
+
+</div><!-- .ui-iphone -->

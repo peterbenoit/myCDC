@@ -6,7 +6,7 @@
         </ion-refresher>
         <!-- NOTE: This is temporary, and should reside in home.html when we're done testing -->
         <div class="stream" resize>
-            <div ng-repeat="data in datas | limitTo: paginationLimit()" class="row">
+            <div ng-repeat="data in datas | limitTo: paginationLimit() | orderBy: 'isCurrent'" class="row">
                 <div class="card" ng-if="!data.type">
                     <div ng-if="data.isOutbreak" class="item item-notice outbreak"><b>Outbreak</b></div>
                     <div ng-if="data.isWarning" class="item item-notice warning"><b>Travel Notice</b> - Warning Level 3</div>
