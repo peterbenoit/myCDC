@@ -183,21 +183,27 @@
 }
 .civ h1 {
     font-size: 26px;
+    margin-left:0!important;
 }
 .civ h2 {
     font-size: 24px;
+    margin-left:0!important;
 }
 .civ h3 {
     font-size: 22px;
+    margin-left:0!important;
 }
 .civ h4 {
     font-size: 20px;
+    margin-left:0!important;
 }
 .civ h5 {
     font-size: 18px;
+    margin-left:0!important;
 }
 .civ h6 {
     font-size: 16px;
+    margin-left:0!important;
     font-weight: bold;
 }
 .civ ol,
@@ -319,5 +325,5 @@
 .contentarea dl,
 .contentarea fieldset,
 .contentarea address {
-    margin-bottom: 1em;
+    /*margin-bottom: 1em;*/
 }
