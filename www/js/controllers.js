@@ -135,7 +135,7 @@ angular.module('mycdc.controllers', [])
     sourceChange = ($stateParams.sourceName !== $scope.sourceName),
     detailChange = ($stateParams.sourceDetail !== $scope.sourceDetail);
 
-    $ionicNavBarDelegate.title('CDC');
+    $ionicNavBarDelegate.title('CDC FTW');
 
     if (initialLoad) {
 
@@ -162,7 +162,14 @@ angular.module('mycdc.controllers', [])
 
         $scope.loadMore = function() {
             $scope.page = $scope.page + 1;
-            $scope.$broadcast('scroll.infiniteScrollComplete');
+            $scope.loading = $ionicLoading.show({
+                content: 'Loading',
+                animation: 'fade-in',
+                showBackdrop: true,
+                maxWidth: 200,
+                showDelay: 0
+            });
+            $scope.$broadcast('scroll.loadMore');
         };
 
         $scope.getSourceListLocal = function (blnRefresh) {

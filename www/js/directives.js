@@ -48,14 +48,20 @@ angular.module('mycdc.directives', [])
         },
         scope : '*',
         template: '<div ng-include="getContainerTemplate()"></div>'
-   }
+   };
 })
-.directive('uiStream', function($rootScope, $state, $timeout, $ionicPosition, $stateParams) {
+.directive('uiStream', function($rootScope, $state, $timeout, $ionicPosition, $ionicLoading, $stateParams) {
    var vsd, hsd;
 
    return {
         restrict: 'E',
         controller: ['$scope', '$element', function($scope, $element){
+
+            $scope.$on('scroll.loadMore', function() {
+                $timeout(function() {
+                    $ionicLoading.hide();
+                }, 2000);
+            });
 
             // CREATE MAIN TEMPALTE HANDLER (COULD USE IONIC FOR TABLE DETECTION, BUT THIS SEEMS MORE UNIVERSAL WITH LESS isThis, isThat CALLS)
             $scope.getStreamTemplate = function () {
