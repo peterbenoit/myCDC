@@ -1157,6 +1157,10 @@ add to body class: platform-wp8
     $ionicConfigProvider.navBar.transition('none'); // keep the navbar from animating
     $ionicConfigProvider.views.transition('fade');
 
+    if (!ionic.Platform.isIOS()) {
+        $ionicConfigProvider.scrolling.jsScrolling(false);
+    }
+
     var sp = $stateProvider;
 
     sp.state('app', {
