@@ -611,6 +611,13 @@ ion-side-menu.menu.menu-left .item-content {
   white-space: normal;
 }
 
+.card {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #E0E0E0;
+}
+
 /* STREAM VIEWS */
 /*
 .ui-tablet-portrait .stream-standard {
