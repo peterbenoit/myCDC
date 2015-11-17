@@ -135,7 +135,7 @@ angular.module('mycdc.controllers', [])
     sourceChange = ($stateParams.sourceName !== $scope.sourceName),
     detailChange = ($stateParams.sourceDetail !== $scope.sourceDetail);
 
-    $ionicNavBarDelegate.title('CDC FTW');
+    $ionicNavBarDelegate.title('<img src="img/logo.png" />');
 
     if (initialLoad) {
 
