@@ -1,5 +1,7 @@
 # CDC Mobile App
 
+testing push notification
+
 
 Hybrid app written for iOS, Android and Windows Phone, using the [Ionic Framework](https://github.com/driftyco/ionic), and [Angular JS](https://github.com/angular/angular.js).
 
