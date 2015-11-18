@@ -2,7 +2,7 @@
 <div class="ui-phone ui-iframe">
 
 	<!-- THE LIST VIEW (IF NO DETAIL SELECTED) -->
-	<div class="ui-list-view" data-ng-if="!sourceDetail">
+	<div class="ui-list-view" data-ng-if="!appState.sourceDetail">
 		<ion-scroll direction="y" class="vertical-scroller stream">
 			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
 			<h3>{{sourceMeta.title}}</h3>
@@ -15,7 +15,7 @@
 	</div><!-- .ui-list-view -->
 
 	<!-- THE DETAIL VIEW (IF DETAIL SELECTED) -->
-	<div class="ui-detail-view" data-ng-if="sourceDetail">
+	<div class="ui-detail-view" data-ng-if="appState.sourceDetail">
 		<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard" data-app-state="appState"></ui-detail>
 	</div><!-- .ui-detail-view -->
 
