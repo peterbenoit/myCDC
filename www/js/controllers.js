@@ -131,9 +131,29 @@ angular.module('mycdc.controllers', [])
  */
 .controller('CommonSourceCtrl', function($scope, $rootScope, $urlMatcherFactory, $location, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate, $ionicNavBarDelegate) {
 
-    var  initialLoad = (!$scope.sourceName),
-    sourceChange = ($stateParams.sourceName !== $scope.sourceName),
-    detailChange = ($stateParams.sourceDetail !== $scope.sourceDetail);
+    var  initialLoad = (!$scope.sourceName), sourceChange, detailChange;
+
+
+    // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
+    if (!$rootScope.appState) {
+        $rootScope.appState = {
+            sourceName : $stateParams.sourceName,
+            sourceDetail : $stateParams.sourceDetail || false
+        };
+    }
+
+    sourceChange = ($stateParams.sourceName !== $rootScope.appState.sourceName),
+    detailChange = ($stateParams.sourceDetail !== $rootScope.appState.sourceDetail);
+
+    $scope.activeClasses = {
+        "true" : "is-active",
+        "false" : ""
+    };
+
+    $scope.isActiveCard = function (cardData) {
+        console.log(cardData);
+    };
+
 
     // SET TITLE
     $ionicNavBarDelegate.title('<img src="img/logo.png" />');
@@ -153,13 +173,19 @@ angular.module('mycdc.controllers', [])
             };
         }
 
+        // PUSH NEW STATE TO HISTORY
+        $rootScope.saveHistory(newStateParams);
+
+        // UPDATE BACK BUTTON DISPLAY
+        $rootScope.objBackButton = $rootScope.backButtonDisplay($stateParams);
+
         // UPDATE STATE PARAMETERS
         $stateParams = newStateParams;
 
         // SET SCOPE.APPSTATE (STATE PARAMETER UPDATE IS BUGGY)
-        $scope.appState = newStateParams;
+        $rootScope.appState = newStateParams;
         $rootScope.$broadcast('source-detail-changed');
-        $scope.detailCard = $rootScope.getSourceCard($scope.appState.sourceDetail);
+        $scope.detailCard = $rootScope.getSourceCard($rootScope.appState.sourceDetail);
 
         return true;
     });
@@ -205,12 +231,6 @@ angular.module('mycdc.controllers', [])
 
             var defer = $q.defer();
 
-            // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
-            $scope.appState = {
-                sourceName : $stateParams.sourceName,
-                sourceDetail : $stateParams.sourceDetail || false
-            };
-
             // GET & SAVE THE SOURCE LIST PROMISE
             $rootScope.getSourceIndex(blnRefresh).then(function(d) {
 
@@ -227,7 +247,7 @@ angular.module('mycdc.controllers', [])
                 $scope.$broadcast('scroll.refreshComplete');
 
                 // REDIRECT TO HOME IF NO SOURCE DEFINED
-                if ($scope.appState.sourceDetail) {
+                if ($rootScope.appState.sourceDetail) {
                     if (!$scope.datas.length) {
                         // NO CARD LIST: ALERT USER, THEN REDIRECT
                         var noCardList = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
@@ -243,28 +263,6 @@ angular.module('mycdc.controllers', [])
             // RETURN TRIMMED DATA TO CHAIN
             return defer.promise;
         };
-
-        /*
-        $scope.getDetailCard = function(cardList, contentID) {
-
-            // PARAMS
-            var arySourceInfo;
-
-            // FILTER HERE
-            arySourceInfo = $filter('filter')(cardList, {
-                id: contentID
-            });
-
-            // DID WE FIND IT?
-            if (arySourceInfo.length === 1) {
-
-                // RETURN IT
-                return arySourceInfo[0];
-            }
-
-            // ELSE RETURN FALSE
-            return false;
-        };*/
 
         $scope.ctrlInit = function(blnRefresh) {
 
@@ -333,7 +331,7 @@ angular.module('mycdc.controllers', [])
 
             return d;
         }).then(function(){
-            $scope.detailCard = $rootScope.getSourceCard($scope.appState.sourceDetail);
+            $scope.detailCard = $rootScope.getSourceCard($rootScope.appState.sourceDetail);
         });
 
         console.log('Contoller Load');

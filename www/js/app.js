@@ -4,6 +4,7 @@
  */
 angular.module('mycdc', [
     'ionic',
+    'ngSanitize',
     'mycdc.controllers',
     //'mycdc.data',
     'mycdc.directives',
@@ -127,6 +128,7 @@ add to body class: platform-wp8
             }
         }
     };
+
 
     rs.$viewHistory = {
         histories: { root: { historyId: 'root', parentHistoryId: null, stack: [], cursor: -1 } },
@@ -540,9 +542,6 @@ add to body class: platform-wp8
             appState = appState || $stateParams;
             var storeName, storeAgingName, dataDefault;
 
-            console.log('appState');
-            console.log(appState);
-
             if (strType == 'sourceDetail') {
                 storeName = storePrefix + '_' + appState.sourceName + '_' + appState.sourceDetail;
                 dataDefault = '';
@@ -666,7 +665,7 @@ add to body class: platform-wp8
     // SOURCE DATA HANDLERS (LIST CFG, SOURCE STREAMS, DETAIL HANDLERS, ETC)
     rs.getSourceMeta = function(appState) {
 
-        appState = appState || $stateParams;
+        appState = appState || $rootScope.appState;
 
         // PARAMS
         var arySourceInfo, strSourceName = appState.sourceName || appState || "";
@@ -690,7 +689,7 @@ add to body class: platform-wp8
     rs.getSourceIndex = function(blnRefresh, appState) {
 
         blnRefresh = blnRefresh || false;
-        appState = appState || $stateParams;
+        appState = appState || $rootScope.appState;
 
         var defer, localStore, localData, objMetaData, data;
 
@@ -769,12 +768,12 @@ add to body class: platform-wp8
         var arySourceInfo;
 
         // GET OR DEFAULT SOURCE DETAIL ID
-        sourceDetailId = sourceDetailId || $stateParams.sourceDetail;
+        sourceDetailId = sourceDetailId || $rootScope.appState.sourceDetail;
 
         // FILTER HERE
         arySourceInfo = $filter('filter')(rs.sourceIndex, {
             id: sourceDetailId
-        });
+        }) || [];
 
         // DID WE FIND IT?
         if (arySourceInfo.length === 1) {
@@ -857,7 +856,7 @@ add to body class: platform-wp8
     // HISTORY HANDLERS
     rs.saveHistory = function(appState) {
 
-        appState = appState || $stateParams;
+        appState = appState || $rootScope.appState;
 
         // ENSURE HOME IS ALWAYS THE FIRST SPOT IN THE HISTORY ARRAY
         if (!rs.aryHistory.length) {
@@ -885,7 +884,7 @@ add to body class: platform-wp8
 
     rs.historyBack = function(appState) {
 
-        appState = appState || $stateParams;
+        appState = appState || $rootScope.appState;
 
         console.log('HISTORY BACK CLICKED');
 
@@ -924,7 +923,7 @@ add to body class: platform-wp8
 
     rs.backButtonDisplay = function (appState) {
 
-        appState = appState || $stateParams;
+        appState = appState || $rootScope.appState;
 
         var objReturn = {
             show : false,
