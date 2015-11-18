@@ -247,6 +247,8 @@ add to body class: platform-wp8
                             if (obj2.contentType.indexOf('image') > -1) {
                                 obj1.hasImage = true;
                                 obj1.imageSrc = obj2.resourceUrl;
+                                //console.log('obj1.imageSrc');
+                                //console.log(obj1.imageSrc);
                             }
                         }
                     }
@@ -703,7 +705,7 @@ add to body class: platform-wp8
         localData = localStore.all();
 
         //console.log('localData');
-        console.log(localData);
+        //console.log(localData);
         //console.log('blnRefresh');
         //console.log(blnRefresh);
 
@@ -825,9 +827,16 @@ add to body class: platform-wp8
             objTemp.noChromeUrl = objTemp.filename.split('.')[0] + '_nochrome.' + objTemp.filename.split('.')[1];
             objTemp.noChromeUrl = objTemp.sourceUrl.replace(objTemp.filename, objTemp.noChromeUrl);
 
+            if (objTemp.noChromeUrl.indexOf('http') == -1) {
+                objTemp.noChromeUrl = window.location.protocol + '//' + objTemp.noChromeUrl;
+                alert('No Chrome URL FIXED!');
+                alert(objTemp.noChromeUrl);
+            }
+
+
             // URL CHECK NEEDED
             $rootScope.remoteApi({
-                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=http://' + objTemp.noChromeUrl
+                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + objTemp.noChromeUrl
             }).then(function(resp) {
                 var urlToUse;
 
@@ -995,10 +1004,7 @@ add to body class: platform-wp8
             text : ''
         };
 
-        if (stateParams.sourceName == 'homestream') {
-            console.log('home stream - no icon');
-        } else {
-            console.log(objReturn.show);
+        if (stateParams.sourceName != 'homestream') {
             if (rs.aryHistory.length > 0) {
                 objReturn.show = true;
 
@@ -1094,25 +1100,14 @@ add to body class: platform-wp8
                 // TRY TO GET LOCAL SETTINGS OVERRIDES
                 var localFilters = rs.getSimpleLocalStore('settings').get() || {};
 
-                //console.log('objApp.sourceFilters');
-                //console.log(objApp.sourceFilters);
-                //console.log('objApp.sourceFilterLocks');
-                //console.log(objApp.sourceFilterLocks);
-
                 // IF WE FOUND LOCAL SETTINGS, MERGE THEM IN
                 if (localFilters) {
                     objApp.sourceFilters = angular.extend(objApp.sourceFilters, localFilters);
                 }
 
-                //console.log('objApp.sourceFilters');
-                //console.log(objApp.sourceFilters);
-
                 // SAVE DATA TO ROOTSCOPE
                 rs.app = objApp;
                 rs.app.initialized = true;
-
-                //console.log('rs.app.sourceFilters');
-                //console.log(rs.app.sourceFilters);
 
                 // RESOLVE PROMISE WITH THE NEW DATA
                 defer.resolve(objApp);
@@ -1144,6 +1139,7 @@ add to body class: platform-wp8
         // RETURN THE SOURCE LIST PROMISE
         return defer.promise;
     };
+
 })
 
 /**
@@ -1224,6 +1220,7 @@ add to body class: platform-wp8
 
     sp.state('app.sourceDetail', {
         url: '/source/:sourceName/:sourceDetail',
+        reloadOnSearch : false,
         views: {
             'menuContent': {
                 templateUrl: 'templates/ui-main.html',
@@ -1234,16 +1231,4 @@ add to body class: platform-wp8
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/source/homestream');
-})
-
-/* WIP
-.directive('uiDump', function() {
-   var vsd, hsd;
-   return {
-        restrict: 'E',
-        scope : {
-            variable : '='
-        },
-        template: '<div>{{variable}}</div>'
-   }
-})*/;
+});

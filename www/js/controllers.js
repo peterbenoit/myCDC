@@ -129,13 +129,25 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('CommonSourceCtrl', function($scope, $rootScope, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate, $ionicNavBarDelegate) {
+.controller('CommonSourceCtrl', function($scope, $rootScope, $urlMatcherFactory, $location, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate, $ionicNavBarDelegate) {
 
     var  initialLoad = (!$scope.sourceName),
     sourceChange = ($stateParams.sourceName !== $scope.sourceName),
     detailChange = ($stateParams.sourceDetail !== $scope.sourceDetail);
 
     $ionicNavBarDelegate.title('<img src="img/logo.png" />');
+
+    $scope.$on('$locationChangeSuccess', function(event) {
+        //PLAIN TEXT FOR THE ARGUMENT FOR CLARITY
+        var urlMatcher = $urlMatcherFactory.compile('/app/source/:sourceName/:sourceDetail');
+        var newStateParams = urlMatcher.exec($location.url());
+
+        // UPDATE STATE PARAMETERS
+        console.log(newStateParams);
+        $stateParams = newStateParams;
+        $scope.sourceName = newStateParams.sourceName;
+        $scope.sourceDetail = newStateParams.sourceDetail;
+    });
 
     if (initialLoad) {
 
