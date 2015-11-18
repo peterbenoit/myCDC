@@ -370,7 +370,8 @@ a.item.item-footer {
     font-size: 16px;
 }
 
-.item-footer {
+.item-footer,
+.item-footer a {
     font-size: 14px;
     color: #075290!important;
 }
@@ -633,6 +634,11 @@ ion-side-menu.menu.menu-left .item-content {
     box-shadow: none;
     border: 1px solid #E0E0E0;
 }
+.card.card-active {
+  border: 3px solid #075290!important;;
+}
+
+
 
 /* STREAM VIEWS */
 /*

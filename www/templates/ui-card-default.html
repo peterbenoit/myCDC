@@ -1,11 +1,9 @@
-<div class="card" ng-if="!cardData.type">
+<div class="card {{isActiveCard(cardData.id)}}" ng-if="!cardData.type">
 	<div ng-if="cardData.isOutbreak" class="item item-notice outbreak"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Outbreak</strong></a></div>
 	<div ng-if="cardData.isWarning" class="item item-notice warning"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Warning Level 3</a></div>
 	<div ng-if="cardData.isWatch" class="item item-notice watch"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Watch Level 1</a></div>
 	<div ng-if="cardData.isAlert" class="item item-notice alert"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Alert Level 2</a></div>
-	<a ng-if="cardData.hasImage" class="item item-image" ng-href="{{cardData.url}}{{cardData.id}}" style="background-image: url({{cardData.imageSrc}})">
-		<!--<img ng-src="{{cardData.imageSrc}}" err-src="img/image-placeholder.png" data-image-ratio="2:1">-->
-	</a>
+	<a ng-if="cardData.hasImage" class="item item-image" ng-href="{{cardData.url}}{{cardData.id}}" style="background-image: url({{cardData.imageSrc}})"></a>
 	<a class="item item-text-wrap item-body" ng-href="{{cardData.url}}{{cardData.id}}">
 		<strong data-ng-if="cardData.detailType != 'image'">{{cardData.name | words:10}}</strong>
 		<p class="date">{{cardData.datePublished}}</p>
@@ -32,4 +30,5 @@
 	<div class="item item-image" ng-style="halfwidth()">
 		<img ng-src="{{cardData.imageSrc}}" class="horizontal">
 	</div>
-</a> -->
+</a>
+-->

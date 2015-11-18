@@ -134,19 +134,17 @@ angular.module('mycdc.directives', [])
         // ISOLATE SCOPE (RESTRIECT TO CARD DATA OBJECT AND TEMPLATE ATTR)
         scope: {
             cardData: '=',
+            appState: '=',
             template: '@'
         },
         restrict: 'E',
         controller: function($scope) {
 
-            $scope.setState = function (source, detail) {
-                if (source && $rootScope.sourceName !== source) {
-                    $rootScope.sourceName = source;
-                    $rootScope.$broadcast('source-name-changed');
-                } else if (detail && $rootScope.sourceDetail != detail) {
-                    $rootScope.sourceDetail = detail;
-                    $rootScope.$broadcast('source-detail-changed');
+            $scope.isActiveCard = function (sourceDetail) {
+                if ($scope.appState.sourceDetail == sourceDetail) {
+                    return 'card-active';
                 }
+                return "";
             };
 
             $scope.getCardTemplate = function (blnLoader) {
@@ -297,7 +295,7 @@ angular.module('mycdc.directives', [])
 
             // LOCAL DATA IS GOOD
             // RESOLVE PROMISE WITH THE STORED DATA
-            $rootScope.log(localData.data, -100, 'Using Local Detail Data (Still Fresh)');
+            $rootScope.log(localData.data, -1000, 'Using Local Detail Data (Still Fresh)');
             defer.resolve(localData.data);
 
         } else {
@@ -320,7 +318,7 @@ angular.module('mycdc.directives', [])
                 localStore.save(data);
 
                 // RESOLVE WITH PROCESSED DATA
-                $rootScope.log('Using New Detail Data (Remote)', -100);
+                $rootScope.log('Using New Detail Data (Remote)', -1000);
                 defer.resolve(data);
 
             }, function(e) {
@@ -329,14 +327,14 @@ angular.module('mycdc.directives', [])
                 if (localData.data && localData.data.length) {
 
                     // FALLBACK TO SAVED DATA
-                    $rootScope.log('Using Local Detail Data (Not Fresh)', -100);
+                    $rootScope.log('Using Local Detail Data (Not Fresh)', -1000);
                     //$rootScope.log(localData.data, -100, 'Using Local Detail Data (Not Fresh)');
                     defer.resolve(localData.data);
 
                 } else {
 
                     // ALL FAILED RETURN WHAT WE HAVE IN LOCAL STORAGE
-                    $rootScope.log('Could Not Find And Data (Local, Remote, or Default)', -100);
+                    $rootScope.log('Could Not Find And Data (Local, Remote, or Default)', -1000);
                     defer.reject();
                 }
             });
@@ -380,16 +378,21 @@ angular.module('mycdc.directives', [])
                             // NO DETAIL CARD FOUND IN CARD LIST: ALERT USER, THEN REDIRECT
                             var noDetailCard = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                             noDetailCard.then(function() {
-                                $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
+                                $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.appState.sourceDetail});
                             });
                         });
                     }, 500);
                 }
             });
 
+            $scope.trustedContent = function() {
+                return $sce.trustAsHtml($scope.detailCard.content);
+            };
+
             $scope.loadDetailData = function (objDetailCard) {
 
                 var defer = $q.defer();
+                detailData = {};
 
                 $rootScope.log(objDetailCard, -1000, 'CURRENT DETAIL CARD');
 
@@ -398,21 +401,23 @@ angular.module('mycdc.directives', [])
 
                     $scope.detailTemplateUrl = 'templates/' + objDetailCard.templates.detail + '.html';
 
+                    console.log(objDetailCard.detailType);
+
                     // CALL SPECIFIED PROCESSOR
                     switch (objDetailCard.detailType) {
                         case 'iframe':
 
                              // SIMPLY SET DETAIL DATA FROM CURRENT CARD
-                            $scope.detailData = objDetailCard;
+                            detailData = objDetailCard;
 
                             // GET NO CHROME URL
                             getSourceHtmlUrl(objDetailCard).then(function(iframeUrl){
 
                                 // SET RESPONSE FOR USE BY HTML PARTIAL (AS IFRAME SRC)
-                                $scope.detailData.frameUrl = $sce.trustAsResourceUrl(iframeUrl);
+                                detailData.frameUrl = $sce.trustAsResourceUrl(iframeUrl);
 
-                                // RESOLVE PROMISE WITH UPDATED DETAIL DATA
-                                defer.resolve($scope.detailData);
+                                // RESOLVE PROMISE WITH THIS DATA
+                                defer.resolve(detailData);
 
                             });
 
@@ -421,13 +426,35 @@ angular.module('mycdc.directives', [])
 
                             // VIDEOS - NO ADDITIONAL SERVICE CALLS NEEDED
                             // SIMPLY SET DETAIL DATA FROM CURRENT CARD
-                            $scope.detailData = objDetailCard;
+                            detailData = objDetailCard;
 
                             // PROVIDE A VIDEO URL HELPER FOR THE VIDEO PARTIAL
-                            $scope.detailData.videoUrl = $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + $scope.detailData.sourceUrl.split('?v=')[1] + '?rel=0');
+                            detailData.videoUrl = $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + detailData.sourceUrl.split('?v=')[1] + '?rel=0');
 
-                            // RESOLVE PROMISE WITH UPDATED DETAIL DATA
-                            defer.resolve($scope.detailData);
+                            // RESOLVE PROMISE WITH THIS DATA
+                            defer.resolve(detailData);
+
+                        break;
+                        case 'journal':
+                        case 'blog':
+
+                            // GET SOURCE DETAIL DATA
+                            getSourceDetail(objDetailCard, false).then(function(d){
+
+                                // NORMALIZE DATA BY SOURCE SPECS?
+                                detailData = d;
+
+                                // UNFORTUNATE = SEEMS TO NEED TO BE ROOT LEVEL SCOPE ITEM TO WORK
+                                // $SCOPE.DETAILCARD.CONTEN WILL NOT BIND CORRCETLY, WITH TRUST, OR APPLY, OR ANYTHING...
+                                // CAN LOOK INTO IT MORE LATER, BUT NOT WORTH TEH TIME NOW
+
+                                // SET HTML CONTENT
+                                $scope.content = detailData.content;
+
+                                // RESOLVE PROMISE WITH THIS DATA
+                                defer.resolve(detailData);
+
+                            });
 
                         break;
                         default:
@@ -436,30 +463,35 @@ angular.module('mycdc.directives', [])
                             getSourceDetail(objDetailCard, false).then(function(d){
 
                                 // NORMALIZE DATA BY SOURCE SPECS?
-                                $scope.detailData = d;
+                                detailData = d;
 
-                                // RESOLVE PROMISE WITH UPDATED DETAIL DATA
-                                defer.resolve($scope.detailData);
+                                // RESOLVE PROMISE WITH THIS DATA
+                                defer.resolve(detailData);
 
                             });
 
                         break;
                     }
 
+                }
+
+                defer.promise.then(function(detailData){
+
+                    // SAVE DETAIL DATA TO SCOPE
+                    $scope.detailData = detailData;
+
                     // DEBUG
-                    $rootScope.log($scope.detailTemplateUrl, 10, 'UI-DETAIL-DIRECTIVE-TEMPLATE');
+                    $rootScope.log($scope.detailTemplateUrl, -1000, 'UI-DETAIL-DIRECTIVE-TEMPLATE');
 
                     // SET DETAIL TEMPLATE
                     if ($rootScope.screenState && objDetailCard && $scope.detailData) {
+
                         // TEMPLATE LOGIC
                         $scope.uiDetailTemplateUrl = 'templates/' + objDetailCard.templates.detail + '.html';
+
                     }
 
-                } else {
-
-                    defer.reject();
-
-                }
+                });
 
                 return defer.promise;
             };
@@ -467,7 +499,6 @@ angular.module('mycdc.directives', [])
         template: '<div ng-include="uiDetailTemplateUrl"></div>'
     }
 })
-
 .directive("splitBy", function($rootScope) {
 
     var setDimensions = function (element, reference, columns, setRatio) {
@@ -524,61 +555,6 @@ angular.module('mycdc.directives', [])
         }
     };
 })
-/*
- .directive('imageRatio', function() {
-
-    var fixImageRatio = function(element, columns, ratio) {
-
-        var aryArgs = ratio.split(':');
-
-        if (aryArgs.length == 2) {
-
-            var parent, rW, rH, parent, parentWidth, newWidth, newHeight, imgSrc;
-
-            // GET RATIO ARGS
-            rW = aryArgs[0];
-            rH = aryArgs[1];
-
-            // GET PARENT
-            jqParent = $(element).parent();
-
-            // GET WIDTH OF PARENT ELEMENT
-            parentWidth = jqParent.innerWidth();
-
-            // DETERMINE NEW WIDTH
-            newWidth = Math.floor((parentWidth) / columns);
-
-            // DETERMINE NEW RATION SPECIFIC HEIGHT
-            newHeight = Math.floor((newWidth / rW) * rH);
-
-            // GET IMAGE SOURCE
-            imgSrc = $(element).attr('src');
-
-            // REMOVE THE ELEMENT
-            $(element).remove();
-
-            // APPLY THE NEW SIZES & BACKGROUND IMG TO THE PARENT ELEMENT
-            //jqParent.width(newWidth);
-            //jqParent.height(newHeight);
-            jqParent[0].style.backgroundImage = 'url(' + imgSrc + ')';
-        }
-    };
-
-    return {
-        scope : {
-            imageRatio : '@',
-            columns : '@'
-        },
-        link: function(scope, element, attrs) {
-            element.on('load', function(e) {
-                attrs.columns = attrs.columns || '1';
-                attrs.imageRatio = attrs.imageRatio || '16:9';
-                fixImageRatio(element, attrs.columns, attrs.imageRatio);
-            });
-        }
-    };
- })
-*/
 .directive('orientation', function() {
     return {
         link: function(scope, element, attrs) {
@@ -622,134 +598,3 @@ angular.module('mycdc.directives', [])
     };
 })
 
-
-/*
-.directive('quarterwidth', function($window) {
-    return {
-        link: function(scope, element, attrs) {
-            element.bind('load', function(e) {
-                var w = angular.element($window),
-                    newwidth = (w.innerWidth - 20) / 4,        // half the screen - padding
-                    newheight = (newwidth / 16) * 9,          // maintian 16x9 aspect ratio
-                    parent = this.parentElement;
-
-                // apply the new sizes to the parent element
-                parent.style.width = newwidth + 'px';
-                parent.style.height = newheight + 'px';
-            });
-        }
-    };
- })
-.directive('halfwidth', function($window) {
-    return {
-        link: function(scope, element, attrs) {
-            element.bind('load', function(e) {
-                var w = $(window),
-                    newwidth = (w.width() - 20) / 2,        // half the screen - padding
-                    newheight = (newwidth / 16) * 9,          // maintian 16x9 aspect ratio
-                    parent = this.parentElement;
-
-                // apply the new sizes to the parent element
-                parent.style.width = newwidth + 'px';
-                parent.style.height = newheight + 'px';
-            });
-        }
-    };
- })
-// full width at the correct aspect ratio
- .directive('fullwidth', function($window) {
-    return {
-        link: function(scope, element, attrs) {
-            element.bind('load', function(e) {
-                var w = $(window),
-                    newwidth = w.width() - 10,             // screen - padding
-                    newheight = (newwidth / 16) * 9,          // maintian 16x9 aspect ratio
-                    parent = this.parentElement;
-
-                // apply the new sizes to the parent element
-                parent.style.width = newwidth + 'px';
-                parent.style.height = newheight + 'px';
-            });
-        }
-    };
- })
- .directive('halfsize', function() {
-    return {
-        link: function(scope, element, attrs) {
-            element.on('load', function(e) {
-                var w = $(window),
-                    newwidth = (w.width() - 20) / 2,            // half the screen - padding
-                    newheight = (newwidth / 16) * 9,            // maintian 16x9 aspect ratio
-                    parent = this.parentElement,
-                    src = $(element).attr('src');
-
-                    $(element).remove();
-
-                // apply the new sizes to the parent element
-                parent.style.width = newwidth + 'px';
-                parent.style.height = newheight + 'px';
-                parent.style.backgroundImage = 'url(' + src + ')';
-            });
-        }
-    };
- })
- .directive('fullsize', function() {
-    return {
-        link: function(scope, element, attrs) {
-            element.on('load', function(e) {
-                var w = $(window),
-                    newwidth = (w.width() - 20),                // half the screen - padding
-                    newheight = (newwidth / 16) * 9,            // maintian 16x9 aspect ratio
-                    parent = this.parentElement,
-                    src = $(element).attr('src');
-
-                    $(element).remove();
-
-                // apply the new sizes to the parent element
-                parent.style.width = newwidth + 'px';
-                parent.style.height = newheight + 'px';
-                parent.style.backgroundImage = 'url(' + src + ')';
-                parent.style.backgroundRepeat = 'no-repeat';
-                parent.style.backgroundSize = 'cover';
-            });
-        }
-    };
- })
-.directive('resize', function($window) {
-    return function(scope, element) {
-        var w = $(window);
-
-        scope.getWindowDimensions = function() {
-            return { 'h': w.height(), 'w': w.width() };
-        };
-
-        scope.$watch(scope.getWindowDimensions, function(newValue, oldValue) {
-            scope.windowHeight = newValue.h;
-            scope.windowWidth = newValue.w;
-
-            scope.halfwidth = function() {
-                var newwidth = (newValue.w - 20) / 2,        // half the screen - padding
-                    newheight = (newwidth / 16) * 9;
-
-                return {
-                    'height': newheight + 'px',
-                    'width': newwidth + 'px'
-                };
-            };
-
-            scope.fullwidth = function() {
-                var newwidth = newValue.w - 10,             // screen - padding
-                    newheight = (newwidth / 16) * 9;
-
-                return {
-                    'height': newheight + 'px',
-                    'width': newwidth + 'px'
-                };
-            };
-        }, true);
-
-        w.bind('resize', function() {
-            scope.$apply();
-        });
-    };
-})*/;
