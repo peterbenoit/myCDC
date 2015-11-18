@@ -1,7 +1,7 @@
 <div class="stream image-stream">
 	<div class="stream-row">
 		<div class="card-container" ng-repeat="data in datas | spliceAtDetailId:data | limitTo: paginationLimit()">
-			<ui-card data-template="ui-card-image" data-card-data="data" ng-if="$index < datas.length" class="ng-enter-stagger"></ui-card>
+			<ui-card data-template="ui-card-image" data-card-data="data"  data-app-state="appState" ng-if="$index < datas.length" class="ng-enter-stagger"></ui-card>
 		</div>
 	</div>
 </div>
