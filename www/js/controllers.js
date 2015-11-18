@@ -135,18 +135,33 @@ angular.module('mycdc.controllers', [])
     sourceChange = ($stateParams.sourceName !== $scope.sourceName),
     detailChange = ($stateParams.sourceDetail !== $scope.sourceDetail);
 
+    // SET TITLE
     $ionicNavBarDelegate.title('<img src="img/logo.png" />');
 
+    // SETUP LISTENERS FOR STATE CHANGE
     $scope.$on('$locationChangeSuccess', function(event) {
+
         //PLAIN TEXT FOR THE ARGUMENT FOR CLARITY
         var urlMatcher = $urlMatcherFactory.compile('/app/source/:sourceName/:sourceDetail');
         var newStateParams = urlMatcher.exec($location.url());
 
+        // DEFAULT STATE PARAMS
+        if (!newStateParams) {
+            newStateParams = {
+                sourceName : 'homestream',
+                sourceDetail : false
+            };
+        }
+
         // UPDATE STATE PARAMETERS
-        console.log(newStateParams);
         $stateParams = newStateParams;
-        $scope.sourceName = newStateParams.sourceName;
-        $scope.sourceDetail = newStateParams.sourceDetail;
+
+        // SET SCOPE.APPSTATE (STATE PARAMETER UPDATE IS BUGGY)
+        $scope.appState = newStateParams;
+        $rootScope.$broadcast('source-detail-changed');
+        $scope.detailCard = $rootScope.getSourceCard($scope.appState.sourceDetail);
+
+        return true;
     });
 
     if (initialLoad) {
@@ -191,8 +206,10 @@ angular.module('mycdc.controllers', [])
             var defer = $q.defer();
 
             // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
-            $scope.sourceName = $stateParams.sourceName;
-            $scope.sourceDetail = $stateParams.sourceDetail || false;
+            $scope.appState = {
+                sourceName : $stateParams.sourceName,
+                sourceDetail : $stateParams.sourceDetail || false
+            };
 
             // GET & SAVE THE SOURCE LIST PROMISE
             $rootScope.getSourceIndex(blnRefresh).then(function(d) {
@@ -210,7 +227,7 @@ angular.module('mycdc.controllers', [])
                 $scope.$broadcast('scroll.refreshComplete');
 
                 // REDIRECT TO HOME IF NO SOURCE DEFINED
-                if ($scope.sourceDetail) {
+                if ($scope.appState.sourceDetail) {
                     if (!$scope.datas.length) {
                         // NO CARD LIST: ALERT USER, THEN REDIRECT
                         var noCardList = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
@@ -227,6 +244,7 @@ angular.module('mycdc.controllers', [])
             return defer.promise;
         };
 
+        /*
         $scope.getDetailCard = function(cardList, contentID) {
 
             // PARAMS
@@ -246,7 +264,7 @@ angular.module('mycdc.controllers', [])
 
             // ELSE RETURN FALSE
             return false;
-        };
+        };*/
 
         $scope.ctrlInit = function(blnRefresh) {
 
@@ -284,7 +302,8 @@ angular.module('mycdc.controllers', [])
         console.log('Contoller Initial Load');
     }
 
-    $scope.loading = $ionicLoading.show({
+    // TRIGGER INITIAL LOADER DISPLAY
+    $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
         showBackdrop: true,
@@ -292,7 +311,7 @@ angular.module('mycdc.controllers', [])
         showDelay: 0
     });
 
-
+    // THEN UPDATE VIEW
     $timeout(function(){
 
         // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
@@ -313,6 +332,8 @@ angular.module('mycdc.controllers', [])
             $ionicLoading.hide();
 
             return d;
+        }).then(function(){
+            $scope.detailCard = $rootScope.getSourceCard($scope.appState.sourceDetail);
         });
 
         console.log('Contoller Load');

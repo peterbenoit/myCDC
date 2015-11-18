@@ -140,16 +140,12 @@ angular.module('mycdc.directives', [])
         controller: function($scope) {
 
             $scope.setState = function (source, detail) {
-
-
                 if (source && $rootScope.sourceName !== source) {
                     $rootScope.sourceName = source;
                     $rootScope.$broadcast('source-name-changed');
-
                 } else if (detail && $rootScope.sourceDetail != detail) {
                     $rootScope.sourceDetail = detail;
                     $rootScope.$broadcast('source-detail-changed');
-
                 }
             };
 
@@ -183,7 +179,6 @@ angular.module('mycdc.directives', [])
                     }
 
                     /*if ($scope.cardData.id == '152266') {
-                        console.log($scope.cardData);
                         $rootScope.log($scope.cardData, -1000, 'UI-CARD-DATA');
                         $rootScope.log(uiCardTemplateUrl, -1000, 'UI-CARD-TEMPLATE');
                     }*/
@@ -200,165 +195,276 @@ angular.module('mycdc.directives', [])
         template: '<div id="card-{{cardData.id}}" class="card-container-pad" ng-include src="getCardTemplate()"></div>',
     };
 })
-.directive('uiDetail', function($rootScope, $timeout, $sce, $filter, $state, $stateParams, $ionicPopup) {
+.directive('uiDetail', function($rootScope, $timeout, $sce, $q, $filter, $state, $stateParams, $ionicPopup, $ionicLoading) {
 
-    // HANDLE DIFFERENT TYPES OF CONTENT DETAIL PROCESSING
-    var detailProcessors = {
-        video : function ($scope) {
+    var getSourceHtmlUrl = function(sourceCard, blnRefresh) {
 
-            // VIDEOS - NO ADDITIONAL SERVICE CALLS NEEDED
-            // SIMPLY SET DETAIL DATA FROM CURRENT CARD
-            $scope.detailData = $scope.detailCard;
+        var defer, localStore, localData, objMetaData, noChromeUrl, derivedState;
 
-            // PROVIDE A VIDEO URL HELPER FOR THE VIDEO PARTIAL
-            $scope.getVideoUrl = function() {
-                return $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + $scope.detailData.sourceUrl.split('?v=')[1] + '?rel=0');
-            };
+        // DEFAULT REFRESH IF NEEDED
+        blnRefresh = blnRefresh || false;
 
-        },
-        iframe : function ($scope) {
+        // CREATE A PROMISE
+        defer = $q.defer();
 
-            // IFRAME - NEED TO DETERMINE CHROME OR NO CHROME URL (CACHED TO LOCAL STORAGE FOR SPEED)
+        // DERIVE A STATE FROM THE CARD PASSED (WHAT SOURCE & DETAIL ARE WE INTERESTED IN?)
+        derivedState = {
+            sourceName : sourceCard.feedIdentifier,
+            sourceDetail : sourceCard.id
+        };
 
-            // SIMPLY SET DETAIL DATA FROM CURRENT CARD
-            $scope.detailData = $scope.detailCard;
+        // GET SOURCE METDATA
+        objMetaData = $rootScope.getSourceMeta(derivedState);
 
-            // GET NO CHROME URL
-            return $rootScope.getSourceHtmlUrl().then(function(iframeUrl){
+        // GET LOCAL STORE
+        localStore = $rootScope.getLocalStoreByAppState('sourceDetail', derivedState);
 
-                // SET RESPONSE FOR USE BY HTML PARTIAL (AS IFRAME SRC)
-                $scope.frameUrl = $sce.trustAsResourceUrl(iframeUrl);
+        // GET DATA FROM LOCAL STORE
+        localData = localStore.all();
+
+        // SET TMP OBJECT
+        objTemp = {};
+
+        // CHECK IF WE NEED TO REFRESH OR NOT
+        if (!blnRefresh && !localData.expired) {
+
+            console.log
+            // LOCAL DATA IS GOOD
+            // RESOLVE PROMISE WITH THE STORED DATA
+            $rootScope.log(localData.data, 1, 'Using Local Detail Data (Still Fresh)');
+            defer.resolve(localData.data);
+
+        } else {
+
+            // CREATE NOCHROME URL
+            objTemp.sourceUrl = sourceCard.sourceUrl;
+            objTemp.filename = objTemp.sourceUrl.split('/').pop();
+            objTemp.noChromeUrl = objTemp.filename.split('.')[0] + '_nochrome.' + objTemp.filename.split('.')[1];
+            objTemp.noChromeUrl = objTemp.sourceUrl.replace(objTemp.filename, objTemp.noChromeUrl);
+
+            if (objTemp.noChromeUrl.indexOf('http') == -1) {
+                objTemp.noChromeUrl = window.location.protocol + '//' + objTemp.noChromeUrl;
+                alert('No Chrome URL FIXED!');
+                alert(objTemp.noChromeUrl);
+            }
+
+            // URL CHECK NEEDED
+            $rootScope.remoteApi({
+                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + objTemp.noChromeUrl
+            }).then(function(resp) {
+                var urlToUse;
+                // DETERMINE URL BASED ON SERVER STATUS RETURN
+                if (resp.data.status === '200') {
+                    urlToUse = objTemp.noChromeUrl;
+                } else {
+                    urlToUse = objTemp.sourceUrl;
+                }
+                //SAVE IT TO LOCAL
+                localStore.save(urlToUse);
+                // RESOLVE THE PROMISE WITH THE NEW DATA
+                defer.resolve(urlToUse);
+                return resp;
+            },
+            function(resp) {
+                // TEMP - SAVE IT TO LOCAL
+                localStore.save(objTemp.sourceUrl);
+                defer.resolve(objTemp.sourceUrl);
+                return resp;
             });
-        },
-        default : function ($scope) {
-
-            // GET SOURCE DETAIL DATA
-            return $rootScope.getSourceDetail().then(function(d){
-
-                // NORMALIZE DATA BY SOURCE SPECS?
-                $scope.detailData = d;
-
-                // BROADCAST DATA IS READY
-                $rootScope.$broadcast('source-detail-load-complete');
-            });
-
         }
+        // RETURN THE PROMISE
+        return defer.promise;
+    };
+
+    var getSourceDetail = function(sourceCard, blnRefresh) {
+
+        var defer, localStore, localData, objMetaData, derivedState;
+
+        // CREATE A PROMISE
+        defer = $q.defer(),
+        // DERIVE A STATE FROM THE CARD PASSED (WHAT SOURCE & DETAIL ARE WE INTERESTED IN?)
+        derivedState = {
+            sourceName : sourceCard.feedIdentifier,
+            sourceDetail : sourceCard.id
+        };
+        // GET META DATA FROM
+        objMetaData = $rootScope.getSourceMeta(derivedState);
+        localStore = $rootScope.getLocalStoreByAppState('sourceDetail', derivedState);
+        localData = localStore.all();
+
+        // CHECK IF WE NEED TO REFRESH OR NOT
+        if (!blnRefresh && !localData.expired) {
+
+            // LOCAL DATA IS GOOD
+            // RESOLVE PROMISE WITH THE STORED DATA
+            $rootScope.log(localData.data, -100, 'Using Local Detail Data (Still Fresh)');
+            defer.resolve(localData.data);
+
+        } else {
+
+            //objCurrentCard = $rootScope.getSourceCard();
+
+            var detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/' + derivedState.sourceDetail + '/syndicate.json';
+
+            // REMOTE DATA NEEDED
+
+            // GET DATA
+            $rootScope.remoteApi({
+                url: detailUrl
+            }).then(function(d) {
+
+                // NORMALIZE DATA BY SOURCE SPECS
+                var data = $rootScope.dataProcessor(d, objMetaData);
+
+                //SAVE IT TO LOCAL
+                localStore.save(data);
+
+                // RESOLVE WITH PROCESSED DATA
+                $rootScope.log('Using New Detail Data (Remote)', -100);
+                defer.resolve(data);
+
+            }, function(e) {
+
+                // ON ERROR
+                if (localData.data && localData.data.length) {
+
+                    // FALLBACK TO SAVED DATA
+                    $rootScope.log('Using Local Detail Data (Not Fresh)', -100);
+                    //$rootScope.log(localData.data, -100, 'Using Local Detail Data (Not Fresh)');
+                    defer.resolve(localData.data);
+
+                } else {
+
+                    // ALL FAILED RETURN WHAT WE HAVE IN LOCAL STORAGE
+                    $rootScope.log('Could Not Find And Data (Local, Remote, or Default)', -100);
+                    defer.reject();
+                }
+            });
+        }
+
+        return defer.promise;
     };
 
     return {
         restrict: 'E',
-        controller : function ($scope) {
+        scope : {
+            detailCard : '=',
+            sourceMeta : '=',
+            appState : '='
+        },
+        controller : function ($rootScope, $scope) {
 
-            // SET LISTENER ONCE
-            if (!$scope.uiDetailnit) {
-                $scope.uiDetailnit = true;
+            // SET DEFAULT TEMPLATE
+            $scope.uiDetailTemplateUrl = 'templates/ui-loader.html';
 
-                // LISTEN FOR SCREEN UPDATE
-                $rootScope.$on('screen-state-update-complete', function () {
-                    $scope.getDetailTemplate();
-                });
-
-                // LISTEN FOR DETAIL CHANGE
-                $rootScope.$on('source-detail-changed', function () {
-                    $scope.loadDetailData();
-                });
-
-                /* LISTEN FOR DETAIL LOAD START
-                $rootScope.$on('source-detail-load-started', function(event, args) {
-                    $rootScope.log('UI DETAIL DIRECTIVE RECEIVED source-detail-load-STARTED', 10, 'EVENT-LISTENER:');
-                    $rootScope.log($scope.detailCard, 10, 'SCOPE DETAIL CARD');
-                    $rootScope.log($scope.detailData, 10, 'SCOPE DETAIL DATA');
-                });*/
-
-                // LISTEN FOR DETAIL LOAD COMPLETE
-                $rootScope.$on('source-detail-load-complete', function(event, args) {
-                    $rootScope.log('UI DETAIL DIRECTIVE RECEIVED source-detail-load-COMPLETED', 10, 'EVENT-LISTENER:');
-                    $rootScope.log($scope.detailCard, 10, 'SCOPE DETAIL CARD');
-                    $rootScope.log($scope.detailData, 10, 'SCOPE DETAIL DATA');
-
-                    $scope.getDetailTemplate();
-                });
-            }
-
-            $scope.loadDetailData = function (callback) {
-
-                $scope.detailCard = $rootScope.getSourceCard();
-
-                $rootScope.$broadcast('content-card-ready');
-
-                $rootScope.log($scope.detailCard, 10, 'CURRENT DETAIL CARD');
-
-                // SET CARD TEMPLATE
-                $scope.detailTemplateUrl = 'templates/' + $rootScope.sourceMeta.templates.detail + '.html';
-
-                $rootScope.log($scope.detailTemplateUrl, 10, 'UI-DETAIL-TEMPLATE');
-
-                // CONTINUE IF DETAIL CARD EXISTS IN SCOPE (AND NOT INITIALIZED ALREADY)
+            // LOAD DETAILS ON DETAIL CARD SET / SELECTION
+            $scope.$watch('detailCard', function() {
                 if ($scope.detailCard) {
 
-                    // FLAG INIT
-                    $scope.initialized = false;
+                    // SHOW LOADER
+                    $ionicLoading.show({
+                        content: 'Loading',
+                        animation: 'fade-in',
+                        showBackdrop: true,
+                        maxWidth: 200,
+                        showDelay: 0
+                    });
 
-                    $rootScope.$broadcast('source-detail-load-started');
+                    // NEW THREAD SO LOADER SHOWS...
+                    $timeout(function(){
+                        // GET DETAIL DATA - THEN HIDE LOADER (& HANDLER ERROR IF NEEDED)
+                        $scope.loadDetailData($scope.detailCard).then(function(d){
+                            $ionicLoading.hide();
+                        }, function () {
+                            $ionicLoading.hide();
+                            // NO DETAIL CARD FOUND IN CARD LIST: ALERT USER, THEN REDIRECT
+                            var noDetailCard = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
+                            noDetailCard.then(function() {
+                                $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
+                            });
+                        });
+                    }, 500);
+                }
+            });
+
+            $scope.loadDetailData = function (objDetailCard) {
+
+                var defer = $q.defer();
+
+                $rootScope.log(objDetailCard, -1000, 'CURRENT DETAIL CARD');
+
+                // CONTINUE IF DETAIL CARD EXISTS IN SCOPE (AND NOT INITIALIZED ALREADY)
+                if (objDetailCard) {
+
+                    $scope.detailTemplateUrl = 'templates/' + objDetailCard.templates.detail + '.html';
 
                     // CALL SPECIFIED PROCESSOR
-                    if (detailProcessors.hasOwnProperty($rootScope.sourceMeta.detailType)) {
-                        detailProcessors[$rootScope.sourceMeta.detailType].call(this, $scope);
-                    } else {
-                        detailProcessors.default.call(this, $scope);
-                        $rootScope.log('UNABLE TO FIND CARD DETAIL PROCESSOR FOR DETAIL TYPE ' + $rootScope.sourceMeta.detailType, -999);
+                    switch (objDetailCard.detailType) {
+                        case 'iframe':
+
+                             // SIMPLY SET DETAIL DATA FROM CURRENT CARD
+                            $scope.detailData = objDetailCard;
+
+                            // GET NO CHROME URL
+                            getSourceHtmlUrl(objDetailCard).then(function(iframeUrl){
+
+                                // SET RESPONSE FOR USE BY HTML PARTIAL (AS IFRAME SRC)
+                                $scope.detailData.frameUrl = $sce.trustAsResourceUrl(iframeUrl);
+
+                                // RESOLVE PROMISE WITH UPDATED DETAIL DATA
+                                defer.resolve($scope.detailData);
+
+                            });
+
+                        break;
+                        case 'video':
+
+                            // VIDEOS - NO ADDITIONAL SERVICE CALLS NEEDED
+                            // SIMPLY SET DETAIL DATA FROM CURRENT CARD
+                            $scope.detailData = objDetailCard;
+
+                            // PROVIDE A VIDEO URL HELPER FOR THE VIDEO PARTIAL
+                            $scope.detailData.videoUrl = $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + $scope.detailData.sourceUrl.split('?v=')[1] + '?rel=0');
+
+                            // RESOLVE PROMISE WITH UPDATED DETAIL DATA
+                            defer.resolve($scope.detailData);
+
+                        break;
+                        default:
+
+                            // GET SOURCE DETAIL DATA
+                            getSourceDetail(objDetailCard, false).then(function(d){
+
+                                // NORMALIZE DATA BY SOURCE SPECS?
+                                $scope.detailData = d;
+
+                                // RESOLVE PROMISE WITH UPDATED DETAIL DATA
+                                defer.resolve($scope.detailData);
+
+                            });
+
+                        break;
                     }
 
                     // DEBUG
-                    $rootScope.log($scope.processer, 10, 'UI-DETAIL-DIRECTIVE-PROCESSER');
                     $rootScope.log($scope.detailTemplateUrl, 10, 'UI-DETAIL-DIRECTIVE-TEMPLATE');
 
-                    if (callback) {
-                        //callback.apply();
+                    // SET DETAIL TEMPLATE
+                    if ($rootScope.screenState && objDetailCard && $scope.detailData) {
+                        // TEMPLATE LOGIC
+                        $scope.uiDetailTemplateUrl = 'templates/' + objDetailCard.templates.detail + '.html';
                     }
 
                 } else {
 
-                    // DETAIL ID DETECTION LOGIC
-                    if (!$stateParams.sourceIndex) {
+                    defer.reject();
 
-                        // IF NO SOURCE INDEX (DETAIL ID) IS PRESENT, VERIFY INTENT (SHOULD WE REQUIRE ONE)
-                        if ($scope.screenState.viewType == 'tablet' && $scope.datas && $scope.datas.length) {
-                            $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
-                        }
-
-                    } else {
-
-                        // NO DETAIL CARD FOUND IN CARD LIST: ALERT USER, THEN REDIRECT
-                        var noDetailCard = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
-                        noDetailCard.then(function() {
-                            $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.datas[0].id });
-                        });
-                    }
-                }
-            };
-
-            $scope.getDetailTemplate = function () {
-
-                // DEFAULT TO LOADER (IF STATE SCREEN STATE NOT READY, ETC.)
-                var uiDetailTemplateUrl = 'templates/ui-loader.html';
-
-                // SCREEN STATE READY?
-                if ($rootScope.screenState && $scope.detailCard && $scope.detailData) {
-                    // TEMPLATE LOGIC
-                    uiDetailTemplateUrl = 'templates/' + $scope.detailCard.templates.detail + '.html';
                 }
 
-                $rootScope.log(uiDetailTemplateUrl, 1, 'UI-DETAIL-TEMPLATE');
-
-                // RETURN TEMPLATE
-                return uiDetailTemplateUrl;
+                return defer.promise;
             };
-
-            $scope.loadDetailData();
-
         },
-        template: '<div ng-include="getDetailTemplate()"></div>'
+        template: '<div ng-include="uiDetailTemplateUrl"></div>'
     }
 })
 
@@ -396,7 +502,6 @@ angular.module('mycdc.directives', [])
                 // DETERMINE NEW RATION SPECIFIC HEIGHT
                 var newHeight = Math.floor((newWidth / rW) * rH);
 
-                console.log(newHeight);
 
                 // APPLY NEW HEIGHT
                 $(element).height(newHeight);

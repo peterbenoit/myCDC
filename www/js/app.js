@@ -115,14 +115,6 @@ add to body class: platform-wp8
         });
     };
 
-    rs.$viewHistory = {
-        histories: { root: { historyId: 'root', parentHistoryId: null, stack: [], cursor: -1 } },
-        backView: null,
-        forwardView: null,
-        currentView: null,
-        disabledRegistrableTagNames: []
-    };
-
     rs.log = function (anyVar, intLevel, anyLabel) {
         intLevel = intLevel || 10;
         if (rs.logLevel >= intLevel) {
@@ -134,6 +126,14 @@ add to body class: platform-wp8
                 console.log('*** /' + anyLabel + ' ***');
             }
         }
+    };
+
+    rs.$viewHistory = {
+        histories: { root: { historyId: 'root', parentHistoryId: null, stack: [], cursor: -1 } },
+        backView: null,
+        forwardView: null,
+        currentView: null,
+        disabledRegistrableTagNames: []
     };
 
     $ionicPlatform.ready(function() {
@@ -511,7 +511,7 @@ add to body class: platform-wp8
 
         var storePrefix = 'myCDC';
         var dateFormat = 'YYYY-MM-DD-HH-mm-ss';
-        var dataTimeoutInMinutes = 10;
+        var dataTimeoutInMinutes = 0;
 
         var isExpired = function (ageStoreKey) {
 
@@ -535,14 +535,20 @@ add to body class: platform-wp8
             return diff >= dataTimeoutInMinutes;
         };
 
-        return function(strType) {
+        return function(strType, appState) {
             strType = strType || 'sourceIndex'; // Supports sourceIndex, sourceDetail
-            var storeName, storeAgingName;
+            appState = appState || $stateParams;
+            var storeName, storeAgingName, dataDefault;
+
+            console.log('appState');
+            console.log(appState);
 
             if (strType == 'sourceDetail') {
-                storeName = storePrefix + '_' + $stateParams.sourceName + '_' + $stateParams.sourceDetail;
+                storeName = storePrefix + '_' + appState.sourceName + '_' + appState.sourceDetail;
+                dataDefault = '';
             } else {
-                storeName = storePrefix + '_' + $stateParams.sourceName;
+                storeName = storePrefix + '_' + appState.sourceName;
+                dataDefault = [];
             }
             storeAgingName = storeName + '_saved';
 
@@ -569,7 +575,7 @@ add to body class: platform-wp8
                     return {
                         name : storeName,
                         expired : true,
-                        data : []
+                        data : dataDefault
                     };
                 },
                 save: function(appdata) {
@@ -641,41 +647,29 @@ add to body class: platform-wp8
         }, 0);
     };
 
-    rs.setButtonState = function () {
+    rs.setButtonState = function (appState) {
+        appState = appState || $stateParams;
         var buttons = {
             show : {
-                home : true || ($stateParams.sourceName !== 'homestream' || rs.sourceDetail),
-                back : false || ($stateParams.sourceName !== 'homestream' && $stateParams.sourceDetail)
+                home : true || (appState.sourceName !== 'homestream' || rs.sourceDetail),
+                back : false || (appState.sourceName !== 'homestream' && appState.sourceDetail)
             }
         };
 
         rs.buttons = buttons;
     };
 
-    /*
-    rs.goBack = function() {
-        $state.go('app.sourceIndex', {
-            sourceName : $stateParams.sourceName
-        });
-    };
-
-    rs.goHome = function() {
-        rs.sourceDetail = "";
-        $state.go('app.sourceIndex', {
-            sourceName : 'homestream'
-        });
-    };
-    */
-
     rs.cgNormalize = function (contentgroup) {
         return contentgroup.toLowerCase().replace(/ /g, '').replace(/\//g, '').replace(/\d/g, '');
     };
 
     // SOURCE DATA HANDLERS (LIST CFG, SOURCE STREAMS, DETAIL HANDLERS, ETC)
-    rs.getSourceMeta = function() {
+    rs.getSourceMeta = function(appState) {
+
+        appState = appState || $stateParams;
 
         // PARAMS
-        var arySourceInfo, strSourceName = $stateParams.sourceName || $stateParams || "";
+        var arySourceInfo, strSourceName = appState.sourceName || appState || "";
 
         // FILTER HERE
         arySourceInfo = $filter('filter')($rootScope.app.sourceList, {
@@ -693,21 +687,17 @@ add to body class: platform-wp8
         return false;
     };
 
-    rs.getSourceIndex = function(blnRefresh) {
+    rs.getSourceIndex = function(blnRefresh, appState) {
 
         blnRefresh = blnRefresh || false;
+        appState = appState || $stateParams;
 
         var defer, localStore, localData, objMetaData, data;
 
         defer = $q.defer();
-        objMetaData = rs.getSourceMeta();
-        localStore = rs.getLocalStoreByAppState();
+        objMetaData = rs.getSourceMeta(appState);
+        localStore = rs.getLocalStoreByAppState('sourceName', appState);
         localData = localStore.all();
-
-        //console.log('localData');
-        //console.log(localData);
-        //console.log('blnRefresh');
-        //console.log(blnRefresh);
 
         // CHECK IF WE NEED TO REFRESH OR NOT
         if (!blnRefresh && !localData.expired) {
@@ -801,83 +791,14 @@ add to body class: platform-wp8
         return false;
     };
 
-    rs.getSourceHtmlUrl = function(blnRefresh) {
-
-        var defer, localStore, localData, objMetaData, noChromeUrl;
-
-        defer = $q.defer();
-        objMetaData = rs.getSourceMeta();
-        localStore = rs.getLocalStoreByAppState('sourceDetail');
-        localData = localStore.all();
-        objTemp = {};
-
-        // CHECK IF WE NEED TO REFRESH OR NOT
-        if (!blnRefresh && !localData.expired) {
-
-            // LOCAL DATA IS GOOD
-            // RESOLVE PROMISE WITH THE STORED DATA
-            rs.log(localData.data, 1, 'Using Local Detail Data (Still Fresh)');
-            defer.resolve(localData.data);
-
-        } else {
-
-            // CREATE NOCHROME URL
-            objTemp.sourceUrl = $rootScope.getSourceCard().sourceUrl;
-            objTemp.filename = objTemp.sourceUrl.split('/').pop();
-            objTemp.noChromeUrl = objTemp.filename.split('.')[0] + '_nochrome.' + objTemp.filename.split('.')[1];
-            objTemp.noChromeUrl = objTemp.sourceUrl.replace(objTemp.filename, objTemp.noChromeUrl);
-
-            if (objTemp.noChromeUrl.indexOf('http') == -1) {
-                objTemp.noChromeUrl = window.location.protocol + '//' + objTemp.noChromeUrl;
-                alert('No Chrome URL FIXED!');
-                alert(objTemp.noChromeUrl);
-            }
-
-
-            // URL CHECK NEEDED
-            $rootScope.remoteApi({
-                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + objTemp.noChromeUrl
-            }).then(function(resp) {
-                var urlToUse;
-
-                // DETERMINE URL BASED ON SERVER STATUS RETURN
-                if (resp.data.status === '200') {
-                    urlToUse = objTemp.noChromeUrl;
-                } else {
-                    urlToUse = objTemp.sourceUrl;
-                }
-
-                //SAVE IT TO LOCAL
-                localStore.save(urlToUse);
-
-                // RESOLVE THE PROMISE WITH THE NEW DATA
-                defer.resolve(urlToUse);
-
-                return resp;
-            },
-            function(resp) {
-
-
-
-                // TEMP - SAVE IT TO LOCAL
-                localStore.save(objTemp.sourceUrl);
-
-                defer.resolve(objTemp.sourceUrl);
-                return resp;
-            });
-        }
-
-        // RETURN THE PROMISE
-        return defer.promise;
-    };
-
-    rs.getSourceDetail = function(blnRefresh) {
+    /*
+    rs.getSourceDetail = function(blnRefresh, appState) {
 
         var defer, localStore, localData, objMetaData;
 
         defer = $q.defer(),
         objMetaData = rs.getSourceMeta();
-        localStore = rs.getLocalStoreByAppState('sourceDetail');
+        localStore = rs.getLocalStoreByAppState('sourceDetail', appState);
         localData = localStore.all();
 
         // CHECK IF WE NEED TO REFRESH OR NOT
@@ -892,7 +813,7 @@ add to body class: platform-wp8
 
             //objCurrentCard = rs.getSourceCard();
 
-            var detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/' + $stateParams.sourceDetail + '/syndicate.json';
+            var detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/' + appState.sourceDetail + '/syndicate.json';
 
             // REMOTE DATA NEEDED
 
@@ -931,10 +852,12 @@ add to body class: platform-wp8
         }
 
         return defer.promise;
-    };
+    };*/
 
     // HISTORY HANDLERS
-    rs.saveHistory = function() {
+    rs.saveHistory = function(appState) {
+
+        appState = appState || $stateParams;
 
         // ENSURE HOME IS ALWAYS THE FIRST SPOT IN THE HISTORY ARRAY
         if (!rs.aryHistory.length) {
@@ -949,8 +872,8 @@ add to body class: platform-wp8
 
         // SAVE THE STATE TO HISTORY (IF NEW)
         var objThisState = {
-            sourceName : $stateParams.sourceName || false ,
-            sourceDetail : $stateParams.sourceDetail || false
+            sourceName : appState.sourceName || false ,
+            sourceDetail : appState.sourceDetail || false
         };
 
         // SHOULD WE SAVE IT?
@@ -960,7 +883,9 @@ add to body class: platform-wp8
         }
     };
 
-    rs.historyBack = function() {
+    rs.historyBack = function(appState) {
+
+        appState = appState || $stateParams;
 
         console.log('HISTORY BACK CLICKED');
 
@@ -969,8 +894,8 @@ add to body class: platform-wp8
 
             // GE THIS STATE
             var objThisState = {
-                sourceName : $stateParams.sourceName || false ,
-                sourceDetail : $stateParams.sourceDetail || false
+                sourceName : appState.sourceName || false ,
+                sourceDetail : appState.sourceDetail || false
             };
 
             // GET THE LAST STATE (& POP IT OFF THE ARRAY)
@@ -997,21 +922,24 @@ add to body class: platform-wp8
         }
     };
 
-    rs.backButtonDisplay = function (stateParams) {
+    rs.backButtonDisplay = function (appState) {
+
+        appState = appState || $stateParams;
+
         var objReturn = {
             show : false,
             icon : '',
             text : ''
         };
 
-        if (stateParams.sourceName != 'homestream') {
+        if (appState.sourceName != 'homestream') {
             if (rs.aryHistory.length > 0) {
                 objReturn.show = true;
 
                 // GET THIS STATE
                 var objThisState = {
-                    sourceName : $stateParams.sourceName || false ,
-                    sourceDetail : $stateParams.sourceDetail || false
+                    sourceName : appState.sourceName || false ,
+                    sourceDetail : appState.sourceDetail || false
                 };
                 // GET THE LAST STATE IN HISTORY
                 var objLastState = rs.aryHistory[rs.aryHistory.length - 1] || {};
