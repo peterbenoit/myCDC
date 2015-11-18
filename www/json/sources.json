@@ -162,7 +162,7 @@
         "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=EID&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=100",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector", "stripHtml"],
-        "detailType" : "default",
+        "detailType" : "journal",
         "showByDefault" : true,
         "filterLocked" : false,
         "templates" : {
@@ -180,7 +180,7 @@
         "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=CDC%20Director%20Blog&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=100",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector"],
-        "detailType" : "default",
+        "detailType" : "blog",
         "showByDefault" : true,
         "filterLocked" : false,
         "templates" : {
@@ -188,7 +188,7 @@
             "stream" : "ui-stream-standard",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
-            "detail" : "ui-detail-article"
+            "detail" : "ui-detail-blog"
         }
     }, {
         "feedIdentifier": "publichealthmattersblog",
@@ -198,7 +198,7 @@
         "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=Public%20Health%20Matters%20Blog&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=100",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector"],
-        "detailType" : "default",
+        "detailType" : "blog",
         "showByDefault" : true,
         "filterLocked" : false,
         "templates" : {
@@ -270,7 +270,7 @@
         "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=MMWR%202016&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=100",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector","stripHtml"],
-        "detailType" : "default",
+        "detailType" : "journal",
         "showByDefault" : true,
         "filterLocked" : false,
         "templates" : {
@@ -288,7 +288,7 @@
         "url": "https://prototype.cdc.gov/api/v2/resources/media.json?contentgroup=PCD&fields=id,name,description,mediaType,tags,sourceUrl,syndicateUrl,datePublished,dateModified,enclosures,language&max=100",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector"],
-        "detailType" : "default",
+        "detailType" : "journal",
         "showByDefault" : true,
         "filterLocked" : false,
         "templates" : {
@@ -427,7 +427,7 @@
         "title": "Flickr",
         "icon": "ion-checkmark-circled",
         "getContentBy": "na",
-        "detailType" : "default",
+        "detailType" : "photos",
         "showByDefault" : true,
         "filterLocked" : false,
         "templates" : {
@@ -435,7 +435,7 @@
             "stream" : "ui-stream-image",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
-            "detail" : "ui-detail-journal"
+            "detail" : "ui-detail-photos"
         }
     }, {
         "feedIdentifier": "facebook",
