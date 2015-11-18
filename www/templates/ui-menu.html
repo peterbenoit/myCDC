@@ -6,7 +6,7 @@
 				<button alt="Back Button" class="button button-icon {{objBackButton.icon}}" data-ng-show="objBackButton.show" data-ng-click="historyBack()"> {{objBackButton.text}}</button>
 
 	                <!--<button alt="Back Button" class="button button-icon ion-home" data-ng-show="buttons.show.home" data-ng-click="goHome()"> Home</button>-->
-			    <!-- <button alt="Back Button" class="button button-icon ion-chevron-left" data-ng-show="buttons.show.back" data-ng-click="goBack()"> Back</button> -->
+			    <!--<button alt="Back Button" class="button button-icon ion-chevron-left" data-ng-show="buttons.show.back" data-ng-click="goBack()"> Back</button>-->
 	            </ion-nav-buttons>
 	            <ion-nav-buttons side="right">
 	                <a alt="Settings Button" class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
@@ -24,8 +24,7 @@
 				$scope.sourceFilters[typeIdentifier][feedIdentifier] = {
 				isEnabled : [DEFAULTED SETTING YOU UPDATE],
 				allowFiltering : [SETTING FROM JSON FILE],
-				};
-				-->
+				};-->
 				<div data-ng-repeat="sourceType in sourceTypes">
 					<h4 class="cdc-blue primary">{{sourceType.typeName}}</h4>
 					<ion-checkbox ng-repeat="objFeed in sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier}"
