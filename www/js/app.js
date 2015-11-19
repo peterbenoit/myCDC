@@ -6,11 +6,9 @@ angular.module('mycdc', [
     'ionic',
     'ngSanitize',
     'mycdc.controllers',
-    //'mycdc.data',
     'mycdc.directives',
     'mycdc.filters',
     'mycdc.services',
-    //'mycdc.storage',
     'ngCordova',
     'ngAnimate',
     'angular.filter',
@@ -260,6 +258,7 @@ add to body class: platform-wp8
                         idx2 = obj1.tags.length;
                         while (idx2--) {
                             obj2 = obj1.tags[idx2];
+                            // PROCESS CONTENT GROUPS
                             if (obj2.type.toLowerCase() == 'contentgroup') {
                                 strCg = obj2.name;
                                 strCgStripped = rs.cgNormalize(strCg);
@@ -299,6 +298,10 @@ add to body class: platform-wp8
                                     obj1.isWatch = obj1.name.indexOf('Watch') > -1;
                                     obj1.isWarning = obj1.name.indexOf('Warning') > -1;
                                 }
+                            }
+                            // PROCESS NAMES
+                            if (obj2.type.toLowerCase() == 'topic') {
+                                obj1.topic = obj2.name;
                             }
                         }
                     }
@@ -789,69 +792,6 @@ add to body class: platform-wp8
         // ELSE RETURN FALSE
         return false;
     };
-
-    /*
-    rs.getSourceDetail = function(blnRefresh, appState) {
-
-        var defer, localStore, localData, objMetaData;
-
-        defer = $q.defer(),
-        objMetaData = rs.getSourceMeta();
-        localStore = rs.getLocalStoreByAppState('sourceDetail', appState);
-        localData = localStore.all();
-
-        // CHECK IF WE NEED TO REFRESH OR NOT
-        if (!blnRefresh && !localData.expired) {
-
-            // LOCAL DATA IS GOOD
-            // RESOLVE PROMISE WITH THE STORED DATA
-            rs.log(localData.data, -100, 'Using Local Detail Data (Still Fresh)');
-            defer.resolve(localData.data);
-
-        } else {
-
-            //objCurrentCard = rs.getSourceCard();
-
-            var detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/' + appState.sourceDetail + '/syndicate.json';
-
-            // REMOTE DATA NEEDED
-
-            // GET DATA
-            rs.remoteApi({
-                url: detailUrl
-            }).then(function(d) {
-
-                // NORMALIZE DATA BY SOURCE SPECS
-                var data = rs.dataProcessor(d, objMetaData);
-
-                //SAVE IT TO LOCAL
-                localStore.save(data);
-
-                // RESOLVE WITH PROCESSED DATA
-                rs.log('Using New Detail Data (Remote)', -100);
-                defer.resolve(data);
-
-            }, function(e) {
-
-                // ON ERROR
-                if (localData.data && localData.data.length) {
-
-                    // FALLBACK TO SAVED DATA
-                    rs.log('Using Local Detail Data (Not Fresh)', -100);
-                    //rs.log(localData.data, -100, 'Using Local Detail Data (Not Fresh)');
-                    defer.resolve(localData.data);
-
-                } else {
-
-                    // ALL FAILED RETURN WHAT WE HAVE IN LOCAL STORAGE
-                    rs.log('Could Not Find And Data (Local, Remote, or Default)', -100);
-                    defer.reject();
-                }
-            });
-        }
-
-        return defer.promise;
-    };*/
 
     // HISTORY HANDLERS
     rs.saveHistory = function(appState) {

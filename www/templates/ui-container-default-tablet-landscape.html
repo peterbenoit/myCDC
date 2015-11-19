@@ -5,7 +5,7 @@
 		<div class="ui-default ui-tablet-landscape">
 
 			<!-- THE LIST VIEW -->
-			<div class="ui-list-view">
+			<div class="ui-list-view has-header"><div>
 				<!-- STREAM VIEW -->
 				<ion-scroll direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
 					<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
@@ -13,12 +13,12 @@
 					<ui-stream></ui-stream>
 					<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
 				</ion-scroll>
-			</div><!-- ui-list-view -->
+			</div></div><!-- ui-list-view -->
 
 			<!-- THE DETAIL VIEW -->
-			<div class="ui-detail-view">
+			<div class="ui-detail-view"><div>
 				<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard" data-app-state="appState"></ui-detail>
-			</div><!-- ui-detail-view -->
+			</div></div><!-- ui-detail-view -->
 
 		</div><!-- ui-tablet-landscape -->
 	</ion-content>

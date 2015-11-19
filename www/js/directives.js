@@ -81,7 +81,7 @@ angular.module('mycdc.directives', [])
                 //$rootScope.log($('.vertical-scroller').length, -100, 'VERTICAL SCROLLER');
                 //$rootScope.log($('.horizontal-scroller').length, -100, 'HORIZONTAL SCROLLER');
 
-                // SCROLLER HEIGHT / WIDTH FIX - IMPORTANT
+                /* SCROLLER HEIGHT / WIDTH FIX - IMPORTANT */
                 var jqVs = $('.vertical-scroller');
                 if (jqVs.length) {
                     var intMenuHeight = 44;
@@ -101,11 +101,6 @@ angular.module('mycdc.directives', [])
                     jqHs.width(newWidth);
                 }
 
-                /*
-                $rootScope.log($rootScope.screenState.height, -100, 'SCREEN HEIGHT');
-                $rootScope.log($('> h3', jsLv).outerHeight(), -100, 'H3 HEIGHT');
-                $rootScope.log(newHeight, -100, 'FINAL HEIGHT');
-                */
                 // END SCROLLER HEIGHT / WIDTH FIX
 
                 $rootScope.log($rootScope.screenState.height, -1, 'SCREEN HEIGHT');
@@ -455,6 +450,22 @@ angular.module('mycdc.directives', [])
                                 defer.resolve(detailData);
 
                             });
+
+                        break;
+                        case 'image':
+
+                            $scope.cardData = objDetailCard;
+
+                            // GET SOURCE DETAIL DATA
+                            //getSourceDetail(objDetailCard, false).then(function(d){
+
+                                // NORMALIZE DATA BY SOURCE SPECS?
+                              //  detailData = d;
+
+                                // RESOLVE PROMISE WITH THIS DATA
+                                defer.resolve(objDetailCard);
+
+                            //});
 
                         break;
                         default:

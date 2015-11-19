@@ -6,42 +6,36 @@
 "detail" : "ui-detail-article"
 -->
 
-<ion-view>
-	<ion-content>
-		<div class="{{sourceMeta.templates.containerSet}} ui-master {{screenState.viewOrientation}}">
-			<div class="ui-stream-container {{sourceMeta.templates.stream}}" style="background-color: cyan">
-				<ion-scroll ng-if="screenState.viewType == 'tablet' && screenState.viewOrientation == 'portrait'" direction="x" class="horizontal-scroller stream stream-horizontal" delegate-handle="streamScrollVertical">
-					<div class="ui-stream-container-pad">
-						<div ng-repeat="card in streamItems">
-							<ui-card data-card-data="card" data-app-state="appState"></ui-card>
-						</div>
-					</div>
-					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
-			        <button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="loadMore()" >
-			            Show more
-			        </button>
-				</ion-scroll>
-				<ion-scroll ng-if="screenState.viewType != 'tablet' || (screenState.viewType == 'tablet'  && screenState.viewOrientation != 'portrait')" direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
-					<div class="ui-stream-container-pad">
-						<div ng-repeat="card in streamItems">
-							<ui-card data-card-data="card" data-app-state="appState"></ui-card>
-						</div>
-					</div>
-					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
-			        <button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="loadMore()" >
-			            Show more
-			        </button>
-				</ion-scroll>
-				<!-- <div class="ui-stream-container-pad">
-					<div ng-repeat="card in streamItems">{{card}}</div>
-				</div> -->
-			</div>
-			<div class="ui-detail-container {{sourceMeta.templates.detail}}"  style="background-color: magenta">
-				<div class="ui-stream-container-pad">
-					DETAIL
-					{{screenState}}
+<div class="{{sourceMeta.templates.containerSet}} ui-master {{screenState.viewOrientation}}">
+	<div class="ui-stream-container {{sourceMeta.templates.stream}}" style="background-color: cyan">
+		<!--
+		<ion-scroll ng-if="screenState.viewType == 'tablet' && screenState.viewOrientation == 'portrait'" direction="x" class="stream horizontal-scroller stream-horizontal" delegate-handle="streamScrollVertical">
+			<div class="ui-stream-container-pad">
+				<div ng-repeat="card in streamItems">
+					<ui-card data-card-data="card" data-app-state="appState"></ui-card>
 				</div>
 			</div>
+			<button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="loadMore()" >
+				Show more
+			</button>
+		</ion-scroll>
+		{{(screenState.viewOrientation == 'portrait') ? 'x' : 'y' }}
+		-->
+		<ion-scroll direction="x" class="stream ui-card-scroller" delegate-handle="streamScrollVertical">
+			<div ng-repeat="card in streamItems" class="ui-stream-container-pad" style="height:250px;">
+				<ui-card data-card-data="card" data-app-state="appState"></ui-card>
+			</div>
+			<button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="loadMore()" >
+				Show more
+			</button>
+		</ion-scroll>
+	</div>
+	<div class="ui-detail-container {{sourceMeta.templates.detail}}"  style="background-color: magenta">
+		<div class="ui-stream-container-pad">
+			DETAIL
+			{{screenState}}
+			<br /><br /><br /><br /><br />
+			<button data-ng-click="scroll = ((scroll == 'x') ? 'y' : 'x')">Toggle {{scroll}}</button>
 		</div>
-	</ion-content>
-</ion-view>
+	</div>
+</div>
