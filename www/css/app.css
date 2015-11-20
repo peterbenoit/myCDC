@@ -71,48 +71,6 @@ dfn {
   /*	 TRAVEL NOTICES/OUTBREAKS */
   /* END DIRECT PORTS FROM ORIGINAL */
   /* UI DEFAULTS (BY DEVICE / ORIENTATION) */
-  /*
-	.ui-images {
-
-		&.ui-tablet-portrait {
-
-			.ui-list-view {
-				height: 25vh;
-
-
-
-				.button-inline {
-					display: inline-block;
-					height: 15vh;
-				}
-			}
-
-			.ui-detail-view {
-				height: 75vh;
-			}
-		}
-
-		.ui-list-view {
-			.card-container {
-				width: 15vw;
-				height: 8.43vw;
-
-				.item-image {
-					width: 15vw;
-					height: 8.43vw;
-				}
-			}
-		}
-
-		.ui-detail-view {
-			.item-image {
-				display: block;
-				// width: 70vw;
-				// max-width: 100%;
-				height: 39.37vw;
-			}
-		}
-	}*/
   /* HOME STREAM */
   /* CARD DEFAULTS
 	.ui-tablet-landscape .ui-list-view .card-container {
@@ -211,6 +169,7 @@ dfn {
   text-align: center;
   padding: 0;
   border: 0;
+  max-width: 100%;
 }
 #ui-master .ui-list-view,
 #ui-master .ui-detail-view {
@@ -274,14 +233,14 @@ dfn {
 #ui-master .ui-default.ui-tablet-landscape .ui-list-view .card-container,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-list-view .card-container,
 #ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container {
-  width: 15vw;
+  width: 30vw;
   float: left;
 }
 #ui-master .ui-default.ui-tablet-landscape .ui-list-view .card-container .item-image,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-list-view .card-container .item-image,
 #ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container .item-image {
   display: block;
-  height: 11vw;
+  height: 22vw;
 }
 #ui-master .ui-default.ui-tablet-landscape .ui-detail-view,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-detail-view,
@@ -356,8 +315,57 @@ dfn {
   display: block;
   height: 56.25vw;
 }
+#ui-master .ui-default.ui-tablet-portrait .ui-detail-view .detail-video iframe,
+#ui-master .ui-iframe.ui-tablet-portrait .ui-detail-view .detail-video iframe,
+#ui-master .ui-images.ui-tablet-portrait .ui-detail-view .detail-video iframe {
+  width: 100vw;
+  height: 56vw;
+}
 #ui-master .ui-iframe.ui-tablet-portrait .ui-detail-view {
   height: 100vh;
+}
+#ui-master .ui-images.ui-phone .ui-list-view,
+#ui-master .ui-images.ui-phone .ui-detail-view {
+  top: 44px;
+  height: 100vh;
+}
+#ui-master .ui-images.ui-phone .ui-list-view .card-container {
+  float: left;
+  width: 50vw;
+  height: 28.12vw;
+}
+#ui-master .ui-images.ui-phone .ui-list-view .card-container .card-container-pad {
+  padding: 0;
+}
+#ui-master .ui-images.ui-phone .ui-list-view .card-container .card-container-pad .card .item-image {
+  width: 50vw;
+  height: 28.12vw;
+}
+#ui-master .ui-images.ui-phone .ui-detail-view .item-image {
+  width: 100vw;
+  height: 56vw;
+}
+#ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container {
+  float: left;
+  width: 15vw;
+  height: 8.43vw;
+}
+#ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container .card-container-pad {
+  padding: 0;
+}
+#ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container .card-container-pad .card .item-image {
+  width: 15vw;
+  height: 8.43vw;
+}
+#ui-master .ui-images.ui-tablet-portrait .ui-list-view {
+  height: 25vh;
+}
+#ui-master .ui-images.ui-tablet-portrait .ui-list-view .button-inline {
+  display: inline-block;
+  height: 15vh;
+}
+#ui-master .ui-images.ui-tablet-portrait .ui-detail-view {
+  height: 75vh;
 }
 #ui-master .ui-home {
   /* HOME STREAM - PHONE (PORTRAIT ONLY)*/

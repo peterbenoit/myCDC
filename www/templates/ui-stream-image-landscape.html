@@ -1,9 +1,10 @@
 <div class="stream image-stream" resize>
-	<div class="stream-row" ng-repeat="data in datas | limitTo: paginationLimit('imageTabletLandscape')">
-		<div class="card-container">
-			<a href="{{data.url}}{{data.id}}">
-				<div class="item item-image" style="background-image: url({{data.imageSrc}})"></div>
-			</a>
-		</div>
+	<div class="card-container" ng-repeat="card in datas | limitTo: paginationLimit('imageTabletLandscape')">
+		<!-- <div class="card-container"> -->
+			<!-- <a href="{{card.url}}{{card.id}}"> -->
+				<!-- <div class="item item-image" style="background-image: url({{data.imageSrc}})"></div> -->
+				<ui-card data-template="ui-card-image"  data-card-data="card" data-app-state="appState"></ui-card>
+			<!-- </a> -->
+		<!-- </div> -->
 	</div>
 </div>
