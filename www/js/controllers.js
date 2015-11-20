@@ -39,9 +39,11 @@ angular.module('mycdc.controllers', [])
  * @param {[type]}
  * @return {[type]}
  */
-.controller('SettingsCtrl', function($scope, $rootScope, $cordovaNetwork, $ionicPopup) {
+.controller('SettingsCtrl', function($scope, $rootScope, $cordovaNetwork, $ionicPopup, $ionicNavBarDelegate) {
 
-    $rootScope.showSettingsBack = true;
+    $rootScope.settingsActive = true;
+
+    //$ionicNavBarDelegate.title('CDC');
 
     $rootScope.appInit().then(function(d) {
         $scope.resetSettings = function() {
@@ -66,6 +68,9 @@ angular.module('mycdc.controllers', [])
  * Note: This should really be AppCtrl and HomeCtrl saved for the home stream
  */
 .controller('SourceListCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate) {
+
+    // TOGGLE SHOW SETTING OFF
+    $rootScope.settingsActive = false;
 
     // This little bit of nonsense checks for the existance of the runonce localstorage key and if the Home Controller has already loaded (it loads 2x for some reason)
     // If they key doesn't exist, and the Home Controller hasn't already loaded, load the modal
@@ -133,6 +138,9 @@ angular.module('mycdc.controllers', [])
  */
 .controller('CommonSourceCtrl', function($scope, $rootScope, $urlMatcherFactory, $location, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate, $ionicNavBarDelegate) {
 
+    // TOGGLE SHOW SETTING OFF
+    $rootScope.settingsActive = false;
+
     var  initialLoad = (!$scope.sourceName), sourceChange, detailChange;
 
     // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
@@ -152,9 +160,8 @@ angular.module('mycdc.controllers', [])
     };
 
     $scope.isActiveCard = function (cardData) {
-        console.log(cardData);
+        //console.log(cardData);
     };
-
 
     // SET TITLE
     $ionicNavBarDelegate.title('<img src="img/logo.png" />');
@@ -162,9 +169,20 @@ angular.module('mycdc.controllers', [])
     // SETUP LISTENERS FOR STATE CHANGE
     $scope.$on('$locationChangeSuccess', function(event) {
 
+        // SET TITLE
+        $ionicNavBarDelegate.title('<img src="img/logo.png" />');
+
         //PLAIN TEXT FOR THE ARGUMENT FOR CLARITY
         var urlMatcher = $urlMatcherFactory.compile('/app/source/:sourceName/:sourceDetail');
         var newStateParams = urlMatcher.exec($location.url());
+
+        //console.log(event);
+        //console.log(newStateParams);
+
+        // GET STATE PARAMS FROM ROOTSCOPE
+        if (!newStateParams) {
+            newStateParams = $rootScope.appState;
+        }
 
         // DEFAULT STATE PARAMS
         if (!newStateParams) {
@@ -237,7 +255,7 @@ angular.module('mycdc.controllers', [])
             var defer = $q.defer();
 
             // GET & SAVE THE SOURCE LIST PROMISE
-            $rootScope.getSourceIndex(blnRefresh).then(function(d) {
+            $rootScope.getSourceIndex(blnRefresh, $rootScope.appState).then(function(d) {
 
                 // RESET PAGING
                 $scope.pageSize = 10;

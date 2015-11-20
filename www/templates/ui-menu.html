@@ -2,12 +2,12 @@
 	<ion-side-menu-content>
 		<ion-nav-bar class="bar-positive" align-title="center" animation="no-animation">
 			<ion-nav-buttons side="left">
-				<button data-ng-if="appState.sourceName == 'homestream'" alt="Menu Button" class="button button-icon button-clear ion-navicon" menu-toggle="left" id="navicon"></button>
-				<button alt="Back Button" class="button button-icon {{objBackButton.icon}}" data-ng-show="objBackButton.show" data-ng-click="historyBack()"> {{objBackButton.text}}</button>
-				<a data-ng-show="showSettingsBack" alt="Settings Button" class="button button-clear" href="#/app/settings"><i class="icon icon-chevron-left"></i> Home</a>
+				<button data-ng-if="!settingsActive && appState.sourceName == 'homestream'" alt="Menu Button" class="button button-icon button-clear ion-navicon" menu-toggle="left" id="navicon"></button>
+				<button data-ng-if="!settingsActive && appState.sourceName != 'homestream'"  alt="{{objBackButton.text}} Button" class="button button-icon {{objBackButton.icon}}" data-ng-click="historyBack()">{{objBackButton.text}}</button>
+				<button data-ng-if="settingsActive"  alt="Home Button" class="button button-icon ion-chevron-left" data-ng-click="goHome()"> Home</button>
 	            </ion-nav-buttons>
 	            <ion-nav-buttons side="right">
-				<a data-ng-if="appState.sourceName == 'homestream'"  alt="Settings Button" class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
+				<a data-ng-if="!settingsActive && appState.sourceName == 'homestream'"  alt="Settings Button" class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
 	            </ion-nav-buttons>
 		</ion-nav-bar>
 		<ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>

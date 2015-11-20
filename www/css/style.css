@@ -250,7 +250,10 @@ a.item.item-footer {
 .item-footer,
 .item-footer a {
     font-size: 14px;
-    color: #075290!important;
+}
+
+.item-footer a {
+  color: #075290!important;
 }
 
 .card .item:last-child, .list-inset .item:last-child {

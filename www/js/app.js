@@ -33,7 +33,10 @@ add to body class: platform-wp8
     // APP CONTAINER
     rs.app = {};
     rs.logLevel = -99;
-    rs.aryHistory = [];
+    rs.aryHistory = [{
+        sourceName : 'homestream',
+        sourceDetail : false
+    }];
 
     // window.open should use inappbrowser
     document.addEventListener('deviceready', onDeviceReady, false);
@@ -589,7 +592,7 @@ add to body class: platform-wp8
                 }
             };
         };
-    }());
+    } ());
 
     rs.remoteApi = (function() {
         var apiDefaults = {
@@ -602,7 +605,7 @@ add to body class: platform-wp8
             options.timeout = options.timeout || apiDefaults.timeout;
             return $http(options);
         };
-    }());
+    } ());
 
     rs.viewOnCDC = function () {
         alert('THIS NEEDS WIRED UP');
@@ -815,47 +818,67 @@ add to body class: platform-wp8
     };
 
     rs.historyBack = function(appState) {
+        appState = appState || {};
+
         // ENSURE HOME IS ALWAYS THE FIRST SPOT IN THE HISTORY ARRAY
-        if (rs.aryHistory.length < 1) {
+        /*if (!rs.aryHistory.length == 0) {
             rs.aryHistory.push({
                 sourceName : 'homestream',
                 sourceDetail : false
             });
-        }
+        }*/
 
-        appState = appState || $rootScope.appState;
+        appState = angular.extend({}, appState, $rootScope.appState);
 
         console.log('HISTORY BACK CLICKED');
+        console.log(rs.aryHistory);
 
-        // ARE THERE ANY SATSTES TO STEP BACK TO?
-        if (rs.aryHistory && rs.aryHistory.length) {
+        // GET THIS STATE
+        var objThisState = {
+            sourceName : appState.sourceName,
+            sourceDetail : appState.sourceDetail
+        };
 
-            // GE THIS STATE
-            var objThisState = {
-                sourceName : appState.sourceName || false ,
-                sourceDetail : appState.sourceDetail || false
-            };
+        // GET THE LAST STATE (& POP IT OFF THE ARRAY)
+        var objLastState = rs.aryHistory.pop();
 
-            // GET THE LAST STATE (& POP IT OFF THE ARRAY)
-            var objLastState = rs.aryHistory.pop();
+        // IS THE LAST STATE THE SAME AS THE CURRENT STATE?
+        if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
 
-            // IS THE LAST STATE THE SAME AS THE CURRENT STATE?
-            if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
-                // THEN WE NEED TO GO BACK ONE MORE
-                if (rs.aryHistory.length) {
-                    // GET THE NEXT IN LINE
-                    objLastState = rs.aryHistory.pop();
-                }
+            // THEN WE NEED TO GO BACK ONE MORE
+            if (rs.aryHistory.length) {
+
+                // GET THE NEXT IN LINE
+                objLastState = rs.aryHistory.pop();
             }
+        }
 
-            // IS THE LAST STATE DIFFERENT FROM THE CURRENT STATE?
-            if (objLastState.sourceName != objThisState.sourceName || objLastState.sourceDetail != objThisState.sourceDetail) {
-                // DETERMINE AND SET APPROPRIATE STATE (INDEX OR DETAIL)
-                if (objLastState.sourceDetail && objLastState.sourceDetail) {
-                    $state.go('app.sourceDetail', objLastState);
-                } else if (objLastState.sourceName && objLastState.sourceName.length) {
-                    $state.go('app.sourceIndex', objLastState);
-                }
+        // console.log('history array');
+        // console.log(rs.aryHistory);
+        // console.log(rs.aryHistory.length);
+        // console.log('passed state');
+        // console.log(appState);
+        // console.log('derived state');
+        // console.log(objThisState);
+        // console.log('last state');
+        // console.log(objLastState);
+
+        $rootScope.appState = objLastState;
+
+        // IS THE LAST STATE DIFFERENT FROM THE CURRENT STATE?
+        if (objLastState.sourceName != objThisState.sourceName || objLastState.sourceDetail != objThisState.sourceDetail) {
+
+            // DETERMINE AND SET APPROPRIATE STATE (INDEX OR DETAIL)
+            if (objLastState.sourceDetail && objLastState.sourceDetail) {
+
+                //console.log('/app/source/' + objLastState.sourceName + '/' + objLastState.sourceDetail);
+                $state.go('app.sourceDetail', objLastState, {location: true})
+
+            } else if (objLastState.sourceName && objLastState.sourceName.length) {
+
+                //console.log('/app/source/' + objLastState.sourceName);
+                $state.go('app.sourceIndex', { sourceName : objLastState.sourceName }, {location: true})
+
             }
         }
     };
@@ -865,24 +888,25 @@ add to body class: platform-wp8
         appState = appState || $rootScope.appState;
 
         var objReturn = {
-            show : false,
-            icon : '',
-            text : ''
+            icon : 'ion-chevron-left',
+            text : 'Home'
         };
 
         if (appState.sourceName != 'homestream') {
             if (rs.aryHistory.length > 0) {
-                objReturn.show = true;
 
                 // GET THIS STATE
                 var objThisState = {
                     sourceName : appState.sourceName || false ,
                     sourceDetail : appState.sourceDetail || false
                 };
+
                 // GET THE LAST STATE IN HISTORY
                 var objLastState = rs.aryHistory[rs.aryHistory.length - 1] || {};
+
                 // ARE THEY THE SAME?
                 if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
+
                     // YES, GO BACK ONE MORE
                     objLastState = rs.aryHistory[rs.aryHistory.length - 2] || {};
                 }
@@ -899,7 +923,11 @@ add to body class: platform-wp8
             }
         }
         return objReturn;
-    }
+    };
+
+    rs.goHome = function () {
+        $state.go('app.sourceIndex', { sourceName : 'homestream' });
+    };
 
     // APP INIT
     rs.appInit = function(blnRefresh) {
@@ -1033,16 +1061,15 @@ add to body class: platform-wp8
         controller: 'AppCtrl'
     });
 
-    /* WARN: this is temporary
-    sp.state('app.homestream', {
-        url: '/homestream',
+    sp.state('app.test', {
+        url: '/test/:sourceName',
         views: {
             'menuContent': {
-                templateUrl: defaultTemplateHandler('dynamic', 'stream-home'),
-                controller: 'HomeCtrl'
+                templateUrl: 'templates/ui-master.html',
+                controller: 'CommonSourceCtrl'
             }
         }
-    });*/
+    });
 
     sp.state('app.home', {
         url: '/home',
@@ -1060,16 +1087,6 @@ add to body class: platform-wp8
             'menuContent': {
                 templateUrl: 'templates/settings.html',
                 controller: 'SettingsCtrl'
-            }
-        }
-    });
-
-    sp.state('app.test', {
-        url: '/test/:sourceName',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/ui-master.html',
-                controller: 'CommonSourceCtrl'
             }
         }
     });
