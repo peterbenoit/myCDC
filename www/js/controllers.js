@@ -175,9 +175,6 @@ angular.module('mycdc.controllers', [])
 
         $scope.getSourceListLocal().then(function(d){
 
-            // UPDATE STATE PARAMETERS
-            //$stateParams = stateParams;
-
             // UPDATE BACK BUTTON DISPLAY
             $rootScope.objBackButton = $rootScope.backButtonDisplay($rootScope.appState);
 
@@ -336,6 +333,13 @@ angular.module('mycdc.controllers', [])
                 };
 
             }
+
+            /* UPDATE STATE PARAMS
+            if ($rootScope.appState.sourceDetail) {
+                $location.path('/app/source' + $rootScope.appState.sourceName + '/' +$rootScope.appState)
+            } else {
+                $location.path('/app/source' + $rootScope.appState.sourceName)
+            }*/
 
             // APP STATE UPDATED
             $rootScope.$broadcast('app-state-updated');

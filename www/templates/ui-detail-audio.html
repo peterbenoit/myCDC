@@ -7,14 +7,15 @@
             <a alt="Next Button" class="button icon-right ion-chevron-right button-clear button-dark" ng-class="{'button-negative':!next.visible, 'button-dark':next.visible}" ng-disabled="!next.visible" href="#/app/Podcast/{{next.position}}">Next</a>
             <a alt="Previous Button" class="button icon-left ion-chevron-left button-clear button-dark" ng-class="{'button-negative':!previous.visible, 'button-dark':previous.visible}" ng-disabled="!previous.visible" href="#/app/Podcast/{{previous.position}}">Prev</a>
         </div>
+        {{detailCard}}
         <div class="padding data civ audio">
-            <h1 class="title">{{data.name}}</h1>
-            <div class="datepub">{{data.datePublished}}</div>
+            <h1 class="title">{{detailData.name}}</h1>
+            <div class="datepub">{{detailData.datePublished}}</div>
             <div class="source">{{name}}</div>
             <audio controls>
-                <source src="{{audio}}" type="{{type}}">
+                <source src="{{detailData.audioUrl}}" type="{{detailData.contentType}}">
             </audio>
-            <p ng-bind-html="data.description"></p>
+            <p ng-bind-html="detailData.description"></p>
             <p><a href="{{transcript}}">Transcript</a></p>
             <div class="border">
                 <p class="padding">

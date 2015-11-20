@@ -1,5 +1,10 @@
 <div class="stream-standard stream-row">
-	<div class="card-container" ng-repeat="data in datas | spliceAtDetailId:data | limitTo:paginationLimit()">
+	<div class="card-container" ng-repeat="data in datas | limitTo:paginationLimit()">
 		<ui-card data-card-data="data" data-app-state="appState"></ui-card>
+	</div>
+	<div class="card-container" ng-show="hasMoreItems('tabletPortrait')" >
+		<button class="button button-inline button-positive cdc-blue selected border" ng-click="loadMore()" >
+			Show more
+		</button>
 	</div>
 </div>

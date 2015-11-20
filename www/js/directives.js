@@ -430,6 +430,17 @@ angular.module('mycdc.directives', [])
                             defer.resolve(detailData);
 
                         break;
+                        case 'audio':
+                        // VIDEOS - NO ADDITIONAL SERVICE CALLS NEEDED
+                            // SIMPLY SET DETAIL DATA FROM CURRENT CARD
+                            detailData = objDetailCard;
+
+                            // PROVIDE A VIDEO URL HELPER FOR THE VIDEO PARTIAL
+                            detailData.audioUrl = $sce.trustAsResourceUrl(detailData.resourceUrl);
+                            //contentType
+
+                            // RESOLVE PROMISE WITH THIS DATA
+                            defer.resolve(detailData);
                         case 'journal':
                         case 'blog':
 

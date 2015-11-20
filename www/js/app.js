@@ -130,6 +130,35 @@ add to body class: platform-wp8
         }
     };
 
+    /*rs.goToState = function (sourceName, sourceDetail) {
+
+        console.log(arguments);
+
+        var objAppState = {};
+
+        objAppState.sourceName = sourceName || 'homestream';
+
+        if (sourceDetail) {
+            objAppState.sourceDetail = sourceDetail;
+        }
+
+        // SET APP STATE
+        $rootScope.appState = objAppState;
+
+        // ON STATE CHANGE, TRIGGER
+        $rootScope.$broadcast('app-state-param-update');
+    };*/
+
+    /* MAYBE? FOR ANDROID BACK BUTTON?
+    $ionicPlatform.registerBackButtonAction(function (event) {
+        if($ionicHistory.currentStateName() == "myiew"){
+            ionic.Platform.exitApp();
+            // or do nothing
+        } else {
+            rs.historyBack();
+        }
+    }, 100);*/
+
     rs.$viewHistory = {
         histories: { root: { historyId: 'root', parentHistoryId: null, stack: [], cursor: -1 } },
         backView: null,
@@ -544,7 +573,7 @@ add to body class: platform-wp8
 
         return function(strType, appState) {
             strType = strType || 'sourceIndex'; // Supports sourceIndex, sourceDetail
-            appState = appState || $stateParams;
+            appState = appState || $$rootScope.appState;
             var storeName, storeAgingName, dataDefault;
 
             if (strType == 'sourceDetail') {
@@ -653,7 +682,7 @@ add to body class: platform-wp8
     };
 
     rs.setButtonState = function (appState) {
-        appState = appState || $stateParams;
+        appState = appState || $rootScope.appState;
         var buttons = {
             show : {
                 home : true || (appState.sourceName !== 'homestream' || rs.sourceDetail),
