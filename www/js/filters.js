@@ -164,7 +164,7 @@ angular.module('mycdc.filters', [])
 }])
 
 
-.filter('spliceAtDetailId', ['$filter','$stateParams', function($filter, $stateParams) {
+.filter('spliceAtDetailId', ['$filter','$rootScope', function($filter, $rootScope) {
     return function(sourceArray) {
         sourceArray = sourceArray || [];
 
@@ -173,10 +173,10 @@ angular.module('mycdc.filters', [])
         // DO WE HAVE SOMETHING TO FILTER?
         if (sourceArray.length) {
             // DO WE HAVE FILTER CRITERIA?
-            if ($stateParams.sourceDetail) {
+            if ($rootScope.appState.sourceDetail) {
                 objTmp.aryReturn = sourceArray.slice(0).reverse();
                 objTmp.srcIndex = sourceArray.length;
-                objTmp.detailId = $stateParams.sourceDetail;
+                objTmp.detailId = $rootScope.appState.sourceDetail;
 
                 // LOOP TO FIND CURRENT DETAIL
                 while (objTmp.srcIndex--) {
@@ -196,14 +196,6 @@ angular.module('mycdc.filters', [])
                 }
 
                 if (objTmp.aryReturn.length) {
-
-                    /* DEBUG
-                    console.log('FILTER');
-                    console.log(sourceArray.length);
-                    console.log(sourceArray);
-                    console.log(objTmp.aryReturn.length);
-                    console.log(objTmp.aryReturn);
-                    */
 
                     return objTmp.aryReturn;
                 }
@@ -239,13 +231,6 @@ angular.module('mycdc.filters', [])
                 // GRAB CURRENT ITEM
                 objTmp.objCurrItem = sourceArray[objTmp.srcIndex];
 
-                // console.log(objTmp.objCurrItem);
-                // console.log(sourceFilters);
-                // console.log(objTmp.objCurrItem.typeIdentifier);
-                // console.log(sourceFilters[objTmp.objCurrItem.typeIdentifier]);
-                // console.log(objTmp.objCurrItem.feedIdentifier);
-                // console.log(sourceFilters[objTmp.objCurrItem.typeIdentifier][objTmp.objCurrItem.feedIdentifier]);
-
                 // CHECK OBJECT DATA AGAINST FILTERS
                 if (sourceFilters.hasOwnProperty(objTmp.objCurrItem.typeIdentifier)) {
                     if (sourceFilters[objTmp.objCurrItem.typeIdentifier].hasOwnProperty(objTmp.objCurrItem.feedIdentifier)) {
@@ -267,21 +252,7 @@ angular.module('mycdc.filters', [])
                 // }
             }
 
-            // SAFETY - DO WE HAVE ANY RESULTS?
-            //if (objTmp.aryReturn.length) {
-
-                /* DEBUG
-                console.log('FILTER');
-                console.log(sourceArray.length);
-                console.log(sourceArray);
-                console.log(objTmp.aryReturn.length);
-                console.log(objTmp.aryReturn);
-                */
-
-                //console.log('I was able to filter ' + sourceArray.length + ' down to ' + objTmp.aryReturn.length);
-
-                return objTmp.aryReturn.reverse();
-            //}
+            return objTmp.aryReturn.reverse();
         }
 
         // JUST RETURN WHAT WAS PASSED (DEFAULT)

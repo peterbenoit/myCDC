@@ -17,6 +17,7 @@ angular.module('mycdc.controllers', [])
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
+
     $rootScope.appInit().then(function(d) {
         $scope.sourceMetaMap = $rootScope.app.sourceMetaMap;
         $scope.sourceFilters = $rootScope.app.sourceFilters;
@@ -136,7 +137,7 @@ angular.module('mycdc.controllers', [])
  * @param  {Object}
  * @return {[type]}
  */
-.controller('CommonSourceCtrl', function($scope, $rootScope, $urlMatcherFactory, $location, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate, $ionicNavBarDelegate) {
+.controller('CommonSourceCtrl', function($scope, $rootScope, $urlMatcherFactory, $location, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $ionicPopover, $sce, $cordovaNetwork, $ionicScrollDelegate, $ionicNavBarDelegate) {
 
     // TOGGLE SHOW SETTING OFF
     $rootScope.settingsActive = false;
@@ -166,24 +167,44 @@ angular.module('mycdc.controllers', [])
     // SET TITLE
     $ionicNavBarDelegate.title('<img src="img/logo.png" />');
 
+    // LISTED FOR APP STATE UPDATE
+    $scope.$on('app-state-updated', function(event){
+
+        // SET ROUTE TO APP STATE (WHICH HAS BEEN UDPATED BY HISTORYBACK)
+        $scope.setRoute($rootScope.appState);
+    });
+
     // SETUP LISTENERS FOR STATE CHANGE
     $scope.$on('$locationChangeSuccess', function(event) {
 
-        $timeout(function(){
+        // ON STATE CHANGE, TRIGGER
+        $rootScope.$broadcast('app-state-param-update');
+    });
 
-            // SET TITLE
-            $ionicNavBarDelegate.title('<img src="img/logo.png" />');
+    // LISTEN FOR APP STATE CHANGE REQUEST
+    $scope.$on('app-state-param-update', function(event) {
+
+        // TRIGGER INITIAL LOADER DISPLAY
+        $ionicLoading.show({
+            content: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+        });
+
+        $timeout(function(){
 
             //PLAIN TEXT FOR THE ARGUMENT FOR CLARITY
             var urlMatcher = $urlMatcherFactory.compile('/app/source/:sourceName/:sourceDetail');
             var newStateParams = urlMatcher.exec($location.url());
 
-            // GET STATE PARAMS FROM ROOTSCOPE
+            // GET STATE PARAMS FROM ROOTSCOPE IF UNABLE TO RETREIVE FROM URL
             if (!newStateParams) {
                 newStateParams = $rootScope.appState;
             }
 
-            // DEFAULT STATE PARAMS
+            // DEFAULT STATE PARAMS (FAILSAFE ON URL AND ROOTSCOPE FAILURE)
             if (!newStateParams) {
                 newStateParams = {
                     sourceName : 'homestream',
@@ -191,23 +212,154 @@ angular.module('mycdc.controllers', [])
                 };
             }
 
-            // PUSH NEW STATE TO HISTORY
-            $rootScope.saveHistory(newStateParams);
+            // SET ROUTE TO NEW STATE
+            $scope.setRoute(newStateParams);
+        });
+    });
 
-            // UPDATE BACK BUTTON DISPLAY
-            $rootScope.objBackButton = $rootScope.backButtonDisplay($stateParams);
+    $scope.menuPopOver = function() {
+        var runonce = window.localStorage.getItem('myCDC-runonssce');
 
-            // UPDATE STATE PARAMETERS
-            $stateParams = newStateParams;
+        if (runonce === null) {
+            window.localStorage['myCDC-runonce'] = true;
 
-            // SET SCOPE.APPSTATE (STATE PARAMETER UPDATE IS BUGGY)
-            $rootScope.appState = newStateParams;
-            $rootScope.$broadcast('source-detail-changed');
-            $scope.detailCard = $rootScope.getSourceCard($rootScope.appState.sourceDetail);
+            // Show the popover only on first load
+            $ionicPopover.fromTemplateUrl('templates/popover.html', {
+                scope: $scope,
+            }).then(function(popover) {
+                $scope.popover = popover;
+                var element = document.getElementById('navicon');
+                popover.show(element);
+
+                $scope.closePopover = function() {
+                    $scope.popover.hide();
+                    $scope.popover.remove();
+                };
+            });
+        }
+    };
+
+    // HISTORY HANDLERS
+    $scope.saveHistory = function(appState) {
+
+        appState = appState || $rootScope.appState;
+
+
+        // GET THE LAST STATE IN HISTORY
+        var objLastState = $rootScope.aryHistory[$rootScope.aryHistory.length - 1] || {};
+
+        // SAVE THE STATE TO HISTORY (IF NEW)
+        var objThisState = {
+            sourceName : appState.sourceName || false ,
+            sourceDetail : appState.sourceDetail || false
+        };
+
+        // SHOULD WE SAVE IT?
+        if (objThisState.sourceName != objLastState.sourceName || objThisState.sourceDetail != objLastState.sourceDetail) {
+            // IS THIS SAME DIFFERENT FROM THE LAST? SAVE CURRENT
+            $rootScope.aryHistory.push(objThisState);
+        }
+    };
+
+    $rootScope.historyBack = function() {
+
+        $ionicLoading.show({
+            content: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
         });
 
-        return true;
-    });
+        // GET COPY OF CURRENT STATE FROM ROOTSCOPE
+        var appState = angular.extend({}, $rootScope.appState);
+
+        // GET THIS STATE
+        var objThisState = {
+            sourceName : appState.sourceName,
+            sourceDetail : appState.sourceDetail
+        };
+
+        if ($rootScope.aryHistory.length) {
+
+            // GET THE LAST STATE (& POP IT OFF THE ARRAY)
+            var objLastState = $rootScope.aryHistory.pop();
+
+            // IS THE LAST STATE THE SAME AS THE CURRENT STATE?
+            if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
+
+                // THEN WE NEED TO GO BACK ONE MORE
+                if ($rootScope.aryHistory.length) {
+
+                    // GET THE NEXT IN LINE
+                    objLastState = $rootScope.aryHistory.pop();
+                }
+            }
+
+            // UPDATE ROOTSCOPE APP STATE
+            $rootScope.appState = objLastState;
+
+        } else {
+
+            // UPDATE ROOTSCOPE APP STATE
+            $rootScope.appState = {
+                sourceName : 'homestream'
+            };
+
+        }
+
+        // APP STATE UPDATED
+        $rootScope.$broadcast('app-state-updated');
+    };
+
+    $scope.stateChanged = function (stateParams) {
+        if (!stateParams.sourceName) {
+            return true;
+        }
+
+        if (stateParams.sourceName != $rootScope.appState.sourceName) {
+            return true;
+        }
+
+        if (stateParams.hasOwnProperty('sourceDetail') && stateParams.sourceDetail != $rootScope.appState.sourceDetail) {
+            return true;
+        };
+
+        return false;
+    };
+
+    $scope.setRoute = function (stateParams) {
+
+        // HAS ROUTE CHANGED?
+        if ($scope.stateChanged(stateParams)) {
+
+            // UPDATE APP STATE
+            $rootScope.appState = stateParams;
+
+            // PUSH NEW STATE TO HISTORY
+            $scope.saveHistory(stateParams);
+        };
+
+        $scope.getSourceListLocal().then(function(d){
+
+            // UPDATE STATE PARAMETERS
+            //$stateParams = stateParams;
+
+            // UPDATE BACK BUTTON DISPLAY
+            $rootScope.objBackButton = $rootScope.backButtonDisplay(stateParams);
+
+            // SET DETAIL CARD
+            $scope.detailCard = $rootScope.getSourceCard(stateParams.sourceDetail);
+
+            // REFRESH SCREEN STATE
+            $rootScope.refreshScreenState(function(){
+
+                // HIDE THE LOADER
+                $ionicLoading.hide();
+
+            });
+        });
+    };
 
     if (initialLoad) {
 
@@ -234,7 +386,7 @@ angular.module('mycdc.controllers', [])
         };
 
         $scope.loadMore = function() {
-            $scope.loading = $ionicLoading.show({
+            $ionicLoading.show({
                 content: 'Loading',
                 animation: 'fade-in',
                 showBackdrop: true,
@@ -302,7 +454,7 @@ angular.module('mycdc.controllers', [])
                     if (blnRefresh || false) {
 
                         // GET / SET SOURCE META DATA TO SCOPE FROM STATE PARAMETERS
-                        $scope.sourceMeta = $rootScope.getSourceMeta($stateParams);
+                        $scope.sourceMeta = $rootScope.getSourceMeta($rootScope.appState);
                         $scope.getSourceListLocal().then(function(d){
 
                             // RESOLVE PROMISE
@@ -323,38 +475,29 @@ angular.module('mycdc.controllers', [])
         console.log('Contoller Initial Load');
     }
 
-    // TRIGGER INITIAL LOADER DISPLAY
-    $ionicLoading.show({
-        content: 'Loading',
-        animation: 'fade-in',
-        showBackdrop: true,
-        maxWidth: 200,
-        showDelay: 0
-    });
-
     // THEN UPDATE VIEW
     $timeout(function(){
+
+        // SET TITLE
+        $ionicNavBarDelegate.title('<img src="img/logo.png" />');
 
         // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
         $scope.ctrlInit(initialLoad || sourceChange).then(function(d){
 
-            $rootScope.saveHistory($stateParams);
-            $rootScope.objBackButton = $rootScope.backButtonDisplay($stateParams);
-
+            // SET SOURCE LIST, TYPES, TEMPLATE MAP & METAMAP
             $scope.sourceList = $rootScope.app.sourceList;
             $scope.sourceTypes = $rootScope.app.sourceTypes;
             $scope.templateMap = $rootScope.app.templateMap;
             $scope.sourceMetaMap = $rootScope.app.sourceMetaMap;
 
-            // REFRESH SCREEN STATE
-            $rootScope.refreshScreenState();
-
-            // HIDE THE LOADER
-            $ionicLoading.hide();
-
             return d;
         }).then(function(){
-            $scope.detailCard = $rootScope.getSourceCard($rootScope.appState.sourceDetail);
+
+            // BROADCAST DETAIL CHANGE
+            $rootScope.$broadcast('app-state-param-update');
+
+            // SHOW POPOVER ON FIRST RUN (OR AFTER CLEAR)
+            $scope.menuPopOver();
         });
 
         console.log('Contoller Load');

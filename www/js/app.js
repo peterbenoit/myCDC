@@ -38,7 +38,7 @@ add to body class: platform-wp8
         sourceDetail : false
     }];
 
-    // window.open should use inappbrowser
+    // WINDOW.OPEN SHOULD USE INAPPBROWSER
     document.addEventListener('deviceready', onDeviceReady, false);
 
     function onDeviceReady() {
@@ -518,7 +518,7 @@ add to body class: platform-wp8
 
         var storePrefix = 'myCDC';
         var dateFormat = 'YYYY-MM-DD-HH-mm-ss';
-        var dataTimeoutInMinutes = 0;
+        var dataTimeoutInMinutes = 60;
 
         var isExpired = function (ageStoreKey) {
 
@@ -612,7 +612,7 @@ add to body class: platform-wp8
         // window.open($scope.data.sourceUrl, '_system');
     };
 
-    rs.refreshScreenState = function () {
+    rs.refreshScreenState = function (callback) {
 
         $rootScope.$broadcast('screen-state-update-started');
 
@@ -644,10 +644,11 @@ add to body class: platform-wp8
         $timeout(function(){
             // SET BUTTONS
             $rootScope.setButtonState();
-            $rootScope.$broadcast('screen-state-update-complete', {
-                templates : sourceMeta.templates,
-                screenState : objReturn
-            });
+            $rootScope.$broadcast('screen-state-update-complete');
+
+            if (callback && callback.call) {
+                callback.call();
+            }
         }, 0);
     };
 
@@ -770,15 +771,21 @@ add to body class: platform-wp8
 
     rs.getSourceCard = function (sourceDetailId) {
 
-        var arySourceInfo;
+        var arySourceInfo = [];
 
         // GET OR DEFAULT SOURCE DETAIL ID
         sourceDetailId = sourceDetailId || $rootScope.appState.sourceDetail;
 
-        // FILTER HERE
-        arySourceInfo = $filter('filter')(rs.sourceIndex, {
-            id: sourceDetailId
-        }) || [];
+        if (!sourceDetailId) {
+            if (rs.sourceIndex.length) {
+                arySourceInfo = [rs.sourceIndex[0]];
+            }
+        } else {
+            // FILTER HERE
+            arySourceInfo = $filter('filter')(rs.sourceIndex, {
+                id: sourceDetailId
+            }) || [];
+        }
 
         // DID WE FIND IT?
         if (arySourceInfo.length === 1) {
@@ -793,94 +800,6 @@ add to body class: platform-wp8
 
         // ELSE RETURN FALSE
         return false;
-    };
-
-    // HISTORY HANDLERS
-    rs.saveHistory = function(appState) {
-
-        appState = appState || $rootScope.appState;
-
-
-        // GET THE LAST STATE IN HISTORY
-        var objLastState = rs.aryHistory[rs.aryHistory.length - 1] || {};
-
-        // SAVE THE STATE TO HISTORY (IF NEW)
-        var objThisState = {
-            sourceName : appState.sourceName || false ,
-            sourceDetail : appState.sourceDetail || false
-        };
-
-        // SHOULD WE SAVE IT?
-        if (objThisState.sourceName != objLastState.sourceName || objThisState.sourceDetail != objLastState.sourceDetail) {
-            // IS THIS SAME DIFFERENT FROM THE LAST? SAVE CURRENT
-            rs.aryHistory.push(objThisState);
-        }
-    };
-
-    rs.historyBack = function(appState) {
-        appState = appState || {};
-
-        // ENSURE HOME IS ALWAYS THE FIRST SPOT IN THE HISTORY ARRAY
-        /*if (!rs.aryHistory.length == 0) {
-            rs.aryHistory.push({
-                sourceName : 'homestream',
-                sourceDetail : false
-            });
-        }*/
-
-        appState = angular.extend({}, appState, $rootScope.appState);
-
-        console.log('HISTORY BACK CLICKED');
-        console.log(rs.aryHistory);
-
-        // GET THIS STATE
-        var objThisState = {
-            sourceName : appState.sourceName,
-            sourceDetail : appState.sourceDetail
-        };
-
-        // GET THE LAST STATE (& POP IT OFF THE ARRAY)
-        var objLastState = rs.aryHistory.pop();
-
-        // IS THE LAST STATE THE SAME AS THE CURRENT STATE?
-        if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
-
-            // THEN WE NEED TO GO BACK ONE MORE
-            if (rs.aryHistory.length) {
-
-                // GET THE NEXT IN LINE
-                objLastState = rs.aryHistory.pop();
-            }
-        }
-
-        // console.log('history array');
-        // console.log(rs.aryHistory);
-        // console.log(rs.aryHistory.length);
-        // console.log('passed state');
-        // console.log(appState);
-        // console.log('derived state');
-        // console.log(objThisState);
-        // console.log('last state');
-        // console.log(objLastState);
-
-        $rootScope.appState = objLastState;
-
-        // IS THE LAST STATE DIFFERENT FROM THE CURRENT STATE?
-        if (objLastState.sourceName != objThisState.sourceName || objLastState.sourceDetail != objThisState.sourceDetail) {
-
-            // DETERMINE AND SET APPROPRIATE STATE (INDEX OR DETAIL)
-            if (objLastState.sourceDetail && objLastState.sourceDetail) {
-
-                //console.log('/app/source/' + objLastState.sourceName + '/' + objLastState.sourceDetail);
-                $state.go('app.sourceDetail', objLastState, {location: true})
-
-            } else if (objLastState.sourceName && objLastState.sourceName.length) {
-
-                //console.log('/app/source/' + objLastState.sourceName);
-                $state.go('app.sourceIndex', { sourceName : objLastState.sourceName }, {location: true})
-
-            }
-        }
     };
 
     rs.backButtonDisplay = function (appState) {
