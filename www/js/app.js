@@ -127,7 +127,6 @@ add to body class: platform-wp8
         }
     };
 
-
     rs.$viewHistory = {
         histories: { root: { historyId: 'root', parentHistoryId: null, stack: [], cursor: -1 } },
         backView: null,
@@ -592,11 +591,6 @@ add to body class: platform-wp8
         };
     }());
 
-    rs.viewOnCDC = function () {
-        alert('THIS NEEDS WIRED UP');
-        // window.open($scope.data.sourceUrl, '_system');
-    };
-
     rs.remoteApi = (function() {
         var apiDefaults = {
             method: 'GET',
@@ -609,6 +603,11 @@ add to body class: platform-wp8
             return $http(options);
         };
     }());
+
+    rs.viewOnCDC = function () {
+        alert('THIS NEEDS WIRED UP');
+        // window.open($scope.data.sourceUrl, '_system');
+    };
 
     rs.refreshScreenState = function () {
 
@@ -798,13 +797,6 @@ add to body class: platform-wp8
 
         appState = appState || $rootScope.appState;
 
-        // ENSURE HOME IS ALWAYS THE FIRST SPOT IN THE HISTORY ARRAY
-        if (!rs.aryHistory.length) {
-            rs.aryHistory.push({
-                sourceName : 'homestream',
-                sourceDetail : false
-            });
-        }
 
         // GET THE LAST STATE IN HISTORY
         var objLastState = rs.aryHistory[rs.aryHistory.length - 1] || {};
@@ -823,6 +815,13 @@ add to body class: platform-wp8
     };
 
     rs.historyBack = function(appState) {
+        // ENSURE HOME IS ALWAYS THE FIRST SPOT IN THE HISTORY ARRAY
+        if (rs.aryHistory.length < 1) {
+            rs.aryHistory.push({
+                sourceName : 'homestream',
+                sourceDetail : false
+            });
+        }
 
         appState = appState || $rootScope.appState;
 

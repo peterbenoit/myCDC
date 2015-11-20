@@ -180,6 +180,40 @@ dfn {
 #ui-master .ui-list-view h3 {
   margin: 12px;
 }
+#ui-master .ui-default.ui-phone .ui-list-view,
+#ui-master .ui-iframe.ui-phone .ui-list-view,
+#ui-master .ui-images.ui-phone .ui-list-view,
+#ui-master .ui-default.ui-phone .ui-detail-view,
+#ui-master .ui-iframe.ui-phone .ui-detail-view,
+#ui-master .ui-images.ui-phone .ui-detail-view {
+  top: 44px;
+  height: 100vh;
+}
+#ui-master .ui-default.ui-phone .ui-list-view .card-container,
+#ui-master .ui-iframe.ui-phone .ui-list-view .card-container,
+#ui-master .ui-images.ui-phone .ui-list-view .card-container,
+#ui-master .ui-default.ui-phone .ui-detail-view .card-container,
+#ui-master .ui-iframe.ui-phone .ui-detail-view .card-container,
+#ui-master .ui-images.ui-phone .ui-detail-view .card-container {
+  width: 100vw;
+}
+#ui-master .ui-default.ui-phone .ui-list-view .card-container .card,
+#ui-master .ui-iframe.ui-phone .ui-list-view .card-container .card,
+#ui-master .ui-images.ui-phone .ui-list-view .card-container .card,
+#ui-master .ui-default.ui-phone .ui-detail-view .card-container .card,
+#ui-master .ui-iframe.ui-phone .ui-detail-view .card-container .card,
+#ui-master .ui-images.ui-phone .ui-detail-view .card-container .card {
+  height: 120vw;
+}
+#ui-master .ui-default.ui-phone .ui-list-view .card-container .card .item-image,
+#ui-master .ui-iframe.ui-phone .ui-list-view .card-container .card .item-image,
+#ui-master .ui-images.ui-phone .ui-list-view .card-container .card .item-image,
+#ui-master .ui-default.ui-phone .ui-detail-view .card-container .card .item-image,
+#ui-master .ui-iframe.ui-phone .ui-detail-view .card-container .card .item-image,
+#ui-master .ui-images.ui-phone .ui-detail-view .card-container .card .item-image {
+  width: 100vw;
+  height: 56vw;
+}
 #ui-master .ui-default.ui-tablet-landscape .ui-list-view,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-list-view,
 #ui-master .ui-images.ui-tablet-landscape .ui-list-view,
@@ -305,6 +339,7 @@ dfn {
   /* HOME STREAM - TABLE LANDSCAPE */
 }
 #ui-master .ui-home.ui-phone .ui-list-view {
+  top: 44px;
   height: 100vh;
 }
 #ui-master .ui-home.ui-phone .ui-list-view .card-container {

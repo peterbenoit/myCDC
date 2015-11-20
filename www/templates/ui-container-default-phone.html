@@ -1,5 +1,5 @@
 <!-- PHONE UNIVERSAL (PORTRAIT & LANDSCAPE) MODE -->
-<div class="ui-default ui-phone">
+<div class="ui-default ui-phone" data-ng-show="!loading">
 
 	<!-- THE LIST VIEW (IF NO DETAIL SELECTED) -->
 	<div class="ui-list-view" data-ng-if="!appState.sourceDetail">
@@ -7,7 +7,10 @@
 			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
 			<h3>{{sourceMeta.title}}</h3>
 			<ui-stream></ui-stream>
-			<ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+			<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
+			<button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="loadMore()" >
+				Show more
+			</button>
 		</ion-scroll>
 	</div><!-- .ui-list-view -->
 

@@ -40,6 +40,9 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  */
 .controller('SettingsCtrl', function($scope, $rootScope, $cordovaNetwork, $ionicPopup) {
+
+    $rootScope.showSettingsBack = true;
+
     $rootScope.appInit().then(function(d) {
         $scope.resetSettings = function() {
             var confirmPopup = $ionicPopup.confirm({
@@ -116,7 +119,6 @@ angular.module('mycdc.controllers', [])
 
         // SET BUTTONS
         $scope.setButtonState();
-
     });
 })
 
@@ -132,7 +134,6 @@ angular.module('mycdc.controllers', [])
 .controller('CommonSourceCtrl', function($scope, $rootScope, $urlMatcherFactory, $location, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate, $ionicNavBarDelegate) {
 
     var  initialLoad = (!$scope.sourceName), sourceChange, detailChange;
-
 
     // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
     if (!$rootScope.appState) {
@@ -205,16 +206,16 @@ angular.module('mycdc.controllers', [])
             return (objSizes[type] || objSizes.defaultLimit) * $scope.page;
         };
 
-        $scope.hasMoreItems = function() {
+        $scope.hasMoreItems = function(type) {
+            type = type || 'defaultLimit';
             // QUICK CHECK TO SEE IF ALL AVAILABLE CARDS ARE SHOWN
             if ($scope.datas) {
-                return $scope.page < ($scope.datas.length / $scope.pageSize);
+                return ($scope.page * $scope.paginationLimit(type)) < $scope.datas.length;
             }
             return false;
         };
 
         $scope.loadMore = function() {
-            $scope.page = $scope.page + 1;
             $scope.loading = $ionicLoading.show({
                 content: 'Loading',
                 animation: 'fade-in',
@@ -222,7 +223,11 @@ angular.module('mycdc.controllers', [])
                 maxWidth: 200,
                 showDelay: 0
             });
-            $scope.$broadcast('scroll.loadMore');
+
+            $timeout(function(){
+                $scope.page = $scope.page + 1;
+                $scope.$broadcast('scroll.loadMore');
+            });
         };
 
         $scope.getSourceListLocal = function (blnRefresh) {
@@ -235,7 +240,7 @@ angular.module('mycdc.controllers', [])
             $rootScope.getSourceIndex(blnRefresh).then(function(d) {
 
                 // RESET PAGING
-                $scope.pageSize = 10
+                $scope.pageSize = 10;
                 $scope.page = 1;
 
                 // SET DATA TO "datas" SO TEMPLATE WILL PICK IT UP & DISPLAY IT
