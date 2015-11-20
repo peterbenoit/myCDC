@@ -170,8 +170,31 @@ angular.module('mycdc.controllers', [])
     // LISTED FOR APP STATE UPDATE
     $scope.$on('app-state-updated', function(event){
 
-        // SET ROUTE TO APP STATE (WHICH HAS BEEN UDPATED BY HISTORYBACK)
-        $scope.setRoute($rootScope.appState);
+        // PUSH NEW STATE TO HISTORY
+        $scope.saveHistory($rootScope.appState);
+
+        $scope.getSourceListLocal().then(function(d){
+
+            // UPDATE STATE PARAMETERS
+            //$stateParams = stateParams;
+
+            // UPDATE BACK BUTTON DISPLAY
+            $rootScope.objBackButton = $rootScope.backButtonDisplay($rootScope.appState);
+
+            // GET / SET SOURCE META DATA TO SCOPE FROM STATE PARAMETERS
+            $scope.sourceMeta = $rootScope.getSourceMeta($rootScope.appState);
+
+            // SET DETAIL CARD
+            $scope.detailCard = $rootScope.getSourceCard($rootScope.appState.sourceDetail);
+
+            // REFRESH SCREEN STATE
+            $rootScope.refreshScreenState(function(){
+
+                // HIDE THE LOADER
+                $ionicLoading.hide();
+
+            });
+        });
     });
 
     // SETUP LISTENERS FOR STATE CHANGE
@@ -212,8 +235,12 @@ angular.module('mycdc.controllers', [])
                 };
             }
 
-            // SET ROUTE TO NEW STATE
-            $scope.setRoute(newStateParams);
+            // UPDATE APP STATE
+            $rootScope.appState = newStateParams;
+
+            // ON STATE CHANGE, TRIGGER APP STATE UDPATE
+            $rootScope.$broadcast('app-state-updated');
+
         });
     });
 
@@ -271,45 +298,49 @@ angular.module('mycdc.controllers', [])
             showDelay: 0
         });
 
-        // GET COPY OF CURRENT STATE FROM ROOTSCOPE
-        var appState = angular.extend({}, $rootScope.appState);
+        $timeout(function() {
 
-        // GET THIS STATE
-        var objThisState = {
-            sourceName : appState.sourceName,
-            sourceDetail : appState.sourceDetail
-        };
+            // GET COPY OF CURRENT STATE FROM ROOTSCOPE
+            var appState = angular.extend({}, $rootScope.appState);
 
-        if ($rootScope.aryHistory.length) {
-
-            // GET THE LAST STATE (& POP IT OFF THE ARRAY)
-            var objLastState = $rootScope.aryHistory.pop();
-
-            // IS THE LAST STATE THE SAME AS THE CURRENT STATE?
-            if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
-
-                // THEN WE NEED TO GO BACK ONE MORE
-                if ($rootScope.aryHistory.length) {
-
-                    // GET THE NEXT IN LINE
-                    objLastState = $rootScope.aryHistory.pop();
-                }
-            }
-
-            // UPDATE ROOTSCOPE APP STATE
-            $rootScope.appState = objLastState;
-
-        } else {
-
-            // UPDATE ROOTSCOPE APP STATE
-            $rootScope.appState = {
-                sourceName : 'homestream'
+            // GET THIS STATE
+            var objThisState = {
+                sourceName : appState.sourceName,
+                sourceDetail : appState.sourceDetail
             };
 
-        }
+            if ($rootScope.aryHistory.length) {
 
-        // APP STATE UPDATED
-        $rootScope.$broadcast('app-state-updated');
+                // GET THE LAST STATE (& POP IT OFF THE ARRAY)
+                var objLastState = $rootScope.aryHistory.pop();
+
+                // IS THE LAST STATE THE SAME AS THE CURRENT STATE?
+                if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
+
+                    // THEN WE NEED TO GO BACK ONE MORE
+                    if ($rootScope.aryHistory.length) {
+
+                        // GET THE NEXT IN LINE
+                        objLastState = $rootScope.aryHistory.pop();
+                    }
+                }
+
+                // UPDATE ROOTSCOPE APP STATE
+                $rootScope.appState = objLastState;
+
+            } else {
+
+                // UPDATE ROOTSCOPE APP STATE
+                $rootScope.appState = {
+                    sourceName : 'homestream'
+                };
+
+            }
+
+            // APP STATE UPDATED
+            $rootScope.$broadcast('app-state-updated');
+
+        });
     };
 
     $scope.stateChanged = function (stateParams) {
@@ -326,39 +357,6 @@ angular.module('mycdc.controllers', [])
         };
 
         return false;
-    };
-
-    $scope.setRoute = function (stateParams) {
-
-        // HAS ROUTE CHANGED?
-        if ($scope.stateChanged(stateParams)) {
-
-            // UPDATE APP STATE
-            $rootScope.appState = stateParams;
-
-            // PUSH NEW STATE TO HISTORY
-            $scope.saveHistory(stateParams);
-        };
-
-        $scope.getSourceListLocal().then(function(d){
-
-            // UPDATE STATE PARAMETERS
-            //$stateParams = stateParams;
-
-            // UPDATE BACK BUTTON DISPLAY
-            $rootScope.objBackButton = $rootScope.backButtonDisplay(stateParams);
-
-            // SET DETAIL CARD
-            $scope.detailCard = $rootScope.getSourceCard(stateParams.sourceDetail);
-
-            // REFRESH SCREEN STATE
-            $rootScope.refreshScreenState(function(){
-
-                // HIDE THE LOADER
-                $ionicLoading.hide();
-
-            });
-        });
     };
 
     if (initialLoad) {
@@ -453,8 +451,7 @@ angular.module('mycdc.controllers', [])
                     // REFRESH REQUESTED SOURCE INDEX DATA?
                     if (blnRefresh || false) {
 
-                        // GET / SET SOURCE META DATA TO SCOPE FROM STATE PARAMETERS
-                        $scope.sourceMeta = $rootScope.getSourceMeta($rootScope.appState);
+                        // GET THE SOURCE LIST
                         $scope.getSourceListLocal().then(function(d){
 
                             // RESOLVE PROMISE
