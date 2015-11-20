@@ -218,7 +218,7 @@ angular.module('mycdc.controllers', [])
     });
 
     $scope.menuPopOver = function() {
-        var runonce = window.localStorage.getItem('myCDC-runonssce');
+        var runonce = window.localStorage.getItem('myCDC-runonce');
 
         if (runonce === null) {
             window.localStorage['myCDC-runonce'] = true;
