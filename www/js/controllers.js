@@ -169,42 +169,42 @@ angular.module('mycdc.controllers', [])
     // SETUP LISTENERS FOR STATE CHANGE
     $scope.$on('$locationChangeSuccess', function(event) {
 
-        // SET TITLE
-        $ionicNavBarDelegate.title('<img src="img/logo.png" />');
+        $timeout(function(){
 
-        //PLAIN TEXT FOR THE ARGUMENT FOR CLARITY
-        var urlMatcher = $urlMatcherFactory.compile('/app/source/:sourceName/:sourceDetail');
-        var newStateParams = urlMatcher.exec($location.url());
+            // SET TITLE
+            $ionicNavBarDelegate.title('<img src="img/logo.png" />');
 
-        //console.log(event);
-        //console.log(newStateParams);
+            //PLAIN TEXT FOR THE ARGUMENT FOR CLARITY
+            var urlMatcher = $urlMatcherFactory.compile('/app/source/:sourceName/:sourceDetail');
+            var newStateParams = urlMatcher.exec($location.url());
 
-        // GET STATE PARAMS FROM ROOTSCOPE
-        if (!newStateParams) {
-            newStateParams = $rootScope.appState;
-        }
+            // GET STATE PARAMS FROM ROOTSCOPE
+            if (!newStateParams) {
+                newStateParams = $rootScope.appState;
+            }
 
-        // DEFAULT STATE PARAMS
-        if (!newStateParams) {
-            newStateParams = {
-                sourceName : 'homestream',
-                sourceDetail : false
-            };
-        }
+            // DEFAULT STATE PARAMS
+            if (!newStateParams) {
+                newStateParams = {
+                    sourceName : 'homestream',
+                    sourceDetail : false
+                };
+            }
 
-        // PUSH NEW STATE TO HISTORY
-        $rootScope.saveHistory(newStateParams);
+            // PUSH NEW STATE TO HISTORY
+            $rootScope.saveHistory(newStateParams);
 
-        // UPDATE BACK BUTTON DISPLAY
-        $rootScope.objBackButton = $rootScope.backButtonDisplay($stateParams);
+            // UPDATE BACK BUTTON DISPLAY
+            $rootScope.objBackButton = $rootScope.backButtonDisplay($stateParams);
 
-        // UPDATE STATE PARAMETERS
-        $stateParams = newStateParams;
+            // UPDATE STATE PARAMETERS
+            $stateParams = newStateParams;
 
-        // SET SCOPE.APPSTATE (STATE PARAMETER UPDATE IS BUGGY)
-        $rootScope.appState = newStateParams;
-        $rootScope.$broadcast('source-detail-changed');
-        $scope.detailCard = $rootScope.getSourceCard($rootScope.appState.sourceDetail);
+            // SET SCOPE.APPSTATE (STATE PARAMETER UPDATE IS BUGGY)
+            $rootScope.appState = newStateParams;
+            $rootScope.$broadcast('source-detail-changed');
+            $scope.detailCard = $rootScope.getSourceCard($rootScope.appState.sourceDetail);
+        });
 
         return true;
     });

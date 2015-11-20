@@ -71,6 +71,48 @@ dfn {
   /*	 TRAVEL NOTICES/OUTBREAKS */
   /* END DIRECT PORTS FROM ORIGINAL */
   /* UI DEFAULTS (BY DEVICE / ORIENTATION) */
+  /*
+	.ui-images {
+
+		&.ui-tablet-portrait {
+
+			.ui-list-view {
+				height: 25vh;
+
+
+
+				.button-inline {
+					display: inline-block;
+					height: 15vh;
+				}
+			}
+
+			.ui-detail-view {
+				height: 75vh;
+			}
+		}
+
+		.ui-list-view {
+			.card-container {
+				width: 15vw;
+				height: 8.43vw;
+
+				.item-image {
+					width: 15vw;
+					height: 8.43vw;
+				}
+			}
+		}
+
+		.ui-detail-view {
+			.item-image {
+				display: block;
+				// width: 70vw;
+				// max-width: 100%;
+				height: 39.37vw;
+			}
+		}
+	}*/
   /* HOME STREAM */
   /* CARD DEFAULTS
 	.ui-tablet-landscape .ui-list-view .card-container {
@@ -232,19 +274,25 @@ dfn {
 #ui-master .ui-default.ui-tablet-landscape .ui-list-view .card-container,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-list-view .card-container,
 #ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container {
+  width: 15vw;
   float: left;
 }
 #ui-master .ui-default.ui-tablet-landscape .ui-list-view .card-container .item-image,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-list-view .card-container .item-image,
 #ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container .item-image {
   display: block;
-  height: 30vw;
-  height: 16.87vw;
+  height: 11vw;
 }
 #ui-master .ui-default.ui-tablet-landscape .ui-detail-view,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-detail-view,
 #ui-master .ui-images.ui-tablet-landscape .ui-detail-view {
   width: 70vw;
+}
+#ui-master .ui-default.ui-tablet-landscape .ui-detail-view .item-image,
+#ui-master .ui-iframe.ui-tablet-landscape .ui-detail-view .item-image,
+#ui-master .ui-images.ui-tablet-landscape .ui-detail-view .item-image {
+  display: block;
+  height: 39.37vw;
 }
 #ui-master .ui-default.ui-tablet-portrait .ui-list-view,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-list-view,
@@ -266,6 +314,7 @@ dfn {
 #ui-master .ui-default.ui-tablet-portrait .ui-list-view .stream-row,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-list-view .stream-row,
 #ui-master .ui-images.ui-tablet-portrait .ui-list-view .stream-row {
+  height: 18vh;
   font-size: 0;
 }
 #ui-master .ui-default.ui-tablet-portrait .ui-list-view .stream-row .card-container,
@@ -278,12 +327,13 @@ dfn {
 #ui-master .ui-default.ui-tablet-portrait .ui-list-view .card-container,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-list-view .card-container,
 #ui-master .ui-images.ui-tablet-portrait .ui-list-view .card-container {
-  width: 35vw;
+  height: 18vh;
+  width: 33vw;
 }
 #ui-master .ui-default.ui-tablet-portrait .ui-list-view .card-container .card,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-list-view .card-container .card,
 #ui-master .ui-images.ui-tablet-portrait .ui-list-view .card-container .card {
-  height: 25vh;
+  height: 18vh;
 }
 #ui-master .ui-default.ui-tablet-portrait .ui-list-view .card-container,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-list-view .card-container,
@@ -300,38 +350,14 @@ dfn {
 #ui-master .ui-images.ui-tablet-portrait .ui-detail-view {
   height: 75vh;
 }
+#ui-master .ui-default.ui-tablet-portrait .ui-detail-view .item-image,
+#ui-master .ui-iframe.ui-tablet-portrait .ui-detail-view .item-image,
+#ui-master .ui-images.ui-tablet-portrait .ui-detail-view .item-image {
+  display: block;
+  height: 56.25vw;
+}
 #ui-master .ui-iframe.ui-tablet-portrait .ui-detail-view {
   height: 100vh;
-}
-#ui-master .ui-images.ui-tablet-portrait .ui-list-view {
-  height: 25vh;
-}
-#ui-master .ui-images.ui-tablet-portrait .ui-list-view .card-container {
-  width: 26vh;
-  height: 15vh;
-}
-#ui-master .ui-images.ui-tablet-portrait .ui-list-view .card-container .item-image {
-  width: 26vh;
-  height: 15vh;
-}
-#ui-master .ui-images.ui-tablet-portrait .ui-list-view .button-inline {
-  display: inline-block;
-  height: 15vh;
-}
-#ui-master .ui-images.ui-tablet-portrait .ui-detail-view {
-  height: 75vh;
-}
-#ui-master .ui-images .ui-list-view .card-container {
-  width: 15vw;
-  height: 8.43vw;
-}
-#ui-master .ui-images .ui-list-view .card-container .item-image {
-  width: 15vw;
-  height: 8.43vw;
-}
-#ui-master .ui-images .ui-detail-view .item-image {
-  display: block;
-  height: 39.37vw;
 }
 #ui-master .ui-home {
   /* HOME STREAM - PHONE (PORTRAIT ONLY)*/

@@ -443,9 +443,6 @@ angular.module('mycdc.directives', [])
                                 // $SCOPE.DETAILCARD.CONTEN WILL NOT BIND CORRCETLY, WITH TRUST, OR APPLY, OR ANYTHING...
                                 // CAN LOOK INTO IT MORE LATER, BUT NOT WORTH TEH TIME NOW
 
-                                // SET HTML CONTENT
-                                $scope.content = detailData.content;
-
                                 // RESOLVE PROMISE WITH THIS DATA
                                 defer.resolve(detailData);
 
@@ -454,13 +451,13 @@ angular.module('mycdc.directives', [])
                         break;
                         case 'image':
 
-                            $scope.cardData = objDetailCard;
+                            //$scope.cardData = objDetailCard;
 
                             // GET SOURCE DETAIL DATA
                             //getSourceDetail(objDetailCard, false).then(function(d){
 
                                 // NORMALIZE DATA BY SOURCE SPECS?
-                              //  detailData = d;
+                                //detailData = d;
 
                                 // RESOLVE PROMISE WITH THIS DATA
                                 defer.resolve(objDetailCard);

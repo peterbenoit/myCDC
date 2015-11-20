@@ -230,17 +230,22 @@ body.platform-windowsphone {}
 				width: 30vw;
 
 				.card-container {
+					width: 15vw;
 					float: left;
 
 					.item-image {
 						display: block;
-						height: 30vw;
-						height: 16.87vw;
+						height: 11vw;
 					}
 				}
 			}
 			.ui-detail-view {
 				width: 70vw;
+
+				.item-image {
+					display: block;
+					height: 39.37vw;
+				}
 			}
 		}
 
@@ -258,6 +263,7 @@ body.platform-windowsphone {}
 				white-space: nowrap;
 
 				.stream-row {
+					height: 18vh;
 					font-size: 0; //* CSS FIX: https://css-tricks.com/fighting-the-space-between-inline-block-elements/
 				}
 				.stream-row .card-container {
@@ -267,10 +273,11 @@ body.platform-windowsphone {}
 				}
 
 				.card-container {
-					width: 35vw;
+					height: 18vh;
+					width: 33vw;
 
 					.card {
-						height: 25vh;
+						height: 18vh;
 					}
 				}
 
@@ -285,6 +292,12 @@ body.platform-windowsphone {}
 
 			.ui-detail-view {
 				height: 75vh;
+				// width is 100vw implicitly
+
+				.item-image {
+					display: block;
+					height: 56.25vw;
+				}
 			}
 		}
 	}
@@ -300,6 +313,7 @@ body.platform-windowsphone {}
 		}
 	}
 
+	/*
 	.ui-images {
 
 		&.ui-tablet-portrait {
@@ -307,15 +321,7 @@ body.platform-windowsphone {}
 			.ui-list-view {
 				height: 25vh;
 
-				.card-container {
-					width: 26vh;
-					height: 15vh;
 
-					.item-image {
-						width: 26vh;
-						height: 15vh;
-					}
-				}
 
 				.button-inline {
 					display: inline-block;
@@ -327,9 +333,7 @@ body.platform-windowsphone {}
 				height: 75vh;
 			}
 		}
-	}
 
-	.ui-images {
 		.ui-list-view {
 			.card-container {
 				width: 15vw;
@@ -341,6 +345,7 @@ body.platform-windowsphone {}
 				}
 			}
 		}
+
 		.ui-detail-view {
 			.item-image {
 				display: block;
@@ -349,7 +354,7 @@ body.platform-windowsphone {}
 				height: 39.37vw;
 			}
 		}
-	}
+	}*/
 
 	/* HOME STREAM */
 	.ui-home {

@@ -3,15 +3,15 @@
         <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
     </ion-nav-buttons>
     <ion-content>
-        <h1 class="padding">{{cardData.topic || cardData.streamTitle}}</h1>
+        <h1 class="padding">{{detailData.topic || detailData.streamTitle}}</h1>
         <!-- <div class="paging">
             <a alt="Next Button" class="button icon-right ion-chevron-right button-clear button-dark" ng-class="{'button-negative':!next.visible, 'button-dark':next.visible}" ng-disabled="!next.visible" href="#/app/PHIL/{{next.position}}">Next</a>
             <a alt="Previous Button" class="button icon-left ion-chevron-left button-clear button-dark" ng-class="{'button-negative':!previous.visible, 'button-dark':previous.visible}" ng-disabled="!previous.visible" href="#/app/PHIL/{{previous.position}}">Prev</a>
         </div> -->
         <div class="padding data civ image">
-            <div class="item-image" style="background-image:url({{detailCard.imageSrc}})"></div>
-            <div class="datepub">{{cardData.datePublished}}</div>
-            <p ng-bind-html="cardData.description"></p>
+            <div class="item-image" style="background-image:url({{detailData.imageSrc}})"></div>
+            <div class="datepub">{{detailData.datePublished}}</div>
+            <p ng-bind-html="detailData.description"></p>
             <div class="top-border">
                 <p class="padding">
                     <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
@@ -19,9 +19,9 @@
                 </p>
             </div>
         </div>
-        <!-- <div>DETAIL DATA {{cardData.name}}</div> -->
-        <!-- <div>DETAIL DATA {{detailCard}}</div> -->
-        <!--<ui-dump data-variable="{{detailCard}}"></ui-dump>-->
-        <!-- <div ng-repeat="key in detailCard">{{key}}</div> -->
+        <!-- <div>DETAIL DATA {{detailData.name}}</div> -->
+        <!-- <div>DETAIL DATA {{detailData}}</div> -->
+        <!--<ui-dump data-variable="{{detailData}}"></ui-dump>-->
+        <!-- <div ng-repeat="key in detailData">{{key}}</div> -->
     </ion-content>
 </ion-view>
