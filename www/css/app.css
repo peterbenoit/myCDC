@@ -423,3 +423,7 @@ dfn {
 #ui-master .stream-home .card-container {
   float: left;
 }
+.bar-positive .button.button-icon {
+  padding-right: 2px;
+  padding-left: 2px;
+}
