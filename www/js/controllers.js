@@ -152,7 +152,7 @@ angular.module('mycdc.controllers', [])
         };
     }
 
-    sourceChange = ($stateParams.sourceName !== $rootScope.appState.sourceName),
+    sourceChange = ($stateParams.sourceName !== $rootScope.appState.sourceName);
     detailChange = ($stateParams.sourceDetail !== $rootScope.appState.sourceDetail);
 
     $scope.activeClasses = {
@@ -180,6 +180,8 @@ angular.module('mycdc.controllers', [])
 
             // GET / SET SOURCE META DATA TO SCOPE FROM STATE PARAMETERS
             $scope.sourceMeta = $rootScope.getSourceMeta($rootScope.appState);
+
+console.log($scope.sourceMeta);
 
             // SET DETAIL CARD
             $scope.detailCard = $rootScope.getSourceCard($rootScope.appState.sourceDetail);
@@ -358,7 +360,7 @@ angular.module('mycdc.controllers', [])
 
         if (stateParams.hasOwnProperty('sourceDetail') && stateParams.sourceDetail != $rootScope.appState.sourceDetail) {
             return true;
-        };
+        }
 
         return false;
     };

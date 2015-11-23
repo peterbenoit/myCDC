@@ -37,6 +37,9 @@ add to body class: platform-wp8
         sourceName : 'homestream',
         sourceDetail : false
     }];
+    rs.detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/';
+    rs.remoteCheck = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
+    rs.sourcesUrl = 'json/sources-prototype.json';
 
     // WINDOW.OPEN SHOULD USE INAPPBROWSER
     document.addEventListener('deviceready', onDeviceReady, false);
@@ -68,7 +71,7 @@ add to body class: platform-wp8
                 rs.log(offlineState);
         });
 
-        $cordovaStatusbar.hide()
+        $cordovaStatusbar.hide();
         $ionicPlatform.fullScreen();
     }
 
@@ -356,6 +359,8 @@ add to body class: platform-wp8
 
                 }
 
+console.log('prefilter: ', d);
+
                 // DELETE BAD EGGS (MORE ACCURATELY, KEEP GOOD EGGS)
                 //console.log(d);
                 //console.log('I was able to filter ' + d.length);
@@ -365,12 +370,13 @@ add to body class: platform-wp8
                 //console.log('down to' + d.length);
 
                 // APPLY SOURCE FILTERS
-                d = $filter('applySourceFilters')(d, rs.app.sourceFilters);
+// WARN: I commented this out to remove any filtering (still no data appearing!)
+// d = $filter('applySourceFilters')(d, rs.app.sourceFilters);
 
                 // LIMIT FINAL RESULTS TO 100
                 if (d.length > 100) {
                     rs.log('Trimming array from ' + d.length + ' to 100' , -100);
-                    d.splice(100)
+                    d.splice(100);
                 }
 
                 rs.log(d, -1, 'CURRENT SOURCE POST FIX');
@@ -486,7 +492,7 @@ add to body class: platform-wp8
             var processor;
 
             data = (d.data && d.data.results) ? d.data.results : [];
-            rs.log(data);
+console.log(data);
 
             // DID WE GET DATA?
             if (data.length > 0) {
@@ -705,14 +711,18 @@ add to body class: platform-wp8
         // PARAMS
         var arySourceInfo, strSourceName = appState.sourceName || appState || "";
 
+console.log('$rootScope.app.sourceList: ', $rootScope.app.sourceList)
         // FILTER HERE
         arySourceInfo = $filter('filter')($rootScope.app.sourceList, {
             feedIdentifier: strSourceName
         }) || [];
 
+console.log('arySourceInfo: ', arySourceInfo)
+
         // DID WE FIND IT?
         if (arySourceInfo.length === 1) {
 
+console.log('arySourceInfo[0]: ', arySourceInfo[0])
             // RETURN IT
             return arySourceInfo[0];
         }
@@ -724,6 +734,8 @@ add to body class: platform-wp8
     rs.getSourceIndex = function(blnRefresh, appState) {
 
         blnRefresh = blnRefresh || false;
+// WARN: I'm forcing a refresh to always show the data
+        blnRefresh = true;
         appState = appState || $rootScope.appState;
 
         var defer, localStore, localData, objMetaData, data;
@@ -745,13 +757,17 @@ add to body class: platform-wp8
 
             // REMOTE DATA NEEDED
 
+rs.log(objMetaData)
+
             // CAN WE FIND URL?
             if (objMetaData.url) {
+
 
                 rs.remoteApi({
                     url: objMetaData.url
                 }).then(function(d) {
 
+rs.log('d', d);
                     // NORMALIZE DATA BY SOURCE SPECS
                     var data = rs.dataProcessor(d, objMetaData);
 
@@ -887,7 +903,7 @@ add to body class: platform-wp8
 
             // GET & SAVE THE SOURCE LIST PROMISE
             var sourceListPromise = rs.remoteApi({
-                url: 'json/sources.json'
+                url: rs.sourcesUrl
             });
 
             // CONTINUE PROMISE CHAIN

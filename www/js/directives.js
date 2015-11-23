@@ -243,7 +243,7 @@ angular.module('mycdc.directives', [])
 
             // URL CHECK NEEDED
             $rootScope.remoteApi({
-                url : 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=' + objTemp.noChromeUrl
+                url : $rootScope.remoteCheck + objTemp.noChromeUrl
             }).then(function(resp) {
                 var urlToUse;
                 // DETERMINE URL BASED ON SERVER STATUS RETURN
@@ -280,6 +280,7 @@ angular.module('mycdc.directives', [])
             sourceName : sourceCard.feedIdentifier,
             sourceDetail : sourceCard.id
         };
+
         // GET META DATA FROM
         objMetaData = $rootScope.getSourceMeta(derivedState);
         localStore = $rootScope.getLocalStoreByAppState('sourceDetail', derivedState);
@@ -297,7 +298,7 @@ angular.module('mycdc.directives', [])
 
             //objCurrentCard = $rootScope.getSourceCard();
 
-            var detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/' + derivedState.sourceDetail + '/syndicate.json';
+            var detailUrl = $rootScope.detailUrl + derivedState.sourceDetail + '/syndicate.json';
 
             // REMOTE DATA NEEDED
 
@@ -483,6 +484,8 @@ angular.module('mycdc.directives', [])
 
                                 // NORMALIZE DATA BY SOURCE SPECS?
                                 detailData = d;
+
+console.log('detailData: ', d);
 
                                 // RESOLVE PROMISE WITH THIS DATA
                                 defer.resolve(detailData);
