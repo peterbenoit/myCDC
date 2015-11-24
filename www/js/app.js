@@ -359,8 +359,6 @@ add to body class: platform-wp8
 
                 }
 
-console.log('prefilter: ', d);
-
                 // DELETE BAD EGGS (MORE ACCURATELY, KEEP GOOD EGGS)
                 //console.log(d);
                 //console.log('I was able to filter ' + d.length);
@@ -370,8 +368,7 @@ console.log('prefilter: ', d);
                 //console.log('down to' + d.length);
 
                 // APPLY SOURCE FILTERS
-// WARN: I commented this out to remove any filtering (still no data appearing!)
-// d = $filter('applySourceFilters')(d, rs.app.sourceFilters);
+                d = $filter('applySourceFilters')(d, rs.app.sourceFilters);
 
                 // LIMIT FINAL RESULTS TO 100
                 if (d.length > 100) {
@@ -507,14 +504,14 @@ console.log(data);
                     for (var i = objMetaData.processors.length - 1; i >= 0; i--) {
                         processor = objMetaData.processors[i];
                         data = processors[processor].call(this, data, objMetaData);
-                    };
+                    }
                 }
             }
 
             //RETURN IT IN THE PROMISE CHAIN
             return data;
 
-        }
+        };
     } ());
 
     rs.getSimpleLocalStore = (function() {
@@ -603,7 +600,7 @@ console.log(data);
                             name : storeName,
                             expired : isExpired(storeAgingName),
                             data : angular.fromJson(jsonData)
-                        }
+                        };
 
                         rs.log(objReturn, 0, storeName + ' data');
 
@@ -642,9 +639,14 @@ console.log(data);
         };
     } ());
 
+    // TODO: Neither of these methods work in scope anymore, and I don't know why!
     rs.viewOnCDC = function () {
         alert('THIS NEEDS WIRED UP');
         // window.open($scope.data.sourceUrl, '_system');
+    };
+
+    rs.shareData = function () {
+        alert('THIS NEEDS WIRED UP');
     };
 
     rs.refreshScreenState = function (callback) {
