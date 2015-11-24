@@ -221,7 +221,6 @@ angular.module('mycdc.directives', [])
         // CHECK IF WE NEED TO REFRESH OR NOT
         if (!blnRefresh && !localData.expired) {
 
-            console.log
             // LOCAL DATA IS GOOD
             // RESOLVE PROMISE WITH THE STORED DATA
             $rootScope.log(localData.data, 1, 'Using Local Detail Data (Still Fresh)');
@@ -397,7 +396,7 @@ angular.module('mycdc.directives', [])
 
                     $scope.detailTemplateUrl = 'templates/' + objDetailCard.templates.detail + '.html';
 
-                    console.log(objDetailCard.detailType);
+                    //console.log(objDetailCard);
 
                     // CALL SPECIFIED PROCESSOR
                     switch (objDetailCard.detailType) {
@@ -435,7 +434,7 @@ angular.module('mycdc.directives', [])
                         // VIDEOS - NO ADDITIONAL SERVICE CALLS NEEDED
                             // SIMPLY SET DETAIL DATA FROM CURRENT CARD
                             detailData = objDetailCard;
-
+                            alert(detailData.resourceUrl);
                             // PROVIDE A VIDEO URL HELPER FOR THE VIDEO PARTIAL
                             detailData.audioUrl = $sce.trustAsResourceUrl(detailData.resourceUrl);
                             //contentType

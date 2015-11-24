@@ -475,7 +475,7 @@ console.log($scope.sourceMeta);
             $scope.getSourceListLocal(blnRefresh);
         };
 
-        console.log('Contoller Initial Load');
+        //console.log('Contoller Initial Load');
     }
 
     // THEN UPDATE VIEW
@@ -503,6 +503,6 @@ console.log($scope.sourceMeta);
             $scope.menuPopOver();
         });
 
-        console.log('Contoller Load');
+        //console.log('Contoller Load');
     });
 });
