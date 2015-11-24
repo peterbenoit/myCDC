@@ -48,7 +48,15 @@ i, cite, em, var, address, dfn {
 }
 
 /* useful */
-body.platform-ios {}
+body.platform-ios {
+	&.platform-cordova {
+		&:not(.fullscreen) {
+			.has-header {
+				top: 74px;
+			}
+		}
+	}
+}
 body.platform-ipad {}
 body.platform-android {}
 body.platform-windowsphone {}
@@ -264,7 +272,7 @@ body.platform-windowsphone {}
 			.ui-detail-view {
 				float: none;
 				width: 100vw;
-				top: 54px;
+				top: 74px;
 			}
 
 			.ui-list-view {
@@ -335,7 +343,7 @@ body.platform-windowsphone {}
 		&.ui-phone {
 			.ui-list-view,
 			.ui-detail-view {
-				top: 54px;
+				top: 74px;
 				height: 100vh;
 			}
 
@@ -412,7 +420,7 @@ body.platform-windowsphone {}
 		&.ui-phone {
 
 			.ui-list-view {
-				top: 54px;
+				top: 74px;
 				height: 100vh;
 
 				.card-container {

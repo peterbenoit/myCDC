@@ -62,6 +62,9 @@ dfn {
   font-size: 24px;
 }
 /* useful */
+body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
+  top: 74px;
+}
 #ui-master {
   /* BEGIN DIRECT PORTS FROM ORIGINAL */
   /*ion-side-menu.menu.menu-left .item-content {
@@ -267,7 +270,7 @@ dfn {
 #ui-master .ui-images.ui-tablet-portrait .ui-detail-view {
   float: none;
   width: 100vw;
-  top: 54px;
+  top: 74px;
 }
 #ui-master .ui-default.ui-tablet-portrait .ui-list-view,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-list-view,
@@ -332,7 +335,7 @@ dfn {
 }
 #ui-master .ui-images.ui-phone .ui-list-view,
 #ui-master .ui-images.ui-phone .ui-detail-view {
-  top: 54px;
+  top: 74px;
   height: 100vh;
 }
 #ui-master .ui-images.ui-phone .ui-list-view .card-container {
@@ -379,7 +382,7 @@ dfn {
   /* HOME STREAM - TABLE LANDSCAPE */
 }
 #ui-master .ui-home.ui-phone .ui-list-view {
-  top: 54px;
+  top: 74px;
   height: 100vh;
 }
 #ui-master .ui-home.ui-phone .ui-list-view .card-container {
