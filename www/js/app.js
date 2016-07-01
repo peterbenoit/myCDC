@@ -32,14 +32,14 @@ add to body class: platform-wp8
 
     // APP CONTAINER
     rs.app = {};
-    rs.logLevel = -99;
+    rs.logLevel = 100;
     rs.aryHistory = [{
         sourceName : 'homestream',
         sourceDetail : false
     }];
-    rs.detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/';
+    rs.detailUrl = 'https://tools.cdc.gov/api/v2/resources/media/';
     rs.remoteCheck = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
-    rs.sourcesUrl = 'json/sources-prototype.json';
+    rs.sourcesUrl = 'json/sources-local.json';
 
     // WINDOW.OPEN SHOULD USE INAPPBROWSER
     document.addEventListener('deviceready', onDeviceReady, false);
@@ -488,8 +488,9 @@ add to body class: platform-wp8
 
             var processor;
 
-            data = (d.data && d.data.results) ? d.data.results : [];
-console.log(data);
+            console.log(d);
+            var data = (d.data && d.data.results) ? d.data.results : [];
+            console.log(data);
 
             // DID WE GET DATA?
             if (data.length > 0) {
@@ -619,7 +620,7 @@ console.log(data);
                     window.localStorage[storeName] = angular.toJson(appdata);
                 },
                 clear: function() {
-                    window.localStorage.removeItem(storeName);
+                    window.localStorage.removeItem(storeAgingName);
                     window.localStorage.removeItem(storeName);
                 }
             };
@@ -713,18 +714,14 @@ console.log(data);
         // PARAMS
         var arySourceInfo, strSourceName = appState.sourceName || appState || "";
 
-console.log('$rootScope.app.sourceList: ', $rootScope.app.sourceList)
         // FILTER HERE
         arySourceInfo = $filter('filter')($rootScope.app.sourceList, {
             feedIdentifier: strSourceName
         }) || [];
 
-console.log('arySourceInfo: ', arySourceInfo)
-
         // DID WE FIND IT?
         if (arySourceInfo.length === 1) {
 
-console.log('arySourceInfo[0]: ', arySourceInfo[0])
             // RETURN IT
             return arySourceInfo[0];
         }
@@ -736,8 +733,7 @@ console.log('arySourceInfo[0]: ', arySourceInfo[0])
     rs.getSourceIndex = function(blnRefresh, appState) {
 
         blnRefresh = blnRefresh || false;
-// WARN: I'm forcing a refresh to always show the data
-        blnRefresh = true;
+
         appState = appState || $rootScope.appState;
 
         var defer, localStore, localData, objMetaData, data;
@@ -748,7 +744,7 @@ console.log('arySourceInfo[0]: ', arySourceInfo[0])
         localData = localStore.all();
 
         // CHECK IF WE NEED TO REFRESH OR NOT
-        if (!blnRefresh && !localData.expired) {
+        if (!blnRefresh && !localData.expired && false) {
 
             // LOCAL DATA IS GOOD
             // RESOLVE PROMISE WITH THE STORED DATA
@@ -759,17 +755,13 @@ console.log('arySourceInfo[0]: ', arySourceInfo[0])
 
             // REMOTE DATA NEEDED
 
-rs.log(objMetaData)
-
             // CAN WE FIND URL?
             if (objMetaData.url) {
-
 
                 rs.remoteApi({
                     url: objMetaData.url
                 }).then(function(d) {
 
-rs.log('d', d);
                     // NORMALIZE DATA BY SOURCE SPECS
                     var data = rs.dataProcessor(d, objMetaData);
 
@@ -923,6 +915,9 @@ rs.log('d', d);
                     sourceFilterLocks : {}
                 };
 
+                window.objApp = objApp;
+                console.warn('objApp is available as window.objApp for ease of development only... DO NOT REFERENCE AS window.objApp IN CODE')
+
                 // LOCALS
                 var i = objApp.sourceList.length, objReturn = {}, objSrc;
 
@@ -962,7 +957,7 @@ rs.log('d', d);
 
                 // IF WE FOUND LOCAL SETTINGS, MERGE THEM IN
                 if (localFilters) {
-                    objApp.sourceFilters = angular.extend(objApp.sourceFilters, localFilters);
+               //     objApp.sourceFilters = angular.extend(objApp.sourceFilters, localFilters);
                 }
 
                 // SAVE DATA TO ROOTSCOPE

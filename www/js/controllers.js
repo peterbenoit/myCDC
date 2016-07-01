@@ -181,8 +181,6 @@ angular.module('mycdc.controllers', [])
             // GET / SET SOURCE META DATA TO SCOPE FROM STATE PARAMETERS
             $scope.sourceMeta = $rootScope.getSourceMeta($rootScope.appState);
 
-console.log($scope.sourceMeta);
-
             // SET DETAIL CARD
             $scope.detailCard = $rootScope.getSourceCard($rootScope.appState.sourceDetail);
 
