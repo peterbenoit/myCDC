@@ -1,5 +1,7 @@
-<div class="stream stream-home stream-tablet stream-tablet-portrait">
-	<div class="card-container" ng-repeat="data in datas | limitTo: paginationLimit('tabletLandscape')">
-		<ui-card data-card-data="data"  data-app-state="appState"></ui-card>
-	</div>
-</div><!--stream stream-tablet-->
+<!-- ui-stream-home-portrait -->
+
+<div class="stream-home">
+	<div class="card-container" ng-repeat="data in datas | limitTo: paginationLimit('tabletPortrait')">
+		<ui-card data-card-data="data" data-app-state="appState"><!-- UI CARD DIRECTIVE --></ui-card>
+	</div><!-- card-container -->
+</div><!-- stream-home -->

@@ -1,21 +1,34 @@
 <ion-view>
-	<ion-nav-title>CDC</ion-nav-title>
+	<!-- <ion-nav-title>CDC</ion-nav-title> -->
 	<ion-content>
 
 		<!-- TABLET PORTRAIT MODE -->
 		<div class="ui-default ui-tablet-portrait has-list-header">
 
 			<!-- THE LIST VIEW -->
-			<div class="ui-list-view">
+			<div data-ng-if="!appState.sourceDetail" class="ui-list-view has-header"><div>
+
 				<!-- STREAM VIEW -->
-				<ion-scroll direction="x" class="horizontal-scroller stream" delegate-handle="streamScrollHorizontal">
+				<ion-scroll direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
+
 					<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+
+					<h3>{{sourceMeta.title}}</h3>
+
+					<!-- UI STREAM DIRECTIVE -->
 					<ui-stream></ui-stream>
+
+					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
+					<button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems('tabletLandscape')" ng-click="loadMore()" >
+						Show more
+					</button>
+
 				</ion-scroll>
-			</div><!-- ui-list-view -->
+
+			</div></div><!-- ui-list-view -->
 
 			<!-- THE DETAIL VIEW -->
-			<div class="ui-detail-view">
+			<div data-ng-if="appState.sourceDetail" class="ui-detail-view">
 				<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard" data-app-state="appState"></ui-detail>
 			</div><!-- ui-detail-view -->
 

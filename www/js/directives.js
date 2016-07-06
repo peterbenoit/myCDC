@@ -2,8 +2,6 @@
  *
  */
 angular.module('mycdc.directives', [])
-
-// THESE CAN BE MOVED TO DIRECTIVES FILE
 .directive('uiContainer', function($rootScope, $timeout) {
    return {
         restrict: 'E',
@@ -29,6 +27,10 @@ angular.module('mycdc.directives', [])
                 $rootScope.log(uiContainerTemplateUrl, 1, 'UI-CONTAINER-TEMPLATE');
 
                 $scope.containerLoading = false;
+
+                console.log('$rootScope.screenState',$rootScope.screenState);
+                console.log('$rootScope.appState', $rootScope.appState);
+                console.log('$rootScope.sourceMeta.templates', $rootScope.sourceMeta.templates);
 
                 return uiContainerTemplateUrl;
             };
@@ -484,7 +486,7 @@ angular.module('mycdc.directives', [])
                                 // NORMALIZE DATA BY SOURCE SPECS?
                                 detailData = d;
 
-console.log('detailData: ', d);
+                                console.log('detailData: ', d);
 
                                 // RESOLVE PROMISE WITH THIS DATA
                                 defer.resolve(detailData);
@@ -617,5 +619,4 @@ console.log('detailData: ', d);
             });
         }
     };
-})
-
+});

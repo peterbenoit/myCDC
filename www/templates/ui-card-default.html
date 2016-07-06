@@ -9,11 +9,8 @@
 		<p class="date">{{cardData.datePublished}}</p>
 		<p ng-bind-html="cardData.description | words:20"></p>
 	</a>
-	<div ng-if="cardData.streamTitle" class="item item-footer">
-		<span ng-if="appState.sourceName != 'homestream'">
-			{{cardData.streamTitle}}
-		</span>
-		<a ng-if="appState.sourceName == 'homestream'" ng-href="{{cardData.url}}" >
+	<div ng-if="cardData.streamTitle && appState.sourceName == 'homestream'" class="item item-footer">
+		<a ng-href="{{cardData.url}}" >
 			{{cardData.streamTitle}}
 		</a>
 	</div>

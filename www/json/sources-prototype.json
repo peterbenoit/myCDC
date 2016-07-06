@@ -61,7 +61,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-article"
@@ -80,7 +80,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-iframe",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-embed"
@@ -99,7 +99,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-article"
@@ -118,7 +118,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-iframe",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-embed"
@@ -137,7 +137,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-article"
@@ -156,7 +156,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-data"
@@ -175,7 +175,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-journal"
@@ -194,7 +194,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-blog"
@@ -213,7 +213,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-blog"
@@ -232,7 +232,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-data"
@@ -251,7 +251,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-fact"
@@ -270,7 +270,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-fact"
@@ -289,7 +289,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-iframe",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-journal"
@@ -308,7 +308,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-journal"
@@ -326,7 +326,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-embed"
@@ -345,7 +345,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-embed"
@@ -364,7 +364,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-embed"
@@ -420,8 +420,8 @@
         "cardImages" : true,
         "filterLocked" : false,
         "templates" : {
-            "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "containerSet" : "ui-container-home",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-video"
@@ -438,7 +438,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-article"
@@ -489,7 +489,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-article"
@@ -506,7 +506,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "landing-twitter"
@@ -523,7 +523,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-article"
@@ -540,7 +540,7 @@
         "filterLocked" : false,
         "templates" : {
             "containerSet" : "ui-container-default",
-            "stream" : "ui-stream-standard",
+            "stream" : "ui-stream-home",
             "card" : "ui-card-default",
             "homeCard" : "ui-card-default",
             "detail" : "ui-detail-article"

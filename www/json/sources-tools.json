@@ -420,7 +420,7 @@
         "cardImages": true,
         "filterLocked": false,
         "templates": {
-            "containerSet": "ui-container-default",
+            "containerSet": "ui-container-home",
             "stream": "ui-stream-standard",
             "card": "ui-card-default",
             "homeCard": "ui-card-default",

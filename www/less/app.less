@@ -236,20 +236,24 @@ body.platform-windowsphone {}
 				top: 54px;
 			}
 			.ui-list-view {
-				width: 30vw;
+				width: 100vw;
 
 				.card-container {
-					width: 30vw;
 					float: left;
+					width: 33.33vw;
 
-					.item-image {
-						display: block;
-						height: 22vw;
+					.card {
+						height: 39.66vw;
+
+						.item-image {
+							width: 33.33vw;
+							height: 18.55vw;
+						}
 					}
 				}
 			}
 			.ui-detail-view {
-				width: 70vw;
+				width: 100vw;
 
 				.item-image {
 					display: block;
@@ -276,41 +280,56 @@ body.platform-windowsphone {}
 			}
 
 			.ui-list-view {
-				height: 25vh;
-				overflow: scroll;
-				white-space: nowrap;
+				// height: 25vh;
+				// overflow: scroll;
+				// white-space: nowrap;
 
-				.stream-row {
-					height: 18vh;
-					font-size: 0; //* CSS FIX: https://css-tricks.com/fighting-the-space-between-inline-block-elements/
-				}
-				.stream-row .card-container {
-					display: -webkit-flex;
-					display: inline-block;
-					vertical-align: top;
-				}
+				// .stream-row {
+				// 	height: 18vh;
+				// 	font-size: 0; //* CSS FIX: https://css-tricks.com/fighting-the-space-between-inline-block-elements/
+				// }
+				// .stream-row .card-container {
+				// 	display: -webkit-flex;
+				// 	display: inline-block;
+				// 	vertical-align: top;
+				// }
+
+				// .card-container {
+				// 	height: 18vh;
+				// 	width: 33vw;
+
+				// 	.card {
+				// 		height: 18vh;
+				// 	}
+				// }
+
+				// .card-container {
+				// 	width: 44vw;
+
+				// 	.item-image {
+				// 		height: 25vw;
+				// 	}
+				// }
+
+				height: 100vh;
 
 				.card-container {
-					height: 18vh;
-					width: 33vw;
+					float: left;
+					width: 50vw;
 
 					.card {
-						height: 18vh;
-					}
-				}
+						height: 50vw;
 
-				.card-container {
-					width: 44vw;
-
-					.item-image {
-						height: 25vw;
+						.item-image {
+							width: 50vw;
+							height: 28vw;
+						}
 					}
 				}
 			}
 
 			.ui-detail-view {
 				height: 75vh;
-				// width is 100vw implicitly
 
 				.item-image {
 					display: block;
