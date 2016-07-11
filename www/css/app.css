@@ -264,8 +264,8 @@ body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
 #ui-master .ui-default.ui-tablet-landscape .ui-detail-view .detail-video iframe,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-detail-view .detail-video iframe,
 #ui-master .ui-images.ui-tablet-landscape .ui-detail-view .detail-video iframe {
-  width: 70vw;
-  height: 39.37vw;
+  width: 100vw;
+  height: 56vw;
 }
 #ui-master .ui-default.ui-tablet-portrait .ui-list-view,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-list-view,

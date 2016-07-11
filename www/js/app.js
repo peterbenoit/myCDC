@@ -14,12 +14,6 @@ angular.module('mycdc', [
     'angular.filter',
     'ngIOS9UIWebViewPatch'
 ])
-/*
-add to body class: platform-android
-add to body class: platform-browser
-add to body class: platform-ios
-add to body class: platform-wp8
-*/
 
 /**
  * @param  {[type]}
@@ -145,35 +139,6 @@ add to body class: platform-wp8
         }
     };
 
-    /*rs.goToState = function (sourceName, sourceDetail) {
-
-        console.log(arguments);
-
-        var objAppState = {};
-
-        objAppState.sourceName = sourceName || 'homestream';
-
-        if (sourceDetail) {
-            objAppState.sourceDetail = sourceDetail;
-        }
-
-        // SET APP STATE
-        $rootScope.appState = objAppState;
-
-        // ON STATE CHANGE, TRIGGER
-        $rootScope.$broadcast('app-state-param-update');
-    };*/
-
-    /* MAYBE? FOR ANDROID BACK BUTTON?
-    $ionicPlatform.registerBackButtonAction(function (event) {
-        if($ionicHistory.currentStateName() == "myiew"){
-            ionic.Platform.exitApp();
-            // or do nothing
-        } else {
-            rs.historyBack();
-        }
-    }, 100);*/
-
     rs.$viewHistory = {
         histories: { root: { historyId: 'root', parentHistoryId: null, stack: [], cursor: -1 } },
         backView: null,
@@ -231,38 +196,6 @@ add to body class: platform-wp8
                 screen.unlockOrientation();
             }
         }
-
-        /*
-        // kick off a media query listener to tag the body with a class
-        var mq;
-        if (window.matchMedia) {
-            mq = window.matchMedia('(orientation: portrait)');
-
-            if (mq.matches) {
-                //portrait
-                rs.orientation = 'portrait';
-                $ionicBody.addClass('portrait');
-            } else {
-                //landscape
-                rs.orientation = 'landscape';
-                $ionicBody.addClass('landscape');
-            }
-            rs.$apply();
-
-            mq.addListener(function(m) {
-                if (m.matches) {
-                    rs.log('changed to portrait');
-                    rs.orientation = 'portrait';
-                    $ionicBody.removeClass('landscape').addClass('portrait');
-                } else {
-                    rs.log('changed to landscape');
-                    rs.orientation = 'landscape';
-                    $ionicBody.removeClass('portrait').addClass('landscape');
-                }
-                rs.$apply();
-            });
-        }
-        */
     });
 
 	rs.dataProcessor = (function () {
@@ -853,47 +786,47 @@ add to body class: platform-wp8
         return false;
     };
 
-    rs.backButtonDisplay = function (appState) {
+    // rs.backButtonDisplay = function (appState) {
 
-        appState = appState || $rootScope.appState;
+    //     appState = appState || $rootScope.appState;
 
-        var objReturn = {
-            icon : 'ion-chevron-left',
-            text : 'Home'
-        };
+    //     var objReturn = {
+    //         icon : 'ion-chevron-left',
+    //         text : 'Home'
+    //     };
 
-        if (appState.sourceName != 'homestream') {
-            if (rs.aryHistory.length > 0) {
+    //     if (appState.sourceName != 'homestream') {
+    //         if (rs.aryHistory.length > 0) {
 
-                // GET THIS STATE
-                var objThisState = {
-                    sourceName : appState.sourceName || false ,
-                    sourceDetail : appState.sourceDetail || false
-                };
+    //             // GET THIS STATE
+    //             var objThisState = {
+    //                 sourceName : appState.sourceName || false ,
+    //                 sourceDetail : appState.sourceDetail || false
+    //             };
 
-                // GET THE LAST STATE IN HISTORY
-                var objLastState = rs.aryHistory[rs.aryHistory.length - 1] || {};
+    //             // GET THE LAST STATE IN HISTORY
+    //             var objLastState = rs.aryHistory[rs.aryHistory.length - 1] || {};
 
-                // ARE THEY THE SAME?
-                if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
+    //             // ARE THEY THE SAME?
+    //             if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
 
-                    // YES, GO BACK ONE MORE
-                    objLastState = rs.aryHistory[rs.aryHistory.length - 2] || {};
-                }
+    //                 // YES, GO BACK ONE MORE
+    //                 objLastState = rs.aryHistory[rs.aryHistory.length - 2] || {};
+    //             }
 
-                if (objLastState.hasOwnProperty('sourceName')) {
-                    if (objLastState.sourceName == 'homestream') {
-                        objReturn.icon = 'ion-chevron-left';
-                        objReturn.text = 'Home';
-                    } else {
-                        objReturn.icon = 'ion-chevron-left';
-                        objReturn.text = 'Back';
-                    }
-                }
-            }
-        }
-        return objReturn;
-    };
+    //             if (objLastState.hasOwnProperty('sourceName')) {
+    //                 if (objLastState.sourceName == 'homestream') {
+    //                     objReturn.icon = 'ion-chevron-left';
+    //                     objReturn.text = 'Home';
+    //                 } else {
+    //                     objReturn.icon = 'ion-chevron-left';
+    //                     objReturn.text = 'Back';
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return objReturn;
+    // };
 
     rs.goHome = function () {
         $state.go('app.sourceIndex', { sourceName : 'homestream' });
@@ -1037,8 +970,18 @@ add to body class: platform-wp8
     sp.state('app.settings', {
         url: '/settings',
         views: {
-            'menuContent': {
+            'appContent': {
                 templateUrl: 'templates/settings.html',
+                controller: 'SettingsCtrl'
+            }
+        }
+    });
+
+    sp.state('app.navigation', {
+        url: '/navigation',
+        views: {
+            'appContent': {
+                templateUrl: 'templates/navigation.html',
                 controller: 'SettingsCtrl'
             }
         }
@@ -1047,7 +990,7 @@ add to body class: platform-wp8
     sp.state('app.home', {
         url: '/home',
         views: {
-            'menuContent': {
+            'appContent': {
                 templateUrl: 'templates/ui-main-source-list.html',
                 controller: 'CommonSourceCtrl'
             }
@@ -1055,9 +998,10 @@ add to body class: platform-wp8
     });
 
     sp.state('app.sourceIndex', {
+        cache: false,
         url: '/source/:sourceName',
         views: {
-            'menuContent': {
+            'appContent': {
                 templateUrl: 'templates/ui-main.html',
                 controller: 'CommonSourceCtrl'
             }
@@ -1065,10 +1009,11 @@ add to body class: platform-wp8
     });
 
     sp.state('app.sourceDetail', {
+        cache: false,
         url: '/source/:sourceName/:sourceDetail',
         reloadOnSearch : false,
         views: {
-            'menuContent': {
+            'appContent': {
                 templateUrl: 'templates/ui-main.html',
                 controller: 'CommonSourceCtrl'
             }

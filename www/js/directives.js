@@ -30,7 +30,9 @@ angular.module('mycdc.directives', [])
 
                 console.log('$rootScope.screenState',$rootScope.screenState);
                 console.log('$rootScope.appState', $rootScope.appState);
-                console.log('$rootScope.sourceMeta.templates', $rootScope.sourceMeta.templates);
+                if($rootScope.sourceMeta && $rootScope.sourceMeta.templates) {
+                    console.log('$rootScope.sourceMeta.templates', $rootScope.sourceMeta.templates);
+                }
 
                 return uiContainerTemplateUrl;
             };
@@ -172,12 +174,6 @@ angular.module('mycdc.directives', [])
                             uiCardTemplateUrl = 'templates/' + $scope.cardData.templates.card + '.html';
                         }
                     }
-
-                    /*if ($scope.cardData.id == '152266') {
-                        $rootScope.log($scope.cardData, -1000, 'UI-CARD-DATA');
-                        $rootScope.log(uiCardTemplateUrl, -1000, 'UI-CARD-TEMPLATE');
-                    }*/
-
                 }
 
                 // RETURN TEMPLATE

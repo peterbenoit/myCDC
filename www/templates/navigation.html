@@ -1,0 +1,22 @@
+<ion-view>
+    <ion-content class="has-header content-stable settings">
+
+        <ion-list data-ng-repeat="sourceType in sourceTypes">
+            <ion-item class="cdc-blue primary">
+                {{sourceType.typeName}}
+            </ion-item>
+            <ion-item ng-repeat="objFeed in sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier}" data-ng-if="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled">
+                <a alt="{{objFeed.title}}" href="#/app/source/{{objFeed.feedIdentifier}}/">{{objFeed.title}}</a>
+            </ion-item>
+
+            <!-- <ion-checkbox ng-repeat="objFeed in sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier}"
+                ng-model="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
+                ng-checked="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
+                ng-disabled="sourceFilterLocks[objFeed.typeIdentifier][objFeed.feedIdentifier].filterLocked"
+                nav-clear nav-transition="ios" data-ng-click="saveFilters()">
+                {{objFeed.title}}
+            </ion-checkbox> -->
+        </ion-list>
+
+    </ion-content>
+</ion-view>

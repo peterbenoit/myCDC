@@ -144,6 +144,10 @@ angular.module('mycdc.controllers', [])
 
     var  initialLoad = (!$scope.sourceName), sourceChange, detailChange;
 
+    $scope.state = $stateParams;
+
+    console.log('**','**','**','**','$scope.state', $scope.state,'**','**','**');
+
     // SAVE STATE PARAMS TO SCOPE SO INHERITING CHILDREN (DIRECTIVE, ETC) CAN ACCESS THEM
     if (!$rootScope.appState) {
         $rootScope.appState = {
@@ -176,7 +180,7 @@ angular.module('mycdc.controllers', [])
         $scope.getSourceListLocal().then(function(d){
 
             // UPDATE BACK BUTTON DISPLAY
-            $rootScope.objBackButton = $rootScope.backButtonDisplay($rootScope.appState);
+            $rootScope.objBackButton = {};//$rootScope.backButtonDisplay($rootScope.appState);
 
             // GET / SET SOURCE META DATA TO SCOPE FROM STATE PARAMETERS
             $scope.sourceMeta = $rootScope.getSourceMeta($rootScope.appState);
