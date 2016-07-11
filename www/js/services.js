@@ -67,6 +67,61 @@ angular.module('mycdc.services', ['ionic'])
     }
 })
 
+.factory('iFrameReady', ['$rootScope', function ($rootScope) {
+
+    return function () {
+
+        var iframe = $('#contentframe');
+            anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
+
+        //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
+
+        $rootScope.$broadcast('source-detail-load-complete');
+
+        // I RECENTLY COMMENTED THIS OUT AS IT WAS BREAKING THE APP (NOT JUST IFRAME CONTENT)
+        if (window.device) {
+            body = iframe.contents().find('body');
+            $(body).unbind("scroll");
+            //$(body).unbind("click");
+        }
+
+        /*if (body.length) {
+        body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
+        }*/
+
+        // Capture any anchors clicked in the iframe document
+        anchors.on('click', function(e) {
+            e.preventDefault();
+
+            alert('CLICK');
+
+            var framesrc = iframe.attr('src'),
+                  href = $(this).attr('href'),
+                  anchor = document.createElement('a'),
+                  anchorhost,
+                  frameanchor,
+                  framehost,
+                  frameprotocol;
+
+            anchor.href = href;
+            anchorhost = anchor.hostname;
+            // create an anchor with the href set to the iframe src to fetch the domain & protocol
+            // WARN: cannot assume "http" || "www.cdc.gov"
+            frameanchor = document.createElement('a');
+            frameanchor.href = framesrc;
+            framehost = frameanchor.hostname
+            frameprotocol = frameanchor.protocol;
+
+            // if this anchor doesn't have a hostname
+            if (anchorhost === '') {
+                href = frameprotocol + '//' + framehost + href;
+            }
+
+            window.open(href, '_system');
+        });
+    };
+}])
+
 .service('returnToState', function($ionicHistory) {
     return function(stateName) {
         var historyId = $ionicHistory.currentHistoryId(),

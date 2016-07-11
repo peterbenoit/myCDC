@@ -20,7 +20,7 @@ angular.module('mycdc', [
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $cordovaStatusbar, $rootScope, $location, $ionicBody, $timeout, $window, DeviceInfo, ScreenSize, $state, $stateParams, $cordovaNetwork, $ionicPopup, $http, $filter, $sce, $q) {
+.run(function($ionicPlatform, $cordovaStatusbar, $rootScope, $location, $ionicBody, $timeout, $window, DeviceInfo, ScreenSize, iFrameReady, $state, $stateParams, $cordovaNetwork, $ionicPopup, $http, $filter, $sce, $q) {
 
 	var rs = $rootScope, href = window.location.href;
 
@@ -80,51 +80,55 @@ angular.module('mycdc', [
 		$ionicPlatform.fullScreen();
 	}
 
+    // NOTE: THIS ONLY WORKS ON A DEVICE
     // frameready() is called in embed.html, when the iframe has loaded
-    // NOTE: this only works on a device
-    window.frameready = function() {
-        var iframe = $('#contentframe');
-            anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
+    window.frameready = iFrameReady;
+    // MOVED TO service.js AS iFrameReady - ONCE TESTED ON DEVICES, WE WILL REMOVE THIS COMMENT
+    // window.frameready = function() {
+    //     var iframe = $('#contentframe');
+    //         anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
 
-            //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
+    //         //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
 
-        $rootScope.$broadcast('source-detail-load-complete');
+    //     $rootScope.$broadcast('source-detail-load-complete');
 
-        // I RECENTLY COMMENTED THIS OUT AS IT WAS BREAKING THE APP (NOT JUST IFRAME CONTENT)
-        // body = iframe.contents().find('body');
-        // $(body).unbind("scroll");
-        //  $(body).unbind("click");
-        /*if (body.length) {
-            body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
-        }*/
+    //     // I RECENTLY COMMENTED THIS OUT AS IT WAS BREAKING THE APP (NOT JUST IFRAME CONTENT)
+    //     if (window.device) {
+    //       //body = iframe.contents().find('body');
+    //       //$(body).unbind("scroll");
+    //       //$(body).unbind("click");
+    //     }
+    //     /*if (body.length) {
+    //         body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
+    //     }*/
 
-        // Capture any anchors clicked in the iframe document
-        anchors.on('click', function(e) {
-            e.preventDefault();
+    //     // Capture any anchors clicked in the iframe document
+    //     anchors.on('click', function(e) {
+    //         e.preventDefault();
 
-            //alert('CLICK');
+    //         //alert('CLICK');
 
-            var framesrc = iframe.attr('src'),
-                href = $(this).attr('href'),
-                anchor = document.createElement('a');
-                anchor.href = href;
-            var anchorhost = anchor.hostname;
+    //         var framesrc = iframe.attr('src'),
+    //             href = $(this).attr('href'),
+    //             anchor = document.createElement('a');
+    //             anchor.href = href;
+    //         var anchorhost = anchor.hostname;
 
-            // create an anchor with the href set to the iframe src to fetch the domain & protocol
-            // WARN: cannot assume "http" || "www.cdc.gov"
-            var frameanchor = document.createElement('a');
-                frameanchor.href = framesrc;
-            var framehost = frameanchor.hostname,
-                frameprotocol = frameanchor.protocol;
+    //         // create an anchor with the href set to the iframe src to fetch the domain & protocol
+    //         // WARN: cannot assume "http" || "www.cdc.gov"
+    //         var frameanchor = document.createElement('a');
+    //             frameanchor.href = framesrc;
+    //         var framehost = frameanchor.hostname,
+    //             frameprotocol = frameanchor.protocol;
 
-            // if this anchor doesn't have a hostname
-            if (anchorhost === '') {
-                href = frameprotocol + '//' + framehost + href;
-            }
+    //         // if this anchor doesn't have a hostname
+    //         if (anchorhost === '') {
+    //             href = frameprotocol + '//' + framehost + href;
+    //         }
 
-            window.open(href, '_system');
-        });
-    };
+    //         window.open(href, '_system');
+    //     });
+    // };
 
     rs.log = function (anyVar, intLevel, anyLabel) {
         intLevel = intLevel || 10;
@@ -198,267 +202,267 @@ angular.module('mycdc', [
         }
     });
 
-	rs.dataProcessor = (function () {
-		var processors = {
-			cardTemplateInjector: function (d, objSourceMeta) {
-			    var idx1 = d.length, idx2, obj1, obj2, strCg, strCgStripped;
-			    var tmp = [];
-			    // POINTER TO ROOTSCOPE APP OBJECT (WITH SOURCE LIST, META, BLAH BLAH)
-			    var app = rs.app;
-			    rs.log(d, 1, 'CURRENT SOURCE PRE FIX');
-			    rs.log(objSourceMeta, 1, 'CURRENT SOURCE METADATA');
+    rs.dataProcessor = (function () {
+    	var processors = {
+    		cardTemplateInjector: function (d, objSourceMeta) {
+    		    var idx1 = d.length, idx2, obj1, obj2, strCg, strCgStripped;
+    		    var tmp = [];
+    		    // POINTER TO ROOTSCOPE APP OBJECT (WITH SOURCE LIST, META, BLAH BLAH)
+    		    var app = rs.app;
+    		    rs.log(d, 1, 'CURRENT SOURCE PRE FIX');
+    		    rs.log(objSourceMeta, 1, 'CURRENT SOURCE METADATA');
 
-			    while (idx1--) {
-			        obj1 = d[idx1];
+    		    while (idx1--) {
+    		        obj1 = d[idx1];
 
-			        // PARSE & NORMALIZE TIME(S)
-			        if (obj1.datePublished) {
-			            var time = moment(obj1.datePublished);
-			            obj1.datePublished = time.format('MMMM Do, YYYY');
-			        }
+    		        // PARSE & NORMALIZE TIME(S)
+    		        if (obj1.datePublished) {
+    		            var time = moment(obj1.datePublished);
+    		            obj1.datePublished = time.format('MMMM Do, YYYY');
+    		        }
 
-			        // PROCESS ENCLOSURES
-			        obj1.hasImage = false;
-			        if (obj1.enclosures && obj1.enclosures.length) {
-			            idx2 = obj1.enclosures.length;
-			            while (idx2--) {
-			                obj2 = obj1.enclosures[idx2];
-			                if (obj2.contentType.indexOf('image') > -1) {
-			                    obj1.hasImage = true;
-			                    obj1.imageSrc = obj2.resourceUrl;
-			                    //console.log('obj1.imageSrc');
-			                    //console.log(obj1.imageSrc);
-			                }
-			            }
-			        }
+    		        // PROCESS ENCLOSURES
+    		        obj1.hasImage = false;
+    		        if (obj1.enclosures && obj1.enclosures.length) {
+    		            idx2 = obj1.enclosures.length;
+    		            while (idx2--) {
+    		                obj2 = obj1.enclosures[idx2];
+    		                if (obj2.contentType.indexOf('image') > -1) {
+    		                    obj1.hasImage = true;
+    		                    obj1.imageSrc = obj2.resourceUrl;
+    		                    //console.log('obj1.imageSrc');
+    		                    //console.log(obj1.imageSrc);
+    		                }
+    		            }
+    		        }
 
-			        // PROCESS TAGS
-			        if (obj1.tags && obj1.tags.length) {
-			            idx2 = obj1.tags.length;
-			            while (idx2--) {
-			                obj2 = obj1.tags[idx2];
-			                // PROCESS CONTENT GROUPS
-			                if (obj2.type.toLowerCase() == 'contentgroup') {
-			                    strCg = obj2.name;
-			                    strCgStripped = rs.cgNormalize(strCg);
+    		        // PROCESS TAGS
+    		        if (obj1.tags && obj1.tags.length) {
+    		            idx2 = obj1.tags.length;
+    		            while (idx2--) {
+    		                obj2 = obj1.tags[idx2];
+    		                // PROCESS CONTENT GROUPS
+    		                if (obj2.type.toLowerCase() == 'contentgroup') {
+    		                    strCg = obj2.name;
+    		                    strCgStripped = rs.cgNormalize(strCg);
 
-			                    // UPDATE BASED ON TAG DATA
-			                    obj1.feedIdentifier = strCgStripped;
-			                    obj1.feedIdentifier = strCgStripped;
-			                    obj1.templates = app.templateMap[obj1.feedIdentifier];
-			                    obj1.detailType = objSourceMeta.detailType;
-			                    obj1.contentType = objSourceMeta.contentType;
-			                    obj1.home = '#/app/source/' + obj1.feedIdentifier;
-			                    obj1.url = obj1.home + '/';
+    		                    // UPDATE BASED ON TAG DATA
+    		                    obj1.feedIdentifier = strCgStripped;
+    		                    obj1.feedIdentifier = strCgStripped;
+    		                    obj1.templates = app.templateMap[obj1.feedIdentifier];
+    		                    obj1.detailType = objSourceMeta.detailType;
+    		                    obj1.contentType = objSourceMeta.contentType;
+    		                    obj1.home = '#/app/source/' + obj1.feedIdentifier;
+    		                    obj1.url = obj1.home + '/';
 
-			                    // SET STREAM TITLE
-			                    if (app.sourceMetaMap.hasOwnProperty(obj1.feedIdentifier)) {
-			                        obj1.streamTitle = app.sourceMetaMap[obj1.feedIdentifier].title;
-			                        obj1.detailType = app.sourceMetaMap[obj1.feedIdentifier].detailType;
-			                        obj1.typeIdentifier = app.sourceMetaMap[obj1.feedIdentifier].typeIdentifier;
-			                    }
+    		                    // SET STREAM TITLE
+    		                    if (app.sourceMetaMap.hasOwnProperty(obj1.feedIdentifier)) {
+    		                        obj1.streamTitle = app.sourceMetaMap[obj1.feedIdentifier].title;
+    		                        obj1.detailType = app.sourceMetaMap[obj1.feedIdentifier].detailType;
+    		                        obj1.typeIdentifier = app.sourceMetaMap[obj1.feedIdentifier].typeIdentifier;
+    		                    }
 
-			                    // TODO: consider using config.json for this data
-			                    if (obj1.feedIdentifier === 'eid') {
-			                        obj1.hasImage = false;
-			                    }
+    		                    // TODO: consider using config.json for this data
+    		                    if (obj1.feedIdentifier === 'eid') {
+    		                        obj1.hasImage = false;
+    		                    }
 
-			                    if (obj1.feedIdentifier === 'vitalsigns') {
-			                        obj1.hasImage = false;
-			                    }
+    		                    if (obj1.feedIdentifier === 'vitalsigns') {
+    		                        obj1.hasImage = false;
+    		                    }
 
-			                    if (obj1.feedIdentifier === 'outbreaks') {
-			                        obj1.isOutbreak = true;
-			                        obj1.hasImage = false;
-			                    }
+    		                    if (obj1.feedIdentifier === 'outbreaks') {
+    		                        obj1.isOutbreak = true;
+    		                        obj1.hasImage = false;
+    		                    }
 
-			                    if (obj1.feedIdentifier === 'travelnotices') {
-			                        obj1.isAlert = obj1.name.indexOf('Alert') > -1;
-			                        obj1.isWatch = obj1.name.indexOf('Watch') > -1;
-			                        obj1.isWarning = obj1.name.indexOf('Warning') > -1;
-			                    }
-			                }
-			                // PROCESS NAMES
-			                if (obj2.type.toLowerCase() == 'topic') {
-			                    obj1.topic = obj2.name;
-			                }
-			            }
-			        }
+    		                    if (obj1.feedIdentifier === 'travelnotices') {
+    		                        obj1.isAlert = obj1.name.indexOf('Alert') > -1;
+    		                        obj1.isWatch = obj1.name.indexOf('Watch') > -1;
+    		                        obj1.isWarning = obj1.name.indexOf('Warning') > -1;
+    		                    }
+    		                }
+    		                // PROCESS NAMES
+    		                if (obj2.type.toLowerCase() == 'topic') {
+    		                    obj1.topic = obj2.name;
+    		                }
+    		            }
+    		        }
 
-			        // SAFETY DEFAULTS (SHOULD BE TEMPORARY UNTIL ALL FEEDS ARE STABILIZED)
-			        obj1.contentgroup = obj1.contentgroup || 'homestream';
-			        obj1.feedIdentifier = obj1.feedIdentifier || objSourceMeta.feedIdentifier;
-			        obj1.typeIdentifier = obj1.typeIdentifier || objSourceMeta.typeIdentifier;
-			        obj1.contentType = obj1.contentType || objSourceMeta.contentType;
-			        obj1.streamTitle = obj1.streamTitle || objSourceMeta.title;
-			        obj1.detailType = obj1.detailType || objSourceMeta.detailType;
-			        obj1.templates = obj1.templates || angular.extend({}, app.templateMap[obj1.feedIdentifier]);
-			        obj1.home = obj1.home || '#/app/source/' + obj1.feedIdentifier;
-			        obj1.url = obj1.url || obj1.home + '/';
+    		        // SAFETY DEFAULTS (SHOULD BE TEMPORARY UNTIL ALL FEEDS ARE STABILIZED)
+    		        obj1.contentgroup = obj1.contentgroup || 'homestream';
+    		        obj1.feedIdentifier = obj1.feedIdentifier || objSourceMeta.feedIdentifier;
+    		        obj1.typeIdentifier = obj1.typeIdentifier || objSourceMeta.typeIdentifier;
+    		        obj1.contentType = obj1.contentType || objSourceMeta.contentType;
+    		        obj1.streamTitle = obj1.streamTitle || objSourceMeta.title;
+    		        obj1.detailType = obj1.detailType || objSourceMeta.detailType;
+    		        obj1.templates = obj1.templates || angular.extend({}, app.templateMap[obj1.feedIdentifier]);
+    		        obj1.home = obj1.home || '#/app/source/' + obj1.feedIdentifier;
+    		        obj1.url = obj1.url || obj1.home + '/';
 
-			        // IF NO TEMPLATES CAN BE FOUND, THE CONTENT GROUP IS INVALID, FLAG FOR DELETE
-			        obj1.delete = !obj1.templates;
-			        if (obj1.delete) {
-			            rs.log(obj1, -1, 'UNABLE TO FIND CONTENT GROUP FOR THIS ARTICLE');
-			        }
+    		        // IF NO TEMPLATES CAN BE FOUND, THE CONTENT GROUP IS INVALID, FLAG FOR DELETE
+    		        obj1.delete = !obj1.templates;
+    		        if (obj1.delete) {
+    		            rs.log(obj1, -1, 'UNABLE TO FIND CONTENT GROUP FOR THIS ARTICLE');
+    		        }
 
-			    }
+    		    }
 
-			    // DELETE BAD EGGS (MORE ACCURATELY, KEEP GOOD EGGS)
-			    //console.log(d);
-			    //console.log('I was able to filter ' + d.length);
-			    d = $filter('filter')(d, {
-			        delete: false
-			    });
-			    //console.log('down to' + d.length);
+    		    // DELETE BAD EGGS (MORE ACCURATELY, KEEP GOOD EGGS)
+    		    //console.log(d);
+    		    //console.log('I was able to filter ' + d.length);
+    		    d = $filter('filter')(d, {
+    		        delete: false
+    		    });
+    		    //console.log('down to' + d.length);
 
-			    // APPLY SOURCE FILTERS
-			    d = $filter('applySourceFilters')(d, rs.app.sourceFilters);
+    		    // APPLY SOURCE FILTERS
+    		    d = $filter('applySourceFilters')(d, rs.app.sourceFilters);
 
-			    // LIMIT FINAL RESULTS TO 100
-			    if (d.length > 100) {
-			        rs.log('Trimming array from ' + d.length + ' to 100' , -100);
-			        d.splice(100);
-			    }
+    		    // LIMIT FINAL RESULTS TO 100
+    		    if (d.length > 100) {
+    		        rs.log('Trimming array from ' + d.length + ' to 100' , -100);
+    		        d.splice(100);
+    		    }
 
-			    rs.log(d, -1, 'CURRENT SOURCE POST FIX');
+    		    rs.log(d, -1, 'CURRENT SOURCE POST FIX');
 
-			    return d;
-			},
-			feedNormalizer: function(d) {
-				return d;
-			},
-			processTags: function(d) {
-			    // var currItem, data = d;
+    		    return d;
+    		},
+    		feedNormalizer: function(d) {
+    			return d;
+    		},
+    		processTags: function(d) {
+    		    // var currItem, data = d;
 
-			    // if (data.length) {
-			    //     for (var i = data.length - 1; i >= 0; i--) {
-			    //         currItem = data[i];
+    		    // if (data.length) {
+    		    //     for (var i = data.length - 1; i >= 0; i--) {
+    		    //         currItem = data[i];
 
-			    //         // remove html from name
-			    //         currItem.name = $sce.trustAsHtml(currItem.name);
-			    //     }
+    		    //         // remove html from name
+    		    //         currItem.name = $sce.trustAsHtml(currItem.name);
+    		    //     }
 
-			    //     return data;
-			    // }
+    		    //     return data;
+    		    // }
 
-			    // return [];
-			    //
-			    return d;
-			},
-			parseEncoding: function(d) {
-			    var currItem, data = d;
+    		    // return [];
+    		    //
+    		    return d;
+    		},
+    		parseEncoding: function(d) {
+    		    var currItem, data = d;
 
-			    if (data.length) {
-			        for (var i = data.length - 1; i >= 0; i--) {
-			            currItem = data[i];
-			            if (currItem.description) {
-			                // remove encoding from description
-			                var txt = document.createElement('textarea');
-			                txt.innerHTML = currItem.description;
-			                currItem.description = txt.value;
-			            }
-			        }
+    		    if (data.length) {
+    		        for (var i = data.length - 1; i >= 0; i--) {
+    		            currItem = data[i];
+    		            if (currItem.description) {
+    		                // remove encoding from description
+    		                var txt = document.createElement('textarea');
+    		                txt.innerHTML = currItem.description;
+    		                currItem.description = txt.value;
+    		            }
+    		        }
 
-			        return data;
-			    }
+    		        return data;
+    		    }
 
-			    return [];
-			},
-			stripHtml: function(d) {
-			    var currItem, data = d;
+    		    return [];
+    		},
+    		stripHtml: function(d) {
+    		    var currItem, data = d;
 
-			    if (data.length) {
-			        for (var i = data.length - 1; i >= 0; i--) {
-			            currItem = data[i];
+    		    if (data.length) {
+    		        for (var i = data.length - 1; i >= 0; i--) {
+    		            currItem = data[i];
 
-			            // TODO: need to talk with Sarah about this, Scientific names will need to be italic in a card name/title
+    		            // TODO: need to talk with Sarah about this, Scientific names will need to be italic in a card name/title
 
-			            // remove html from name
-			            currItem.name = currItem.name.replace(/<[^>]+>/gm, '');
+    		            // remove html from name
+    		            currItem.name = currItem.name.replace(/<[^>]+>/gm, '');
 
-			            // remove html from description
-			            currItem.description = currItem.description.replace(/<[^>]+>/gm, '');
-			        }
+    		            // remove html from description
+    		            currItem.description = currItem.description.replace(/<[^>]+>/gm, '');
+    		        }
 
-			        return data;
-			    }
+    		        return data;
+    		    }
 
-			    return [];
-			},
-			extractVideoComments: function(d) {
-				var currItem, data = d;
+    		    return [];
+    		},
+    		extractVideoComments: function(d) {
+    			var currItem, data = d;
 
-				if (data.length) {
-					for (var i = data.length - 1; i >= 0; i--) {
-						currItem = data[i];
-						if (currItem.description) {
-							currItem.description = currItem.description.split('Comments on this video')[0].trim();
-						}
-					}
+    			if (data.length) {
+    				for (var i = data.length - 1; i >= 0; i--) {
+    					currItem = data[i];
+    					if (currItem.description) {
+    						currItem.description = currItem.description.split('Comments on this video')[0].trim();
+    					}
+    				}
 
-					return data;
-				}
+    				return data;
+    			}
 
-				return [];
-			},
-			flagOutbreak: function(d) {
-				var currItem, data = d;
+    			return [];
+    		},
+    		flagOutbreak: function(d) {
+    			var currItem, data = d;
 
-				if (data.length) {
-					for (var i = data.length - 1; i >= 0; i--) {
-						currItem = data[i];
-						currItem.isOutbreak = true;
-					}
+    			if (data.length) {
+    				for (var i = data.length - 1; i >= 0; i--) {
+    					currItem = data[i];
+    					currItem.isOutbreak = true;
+    				}
 
-					return data;
-				}
+    				return data;
+    			}
 
-				return [];
-			},
-			firstOnly: function(d) {
-				var data = d;
-				if (data.length) {
-					return [data[0]];
-				}
+    			return [];
+    		},
+    		firstOnly: function(d) {
+    			var data = d;
+    			if (data.length) {
+    				return [data[0]];
+    			}
 
-				return null;
-			},
-			defaultHandler: function() {
-				return [];
-			}
-		};
+    			return null;
+    		},
+    		defaultHandler: function() {
+    			return [];
+    		}
+    	};
 
-		return function (d, objMetaData) {
+    	return function (d, objMetaData) {
 
-		var processor;
+    	var processor;
 
-		console.log(d);
-		var data = (d.data && d.data.results) ? d.data.results : [];
-		console.log(data);
+    	console.log(d);
+    	var data = (d.data && d.data.results) ? d.data.results : [];
+    	console.log(data);
 
-		// DID WE GET DATA?
-		if (data.length > 0) {
+    	// DID WE GET DATA?
+    	if (data.length > 0) {
 
-			// PROCESS DATA (IF NEEDED)
-			if (objMetaData.processors && objMetaData.processors.length) {
+    		// PROCESS DATA (IF NEEDED)
+    		if (objMetaData.processors && objMetaData.processors.length) {
 
-				// REVERSE ARRA SINCE FOR REVERSE LOOP
-				objMetaData.processors.reverse();
+    			// REVERSE ARRA SINCE FOR REVERSE LOOP
+    			objMetaData.processors.reverse();
 
-				// REVERSE LOOP THROUGH PROCESSORS
-				for (var i = objMetaData.processors.length - 1; i >= 0; i--) {
-					processor = objMetaData.processors[i];
-					data = processors[processor].call(this, data, objMetaData);
-				}
-			}
-		}
+    			// REVERSE LOOP THROUGH PROCESSORS
+    			for (var i = objMetaData.processors.length - 1; i >= 0; i--) {
+    				processor = objMetaData.processors[i];
+    				data = processors[processor].call(this, data, objMetaData);
+    			}
+    		}
+    	}
 
-		//RETURN IT IN THE PROMISE CHAIN
-		return data;
+    	//RETURN IT IN THE PROMISE CHAIN
+    	return data;
 
-		};
-	} ());
+    	};
+    } ());
 
     rs.getSimpleLocalStore = (function() {
 
