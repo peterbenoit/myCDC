@@ -1,0 +1,76 @@
+<!-- <ion-view>
+    <ion-content class="has-header content-stable settings">
+
+        <div class="item item-divider">General</div>
+        <div class="list">
+            <div class="item item-button-right">
+                <h3>Share App</h3>
+                <p>Share a link to download the app with others</p>
+            </div>
+            <div class="item item-button-right">
+                <h3>Support</h3>
+                <p>Contact support for help with an in app issue</p>
+            </div>
+        </div>
+
+       <div class="item item-divider">Legal</div>
+        <div class="list">
+            <div class="item item-button-right">
+                <h3>Terms of Service</h3>
+                <p>View terms of service</p>
+            </div>
+            <div class="item item-button-right">
+                <h3>Privacy Policy</h3>
+                <p>View privacy policy</p>
+            </div>
+        </div>
+
+        <div class="item item-divider">About</div>
+        <div class="list">
+            <div class="item item-button-right">
+                <h3>About This App</h3>
+            </div>
+        </div>
+
+        <div class="item item-divider">Application</div>
+        <div class="list">
+            <div class="item item-button-right">
+                <h3>Reset App</h3><button class="button" ng-click="resetSettings()">Reset</button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
+ -->
+
+<!-- <ion-view>
+    <ion-content class="has-header content-stable settings">
+        <ion-list data-ng-repeat="sourceType in sources.sourceTypes">
+            <ion-item class="cdc-blue primary">
+                {{sourceType.typeName}}
+            </ion-item>
+            <ion-item ng-repeat="objFeed in sources.sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier}" data-ng-if="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled">
+                <a alt="{{objFeed.title}}" href="#/app/source/{{objFeed.feedIdentifier}}/">{{objFeed.title}}</a>
+            </ion-item>
+
+            <ion-checkbox ng-repeat="objFeed in sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier}"
+                ng-model="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
+                ng-checked="sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
+                ng-disabled="sourceFilterLocks[objFeed.typeIdentifier][objFeed.feedIdentifier].filterLocked"
+                nav-clear nav-transition="ios" data-ng-click="saveFilters()">
+                {{objFeed.title}}
+            </ion-checkbox>
+        </ion-list>
+
+    </ion-content>
+</ion-view> -->
+
+<ion-view>
+    <ion-content class="has-header">
+        <ion-list>
+            <ion-item ng-repeat="source in sources.sourceList | orderBy:'displayOrder'" data-ng-if="source.feedIdentifier !== 'homestream' && global.sourceFilters[source.typeIdentifier][source.feedIdentifier].isEnabled" href="#app/source/{{source.feedIdentifier}}">
+                <i class="icon {{source.icon}}"></i> {{source.title}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -6,14 +6,14 @@
 		<div class="ui-default ui-tablet-landscape">
 
 			<!-- THE LIST VIEW -->
-			<div data-ng-if="!appState.sourceDetail" class="ui-list-view has-header"><div>
+			<div data-ng-if="!global.appState.sourceDetail" class="ui-list-view has-header"><div>
 
 				<!-- STREAM VIEW -->
 				<ion-scroll direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
 
-					<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+					<ion-refresher pulling-text="Pull to refresh..." on-refresh="global.doRefresh(true)"></ion-refresher>
 
-					<h3>{{sourceMeta.title}}</h3>
+					<h3>{{global.sourceMeta.title}}</h3>
 
 					<ui-stream><!-- UI STREAM DIRECTIVE --></ui-stream>
 
@@ -27,9 +27,9 @@
 			</div></div><!-- ui-list-view -->
 
 			<!-- THE DETAIL VIEW -->
-			<div data-ng-if="appState.sourceDetail" class="ui-detail-view"><div>
+			<div data-ng-if="global.appState.sourceDetail" class="ui-detail-view"><div>
 
-				<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard" data-app-state="appState">
+				<ui-detail data-source-meta="global.sourceMeta" data-detail-card="global.detailCard" data-app-state="global.appState">
 					<!-- UI DETAIL DIRECTIVE -->
 				</ui-detail>
 

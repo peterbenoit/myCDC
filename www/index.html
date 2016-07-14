@@ -6,7 +6,7 @@
     <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' prototype.cdc.gov">-->
 
     <meta name="format-detection" content="telephone=no">
-    <title></title>
+    <title>My CDC</title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
@@ -17,11 +17,11 @@
     <link href="css/content.css" rel="stylesheet">
     <!-- Content related css updates for the app. The app should NOT depend on these to function -->
     <link href="http://www.cdc.gov/mobileapp/style.css" rel="stylesheet">
+
     <!-- may not use this -->
     <link href="css/platform.css" rel="stylesheet">
     <!-- this might get placed somewhere else -->
     <link href="css/mq-phone.css" rel="stylesheet">
-
 
     <!-- ionic/angularjs js -->
     <!-- WARN: switch to .min. -->
@@ -34,8 +34,10 @@
 
     <!--http://stackoverflow.com/questions/31875594/angular-routing-on-ios9-rootscopeinfdig-error-->
     <script src="js/libs/angular-ios9-uiwebview.patch.js"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
+
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
@@ -47,6 +49,24 @@
 </head>
 
 <body ng-app="mycdc" id="ui-master">
+
+    <!-- HEADER BAR -->
+    <ion-nav-bar class="bar-positive" align-title="center" animation="no-animation">
+
+        <ion-nav-buttons side="left">
+            <a alt="Settings Button" class="button button-clear" ui-sref="app.sources"><i class="icon ion-navicon"></i> NAV MENU</a>
+            <a alt="Settings Button" class="button button-clear" ui-sref="app.sourceIndex({ sourceName : 'homestream', sourceDetail : '' })"><i class="icon ion-navicon"></i> HOME</a>
+
+            <!-- <a data-ng-if="global.appState.sourceName === 'homestream'" alt="Settings Button" class="button button-clear" ui-sref="app.navigation"><i class="icon ion-navicon"></i></a> -->
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+            <a alt="Settings Button" class="button button-clear" ui-sref="app.settings"><i class="icon ion-gear-a"></i> SETTINGS</a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <!-- APP VIEW -->
     <ion-nav-view></ion-nav-view>
+
 </body>
 </html>

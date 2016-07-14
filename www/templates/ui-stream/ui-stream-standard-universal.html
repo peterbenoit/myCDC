@@ -1,5 +1,5 @@
 <div class="stream-standard">
 	<div class="card-container" ng-repeat="(idx, data) in datas | limitTo:paginationLimit()">
-		<ui-card data-card-data="data" data-app-state="appState"></ui-card>
+		<ui-stream-card data-card-data="data" data-app-state="global.appState"></ui-stream-card>
 	</div>
 </div>

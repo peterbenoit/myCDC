@@ -1,4 +1,4 @@
-<div class="card {{isActiveCard(cardData.id)}}" ng-if="!cardData.type">
+<div class="card" ng-if="!cardData.type">
 	<div ng-if="cardData.isOutbreak" class="item item-notice outbreak"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Outbreak</strong></a></div>
 	<div ng-if="cardData.isWarning" class="item item-notice warning"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Warning Level 3</a></div>
 	<div ng-if="cardData.isWatch" class="item item-notice watch"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Watch Level 1</a></div>
@@ -9,7 +9,7 @@
 		<p class="date">{{cardData.datePublished}}</p>
 		<p ng-bind-html="cardData.description | words:20"></p>
 	</a>
-	<div ng-if="cardData.streamTitle && appState.sourceName == 'homestream'" class="item item-footer">
+	<div ng-if="cardData.streamTitle && appState.sourceName == 'homestream' && cardData.showSourceLink" class="item item-footer">
 		<a ng-href="{{cardData.url}}" >
 			{{cardData.streamTitle}}
 		</a>

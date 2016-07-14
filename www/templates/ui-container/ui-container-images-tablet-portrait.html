@@ -4,16 +4,16 @@
 	<!-- THE LIST VIEW -->
 	<div class="ui-list-view">
 		<!-- STREAM VIEW -->
-		<h3>{{sourceMeta.title}}</h3>
+		<h3>{{global.sourceMeta.title}}</h3>
 		<ion-scroll direction="x" class="horizontal-scroller stream" delegate-handle="streamScrollHorizontal">
-			<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+			<ion-refresher pulling-text="Pull to refresh..." on-refresh="global.doRefresh(true)"></ion-refresher>
 			<ui-stream></ui-stream>
 		</ion-scroll>
 	</div><!-- ui-list-view -->
 
 	<!-- THE DETAIL VIEW -->
 	<div class="ui-detail-view">
-		<ui-detail data-source-meta="sourceMeta" data-detail-card="detailCard" data-app-state="appState"></ui-detail>
+		<ui-detail data-source-meta="global.sourceMeta" data-detail-card="global.detailCard" data-app-state="global.appState"></ui-detail>
 	</div><!-- ui-detail-view -->
 
 </div><!-- ui-tablet-portrait -->

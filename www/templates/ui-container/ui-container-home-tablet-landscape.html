@@ -1,12 +1,11 @@
 <ion-view>
-	<ion-nav-title>CDC</ion-nav-title>
 	<ion-content>
 		<!-- TABLET LANDSCAPE MODE -->
 		<div ng-if="!containerLoading" class="ui-home ui-tablet-landscape">
 			<div class="ui-list-view">
 				<!-- HOMESTREAM -->
 				<ion-scroll direction="y" class="vertical-scroller stream stream-home has-header">
-					<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh(true)"></ion-refresher>
+					<ion-refresher pulling-text="Pull to refresh..." on-refresh="global.doRefresh(true)"></ion-refresher>
 
 					<ui-stream></ui-stream>
 

@@ -38,6 +38,7 @@
         "processors": ["cardTemplateInjector", "stripHtml"],
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": true,
         "templates": {
@@ -57,6 +58,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -76,6 +78,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "iframe",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -95,6 +98,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -114,6 +118,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "iframe",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -133,6 +138,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": false,
         "filterLocked": false,
         "templates": {
@@ -152,6 +158,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -171,6 +178,7 @@
         "processors": ["cardTemplateInjector", "stripHtml"],
         "detailType": "journal",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": false,
         "filterLocked": false,
         "templates": {
@@ -190,6 +198,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "blog",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -209,6 +218,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "blog",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -228,6 +238,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -247,6 +258,7 @@
         "processors": ["cardTemplateInjector", "firstOnly"],
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -266,6 +278,7 @@
         "processors": ["cardTemplateInjector", "parseEncoding"],
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -285,6 +298,7 @@
         "processors": ["cardTemplateInjector", "stripHtml"],
         "detailType": "journal",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -304,6 +318,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "journal",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -322,6 +337,7 @@
         "getContentBy": "url",
         "detailType": "iframe",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -341,6 +357,7 @@
         "processors": ["cardTemplateInjector", "flagOutbreak"],
         "detailType": "iframe",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": false,
         "filterLocked": false,
         "templates": {
@@ -360,6 +377,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "iframe",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -379,6 +397,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType": "image",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -398,6 +417,7 @@
         "processors": ["cardTemplateInjector"],
         "detailType" : "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -417,6 +437,7 @@
         "processors": ["cardTemplateInjector", "extractVideoComments"],
         "detailType": "video",
         "showByDefault": true,
+        "showSourceLink" : false,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -434,6 +455,7 @@
         "getContentBy": "na",
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -451,6 +473,7 @@
         "getContentBy": "na",
         "detailType": "photos",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -468,6 +491,7 @@
         "getContentBy": "na",
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -485,6 +509,7 @@
         "getContentBy": "na",
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -502,6 +527,7 @@
         "getContentBy": "na",
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -519,6 +545,7 @@
         "getContentBy": "na",
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -536,6 +563,7 @@
         "getContentBy": "na",
         "detailType": "default",
         "showByDefault": true,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
