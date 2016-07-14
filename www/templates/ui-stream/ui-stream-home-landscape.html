@@ -1,6 +1,6 @@
 <!-- ui-stream-home-landscape -->
-<div class="stream-home">
-	<div class="card-container" ng-repeat="data in datas | limitTo: paginationLimit('tabletLandscape')">
+<div class="stream-home" class="has-header">
+	<div class="card-container" ng-repeat="data in global.datas | limitTo: global.paginationLimit('tabletLandscape')">
 		<ui-stream-card data-card-data="data" data-app-state="global.appState"><!-- UI CARD DIRECTIVE --></ui-stream-card>
 	</div><!-- card-container -->
 </div><!-- stream-home -->

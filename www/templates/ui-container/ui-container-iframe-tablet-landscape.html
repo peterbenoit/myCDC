@@ -1,23 +1,27 @@
 <!-- TABLET LANDSCAPE MODE -->
-<div class="ui-tablet-landscape ui-iframe">
+<ion-view>
+	<ion-content>
+		<div class="ui-tablet-landscape ui-iframe">
 
-	<!-- THE LIST VIEW -->
-	<div class="ui-list-view" data-ng-if="!global.appState.sourceDetail">
-		<!-- STREAM VIEW -->
-		<ion-scroll direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
-			<ion-refresher pulling-text="Pull to refresh..." on-refresh="global.doRefresh(true)"></ion-refresher>
-			<h3>{{global.sourceMeta.title}}</h3>
-			<ui-stream></ui-stream>
-			<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
-			<button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems('tabletLandscape')" ng-click="loadMore()" >
-				Show more
-			</button>
-		</ion-scroll>
-	</div><!-- ui-list-view -->
+			<!-- THE LIST VIEW -->
+			<div class="ui-list-view" data-ng-if="!global.appState.sourceDetail">
+				<!-- STREAM VIEW -->
+				<ion-scroll direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
+					<ion-refresher pulling-text="Pull to refresh..." on-refresh="global.doRefresh(true)"></ion-refresher>
+					<h3>{{global.sourceMeta.title}}</h3>
+					<ui-stream></ui-stream>
+					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
+					<button class="button button-block button-positive cdc-blue selected border" ng-show="global.hasMoreItems('tabletLandscape')" ng-click="global.loadMore()" >
+						Show more
+					</button>
+				</ion-scroll>
+			</div><!-- ui-list-view -->
 
-	<!-- THE DETAIL VIEW -->
-	<div class="ui-detail-view" data-ng-if="global.appState.sourceDetail">
-		<ui-detail data-source-meta="global.sourceMeta" data-detail-card="global.detailCard" data-app-state="global.appState"></ui-detail>
-	</div><!-- ui-detail-view -->
+			<!-- THE DETAIL VIEW -->
+			<div class="ui-detail-view" data-ng-if="global.appState.sourceDetail">
+				<ui-detail data-source-meta="global.sourceMeta" data-detail-card="global.detailCard" data-app-state="global.appState"></ui-detail>
+			</div><!-- ui-detail-view -->
 
-</div><!-- ui-tablet-landscape -->
+		</div><!-- ui-tablet-landscape -->
+	</ion-content>
+</ion-view>

@@ -432,7 +432,7 @@ angular.module('mycdc.services', ['ionic'])
                     feedIdentifier: strSourceName
                 }) || [];
 
-                console.log(appState, '$^%#^*$%#^*$%^');
+                console.log('DataSourceInterface.getSourceMeta', arySourceInfo);
 
                 // DID WE FIND IT?
                 if (arySourceInfo.length === 1) {
@@ -633,35 +633,39 @@ angular.module('mycdc.services', ['ionic'])
 
             $rootScope.$broadcast('screen-state-update-started');
 
-            // DEFAULT RETURN TO SCREEN SIZE
-            var objReturn = factoryMethods.ScreenSize();
-
-            // GET SCREEN SIZE
-            if ($window.innerWidth >= 1024 && $window.innerWidth > $window.innerHeight) {
-                objReturn.viewType = 'tablet';
-                objReturn.viewOrientation = 'landscape';
-            } else if ($window.innerWidth >= 768 && $window.innerWidth < $window.innerHeight) {
-                objReturn.viewType = 'tablet';
-                objReturn.viewOrientation = 'portrait';
-            } else {
-                objReturn.viewType = 'phone';
-                objReturn.viewOrientation = 'portrait';
-            }
-
-            // UPDATE SCOPE
-            //$rootScope.screenState = objReturn;
-
-            // THIS NEEDS TO BE LOCALIZED --
-            //$rootScope.sourceMeta = sourceMeta;
+            var defer = $q.defer();
 
             // WAIT FOR ANY DIGEST TO COMPLETE BEFORE APPLYING
             $timeout(function() {
-                $rootScope.$broadcast('screen-state-update-complete');
+
+                // DEFAULT RETURN TO SCREEN SIZE
+                var objReturn = factoryMethods.ScreenSize();
+
+                // GET SCREEN SIZE
+                if ($window.innerWidth >= 1024 && $window.innerWidth > $window.innerHeight) {
+                    objReturn.viewType = 'tablet';
+                    objReturn.viewOrientation = 'landscape';
+                } else if ($window.innerWidth >= 768 && $window.innerWidth < $window.innerHeight) {
+                    objReturn.viewType = 'tablet';
+                    objReturn.viewOrientation = 'portrait';
+                } else {
+                    objReturn.viewType = 'phone';
+                    objReturn.viewOrientation = 'portrait';
+                }
+
+                // SETUP NEXT STEP IN CHAIN (UPDATE SCREEN STATE & BROADCAST COMPLETE)
+                defer.promise.then(function(returnData){
+                    Globals.set('screenState', objReturn);
+                    $rootScope.$broadcast('screen-state-update-complete');
+                });
+
+                // RESOLVE PROMISE TO START CHAIN OFF
+                defer.resolve(objReturn);
+
             }, 0);
 
-            //Globals.set('screenState', objReturn);
-
-            return objReturn;
+            // RETURN PROMISE
+            return defer.promise;
         },
 
         // DEVICE ORIENTATION

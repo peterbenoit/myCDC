@@ -1,5 +1,4 @@
 <ion-view>
-	<ion-nav-title>CDC (PHONE)</ion-nav-title>
 	<ion-content>
 
 		<!-- PHONE UNIVERSAL (PORTRAIT & LANDSCAPE) MODE -->
@@ -11,7 +10,7 @@
 					<ion-refresher pulling-text="Pull to refresh..." on-refresh="global.doRefresh(true)"></ion-refresher>
 					<ui-stream></ui-stream>
 					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
-					<button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems()" ng-click="loadMore()" >
+					<button class="button button-block button-positive cdc-blue selected border" ng-show="global.hasMoreItems()" ng-click="global.loadMore()" >
 						Show more
 					</button>
 				</ion-scroll>

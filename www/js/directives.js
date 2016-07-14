@@ -171,7 +171,7 @@ angular.module('mycdc.directives', [])
                         if ($scope.template) {
                             // TEMPLATE OVERRIDE PROVIDED - USE IT
                             uiStreamCardTemplateUrl = 'templates/ui-stream-card/' + $scope.template+ '.html';
-                        } else if ($rootScope.sourceName == 'homestream' &&  $scope.cardData.templates.hasOwnProperty('homeCard')) {
+                        } else if ($scope.appState.sourceName == 'homestream' &&  $scope.cardData.templates.hasOwnProperty('homeCard')) {
                             // USE DEFAULT TEMPLATE FOR CARD
                             uiStreamCardTemplateUrl = 'templates/ui-stream-card/' + $scope.cardData.templates.homeCard + '.html';
                         } else if ($scope.cardData.templates && $scope.cardData.templates.hasOwnProperty('card')) {
@@ -188,10 +188,11 @@ angular.module('mycdc.directives', [])
         link: function(scope, element, attrs) {
             scope.template = attrs.template;
         },
-        template: '<div id="card-{{cardData.id}}" class="card-container-pad" ng-include src="getCardTemplate()"></div>',
+        template: '<div id="card-{{cardData.id}}" class="card-container-pad" ng-include="getCardTemplate()"></div>'
+        //template: '<div>{{cardData}}</div>'
     };
 })
-.directive('uiDetail', function($rootScope, $timeout, $sce, $q, $filter, $state, $stateParams, $ionicPopup, $ionicLoading,DataSourceInterface, AppUtil) {
+.directive('uiDetail', function($rootScope, $timeout, $sce, $q, $filter, $state, $stateParams, $ionicPopup, $ionicLoading,DataSourceInterface, AppUtil, Globals) {
 
     var getSourceHtmlUrl = function(sourceCard, blnRefresh) {
 
@@ -509,8 +510,10 @@ angular.module('mycdc.directives', [])
                     // DEBUG
                     $rootScope.log($scope.detailTemplateUrl, -1000, 'UI-DETAIL-DIRECTIVE-TEMPLATE');
 
+                    var screenState = Globals.get('screenState');
+
                     // SET DETAIL TEMPLATE
-                    if ($rootScope.runtime.screenState && objDetailCard && $scope.detailData) {
+                    if (screenState && objDetailCard && $scope.detailData) {
 
                         // TEMPLATE LOGIC
                         $scope.uiDetailTemplateUrl = 'templates/ui-detail/' + objDetailCard.templates.detail + '.html';

@@ -6,7 +6,7 @@
 		<div class="ui-default ui-tablet-landscape">
 
 			<!-- THE LIST VIEW -->
-			<div data-ng-if="!global.appState.sourceDetail" class="ui-list-view has-header"><div>
+			<div data-ng-if="!global.appState.sourceDetail" class="ui-list-view"><div>
 
 				<!-- STREAM VIEW -->
 				<ion-scroll direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
@@ -18,7 +18,7 @@
 					<ui-stream><!-- UI STREAM DIRECTIVE --></ui-stream>
 
 					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
-					<button class="button button-block button-positive cdc-blue selected border" ng-show="hasMoreItems('tabletLandscape')" ng-click="loadMore()" >
+					<button class="button button-block button-positive cdc-blue selected border" ng-show="global.hasMoreItems('tabletLandscape')" ng-click="global.loadMore()" >
 						Show more
 					</button>
 

@@ -1,5 +1,5 @@
 <div class="stream image-stream">
-	<div class="card-container" ng-repeat="card in datas | limitTo: paginationLimit()">
+	<div class="card-container" ng-repeat="card in global.datas | limitTo: global.paginationLimit()">
 		<ui-stream-card data-template="ui-card-image"  data-card-data="card" data-app-state="global.appState"></ui-stream-card>
 		<!--
 		<div class="card-container" data-split-by="2" data-set-ratio="16:9" data-reference="parent">

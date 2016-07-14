@@ -30,9 +30,36 @@ angular.module('mycdc.controllers', [])
         }
     };
 
+    _this.getPageState = function (appState, blnIncrement) {
+
+        blnIncrement = blnIncrement || false;
+
+        var sourceName = appState.sourceName || 'homestream';
+
+        if (!_this.pageTracker) {
+            _this.pageTracker = {};
+        }
+
+        if (!_this.pageTracker.hasOwnProperty(sourceName)) {
+            _this.pageTracker[sourceName] = 1;
+        }
+
+        if (blnIncrement) {
+            _this.pageTracker[sourceName] = _this.pageTracker[sourceName] + 1;
+        }
+
+        console.log('Page limit for :' + sourceName, _this.pageTracker[sourceName]);
+
+        _this.page = _this.pageTracker[sourceName];
+
+        return _this.page;
+    };
+
     // SETUP PAGINATION
     _this.paginationLimit = function(type) {
-        var objSizes = {
+        var objSizes;
+
+        objSizes = {
             tabletPortrait : 20,
             tabletLandscape : 24,
             imageTabletPortrait: 20,
@@ -40,7 +67,11 @@ angular.module('mycdc.controllers', [])
             defaultLimit : 10
         };
 
-        return (objSizes[type] || objSizes.defaultLimit) * _this.page;
+        var intReturn = (objSizes[type] || objSizes.defaultLimit) * _this.page;
+
+        console.log('paginationLimit for ' + type, intReturn);
+
+        return intReturn;
     };
 
     _this.hasMoreItems = function(type) {
@@ -61,8 +92,12 @@ angular.module('mycdc.controllers', [])
             showDelay: 0
         });
 
+        var appState = Globals.get('appState');
+
         $timeout(function(){
-            _this.page = _this.page + 1;
+            //_this.page = _this.page + 1;
+            _this.getPageState(appState, true);
+
             $scope.$broadcast('scroll.loadMore');
         });
     };
@@ -78,20 +113,19 @@ angular.module('mycdc.controllers', [])
         DataSourceInterface.getSourceIndex(blnRefresh, appState).then(function(d) {
 
             // RESET PAGING
-            _this.pageSize = 10;
-            _this.page = 1;
+            _this.getPageState(appState);
 
             // SET DATA TO "$scope.datas" SO DIRECTIVE WILL PICK IT UP & DISPLAY IT WITHIN ITS TEMPLATE(S)
-            $scope.datas = d;
+            _this.datas = d;
 
-            AppUtil.log($scope.datas, 1, 'CURRENT SOURCE DATA');
+            AppUtil.log(_this.datas, 1, 'CURRENT SOURCE DATA');
 
             // BROADCAST REFRESH SO SCROLLER WILL RESIZE APPROPRIATELY
             $scope.$broadcast('scroll.refreshComplete');
 
             // REDIRECT TO HOME IF NO SOURCE DEFINED
             if (appState.sourceDetail) {
-                if ($scope.datas.length <= 0) {
+                if (_this.datas.length <= 0) {
                     // NO CARD LIST: ALERT USER, THEN REDIRECT
                     var noCardList = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                     noCardList.then(function() {
@@ -116,7 +150,9 @@ angular.module('mycdc.controllers', [])
         if (blnRefresh) {
 
             // GET / REFRESH SCREEN STATE
-            _this.screenState = Device.ScreenState();
+            Device.ScreenState().then(function (objScreen) {
+                _this.screenState = objScreen;
+            });
 
             // APP INIT WILL REFRESH SOURCE LIST
             $rootScope.appInit().then(function(d) {
@@ -175,7 +211,40 @@ angular.module('mycdc.controllers', [])
     // SET TITLE
     //$ionicNavBarDelegate.title('<img src="img/logo.png" />');
 
-    // SETUP LISTENERS FOR STATE CHANGE
+    // SETUP LISTENERS FOR ORIENTATION CHANGE
+
+    // ADD LISTENER ONLY ONCE
+    if (!_this.listenersAdded) {
+
+        _this.listenersAdded = true;
+
+        var mq = window.matchMedia('(orientation: portrait)');
+
+        var onScreenChange = function () {
+            $timeout(function () {
+                 Device.ScreenState().then(function (objScreen) {
+                    _this.screenState = objScreen;
+                 });
+            }, 250);
+        };
+
+        mq.addListener(function(m) {
+            console.log('listener for matchMedia fired');
+            onScreenChange();
+        });
+
+        // window.addEventListener("orientationchange", function () {
+        //     console.log('listener for orientationchange fired');
+        //     onScreenChange();
+        // }, true);
+
+        // window.addEventListener("resize", function () {
+        //     console.log('listener for resize fired');
+        //     onScreenChange();
+        // }, false);
+    }
+
+
     // $scope.$on('$locationChangeSuccess', function(event) {
 
     //     // ON STATE CHANGE, TRIGGER

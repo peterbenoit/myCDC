@@ -387,22 +387,6 @@ angular.module('mycdc', [
 
         }
 
-        // ADD LISTENER ONLY ONCE
-        if (!rs.listenersAdded) {
-            rs.listenersAdded = true;
-
-            var mq = window.matchMedia('(orientation: portrait)');
-
-            //mq.addListener(function(m) {
-              //  $rootScope.refreshScreenState();
-            //});
-
-            //window.addEventListener("orientationchange", $rootScope.refreshScreenState, true);
-
-            // Add Listener for resize changes
-            //window.addEventListener("resize", $rootScope.refreshScreenState, false);
-        }
-
         // RETURN THE SOURCE LIST PROMISE
         return defer.promise;
     };
