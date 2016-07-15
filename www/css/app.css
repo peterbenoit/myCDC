@@ -275,7 +275,6 @@ body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
 #ui-master .ui-images.ui-tablet-portrait .ui-detail-view {
   float: none;
   width: 100vw;
-  top: 74px;
 }
 #ui-master .ui-default.ui-tablet-portrait .ui-list-view,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-list-view,
@@ -321,7 +320,6 @@ body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
 }
 #ui-master .ui-images.ui-phone .ui-list-view,
 #ui-master .ui-images.ui-phone .ui-detail-view {
-  top: 74px;
   height: 100vh;
 }
 #ui-master .ui-images.ui-phone .ui-list-view .card-container {

@@ -1,10 +1,10 @@
 <ion-view>
-	<ion-content>
+	<ion-content class="has-header">
 		<!-- TABLET LANDSCAPE MODE -->
 		<div ng-if="!containerLoading" class="ui-home ui-tablet-landscape">
 			<div class="ui-list-view">
 				<!-- HOMESTREAM -->
-				<ion-scroll direction="y" class="vertical-scroller stream stream-home has-header">
+				<ion-scroll direction="y" class="vertical-scroller stream stream-home">
 					<ion-refresher pulling-text="Pull to refresh..." on-refresh="global.doRefresh(true)"></ion-refresher>
 
 					<ui-stream></ui-stream>

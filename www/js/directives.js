@@ -285,8 +285,8 @@ angular.module('mycdc.directives', [])
         };
 
         // GET META DATA FROM
-        objMetaData = $rootScope.getSourceMeta(derivedState);
-        localStore = $rootScope.getLocalStoreByAppState('sourceDetail', derivedState);
+        objMetaData = DataSourceInterface.getSourceMeta(derivedState);
+        localStore = AppUtil.getLocalStoreByAppState('sourceDetail', derivedState);
         localData = localStore.all();
 
         // CHECK IF WE NEED TO REFRESH OR NOT
@@ -294,7 +294,7 @@ angular.module('mycdc.directives', [])
 
             // LOCAL DATA IS GOOD
             // RESOLVE PROMISE WITH THE STORED DATA
-            $rootScope.log(localData.data, -1000, 'Using Local Detail Data (Still Fresh)');
+            AppUtil.log(localData.data, -1000, 'Using Local Detail Data (Still Fresh)');
             defer.resolve(localData.data);
 
         } else {
@@ -306,18 +306,18 @@ angular.module('mycdc.directives', [])
             // REMOTE DATA NEEDED
 
             // GET DATA
-            $rootScope.remoteApi({
+            AppUtil.remoteApi({
                 url: detailUrl
             }).then(function(d) {
 
                 // NORMALIZE DATA BY SOURCE SPECS
-                var data = $rootScope.dataProcessor(d, objMetaData);
+                var data = DataSourceInterface.dataProcessor(d, objMetaData);
 
                 //SAVE IT TO LOCAL
                 localStore.save(data);
 
                 // RESOLVE WITH PROCESSED DATA
-                $rootScope.log('Using New Detail Data (Remote)', -1000);
+                AppUtil.log('Using New Detail Data (Remote)', -1000);
                 defer.resolve(data);
 
             }, function(e) {
@@ -326,14 +326,14 @@ angular.module('mycdc.directives', [])
                 if (localData.data && localData.data.length) {
 
                     // FALLBACK TO SAVED DATA
-                    $rootScope.log('Using Local Detail Data (Not Fresh)', -1000);
-                    //$rootScope.log(localData.data, -100, 'Using Local Detail Data (Not Fresh)');
+                    AppUtil.log('Using Local Detail Data (Not Fresh)', -1000);
+                    AppUtil.log(localData.data, -100, 'Using Local Detail Data (Not Fresh)');
                     defer.resolve(localData.data);
 
                 } else {
 
                     // ALL FAILED RETURN WHAT WE HAVE IN LOCAL STORAGE
-                    $rootScope.log('Could Not Find And Data (Local, Remote, or Default)', -1000);
+                    AppUtil.log('Could Not Find And Data (Local, Remote, or Default)', -1000);
                     defer.reject();
                 }
             });

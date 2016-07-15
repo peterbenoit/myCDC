@@ -1,12 +1,11 @@
 <ion-view>
-	<!-- <ion-nav-title>CDC</ion-nav-title> -->
-	<ion-content>
+	<ion-content class="has-header">
 
 		<!-- TABLET PORTRAIT MODE -->
 		<div class="ui-default ui-tablet-portrait has-list-header">
 
 			<!-- THE LIST VIEW -->
-			<div data-ng-if="!global.appState.sourceDetail" class="ui-list-view has-header"><div>
+			<div data-ng-if="!global.appState.sourceDetail" class="ui-list-view"><div>
 
 				<!-- STREAM VIEW -->
 				<ion-scroll direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
