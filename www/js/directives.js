@@ -28,15 +28,7 @@ angular.module('mycdc.directives', [])
                     uiContainerTemplateUrl = 'templates/ui-common/ui-loader.html';
                 }
 
-                //$rootScope.log(uiContainerTemplateUrl, 1, 'UI-CONTAINER-TEMPLATE');
-
                 $scope.containerLoading = false;
-
-                //console.log('screenState',screenState);
-                //console.log('$rootScope.appState', $rootScope.appState);
-                if(sourceMeta && sourceMeta.templates) {
-                    //console.log('sourceMeta.templates', sourceMeta.templates);
-                }
 
                 return uiContainerTemplateUrl;
             };
@@ -194,6 +186,7 @@ angular.module('mycdc.directives', [])
 })
 .directive('uiDetail', function($rootScope, $timeout, $sce, $q, $filter, $state, $stateParams, $ionicPopup, $ionicLoading,DataSourceInterface, AppUtil, Globals) {
 
+    // IFRAME CONTENT PROCESSOR
     var getSourceHtmlUrl = function(sourceCard, blnRefresh) {
 
         var defer, localStore, localData, objMetaData, noChromeUrl, derivedState;
@@ -272,6 +265,7 @@ angular.module('mycdc.directives', [])
         return defer.promise;
     };
 
+    // DEFAULT & BLOGS PROCESSOR
     var getSourceDetail = function(sourceCard, blnRefresh) {
 
         var defer, localStore, localData, objMetaData, derivedState;
@@ -468,18 +462,8 @@ angular.module('mycdc.directives', [])
                         break;
                         case 'image':
 
-                            //$scope.cardData = objDetailCard;
-
-                            // GET SOURCE DETAIL DATA
-                            //getSourceDetail(objDetailCard, false).then(function(d){
-
-                                // NORMALIZE DATA BY SOURCE SPECS?
-                                //detailData = d;
-
-                                // RESOLVE PROMISE WITH THIS DATA
-                                defer.resolve(objDetailCard);
-
-                            //});
+                            // RESOLVE PROMISE WITH THIS DATA
+                            defer.resolve(objDetailCard);
 
                         break;
                         default:
