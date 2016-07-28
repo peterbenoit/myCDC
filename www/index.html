@@ -50,21 +50,6 @@
 
 <body ng-app="mycdc" id="ui-master">
 
-    <!-- HEADER BAR -->
-    <ion-nav-bar class="bar-positive" align-title="center" animation="no-animation">
-
-        <ion-nav-buttons side="left">
-            <a alt="Settings Button" class="button button-clear" ui-sref="app.sources"><i class="icon ion-navicon"></i> NAV MENU</a>
-            <a alt="Settings Button" class="button button-clear" ui-sref="app.sourceIndex({ sourceName : 'homestream', sourceDetail : '' })"><i class="icon ion-navicon"></i> HOME</a>
-
-            <!-- <a data-ng-if="global.appState.sourceName === 'homestream'" alt="Settings Button" class="button button-clear" ui-sref="app.navigation"><i class="icon ion-navicon"></i></a> -->
-        </ion-nav-buttons>
-
-        <ion-nav-buttons side="right">
-            <a alt="Settings Button" class="button button-clear" ui-sref="app.settings"><i class="icon ion-gear-a"></i> SETTINGS</a>
-        </ion-nav-buttons>
-    </ion-nav-bar>
-
     <!-- APP VIEW -->
     <ion-nav-view></ion-nav-view>
 

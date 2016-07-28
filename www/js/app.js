@@ -31,7 +31,7 @@ angular.module('mycdc', [
     rs.app = {};
     rs.detailUrl = 'https://tools.cdc.gov/api/v2/resources/media/';
     rs.remoteCheck = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
-    rs.sourcesUrl = 'json/sources-local.json';
+    rs.sourcesUrl = 'json/sources.json';
 
     // WINDOW.OPEN SHOULD USE INAPPBROWSER
     document.addEventListener('deviceready', onDeviceReady, false);
@@ -72,8 +72,18 @@ angular.module('mycdc', [
             }
         });
 
-        $cordovaStatusbar.hide();
-        $ionicPlatform.fullScreen();
+        navigator.globalization.getPreferredLanguage(function (langPref) {
+            rs.lang = langPref;
+            alert(rs.lang);
+        }, console.log);
+
+        //$cordovaStatusbar.hide();
+        //$ionicPlatform.fullScreen();
+
+        ionic.Platform.fullScreen();
+        if (window.StatusBar) {
+            return StatusBar.hide();
+        }
     }
 
     // NOTE: THIS ONLY WORKS ON A DEVICE
@@ -301,6 +311,8 @@ angular.module('mycdc', [
                     sourceTypes: d.data.sourceTypes,
                     // SET SOURCE LIST
                     sourceList: d.data.sourceList,
+                    // Language Specific Labels (Enclosed in the sources json file)
+                    langLabels : d.data.langLabels,
                     // DEFAULT EMPTY OBJECTS
                     templateMap: {},
                     sourceMetaMap: {},

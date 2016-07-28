@@ -1,40 +1,40 @@
 {
     "sourceTypes" : [
         {
-        "typeName": "Articles",
-        "typeIdentifier": "articles"
-    }, {
-        "typeName": "Blogs",
-        "typeIdentifier": "blogs"
-    }, {
-        "typeName": "Data",
-        "typeIdentifier": "data"
-    }, {
-        "typeName": "Facts",
-        "typeIdentifier": "facts"
-    }, {
-        "typeName": "Journals",
-        "typeIdentifier": "journals"
-    }, {
-        "typeName": "News",
-        "typeIdentifier": "news"
-    }, {
-        "typeName": "Photos",
-        "typeIdentifier": "photos"
-    }, {
-        "typeName": "Social",
-        "typeIdentifier": "social"
-    }, {
+            "typeName": "Articles",
+            "typeIdentifier": "articles"
+        }, {
+            "typeName": "Blogs",
+            "typeIdentifier": "blogs"
+        }, {
+            "typeName": "Data",
+            "typeIdentifier": "data"
+        }, {
+            "typeName": "Facts",
+            "typeIdentifier": "facts"
+        }, {
+            "typeName": "Journals",
+            "typeIdentifier": "journals"
+        }, {
+            "typeName": "News",
+            "typeIdentifier": "news"
+        }, {
+            "typeName": "Photos",
+            "typeIdentifier": "photos"
+        }, {
+            "typeName": "Social",
+            "typeIdentifier": "social"
+        }, {
             "typeName" : "AudioVideo",
             "typeIdentifier" : "audiovideo"
         }
     ],
     "sourceList": [{
-        "feedIdentifier": "homestream",
+        "feedIdentifier": "mobileapphomestream",
         "typeIdentifier": "articles",
         "title": "Home",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/AggregateFeed.json",
+        "url": "./json/SourcesFromBill/AggregateFeedNew.json",
         "processors": ["cardTemplateInjector", "stripHtml"],
         "detailType": "default",
         "showByDefault": true,
@@ -49,11 +49,11 @@
             "detail": "ui-detail-article"
         }
     }, {
-        "feedIdentifier": "aroundtheworld",
+        "feedIdentifier": "mobileappcdcaroundtheworld",
         "typeIdentifier": "articles",
         "title": "CDC Around the World",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/CDCAroundtheWorld.json",
+        "url": "./json/SourcesFromBill/CDC_Around_the_World.json",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector"],
         "detailType": "default",
@@ -69,11 +69,11 @@
             "detail": "ui-detail-article"
         }
     }, {
-        "feedIdentifier": "diseaseoftheweek",
+        "feedIdentifier": "mobileappdiseaseoftheweek",
         "typeIdentifier": "articles",
         "title": "Disease of the Week",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/DOTW.json",
+        "url": "./json/SourcesFromBill/Disease_of_the_Week.json",
         "getContentBy": "url",
         "processors": ["cardTemplateInjector"],
         "detailType": "iframe",
@@ -89,11 +89,11 @@
             "detail": "ui-detail-embed"
         }
     }, {
-        "feedIdentifier": "fluviewweeklyreport",
+        "feedIdentifier": "mobileappfluviewweeklyreport",
         "typeIdentifier": "articles",
         "title": "FluView Weekly Summary",
         "icon": "ion-checkmark-circled",
-        "url": " ./json/sources/FluView.json",
+        "url": " ./json/SourcesFromBill/Fluview_weekly_summary.json",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector"],
         "detailType": "default",
@@ -109,11 +109,11 @@
             "detail": "ui-detail-article"
         }
     }, {
-        "feedIdentifier": "featuredhealtharticles",
+        "feedIdentifier": "mobileappfeaturedhealtharticles",
         "typeIdentifier": "articles",
         "title": "Health Articles",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/HealthArticles.json",
+        "url": "./json/SourcesFromBill/featured_health_articles.json",
         "getContentBy": "url",
         "processors": ["cardTemplateInjector"],
         "detailType": "iframe",
@@ -129,11 +129,11 @@
             "detail": "ui-detail-embed"
         }
     }, {
-        "feedIdentifier": "vitalsigns",
+        "feedIdentifier": "mobileappvitalsigns",
         "typeIdentifier": "articles",
         "title": "Vital Signs",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/VitalSigns.json",
+        "url": "./json/SourcesFromBill/vital_signs.json",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector"],
         "detailType": "default",
@@ -149,11 +149,11 @@
             "detail": "ui-detail-article"
         }
     }, {
-        "feedIdentifier": "faststats",
+        "feedIdentifier": "mobileappfaststats",
         "typeIdentifier": "data",
         "title": "FastStats",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/FastStats.json",
+        "url": "./json/SourcesFromBill/Faststats.json",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector"],
         "detailType": "default",
@@ -169,11 +169,11 @@
             "detail": "ui-detail-data"
         }
     }, {
-        "feedIdentifier": "eid",
+        "feedIdentifier": "mobileappeid",
         "typeIdentifier": "journals",
         "title": "Emerging Infectious Disease (EID)",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/EID.json",
+        "url": "./json/SourcesFromBill/EID.json",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector", "stripHtml"],
         "detailType": "journal",
@@ -189,11 +189,11 @@
             "detail": "ui-detail-journal"
         }
     }, {
-        "feedIdentifier": "cdcdirectorblog",
+        "feedIdentifier": "mobileappcdcdirectorblog",
         "typeIdentifier": "blogs",
         "title": "CDC Director Blog",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/CDCDirectorsBlog.json",
+        "url": "./json/SourcesFromBill/CDC_Directors_Blog_feed.json",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector"],
         "detailType": "blog",
@@ -209,11 +209,11 @@
             "detail": "ui-detail-blog"
         }
     }, {
-        "feedIdentifier": "publichealthmattersblog",
+        "feedIdentifier": "mobileapppublichealthmattersblog",
         "typeIdentifier": "blogs",
         "title": "Public Health Matters Blog",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/PublicHealthMattersBlog.json",
+        "url": "./json/SourcesFromBill/public_health_matters_blog.json",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector"],
         "detailType": "blog",
@@ -229,11 +229,11 @@
             "detail": "ui-detail-blog"
         }
     }, {
-        "feedIdentifier": "weeklycasecounts",
+        "feedIdentifier": "mobileappweeklycasecounts",
         "typeIdentifier": "data",
         "title": "Disease Case Counts",
         "icon": "ion-close-circled",
-        "url": "./json/sources/",
+        "url": "./json/SourcesFromBill/",
         "getContentBy": "url",
         "processors": ["cardTemplateInjector"],
         "detailType": "default",
@@ -249,16 +249,16 @@
             "detail": "ui-detail-data"
         }
     }, {
-        "feedIdentifier": "didyouknow",
+        "feedIdentifier": "mobileappdidyouknow",
         "typeIdentifier": "facts",
         "title": "Did You Know?",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/DidYouKnow.json",
+        "url": "./json/SourcesFromBill/Did_you_know.json",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector", "firstOnly"],
         "detailType": "default",
         "showByDefault": true,
-        "showSourceLink" : true,
+        "showSourceLink" : false,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -269,11 +269,11 @@
             "detail": "ui-detail-fact"
         }
     }, {
-        "feedIdentifier": "factsoftheweek",
+        "feedIdentifier": "mobileappfactsoftheweek",
         "typeIdentifier": "facts",
         "title": "Fact of the Week",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/FactoftheWeek.json",
+        "url": "./json/SourcesFromBill/FactoftheWeek.json",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector", "parseEncoding"],
         "detailType": "default",
@@ -289,11 +289,11 @@
             "detail": "ui-detail-fact"
         }
     }, {
-        "feedIdentifier": "mmwr",
+        "feedIdentifier": "mobileappmmwr",
         "typeIdentifier": "journals",
         "title": "Morbidity and Mortality Weekly Report (MMWR)",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/MMWR.json",
+        "url": "./json/SourcesFromBill/MMWR.json",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector", "stripHtml"],
         "detailType": "journal",
@@ -309,11 +309,11 @@
             "detail": "ui-detail-journal"
         }
     }, {
-        "feedIdentifier": "pcd",
+        "feedIdentifier": "mobileapppcd",
         "typeIdentifier": "journals",
         "title": "Preventing Chronic Disease (PCD)",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/PCD.json",
+        "url": "./json/SourcesFromBill/pcd.json",
         "getContentBy": "id",
         "processors": ["cardTemplateInjector"],
         "detailType": "journal",
@@ -329,12 +329,13 @@
             "detail": "ui-detail-journal"
         }
     }, {
-        "feedIdentifier": "newsroom",
+        "feedIdentifier": "mobileappnewsroom",
         "typeIdentifier": "news",
         "title": "Newsroom",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/NewsRoom.json",
+        "url": "./json/SourcesFromBill/Newsroom.json",
         "getContentBy": "url",
+        "processors": ["cardTemplateInjector"],
         "detailType": "iframe",
         "showByDefault": true,
         "showSourceLink" : true,
@@ -348,11 +349,11 @@
             "detail": "ui-detail-embed"
         }
     }, {
-        "feedIdentifier": "outbreaks",
+        "feedIdentifier": "mobileappoutbreaks",
         "typeIdentifier": "news",
         "title": "Outbreaks",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/Outbreaks.json",
+        "url": "./json/SourcesFromBill/outbreaks.json",
         "getContentBy": "na",
         "processors": ["cardTemplateInjector", "flagOutbreak"],
         "detailType": "iframe",
@@ -368,11 +369,11 @@
             "detail": "ui-detail-embed"
         }
     }, {
-        "feedIdentifier": "travelnotices",
+        "feedIdentifier": "mobileapptravelnotices",
         "typeIdentifier": "news",
         "title": "Travel Notices",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/TravelNotices.json",
+        "url": "./json/SourcesFromBill/travel_notices.json",
         "getContentBy": "na",
         "processors": ["cardTemplateInjector"],
         "detailType": "iframe",
@@ -388,11 +389,11 @@
             "detail": "ui-detail-embed"
         }
     }, {
-        "feedIdentifier": "imageoftheweek",
+        "feedIdentifier": "mobileappimageoftheweek",
         "typeIdentifier": "photos",
         "title": "Image Library",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/PHIL.json",
+        "url": "./json/SourcesFromBill/image_of_the_Week.json",
         "getContentBy": "na",
         "processors": ["cardTemplateInjector"],
         "detailType": "image",
@@ -401,18 +402,18 @@
         "cardImages": true,
         "filterLocked": false,
         "templates": {
-            "containerSet": "ui-container-images",
+            "containerSet": "ui-container-default",
             "stream": "ui-stream-image",
             "card": "ui-card-default",
             "homeCard": "ui-card-default",
             "detail": "ui-detail-image"
         }
     }, {
-        "feedIdentifier": "podcasts",
+        "feedIdentifier": "mobileapppodcasts",
         "typeIdentifier" : "audiovideo",
         "title": "Podcasts",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/Podcasts.json",
+        "url": "./json/SourcesFromBill/podcasts.json",
         "getContentBy": "na",
         "processors": ["cardTemplateInjector"],
         "detailType" : "default",
@@ -428,16 +429,16 @@
             "detail": "ui-detail-audio"
         }
     }, {
-        "feedIdentifier": "youtube",
+        "feedIdentifier": "mobileappyoutube",
         "typeIdentifier" : "audiovideo",
         "title": "Videos",
         "icon": "ion-checkmark-circled",
-        "url": "./json/sources/YouTube_All.json",
+        "url": "./json/SourcesFromBill/youtube.json",
         "getContentBy": "na",
         "processors": ["cardTemplateInjector", "extractVideoComments"],
         "detailType": "video",
         "showByDefault": true,
-        "showSourceLink" : false,
+        "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,
         "templates": {
@@ -448,7 +449,7 @@
             "detail": "ui-detail-video"
         }
     }, {
-        "feedIdentifier": "cdcgov",
+        "feedIdentifier": "mobileappcdcgov",
         "typeIdentifier": "photos",
         "title": "Instagram",
         "icon": "ion-checkmark-circled",
@@ -466,7 +467,7 @@
             "detail": "ui-detail-article"
         }
     }, {
-        "feedIdentifier": "cdcsocialmedia",
+        "feedIdentifier": "mobileappcdcsocialmedia",
         "typeIdentifier": "photos",
         "title": "Flickr",
         "icon": "ion-checkmark-circled",
@@ -484,7 +485,7 @@
             "detail": "ui-detail-photos"
         }
     }, {
-        "feedIdentifier": "facebook",
+        "feedIdentifier": "mobileappfacebook",
         "typeIdentifier": "social",
         "title": "Facebook",
         "icon": "ion-checkmark-circled",
@@ -496,13 +497,13 @@
         "filterLocked": false,
         "templates": {
             "containerSet": "ui-container-default",
-            "stream": "ui-stream-video",
+            "stream": "ui-stream-standard",
             "card": "ui-card-default",
             "homeCard": "ui-card-default",
             "detail": "ui-detail-video"
         }
     }, {
-        "feedIdentifier": "posts",
+        "feedIdentifier": "mobileappposts",
         "typeIdentifier": "social",
         "title": "Google+",
         "icon": "ion-checkmark-circled",
@@ -520,7 +521,7 @@
             "detail": "ui-detail-article"
         }
     }, {
-        "feedIdentifier": "twitter",
+        "feedIdentifier": "mobileapptwitter",
         "typeIdentifier": "social",
         "title": "Twitter",
         "icon": "ion-checkmark-circled",
@@ -538,7 +539,7 @@
             "detail": "landing-twitter"
         }
     }, {
-        "feedIdentifier": "pinterest",
+        "feedIdentifier": "mobileapppinterest",
         "typeIdentifier": "social",
         "title": "Pinterest",
         "icon": "ion-checkmark-circled",
@@ -556,7 +557,7 @@
             "detail": "ui-detail-article"
         }
     }, {
-        "feedIdentifier": "civdemo",
+        "feedIdentifier": "mobileappcivdemo",
         "typeIdentifier": "social",
         "title": "CIV Demo Page",
         "icon": "ion-checkmark-circled",
@@ -573,5 +574,34 @@
             "homeCard": "ui-card-default",
             "detail": "ui-detail-article"
         }
-    }]
+    }],
+    "langLabels" : {
+        "app" : {
+            "title" : "CDC"
+        },
+        "nav" : {
+            "back" : "Back",
+            "settings" : "Settings"
+        },
+        "controls" : {
+
+        },
+        "settings" : {
+            "application" : "Application",
+            "resetApp" : "Reset App",
+            "reset" : "Reset"
+        },
+        "popOver" : {
+            "message" : "Customize your news here! Choose from a variety of articles, news, outbreak, data, and multimedia.",
+            "confirm" : "Got It"
+        },
+        "landing" : {
+            "twitter" : {
+                "title" : "Twitter"
+            },
+            "facebook" : {
+                "title" : "Facebook"
+            }
+        }
+    }
 }

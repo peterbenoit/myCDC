@@ -3,10 +3,18 @@
  */
 angular.module('mycdc.controllers', [])
 
-.controller('AppCtrl', ['$scope','$rootScope','$urlMatcherFactory','$location','$q','$timeout','$state','$stateParams','$filter','$ionicPlatform','$ionicPopup','$ionicLoading','$ionicPopover','$sce','$cordovaNetwork','$ionicScrollDelegate','$ionicNavBarDelegate','AppUtil','Device','Globals','DataSourceInterface', function($scope, $rootScope, $urlMatcherFactory, $location, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $ionicPopover, $sce, $cordovaNetwork, $ionicScrollDelegate, $ionicNavBarDelegate, AppUtil, Device, Globals, DataSourceInterface) {
+.controller('AppCtrl', ['$scope','$rootScope','$urlMatcherFactory','$location','$q','$timeout','$state','$stateParams','$filter','$ionicPlatform','$ionicPopup','$ionicLoading','$ionicPopover','$ionicHistory','$sce','$cordovaNetwork','$ionicScrollDelegate','$ionicNavBarDelegate','AppUtil','Device','Globals','DataSourceInterface', function($scope, $rootScope, $urlMatcherFactory, $location, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $ionicPopover, $ionicHistory, $sce, $cordovaNetwork, $ionicScrollDelegate, $ionicNavBarDelegate, AppUtil, Device, Globals, DataSourceInterface) {
 
     // THIS POINTER (_this & "CONTROLLER AS" FOR EASE IN TRANSITION TO NEXT ANGULAR VERSION)
     var _this = this;
+
+    _this.paginationLimits = {
+        tabletPortrait : 20,
+        tabletLandscape : 24,
+        imageTabletPortrait: 20,
+        imageTabletLandscape: 48,
+        defaultLimit : 10
+    };
 
     _this.menuPopOver = function() {
         var runonce = window.localStorage.getItem('myCDC-runonce');
@@ -55,19 +63,18 @@ angular.module('mycdc.controllers', [])
         return _this.page;
     };
 
+    _this.goBack = function () {
+        $ionicHistory.goBack();
+    };
+
+    _this.appState = function () {
+        return Globals.get('appState');
+    };
+
     // SETUP PAGINATION
     _this.paginationLimit = function(type) {
-        var objSizes;
 
-        objSizes = {
-            tabletPortrait : 20,
-            tabletLandscape : 24,
-            imageTabletPortrait: 20,
-            imageTabletLandscape: 48,
-            defaultLimit : 10
-        };
-
-        var intReturn = (objSizes[type] || objSizes.defaultLimit) * _this.page;
+        var intReturn = (_this.paginationLimits[type] || _this.paginationLimits.defaultLimit) * _this.page;
 
         console.log('paginationLimit for ' + type, intReturn);
 
@@ -76,9 +83,12 @@ angular.module('mycdc.controllers', [])
 
     _this.hasMoreItems = function(type) {
         type = type || 'defaultLimit';
+
+        var limit = _this.paginationLimits[type];
+
         // QUICK CHECK TO SEE IF ALL AVAILABLE CARDS ARE SHOWN
         if (_this.datas) {
-            return (_this.page * _this.paginationLimit(type)) < _this.datas.length;
+            return (_this.page * limit) < _this.datas.length;
         }
         return false;
     };
@@ -174,6 +184,7 @@ angular.module('mycdc.controllers', [])
                         _this.sourceFilterLocks = applicationData.sourceFilterLocks;
                         _this.templateMap = applicationData.templateMap;
                         _this.sourceMetaMap = applicationData.sourceMetaMap;
+                        _this.langLabels = applicationData.langLabels;
 
                         // STATE SPECIFIC SOURCE & DETAIL DATA
                         _this.appState = Globals.get('appState');
@@ -246,13 +257,29 @@ angular.module('mycdc.controllers', [])
 
 
     // $scope.$on('$locationChangeSuccess', function(event) {
-
     //     // ON STATE CHANGE, TRIGGER
     //     console.log('2... @@@@@@@@@@@@@@@@@@@@@@ APP STATE', $rootScope.appState);
     // });
 
 
     $scope.$on("$stateChangeStart", function(event, data){
+        var backButtonMode = 'hide';
+        switch(data.name) {
+            case 'app.sources':
+                backButtonMode = 'home';
+            break;
+            case 'app.sourceIndex':
+                backButtonMode = 'back';
+            break;
+            case 'app.sourceDetail':
+                backButtonMode = 'back';
+            break;
+            case 'app.settings':
+                backButtonMode = 'home';
+            break;
+        }
+        console.log('???',event,data,backButtonMode);
+        $rootScope.backButtonMode = backButtonMode;
         $rootScope.$broadcast('app-state-load-start');
     });
 

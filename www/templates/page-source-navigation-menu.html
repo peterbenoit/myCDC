@@ -6,7 +6,7 @@
 			</ion-item>
 
 			<ion-item ng-repeat="source in sources.sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier} | orderBy:'displayOrder'" data-ng-if="source.feedIdentifier !== 'homestream' && global.sourceFilters[source.typeIdentifier][source.feedIdentifier].isEnabled" href="#app/source/{{source.feedIdentifier}}">
-				<a alt="{{source.title}}" href="#/app/source/{{source.feedIdentifier}}/">{{source.title}}</a>
+				<a alt="{{source.title}}" href="#/app/source/{{source.feedIdentifier}}">{{source.title}}</a>
 			</ion-item>
 		</ion-list>
 	</ion-content>

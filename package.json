@@ -18,18 +18,18 @@
     "cordova-plugin-console",
     "cordova-plugin-device",
     "cordova-plugin-inappbrowser",
-    "cordova-plugin-network-information",
     "cordova-plugin-screen-orientation",
     "cordova-plugin-splashscreen",
-    "cordova-plugin-statusbar",
     "cordova-plugin-whitelist",
     "cordova-plugin-x-socialsharing",
     "cordova-plugin-x-toast",
-    "ionic-plugin-keyboard",
     {
       "locator": "https://github.com/Adobe-Marketing-Cloud/mobile-services.git",
       "id": "com.adobe.ADBMobile"
-    }
+    },
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard",
+    "cordova-plugin-network-information"
   ],
   "cordovaPlatforms": [
     "ios",

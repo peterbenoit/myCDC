@@ -190,7 +190,6 @@ body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
 #ui-master .ui-default.ui-phone .ui-detail-view,
 #ui-master .ui-iframe.ui-phone .ui-detail-view,
 #ui-master .ui-images.ui-phone .ui-detail-view {
-  top: 54px;
   height: 100vh;
 }
 #ui-master .ui-default.ui-phone .ui-list-view .card-container,
@@ -226,7 +225,6 @@ body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
 #ui-master .ui-images.ui-tablet-landscape .ui-detail-view {
   float: left;
   height: 100vh;
-  top: 54px;
 }
 #ui-master .ui-default.ui-tablet-landscape .ui-list-view,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-list-view,
@@ -350,15 +348,9 @@ body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
   width: 15vw;
   height: 8.43vw;
 }
-#ui-master .ui-images.ui-tablet-portrait .ui-list-view {
-  height: 25vh;
-}
 #ui-master .ui-images.ui-tablet-portrait .ui-list-view .button-inline {
   display: inline-block;
   height: 15vh;
-}
-#ui-master .ui-images.ui-tablet-portrait .ui-detail-view {
-  height: 75vh;
 }
 #ui-master .ui-home {
   /* HOME STREAM - PHONE (PORTRAIT ONLY)*/
@@ -367,7 +359,6 @@ body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
 }
 #ui-master .ui-home.ui-phone .ui-list-view {
   top: 74px;
-  height: 100vh;
 }
 #ui-master .ui-home.ui-phone .ui-list-view .card-container {
   width: 100vw;
@@ -379,9 +370,6 @@ body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
   width: 100vw;
   height: 56vw;
 }
-#ui-master .ui-home.ui-tablet-portrait .ui-list-view {
-  height: 100vh;
-}
 #ui-master .ui-home.ui-tablet-portrait .ui-list-view .card-container {
   float: left;
   width: 50vw;
@@ -392,9 +380,6 @@ body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
 #ui-master .ui-home.ui-tablet-portrait .ui-list-view .card-container .card .item-image {
   width: 50vw;
   height: 28vw;
-}
-#ui-master .ui-home.ui-tablet-landscape .ui-list-view {
-  height: 100vh;
 }
 #ui-master .ui-home.ui-tablet-landscape .ui-list-view .card-container {
   float: left;

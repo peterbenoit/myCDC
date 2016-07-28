@@ -173,14 +173,20 @@ angular.module('mycdc.directives', [])
                     }
                 }
 
+                // console.log('uiStreamCardTemplateUrl',uiStreamCardTemplateUrl);
+                // console.log('screenState',screenState);
+                // console.log('tplInit',tplInit);
+                // console.log('blnLoader',blnLoader);
+
                 // RETURN TEMPLATE
                 return uiStreamCardTemplateUrl;
             };
         },
         link: function(scope, element, attrs) {
             scope.template = attrs.template;
+            scope.derivedTemplate = scope.getCardTemplate();
         },
-        template: '<div id="card-{{cardData.id}}" class="card-container-pad" ng-include="getCardTemplate()"></div>'
+        template: '<div id="card-{{cardData.id}}" class="card-container-pad" ng-include="derivedTemplate"></div>'
         //template: '<div>{{cardData}}</div>'
     };
 })
@@ -216,7 +222,7 @@ angular.module('mycdc.directives', [])
         objTemp = {};
 
         // CHECK IF WE NEED TO REFRESH OR NOT
-        if (!blnRefresh && !localData.expired) {
+        if (!blnRefresh && !localData.expired && Object.keys(localData.data).length) {
 
             // LOCAL DATA IS GOOD
             // RESOLVE PROMISE WITH THE STORED DATA
@@ -284,7 +290,7 @@ angular.module('mycdc.directives', [])
         localData = localStore.all();
 
         // CHECK IF WE NEED TO REFRESH OR NOT
-        if (!blnRefresh && !localData.expired) {
+        if (!blnRefresh && !localData.expired && Object.keys(localData.data).length) {
 
             // LOCAL DATA IS GOOD
             // RESOLVE PROMISE WITH THE STORED DATA
@@ -304,15 +310,21 @@ angular.module('mycdc.directives', [])
                 url: detailUrl
             }).then(function(d) {
 
-                // NORMALIZE DATA BY SOURCE SPECS
-                var data = DataSourceInterface.dataProcessor(d, objMetaData);
+                if (d.data.meta.status == '400') {
+                    alert('Data Missing Or Unavailable For This Article!');
+                    defer.reject(d);
+                } else {
 
-                //SAVE IT TO LOCAL
-                localStore.save(data);
+                    // NORMALIZE DATA BY SOURCE SPECS
+                    var data = DataSourceInterface.dataProcessor(d, objMetaData);
 
-                // RESOLVE WITH PROCESSED DATA
-                AppUtil.log('Using New Detail Data (Remote)', -1000);
-                defer.resolve(data);
+                    //SAVE IT TO LOCAL
+                    localStore.save(data);
+
+                    // RESOLVE WITH PROCESSED DATA
+                    AppUtil.log('Using New Detail Data (Remote)', -1000);
+                    defer.resolve(data);
+                }
 
             }, function(e) {
 
@@ -352,6 +364,7 @@ angular.module('mycdc.directives', [])
 
             // LOAD DETAILS ON DETAIL CARD SET / SELECTION
             $scope.$watch('detailCard', function() {
+                console.log('detailCard', $scope.detailCard);
                 if ($scope.detailCard) {
 
                     // SHOW LOADER
@@ -373,7 +386,7 @@ angular.module('mycdc.directives', [])
                             // NO DETAIL CARD FOUND IN CARD LIST: ALERT USER, THEN REDIRECT
                             var noDetailCard = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                             noDetailCard.then(function() {
-                                $state.go('app.sourceDetail', {sourceName: $scope.sourceName, sourceDetail: $scope.appState.sourceDetail});
+                                $state.go('app.sourceDetail', {sourceName: $scope.appState.sourceName, sourceDetail: $scope.appState.sourceDetail});
                             });
                         });
                     }, 500);
@@ -382,6 +395,10 @@ angular.module('mycdc.directives', [])
 
             $scope.trustedContent = function() {
                 return $sce.trustAsHtml($scope.detailCard.content);
+            };
+
+            $scope.refresh = function () {
+                getSourceDetail($scope.detailCard, true);
             };
 
             $scope.loadDetailData = function (objDetailCard) {
@@ -447,6 +464,8 @@ angular.module('mycdc.directives', [])
                             // GET SOURCE DETAIL DATA
                             getSourceDetail(objDetailCard, false).then(function(d){
 
+                                console.log('detailData', d);
+
                                 // NORMALIZE DATA BY SOURCE SPECS?
                                 detailData = d;
 
@@ -487,6 +506,8 @@ angular.module('mycdc.directives', [])
                 }
 
                 defer.promise.then(function(detailData){
+
+                    console.log('detailData', detailData);
 
                     // SAVE DETAIL DATA TO SCOPE
                     $scope.detailData = detailData;

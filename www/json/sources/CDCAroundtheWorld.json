@@ -1,1 +1,47 @@
-{"meta":{"status":200,"message":[],"resultSet":{"id":"7565a1b7-5f17-4000-a473-2caa46cfcda8"},"pagination":{"total":1,"count":1,"max":100,"offset":0,"pageNum":1,"totalPages":1,"sort":"-datepublished,mediaid","previousUrl":"","currentUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=cdc around the world&fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=100&pagenum=1","nextUrl":""}},"results":[{"id":352154,"name":"CGH - Newsletter - Oct. 9, 2015: International Day of the Girl","description":"News, Web, and Social Media Updates from Around the World","mediaType":"Feed Item","language":{"name":"English","isoCode":"eng"},"tags":[{"id":25715,"name":"Health and Wellness","language":"English","type":"Topic"}],"sourceUrl":"http://wwwdev.cdc.gov/globalhealth/newsletter/oct_9_2015.html","syndicateUrl":"https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/352154/syndicate.json","datePublished":"2015-10-09T13:24:00Z","dateModified":"2015-10-20T13:29:08Z","enclosures":[{"id":2598,"resourceUrl":"http://content.govdelivery.com/attachments/fancy_images/USCDC/2015/10/634877/feature-international-girl-day_original.jpg","contentType":"image/jpeg","size":197075}]}]}
+{
+  "meta": {
+    "status": 200,
+    "message": [],
+    "resultSet": {
+      "id": "7565a1b7-5f17-4000-a473-2caa46cfcda8"
+    },
+    "pagination": {
+      "total": 1,
+      "count": 1,
+      "max": 100,
+      "offset": 0,
+      "pageNum": 1,
+      "totalPages": 1,
+      "sort": "-datepublished,mediaid",
+      "previousUrl": "",
+      "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=cdc around the world&fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=100&pagenum=1",
+      "nextUrl": ""
+    }
+  },
+  "results": [{
+    "id": 352154,
+    "name": "CGH - Newsletter - Oct. 9, 2015: International Day of the Girl",
+    "description": "News, Web, and Social Media Updates from Around the World",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25715,
+      "name": "Health and Wellness",
+      "language": "English",
+      "type": "Topic"
+    }],
+    "sourceUrl": "http://wwwdev.cdc.gov/globalhealth/newsletter/oct_9_2015.html",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/352154/syndicate.json",
+    "datePublished": "2015-10-09T13:24:00Z",
+    "dateModified": "2015-10-20T13:29:08Z",
+    "enclosures": [{
+      "id": 2598,
+      "resourceUrl": "http://content.govdelivery.com/attachments/fancy_images/USCDC/2015/10/634877/feature-international-girl-day_original.jpg",
+      "contentType": "image/jpeg",
+      "size": 197075
+    }]
+  }]
+}

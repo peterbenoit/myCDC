@@ -1,12 +1,5 @@
-<div class="stream image-stream">
-	<div class="stream-row">
-		<div class="card-container" ng-repeat="data in global.datas | limitTo: global.paginationLimit()">
-			<ui-stream-card data-template="ui-card-image" data-card-data="data"  data-app-state="global.appState" ng-if="$index < datas.length" class="ng-enter-stagger"></ui-stream-card>
-		</div>
-		<div class="card-container" ng-show="hasMoreItems('tabletPortrait')" >
-			<button class="button button-inline button-positive cdc-blue selected border" ng-click="global.loadMore()" >
-				Show more
-			</button>
-		</div>
+<div class="stream-standard stream-row">
+	<div class="card-container" ng-repeat="data in global.datas | limitTo: global.paginationLimit('tabletPortrait')">
+		<ui-stream-card data-card-data="data" data-app-state="global.appState"></ui-stream-card>
 	</div>
 </div>

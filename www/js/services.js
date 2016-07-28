@@ -229,12 +229,16 @@ angular.module('mycdc.services', ['ionic'])
 
                             // UPDATE BASED ON TAG DATA
                             obj1.feedIdentifier = strCgStripped;
-                            obj1.feedIdentifier = strCgStripped;
+                            obj1.feedMeta = app.sourceMetaMap[obj1.feedIdentifier];
                             obj1.templates = app.templateMap[obj1.feedIdentifier];
                             obj1.detailType = objSourceMeta.detailType;
                             obj1.contentType = objSourceMeta.contentType;
                             obj1.home = '#/app/source/' + obj1.feedIdentifier;
                             obj1.url = obj1.home + '/';
+
+                            // if (obj1.feedIdentifier == 'mobileappdidyouknow') {
+                            //     debugger;
+                            // }
 
                             // SET STREAM TITLE
                             if (app.sourceMetaMap.hasOwnProperty(obj1.feedIdentifier)) {
@@ -273,6 +277,7 @@ angular.module('mycdc.services', ['ionic'])
                 // SAFETY DEFAULTS (SHOULD BE TEMPORARY UNTIL ALL FEEDS ARE STABILIZED)
                 obj1.contentgroup = obj1.contentgroup || 'homestream';
                 obj1.feedIdentifier = obj1.feedIdentifier || objSourceMeta.feedIdentifier;
+                obj1.feedMeta = obj1.feedMeta || app.sourceMetaMap[obj1.feedIdentifier];
                 obj1.typeIdentifier = obj1.typeIdentifier || objSourceMeta.typeIdentifier;
                 obj1.contentType = obj1.contentType || objSourceMeta.contentType;
                 obj1.streamTitle = obj1.streamTitle || objSourceMeta.title;
@@ -280,7 +285,7 @@ angular.module('mycdc.services', ['ionic'])
                 obj1.templates = obj1.templates || angular.extend({}, app.templateMap[obj1.feedIdentifier]);
                 obj1.home = obj1.home || '#/app/source/' + obj1.feedIdentifier;
                 obj1.url = obj1.url || obj1.home + '/';
-                obj1.showSourceLink = true; //TODO - MAY BE POSSIBLE AFTER UPDATED FEED DATA - NEED A WAY TO GET ACCURATE CONTENT GROUP FOR CARDS (FROM ENCLOSURES MAYBE?)
+                obj1.showSourceLink = (obj1.feedMeta.hasOwnProperty('showSourceLink')) ? obj1.feedMeta.showSourceLink : true; //TODO - MAY BE POSSIBLE AFTER UPDATED FEED DATA - NEED A WAY TO GET ACCURATE CONTENT GROUP FOR CARDS (FROM ENCLOSURES MAYBE?)
 
                 // IF NO TEMPLATES CAN BE FOUND, THE CONTENT GROUP IS INVALID, FLAG FOR DELETE
                 obj1.delete = !obj1.templates;
@@ -360,10 +365,10 @@ angular.module('mycdc.services', ['ionic'])
                     // TODO: need to talk with Sarah about this, Scientific names will need to be italic in a card name/title
 
                     // remove html from name
-                    currItem.name = currItem.name.replace(/<[^>]+>/gm, '');
+                    currItem.name = (currItem.name || "").replace(/<[^>]+>/gm, '');
 
                     // remove html from description
-                    currItem.description = currItem.description.replace(/<[^>]+>/gm, '');
+                    currItem.description = (currItem.description || "").replace(/<[^>]+>/gm, '');
                 }
 
                 return data;
