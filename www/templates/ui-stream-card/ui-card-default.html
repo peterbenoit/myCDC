@@ -3,7 +3,7 @@
 	<div ng-if="cardData.isWarning" class="item item-notice warning"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Warning Level 3</a></div>
 	<div ng-if="cardData.isWatch" class="item item-notice watch"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Watch Level 1</a></div>
 	<div ng-if="cardData.isAlert" class="item item-notice alert"><a ng-href="{{cardData.url}}{{cardData.id}}"><strong>Travel Notice</strong> - Alert Level 2</a></div>
-	<a ng-if="cardData.hasImage" class="item item-image" ng-href="{{cardData.url}}{{cardData.id}}" style="background-image: url({{cardData.imageSrc}})"></a>
+	<a ng-if="cardData.feedMeta.cardImages && cardData.imageSrc" class="item item-image" ng-href="{{cardData.url}}{{cardData.id}}" style="background-image: url({{cardData.imageSrc}})"></a>
 	<a class="item item-text-wrap item-body" ng-href="{{cardData.url}}{{cardData.id}}">
 		<strong data-ng-if="cardData.detailType != 'image'">{{cardData.name | words:10}}</strong>
 		<p class="date">{{cardData.datePublished}}</p>

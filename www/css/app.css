@@ -62,9 +62,6 @@ dfn {
   font-size: 24px;
 }
 /* useful */
-body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
-  top: 74px;
-}
 #ui-master {
   /* BEGIN DIRECT PORTS FROM ORIGINAL */
   /*ion-side-menu.menu.menu-left .item-content {
@@ -194,26 +191,35 @@ body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
 }
 #ui-master .ui-default.ui-phone .ui-list-view .card-container,
 #ui-master .ui-iframe.ui-phone .ui-list-view .card-container,
-#ui-master .ui-images.ui-phone .ui-list-view .card-container,
-#ui-master .ui-default.ui-phone .ui-detail-view .card-container,
-#ui-master .ui-iframe.ui-phone .ui-detail-view .card-container,
-#ui-master .ui-images.ui-phone .ui-detail-view .card-container {
+#ui-master .ui-images.ui-phone .ui-list-view .card-container {
   width: 100vw;
 }
 #ui-master .ui-default.ui-phone .ui-list-view .card-container .card,
 #ui-master .ui-iframe.ui-phone .ui-list-view .card-container .card,
-#ui-master .ui-images.ui-phone .ui-list-view .card-container .card,
-#ui-master .ui-default.ui-phone .ui-detail-view .card-container .card,
-#ui-master .ui-iframe.ui-phone .ui-detail-view .card-container .card,
-#ui-master .ui-images.ui-phone .ui-detail-view .card-container .card {
-  height: 120vw;
+#ui-master .ui-images.ui-phone .ui-list-view .card-container .card {
+  padding-bottom: 45px;
+  min-height: inherit;
 }
 #ui-master .ui-default.ui-phone .ui-list-view .card-container .card .item-image,
 #ui-master .ui-iframe.ui-phone .ui-list-view .card-container .card .item-image,
-#ui-master .ui-images.ui-phone .ui-list-view .card-container .card .item-image,
-#ui-master .ui-default.ui-phone .ui-detail-view .card-container .card .item-image,
-#ui-master .ui-iframe.ui-phone .ui-detail-view .card-container .card .item-image,
-#ui-master .ui-images.ui-phone .ui-detail-view .card-container .card .item-image {
+#ui-master .ui-images.ui-phone .ui-list-view .card-container .card .item-image {
+  width: 100vw;
+  height: 56vw;
+}
+#ui-master .ui-default.ui-phone .ui-detail-view,
+#ui-master .ui-iframe.ui-phone .ui-detail-view,
+#ui-master .ui-images.ui-phone .ui-detail-view {
+  width: 100vw;
+}
+#ui-master .ui-default.ui-phone .ui-detail-view .item-image,
+#ui-master .ui-iframe.ui-phone .ui-detail-view .item-image,
+#ui-master .ui-images.ui-phone .ui-detail-view .item-image {
+  display: block;
+  height: 39.37vw;
+}
+#ui-master .ui-default.ui-phone .ui-detail-view .detail-video iframe,
+#ui-master .ui-iframe.ui-phone .ui-detail-view .detail-video iframe,
+#ui-master .ui-images.ui-phone .ui-detail-view .detail-video iframe {
   width: 100vw;
   height: 56vw;
 }
@@ -357,14 +363,12 @@ body.platform-ios.platform-cordova:not(.fullscreen) .has-header {
   /* HOME STREAM - TABLE PORTRAIT */
   /* HOME STREAM - TABLE LANDSCAPE */
 }
-#ui-master .ui-home.ui-phone .ui-list-view {
-  top: 74px;
-}
 #ui-master .ui-home.ui-phone .ui-list-view .card-container {
   width: 100vw;
 }
 #ui-master .ui-home.ui-phone .ui-list-view .card-container .card {
-  height: 120vw;
+  padding-bottom: 45px;
+  min-height: inherit;
 }
 #ui-master .ui-home.ui-phone .ui-list-view .card-container .card .item-image {
   width: 100vw;

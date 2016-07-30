@@ -186,7 +186,7 @@ angular.module('mycdc.services', ['ionic'])
     var processors = {
         cardTemplateInjector: function(d, objSourceMeta) {
             var idx1 = d.length,
-                idx2, obj1, obj2, strCg, strCgStripped;
+                idx2, obj1, obj2, strCgNormalized;
             var tmp = [];
             // POINTER TO ROOTSCOPE APP OBJECT (WITH SOURCE LIST, META, BLAH BLAH)
             var app = Globals.get('applicationData');
@@ -202,95 +202,103 @@ angular.module('mycdc.services', ['ionic'])
                     obj1.datePublished = time.format('MMMM Do, YYYY');
                 }
 
+                // DEFAULT NAME
+                obj1.name = obj1.name || obj1.title || "Unknown";
+
                 // PROCESS ENCLOSURES
-                obj1.hasImage = false;
                 if (obj1.enclosures && obj1.enclosures.length) {
                     idx2 = obj1.enclosures.length;
                     while (idx2--) {
                         obj2 = obj1.enclosures[idx2];
                         if (obj2.contentType.indexOf('image') > -1) {
-                            obj1.hasImage = true;
                             obj1.imageSrc = obj2.resourceUrl;
-                            //console.log('obj1.imageSrc');
-                            //console.log(obj1.imageSrc);
+                            obj1.imageSize = obj2.size;
+                            obj1.imageType = obj2.contentType;
+                        } else if (obj2.contentType.indexOf('audio') > -1) {
+                            obj1.audioSrc = obj2.resourceUrl;
+                            obj1.audioSize = obj2.size;
+                            obj1.audioType = obj2.contentType;
+                        } else if (obj2.contentType.indexOf('pdf') > -1) {
+                            obj1.pdfSrc = obj2.resourceUrl;
+                            obj1.pdfSize = obj2.size;
+                            obj1.pdfType = obj2.contentType;
+                        } else if (obj2.contentType.indexOf('text') > -1) {
+                            obj1.textSrc = obj2.resourceUrl;
+                            obj1.textSize = obj2.size;
+                            obj1.textType = obj2.contentType;
                         }
                     }
                 }
 
-                // PROCESS TAGS
+                // ENSURE A DEFAULT FEED IDENTIFIED IS SET (BASED ON THE SOURCE META)
+                if (!obj1.feedIdentifier) {
+                    obj1.feedIdentifier = objSourceMeta.feedIdentifier;
+                }
+
+                // PROCESS TAGS (TRY TO FIND THE PROPER FEED IDENTIFIER IN STREAM DATA)
                 if (obj1.tags && obj1.tags.length) {
                     idx2 = obj1.tags.length;
                     while (idx2--) {
                         obj2 = obj1.tags[idx2];
                         // PROCESS CONTENT GROUPS
+                        // ITEMS IN THE ARRAYS CAN HAVE MULTIPLE CGS BUT WE ARE ONLY
+                        // INTERESTED IN THOSE LISTED IN OUR SOURCES, VIA THE SOUCE META MAP
                         if (obj2.type.toLowerCase() == 'contentgroup') {
-                            strCg = obj2.name;
-                            strCgStripped = AppUtil.normalizeContentGroup(strCg);
-
-                            // UPDATE BASED ON TAG DATA
-                            obj1.feedIdentifier = strCgStripped;
-                            obj1.feedMeta = app.sourceMetaMap[obj1.feedIdentifier];
-                            obj1.templates = app.templateMap[obj1.feedIdentifier];
-                            obj1.detailType = objSourceMeta.detailType;
-                            obj1.contentType = objSourceMeta.contentType;
-                            obj1.home = '#/app/source/' + obj1.feedIdentifier;
-                            obj1.url = obj1.home + '/';
-
-                            // if (obj1.feedIdentifier == 'mobileappdidyouknow') {
-                            //     debugger;
-                            // }
-
-                            // SET STREAM TITLE
-                            if (app.sourceMetaMap.hasOwnProperty(obj1.feedIdentifier)) {
-                                obj1.streamTitle = app.sourceMetaMap[obj1.feedIdentifier].title;
-                                obj1.detailType = app.sourceMetaMap[obj1.feedIdentifier].detailType;
-                                obj1.typeIdentifier = app.sourceMetaMap[obj1.feedIdentifier].typeIdentifier;
-                            }
-
-                            // TODO: consider using config.json for this data
-                            if (obj1.feedIdentifier === 'eid') {
-                                obj1.hasImage = false;
-                            }
-
-                            if (obj1.feedIdentifier === 'vitalsigns') {
-                                obj1.hasImage = false;
-                            }
-
-                            if (obj1.feedIdentifier === 'outbreaks') {
-                                obj1.isOutbreak = true;
-                                obj1.hasImage = false;
-                            }
-
-                            if (obj1.feedIdentifier === 'travelnotices') {
-                                obj1.isAlert = obj1.name.indexOf('Alert') > -1;
-                                obj1.isWatch = obj1.name.indexOf('Watch') > -1;
-                                obj1.isWarning = obj1.name.indexOf('Warning') > -1;
+                            strCgNormalized = AppUtil.normalizeContentGroup(obj2.name);
+                            // DID WE FIND THE CURRENT FEED ID IN TEH SOURCE LIST?
+                            if (app.sourceMetaMap.hasOwnProperty(strCgNormalized)) {
+                                // UPDATE THE OBJECTS FEED ID BASED ON THIS FIND
+                                obj1.feedIdentifier = strCgNormalized;
                             }
                         }
-                        // PROCESS NAMES
+                        // PROCESS NAMES (TODO, VERIFY THIS IS NEEDED / USED)
                         if (obj2.type.toLowerCase() == 'topic') {
                             obj1.topic = obj2.name;
                         }
                     }
                 }
 
+                // AFTER PROPER IDENTIFIER IS FOUND, PROCESS REMAINING DATA FOR OBJECT
+                obj1.feedMeta = app.sourceMetaMap[obj1.feedIdentifier];
+                obj1.templates = app.templateMap[obj1.feedIdentifier];
+                obj1.detailType = objSourceMeta.detailType;
+                obj1.contentType = objSourceMeta.contentType;
+                obj1.home = '#/app/source/' + obj1.feedIdentifier;
+                obj1.url = obj1.home + '/';
+
+                // SET STREAM TITLE
+                obj1.streamTitle = obj1.feedMeta.title;
+                obj1.detailType = obj1.feedMeta.detailType;
+                obj1.typeIdentifier =obj1.feedMeta.typeIdentifier;
+
+                if (obj1.feedIdentifier === 'mobileappoutbreaks') {
+                    obj1.isOutbreak = true;
+                }
+
+                if (obj1.feedIdentifier === 'mobileapptravelnotices') {
+                    obj1.isAlert = obj1.name.indexOf('Alert') > -1;
+                    obj1.isWatch = obj1.name.indexOf('Watch') > -1;
+                    obj1.isWarning = obj1.name.indexOf('Warning') > -1;
+                }
+
                 // SAFETY DEFAULTS (SHOULD BE TEMPORARY UNTIL ALL FEEDS ARE STABILIZED)
-                obj1.contentgroup = obj1.contentgroup || 'homestream';
-                obj1.feedIdentifier = obj1.feedIdentifier || objSourceMeta.feedIdentifier;
-                obj1.feedMeta = obj1.feedMeta || app.sourceMetaMap[obj1.feedIdentifier];
-                obj1.typeIdentifier = obj1.typeIdentifier || objSourceMeta.typeIdentifier;
-                obj1.contentType = obj1.contentType || objSourceMeta.contentType;
-                obj1.streamTitle = obj1.streamTitle || objSourceMeta.title;
-                obj1.detailType = obj1.detailType || objSourceMeta.detailType;
-                obj1.templates = obj1.templates || angular.extend({}, app.templateMap[obj1.feedIdentifier]);
+                //obj1.contentgroup = obj1.contentgroup || 'homestream';
+                //obj1.feedIdentifier = obj1.feedIdentifier || objSourceMeta.feedIdentifier;
+                //obj1.feedMeta = obj1.feedMeta || app.sourceMetaMap[obj1.feedIdentifier];
+                //obj1.typeIdentifier = obj1.typeIdentifier || objSourceMeta.typeIdentifier;
+                //obj1.contentType = obj1.contentType || objSourceMeta.contentType;
+                //obj1.streamTitle = obj1.streamTitle || objSourceMeta.title;
+                //obj1.detailType = obj1.detailType || objSourceMeta.detailType;
+                //obj1.templates = obj1.templates || angular.extend({}, app.templateMap[obj1.feedIdentifier]);
                 obj1.home = obj1.home || '#/app/source/' + obj1.feedIdentifier;
                 obj1.url = obj1.url || obj1.home + '/';
-                obj1.showSourceLink = (obj1.feedMeta.hasOwnProperty('showSourceLink')) ? obj1.feedMeta.showSourceLink : true; //TODO - MAY BE POSSIBLE AFTER UPDATED FEED DATA - NEED A WAY TO GET ACCURATE CONTENT GROUP FOR CARDS (FROM ENCLOSURES MAYBE?)
 
-                // IF NO TEMPLATES CAN BE FOUND, THE CONTENT GROUP IS INVALID, FLAG FOR DELETE
-                obj1.delete = !obj1.templates;
+                // IF NO META DATA OR TEMPLATES CAN BE FOUND, THE CONTENT GROUP IS INVALID, FLAG FOR DELETE
+                obj1.delete = !obj1.templates || !obj1.feedMeta;
                 if (obj1.delete) {
                     AppUtil.log(obj1, -1, 'UNABLE TO FIND CONTENT GROUP FOR THIS ARTICLE');
+                } else {
+                    obj1.showSourceLink = (obj1.feedMeta.hasOwnProperty('showSourceLink')) ? obj1.feedMeta.showSourceLink : true; //TODO - MAY BE POSSIBLE AFTER UPDATED FEED DATA - NEED A WAY TO GET ACCURATE CONTENT GROUP FOR CARDS (FROM ENCLOSURES MAYBE?)
                 }
             }
 

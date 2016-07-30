@@ -1,0 +1,162 @@
+{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "6f07daf1-c2d8-48df-94e3-ed910bd72775"
+        },
+        "pagination": {
+            "total": 5,
+            "count": 5,
+            "max": 100,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 1,
+            "sort": "-datepublished,mediaid",
+            "previousUrl": "",
+            "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=cdc director blog&fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=100&pagenum=1",
+            "nextUrl": ""
+        }
+    },
+    "results": [{
+        "id": 350122,
+        "name": "Protecting Americans from Preventable Infections: Working Together Will Save Lives",
+        "description": "Reposted from The Health Care Blog on August 17, 2015 By TOM FRIEDEN, MD “Alone we can do so little; together we can do so much.” Those words spoken by Helen Keller nearly a century ago remain powerful and relevant today. A new report from the Centers for Disease Control and Prevention (CDC) projects that thousands of lives could be saved every year if health care facilities and public health departments work together to track and stop antibiotic resistance – and if they communicate with each other about these infections to prevent spread from one facility to another. Even if",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25725,
+            "name": "Health Informatics",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35293,
+            "name": "Mobile App CDC Director Blog",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://blogs.cdc.gov/cdcdirector/2015/08/19/protecting-americans-from-preventable-infections-working-together-will-save-lives/",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350122/syndicate.json",
+        "datePublished": "2015-08-19T11:31:33Z",
+        "dateModified": "2015-10-09T18:56:12Z",
+        "enclosures": []
+    }, {
+        "id": 350123,
+        "name": "Differences in Hispanic Health",
+        "description": "Reposted from the Huffington Post Latino Voices, May 12, 2015 Hispanics are 50 percent more likely to die from diabetes or liver disease than whites. Hispanics are more likely to have uncontrolled high blood pressure than whites. Hispanics have more obesity and diabetes than whites. The largest racial or ethnic minority group in the United States, Hispanics’ health differs from non-Hispanic Americans. And health issues vary greatly among Hispanics by country of origin. This month, CDC is reporting on health issues that face Hispanics and the steps we can all take to lead longer and healthier lives. There’s an expression in public",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25725,
+            "name": "Health Informatics",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35293,
+            "name": "Mobile App CDC Director Blog",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://blogs.cdc.gov/cdcdirector/2015/05/12/differences-in-hispanic-health/",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350123/syndicate.json",
+        "datePublished": "2015-05-12T10:12:31Z",
+        "dateModified": "2015-10-09T18:56:16Z",
+        "enclosures": [{
+            "id": 2148,
+            "resourceUrl": "http://blogs.cdc.gov/cdcdirector/files/2015/05/infographics-300x176.jpg",
+            "contentType": "image/jpg",
+            "size": 19653
+        }]
+    }, {
+        "id": 350124,
+        "name": "Stopping Ebola by Land, Water and Air",
+        "description": "Speed is paramount in our response to the Ebola epidemic in West Africa as we continue to be vigilant in the fight to extinguish Ebola. The faster we get to communities with suspected cases, the faster we protect the people there. That gets us closer to stopping this epidemic — and protecting people here in the United States and throughout the world. But speed is a relative term. In Guinea, Liberia, and Sierra Leone, there are thousands of small villages that can only be reached after many hours of walking down a footpath. Sometimes just getting to that footpath involves",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25725,
+            "name": "Health Informatics",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35293,
+            "name": "Mobile App CDC Director Blog",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://blogs.cdc.gov/cdcdirector/2015/02/18/stopping-ebola-by-land-water-and-air/",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350124/syndicate.json",
+        "datePublished": "2015-02-18T11:17:30Z",
+        "dateModified": "2015-10-09T18:56:19Z",
+        "enclosures": [{
+            "id": 2149,
+            "resourceUrl": "http://blogs.cdc.gov/cdcdirector/files/2015/02/2015-02-17-leaving_village2-300x224.jpg",
+            "contentType": "image/jpg",
+            "size": 25851
+        }]
+    }, {
+        "id": 350125,
+        "name": "Rapid Detection and Response Are Essential to Stopping Ebola",
+        "description": "The recent drop in Ebola cases in Liberia is welcome. Many factors are contributing to this decline, including the adoption of safe burials and the emphasis on quickly getting patients into Ebola treatment units or community care centers and community initiatives to isolate and care for patients and track contacts. One promising development has been Liberia’s creation of RITE teams (short for Rapid Isolation and Treatment of Ebola). These teams are slowing the epidemic, and CDC is working closely with governments and partners in Guinea and Sierra Leone to adopt similar rapid response strategies. In October, Liberia’s Ministry of Health",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25725,
+            "name": "Health Informatics",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35293,
+            "name": "Mobile App CDC Director Blog",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://blogs.cdc.gov/cdcdirector/2015/02/18/rapid-detection-and-response-are-essential-to-stopping-ebola/",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350125/syndicate.json",
+        "datePublished": "2015-02-18T09:10:18Z",
+        "dateModified": "2015-10-09T18:56:22Z",
+        "enclosures": [{
+            "id": 2150,
+            "resourceUrl": "http://blogs.cdc.gov/cdcdirector/files/2015/02/LIBERIA-DOCTOR-EBOLA-large570-300x125.jpg",
+            "contentType": "image/jpg",
+            "size": 9560
+        }]
+    }, {
+        "id": 350126,
+        "name": "Vaccination means protection",
+        "description": "“Five Chicago Babies Have Measles.” That headline from just a few days ago brought news none of us hoped we’d hear. Five children so young they could not be vaccinated against measles had become infected with this highly contagious and potentially deadly disease. This is exactly what we are concerned about, when we urge everyone who can be vaccinated to get vaccinated. Vaccinations protect you. They protect your family. And they protect people around you. I will never forget my first assignment as a new epidemic intelligence service officer with the Centers for Disease Control. I investigated a large outbreak",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25725,
+            "name": "Health Informatics",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 35293,
+            "name": "Mobile App CDC Director Blog",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://blogs.cdc.gov/cdcdirector/2015/02/12/vaccination-means-protection/",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350126/syndicate.json",
+        "datePublished": "2015-02-12T07:38:14Z",
+        "dateModified": "2015-10-09T18:56:25Z",
+        "enclosures": []
+    }]
+}

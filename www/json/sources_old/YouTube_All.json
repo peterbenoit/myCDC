@@ -1,0 +1,502 @@
+{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "a0b2dd95-5dea-4e52-8ec6-616c292ab853"
+        },
+        "pagination": {
+            "total": 16,
+            "count": 16,
+            "max": 100,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 1,
+            "sort": "-datepublished,mediaid",
+            "previousUrl": "",
+            "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=youtube&fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=100&pagenum=1",
+            "nextUrl": ""
+        }
+    },
+    "results": [{
+        "id": 347892,
+        "name": "Interview: Sleep Disorders: Caryn, Mom of Riley",
+        "description": "Mother describes her daughter's sleeping schedule and its consequences. Shows impact of disrupted sleeping on the family.\n\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/37_interview-sleep-disorders-caryn-mom-of-riley_936077.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=uzAuM4jRt3I",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/347892/syndicate.json",
+        "datePublished": "2015-09-29T19:10:34Z",
+        "dateModified": "2015-10-01T16:24:50Z",
+        "enclosures": [{
+            "id": 2031,
+            "resourceUrl": "https://i2.ytimg.com/vi/uzAuM4jRt3I/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 5860
+        }]
+    }, {
+        "id": 347893,
+        "name": "Early Intervention: Feeding",
+        "description": "Demonstrates therapy session focused on eating using behavioral techniques, parent coaching.\n\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/36_early-intervention-feeding_936070.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=A6Y7DJLlvDo",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/347893/syndicate.json",
+        "datePublished": "2015-09-29T19:09:44Z",
+        "dateModified": "2015-10-01T16:24:54Z",
+        "enclosures": [{
+            "id": 2032,
+            "resourceUrl": "https://i2.ytimg.com/vi/A6Y7DJLlvDo/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 5388
+        }]
+    }, {
+        "id": 347894,
+        "name": "Observation: Working with PECS: Antonio 3 years 1 month",
+        "description": "Demonstrates use of PECS (Picture Exchange Communication System) in a therapy session.\n\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/35_observation-working-with-pecs-antonio-3-years-1-month_936067.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=Hrj9T30s_j8",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/347894/syndicate.json",
+        "datePublished": "2015-09-29T19:07:13Z",
+        "dateModified": "2015-10-01T16:24:56Z",
+        "enclosures": [{
+            "id": 2033,
+            "resourceUrl": "https://i1.ytimg.com/vi/Hrj9T30s_j8/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 6581
+        }]
+    }, {
+        "id": 347895,
+        "name": "Observation: Special Food Preparation",
+        "description": "Nanny prepares food for a young boy with autism adding dietary supplements and vitamins. Special diets are sometimes used as part of a child with autism's treatment plan.\n\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/39_observation-special-food-preparation_936082.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=8m1fmP396NA",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/347895/syndicate.json",
+        "datePublished": "2015-09-29T19:03:19Z",
+        "dateModified": "2015-10-01T16:24:59Z",
+        "enclosures": [{
+            "id": 2034,
+            "resourceUrl": "https://i1.ytimg.com/vi/8m1fmP396NA/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 6735
+        }]
+    }, {
+        "id": 347896,
+        "name": "How Old Is Your Heart? Learn Your Heart Age!",
+        "description": "Most U.S. adults have a heart age greater than their actual age, placing them at increased risk of having a heart attack or stroke. Watch this short video to learn why your heart age is important and what you can do to improve it.\nCDC.gov/heartdisease/heartage.htm\nCDC.gov/vitalsigns/heartage/index.html\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.cdc.gov/wcms/videos/low-res/NCCDPHP/2015/heart-age-video_983385.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=jvOU4Do4xZ8",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/347896/syndicate.json",
+        "datePublished": "2015-09-29T19:03:06Z",
+        "dateModified": "2015-10-01T16:25:01Z",
+        "enclosures": [{
+            "id": 2035,
+            "resourceUrl": "https://i3.ytimg.com/vi/jvOU4Do4xZ8/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 19661
+        }]
+    }, {
+        "id": 347897,
+        "name": "TEDMED@CDC – Ebola Monitoring and Movement Protocols: Does CDC’s Opinion Even Count?",
+        "description": "As a result of concerns about the potential impact of inconsistencies between state and federal monitoring and movement policies, CDC’s Public Health Law Program (http://www.cdc.gov/phlp/) assessed jurisdictional differences among publically available monitoring and movement policies by systematically reviewing and evaluating policies for each state and territory. This presentation by Gregory Sunshine, JD, public health analyst with Carter Consulting, Inc. for CDC’s Public Health Law Program, describes the role CDC plays in our public health and legal systems and explains how this affected the state Ebola monitoring and movement protocols. Data contained in this presentation were current as of March 9, 2015. For the most recent data, visit the Ebola Movement and Monitoring Policies web page (http://www.cdc.gov/phlp/publications/topic/ebola.html)\n\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\n\nThis video can also be viewed at \nhttp://www.cdc.gov/wcms/videos/low-res/OSTLTS/2015/tedmed---ebola-monitoring_982396.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=oeogBaZDSf0",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/347897/syndicate.json",
+        "datePublished": "2015-09-28T21:07:14Z",
+        "dateModified": "2015-10-01T16:25:04Z",
+        "enclosures": [{
+            "id": 2036,
+            "resourceUrl": "https://i4.ytimg.com/vi/oeogBaZDSf0/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 35453
+        }]
+    }, {
+        "id": 347898,
+        "name": "Health in All Policies Resource Center Introductory Video",
+        "description": "This is a brief video that provides visitors to the Health in All Policies Resource Center with an introduction to the concepts of “Health in All Policies,” cross-sector collaboration, and the importance of considering health outcomes when making policy decisions. The video also explains the types of resources that can be found in the Resource Center.   \r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.cdc.gov/wcms/videos/low-res/MISO/2015/health-in-all-policies-resource-center-introductory-video_981506.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=IRWAZPJ2KdA",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/347898/syndicate.json",
+        "datePublished": "2015-09-24T15:12:24Z",
+        "dateModified": "2015-10-01T16:25:06Z",
+        "enclosures": [{
+            "id": 2037,
+            "resourceUrl": "https://i2.ytimg.com/vi/IRWAZPJ2KdA/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 16024
+        }]
+    }, {
+        "id": 345810,
+        "name": "Beyond the Data -- Preventing Suicide: A Comprehensive Public Health Approach",
+        "description": "Dr. John Iskander and Dr. Alex Crosby discuss some of the trends in suicide and explore some of the ways public health can impact prevention. Suicide is preventable and there are strategies that have been shown to be effective: \n\nClinicians must:\nSeek and utilize available resources and information and\nBetter identify patients who may be at risk for suicidal behavior\n  \nBusinesses, institutions and community organizations can: \nStrengthen protective factors by encouraging social connection,\nTrain individuals to recognize and refer individuals at risk and\nAdopt strategies from the National Action Alliance for Suicide Prevention\n\nPublic Health should:\nContinue to improve surveillance efforts and\nConduct more rigorous evaluation on programs and their outcomes\n\n\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.cdc.gov/cdcgrandrounds/video/2015/btd/BtdSuicidePrevention.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=gqXA_YWWICU",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345810/syndicate.json",
+        "datePublished": "2015-09-18T18:57:04Z",
+        "dateModified": "2015-10-01T16:25:09Z",
+        "enclosures": [{
+            "id": 2038,
+            "resourceUrl": "https://i4.ytimg.com/vi/gqXA_YWWICU/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 25154
+        }]
+    }, {
+        "id": 345487,
+        "name": "Beyond the Data -- Preventing Suicide: A Comprehensive Public Health Approach",
+        "description": "Dr. John Iskander and Dr. Alex Crosby discuss some of the trends in suicide and explore some of the ways public health can impact prevention. Suicide is preventable and there are strategies that have been shown to be effective: \n\nClinicians must:\nSeek and utilize available resources and information and\nBetter identify patients who may be at risk for suicidal behavior\n  \nBusinesses, institutions and community organizations can: \nStrengthen protective factors by encouraging social connection,\nTrain individuals to recognize and refer individuals at risk and\nAdopt strategies from the National Action Alliance for Suicide Prevention\n\nPublic Health should:\nContinue to improve surveillance efforts and\nConduct more rigorous evaluation on programs and their outcomes\n\n\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.cdc.gov/cdcgrandrounds/video/2015/btd/BtdSuicidePrevention.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=gqXA_YWWICU",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345487/syndicate.json",
+        "datePublished": "2015-09-18T18:57:04Z",
+        "dateModified": "2015-09-24T13:23:08Z",
+        "enclosures": [{
+            "id": 1946,
+            "resourceUrl": "https://i4.ytimg.com/vi/gqXA_YWWICU/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 25154
+        }]
+    }, {
+        "id": 345811,
+        "name": "Preventing Suicide: A Comprehensive Public Health Approach",
+        "description": "Suicide is preventable and is a significant public health issue. In 2013, there were over 41,000 suicides in the United States – an average of 113 each day. Each suicide takes a substantial toll on individuals, families and communities. The medical costs and lost wages associated with suicide are estimated to be $51 billion per year. These numbers underestimate the severity of the problem. In 2013, over 494,000 people were treated in US emergency departments for self-inflected injuries.\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.cdc.gov/cdcgrandrounds/video/2015/GR_09-15-2015.wmv",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=atZgfHztSxg",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345811/syndicate.json",
+        "datePublished": "2015-09-17T18:51:43Z",
+        "dateModified": "2015-10-01T16:25:11Z",
+        "enclosures": [{
+            "id": 2039,
+            "resourceUrl": "https://i2.ytimg.com/vi/atZgfHztSxg/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 43870
+        }]
+    }, {
+        "id": 345812,
+        "name": "I am CDC - Martha Boisseau",
+        "description": "I’m the Deputy Branch Chief of the Maternal and Infant Health Branch in the Division of Reproductive Health in the National Center for Chronic Disease Prevention and Health Promotion. I came to CDC in 1998 from Healthy Mothers Healthy Babies, a small nonprofit organization serving mothers and babies in Georgia. As a deputy branch chief, my role is to carry water and make sure the trains run on time. What this means is even though administration may seem droll, I provide the support for the scientists so that they can effectively conduct their research and work with our partners in the most efficient way possible. I make that happen. The work I do provides funding to states to help mothers deliver babies in the healthiest way possible. That’s so important, and I’m proud to be a part of the team. My path to public health was a little unexpected. I started out planning to be the world’s greatest obstetrician gynecologist, but I found public health, fell in love with it, and it has been my passion ever since. I’m Martha Boisseau and I am CDC.\n\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.cdc.gov/about/videos/IamCdcBoisseauExt/IAmCdcBoisseau-EXT.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=oA8e8VbZQWQ",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345812/syndicate.json",
+        "datePublished": "2015-09-16T14:40:27Z",
+        "dateModified": "2015-10-01T16:25:14Z",
+        "enclosures": [{
+            "id": 2040,
+            "resourceUrl": "https://i4.ytimg.com/vi/oA8e8VbZQWQ/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 13856
+        }]
+    }, {
+        "id": 345813,
+        "name": "NCBDDD: Making a Difference across the Lifespan",
+        "description": "Learn how CDC’s National Center on Birth Defects and Developmental Disabilities promotes health and enhances the potential for full, productive living throughout the lifespan. We protect those who are most vulnerable to health problems – babies, children, people with blood disorders, and people with disabilities.\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.cdc.gov/wcms/videos/low-res/NCBDDD/2015/ncbddd-center-animation-vid-full_967816.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=-OhCO849K1Q",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345813/syndicate.json",
+        "datePublished": "2015-09-15T14:32:56Z",
+        "dateModified": "2015-10-01T16:25:16Z",
+        "enclosures": [{
+            "id": 2041,
+            "resourceUrl": "https://i2.ytimg.com/vi/-OhCO849K1Q/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 15627
+        }]
+    }, {
+        "id": 345814,
+        "name": "Cancer - What does it mean that a chemical causes an increase in cancer risk?",
+        "description": "State and federal agencies talk about the increased lifetime risk of getting cancer from being exposed to a certain level of a chemical. Often clean-up levels are set at an added risk of 1 in 1,000 or 1 in 1,000,000 people developing cancer because of some chemical exposure. This does not mean you will get cancer from the chemical exposure; it means you have a slightly increased chance from your baseline risk. For example, since about 500 of every 1,000 men will get cancer in their lifetime, if there was an added risk of 1 in 1,000, then 501 men of every 1,000 men will get cancer.  For these 501 men, we could not tell which one may have gotten cancer from the chemical exposure or which ones got cancer because of other factors.\n\n\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.atsdr.cdc.gov/wcms/videos/low-res/ATSDR/2015/cn_1f_850865.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=ZZtKkmidtXs",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345814/syndicate.json",
+        "datePublished": "2015-09-08T12:03:03Z",
+        "dateModified": "2015-10-01T16:25:19Z",
+        "enclosures": [{
+            "id": 2042,
+            "resourceUrl": "https://i3.ytimg.com/vi/ZZtKkmidtXs/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 46222
+        }]
+    }, {
+        "id": 345815,
+        "name": "Cancer Cluster - What is a cancer cluster?",
+        "description": "A cancer cluster is a higher than expected number of the same type of cancer in a specific area over a set time period for a similar group of people.\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.atsdr.cdc.gov/wcms/videos/low-res/ATSDR/2015/cn_2c_844681.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=-8bFoZEMPXc",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345815/syndicate.json",
+        "datePublished": "2015-09-04T12:37:31Z",
+        "dateModified": "2015-10-01T16:25:21Z",
+        "enclosures": [{
+            "id": 2043,
+            "resourceUrl": "https://i2.ytimg.com/vi/-8bFoZEMPXc/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 36141
+        }]
+    }, {
+        "id": 345816,
+        "name": "Cancer Cluster - What is a cancer cluster investigation?",
+        "description": "State and local health agencies can sometimes use state cancer registry information to look at the number of cancers in a community compared to the number in the state. Comparisons are made within groups of people of the same age, sex, and race because these are some known factors that influence the likelihood of getting cancer. A finding of more cancers than expected in an area does not mean there is a single cause or risk that can be identified or addressed. The finding can be due to chance, known risk factors, unknown causes, and other reasons. Usually more involved follow-up studies are needed, but even then, the cause of the possible cancer cluster may not be identified.\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.atsdr.cdc.gov/wcms/videos/low-res/ATSDR/2015/cn_2d_842804.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=PIMFuaTgYC4",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345816/syndicate.json",
+        "datePublished": "2015-09-03T15:10:09Z",
+        "dateModified": "2015-10-01T16:25:24Z",
+        "enclosures": [{
+            "id": 2044,
+            "resourceUrl": "https://i1.ytimg.com/vi/PIMFuaTgYC4/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 18778
+        }]
+    }, {
+        "id": 345817,
+        "name": "Cancer Cluster - Why is there so much cancer in my community?",
+        "description": "If you know several people in your community who have cancer, you may be concerned that your community has a higher number of cases of cancer than other communities. Remember that cancer is common, and refers to about 100 different disease , and there are many causes. On average, about 5 out of every 100 people in your community are either living with cancer or have survived cancer.  One out of two men and one out of three women will have cancer in their lifetime. Age, race, family history, and behavior and environmental factors influence who gets cancer. Members of the community might share some of these risk factors. For example, black men have a higher rate of getting cancer than white men and about 75 percent of all new cancer cases are in people over 55.\r\n\r\nComments on this video are allowed in accordance with our comment policy: http://www.cdc.gov/SocialMedia/Tools/CommentPolicy.html\r\n\r\nThis video can also be viewed at \r\nhttp://www.atsdr.cdc.gov/wcms/videos/low-res/ATSDR/2015/cn_2a_842387.mp4",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25389,
+            "name": "CDC Social Media",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 34888,
+            "name": "Mobile App YouTube",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www.youtube.com/watch?v=Sl0wX5cISjY",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/345817/syndicate.json",
+        "datePublished": "2015-09-03T14:59:41Z",
+        "dateModified": "2015-10-01T16:25:26Z",
+        "enclosures": [{
+            "id": 2045,
+            "resourceUrl": "https://i4.ytimg.com/vi/Sl0wX5cISjY/hqdefault.jpg",
+            "contentType": "image/jpeg",
+            "size": 14623
+        }]
+    }]
+}

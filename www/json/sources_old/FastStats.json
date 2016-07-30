@@ -1,0 +1,42 @@
+{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "50667afc-1978-4582-8fd1-1a917cc5cf16"
+        },
+        "pagination": {
+            "total": 1,
+            "count": 1,
+            "max": 100,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 1,
+            "sort": "-datepublished,mediaid",
+            "previousUrl": "",
+            "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=faststats&fields=id,name,description,mediatype,thumbnailurl,syndicateurl,embedurl,contenturl,alternateimages,tags,sourceurl,targeturl,status,enclosures&max=100&pagenum=1",
+            "nextUrl": ""
+        }
+    },
+    "results": [{
+        "id": 343984,
+        "name": "FastStats - Access to Health Care",
+        "description": "Access to Health Care",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25736,
+            "name": "Healthcare access",
+            "language": "English",
+            "type": "Topic"
+        }],
+        "sourceUrl": "http://www.cdc.gov/nchs/fastats/access-to-health-care.htm",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/343984/syndicate.json",
+        "datePublished": "2015-09-18T03:04:00Z",
+        "dateModified": "2015-09-18T20:25:49Z",
+        "enclosures": []
+    }]
+}

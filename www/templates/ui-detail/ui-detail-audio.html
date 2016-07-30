@@ -3,21 +3,15 @@
         <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
     </ion-nav-buttons>
     <ion-content>
-        <div class="paging">
-            <a alt="Next Button" class="button icon-right ion-chevron-right button-clear button-dark" ng-class="{'button-negative':!next.visible, 'button-dark':next.visible}" ng-disabled="!next.visible" href="#/app/Podcast/{{next.position}}">Next</a>
-            <a alt="Previous Button" class="button icon-left ion-chevron-left button-clear button-dark" ng-class="{'button-negative':!previous.visible, 'button-dark':previous.visible}" ng-disabled="!previous.visible" href="#/app/Podcast/{{previous.position}}">Prev</a>
-        </div>
-        {{detailData.resourceUrl}}
-        {{detailData.audioUrl}}
         <div class="padding data civ audio">
             <h1 class="title">{{detailData.name}}</h1>
             <div class="datepub">{{detailData.datePublished}}</div>
             <div class="source">{{name}}</div>
             <audio controls>
-                <source src="{{detailData.audioUrl}}" type="{{detailData.contentType}}">
+                <source src="{{detailData.audioSrc}}" type="{{detailData.audioType}}">
             </audio>
             <p ng-bind-html="detailData.description"></p>
-            <p><a href="{{transcript}}">Transcript</a></p>
+            <p><a href="{{detailData.pdfSrc}}">Transcript</a></p>
             <div class="border">
                 <p class="padding">
                     <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
@@ -25,5 +19,6 @@
                 </p>
             </div>
         </div>
+
     </ion-content>
 </ion-view>

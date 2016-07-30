@@ -52,7 +52,7 @@ body.platform-ios {
 	&.platform-cordova {
 		&:not(.fullscreen) {
 			.has-header {
-				top: 74px;
+				//top: 74px;
 			}
 		}
 	}
@@ -212,19 +212,39 @@ body.platform-windowsphone {}
 			.ui-detail-view {
 				//top: 54px;
 				height: 100vh;
-
+			}
+			.ui-list-view {
 				.card-container {
 					width: 100vw;
 
 					.card {
-						height: 120vw;
+						//height: 120vw;
 
 						.item-image {
 							width: 100vw;
 							height: 56vw;
 						}
+						padding-bottom: 45px;
+						min-height: inherit;
 					}
 				}
+			}
+
+			.ui-detail-view {
+				width: 100vw;
+
+				.item-image {
+					display: block;
+					height: 39.37vw;
+				}
+
+				.detail-video {
+					iframe {
+						width: 100vw;
+						height: 56vw;
+					}
+				}
+
 			}
 		}
 
@@ -439,14 +459,16 @@ body.platform-windowsphone {}
 		&.ui-phone {
 
 			.ui-list-view {
-				top: 74px;
+				//top: 74px;
 				//height: 100vh;
 
 				.card-container {
 					width: 100vw;
 
 					.card {
-						height: 120vw;
+						//height: 120vw;
+						padding-bottom: 45px;
+						min-height: inherit;
 
 						.item-image {
 							width: 100vw;

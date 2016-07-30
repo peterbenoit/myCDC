@@ -1,0 +1,322 @@
+{
+    "meta": {
+        "status": 200,
+        "message": [],
+        "resultSet": {
+            "id": "a6a5ec75-8ef7-415a-b9dd-6329f7968c7c"
+        },
+        "pagination": {
+            "total": 12,
+            "count": 12,
+            "max": 100,
+            "offset": 0,
+            "pageNum": 1,
+            "totalPages": 1,
+            "sort": "-datepublished,mediaid",
+            "previousUrl": "",
+            "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=outbreaks&fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=100&pagenum=1",
+            "nextUrl": ""
+        }
+    },
+    "results": [{
+        "id": 344163,
+        "name": "Soft Cheeses – Listeria monocytogenes",
+        "description": "Soft Cheeses – Listeria monocytogenes",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8638515",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344163/syndicate.json",
+        "datePublished": "2015-09-18T15:04:00Z",
+        "dateModified": "2015-09-18T21:02:07Z",
+        "enclosures": []
+    }, {
+        "id": 344164,
+        "name": "Cucumbers – Salmonella Poona",
+        "description": "CDC, multiple states, and the U.S. Food and Drug Administration (FDA) are investigating a multistate outbreak of Salmonella Poona infections linked to imported cucumbers from Mexico and distributed by Andrew & Williamson Fresh Produce.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8638392",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344164/syndicate.json",
+        "datePublished": "2015-09-04T10:00:00Z",
+        "dateModified": "2015-09-18T21:02:11Z",
+        "enclosures": []
+    }, {
+        "id": 344165,
+        "name": "Pork – Salmonella I 4,[5],12:i:-",
+        "description": "The Washington State Department of Health (DOH) and Public Health—Seattle & King County (SKC), with CDC and the U.S. Department of Agriculture's Food Safety and Inspection Service (USDA-FSIS), are investigating an outbreak of Salmonella I 4,[5],12:i:- infections linked to pork",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8638222",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344165/syndicate.json",
+        "datePublished": "2015-08-24T08:00:00Z",
+        "dateModified": "2015-09-18T21:02:15Z",
+        "enclosures": []
+    }, {
+        "id": 344166,
+        "name": "Unknown – Cyclospora Infections",
+        "description": "As of July 30, 2015 (11am EDT), a total of 358 ill persons with confirmed Cyclospora infection were reported to CDC in 2015. Most (199; 56%) ill persons reported onset of illness on or after May 1, 2015 and no international travel.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8638036",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344166/syndicate.json",
+        "datePublished": "2015-08-03T09:00:00Z",
+        "dateModified": "2015-09-18T21:02:20Z",
+        "enclosures": []
+    }, {
+        "id": 344167,
+        "name": "Aspen Foods Raw, Frozen Chicken Entrees – Salmonella Enteritidis",
+        "description": "CDC, several states, and the U.S. Department of Agriculture’s Food Safety and Inspection Service are currently investigating two separate outbreaks of Salmonella Enteritidis infections linked to raw, frozen, stuffed chicken entrees.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8637866",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344167/syndicate.json",
+        "datePublished": "2015-07-17T16:00:00Z",
+        "dateModified": "2015-09-18T21:02:24Z",
+        "enclosures": []
+    }, {
+        "id": 344168,
+        "name": "Barber Foods Raw, Frozen, Stuffed Chicken Entrees – Salmonella Enteritidis",
+        "description": "The Minnesota Department of Health and the Minnesota Department of Agriculture, along with CDC and the U.S. Department of Agriculture's Food Safety and Inspection Service (USDA-FSIS), are investigating two outbreaks of Salmonella Enteritidis infections linked to raw, frozen, breaded and pre-browned stuffed chicken entrees.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8637774",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344168/syndicate.json",
+        "datePublished": "2015-07-08T07:15:00Z",
+        "dateModified": "2015-09-18T21:02:28Z",
+        "enclosures": []
+    }, {
+        "id": 344169,
+        "name": "Live Poultry – Human Salmonella Infections",
+        "description": "CDC, public health, veterinary, and agriculture officials in many states and the U.S. Department of Agriculture's Animal and Plant Health Inspection Service (USDA-APHIS) are investigating four multistate outbreaks of human Salmonella infections linked to contact with live poultry.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8637775",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344169/syndicate.json",
+        "datePublished": "2015-07-08T07:00:00Z",
+        "dateModified": "2015-09-18T21:02:32Z",
+        "enclosures": []
+    }, {
+        "id": 344170,
+        "name": "MERS-CoV",
+        "description": "MERS-CoV Reported in Traveler to US",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8632197",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344170/syndicate.json",
+        "datePublished": "2014-05-02T09:17:00Z",
+        "dateModified": "2015-09-18T21:02:37Z",
+        "enclosures": []
+    }, {
+        "id": 344171,
+        "name": "Ebola Outbreak in West Africa",
+        "description": "Ebola Outbreak in West Africa",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8631760",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344171/syndicate.json",
+        "datePublished": "2014-03-25T16:00:00Z",
+        "dateModified": "2015-09-18T21:02:41Z",
+        "enclosures": []
+    }, {
+        "id": 344172,
+        "name": "Avian Influenza A (H7N9) Virus",
+        "description": "Human infections with a new avian influenza A (H7N9) virus were first reported in China in March 2013.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8630759",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344172/syndicate.json",
+        "datePublished": "2013-03-15T16:00:00Z",
+        "dateModified": "2015-09-18T21:02:45Z",
+        "enclosures": []
+    }, {
+        "id": 344173,
+        "name": "Ebola Hemorrhagic Fever Outbreak in Democratic Republic of Congo",
+        "description": "As of December 2, 2012, the Ugandan Ministry of Health reported 7 cumulative cases (probable and confirmed) of Ebola virus infection, including 4 deaths, in the Luwero District of central Uganda.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8630760",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344173/syndicate.json",
+        "datePublished": "2012-08-16T16:00:00Z",
+        "dateModified": "2015-09-18T21:02:50Z",
+        "enclosures": []
+    }, {
+        "id": 344174,
+        "name": "Ebola Hemorrhagic Fever Outbreak in Uganda",
+        "description": "As of December 2, 2012, the Ugandan Ministry of Health reported 7 cumulative cases (probable and confirmed) of Ebola virus infection, including 4 deaths, in the Luwero District of central Uganda.",
+        "mediaType": "Feed Item",
+        "language": {
+            "name": "English",
+            "isoCode": "eng"
+        },
+        "tags": [{
+            "id": 25989,
+            "name": "Outbreaks",
+            "language": "English",
+            "type": "Topic"
+        }, {
+            "id": 25989,
+            "name": "Mobile App Outbreaks",
+            "language": "English",
+            "type": "ContentGroup"
+        }],
+        "sourceUrl": "http://www2c.cdc.gov/podcasts/download.asp?af=h&f=8630762",
+        "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344174/syndicate.json",
+        "datePublished": "2012-07-02T16:00:00Z",
+        "dateModified": "2015-09-18T21:02:54Z",
+        "enclosures": []
+    }]
+}

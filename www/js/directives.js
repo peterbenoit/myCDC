@@ -394,7 +394,15 @@ angular.module('mycdc.directives', [])
             });
 
             $scope.trustedContent = function() {
-                return $sce.trustAsHtml($scope.detailCard.content);
+                var sanitizedHtml = null;
+                try {
+                    sanitizedHtml = $sce.getTrustedHtml($scope.detailCard.content);
+                } catch (ex) {
+                    alert(ex);
+                }
+
+                //return $sce.trustAsHtml($scope.detailCard.content);
+                return sanitizedHtml;
             };
 
             $scope.refresh = function () {
@@ -451,10 +459,9 @@ angular.module('mycdc.directives', [])
                         // VIDEOS - NO ADDITIONAL SERVICE CALLS NEEDED
                             // SIMPLY SET DETAIL DATA FROM CURRENT CARD
                             detailData = objDetailCard;
-                            alert(detailData.resourceUrl);
+
                             // PROVIDE A VIDEO URL HELPER FOR THE VIDEO PARTIAL
-                            detailData.audioUrl = $sce.trustAsResourceUrl(detailData.resourceUrl);
-                            //contentType
+                            detailData.audioSrc = $sce.trustAsResourceUrl(detailData.audioSrc);
 
                             // RESOLVE PROMISE WITH THIS DATA
                             defer.resolve(detailData);
@@ -508,6 +515,10 @@ angular.module('mycdc.directives', [])
                 defer.promise.then(function(detailData){
 
                     console.log('detailData', detailData);
+
+                    if (detailData.content) {
+                         detailData.content = $sce.getTrustedHtml(detailData.content);
+                    }
 
                     // SAVE DETAIL DATA TO SCOPE
                     $scope.detailData = detailData;

@@ -1,0 +1,802 @@
+{
+  "meta": {
+    "status": 200,
+    "message": [],
+    "resultSet": {
+      "id": "6c851550-2c89-4318-90d5-2609d541ec49"
+    },
+    "pagination": {
+      "total": 26,
+      "count": 26,
+      "max": 100,
+      "offset": 0,
+      "pageNum": 1,
+      "totalPages": 1,
+      "sort": "-datepublished,mediaid",
+      "previousUrl": "",
+      "currentUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media.json?contentgroup=mmwr 2016&fields=id,name,description,mediatype,tags,sourceurl,syndicateurl,datepublished,datemodified,enclosures,language&max=100&pagenum=1",
+      "nextUrl": ""
+    }
+  },
+  "results": [{
+    "id": 350157,
+    "name": "National Latino AIDS Awareness Day — October 15, 2015",
+    "description": "National Latino AIDS Awareness Day is observed each year on October 15 to focus on the continuing and disproportionate impact of human immunodeficiency virus (HIV) infection and acquired immunodeficiency syndrome (AIDS) on the Hispanic or Latino population in the United States. Hispanics or Latinos represent approximately 17% of the U.S. population (1); however, in 2013, they accounted for 21% of all new diagnoses, corresponding to a rate of 18.7 per 100,000 (2). In 2011, an estimated 242,000 Hispanics or Latinos were living with HIV infection in the United States, representing 20% of all such persons. Of these Hispanics or Latinos, an estimated 85% had received a diagnosis of HIV infection, 40% were engaged in HIV medical care, 37% had received a prescription for antiretroviral therapy, and 31% had achieved viral suppression (3).",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6439a1.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350157/syndicate.json",
+    "datePublished": "2015-10-08T12:06:00Z",
+    "dateModified": "2015-10-09T20:16:59Z",
+    "enclosures": [{
+      "id": 2196,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/national_latino_aids_awareness.jpg",
+      "contentType": "image/jpeg",
+      "size": 12693
+    }]
+  }, {
+    "id": 350158,
+    "name": "Diagnoses and Prevalence of HIV Infection Among Hispanics or Latinos — United States, 2008–2013",
+    "description": "Hispanics or Latinos* represent about 17% of the total U.S. population and are disproportionately affected by human immunodeficiency virus (HIV) infection in the United States (1,2). In 2013, the rate of HIV diagnosis among Hispanics or Latinos (18.7) was nearly three times that of non-Hispanic whites (6.6) (1). To better characterize HIV infection among Hispanics or Latinos aged =13 years in the United States, CDC analyzed data from the National HIV Surveillance System (NHSS). During 2008–2013, the rate of diagnoses of HIV infection among adult and adolescent Hispanics or Latinos decreased from 28.3 per 100,000 population in 2008 to 24.3 in 2013 (estimated annual percentage change [EAPC] = -3.6); however, the number of diagnoses among males with infection attributed to male-to-male sexual contact increased 16%, from 6,141 in 2008 to 7,098 in 2013 (EAPC = 3.0). In 2013, the rate of diagnosis of HIV infection among males (41.3) was six times the rate among females (6.8). During 2008–2013, behavioral risk factors for HIV infection among Hispanics or Latino differed among males and females and by place of birth. Among Hispanic or Latino males born in Puerto Rico, the proportion of HIV infections attributed to injection drug use (24.9%) was greater than among those born elsewhere. Among HIV-infected Hispanic or Latino females, those born in the United States (21.2%) and Puerto Rico (20.5%) had a greater proportion of HIV infections attributed to injection drug use than those born elsewhere. Additional interventions and public health strategies to further decrease the rates of HIV among the Hispanic or Latino population are needed.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6439a2.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350158/syndicate.json",
+    "datePublished": "2015-10-08T12:05:00Z",
+    "dateModified": "2015-10-09T20:17:04Z",
+    "enclosures": [{
+      "id": 2197,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/diagnoses_prevelance_hiv.jpg",
+      "contentType": "image/jpeg",
+      "size": 15284
+    }]
+  }, {
+    "id": 350160,
+    "name": "CDC Grand Rounds: Understanding the Causes of Major Birth Defects — Steps to Prevention",
+    "description": "Major birth defects (birth defects) are defined as structural abnormalities, present at birth, with surgical, medical, or cosmetic importance. Each year in the United States, 3% of live births (approximately 120,000 infants) have an identifiable structural birth defect (1). Examples of birth defects include neural tube defects, such as spina bifida; orofacial clefts; abdominal wall defects, such as gastroschisis; and congenital heart defects, such as hypoplastic left heart syndrome. Collectively, congenital heart defects are the most common birth defects (27%), followed by musculoskeletal defects (18%), genitourinary defects (15%), orofacial defects (5%), and neural tube defects (2%) (2).",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6439a3.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350160/syndicate.json",
+    "datePublished": "2015-10-08T12:04:00Z",
+    "dateModified": "2015-10-09T20:17:13Z",
+    "enclosures": [{
+      "id": 2199,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/causes_major_birth_defects.jpg",
+      "contentType": "image/jpeg",
+      "size": 7354
+    }]
+  }, {
+    "id": 350159,
+    "name": "Establishment of an Ebola Treatment Unit and Laboratory — Bombali District, Sierra Leone, July 2014–January 2015",
+    "description": "The first confirmed case of Ebola virus disease (Ebola) in Sierra Leone related to the ongoing epidemic in West Africa occurred in May 2014, and the outbreak quickly spread (1). To date, 8,704 Ebola cases and 3,955 Ebola deaths have been confirmed in Sierra Leone (2). The first Ebola treatment units (ETUs) in Sierra Leone were established in the eastern districts of Kenema and Kailahun, where the first Ebola cases were detected, and these districts were also the first to control the epidemic (3). By September and October 2014, districts in the western and northern provinces, including Bombali, had the highest case counts, but additional ETUs outside of the eastern province were not operational for weeks to months (3). Bombali became one of the most heavily affected districts in Sierra Leone, with 873 confirmed patients with Ebola during July–November 2014.* The first ETU and laboratory in Bombali District were established in late November and early December 2014, respectively. To evaluate the impact of the first ETU and laboratory becoming operational in Bombali on outbreak control, the Bombali Ebola surveillance team assessed epidemiologic indicators before and after the establishment of the first ETU and laboratory in Bombali. After the establishment of the ETU and laboratory, the interval from symptom onset to laboratory result† and from specimen collection to laboratory result decreased. By providing treatment to Ebola patients and isolating contagious persons to halt ongoing community transmission, ETUs play a critical role in breaking chains of transmission and preventing uncontrolled spread of Ebola (4). Prioritizing and expediting the establishment of an ETU and laboratory by pre-positioning resources needed to provide capacity for isolation, testing, and treatment of Ebola are essential aspects of pre-outbreak planning.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6439a4.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350159/syndicate.json",
+    "datePublished": "2015-10-08T12:04:00Z",
+    "dateModified": "2015-10-09T20:17:08Z",
+    "enclosures": [{
+      "id": 2198,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/establishment_ebola_treatment_unit_lab.jpg",
+      "contentType": "image/jpeg",
+      "size": 8471
+    }]
+  }, {
+    "id": 350161,
+    "name": "Vital Signs: Improvements in Maternity Care Policies and Practices That Support Breastfeeding — United States, 2007–2013",
+    "description": "Although 80% of U.S. mothers begin breastfeeding their infants, many do not continue breastfeeding as long as they would like to. Experiences during the birth hospitalization affect a mother's ability to establish and maintain breastfeeding. The Baby-Friendly Hospital Initiative is a global program launched by the World Health Organization and the United Nations Children's Fund, and has at its core the Ten Steps to Successful Breastfeeding (Ten Steps), which describe evidence-based hospital policies and practices that have been shown to improve breastfeeding outcomes.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6439a5.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350161/syndicate.json",
+    "datePublished": "2015-10-08T12:03:00Z",
+    "dateModified": "2015-10-09T20:17:17Z",
+    "enclosures": [{
+      "id": 2200,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/improvements_breastfeeding.jpg",
+      "contentType": "image/jpeg",
+      "size": 8162
+    }]
+  }, {
+    "id": 350162,
+    "name": "Update: Shortened Interval for Postvaccination Serologic Testing of Infants Born to Hepatitis B-Infected Mothers",
+    "description": "Infants born to hepatitis B-infected mothers receive postexposure prophylaxis to reduce their risk for perinatal hepatitis B virus (HBV) infection (1). Postexposure prophylaxis consists of hepatitis B (HepB) vaccine and hepatitis B immune globulin administered within 12 hours of birth, followed by completion of the 3-dose or 4-dose HepB vaccine series (1). Postvaccination serologic testing (PVST) assesses an infant's response to HepB vaccination and has typically occurred at age 9–18 months (1). This report provides a CDC update recommending shortening the interval for PVST from age 9–18 months to age 9–12 months. Providers should order PVST (consisting of hepatitis B surface antigen [HBsAg] and antibody to HBsAg [anti-HBs]) for infants born to HBsAg-positive mothers at age 9–12 months (or 1–2 months after the final dose of the vaccine series, if the series is delayed). This recommendation was prompted by the discontinuation of production of Hib/HepB vaccine (Comvax) and new data from the Enhanced Perinatal Hepatitis B Prevention Program supporting PVST 1–2 months after receipt of the last HepB vaccine dose, and at age =9 months.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6439a6.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350162/syndicate.json",
+    "datePublished": "2015-10-08T12:02:00Z",
+    "dateModified": "2015-10-09T20:17:21Z",
+    "enclosures": [{
+      "id": 2201,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/update_shortened_interval_postvaccination.jpg",
+      "contentType": "image/jpeg",
+      "size": 12019
+    }]
+  }, {
+    "id": 350163,
+    "name": "Notes from the Field: Severe Illness Associated with Reported Use of Synthetic Cannabinoids — Mississippi, April 2015",
+    "description": "On April 2, 2015, four patients were evaluated at the University of Mississippi Medical Center (UMMC) in Jackson, Mississippi, for agitated delirium after using synthetic cannabinoids. Over the next 3 days, 24 additional persons went to UMMC with illnesses suspected to be related to synthetic cannabinoid use; one patient died. UMMC notified the Mississippi State Department of Health, which issued a statewide alert via the Health Alert Network on April 5, requesting that health care providers report suspected cases of synthetic cannabinoid intoxication to the Mississippi Poison Control Center (MPCC). A suspected case was defined as the occurrence of at least two of the following symptoms: sweating, severe agitation, or psychosis in a person with known or suspected synthetic cannabinoid use. A second statewide alert was issued on April 13, instructing all Mississippi emergency departments to submit line lists of suspected patients to MPCC each day. By April 21, 16 days after the first alert was issued, MPCC had received reports of approximately 400 cases, including eight deaths possibly linked to synthetic cannabinoid use; in contrast, during April 2012–March 2015, the median number of telephone calls to MPCC regarding synthetic cannabinoid use was one per month (range = 0–11). The Mississippi State Department of Health, with the assistance of CDC, initiated an investigation to better characterize the outbreak, identify risk factors associated with severe illness, and prevent additional illnesses and deaths.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6439a7.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350163/syndicate.json",
+    "datePublished": "2015-10-08T12:01:00Z",
+    "dateModified": "2015-10-09T20:17:25Z",
+    "enclosures": [{
+      "id": 2202,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/severe_illness_synthetic_cannabinoids.jpg",
+      "contentType": "image/jpeg",
+      "size": 6123
+    }]
+  }, {
+    "id": 350164,
+    "name": "Notes from the Field: Measles in a Patient with Presumed Immunity — Los Angeles County, 2015",
+    "description": "On February 14, 2015, patient A, aged 17 years, was seen in an emergency department for evaluation of reactive airway disease. In the waiting room at the same time were two siblings, aged 6 months, presenting with fever and rash; these two children (patients B and C) were later confirmed to have measles. Patient A began a 5-day course of oral prednisone (50 mg per day); however, symptoms continued, and patient A returned to the emergency department the next day and received 125 mg of intravenous (IV) methylprednisolone. Patient A had documentation of receipt of 2 doses of measles, mumps, and rubella (MMR) vaccine at ages 12 months and 4 years.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6439a8.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350164/syndicate.json",
+    "datePublished": "2015-10-08T12:00:00Z",
+    "dateModified": "2015-10-09T20:17:30Z",
+    "enclosures": [{
+      "id": 2203,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/measles_patient_presumed_immunity.jpg",
+      "contentType": "image/jpeg",
+      "size": 15879
+    }]
+  }, {
+    "id": 350165,
+    "name": "Frequency of Tobacco Use Among Middle School and High School Students --- United States, 2014",
+    "description": "The use of tobacco products during adolescence increases the risk for adverse health effects and lifelong nicotine addiction (1,2). In 2014, an estimated 4.6 million middle and high school students were current users of any tobacco product, of whom an estimated 2.2 million were current users of two or more types of tobacco products (3). Symptoms of nicotine dependence are increased for multiple tobacco product users compared with single-product users (4,5). CDC and the Food and Drug Administration (FDA) analyzed data from the 2014 National Youth Tobacco Survey (NYTS) to determine how frequently (the number of days in the preceding 30 days) U.S. middle school (grades 6–8) and high school (grades 9–12) students used cigarettes, e-cigarettes, cigars, and smokeless tobacco products. Among current users (=1 day during the preceding 30 days) in high school, frequent use (=20 days during the preceding 30 days) was most prevalent among smokeless tobacco users (42.0%), followed by cigarette smokers (31.6%), e-cigarette users (15.5%), and cigar smokers (13.1%); a similar pattern was observed for those who used during all 30 days. Among current users in middle school, frequent use was greatest among smokeless tobacco users (29.2%), followed by cigarette smokers (20.0%), cigar smokers (13.2%) and e-cigarette users (11.8%). Current use of two or more types of tobacco products was common, even among students who used tobacco products 1–5 days during the preceding 30 days: 77.3% for cigar smokers, 76.9% for cigarette smokers, 63.4% for smokeless tobacco users, and 54.8% for e-cigarettes users. Preventing youths from initiating the use of any tobacco product is important to tobacco use prevention and control strategies in the United States (1,2). Monitoring the frequency and patterns of tobacco use among youths, including the use of two or more tobacco products, is important to inform evidence-based interventions to prevent and reduce all forms of tobacco use among youths (2).",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6438a1.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350165/syndicate.json",
+    "datePublished": "2015-10-01T12:06:00Z",
+    "dateModified": "2015-10-09T20:17:34Z",
+    "enclosures": [{
+      "id": 2204,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Frequency_Tobacco_Use_Among_Middle_School.jpg",
+      "contentType": "image/jpeg",
+      "size": 17494
+    }]
+  }, {
+    "id": 350166,
+    "name": "Flavored Tobacco Product Use Among Middle and High School Students — United States, 2014",
+    "description": "The 2009 Family Smoking Prevention and Tobacco Control Act prohibits \"characterizing flavors\" (e.g., candy, fruit, and chocolate) other than tobacco and menthol in cigarettes; however, characterizing flavors are not currently prohibited in other tobacco products (1). Analyses of retail sales data suggest that U.S. consumption of flavored noncigarette tobacco products, including flavored cigars and flavored e-cigarettes, has increased in recent years (2,3). There is growing concern that widely marketed varieties of new and existing flavored tobacco products might appeal to youths (2) and could be contributing to recent increases in the use of tobacco products, including e-cigarettes and hookah, among youths (4). CDC and the Food and Drug Administration (FDA) analyzed data from the 2014 National Youth Tobacco Survey (NYTS) to determine the prevalence of past 30 day use (current use) of flavored e-cigarette, hookah tobacco, cigar, pipe tobacco or smokeless tobacco products, and menthol cigarettes among middle and high school students, and the proportion of current tobacco product users who have used flavored products. An estimated 70.0% (3.26 million) of all current youth tobacco users had used at least one flavored tobacco product in the past 30 days. Among current users, 63.3%, (1.58 million) had used a flavored e-cigarette, 60.6%, (1.02 million) had used flavored hookah tobacco, and 63.5% (910,000) had used a flavored cigar in the past 30 days. Given the millions of current youth tobacco users, it is important for comprehensive tobacco prevention and control strategies to address all forms of tobacco use, including flavored tobacco products, among U.S. youths.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6438a2.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350166/syndicate.json",
+    "datePublished": "2015-10-01T12:05:00Z",
+    "dateModified": "2015-10-09T20:17:38Z",
+    "enclosures": [{
+      "id": 2205,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Flavored_Tobacco_Product_Use_Among_Middle.jpg",
+      "contentType": "image/jpeg",
+      "size": 7999
+    }]
+  }, {
+    "id": 350167,
+    "name": "Q Fever Outbreak Among Travelers to Germany Who Received Live Cell Therapy — United States and Canada, 2014",
+    "description": "During September–November 2014, the New York State Department of Health (NYSDOH) was notified of five New York state residents who had tested seropositive for Coxiella burnetii, the causative agent of Q fever. All five patients had symptoms compatible with Q fever (e.g., fever, fatigue, chills, and headache) and a history of travel to Germany to receive a medical treatment called \"live cell therapy\" (sometimes called \"fresh cell therapy\") in May 2014. Live cell therapy is the practice of injecting processed cells from organs or fetuses of nonhuman animals (e.g., sheep) into human recipients (1). It is advertised to treat a variety of health conditions. This practice is unavailable in the United States; however, persons can travel to foreign locations to receive injections. Local health departments interviewed the patients, and NYSDOH notified CDC and posted a report on CDC's Epidemic Information Exchange to solicit additional cases. Clinical and exposure information for each patient was reported to the Robert Koch Institute in Germany, which forwarded the information to local health authorities. A Canada resident who also received live cell therapy in May 2014 was diagnosed with Q fever in July 2014. Clinicians should be aware of health risks, such as Q fever and other zoonotic diseases, among patients with a history of receiving treatment with live cell therapy products.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6438a3.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350167/syndicate.json",
+    "datePublished": "2015-10-01T12:04:00Z",
+    "dateModified": "2015-10-09T20:17:42Z",
+    "enclosures": [{
+      "id": 2206,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Q_Fever_Outbreak_Among_Travelers_to_Germany.jpg",
+      "contentType": "image/jpeg",
+      "size": 9911
+    }]
+  }, {
+    "id": 350168,
+    "name": "Estimated Lifetime Medical and Work-Loss Costs of Fatal Injuries — United States, 2013",
+    "description": "Injury-associated deaths have substantial economic consequences. In 2013, unintentional injury was the fourth leading cause of death, suicide was the tenth, and homicide was the sixteenth; these three causes accounted for approximately 187,000 deaths in the United States (1). To assess the economic impact of fatal injuries, CDC analyzed death data from the National Vital Statistics System (1) for 2013, along with cost of injury data using the Web-Based Injury Statistics Query and Reporting System (1). This report updates a previous study that analyzed death data from the year 2000 (2), and employs recently revised methodology for determining the costs of injury outcomes, which uses the most current economic data and incorporates improvements for estimating medical costs associated with injury (3). Number of deaths, crude and age-specific death rates, and total lifetime work-loss costs and medical costs were calculated for fatal injuries by sex, age group, intent (intentional versus unintentional), and mechanism of injury. During 2013, the rate of fatal injury was 61.0 per 100,000 population, with combined medical and work-loss costs exceeding $214 billion. Costs from fatal injuries represent approximately one third of the total $671 billion medical and work-loss costs associated with all injuries in 2013 (3). The magnitude of the economic burden associated with injury-associated deaths underscores the need for effective prevention.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6438a4.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350168/syndicate.json",
+    "datePublished": "2015-10-01T12:03:00Z",
+    "dateModified": "2015-10-09T20:17:46Z",
+    "enclosures": [{
+      "id": 2207,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Estimated_Lifetime_Medical_and_Work_Loss_Costs.jpg",
+      "contentType": "image/jpeg",
+      "size": 8945
+    }]
+  }, {
+    "id": 350169,
+    "name": "Estimated Lifetime Medical and Work-Loss Costs of Emergency Department–Treated Nonfatal Injuries — United States, 2013",
+    "description": "A large number of nonfatal injuries are treated in U.S. emergency departments (EDs) every year. CDC's National Center for Health Statistics estimates that approximately 29% of all ED visits in 2010 were for injuries (1). To assess the economic impact of ED-treated injuries, CDC examined injury data from the National Electronic Injury Surveillance System–All Injury Program (NEISS-AIP) (2) for 2013, as well as injury-related lifetime medical and work-loss costs from the Web-Based Injury Statistics Query and Reporting System (WISQARS). NEISS-AIP collects data from a nationally representative sample of EDs, using specific guidelines for recording the primary diagnosis and mechanism of injury. Number of injuries, crude- and age-specific injury rates, and total lifetime work-loss costs and medical costs were calculated for ED-treated injuries, stratified by sex, age groups, and intent and mechanism of injury. ED-treated injuries were further classified as those that were subsequently hospitalized or treated and released. The rate of hospitalized injuries was 950.8 per 100,000, and the rate of treated and released injuries was 8,549.8 per 100,000. Combined medical and work-loss costs for all ED-treated injuries (both hospitalized and treated and released) were $456.9 billion, or approximately 68% of the total costs of $671 billion associated with all fatal and ED-treated injuries. The substantial economic burden associated with nonfatal injuries underscores the need for effective prevention strategies.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6438a5.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350169/syndicate.json",
+    "datePublished": "2015-10-01T12:02:00Z",
+    "dateModified": "2015-10-09T20:17:49Z",
+    "enclosures": [{
+      "id": 2208,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Estimated_Lifetime_Medical_Nonfatal_Injuries.jpg",
+      "contentType": "image/jpeg",
+      "size": 12593
+    }]
+  }, {
+    "id": 350170,
+    "name": "Ebola Virus Disease in Health Care Workers — Guinea, 2014",
+    "description": "An outbreak of Ebola virus disease (Ebola) began in Guinea in December 2013 and has continued through September 2015 (1). Health care workers (HCWs) in West Africa are at high risk for Ebola infection owing to lack of appropriate triage procedures, insufficient equipment, and inadequate infection control practices (2,3). To characterize recent epidemiology of Ebola infections among HCWs in Guinea, national Viral Hemorrhagic Fever (VHF) surveillance data were analyzed for HCW cases reported during January 1–December 31, 2014. During 2014, a total of 162 (7.9%) of 2,210 laboratory-confirmed or probable Ebola cases among Guinean adults aged =15 years occurred among HCWs, resulting in an incidence of Ebola infection among HCWs 42.2 times higher than among non-HCWs. The disproportionate burden of Ebola infection among HCWs taxes an already stressed health infrastructure, underscoring the need for increased understanding of transmission among HCWs and improved infection prevention and control measures to prevent Ebola infection among HCWs.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6438a6.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350170/syndicate.json",
+    "datePublished": "2015-10-01T12:01:00Z",
+    "dateModified": "2015-10-09T20:17:52Z",
+    "enclosures": [{
+      "id": 2209,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Ebola_Virus_Disease_in_Health_Care_Workers.jpg",
+      "contentType": "image/jpeg",
+      "size": 9981
+    }]
+  }, {
+    "id": 350171,
+    "name": "Measles Outbreak Associated with Vaccine Failure in Adults — Federated States of Micronesia, February–August 2014",
+    "description": "On May 15, 2014, CDC was notified of two laboratory-confirmed measles cases in the Federated States of Micronesia (FSM), after 20 years with no reported measles. FSM was assisted by the World Health Organization (WHO), the United Nations Children's Fund (UNICEF), and CDC in investigating suspected cases, identify contacts, conduct analyses to guide outbreak vaccination response, and review vaccine cold chain practices. During February–August, three of FSM's four states reported measles cases: Kosrae (139 cases), Pohnpei (251), and Chuuk (3). Two thirds of cases occurred among adults aged =20 years; of these, 49% had received =2 doses of measles-containing vaccine (MCV). Apart from infants aged <12 months who were too young for routine vaccination, measles incidence was lower among children than adults. A review of current cold chain practices in Kosrae revealed minor weaknesses; however, an absence of historical cold chain maintenance records precluded an evaluation of earlier problems. Each state implemented vaccination campaigns targeting children as young as age 6 months through adults up to age 57 years. The preponderance of cases in this outbreak associated with vaccine failure in adults highlights the need for both thorough case investigation and epidemiologic analysis to guide outbreak response vaccination. Routine childhood vaccination coverage achieved in recent years limited the transmission of measles among children. Even in areas where transmission has not occurred for years, maintaining high 2-dose MCV coverage through routine and supplemental immunization is needed to prevent outbreaks resulting from increased measles susceptibility in the population.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6438a7.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/350171/syndicate.json",
+    "datePublished": "2015-10-01T12:00:00Z",
+    "dateModified": "2015-10-09T20:17:56Z",
+    "enclosures": [{
+      "id": 2210,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Measles_Outbreak_Associated_with_Vaccine_Failure_in_Adults.jpg",
+      "contentType": "image/jpeg",
+      "size": 5192
+    }]
+  }, {
+    "id": 344713,
+    "name": "Influenza Vaccination Coverage Among Health Care Personnel — United States, 2014–15 Influenza Season",
+    "description": "The Advisory Committee on Immunization Practices recommends annual influenza vaccination for all health care personnel (HCP) to reduce influenza-related morbidity and mortality among both HCP and their patients and to decrease absenteeism among HCP (1–5). To estimate influenza vaccination coverage among U.S. HCP for the 2014–15 influenza season, CDC conducted an opt-in Internet panel survey of 1,914 HCP during March 31–April 15, 2015. Overall, 77.3% of HCP survey participants reported receiving an influenza vaccination during the 2014–15 season, similar to the 75.2% coverage among HCP reported for the 2013–14 season (6). Vaccination coverage was highest among HCP working in hospitals (90.4%) and lowest among HCP working in long-term care (LTC) settings (63.9%). By occupation, coverage was highest among pharmacists (95.3%) and lowest among assistants and aides (64.4%). Influenza vaccination coverage was highest among HCP who were required by their employer to be vaccinated (96.0%). Among HCP without an employer requirement for vaccination, coverage was higher for HCP working in settings where vaccination was offered on-site at no cost for 1 day (73.6%) or multiple days (83.9%) and lowest among HCP working in settings where vaccine was neither required, promoted, nor offered on-site (44.0%). Comprehensive vaccination strategies that include making vaccine available at no cost at the workplace along with active promotion of vaccination might help increase vaccination coverage among HCP and reduce the risk for influenza to HCP and their patients (1,6,7).",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a1.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344713/syndicate.json",
+    "datePublished": "2015-09-17T12:03:00Z",
+    "dateModified": "2015-09-21T14:11:10Z",
+    "enclosures": [{
+      "id": 1568,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Influenza_Vaccination_Coverage_Among_Health_Care_Personnel.jpg",
+      "contentType": "image/jpeg",
+      "size": 7966
+    }]
+  }, {
+    "id": 344714,
+    "name": "Influenza Vaccination Coverage Among Pregnant Women — United States, 2014–15 Influenza Season",
+    "description": "Pregnant women and infants are at increased risk for influenza-related complications and hospitalization. Influenza vaccination can reduce the risk for influenza-related illness among pregnant women and their infants (1). Since 2004, the Advisory Committee on Immunization Practices (ACIP) and the American College of Obstetricians and Gynecologists (ACOG) have recommended influenza vaccination for all women who are or will be pregnant during the influenza season, regardless of trimester of pregnancy (1,2). To assess influenza vaccination coverage among pregnant women during the 2014–15 influenza season, CDC analyzed data from an Internet panel survey conducted during March 31–April 6, 2015. Among 1,702 survey respondents who were pregnant at any time during October 2014–January 2015, 50.3% reported receiving influenza vaccination before or during pregnancy, similar to the reported coverage in the preceding season (3). Overall, 64.9% of respondents reported receiving a provider offer of influenza vaccination, 14.8% received a recommendation but no offer, and 20.3% received no recommendation. Vaccination coverage among these groups of women was 67.9%, 33.5%, and 8.5%, respectively. Reminder systems and standing orders that allow health care personnel other than the attending provider to assess vaccination status and administer vaccination, can help to ensure that influenza vaccination is recommended and offered to a pregnant woman at each provider visit to increase pregnant women's vaccination coverage (4,5).",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a2.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344714/syndicate.json",
+    "datePublished": "2015-09-17T12:02:00Z",
+    "dateModified": "2015-09-21T14:11:14Z",
+    "enclosures": [{
+      "id": 1569,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Influenza_Vaccination_Coverage_Among_Pregnant_Women.jpg",
+      "contentType": "image/jpeg",
+      "size": 10464
+    }]
+  }, {
+    "id": 344715,
+    "name": "Clinical Inquiries Received by CDC Regarding Suspected Ebola Virus Disease in Children — United States, July 9, 2014–January 4, 2015",
+    "description": "The 2014–2015 Ebola virus disease (Ebola) epidemic is the largest in history and represents the first time Ebola has been diagnosed in the United States (1,2). On July 9, 2014, CDC activated its Emergency Operations Center and established an Ebola clinical consultation service to assist U.S. state and local public health officials and health care providers with the evaluation of suspected cases. CDC reviewed all 89 inquiries received by the consultation service during July 9, 2014–January 4, 2015, about children (persons aged =18 years). Most (56 [63%]) children had no identifiable epidemiologic risk factors for Ebola; among the 33 (37%) who did have an epidemiologic risk factor, in every case this was travel from an Ebola-affected country. Thirty-two of these children met criteria for a person under investigation (PUI) because of clinical signs or symptoms (3,4). Fifteen PUIs had blood samples tested for Ebola virus RNA by reverse transcription–polymerase chain reaction; all tested negative. Febrile children who have recently traveled from an Ebola-affected country can be expected to have other common diagnoses, such as malaria and influenza, and in the absence of epidemiologic risk factors for Ebola, the likelihood of Ebola is extremely low. Delaying evaluation and treatment for these other more common illnesses might lead to poorer clinical outcomes. Additionally, many health care providers expressed concerns about whether and how parents should be allowed in the isolation room. While maintaining an appropriate level of vigilance for Ebola, public health officials and health care providers should ensure that pediatric PUIs receive timely triage, diagnosis, and treatment of other more common illnesses, and care reflecting best practices in supporting children's psychosocial needs (5).",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a3.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344715/syndicate.json",
+    "datePublished": "2015-09-17T12:01:00Z",
+    "dateModified": "2015-09-21T14:11:16Z",
+    "enclosures": [{
+      "id": 1570,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Clinical_Inquiries_Received_by_CDC_Regarding_Suspected_Ebola.jpg",
+      "contentType": "image/jpeg",
+      "size": 13488
+    }]
+  }, {
+    "id": 344716,
+    "name": "Update: Influenza Activity — United States and Worldwide, May 24–September 5, 2015",
+    "description": "The Advisory Committee on Immunization Practices recommends annual influenza vaccination for all health care personnel (HCP) to reduce influenza-related morbidity and mortality among both HCP and their patients and to decrease absenteeism among HCP (1–5). To estimate influenza vaccination coverage among U.S. HCP for the 2014–15 influenza season, CDC conducted an opt-in Internet panel survey of 1,914 HCP during March 31–April 15, 2015. Overall, 77.3% of HCP survey participants reported receiving an influenza vaccination during the 2014–15 season, similar to the 75.2% coverage among HCP reported for the 2013–14 season (6). Vaccination coverage was highest among HCP working in hospitals (90.4%) and lowest among HCP working in long-term care (LTC) settings (63.9%). By occupation, coverage was highest among pharmacists (95.3%) and lowest among assistants and aides (64.4%). Influenza vaccination coverage was highest among HCP who were required by their employer to be vaccinated (96.0%). Among HCP without an employer requirement for vaccination, coverage was higher for HCP working in settings where vaccination was offered on-site at no cost for 1 day (73.6%) or multiple days (83.9%) and lowest among HCP working in settings where vaccine was neither required, promoted, nor offered on-site (44.0%). Comprehensive vaccination strategies that include making vaccine available at no cost at the workplace along with active promotion of vaccination might help increase vaccination coverage among HCP and reduce the risk for influenza to HCP and their patients (1,6,7).",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6436a4.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344716/syndicate.json",
+    "datePublished": "2015-09-17T12:00:00Z",
+    "dateModified": "2015-09-21T14:11:18Z",
+    "enclosures": [{
+      "id": 1571,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Influenza_Activity_United_States_and_Worldwide.jpg",
+      "contentType": "image/jpeg",
+      "size": 7798
+    }]
+  }, {
+    "id": 344717,
+    "name": "National Preparedness Month — September 2015",
+    "description": "Throughout September, CDC and more than 3,000 organizations (including national, regional, and local governments, as well as private and public institutions) will support emergency preparedness efforts and encourage U.S. residents to take action to become more prepared for emergencies. For Preparedness Month 2015 (1), CDC's Office of Public Health Preparedness and Response plans to focus on the importance of community resilience.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a1.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344717/syndicate.json",
+    "datePublished": "2015-09-10T12:06:00Z",
+    "dateModified": "2015-09-21T14:11:20Z",
+    "enclosures": [{
+      "id": 1572,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/National_Preparedness_Month.jpg",
+      "contentType": "image/jpeg",
+      "size": 12437
+    }]
+  }, {
+    "id": 344718,
+    "name": "Household Disaster Preparedness: Influences of Preparedness Knowledge and Beliefs",
+    "description": "In response to concern about strengthening the nation's ability to protect its population and way of life (i.e., security) and ability to adapt and recover from emergencies (i.e., resilience), the President of the United States issued Presidential Policy Directive 8: National Preparedness (PPD-8) (1). Signed on March 30, 2011, PPD-8 is a directive for the U.S. Department of Homeland Security to coordinate a comprehensive campaign across government, private and nonprofit sectors, and individuals to build and sustain national preparedness. Despite efforts by the Federal Emergency Management Agency (FEMA) and other organizations to educate U.S. residents on becoming prepared, growth in specific preparedness behaviors, including actions taken in advance of a disaster to be better prepared to respond to and recover, has been limited (2). In 2012, only 52% of U.S. residents surveyed by FEMA reported having supplies for a disaster (2), a decline from 57% who reported having such supplies in 2009 (3). It is believed that knowledge influences behavior, and that attitudes and beliefs, which are correlated with knowledge, might also influence behavior (4). To determine the association between knowledge and beliefs and household preparedness, CDC analyzed baseline data from Ready CDC, a personal disaster preparedness intervention piloted among Atlanta- and Morgantown-based CDC staff members during 2013–2015. Compared with persons with basic preparedness knowledge, persons with advanced knowledge were more likely to have assembled an emergency kit (44% versus 17%), developed a written household disaster plan (9% versus 4%), and received county emergency alert notifications (63% versus 41%). Similarly, differences in household preparedness behaviors were correlated with beliefs about preparedness. Persons identified as having strong beliefs in the effectiveness of disaster preparedness engaged in preparedness behaviors at levels 7%–30% higher than those with weaker preparedness beliefs. Understanding the influences of knowledge and beliefs on household disaster preparedness might provide an opportunity to inform messages promoting household preparedness.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a2.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344718/syndicate.json",
+    "datePublished": "2015-09-10T12:05:00Z",
+    "dateModified": "2015-09-21T14:11:22Z",
+    "enclosures": [{
+      "id": 1573,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Household_Disaster_Preparedness.jpg",
+      "contentType": "image/jpeg",
+      "size": 14413
+    }]
+  }, {
+    "id": 344719,
+    "name": "CDC Grand Rounds: Addressing Preparedness Challenges for Children in Public Health Emergencies",
+    "description": "Recent public health emergencies including Hurricane Katrina (2005), the influenza H1N1 pandemic (2009), and the Ebola virus disease outbreak in West Africa (2014–2015) have demonstrated the importance of multiple-level emergency planning and response. An effective response requires integrating coordinated contributions from community-based health care providers, regional health care coalitions, state and local health departments, and federal agency initiatives. This is especially important when planning for the needs of children, who make up 23% of the U.S. population (1) and have unique needs that require unique planning strategies.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a3.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344719/syndicate.json",
+    "datePublished": "2015-09-10T12:04:00Z",
+    "dateModified": "2015-09-21T14:11:25Z",
+    "enclosures": [{
+      "id": 1574,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Addressing_Preparedness_Challenges_Children.jpg",
+      "contentType": "image/jpeg",
+      "size": 8532
+    }]
+  }, {
+    "id": 344720,
+    "name": "Injuries and Traumatic Psychological Exposures Associated with the South Napa Earthquake — California, 2014",
+    "description": "On August 24, 2014, at 3:20 a.m., a magnitude 6.0 earthquake struck California, with its epicenter in Napa County (1). The earthquake was the largest to affect the San Francisco Bay area in 25 years and caused significant damage in Napa and Solano counties, including widespread power outages, five residential fires, and damage to roadways, waterlines, and 1,600 buildings (2). Two deaths resulted (2). On August 25, Napa County Public Health asked the California Department of Public Health (CDPH) for assistance in assessing postdisaster health effects, including earthquake-related injuries and effects on mental health. On September 23, Solano County Public Health requested similar assistance. A household-level Community Assessment for Public Health Emergency Response (CASPER) was conducted for these counties in two cities (Napa, 3 weeks after the earthquake, and Vallejo, 6 weeks after the earthquake). Among households reporting injuries, a substantial proportion (48% in Napa and 37% in western Vallejo) reported that the injuries occurred during the cleanup period, suggesting that increased messaging on safety precautions after a disaster might be needed. One fifth of respondents overall (27% in Napa and 9% in western Vallejo) reported one or more traumatic psychological exposures in their households. These findings were used by Napa County Mental Health to guide immediate-term mental health resource allocations and to conduct public training sessions and education campaigns to support persons with mental health risks following the earthquake. In addition, to promote community resilience and future earthquake preparedness, Napa County Public Health subsequently conducted community events on the earthquake anniversary and provided outreach workers with psychological first aid training.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a4.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344720/syndicate.json",
+    "datePublished": "2015-09-10T12:03:00Z",
+    "dateModified": "2015-09-21T14:11:27Z",
+    "enclosures": [{
+      "id": 1575,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Injuries_and_Traumatic_Psychological_Exposures.jpg",
+      "contentType": "image/jpeg",
+      "size": 9295
+    }]
+  }, {
+    "id": 344721,
+    "name": "Elimination of Ebola Virus Transmission in Liberia — September 3, 2015",
+    "description": "Following 42 days since the last Ebola virus disease (Ebola) patient was discharged from a Liberian Ebola treatment unit (ETU), September 3, 2015, marks the second time in a 4-month period that the World Health Organization (WHO) has declared Liberia free of Ebola virus transmission (1). The first confirmed Ebola cases in West Africa were identified in southeastern Guinea on March 23, 2014, and within 1 week, cases were identified and confirmed in Liberia (1). Since then, Liberia has reported 5,036 confirmed and probable Ebola cases and 4,808 Ebola-related deaths. The epidemic in Liberia peaked in late summer and early fall of 2014, when more than 200 confirmed and probable cases were reported each week (Figure).",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a5.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344721/syndicate.json",
+    "datePublished": "2015-09-10T12:02:00Z",
+    "dateModified": "2015-09-21T14:11:29Z",
+    "enclosures": [{
+      "id": 1576,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Elimination_Ebola_Virus_Transmission_Liberia.jpg",
+      "contentType": "image/jpeg",
+      "size": 10358
+    }]
+  }, {
+    "id": 344722,
+    "name": "Ebola Virus Disease — Sierra Leone and Guinea, August 2015",
+    "description": "The Ebola virus disease (Ebola) outbreak in West Africa began in late 2013 in Guinea (1) and spread unchecked during early 2014. By mid-2014, it had become the first Ebola epidemic ever documented. Transmission was occurring in multiple districts of Guinea, Liberia, and Sierra Leone, and for the first time, in capital cities (2). On August 8, 2014, the World Health Organization (WHO) declared the outbreak to be a Public Health Emergency of International Concern (3). Ministries of Health, with assistance from multinational collaborators, have reduced Ebola transmission, and the number of cases is now declining. While Liberia has not reported a case since July 12, 2015, transmission has continued in Guinea and Sierra Leone, although the numbers of cases reported are at the lowest point in a year. In August 2015, Guinea and Sierra Leone reported 10 and four confirmed cases, respectively, compared with a peak of 526 (Guinea) and 1,997 (Sierra Leone) in November 2014. This report details the current situation in Guinea and Sierra Leone, outlines strategies to interrupt transmission, and highlights the need to maintain public health response capacity and vigilance for new cases at this critical time to end the outbreak.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a6.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344722/syndicate.json",
+    "datePublished": "2015-09-10T12:01:00Z",
+    "dateModified": "2015-09-21T14:11:31Z",
+    "enclosures": [{
+      "id": 1577,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Ebola_Virus_Disease_Sierra_Leone_and_Guine.jpg",
+      "contentType": "image/jpeg",
+      "size": 14251
+    }]
+  }, {
+    "id": 344723,
+    "name": "Notes from the Field: Pneumonia Associated with an Influenza A H3 Outbreak at a Skilled Nursing Facility — Florida, 2014",
+    "description": "In December 2014, the Florida Department of Health, Bureau of Epidemiology, was notified that 18 of 95 (19%) residents at a skilled nursing facility had radiographic evidence of pneumonia and were being treated with antibiotics. Two residents were hospitalized, one of whom died. A second resident died at the facility. The Florida Department of Health conducted an outbreak investigation to ascertain all cases through active case finding, identify the etiology, provide infection control guidance, and recommend treatment or prophylaxis, if indicated.",
+    "mediaType": "Feed Item",
+    "language": {
+      "name": "English",
+      "isoCode": "eng"
+    },
+    "tags": [{
+      "id": 25910,
+      "name": "MMWR",
+      "language": "English",
+      "type": "Topic"
+    }, {
+      "id": 34519,
+      "name": "Mobile App MMWR 2016",
+      "language": "English",
+      "type": "ContentGroup"
+    }],
+    "sourceUrl": "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6435a7.htm",
+    "syndicateUrl": "https://oadc-dmb-dev-service.cdc.gov/api/v2/resources/media/344723/syndicate.json",
+    "datePublished": "2015-09-10T12:00:00Z",
+    "dateModified": "2015-09-21T14:11:33Z",
+    "enclosures": [{
+      "id": 1578,
+      "resourceUrl": "http://www.cdc.gov/mobile/Applications/CDCGeneral/MMWRThumbnails/Pneumonia_Associated_with_an_Influenza_A_H3.jpg",
+      "contentType": "image/jpeg",
+      "size": 12587
+    }]
+  }]
+}

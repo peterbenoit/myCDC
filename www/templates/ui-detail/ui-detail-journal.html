@@ -2,12 +2,14 @@
     <ion-nav-buttons side="right">
         <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': devicePlatform === 'Android','ion-ios-upload-outline': devicePlatform !== 'Android'}"></button>
     </ion-nav-buttons>
+    <!-- {{detailData}} -->
     <ion-content>
         <div class="padding data journal civ">
             <h1 class="title" ng-bind-html="detailCard.name"></h1>
             <div class="datepub">{{detailCard.datePublished}}</div>
             <div class="source">{{detailCard.streamTitle}}</div>
-            <div id="contentarea" ng-bind-html="content"></div>
+            <div id="contentarea" ng-bind-html="trustedContent()"></div>
+            <div id="contentarea" ng-bind-html="detailData.content"></div>
             <div class="border">
                 <p class="padding">
                     <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
