@@ -9,7 +9,7 @@
             </ion-item> -->
 
             <ion-toggle ng-repeat="objFeed in global.sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier} | orderBy:'displayOrder'"
-                ng-if="objFeed.feedIdentifier !== 'homestream'"
+                ng-if="objFeed.feedIdentifier !== 'mobileapphomestream'"
                 ng-model="global.sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
                 ng-checked="global.sourceFilters[objFeed.typeIdentifier][objFeed.feedIdentifier].isEnabled"
                 ng-disabled="global.sourceFilterLocks[objFeed.typeIdentifier][objFeed.feedIdentifier].filterLocked"

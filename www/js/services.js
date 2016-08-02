@@ -326,24 +326,6 @@ angular.module('mycdc.services', ['ionic'])
         feedNormalizer: function(d) {
             return d;
         },
-        processTags: function(d) {
-            // var currItem, data = d;
-
-            // if (data.length) {
-            //     for (var i = data.length - 1; i >= 0; i--) {
-            //         currItem = data[i];
-
-            //         // remove html from name
-            //         currItem.name = $sce.trustAsHtml(currItem.name);
-            //     }
-
-            //     return data;
-            // }
-
-            // return [];
-            //
-            return d;
-        },
         parseEncoding: function(d) {
             var currItem, data = d;
 
@@ -635,7 +617,10 @@ angular.module('mycdc.services', ['ionic'])
                 'isAndroidTablet': ionic.Platform.platform() === 'androidtablet', //ionic.Platform.is('androidtablet')
                 'isWindowsPhone': ionic.Platform.isWindowsPhone(),
                 'currentPlatform': ionic.Platform.platform(),
-                'currentPlatformVersion': ionic.Platform.version()
+                'currentPlatformVersion': ionic.Platform.version(),
+                'isRealMobileDevice' : function() {
+                    return ionic.Platform.platforms[0] !== "browser";
+                }
             };
         },
 
@@ -734,61 +719,61 @@ angular.module('mycdc.services', ['ionic'])
     }
 })
 
-.factory('iFrameReady', ['$rootScope', function($rootScope) {
-
-    //alert('iFrameReady Returned');
+.factory('iFrameReady', ['$rootScope', '$timeout', function($rootScope, $timeout) {
 
     return function() {
 
-        var iframe = $('#contentframe');
-        anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
+        // ONLY TRY TO PROCESS IFRAME LOGIC IF WE ARE REALLY ON A MOBILE DEVICE (OTHERWISE WE WONT HAVE PERMISSION & ERROR WILL OCCUR)
+        if($rootScope.deviceInfo.isRealMobileDevice()){
 
-        //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
+            var iframe = $('#contentframe');
+            anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
 
-        $rootScope.$broadcast('source-detail-load-complete');
+            //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
 
-        alert('iFrameReady Called');
-
-        // I RECENTLY COMMENTED THIS OUT AS IT WAS BREAKING THE APP (NOT JUST IFRAME CONTENT)
-        if (window.device) {
-            body = iframe.contents().find('body');
-            $(body).unbind("scroll");
-            //$(body).unbind("click");
-        }
-
-        if (body.length) {
-            body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
-        }
-
-        // Capture any anchors clicked in the iframe document
-        anchors.on('click', function(e) {
-            e.preventDefault();
-
-            alert('CLICK');
-
-            var framesrc = iframe.attr('src'),
-                href = $(this).attr('href'),
-                anchor = document.createElement('a'),
-                anchorhost,
-                frameanchor,
-                framehost,
-                frameprotocol;
-
-            anchor.href = href;
-            anchorhost = anchor.hostname;
-            // create an anchor with the href set to the iframe src to fetch the domain & protocol
-            // WARN: cannot assume "http" || "www.cdc.gov"
-            frameanchor = document.createElement('a');
-            frameanchor.href = framesrc;
-            framehost = frameanchor.hostname
-            frameprotocol = frameanchor.protocol;
-
-            // if this anchor doesn't have a hostname
-            if (anchorhost === '') {
-                href = frameprotocol + '//' + framehost + href;
+            // I RECENTLY COMMENTED THIS OUT AS IT WAS BREAKING THE APP (NOT JUST IFRAME CONTENT)
+            if (!realDevice) {
+                body = iframe.contents().find('body');
+                $(body).unbind("scroll");
+                //$(body).unbind("click");
             }
 
-            window.open(href, '_system');
+            if (body.length) {
+                body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
+            }
+
+            // Capture any anchors clicked in the iframe document
+            anchors.on('click', function(e) {
+                e.preventDefault();
+
+                var framesrc = iframe.attr('src'),
+                    href = $(this).attr('href'),
+                    anchor = document.createElement('a'),
+                    anchorhost,
+                    frameanchor,
+                    framehost,
+                    frameprotocol;
+
+                anchor.href = href;
+                anchorhost = anchor.hostname;
+                // create an anchor with the href set to the iframe src to fetch the domain & protocol
+                // WARN: cannot assume "http" || "www.cdc.gov"
+                frameanchor = document.createElement('a');
+                frameanchor.href = framesrc;
+                framehost = frameanchor.hostname
+                frameprotocol = frameanchor.protocol;
+
+                // if this anchor doesn't have a hostname
+                if (anchorhost === '') {
+                    href = frameprotocol + '//' + framehost + href;
+                }
+
+                window.open(href, '_system');
+            });
+
+        }
+        $timeout(function() {
+            $rootScope.$broadcast('loading-complete');
         });
     };
 }])

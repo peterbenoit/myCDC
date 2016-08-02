@@ -113,8 +113,8 @@ angular.module('mycdc.directives', [])
                 uiStream.uiStreamInit = true;
                 $scope.$on('scroll.loadMore', function() {
                     $timeout(function() {
-                        $ionicLoading.hide();
-                    }, 2000);
+                        $rootScope.$broadcast('loading-complete');
+                    }, 1000);
                 });
                 $scope.$on('screen-state-update-complete', function(event, args) {
                     $rootScope.log('UI STREAM DIRECTIVE RECEIVED screen-state-update-complete', 2, 'EVENT-LISTENER:');
@@ -380,10 +380,10 @@ angular.module('mycdc.directives', [])
                     $timeout(function(){
                         // GET DETAIL DATA - THEN HIDE LOADER (& HANDLER ERROR IF NEEDED)
                         $scope.loadDetailData($scope.detailCard).then(function(d){
-                            $ionicLoading.hide();
+                            //$rootScope.$broadcast('loading-complete');
                         }, function () {
-                            $ionicLoading.hide();
-                            // NO DETAIL CARD FOUND IN CARD LIST: ALERT USER, THEN REDIRECT
+                            // NO DETAIL CARD FOUND IN CARD LIST: HIDE LOADER, ALERT USER, THEN REDIRECT
+                            $rootScope.$broadcast('loading-complete');
                             var noDetailCard = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                             noDetailCard.then(function() {
                                 $state.go('app.sourceDetail', {sourceName: $scope.appState.sourceName, sourceDetail: $scope.appState.sourceDetail});
@@ -414,20 +414,28 @@ angular.module('mycdc.directives', [])
                 var defer = $q.defer();
                 detailData = {};
 
-                //$rootScope.log(objDetailCard, -1000, 'CURRENT DETAIL CARD');
-
                 // CONTINUE IF DETAIL CARD EXISTS IN SCOPE (AND NOT INITIALIZED ALREADY)
                 if (objDetailCard) {
 
                     $scope.detailTemplateUrl = 'templates/ui-detail/' + objDetailCard.templates.detail + '.html';
 
-                    //console.log(objDetailCard);
-
                     // CALL SPECIFIED PROCESSOR
                     switch (objDetailCard.detailType) {
                         case 'iframe':
 
-                             // SIMPLY SET DETAIL DATA FROM CURRENT CARD
+                            console.log('deviceInfo', $rootScope.deviceInfo);
+                            // if ($rootScope.deviceInfo.isRealMobileDevice() || true) {
+                            //     // TRIGGER INITIAL LOADER DISPLAY
+                            //     $ionicLoading.show({
+                            //         content: 'Loading',
+                            //         animation: 'fade-in',
+                            //         showBackdrop: true,
+                            //         maxWidth: 200,
+                            //         showDelay: 0
+                            //     });
+                            // }
+
+                            // SIMPLY SET DETAIL DATA FROM CURRENT CARD
                             detailData = objDetailCard;
 
                             // GET NO CHROME URL
@@ -534,6 +542,10 @@ angular.module('mycdc.directives', [])
                         // TEMPLATE LOGIC
                         $scope.uiDetailTemplateUrl = 'templates/ui-detail/' + objDetailCard.templates.detail + '.html';
 
+                    }
+
+                    if (objDetailCard.detailType !== 'iframe') {
+                        $rootScope.$broadcast('loading-complete');
                     }
 
                 });

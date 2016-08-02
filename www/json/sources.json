@@ -57,7 +57,7 @@
         "getContentBy": "id",
         "processors": ["cardTemplateInjector"],
         "detailType": "default",
-        "showByDefault": true,
+        "showByDefault": false,
         "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,

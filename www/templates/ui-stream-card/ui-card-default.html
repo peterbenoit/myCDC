@@ -9,7 +9,7 @@
 		<p class="date">{{cardData.datePublished}}</p>
 		<p ng-bind-html="cardData.description | words:20"></p>
 	</a>
-	<div ng-if="cardData.streamTitle && appState.sourceName == 'homestream'" class="item item-footer">
+	<div ng-if="cardData.streamTitle && appState.sourceName == 'mobileapphomestream'" class="item item-footer">
 		<a data-ng-if="cardData.showSourceLink" ng-href="{{cardData.url}}" >
 			{{cardData.streamTitle}}
 		</a>

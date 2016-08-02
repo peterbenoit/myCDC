@@ -15,13 +15,6 @@
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
-    "cordova-plugin-console",
-    "cordova-plugin-device",
-    "cordova-plugin-inappbrowser",
-    "cordova-plugin-screen-orientation",
-    "cordova-plugin-splashscreen",
-    "cordova-plugin-whitelist",
-    "cordova-plugin-x-socialsharing",
     "cordova-plugin-x-toast",
     {
       "locator": "https://github.com/Adobe-Marketing-Cloud/mobile-services.git",
@@ -29,10 +22,17 @@
     },
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-network-information"
+    "cordova-plugin-network-information",
+    "cordova-plugin-device",
+    "cordova-plugin-inappbrowser",
+    "cordova-plugin-screen-orientation",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-x-socialsharing",
+    "cordova-plugin-console"
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "android",
+    "ios"
   ]
 }

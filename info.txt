@@ -1,3 +1,9 @@
+Node version: v6.2.2
+
+Cordova version: 6.3.0
+
+Config.xml file: 
+
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.mycdc951183" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>CDC</name>
@@ -20,7 +26,6 @@
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
-    <preference name="Orientation" value="all" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
@@ -79,3 +84,53 @@
     <preference name="xwalkMultipleApk" value="true" />
     <preference name="deployment-target" value="8.0" />
 </widget>
+
+
+Plugins: 
+
+adobe-mobile-services,cordova-plugin-console,cordova-plugin-device,cordova-plugin-globalization,cordova-plugin-inappbrowser,cordova-plugin-network-information,cordova-plugin-splashscreen,cordova-plugin-statusbar,cordova-plugin-whitelist,cordova-plugin-x-socialsharing,cordova-plugin-x-toast,ionic-plugin-keyboard,net.yoik.cordova.plugins.screenorientation
+
+Android platform:
+
+Available Android targets:
+----------
+id: 1 or "android-23"
+     Name: Android 6.0
+     Type: Platform
+     API level: 23
+     Revision: 3
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in, AndroidWearRound, AndroidWearRound360x360, AndroidWearRound400x400, AndroidWearRound480x480, AndroidWearRoundChin320x290, AndroidWearRoundChin320x300, AndroidWearRoundChin360x325, AndroidWearRoundChin360x326, AndroidWearRoundChin360x330, AndroidWearSquare, AndroidWearSquare240x240, AndroidWearSquare320x320, AndroidWearRound, AndroidWearRound360x360, AndroidWearRound400x400, AndroidWearRound480x480, AndroidWearRoundChin320x290, AndroidWearRoundChin320x300, AndroidWearRoundChin360x325, AndroidWearRoundChin360x326, AndroidWearRoundChin360x330, AndroidWearSquare, AndroidWearSquare240x240, AndroidWearSquare320x320
+ Tag/ABIs : android-tv/armeabi-v7a, android-tv/x86, android-wear/armeabi-v7a, android-wear/x86, default/armeabi-v7a, default/x86, default/x86_64, google_apis/armeabi-v7a, google_apis/x86, google_apis/x86_64
+----------
+id: 2 or "android-24"
+     Name: Android 7.0
+     Type: Platform
+     API level: 24
+     Revision: 2
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in, AndroidWearRound, AndroidWearRound360x360, AndroidWearRound400x400, AndroidWearRound480x480, AndroidWearRoundChin320x290, AndroidWearRoundChin320x300, AndroidWearRoundChin360x325, AndroidWearRoundChin360x326, AndroidWearRoundChin360x330, AndroidWearSquare, AndroidWearSquare240x240, AndroidWearSquare320x320, AndroidWearRound, AndroidWearRound360x360, AndroidWearRound400x400, AndroidWearRound480x480, AndroidWearRoundChin320x290, AndroidWearRoundChin320x300, AndroidWearRoundChin360x325, AndroidWearRoundChin360x326, AndroidWearRoundChin360x330, AndroidWearSquare, AndroidWearSquare240x240, AndroidWearSquare320x320
+ Tag/ABIs : android-tv/x86, android-wear/armeabi-v7a, android-wear/x86, default/x86, default/x86_64
+----------
+id: 3 or "Google Inc.:Google APIs:23"
+     Name: Google APIs
+     Type: Add-On
+     Vendor: Google Inc.
+     Revision: 1
+     Description: Android + Google APIs
+     Based on Android 6.0 (API level 23)
+     Libraries:
+      * com.android.future.usb.accessory (usb.jar)
+          API for USB Accessories
+      * com.google.android.media.effects (effects.jar)
+          Collection of video effects
+      * com.google.android.maps (maps.jar)
+          API for Google Maps
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in, AndroidWearRound, AndroidWearRound360x360, AndroidWearRound400x400, AndroidWearRound480x480, AndroidWearRoundChin320x290, AndroidWearRoundChin320x300, AndroidWearRoundChin360x325, AndroidWearRoundChin360x326, AndroidWearRoundChin360x330, AndroidWearSquare, AndroidWearSquare240x240, AndroidWearSquare320x320, AndroidWearRound, AndroidWearRound360x360, AndroidWearRound400x400, AndroidWearRound480x480, AndroidWearRoundChin320x290, AndroidWearRoundChin320x300, AndroidWearRoundChin360x325, AndroidWearRoundChin360x326, AndroidWearRoundChin360x330, AndroidWearSquare, AndroidWearSquare240x240, AndroidWearSquare320x320
+ Tag/ABIs : no ABIs.
+
+
+
+iOS platform:
+
+Xcode 7.3.1
+Build version 7D1014
+

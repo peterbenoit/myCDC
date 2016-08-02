@@ -33,21 +33,24 @@ angular.module('mycdc', [
     rs.detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/';
     rs.remoteCheck = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
     rs.sourcesUrl = 'json/sources.json';
+    rs.deviceInfo = Device.Info();
 
     // WINDOW.OPEN SHOULD USE INAPPBROWSER
-    document.addEventListener('deviceready', onDeviceReady, false);
+    document.addEventListener("deviceready", hideStatusBar, false);
+    document.addEventListener("deviceready", getLangPreference, false);
+    document.addEventListener("deviceready", setNetworkListeners, false);
 
-    function onDeviceReady() {
-
-        //window.open = cordova.InAppBrowser.open;
-
+    function setNetworkListeners() {
+        console.log('Executing setNetworkListeners');
         // BROWSER STATE DEFAULTS
         rs.type = $cordovaNetwork.getNetwork();
         rs.isOnline = $cordovaNetwork.isOnline();
         rs.stateClasses = {};
 
+        var deregisterOnlineListener, deregisterOfflineListener;
+
         // LISTEN FOR ONLINE EVENT
-        rs.$on('$cordovaNetwork:online', function(event, networkState) {
+        deregisterOnlineListener = rs.$on('$cordovaNetwork:online', function(event, networkState) {
             // WERE WE PREVIOUSLY ONLINE?
             if (!rs.isOnline) {
 
@@ -57,7 +60,7 @@ angular.module('mycdc', [
         });
 
         // LISTEN FOR OFFLINE EVENT
-        rs.$on('$cordovaNetwork:offline', function(event, networkState) {
+        deregisterOfflineListener = rs.$on('$cordovaNetwork:offline', function(event, networkState) {
 
             // WERE WE PREVIOUSLY ONLINE?
             if (rs.isOnline) {
@@ -73,16 +76,38 @@ angular.module('mycdc', [
             }
         });
 
+        // LISTEN FOR IFRAME CONTENT READY
+        // deregisterIframeLoadListener = rs.$on('source-detail-load-complete', function(event, data) {
+
+        //     $ionicPopup.alert({
+        //         title: 'Load Complete',
+        //         template: 'You should be able to attache here, yes?'
+        //     });
+        // });
+
+
+
+    //     rs.$on('$destroy', function() {
+    //         deregisterOnlineListener();
+    //         deregisterOfflineListener();
+    //         deregisterIframeLoadListener();
+    //     });
+    }
+
+    function getLangPreference() {
+        console.log('Executing getLangPreference');
         navigator.globalization.getPreferredLanguage(function (langPref) {
             rs.lang = langPref;
             alert(rs.lang);
         }, console.log);
+    }
 
-        //$cordovaStatusbar.hide();
-        //$ionicPlatform.fullScreen();
-
+    function hideStatusBar() {
+        console.log('Executing hideStatusBar');
         ionic.Platform.fullScreen();
         if (window.StatusBar) {
+            // org.apache.cordova.statusbar required
+            StatusBar.styleDefault();
             return StatusBar.hide();
         }
     }
@@ -90,113 +115,8 @@ angular.module('mycdc', [
     // NOTE: THIS ONLY WORKS ON A DEVICE
     // frameready() is called in embed.html, when the iframe has loaded
     window.frameready = iFrameReady;
-    // MOVED TO service.js AS iFrameReady - ONCE TESTED ON DEVICES, WE WILL REMOVE THIS COMMENT
-    // window.frameready = function() {
-    //     var iframe = $('#contentframe');
-    //         anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
-
-    //         //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
-
-    //     $rootScope.$broadcast('source-detail-load-complete');
-
-    //     // I RECENTLY COMMENTED THIS OUT AS IT WAS BREAKING THE APP (NOT JUST IFRAME CONTENT)
-    //     if (window.device) {
-    //       //body = iframe.contents().find('body');
-    //       //$(body).unbind("scroll");
-    //       //$(body).unbind("click");
-    //     }
-    //     /*if (body.length) {
-    //         body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
-    //     }*/
-
-    //     // Capture any anchors clicked in the iframe document
-    //     anchors.on('click', function(e) {
-    //         e.preventDefault();
-
-    //         //alert('CLICK');
-
-    //         var framesrc = iframe.attr('src'),
-    //             href = $(this).attr('href'),
-    //             anchor = document.createElement('a');
-    //             anchor.href = href;
-    //         var anchorhost = anchor.hostname;
-
-    //         // create an anchor with the href set to the iframe src to fetch the domain & protocol
-    //         // WARN: cannot assume "http" || "www.cdc.gov"
-    //         var frameanchor = document.createElement('a');
-    //             frameanchor.href = framesrc;
-    //         var framehost = frameanchor.hostname,
-    //             frameprotocol = frameanchor.protocol;
-
-    //         // if this anchor doesn't have a hostname
-    //         if (anchorhost === '') {
-    //             href = frameprotocol + '//' + framehost + href;
-    //         }
-
-    //         window.open(href, '_system');
-    //     });
-    // };
 
     rs.log = AppUtil.log;
-
-    // rs.$viewHistory = {
-    //     histories: { root: { historyId: 'root', parentHistoryId: null, stack: [], cursor: -1 } },
-    //     backView: null,
-    //     forwardView: null,
-    //     currentView: null,
-    //     disabledRegistrableTagNames: []
-    // };
-
-    $ionicPlatform.ready(function() {
-        if (window.device) {
-            window.open = cordova.InAppBrowser.open;
-        }
-
-        // Open any EXTERNAL link with InAppBrowser Plugin
-        $(document).on('click', '[href^=http], [href^=https]', function(e) {
-            e.preventDefault();
-
-            var t = $(this),
-                href = t.attr('href');
-
-            AppUtil.log('Opening ', href);
-
-            var ref = window.open(href, '_system');
-
-            //TODO: not working in iOS
-            // if (href.indexOf('cdc.gov') >= 0) {
-            //     ref.addEventListener('loadstop', function() {
-            //         ref.insertCSS({
-            //             code: 'header#header { display: none; }footer#footer {display:none} div#socialMediaShareContainer.dd {display:none}'
-            //         });
-            //     });
-            // }
-        });
-
-        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-        // for form inputs)
-        if (window.cordova && window.cordova.plugins.Keyboard) {
-            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            cordova.plugins.Keyboard.disableScroll(true);
-        }
-
-        if (window.StatusBar) {
-            // org.apache.cordova.statusbar required
-            StatusBar.styleDefault();
-        }
-
-        /**
-         * https://github.com/gbenvenuti/cordova-plugin-screen-orientation
-         */
-        if (window.cordova && window.cordova.plugins) {
-            // lock all devices into portrait mode, except for tablets
-            screen.lockOrientation('portrait');
-            if (ionic.Platform.isIPad() || ionic.Platform.is('androidtablet')) {
-                // unlocking screen for orientation change
-                screen.unlockOrientation();
-            }
-        }
-    });
 
     // TODO: Neither of these methods work in scope anymore, and I don't know why!
     rs.viewOnCDC = function() {
@@ -254,7 +174,7 @@ angular.module('mycdc', [
     //         text : 'Home'
     //     };
 
-    //     if ($stateParams.sourceName != 'homestream') {
+    //     if ($stateParams.sourceName != 'mobileapphomestream') {
     //         if (rs.aryHistory.length > 0) {
 
     //             // GET THIS STATE
@@ -274,7 +194,7 @@ angular.module('mycdc', [
     //             }
 
     //             if (objLastState.hasOwnProperty('sourceName')) {
-    //                 if (objLastState.sourceName == 'homestream') {
+    //                 if (objLastState.sourceName == 'mobileapphomestream') {
     //                     objReturn.icon = 'ion-chevron-left';
     //                     objReturn.text = 'Home';
     //                 } else {
@@ -288,7 +208,7 @@ angular.module('mycdc', [
     // };
 
     rs.goHome = function() {
-        $state.go('app.sourceIndex', { sourceName: 'homestream' });
+        $state.go('app.sourceIndex', { sourceName: 'mobileapphomestream' });
     };
 
     // APP INIT
@@ -373,13 +293,13 @@ angular.module('mycdc', [
 
                 // SET DEFAULT APP STATE TO GLOBALS
                 Globals.set('appState', {
-                    sourceName : 'homestream',
+                    sourceName : 'mobileapphomestream',
                     sourceDetail : ''
                 });
 
                 // GO TO THE HOME STREAM ON LOAD / RELOAD
                 $state.go('app.sourceIndex', {
-                    sourceName : 'homestream',
+                    sourceName : 'mobileapphomestream',
                     sourceDetail : ''
                 })
 
@@ -472,5 +392,5 @@ angular.module('mycdc', [
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/source/homestream');
+    $urlRouterProvider.otherwise('/app/source/mobileapphomestream');
 });

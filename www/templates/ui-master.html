@@ -2,11 +2,11 @@
 <ion-nav-bar class="bar-positive" align-title="center" animation="no-animation">
 
     <ion-nav-buttons side="left">
-        <a ng-if="global.appState.sourceName === 'homestream'" alt="Settings Button" class="button button-clear" ui-sref="app.sources"><i class="icon ion-navicon"></i></a>
-        <!-- <a ng-if="global.appState.sourceName !== 'homestream' && (!global.appState.sourceDetail || !global.appState.sourceDetail.length)" alt="Home Button" class="button button-clear" ui-sref="app.sourceIndex({ sourceName : 'homestream', sourceDetail : '' })"><i class="ion-arrow-left-c"></i> Back</a> -->
-        <a ng-if="global.appState.sourceName !== 'homestream'" alt="Back Button" class="button button-clear" ng-click="global.goBack()"> <i class="ion-arrow-left-c"></i> {{global.langLabels.nav.back}}</a>
+        <a ng-if="global.appState.sourceName === 'mobileapphomestream'" alt="Settings Button" class="button button-clear" ui-sref="app.sources"><i class="icon ion-navicon"></i></a>
+        <!-- <a ng-if="global.appState.sourceName !== 'mobileapphomestream' && (!global.appState.sourceDetail || !global.appState.sourceDetail.length)" alt="Home Button" class="button button-clear" ui-sref="app.sourceIndex({ sourceName : 'mobileapphomestream', sourceDetail : '' })"><i class="ion-arrow-left-c"></i> Back</a> -->
+        <a ng-if="global.appState.sourceName !== 'mobileapphomestream'" alt="Back Button" class="button button-clear" ng-click="global.goBack()"> <i class="ion-arrow-left-c"></i> {{global.langLabels.nav.back}}</a>
 
-        <!-- <a data-ng-if="global.appState.sourceName === 'homestream'" alt="Settings Button" class="button button-clear" ui-sref="app.navigation"><i class="icon ion-navicon"></i></a> -->
+        <!-- <a data-ng-if="global.appState.sourceName === 'mobileapphomestream'" alt="Settings Button" class="button button-clear" ui-sref="app.navigation"><i class="icon ion-navicon"></i></a> -->
     </ion-nav-buttons>
 
     <ion-nav-buttons side="right">
