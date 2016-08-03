@@ -1,7 +1,7 @@
 UI_DETAIL_VIDEO
 <ion-view class="detail-video">
     <ion-nav-buttons side="right">
-        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
+        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="Share.share()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
     </ion-nav-buttons>
     <ion-content class="iframe-wrapper">
         <!-- <div class="video-paging">
@@ -23,7 +23,7 @@ UI_DETAIL_VIDEO
         </div>
         <div class="border">
             <p class="padding">
-                <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
+                <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>
             </p>
         </div>
     </ion-content>

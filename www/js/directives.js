@@ -126,7 +126,7 @@ angular.module('mycdc.directives', [])
                 });
             }
         }],
-        template: '<div ng-include="stream.getStreamTemplate()"></div>'
+        template: '<div data-on-swipe-right="swipe(\'prev\')" data-on-swipe-left="swipe(\'next\')" ng-include="stream.getStreamTemplate()"></div>'
    }
 })
 .directive("uiStreamCard", function($rootScope, $timeout, $state, $stateParams, Globals) {
@@ -353,7 +353,8 @@ angular.module('mycdc.directives', [])
         scope : {
             detailCard : '=',
             sourceMeta : '=',
-            appState : '='
+            appState : '=',
+            swipe: '='
         },
         controller : function ($rootScope, $scope) {
 
@@ -393,6 +394,10 @@ angular.module('mycdc.directives', [])
                 }
             });
 
+            $scope.openLink = $rootScope.openLink;
+            $scope.Share = $rootScope.Share;
+            $scope.swipe = $rootScope.swipe;
+
             $scope.trustedContent = function() {
                 var sanitizedHtml = null;
                 try {
@@ -422,18 +427,6 @@ angular.module('mycdc.directives', [])
                     // CALL SPECIFIED PROCESSOR
                     switch (objDetailCard.detailType) {
                         case 'iframe':
-
-                            console.log('deviceInfo', $rootScope.deviceInfo);
-                            // if ($rootScope.deviceInfo.isRealMobileDevice() || true) {
-                            //     // TRIGGER INITIAL LOADER DISPLAY
-                            //     $ionicLoading.show({
-                            //         content: 'Loading',
-                            //         animation: 'fade-in',
-                            //         showBackdrop: true,
-                            //         maxWidth: 200,
-                            //         showDelay: 0
-                            //     });
-                            // }
 
                             // SIMPLY SET DETAIL DATA FROM CURRENT CARD
                             detailData = objDetailCard;
@@ -553,7 +546,7 @@ angular.module('mycdc.directives', [])
                 return defer.promise;
             };
         },
-        template: '<div ng-include="uiDetailTemplateUrl"></div>'
+        template: '<div data-on-swipe-right="swipe(\'prev\')" data-on-swipe-left="swipe(\'next\')" ng-include="uiDetailTemplateUrl"></div>'
     }
 })
 .directive("splitBy", function($rootScope) {

@@ -116,9 +116,6 @@ dfn {
 #ui-master .border .padding {
   padding-right: 0;
 }
-#ui-master .border .padding button:first-child {
-  margin-right: 10px;
-}
 #ui-master .button.button-positive .activated {
   background-color: #075290;
 }
@@ -174,6 +171,10 @@ dfn {
 #ui-master .ui-list-view,
 #ui-master .ui-detail-view {
   position: relative;
+}
+#ui-master .ui-list-view .article,
+#ui-master .ui-detail-view .article {
+  padding-bottom: 45px;
 }
 #ui-master .ui-list-view {
   background-color: #f8f8f8;
@@ -305,7 +306,7 @@ dfn {
 #ui-master .ui-default.ui-tablet-portrait .ui-detail-view,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-detail-view,
 #ui-master .ui-images.ui-tablet-portrait .ui-detail-view {
-  height: 95vh;
+  height: 100vh;
 }
 #ui-master .ui-default.ui-tablet-portrait .ui-detail-view .item-image,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-detail-view .item-image,
@@ -402,4 +403,7 @@ dfn {
 .bar-positive .button.button-icon {
   padding-right: 2px;
   padding-left: 2px;
+}
+.has-header .scroll .scroll-footer {
+  margin-bottom: 45px;
 }

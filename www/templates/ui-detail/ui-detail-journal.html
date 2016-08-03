@@ -1,19 +1,18 @@
 <ion-view class="detail-journals">
     <ion-nav-buttons side="right">
-        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': devicePlatform === 'Android','ion-ios-upload-outline': devicePlatform !== 'Android'}"></button>
+        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="Share.share()" ng-class="{'ion-android-share-alt': devicePlatform === 'Android','ion-ios-upload-outline': devicePlatform !== 'Android'}"></button>
     </ion-nav-buttons>
     <!-- {{detailData}} -->
     <ion-content>
         <div class="padding data journal civ">
-            <h1 class="title" ng-bind-html="detailCard.name"></h1>
+            <!-- <h1 class="title" ng-bind-html="detailCard.name"></h1> -->
             <div class="datepub">{{detailCard.datePublished}}</div>
             <div class="source">{{detailCard.streamTitle}}</div>
-            <div id="contentarea" ng-bind-html="trustedContent()"></div>
             <div id="contentarea" ng-bind-html="detailData.content"></div>
             <div class="border">
                 <p class="padding">
-                    <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
-                    <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
+                    <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>
+                    <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="openLink(detailData.sourceUrl, 'html')">View on CDC.gov</button>
                 </p>
             </div>
         </div>

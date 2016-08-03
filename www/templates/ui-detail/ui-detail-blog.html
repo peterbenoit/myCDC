@@ -1,6 +1,6 @@
 <ion-view class="detail-blog">
     <ion-nav-buttons side="right">
-        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="shareData()" ng-class="{'ion-android-share-alt': devicePlatform === 'Android','ion-ios-upload-outline': devicePlatform !== 'Android'}"></button>
+        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="Share.share()" ng-class="{'ion-android-share-alt': devicePlatform === 'Android','ion-ios-upload-outline': devicePlatform !== 'Android'}"></button>
     </ion-nav-buttons>
     <ion-content>
         <div class="padding data journal civ">
@@ -11,8 +11,8 @@
             <div id="contentarea" ng-bind-html="detailData.content"></div>
             <div class="border">
                 <p class="padding">
-                    <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="shareData()">Share</button>
-                    <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC.gov</button>
+                    <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>
+                    <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="openLink(detailData.sourceUrl, 'html')">View on CDC.gov</button>
                 </p>
             </div>
         </div>

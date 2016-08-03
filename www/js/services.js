@@ -149,6 +149,16 @@ angular.module('mycdc.services', ['ionic'])
             options.method = options.method || objSettings.apiDefaults.method;
             options.timeout = options.timeout || objSettings.apiDefaults.timeout;
             return $http(options);
+        },
+        openLink: function (url, link_type) {
+            if (ionic.Platform.isAndroid()) {
+                if (link_type) {
+                    if (link_type.toLowerCase() !== 'html') {
+                        url = 'https://docs.google.com/viewer?url=' + encodeURIComponent(url);
+                    }
+                }
+            }
+            var ref = window.open(url, '_blank', 'location=no');
         }
     };
 
@@ -530,7 +540,7 @@ angular.module('mycdc.services', ['ionic'])
             var sourceIndex = Globals.get('sourceIndex');
 
             if (!sourceDetailId) {
-                if (sourceIndex.length) {
+                if (sourceIndex && sourceIndex.length) {
                     arySourceInfo = [sourceIndex[0]];
                 }
             } else {
@@ -724,7 +734,7 @@ angular.module('mycdc.services', ['ionic'])
     return function() {
 
         // ONLY TRY TO PROCESS IFRAME LOGIC IF WE ARE REALLY ON A MOBILE DEVICE (OTHERWISE WE WONT HAVE PERMISSION & ERROR WILL OCCUR)
-        if($rootScope.deviceInfo.isRealMobileDevice()){
+        if($rootScope.deviceInfo.isRealMobileDevice()) {
 
             var iframe = $('#contentframe');
             anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
@@ -732,15 +742,12 @@ angular.module('mycdc.services', ['ionic'])
             //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
 
             // I RECENTLY COMMENTED THIS OUT AS IT WAS BREAKING THE APP (NOT JUST IFRAME CONTENT)
-            if (!realDevice) {
-                body = iframe.contents().find('body');
-                $(body).unbind("scroll");
-                //$(body).unbind("click");
-            }
+            body = iframe.contents().find('body');
+            $(body).unbind("scroll");
+            //$(body).unbind("click");
 
-            if (body.length) {
-                body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
-            }
+            // INLINE STYLES TO HIDE UNWANTED CHROME
+            body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
 
             // Capture any anchors clicked in the iframe document
             anchors.on('click', function(e) {
@@ -770,11 +777,9 @@ angular.module('mycdc.services', ['ionic'])
 
                 window.open(href, '_system');
             });
-
         }
-        $timeout(function() {
-            $rootScope.$broadcast('loading-complete');
-        });
+
+        $rootScope.$broadcast('loading-complete');
     };
 }])
 
@@ -790,4 +795,93 @@ angular.module('mycdc.services', ['ionic'])
             }
         }
     }
-});
+})
+
+.factory('Share', ["$cordovaSocialSharing", function($cordovaSocialSharing) {
+
+    return {
+
+        // Share via native share sheet
+        share : function (message, subject, file, link) {
+             ionic.Platform.ready(function () {
+                $cordovaSocialSharing.share(message, subject, file, link).then(function(result) {
+                  // Success!
+                }, function(err) {
+                  // An error occured. Show a message to the user
+                })
+            })
+        },
+
+        shareViaTwitter : function () {
+             ionic.Platform.ready(function () {
+                $cordovaSocialSharing.shareViaTwitter(message, image, link).then(function(result) {
+                  // Success!
+                }, function(err) {
+                  // An error occurred. Show a message to the user
+                })
+            })
+        },
+
+        shareViaWhatsApp : function (message, image, link) {
+             ionic.Platform.ready(function () {
+                $cordovaSocialSharing.shareViaWhatsApp(message, image, link).then(function(result) {
+                  // Success!
+                }, function(err) {
+                  // An error occurred. Show a message to the user
+                })
+            })
+        },
+
+        shareViaFacebook : function (message, image, link) {
+             ionic.Platform.ready(function () {
+                $cordovaSocialSharing.shareViaFacebook(message, image, link).then(function(result) {
+                  // Success!
+                }, function(err) {
+                  // An error occurred. Show a message to the user
+                })
+            })
+        },
+
+        // access multiple numbers in a string like: '0612345678,0687654321'
+        shareViaSMS : function (message, number) {
+             ionic.Platform.ready(function () {
+                $cordovaSocialSharing.shareViaSMS(message, number).then(function(result) {
+                  // Success!
+                }, function(err) {
+                  // An error occurred. Show a message to the user
+                })
+            })
+        },
+
+        // toArr, ccArr and bccArr must be an array, file can be either null, string or array
+        shareViaEmail : function (message, subject, toArr, ccArr, bccArr, file) {
+             ionic.Platform.ready(function () {
+                $cordovaSocialSharing.shareViaEmail(message, subject, toArr, ccArr, bccArr, file).then(function(result) {
+                  // Success!
+                }, function(err) {
+                  // An error occurred. Show a message to the user
+                })
+            })
+        },
+
+        canShareVia : function (socialType, message, image, link) {
+             ionic.Platform.ready(function () {
+                $cordovaSocialSharing.canShareVia(socialType, message, image, link).then(function(result) {
+                  // Success!
+                }, function(err) {
+                  // An error occurred. Show a message to the user
+                })
+            })
+        },
+
+        canShareViaEmail : function () {
+             ionic.Platform.ready(function () {
+                $cordovaSocialSharing.canShareViaEmail().then(function(result) {
+                  // Yes we can
+                }, function(err) {
+                  // Nope
+                })
+            })
+        }
+    }
+}]);

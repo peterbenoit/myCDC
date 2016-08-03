@@ -42,7 +42,7 @@ angular.module('mycdc.controllers', [])
 
         blnIncrement = blnIncrement || false;
 
-        var sourceName = appState.sourceName || 'homestream';
+        var sourceName = appState.sourceName || 'mobileapphomestream';
 
         if (!_this.pageTracker) {
             _this.pageTracker = {};
@@ -139,7 +139,7 @@ angular.module('mycdc.controllers', [])
                     // NO CARD LIST: ALERT USER, THEN REDIRECT
                     var noCardList = $ionicPopup.alert({title: 'Content not available.', template: 'Sorry, we could not seem to find that content. Please try again.'});
                     noCardList.then(function() {
-                        $state.go('app.sourceIndex', {sourceName: 'homestream'});
+                        $state.go('app.sourceIndex', {sourceName: 'mobileapphomestream'});
                     });
                 }
             }
@@ -171,7 +171,7 @@ angular.module('mycdc.controllers', [])
                 if (blnRefresh || false) {
 
                     // GET THE SOURCE LIST
-                    _this.getSourceListLocal().then(function(d){
+                    _this.getSourceListLocal().then(function(currentSourceCardList){
 
                         var applicationData = Globals.get('applicationData');
 
@@ -185,18 +185,36 @@ angular.module('mycdc.controllers', [])
                         _this.templateMap = applicationData.templateMap;
                         _this.sourceMetaMap = applicationData.sourceMetaMap;
                         _this.langLabels = applicationData.langLabels;
+                        //_this.currentSourceCardList = currentSourceCardList;
 
                         // STATE SPECIFIC SOURCE & DETAIL DATA
                         _this.appState = Globals.get('appState');
                         _this.sourceMeta = Globals.get('sourceMeta'); // THIS IS ALREADY SET BY THE ctrlInitProcess - so we dont need to call it from DataSourceInterface again
-                        _this.detailCard = DataSourceInterface.getSourceCard();
+
+                        var haveSourceDetailId = (_this.appState.sourceDetail && _this.appState.sourceDetail.length);
+
+                        console.log('currentSourceCardList', currentSourceCardList);
+
+                        if (!haveSourceDetailId && currentSourceCardList && currentSourceCardList.length == 1) {
+                            _this.appState.sourceDetail = currentSourceCardList[0].id;
+                            Globals.set('appState', _this.appState);
+                            haveSourceDetailId = (_this.appState.sourceDetail && _this.appState.sourceDetail.length);
+                        }
+
+                        if (haveSourceDetailId) {
+                            _this.detailCard = DataSourceInterface.getSourceCard();
+                            _this.swipeMode = (currentSourceCardList.length == 1) ? 'source' : 'detail';
+                        } else {
+                            _this.detailCard = null;
+                            _this.swipeMode = 'source';
+                        }
 
                         // PASS / SAVE STATE SPECIFIC DETAILS NOT ALREADY SAVED TO GLOBALS
                         Globals.set('detailCard', _this.detailCard);
                         Globals.set('screenState', _this.screenState);
 
                         // RESOLVE PROMISE
-                        defer.resolve(d);
+                        defer.resolve(currentSourceCardList);
                     });
                 }
             });
@@ -213,6 +231,92 @@ angular.module('mycdc.controllers', [])
     _this.isActiveCard = function (cardData) {
         //console.log(cardData);
     };
+
+    $rootScope.swipe = function (direction) {
+        if (_this.swipeMode == 'source') {
+            _this.changeSource(direction);
+        }
+
+        if (_this.swipeMode == 'detail') {
+            _this.changeDetail(direction);
+        }
+    };
+
+    _this.changeSource = function (direction) {
+
+        if (direction) {
+
+            // PROVIDE INDEX LOOKUP FOR SWIPE FUNCTIONALITY
+            var sourceListIdxRef = [];
+            angular.forEach(_this.sourceList, function (objSource, intIndex) {
+                if (_this.sourceFilters[objSource.typeIdentifier][objSource.feedIdentifier].isEnabled) {
+                    sourceListIdxRef.push(objSource.feedIdentifier);
+                }
+            });
+
+            console.log('sourceListIdxRef', sourceListIdxRef);
+
+            if (sourceListIdxRef && sourceListIdxRef.length) {
+                var tmp = {};
+                tmp.currMax = sourceListIdxRef.length - 1;
+                tmp.currSource = _this.appState.sourceName;
+                tmp.currIdx = sourceListIdxRef.indexOf(tmp.currSource) || 0;
+                tmp.newIdx = null;
+                tmp.newSource = null;
+
+                if (direction == 'next') {
+                    tmp.newIdx = ((tmp.currIdx + 1) > tmp.currMax) ? 0 : tmp.currIdx + 1;
+                }
+
+                if (direction == 'prev') {
+                    tmp.newIdx = (tmp.currIdx <= 0) ? tmp.currMax : tmp.currIdx - 1;
+                }
+
+                if (tmp.newIdx !== null) {
+                    tmp.newSource = sourceListIdxRef[tmp.newIdx];
+                }
+
+                $timeout(function(){
+                    $state.go('app.sourceIndex', {sourceName: tmp.newSource, sourceDetail : ''});
+                });
+            }
+        }
+    };
+
+    _this.changeDetail = function (direction) {
+        // DISABLING THIS AS I RECALL WE DITCHED THIS CONCEPT
+        if (false && direction && _this.datas && !!_this.datas.length && _this.datas.length > 1) {
+            var cardListIdxRef = [];
+            angular.forEach(_this.datas, function (objCard, intIndex) {
+                cardListIdxRef.push(objCard.id);
+            });
+
+            if (cardListIdxRef && cardListIdxRef.length) {
+                var tmp = {};
+                tmp.currMax = cardListIdxRef.length - 1;
+                tmp.currCardId = _this.appState.sourceDetail || "";
+                tmp.currIdx = cardListIdxRef.indexOf(tmp.currCardId) || 0;
+                tmp.newIdx = null;
+                tmp.newCardId = null;
+
+                if (direction == 'next') {
+                    tmp.newIdx = ((tmp.currIdx + 1) > tmp.currMax) ? 0 : tmp.currIdx + 1;
+                }
+
+                if (direction == 'prev') {
+                    tmp.newIdx = (tmp.currIdx <= 0) ? tmp.currMax : tmp.currIdx - 1;
+                }
+
+                if (tmp.newIdx !== null) {
+                    tmp.newCardId = cardListIdxRef[tmp.newIdx];
+                }
+
+                $timeout(function(){
+                    $state.go('app.sourceDetail', {sourceName: _this.appState.sourceName, sourceDetail : tmp.newCardId});
+                });
+            }
+        }
+    }
 
     _this.activeClasses = {
         "true" : "is-active",
@@ -243,16 +347,6 @@ angular.module('mycdc.controllers', [])
             console.log('listener for matchMedia fired');
             onScreenChange();
         });
-
-        // window.addEventListener("orientationchange", function () {
-        //     console.log('listener for orientationchange fired');
-        //     onScreenChange();
-        // }, true);
-
-        // window.addEventListener("resize", function () {
-        //     console.log('listener for resize fired');
-        //     onScreenChange();
-        // }, false);
     }
 
     var listeners = {};
@@ -356,7 +450,6 @@ angular.module('mycdc.controllers', [])
                 console.log('Cards (in the Home Stream) Template:', debugTemplates.homeCard);
                 console.log('Article / Detail Template:', debugTemplates.detail);
                 console.log('***** /Template Hierarchy ******');
-
                 console.log('State of Globals:', $rootScope.runtime);
 
                 // WAIT FOR DIGESTS TO COMPLETE
@@ -428,7 +521,9 @@ angular.module('mycdc.controllers', [])
     };
 
     // HIDE THE LOADER
-    $rootScope.$broadcast('loading-complete');
+    $timeout(function() {
+        $rootScope.$broadcast('loading-complete');
+    }, 250);
 })
 
 /**

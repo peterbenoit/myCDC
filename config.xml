@@ -12,6 +12,7 @@
     <access origin="*://*.pushwoosh.com" />
     <access origin="*" />
     <allow-navigation href="*://*.cdc.gov/*" />
+    <allow-navigation href="*://*.youtube.com/*" />
     <allow-intent href="*://*.cdc.gov/*" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />

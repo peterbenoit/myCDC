@@ -3,13 +3,13 @@
  *  TODO: info.plist NSAppTransportSecurity key needs to be corrected before deployment
  */
 angular.module('mycdc', [
+    'ngCordova',
     'ionic',
     'ngSanitize',
     'mycdc.controllers',
     'mycdc.directives',
     'mycdc.filters',
     'mycdc.services',
-    'ngCordova',
     'ngAnimate',
     'angular.filter',
     'ngIOS9UIWebViewPatch'
@@ -20,7 +20,7 @@ angular.module('mycdc', [
  * @param  {[type]}
  * @return {[type]}
  */
-.run(function($ionicPlatform, $cordovaStatusbar, $rootScope, $location, $ionicBody, $timeout, $window, Device, iFrameReady, DataSourceInterface, AppUtil, Globals, $state, $stateParams, $cordovaNetwork, $ionicPopup, $http, $filter, $sce, $q) {
+ .run(function($cordovaNetwork, $cordovaStatusbar, $ionicPlatform, $ionicBody, $ionicPopup, $state, $stateParams, $rootScope, $location, $timeout, $window, $http, $filter, $sce, $q, Device, iFrameReady, DataSourceInterface, AppUtil, Globals, Share) {
 
     var rs = $rootScope,
         href = window.location.href,
@@ -34,6 +34,7 @@ angular.module('mycdc', [
     rs.remoteCheck = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
     rs.sourcesUrl = 'json/sources.json';
     rs.deviceInfo = Device.Info();
+    rs.Share = Share;
 
     // WINDOW.OPEN SHOULD USE INAPPBROWSER
     document.addEventListener("deviceready", hideStatusBar, false);
@@ -76,28 +77,17 @@ angular.module('mycdc', [
             }
         });
 
-        // LISTEN FOR IFRAME CONTENT READY
-        // deregisterIframeLoadListener = rs.$on('source-detail-load-complete', function(event, data) {
-
-        //     $ionicPopup.alert({
-        //         title: 'Load Complete',
-        //         template: 'You should be able to attache here, yes?'
-        //     });
-        // });
-
-
-
-    //     rs.$on('$destroy', function() {
-    //         deregisterOnlineListener();
-    //         deregisterOfflineListener();
-    //         deregisterIframeLoadListener();
-    //     });
+        rs.$on('$destroy', function() {
+            deregisterOnlineListener();
+            deregisterOfflineListener();
+        });
     }
 
     function getLangPreference() {
         console.log('Executing getLangPreference');
         navigator.globalization.getPreferredLanguage(function (langPref) {
             rs.lang = langPref;
+            alert('Language!');
             alert(rs.lang);
         }, console.log);
     }
@@ -117,18 +107,7 @@ angular.module('mycdc', [
     window.frameready = iFrameReady;
 
     rs.log = AppUtil.log;
-
-    // TODO: Neither of these methods work in scope anymore, and I don't know why!
-    rs.viewOnCDC = function() {
-        alert('THIS NEEDS WIRED UP');
-        // window.open($scope.data.sourceUrl, '_system');
-    };
-
-    rs.shareData = function() {
-        alert('THIS NEEDS WIRED UP');
-    };
-
-
+    rs.openLink = AppUtil.openLink;
 
     rs.getSourceCard = function(sourceDetailId) {
 
@@ -164,48 +143,6 @@ angular.module('mycdc', [
         // ELSE RETURN FALSE
         return false;
     };
-
-    // rs.backButtonDisplay = function (appState) {
-
-    //     appState = appState || AppUtil.getAppState();
-
-    //     var objReturn = {
-    //         icon : 'ion-chevron-left',
-    //         text : 'Home'
-    //     };
-
-    //     if ($stateParams.sourceName != 'mobileapphomestream') {
-    //         if (rs.aryHistory.length > 0) {
-
-    //             // GET THIS STATE
-    //             var objThisState = {
-    //                 sourceName : $stateParams.sourceName || false ,
-    //                 sourceDetail : appState.sourceDetail || false
-    //             };
-
-    //             // GET THE LAST STATE IN HISTORY
-    //             var objLastState = rs.aryHistory[rs.aryHistory.length - 1] || {};
-
-    //             // ARE THEY THE SAME?
-    //             if (objLastState.sourceName == objThisState.sourceName && objLastState.sourceDetail == objThisState.sourceDetail) {
-
-    //                 // YES, GO BACK ONE MORE
-    //                 objLastState = rs.aryHistory[rs.aryHistory.length - 2] || {};
-    //             }
-
-    //             if (objLastState.hasOwnProperty('sourceName')) {
-    //                 if (objLastState.sourceName == 'mobileapphomestream') {
-    //                     objReturn.icon = 'ion-chevron-left';
-    //                     objReturn.text = 'Home';
-    //                 } else {
-    //                     objReturn.icon = 'ion-chevron-left';
-    //                     objReturn.text = 'Back';
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     return objReturn;
-    // };
 
     rs.goHome = function() {
         $state.go('app.sourceIndex', { sourceName: 'mobileapphomestream' });
@@ -333,9 +270,10 @@ angular.module('mycdc', [
  */
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-    $ionicConfigProvider.views.maxCache(0);
     $ionicConfigProvider.navBar.transition('none'); // keep the navbar from animating
+    $ionicConfigProvider.views.maxCache(0);
     $ionicConfigProvider.views.transition('fade');
+    $ionicConfigProvider.views.swipeBackEnabled(false);
 
     // http://forum.ionicframework.com/t/scrolling-lags-significantly-on-android/28727/2
     if (!ionic.Platform.isIOS()) {
