@@ -17,25 +17,31 @@ angular.module('mycdc.controllers', [])
     };
 
     _this.menuPopOver = function() {
-        var runonce = window.localStorage.getItem('myCDC-runonce');
 
-        if (runonce === null) {
-            window.localStorage['myCDC-runonce'] = true;
+        $timeout(function() {
+            var objSettingsHint = AppUtil.getSimpleLocalStore('settingsHint');
 
-            // Show the popover only on first load
-            $ionicPopover.fromTemplateUrl('templates/popover.html', {
-                scope: $scope,
-            }).then(function(popover) {
-                $scope.popover = popover;
-                var element = document.getElementById('navicon');
-                popover.show(element);
+            // DETECT FIRST RUN
+            var settingsHint = objSettingsHint.get();
 
-                _this.closePopover = function() {
-                    $scope.popover.hide();
-                    $scope.popover.remove();
-                };
-            });
-        }
+            if (_this.isHomeSource && !settingsHint) {
+
+                // Show the popover only on first load
+                $ionicPopover.fromTemplateUrl('templates/popover.html', {
+                    scope: $scope,
+                }).then(function(popover) {
+                    $scope.popover = popover;
+                    var element = document.getElementById('settings-menu');
+                    popover.show(element);
+
+                    $scope.closePopover = function() {
+                        objSettingsHint.set(true);
+                        $scope.popover.hide();
+                        $scope.popover.remove();
+                    };
+                });
+            }
+        }, 250);
     };
 
     _this.getPageState = function (appState, blnIncrement) {
@@ -190,6 +196,7 @@ angular.module('mycdc.controllers', [])
                         // STATE SPECIFIC SOURCE & DETAIL DATA
                         _this.appState = Globals.get('appState');
                         _this.sourceMeta = Globals.get('sourceMeta'); // THIS IS ALREADY SET BY THE ctrlInitProcess - so we dont need to call it from DataSourceInterface again
+                        _this.isHomeSource = (!!_this.sourceMeta.isHomeFeed);
 
                         var haveSourceDetailId = (_this.appState.sourceDetail && _this.appState.sourceDetail.length);
 
@@ -532,37 +539,9 @@ angular.module('mycdc.controllers', [])
  * @return {[type]}
  * Note: This should really be AppCtrl and HomeCtrl saved for the home stream
  */
-.controller('SourceListCtrl', function($rootScope, $state, $stateParams, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate, Globals) {
+.controller('SourceListCtrl', function($rootScope, $state, $stateParams, $ionicPlatform, $ionicPopup, $ionicLoading, $sce, $cordovaNetwork, $ionicScrollDelegate, Globals, AppUtil) {
 
     var _this = this;
-
-    // This little bit of nonsense checks for the existance of the runonce localstorage key and if the Home Controller has already loaded (it loads 2x for some reason)
-    // If they key doesn't exist, and the Home Controller hasn't already loaded, load the modal
-    $ionicPlatform.ready(function() {
-
-        // DETECT FIRST RUN
-        var runonce = window.localStorage.getItem('runonce');
-
-        // NAV MENU POP OVER (SHOW ON FIRST LOAD)
-        if (runonce === null && $rootScope.HomeCtrlLoad === false) {
-            $rootScope.HomeCtrlLoad = true;
-            window.localStorage['runonce'] = true;
-            // Show the popover only on first load
-            $ionicPopover.fromTemplateUrl('templates/popover.html', {
-                scope: this,
-            }).then(function(popover) {
-                this.popover = popover;
-                var element = document.getElementById('navicon');
-                popover.show(element);
-
-                this.closePopover = function() {
-                    this.popover.hide();
-                    this.popover.remove();
-                };
-            });
-        }
-    });
-
     var applicationData = Globals.get('applicationData');
 
     // ASSIGNMENT OF MEMORY VARIABLES TO SCOPE FOR ACCESS IN TEMPLATES

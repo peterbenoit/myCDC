@@ -30,6 +30,7 @@
         }
     ],
     "sourceList": [{
+        "isHomeFeed" : true,
         "feedIdentifier": "mobileapphomestream",
         "typeIdentifier": "articles",
         "title": "Home",
@@ -237,7 +238,7 @@
         "getContentBy": "url",
         "processors": ["cardTemplateInjector"],
         "detailType": "iframe",
-        "showByDefault": true,
+        "showByDefault": false,
         "showSourceLink" : true,
         "cardImages": true,
         "filterLocked": false,

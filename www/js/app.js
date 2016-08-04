@@ -35,6 +35,7 @@ angular.module('mycdc', [
     rs.sourcesUrl = 'json/sources.json';
     rs.deviceInfo = Device.Info();
     rs.Share = Share;
+    rs.supportedLanguages = ['en','es'];
 
     // WINDOW.OPEN SHOULD USE INAPPBROWSER
     document.addEventListener("deviceready", hideStatusBar, false);
@@ -83,13 +84,30 @@ angular.module('mycdc', [
         });
     }
 
+    function setLangPref (langCode) {
+        // SET PASSED LANG CODE
+        AppUtil.getSimpleLocalStore('langPref').set(langCode);
+        // RETURN PASSED VALUE FOR SIMPLICITY
+        return langCode;
+    }
+
     function getLangPreference() {
         console.log('Executing getLangPreference');
-        navigator.globalization.getPreferredLanguage(function (langPref) {
-            rs.lang = langPref;
-            alert('Language!');
-            alert(rs.lang);
-        }, console.log);
+
+        // GET LOCAL STORAGE OBJECT FOR LANGUAGE
+        var objLangStore = AppUtil.getSimpleLocalStore('langPref');
+
+        // RETURN CURRENT VALUE
+        rs.lang = objLangStore.get();
+
+        // IF NULL - GET DEFAULT FROM DEVICE
+        if (!rs.lang) {
+            navigator.globalization.getPreferredLanguage(function (langPref) {
+
+                // SET LANG TO LOCAL STORAGE & ROOTSCOPE
+                rs.lang = setLangPref(langPref.value.split('-')[0]);
+            }, console.log /* LOG ERROR ON FAIL */);
+        }
     }
 
     function hideStatusBar() {
