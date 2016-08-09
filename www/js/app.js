@@ -43,7 +43,7 @@ angular.module('mycdc', [
     document.addEventListener("deviceready", setNetworkListeners, false);
 
     function setNetworkListeners() {
-        console.log('Executing setNetworkListeners');
+        //console.log('Executing setNetworkListeners');
         // BROWSER STATE DEFAULTS
         rs.type = $cordovaNetwork.getNetwork();
         rs.isOnline = $cordovaNetwork.isOnline();
@@ -92,7 +92,7 @@ angular.module('mycdc', [
     }
 
     function getLangPreference() {
-        console.log('Executing getLangPreference');
+        //console.log('Executing getLangPreference');
 
         // GET LOCAL STORAGE OBJECT FOR LANGUAGE
         var objLangStore = AppUtil.getSimpleLocalStore('langPref');
@@ -111,7 +111,7 @@ angular.module('mycdc', [
     }
 
     function hideStatusBar() {
-        console.log('Executing hideStatusBar');
+        //console.log('Executing hideStatusBar');
         ionic.Platform.fullScreen();
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
