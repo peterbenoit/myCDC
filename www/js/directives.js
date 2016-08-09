@@ -640,27 +640,36 @@ angular.module('mycdc.directives', [])
 })
 .directive('managecontent', function($timeout, $rootScope) {
     return {
-        link: function(scope, element, attrs) {
-            $timeout(function() {
-                //
-                $('.contentarea').find('table').each(function() {
-                    $(this).replaceWith('<img src="http://www.ikea.com/PIAimages/0106117_PE253936_S5.JPG">');
-                });
-                // KILL HASH LINKS (THESE WOULD INTERFERE WITH APP NAVIGATION)
-                $('.contentarea').find('a[href^=#]').each(function() {
-                    $(this).replaceWith('<span>' + $(this).text() + '</span>');
-                });
-                // LINK HANLERS
-                $('.contentarea').find('a[href^="//"]').each(function() {
-                    var currHref = $(this).attr("href");
-                    currHref = "https:" + currHref;
+        link: {
+            post : function(scope, element, attrs) {
+                $timeout(function() {
+                    //
+                    $('.contentarea').find('table').each(function() {
+                        $(this).replaceWith('<img src="http://www.ikea.com/PIAimages/0106117_PE253936_S5.JPG">');
+                    });
+                    // KILL HASH LINKS (THESE WOULD INTERFERE WITH APP NAVIGATION)
+                    $('.contentarea').find('a[href^=#]').each(function() {
+                        $(this).replaceWith('<span>' + $(this).text() + '</span>');
+                    });
+                    // LINK HANLERS
+                    $('.contentarea').find('a[href^="//"]').each(function() {
+                        console.log('assigned');
+                        var currHref = $(this).attr("href");
+                        currHref = "https:" + currHref;
 
-                    $(this).click(function(e) {
-                        $rootScope.openLink(currHref);
-                        return false;
-                    })
-                });
-            });
+                        $(this).click(function(e) {
+                            $rootScope.openLink(currHref);
+                            return false;
+                        })
+                    });
+                    $('.contentarea .module-typeC a').each(function () {
+                        $(this).css({
+                            "display": "inline-block",
+                            "padding": "0 5px"
+                        });
+                    });
+                }, 0);
+            }
         }
     };
-});
+})
