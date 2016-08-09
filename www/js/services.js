@@ -151,6 +151,53 @@ angular.module('mycdc.services', ['ionic'])
             return $http(options);
         },
         openLink: function (url, link_type) {
+
+            /* OPTIONS FOR WINDOW OPEN (FROM: https://www.npmjs.com/package/cordova-plugin-inappbrowser)
+
+            The options string must not contain any blank space, and each feature's name/value pairs must be separated by a comma. Feature names are case insensitive. All platforms support the value below:
+
+            // ALL PLATFORMS
+            location: Set to yes or no to turn the InAppBrowser's location bar on or off.
+
+            ANDROID ONLY:
+
+            hidden: set to yes to create the browser and load the page, but not show it. The loadstop event fires when loading is complete. Omit or set to no (default) to have the browser open and load normally.
+            clearcache: set to yes to have the browser's cookie cache cleared before the new window is opened
+            clearsessioncache: set to yes to have the session cookie cache cleared before the new window is opened
+            zoom: set to yes to show Android browser's zoom controls, set to no to hide them. Default value is yes.
+            hardwareback: set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history. If there is no previous page, the InAppBrowser will close. The default value is yes, so you must set it to no if you want the back button to simply close the InAppBrowser.
+            mediaPlaybackRequiresUserAction: Set to yes to prevent HTML5 audio or video from autoplaying (defaults to no).
+
+            IOS ONLY:
+
+            closebuttoncaption: set to a string to use as the Done button's caption. Note that you need to localize this value yourself.
+            disallowoverscroll: Set to yes or no (default is no). Turns on/off the UIWebViewBounce property.
+            hidden: set to yes to create the browser and load the page, but not show it. The loadstop event fires when loading is complete. Omit or set to no (default) to have the browser open and load normally.
+            clearcache: set to yes to have the browser's cookie cache cleared before the new window is opened
+            clearsessioncache: set to yes to have the session cookie cache cleared before the new window is opened
+            toolbar: set to yes or no to turn the toolbar on or off for the InAppBrowser (defaults to yes)
+            enableViewportScale: Set to yes or no to prevent viewport scaling through a meta tag (defaults to no).
+            mediaPlaybackRequiresUserAction: Set to yes to prevent HTML5 audio or video from autoplaying (defaults to no).
+            allowInlineMediaPlayback: Set to yes or no to allow in-line HTML5 media playback, displaying within the browser window rather than a device-specific playback interface. The HTML's video element must also include the webkit-playsinline attribute (defaults to no)
+            keyboardDisplayRequiresUserAction: Set to yes or no to open the keyboard when form elements receive focus via JavaScript's focus() call (defaults to yes).
+            suppressesIncrementalRendering: Set to yes or no to wait until all new view content is received before being rendered (defaults to no).
+            presentationstyle: Set to pagesheet, formsheet or fullscreen to set the presentation style (defaults to fullscreen).
+            transitionstyle: Set to fliphorizontal, crossdissolve or coververtical to set the transition style (defaults to coververtical).
+            toolbarposition: Set to top or bottom (default is bottom). Causes the toolbar to be at the top or bottom of the window.
+
+            WINDOWS ONLY:
+            hidden: set to yes to create the browser and load the page, but not show it. The loadstop event fires when loading is complete. Omit or set to no (default) to have the browser open and load normally.
+            fullscreen: set to yes to create the browser control without a border around it. Please note that if location=no is also specified, there will be no control presented to user to close IAB window.
+            */
+
+            var options = [
+                'location=no',
+                'toolbarposition=top',
+                'enableViewportScale=yes',
+                //'transitionstyle=fliphorizontal',
+                'closebuttoncaption=Back to CDC'
+            ];
+
             if (ionic.Platform.isAndroid()) {
                 if (link_type) {
                     if (link_type.toLowerCase() !== 'html') {
@@ -158,7 +205,7 @@ angular.module('mycdc.services', ['ionic'])
                     }
                 }
             }
-            var ref = window.open(url, '_blank', 'location=no');
+            var ref = window.open(url, '_blank', options.join());
         }
     };
 
