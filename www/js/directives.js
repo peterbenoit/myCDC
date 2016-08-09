@@ -361,11 +361,11 @@ angular.module('mycdc.directives', [])
             // SET DEFAULT TEMPLATE
             $scope.uiDetailTemplateUrl = 'templates/ui-common/ui-loader.html';
 
-            console.log('$scope.detailCard', $scope.detailCard);
+            // console.log('$scope.detailCard', $scope.detailCard);
 
             // LOAD DETAILS ON DETAIL CARD SET / SELECTION
             $scope.$watch('detailCard', function() {
-                console.log('detailCard', $scope.detailCard);
+                // console.log('detailCard', $scope.detailCard);
                 if ($scope.detailCard) {
 
                     // SHOW LOADER
@@ -472,7 +472,7 @@ angular.module('mycdc.directives', [])
                             // GET SOURCE DETAIL DATA
                             getSourceDetail(objDetailCard, false).then(function(d){
 
-                                console.log('detailData', d);
+                                // console.log('detailData', d);
 
                                 // NORMALIZE DATA BY SOURCE SPECS?
                                 detailData = d;
@@ -501,7 +501,7 @@ angular.module('mycdc.directives', [])
                                 // NORMALIZE DATA BY SOURCE SPECS?
                                 detailData = d;
 
-                                console.log('detailData: ', d);
+                                // console.log('detailData: ', d);
 
                                 // RESOLVE PROMISE WITH THIS DATA
                                 defer.resolve(detailData);
@@ -515,10 +515,15 @@ angular.module('mycdc.directives', [])
 
                 defer.promise.then(function(detailData){
 
-                    console.log('detailData', detailData);
+                    // console.log('detailData', detailData);
 
                     if (detailData.content) {
-                         detailData.content = $sce.getTrustedHtml(detailData.content);
+                        //detailData.content = detailData.content.replace(new RegExp('href=\"\/\/', 'g'), 'href="https://');
+                        //detailData.content = detailData.content.replace(new RegExp('href=', 'g'), 'href="#" data-ng-click="alert()" data-href=');
+                        //ng-click="openLink(detailData.sourceUrl, 'html')"
+
+                        // console.log(detailData.content)
+                        detailData.content = $sce.getTrustedHtml(detailData.content);
                     }
 
                     // SAVE DETAIL DATA TO SCOPE
@@ -633,15 +638,27 @@ angular.module('mycdc.directives', [])
         }
     };
 })
-.directive('managecontent', function($timeout) {
+.directive('managecontent', function($timeout, $rootScope) {
     return {
         link: function(scope, element, attrs) {
             $timeout(function() {
+                //
                 $('.contentarea').find('table').each(function() {
                     $(this).replaceWith('<img src="http://www.ikea.com/PIAimages/0106117_PE253936_S5.JPG">');
                 });
+                // KILL HASH LINKS (THESE WOULD INTERFERE WITH APP NAVIGATION)
                 $('.contentarea').find('a[href^=#]').each(function() {
                     $(this).replaceWith('<span>' + $(this).text() + '</span>');
+                });
+                // LINK HANLERS
+                $('.contentarea').find('a[href^="//"]').each(function() {
+                    var currHref = $(this).attr("href");
+                    currHref = "https:" + currHref;
+
+                    $(this).click(function(e) {
+                        $rootScope.openLink(currHref);
+                        return false;
+                    })
                 });
             });
         }
