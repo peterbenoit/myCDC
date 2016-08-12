@@ -69,10 +69,6 @@ angular.module('mycdc.controllers', [])
         return _this.page;
     };
 
-    _this.goBack = function () {
-        $ionicHistory.goBack();
-    };
-
     _this.appState = function () {
         return Globals.get('appState');
     };
@@ -168,6 +164,85 @@ angular.module('mycdc.controllers', [])
             // GET / REFRESH SCREEN STATE
             Device.ScreenState().then(function (objScreen) {
                 _this.screenState = objScreen;
+                // _this.screenSizes = (function () {
+
+                //     var srcWidth, srcHeight, objScreenClasses, appStyleConfig;
+
+                //     console.log('objScreen', objScreen)
+
+                //     appStyleConfig = {
+                //         cardWidthPadding : 5,
+                //         detailWidthPadding : 0,
+                //         topBarHeight : 45,
+                //         bottomBarHeigth : 45
+                //     };
+
+                //     if (objScreen.viewType == 'tablet') {
+                //         srcWidth = (objScreen.width > objScreen.height) ? objScreen.width : objScreen.height;
+                //         srcHeight = (objScreen.width != srcWidth) ? objScreen.width : objScreen.height;
+                //     } else {
+                //         srcWidth = (objScreen.width > objScreen.height) ? objScreen.width : objScreen.height;
+                //         srcHeight = (objScreen.width != srcWidth) ? objScreen.width : objScreen.height;
+                //     }
+
+                //     objScreenClasses = {
+                //         universal : {
+                //             card : {
+                //                 width : srcWidth,
+                //                 height : 'auto'
+                //             },
+                //             cardImage : {
+                //                 width : (srcWidth - appStyleConfig.cardWidthPadding),
+                //                 height : null
+                //             },
+                //             detailMedia : {
+                //                 width : (srcWidth - appStyleConfig.cardWidthPadding),
+                //                 height : null
+                //             },
+                //             detailIframe : {
+                //                 hasHeader : {
+                //                     width : srcWidth,
+                //                     height : srcHeight - appStyleConfig.topBarHeight
+                //                 },
+                //                 hasHeaderAndFooter : {
+                //                     width : srcWidth,
+                //                     height : srcHeight - (appStyleConfig.topBarHeight + appStyleConfig.bottomBarHeigth)
+                //                 },
+                //             }
+                //         }
+                //         tabletPortrait : {
+                //             card : {
+                //                 width : Math.floor(srcHeight / 2),
+                //                 height : 'auto'
+                //             },
+                //             cardImage : {
+                //                 width : null,
+                //                 height : null
+                //             },
+                //             detailMedia : {
+                //                 width : null,
+                //                 height : null
+                //             },
+                //             detailIframe : {
+                //                 hasHeader : {
+                //                     width : srcHeight,
+                //                     height : srcWidth - appStyleConfig.topBarHeight
+                //                 },
+                //                 hasHeaderAndFooter : {
+                //                     width : srcWidth,
+                //                     height : srcHeight - (appStyleConfig.topBarHeight + appStyleConfig.bottomBarHeigth)
+                //                 },
+                //             }
+                //         },
+                //         tabletLandscape : {
+                //             media : {
+
+                //             }
+                //         }
+                //     }
+
+                //     return objScreenClasses;
+                // } ());
             });
 
             // APP INIT WILL REFRESH SOURCE LIST
@@ -184,6 +259,7 @@ angular.module('mycdc.controllers', [])
                         // ASSIGNMENT OF MEMORY VARIABLES TO SCOPE FOR ACCESS IN TEMPLATES
 
                         // GLOBAL SOURCE DATA
+                        //_this.homeStream = applicationData.homeStream;
                         _this.sourceList = applicationData.sourceList;
                         _this.sourceTypes = applicationData.sourceTypes;
                         _this.sourceFilters = applicationData.sourceFilters;
@@ -191,7 +267,6 @@ angular.module('mycdc.controllers', [])
                         _this.templateMap = applicationData.templateMap;
                         _this.sourceMetaMap = applicationData.sourceMetaMap;
                         _this.langLabels = applicationData.langLabels;
-                        //_this.currentSourceCardList = currentSourceCardList;
 
                         // STATE SPECIFIC SOURCE & DETAIL DATA
                         _this.appState = Globals.get('appState');
@@ -199,8 +274,6 @@ angular.module('mycdc.controllers', [])
                         _this.isHomeSource = (!!_this.sourceMeta.isHomeFeed);
 
                         var haveSourceDetailId = (_this.appState.sourceDetail && _this.appState.sourceDetail.length);
-
-                        console.log('currentSourceCardList', currentSourceCardList);
 
                         if (!haveSourceDetailId && currentSourceCardList && currentSourceCardList.length == 1) {
                             _this.appState.sourceDetail = currentSourceCardList[0].id;
@@ -219,6 +292,9 @@ angular.module('mycdc.controllers', [])
                         // PASS / SAVE STATE SPECIFIC DETAILS NOT ALREADY SAVED TO GLOBALS
                         Globals.set('detailCard', _this.detailCard);
                         Globals.set('screenState', _this.screenState);
+
+                        // SET TITLE
+                        //$ionicNavBarDelegate.title(_this.sourceMeta.title);
 
                         // RESOLVE PROMISE
                         defer.resolve(currentSourceCardList);
@@ -249,9 +325,17 @@ angular.module('mycdc.controllers', [])
         }
     };
 
-    _this.changeSource = function (direction) {
+    _this.goBack = function () {
+        $ionicHistory.goBack();
+    };
 
-        if (direction) {
+    _this.goHome = function () {
+        $state.go('app.sourceIndex', {sourceName: $rootScope.homeStream});
+    };
+
+    _this.changeSource = function (direction) {
+        // DISABLING THIS AS I RECALL WE DITCHED THIS CONCEPT
+        if (direction && false) {
 
             // PROVIDE INDEX LOOKUP FOR SWIPE FUNCTIONALITY
             var sourceListIdxRef = [];
@@ -291,8 +375,8 @@ angular.module('mycdc.controllers', [])
     };
 
     _this.changeDetail = function (direction) {
-        // DISABLING THIS AS I RECALL WE DITCHED THIS CONCEPT
-        if (false && direction && _this.datas && !!_this.datas.length && _this.datas.length > 1) {
+
+        if (direction && _this.datas && !!_this.datas.length && _this.datas.length > 1) {
             var cardListIdxRef = [];
             angular.forEach(_this.datas, function (objCard, intIndex) {
                 cardListIdxRef.push(objCard.id);
@@ -332,6 +416,7 @@ angular.module('mycdc.controllers', [])
 
     // SET TITLE
     //$ionicNavBarDelegate.title('<img src="img/logo.png" />');
+    $ionicNavBarDelegate.title('<img src="img/cdc_logo.png" />');
 
     // SETUP LISTENERS FOR ORIENTATION CHANGE
 
@@ -398,6 +483,7 @@ angular.module('mycdc.controllers', [])
             //alert(data.stateParams.sourceDetail);
 
             Globals.set('appState', data.stateParams);
+            _this.appState = data.stateParams;
 
             $timeout(function (){
 
@@ -432,15 +518,10 @@ angular.module('mycdc.controllers', [])
 
         $timeout(function () {
 
-            var appState, updateIsReal;
+            _this.appState = Globals.get('appState');
+            var updateIsReal = true;
 
-            appState = Globals.get('appState');
-            updateIsReal = true;
-
-            console.log('2B... @@@@@@@@@@@@@@@@@@@@@@ APP STATE', appState);
-
-            // SET TITLE
-            $ionicNavBarDelegate.title('<span><img src="img/logo.png" /></span>');
+            console.log('2B... @@@@@@@@@@@@@@@@@@@@@@ APP STATE', _this.appState);
 
             // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
             _this.ctrlInit(updateIsReal).then(function(d){
@@ -465,10 +546,8 @@ angular.module('mycdc.controllers', [])
                     // SHOW POPOVER ON FIRST RUN (OR AFTER CLEAR)
                     _this.menuPopOver();
 
-                    var appState = Globals.get('appState');
-
                     // HIDE THE LOADER IF WE ARE LOOKING AT TEH STREAM VIEW (LOAD HIDE IS DELEGATED TO DETAIL LOADER FOR DETAIL VIEWS)
-                    if (!(appState.sourceDetail && appState.sourceDetail.length)) {
+                    if (!(_this.appState.sourceDetail && _this.appState.sourceDetail.length)) {
                         $rootScope.$broadcast('loading-complete');
                         //alert('stream mode?');
                     } else {
@@ -492,7 +571,13 @@ angular.module('mycdc.controllers', [])
     });
 }])
 
-.controller('CommonSourceCtrl', ['$scope', function ($scope) {
+.controller('CommonSourceCtrl', ['$scope', '$stateParams', function ($scope, $stateParams) {
+
+    $scope.global.sourceHome = function () {
+        $state.go('app.sourceIndex', {sourceName: $stateParams.sourceName});
+    }
+
+    $scope.global.showSourceHome = !!($stateParams.sourceName && ($stateParams.sourceName !== $scope.homeStream) && ($stateParams.sourceDetail && $stateParams.sourceDetail.length));
 
 }])
 
