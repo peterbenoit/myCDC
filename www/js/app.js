@@ -20,287 +20,265 @@ angular.module('mycdc', [
  * @param  {[type]}
  * @return {[type]}
  */
- .run(function($cordovaNetwork, $cordovaStatusbar, $cordovaGlobalization, $ionicPlatform, $ionicPopup, $state, $rootScope, $filter, $q, Device, iFrameReady, DataSourceInterface, AppUtil, Globals, Share) {
-    $ionicPlatform.ready(function () {
+ .run(function($cordovaNetwork, $cordovaStatusbar, $ionicPlatform, $ionicBody, $ionicPopup, $state, $stateParams, $rootScope, $location, $timeout, $window, $http, $filter, $sce, $q, Device, iFrameReady, DataSourceInterface, AppUtil, Globals, Share) {
 
-        var rs = $rootScope,
-            href = window.location.href,
-            dataProcessor,
-            appInitialized;
+    var rs = $rootScope,
+        href = window.location.href,
+        dataProcessor,
+        appInitialized;
 
-        // APP CONTAINER
-        rs.app = {};
-        rs.detailUrl = 'https://tools.cdc.gov/api/v2/resources/media/';
-        //rs.detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/';
-        rs.remoteCheck = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
-        rs.deviceInfo = Device.Info();
-        rs.Share = Share;
-        rs.supportedLanguages = ['en','es'];
+    // APP CONTAINER
+    rs.app = {};
+    rs.detailUrl = 'https://tools.cdc.gov/api/v2/resources/media/';
+    rs.detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/';
+    rs.remoteCheck = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
+    rs.sourcesUrl = 'json/sources.json';
+    rs.deviceInfo = Device.Info();
+    rs.Share = Share;
+    rs.supportedLanguages = ['en','es'];
 
-        // WINDOW.OPEN SHOULD USE INAPPBROWSER
-        if (rs.deviceInfo.isRealDevice) {
-            document.addEventListener("deviceready", hideStatusBar, false);
-            document.addEventListener("deviceready", getLangPreference, false);
-            document.addEventListener("deviceready", setNetworkListeners, false);
+    // WINDOW.OPEN SHOULD USE INAPPBROWSER
+    document.addEventListener("deviceready", hideStatusBar, false);
+    document.addEventListener("deviceready", getLangPreference, false);
+    document.addEventListener("deviceready", setNetworkListeners, false);
+
+    function setNetworkListeners() {
+        //console.log('Executing setNetworkListeners');
+        // BROWSER STATE DEFAULTS
+        rs.type = $cordovaNetwork.getNetwork();
+        rs.isOnline = $cordovaNetwork.isOnline();
+        rs.stateClasses = {};
+
+        var deregisterOnlineListener, deregisterOfflineListener;
+
+        // LISTEN FOR ONLINE EVENT
+        deregisterOnlineListener = rs.$on('$cordovaNetwork:online', function(event, networkState) {
+            // WERE WE PREVIOUSLY ONLINE?
+            if (!rs.isOnline) {
+
+                // NO, UPDATE TO OFFLINE
+                rs.isOnline = true;
+            }
+        });
+
+        // LISTEN FOR OFFLINE EVENT
+        deregisterOfflineListener = rs.$on('$cordovaNetwork:offline', function(event, networkState) {
+
+            // WERE WE PREVIOUSLY ONLINE?
+            if (rs.isOnline) {
+
+                // NO, UPDATE TO OFFLINE
+                rs.isOnline = false;
+
+                // ALERT USER WE HAVE GONE OFFLINE
+                $ionicPopup.alert({
+                    title: 'No Connection',
+                    template: 'You do not appear to be connected to the Internet. Some content you have downloaded may be out of date.'
+                });
+            }
+        });
+
+        rs.$on('$destroy', function() {
+            deregisterOnlineListener();
+            deregisterOfflineListener();
+        });
+    }
+
+    function setLangPref (langCode) {
+        // SET PASSED LANG CODE
+        AppUtil.getSimpleLocalStore('langPref').set(langCode);
+        // RETURN PASSED VALUE FOR SIMPLICITY
+        return langCode;
+    }
+
+    function getLangPreference() {
+        //console.log('Executing getLangPreference');
+
+        // GET LOCAL STORAGE OBJECT FOR LANGUAGE
+        var objLangStore = AppUtil.getSimpleLocalStore('langPref');
+
+        // RETURN CURRENT VALUE
+        rs.lang = objLangStore.get();
+
+        // IF NULL - GET DEFAULT FROM DEVICE
+        if (!rs.lang) {
+            navigator.globalization.getPreferredLanguage(function (langPref) {
+
+                // SET LANG TO LOCAL STORAGE & ROOTSCOPE
+                rs.lang = setLangPref(langPref.value.split('-')[0]);
+            }, console.log /* LOG ERROR ON FAIL */);
+        }
+    }
+
+    function hideStatusBar() {
+        //console.log('Executing hideStatusBar');
+        ionic.Platform.fullScreen();
+        if (window.StatusBar) {
+            // org.apache.cordova.statusbar required
+            StatusBar.styleDefault();
+            return StatusBar.hide();
+        }
+    }
+
+    // NOTE: THIS ONLY WORKS ON A DEVICE
+    // frameready() is called in embed.html, when the iframe has loaded
+    window.frameready = iFrameReady;
+
+    rs.log = AppUtil.log;
+    rs.openLink = AppUtil.openLink;
+
+    rs.getSourceCard = function(sourceDetailId) {
+
+        var arySourceInfo = [];
+
+        // GET OR DEFAULT SOURCE DETAIL ID
+        sourceDetailId = Globals.get('appState').sourceDetail || "";
+
+        var sourceIndex = Globals.get('sourceIndex');
+
+        if (!sourceDetailId) {
+            if (sourceIndex.length) {
+                arySourceInfo = [sourceIndex[0]];
+            }
         } else {
-            rs.lang = 'en'; // BROWSER EQUIV - getLangPreference
-            rs.isOnline = true; // BROWSER EQUIV - setNetworkListeners
+            // FILTER HERE
+            arySourceInfo = $filter('filter')(sourceIndex, {
+                id: sourceDetailId
+            }) || [];
         }
 
-        function setNetworkListeners() {
-            //console.log('Executing setNetworkListeners');
-            // BROWSER STATE DEFAULTS
-            rs.type = $cordovaNetwork.getNetwork();
-            rs.isOnline = $cordovaNetwork.isOnline();
-            rs.stateClasses = {};
+        // DID WE FIND IT?
+        if (arySourceInfo.length === 1) {
 
-            var deregisterOnlineListener, deregisterOfflineListener;
+            // THIS FLAGS THE CURRENT CARD AS ACTIVE
+            // DOING SO MAKES IT THE FIRST IN THE SCROLLER LIST
+            arySourceInfo[0].isCurrent = 1;
 
-            // LISTEN FOR ONLINE EVENT
-            deregisterOnlineListener = rs.$on('$cordovaNetwork:online', function(event, networkState) {
-                // WERE WE PREVIOUSLY ONLINE?
-                if (!rs.isOnline) {
+            // RETURN IT
+            return arySourceInfo[0];
+        }
 
-                    // NO, UPDATE TO OFFLINE
-                    rs.isOnline = true;
-                }
+        // ELSE RETURN FALSE
+        return false;
+    };
+
+    rs.goHome = function() {
+        $state.go('app.sourceIndex', { sourceName: 'mobileapphomestream' });
+    };
+
+    // APP INIT
+    rs.appInit = function(blnRefresh) {
+
+        var defer = $q.defer();
+
+        // REFRESH REQUESTED?
+        if (blnRefresh || !appInitialized || false) {
+
+            // GET & SAVE THE SOURCE LIST PROMISE
+            var sourceListPromise = AppUtil.remoteApi({
+                url: rs.sourcesUrl
             });
 
-            // LISTEN FOR OFFLINE EVENT
-            deregisterOfflineListener = rs.$on('$cordovaNetwork:offline', function(event, networkState) {
+            // CONTINUE PROMISE CHAIN
+            sourceListPromise.then(function(d) {
 
-                // WERE WE PREVIOUSLY ONLINE?
-                if (rs.isOnline) {
+                var objApp = {
+                    // SET SOURCE TYPES
+                    sourceTypes: d.data.sourceTypes,
+                    // SET SOURCE LIST
+                    sourceList: d.data.sourceList,
+                    // Language Specific Labels (Enclosed in the sources json file)
+                    langLabels : d.data.langLabels,
+                    // DEFAULT EMPTY OBJECTS
+                    templateMap: {},
+                    sourceMetaMap: {},
+                    sourceFilters: {},
+                    sourceFilterLocks: {}
+                };
 
-                    // NO, UPDATE TO OFFLINE
-                    rs.isOnline = false;
+                window.objApp = objApp;
+                console.warn('objApp is available as window.objApp for ease of development only... DO NOT REFERENCE AS window.objApp IN CODE')
 
-                    // ALERT USER WE HAVE GONE OFFLINE
-                    $ionicPopup.alert({
-                        title: 'No Connection',
-                        template: 'You do not appear to be connected to the Internet. Some content you have downloaded may be out of date.'
-                    });
-                }
-            });
+                // LOCALS
+                var i = objApp.sourceList.length,
+                    objReturn = {},
+                    objSrc;
 
-            rs.$on('$destroy', function() {
-                deregisterOnlineListener();
-                deregisterOfflineListener();
-            });
-        }
+                // LOOP SOURCES
+                while (i--) {
 
-        function setLangPref (langCode) {
-            // SET PASSED LANG CODE
-            AppUtil.getSimpleLocalStore('langPref').set(langCode);
-            // RETURN PASSED VALUE FOR SIMPLICITY
-            return langCode;
-        }
+                    // GET THE CURRENT SOURCE
+                    objSrc = objApp.sourceList[i];
 
-        function getLangPreference() {
+                    // MAP TEMPLATES TO feedIDENTIFIER
+                    objApp.templateMap[objSrc.feedIdentifier] = objSrc.templates;
 
-            // GET LOCAL STORAGE OBJECT FOR LANGUAGE
-            var strLang, objLangStore = AppUtil.getSimpleLocalStore('langPref');
+                    // MAP TEMPLATES TO feedIDENTIFIER
+                    objApp.sourceMetaMap[objSrc.feedIdentifier] = objSrc;
 
-            // RETURN CURRENT VALUE
-            strLang = objLangStore.get();
-
-            // IF NULL - GET DEFAULT FROM DEVICE
-            if (!strLang) {
-
-                if (navigator.globalization) {
-                    navigator.globalization.getPreferredLanguage(function (langPref) {
-
-                        // SET LANG TO LOCAL STORAGE & ROOTSCOPE
-                        strLang = setLangPref(langPref.value.split('-')[0]);
-                    }, console.log /* LOG ERROR ON FAIL */);
-                } else {
-                    strLang = 'en';
-                }
-            }
-
-            rs.lang = strLang;
-
-            return strLang;
-        }
-
-        function hideStatusBar() {
-            //console.log('Executing hideStatusBar');
-            ionic.Platform.fullScreen();
-            if (window.StatusBar) {
-                // org.apache.cordova.statusbar required
-                StatusBar.styleDefault();
-                return StatusBar.hide();
-            }
-        }
-
-        // NOTE: THIS ONLY WORKS ON A DEVICE
-        // frameready() is called in embed.html, when the iframe has loaded
-        window.frameready = iFrameReady;
-
-        rs.log = AppUtil.log;
-        rs.openLink = AppUtil.openLink;
-
-        rs.getSourceCard = function(sourceDetailId) {
-
-            var arySourceInfo = [];
-
-            // GET OR DEFAULT SOURCE DETAIL ID
-            sourceDetailId = Globals.get('appState').sourceDetail || "";
-
-            var sourceIndex = Globals.get('sourceIndex');
-
-            if (!sourceDetailId) {
-                if (sourceIndex.length) {
-                    arySourceInfo = [sourceIndex[0]];
-                }
-            } else {
-                // FILTER HERE
-                arySourceInfo = $filter('filter')(sourceIndex, {
-                    id: sourceDetailId
-                }) || [];
-            }
-
-            // DID WE FIND IT?
-            if (arySourceInfo.length === 1) {
-
-                // THIS FLAGS THE CURRENT CARD AS ACTIVE
-                // DOING SO MAKES IT THE FIRST IN THE SCROLLER LIST
-                arySourceInfo[0].isCurrent = 1;
-
-                // RETURN IT
-                return arySourceInfo[0];
-            }
-
-            // ELSE RETURN FALSE
-            return false;
-        };
-
-        rs.goHome = function() {
-            $state.go('app.sourceIndex', { sourceName: rs.homeStream });
-        };
-
-        // APP INIT
-        rs.appInit = function(blnRefresh) {
-
-            var defer = $q.defer();
-
-            // REFRESH REQUESTED?
-            if (blnRefresh || !appInitialized || false) {
-
-                var nwsFolder, sourcesUrl, sourceListPromise;
-
-                nwsFolder = ((rs.isOnline) ? 'online' : 'offline'),
-                sourcesUrl = 'json/'  + rs.lang +  '/' + nwsFolder + '/sources.json';
-
-                // GET & SAVE THE SOURCE LIST PROMISE
-                sourceListPromise = AppUtil.remoteApi({
-                    url: sourcesUrl
-                });
-
-                // CONTINUE PROMISE CHAIN
-                sourceListPromise.then(function(d) {
-
-                    var objApp = {
-                        // SET SOURCE TYPES
-                        sourceTypes: d.data.sourceTypes,
-                        // SET SOURCE LIST
-                        sourceList: d.data.sourceList,
-                        // Language Specific Labels (Enclosed in the sources json file)
-                        langLabels : d.data.langLabels,
-                        // DEFAULT EMPTY OBJECTS
-                        templateMap: {},
-                        sourceMetaMap: {},
-                        sourceFilters: {},
-                        sourceFilterLocks: {}
+                    // MAP SOURCE FILTER DEFAULTS (LOCAL STORAGE WILL BE MERGED AND OVERRIDE THESE)
+                    if (!objApp.sourceFilters.hasOwnProperty(objSrc.typeIdentifier)) {
+                        // DEFAULT FEEDTYPE CONTAINER
+                        objApp.sourceFilters[objSrc.typeIdentifier] = {};
+                    }
+                    // FEEDTYPE > FEEDID > FEEDSETTINGS (FROM SOURCES.JSON)
+                    objApp.sourceFilters[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
+                        isEnabled: objSrc.showByDefault
                     };
-
-                    window.objApp = objApp;
-                    console.warn('objApp is available as window.objApp for ease of development only... DO NOT REFERENCE AS window.objApp IN CODE')
-
-                    // LOCALS
-                    var i = objApp.sourceList.length,
-                        objReturn = {},
-                        objSrc;
-
-                    // LOOP SOURCES
-                    while (i--) {
-
-                        // GET THE CURRENT SOURCE
-                        objSrc = objApp.sourceList[i];
-
-                        // CAPTURE HOMESTREAM IDENTIFIER
-                        if (objSrc.isHomeFeed) {
-                            rs.homeStream = objSrc.feedIdentifier;
-                        }
-
-                        // MAP TEMPLATES TO feedIDENTIFIER
-                        objApp.templateMap[objSrc.feedIdentifier] = objSrc.templates;
-
-                        // MAP TEMPLATES TO feedIDENTIFIER
-                        objApp.sourceMetaMap[objSrc.feedIdentifier] = objSrc;
-
-                        // MAP SOURCE FILTER DEFAULTS (LOCAL STORAGE WILL BE MERGED AND OVERRIDE THESE)
-                        if (!objApp.sourceFilters.hasOwnProperty(objSrc.typeIdentifier)) {
-                            // DEFAULT FEEDTYPE CONTAINER
-                            objApp.sourceFilters[objSrc.typeIdentifier] = {};
-                        }
-                        // FEEDTYPE > FEEDID > FEEDSETTINGS (FROM SOURCES.JSON)
-                        objApp.sourceFilters[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
-                            isEnabled: objSrc.showByDefault
-                        };
-                        // MAP SOURCE FILTER DEFAULTS (LOCAL STORAGE WILL BE MERGED AND OVERRIDE THESE)
-                        if (!objApp.sourceFilterLocks.hasOwnProperty(objSrc.typeIdentifier)) {
-                            // DEFAULT FEEDTYPE CONTAINER
-                            objApp.sourceFilterLocks[objSrc.typeIdentifier] = {};
-                        }
-                        objApp.sourceFilterLocks[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
-                            filterLocked: objSrc.filterLocked
-                        };
+                    // MAP SOURCE FILTER DEFAULTS (LOCAL STORAGE WILL BE MERGED AND OVERRIDE THESE)
+                    if (!objApp.sourceFilterLocks.hasOwnProperty(objSrc.typeIdentifier)) {
+                        // DEFAULT FEEDTYPE CONTAINER
+                        objApp.sourceFilterLocks[objSrc.typeIdentifier] = {};
                     }
+                    objApp.sourceFilterLocks[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
+                        filterLocked: objSrc.filterLocked
+                    };
+                }
 
-                    // TRY TO GET LOCAL SETTINGS OVERRIDES
-                    var localFilters = AppUtil.getSimpleLocalStore('settings').get() || {};
+                // TRY TO GET LOCAL SETTINGS OVERRIDES
+                var localFilters = AppUtil.getSimpleLocalStore('settings').get() || {};
 
-                    // IF WE FOUND LOCAL SETTINGS, MERGE THEM IN
-                    if (localFilters) {
-                        objApp.sourceFilters = angular.extend(objApp.sourceFilters, localFilters);
-                    }
+                // IF WE FOUND LOCAL SETTINGS, MERGE THEM IN
+                if (localFilters) {
+                    objApp.sourceFilters = angular.extend(objApp.sourceFilters, localFilters);
+                }
 
-                    // SAVE APPLICATION DATA TO GLOBALS
-                    Globals.set('applicationData', angular.copy(objApp));
+                // SAVE APPLICATION DATA TO GLOBALS
+                Globals.set('applicationData', angular.copy(objApp));
 
-                    // SET DEFAULT APP STATE TO GLOBALS
-                    Globals.set('appState', {
-                        sourceName : rs.homeStream
-                    });
-
-                    // GO TO THE HOME STREAM ON LOAD / RELOAD
-                    $state.go('app.sourceIndex', {
-                        sourceName : rs.homeStream
-                    })
-
-                    // LOCALIZE THE DATA PROCESSOR (MAYBE REMOVE POINTER & ACCESS DIRECTLY IF NOT NEEDED LATER?)
-                    dataProcessor = DataSourceInterface.dataProcessor;
-
-                    // FLAG APP AS INITIALIZED
-                    appInitialized = true;
-
-                    // RESOLVE PROMISE
-                    defer.resolve(true);
+                // SET DEFAULT APP STATE TO GLOBALS
+                Globals.set('appState', {
+                    sourceName : 'mobileapphomestream',
+                    sourceDetail : ''
                 });
 
-            } else {
+                // GO TO THE HOME STREAM ON LOAD / RELOAD
+                $state.go('app.sourceIndex', {
+                    sourceName : 'mobileapphomestream',
+                    sourceDetail : ''
+                })
 
-                // RESOLVE PROMISE
-                defer.resolve(true);
+                // LOCALIZE THE DATA PROCESSOR (MAYBE REMOVE POINTER & ACCESS DIRECTLY IF NOT NEEDED LATER?)
+                dataProcessor = DataSourceInterface.dataProcessor;
 
-            }
+                // FLAG APP AS INITIALIZED
+                appInitialized = true;
 
-            // RETURN THE SOURCE LIST PROMISE
-            return defer.promise;
-        };
+                // RESOLVE PROMISE WITH THE NEW DATA
+                defer.resolve(objApp);
+            });
 
-    })
+        } else {
+
+            // RESOLVE PROMISE WITH THE NEW DATA
+            defer.resolve(rs.app);
+
+        }
+
+        // RETURN THE SOURCE LIST PROMISE
+        return defer.promise;
+    };
+
 })
 
 /**
@@ -370,5 +348,5 @@ angular.module('mycdc', [
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/source/default');
+    $urlRouterProvider.otherwise('/app/source/mobileapphomestream');
 });
