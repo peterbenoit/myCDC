@@ -7,7 +7,7 @@
             <h1 class="title">{{detailData.name}}</h1>
             <div class="datepub">{{detailData.datePublished}}</div>
             <div class="source">{{detailData.name}}</div>
-            <p class="contentarea" ng-bind-html="detailData.content"></p>
+            <p class="contentarea" push-html="::detailData.content"></p>
             <div class="border">
                 <p class="padding">
                     <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>

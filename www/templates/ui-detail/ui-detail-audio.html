@@ -10,7 +10,7 @@
             <audio controls>
                 <source src="{{detailData.audioSrc}}" type="{{detailData.audioType}}">
             </audio>
-            <p ng-bind-html="detailData.description"></p>
+            <p push-html="::detailData.description"></p>
             <!-- <table>
                 <tr data-ng-repeat="(key, data) in detailData">
                     <td>{{key}}</td>

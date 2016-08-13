@@ -5,10 +5,10 @@
     <!-- {{detailData}} -->
     <ion-content>
         <div class="padding data journal civ">
-            <!-- <h1 class="title" ng-bind-html="detailCard.name"></h1> -->
+            <!-- <h1 class="title" push-html="::detailCard.name"></h1> -->
             <div class="datepub">{{detailCard.datePublished}}</div>
             <div class="source">{{detailCard.streamTitle}}</div>
-            <div id="contentarea" ng-bind-html="detailData.content"></div>
+            <div id="contentarea" push-html="::detailData.content"></div>
             <div class="border">
                 <p class="padding">
                     <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>

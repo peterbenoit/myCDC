@@ -18,7 +18,7 @@ UI_DETAIL_VIDEO
                 <iframe ng-src="{{detailData.videoUrl}}" frameborder="0" allowfullscreen="true"></iframe>
             </div>
             <div class="padding data civ video">
-                <p ng-bind-html="detailData.description"></p>
+                <p push-html="::detailData.description"></p>
             </div>
         </div>
         <div class="border">

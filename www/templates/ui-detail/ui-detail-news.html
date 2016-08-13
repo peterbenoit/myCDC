@@ -8,7 +8,7 @@
             <h1 class="title">{{data.name}}</h1>
             <div class="datepub">{{data.datePublished}}</div>
             <div class="source">Source: {{name}}</div>
-            <p class="contentarea" ng-bind-html="content"></p>
+            <p class="contentarea" push-html="::content"></p>
             <div class="border">
                 <p class="padding">
                     <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>
