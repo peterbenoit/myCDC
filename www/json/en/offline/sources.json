@@ -1,0 +1,640 @@
+{
+  "sourceTypes": [{
+    "typeName": "Articles",
+    "typeIdentifier": "articles"
+  }, {
+    "typeName": "Blogs",
+    "typeIdentifier": "blogs"
+  }, {
+    "typeName": "Data",
+    "typeIdentifier": "data"
+  }, {
+    "typeName": "Facts",
+    "typeIdentifier": "facts"
+  }, {
+    "typeName": "Journals",
+    "typeIdentifier": "journals"
+  }, {
+    "typeName": "News",
+    "typeIdentifier": "news"
+  }, {
+    "typeName": "Photos",
+    "typeIdentifier": "photos"
+  }, {
+    "typeName": "Social",
+    "typeIdentifier": "social"
+  }, {
+    "typeName": "AudioVideo",
+    "typeIdentifier": "audiovideo"
+  }],
+  "sourceList": [{
+    "feedIdentifier": "mobileapphomestream",
+    "typeIdentifier": "articles",
+    "isHomeFeed": true,
+    "title": "Home",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/zika/cod7_public_test_data.json",
+    "processors": ["cardTemplateInjector", "stripHtml"],
+    "detailType": "default",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": true,
+    "templates": {
+      "containerSet": "ui-container-home",
+      "stream": "ui-stream-home",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-article"
+    },
+    "localUrl": "../json/en/online/mobileapphomestream/source.json",
+    "localUrl2": "../json/en/online/mobileapphomestream.json"
+  }, {
+    "feedIdentifier": "mobileappcdcaroundtheworld",
+    "typeIdentifier": "articles",
+    "title": "CDC Around the World",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/CDCAroundTheWorld.json",
+    "getContentBy": "id",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "default",
+    "showByDefault": false,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-article"
+    },
+    "localUrl": "../json/en/online/mobileappcdcaroundtheworld/source.json",
+    "localUrl2": "../json/en/online/mobileappcdcaroundtheworld.json"
+  }, {
+    "feedIdentifier": "mobileappdiseaseoftheweek",
+    "typeIdentifier": "articles",
+    "title": "Disease of the Week",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/dotw.json",
+    "getContentBy": "url",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "iframe",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-iframe",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-embed"
+    },
+    "localUrl": "../json/en/online/mobileappdiseaseoftheweek/source.json",
+    "localUrl2": "../json/en/online/mobileappdiseaseoftheweek.json"
+  }, {
+    "feedIdentifier": "mobileappfluviewweeklyreport",
+    "typeIdentifier": "articles",
+    "title": "FluView Weekly Summary",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/FluView.json",
+    "getContentBy": "id",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "default",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-article"
+    },
+    "localUrl": "../json/en/online/mobileappfluviewweeklyreport/source.json",
+    "localUrl2": "../json/en/online/mobileappfluviewweeklyreport.json"
+  }, {
+    "feedIdentifier": "mobileappfeaturedhealtharticles",
+    "typeIdentifier": "articles",
+    "title": "Health Articles",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/HealthArticles.json",
+    "getContentBy": "url",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "iframe",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-iframe",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-embed"
+    },
+    "localUrl": "../json/en/online/mobileappfeaturedhealtharticles/source.json",
+    "localUrl2": "../json/en/online/mobileappfeaturedhealtharticles.json"
+  }, {
+    "feedIdentifier": "mobileappvitalsigns",
+    "typeIdentifier": "articles",
+    "title": "Vital Signs",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/VitalSigns.json",
+    "getContentBy": "id",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "iframe",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": false,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-embed"
+    },
+    "localUrl": "../json/en/online/mobileappvitalsigns/source.json",
+    "localUrl2": "../json/en/online/mobileappvitalsigns.json"
+  }, {
+    "feedIdentifier": "mobileappfaststats",
+    "typeIdentifier": "data",
+    "title": "FastStats",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/FastStats.json",
+    "getContentBy": "id",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "default",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-data"
+    },
+    "localUrl": "../json/en/online/mobileappfaststats/source.json",
+    "localUrl2": "../json/en/online/mobileappfaststats.json"
+  }, {
+    "feedIdentifier": "mobileappeid",
+    "typeIdentifier": "journals",
+    "title": "Emerging Infectious Disease (EID)",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/EID.json",
+    "getContentBy": "id",
+    "processors": ["cardTemplateInjector", "stripHtml"],
+    "detailType": "journal",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": false,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-journal"
+    },
+    "localUrl": "../json/en/online/mobileappeid/source.json",
+    "localUrl2": "../json/en/online/mobileappeid.json"
+  }, {
+    "feedIdentifier": "mobileappcdcdirectorblog",
+    "typeIdentifier": "blogs",
+    "title": "CDC Director Blog",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/CDCDirectorsBlog.json",
+    "getContentBy": "id",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "iframe",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-embed"
+    },
+    "localUrl": "../json/en/online/mobileappcdcdirectorblog/source.json",
+    "localUrl2": "../json/en/online/mobileappcdcdirectorblog.json"
+  }, {
+    "feedIdentifier": "mobileapppublichealthmattersblog",
+    "typeIdentifier": "blogs",
+    "title": "Public Health Matters Blog",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/PublicHealthMattersBlog.json",
+    "getContentBy": "id",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "iframe",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-embed"
+    },
+    "localUrl": "../json/en/online/mobileapppublichealthmattersblog/source.json",
+    "localUrl2": "../json/en/online/mobileapppublichealthmattersblog.json"
+  }, {
+    "feedIdentifier": "mobileappweeklycasecounts",
+    "typeIdentifier": "data",
+    "title": "Disease Case Counts",
+    "icon": "ion-close-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/WeeklyDiseaseCounts.json",
+    "getContentBy": "url",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "iframe",
+    "showByDefault": false,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-data"
+    },
+    "localUrl": "../json/en/online/mobileappweeklycasecounts/source.json",
+    "localUrl2": "../json/en/online/mobileappweeklycasecounts.json"
+  }, {
+    "feedIdentifier": "mobileappdidyouknow",
+    "typeIdentifier": "facts",
+    "title": "Did You Know?",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/DidYouKnow.json",
+    "getContentBy": "id",
+    "processors": ["cardTemplateInjector", "firstOnly"],
+    "detailType": "default",
+    "showByDefault": true,
+    "showSourceLink": false,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-fact"
+    },
+    "localUrl": "../json/en/online/mobileappdidyouknow/source.json",
+    "localUrl2": "../json/en/online/mobileappdidyouknow.json"
+  }, {
+    "feedIdentifier": "mobileappfactsoftheweek",
+    "typeIdentifier": "facts",
+    "title": "Fact of the Week",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/FactoftheWeek.json",
+    "getContentBy": "id",
+    "processors": ["cardTemplateInjector", "parseEncoding"],
+    "detailType": "default",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-fact"
+    },
+    "localUrl": "../json/en/online/mobileappfactsoftheweek/source.json",
+    "localUrl2": "../json/en/online/mobileappfactsoftheweek.json"
+  }, {
+    "feedIdentifier": "mobileappmmwr",
+    "typeIdentifier": "journals",
+    "title": "Morbidity and Mortality Weekly Report (MMWR)",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/MMWR.json",
+    "getContentBy": "id",
+    "processors": ["cardTemplateInjector", "stripHtml"],
+    "detailType": "journal",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-iframe",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-journal"
+    },
+    "localUrl": "../json/en/online/mobileappmmwr/source.json",
+    "localUrl2": "../json/en/online/mobileappmmwr.json"
+  }, {
+    "feedIdentifier": "mobileapppcd",
+    "typeIdentifier": "journals",
+    "title": "Preventing Chronic Disease (PCD)",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/pcd.json",
+    "getContentBy": "id",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "iframe",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": false,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-ss"
+    },
+    "localUrl": "../json/en/online/mobileapppcd/source.json",
+    "localUrl2": "../json/en/online/mobileapppcd.json"
+  }, {
+    "feedIdentifier": "mobileappnewsroom",
+    "typeIdentifier": "news",
+    "title": "Newsroom",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/NewsRoom.json",
+    "getContentBy": "url",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "iframe",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-embed"
+    },
+    "localUrl": "../json/en/online/mobileappnewsroom/source.json",
+    "localUrl2": "../json/en/online/mobileappnewsroom.json"
+  }, {
+    "feedIdentifier": "mobileappoutbreaks",
+    "typeIdentifier": "news",
+    "title": "Outbreaks",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/Outbreaks.json",
+    "getContentBy": "na",
+    "processors": ["cardTemplateInjector", "flagOutbreak"],
+    "detailType": "iframe",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": false,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-embed"
+    },
+    "localUrl": "../json/en/online/mobileappoutbreaks/source.json",
+    "localUrl2": "../json/en/online/mobileappoutbreaks.json"
+  }, {
+    "feedIdentifier": "mobileapptravelnotices",
+    "typeIdentifier": "news",
+    "title": "Travel Notices",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/TravelNotices.json",
+    "getContentBy": "na",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "iframe",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-embed"
+    },
+    "localUrl": "../json/en/online/mobileapptravelnotices/source.json",
+    "localUrl2": "../json/en/online/mobileapptravelnotices.json"
+  }, {
+    "feedIdentifier": "mobileappimageoftheweek",
+    "typeIdentifier": "photos",
+    "title": "Image Library",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/PHIL.json",
+    "getContentBy": "na",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "image",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-image",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-image"
+    },
+    "localUrl": "../json/en/online/mobileappimageoftheweek/source.json",
+    "localUrl2": "../json/en/online/mobileappimageoftheweek.json"
+  }, {
+    "feedIdentifier": "mobileapppodcasts",
+    "typeIdentifier": "audiovideo",
+    "title": "Podcasts",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/Podcasts.json",
+    "getContentBy": "na",
+    "processors": ["cardTemplateInjector"],
+    "detailType": "audio",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-audio",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-audio"
+    },
+    "localUrl": "../json/en/online/mobileapppodcasts/source.json",
+    "localUrl2": "../json/en/online/mobileapppodcasts.json"
+  }, {
+    "feedIdentifier": "mobileappyoutube",
+    "typeIdentifier": "audiovideo",
+    "title": "Videos",
+    "icon": "ion-checkmark-circled",
+    "url": "http://www.cdc.gov/flu/myCdc/YouTube_all.json",
+    "getContentBy": "na",
+    "processors": ["cardTemplateInjector", "extractVideoComments"],
+    "detailType": "video",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-video"
+    },
+    "localUrl": "../json/en/online/mobileappyoutube/source.json",
+    "localUrl2": "../json/en/online/mobileappyoutube.json"
+  }, {
+    "feedIdentifier": "mobileappcdcgov",
+    "typeIdentifier": "photos",
+    "title": "Instagram",
+    "icon": "ion-checkmark-circled",
+    "getContentBy": "na",
+    "detailType": "default",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-article"
+    },
+    "localUrl": "../json/en/online/mobileappcdcgov/source.json",
+    "localUrl2": "../json/en/online/mobileappcdcgov.json"
+  }, {
+    "feedIdentifier": "mobileappcdcsocialmedia",
+    "typeIdentifier": "photos",
+    "title": "Flickr",
+    "icon": "ion-checkmark-circled",
+    "getContentBy": "na",
+    "detailType": "photos",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-image",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-photos"
+    },
+    "localUrl": "../json/en/online/mobileappcdcsocialmedia/source.json",
+    "localUrl2": "../json/en/online/mobileappcdcsocialmedia.json"
+  }, {
+    "feedIdentifier": "mobileappfacebook",
+    "typeIdentifier": "social",
+    "title": "Facebook",
+    "icon": "ion-checkmark-circled",
+    "getContentBy": "na",
+    "detailType": "default",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-video"
+    },
+    "localUrl": "../json/en/online/mobileappfacebook/source.json",
+    "localUrl2": "../json/en/online/mobileappfacebook.json"
+  }, {
+    "feedIdentifier": "mobileappposts",
+    "typeIdentifier": "social",
+    "title": "Google+",
+    "icon": "ion-checkmark-circled",
+    "getContentBy": "na",
+    "detailType": "default",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-article"
+    },
+    "localUrl": "../json/en/online/mobileappposts/source.json",
+    "localUrl2": "../json/en/online/mobileappposts.json"
+  }, {
+    "feedIdentifier": "mobileapptwitter",
+    "typeIdentifier": "social",
+    "title": "Twitter",
+    "icon": "ion-checkmark-circled",
+    "getContentBy": "na",
+    "detailType": "default",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "landing-twitter"
+    },
+    "localUrl": "../json/en/online/mobileapptwitter/source.json",
+    "localUrl2": "../json/en/online/mobileapptwitter.json"
+  }, {
+    "feedIdentifier": "mobileapppinterest",
+    "typeIdentifier": "social",
+    "title": "Pinterest",
+    "icon": "ion-checkmark-circled",
+    "getContentBy": "na",
+    "detailType": "default",
+    "showByDefault": true,
+    "showSourceLink": true,
+    "cardImages": true,
+    "filterLocked": false,
+    "templates": {
+      "containerSet": "ui-container-default",
+      "stream": "ui-stream-standard",
+      "card": "ui-card-default",
+      "homeCard": "ui-card-default",
+      "detail": "ui-detail-article"
+    },
+    "localUrl": "../json/en/online/mobileapppinterest/source.json",
+    "localUrl2": "../json/en/online/mobileapppinterest.json"
+  }],
+  "langLabels": {
+    "app": {
+      "title": "CDC"
+    },
+    "nav": {
+      "back": "Back",
+      "settings": "Settings"
+    },
+    "controls": {},
+    "settings": {
+      "application": "Application",
+      "resetApp": "Reset App",
+      "reset": "Reset"
+    },
+    "popOver": {
+      "message": "Customize your news here! Choose from a variety of articles, news, outbreak, data, and multimedia.",
+      "confirm": "Got It"
+    },
+    "landing": {
+      "twitter": {
+        "title": "Twitter"
+      },
+      "facebook": {
+        "title": "Facebook"
+      }
+    }
+  }
+}

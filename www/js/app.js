@@ -30,7 +30,7 @@ angular.module('mycdc', [
     // APP CONTAINER
     rs.app = {};
     rs.detailUrl = 'https://tools.cdc.gov/api/v2/resources/media/';
-    rs.detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/';
+    //rs.detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/';
     rs.remoteCheck = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
     rs.sourcesUrl = 'json/sources.json';
     rs.deviceInfo = Device.Info();

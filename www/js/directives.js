@@ -554,6 +554,17 @@ angular.module('mycdc.directives', [])
         template: '<div data-on-swipe-right="swipe(\'prev\')" data-on-swipe-left="swipe(\'next\')" ng-include="uiDetailTemplateUrl"></div>'
     }
 })
+.directive('pushHtml', function () {
+    return {
+        restrict: 'A',
+        scope: {
+            pushHtml : '='
+        },
+        link: function(scope, element, attrs) {
+            element.html(scope.pushHtml);
+        }
+    }
+})
 .directive("splitBy", function($rootScope) {
 
     var setDimensions = function (element, reference, columns, setRatio) {

@@ -69,10 +69,6 @@ angular.module('mycdc.controllers', [])
         return _this.page;
     };
 
-    _this.goBack = function () {
-        $ionicHistory.goBack();
-    };
-
     _this.appState = function () {
         return Globals.get('appState');
     };
@@ -184,6 +180,7 @@ angular.module('mycdc.controllers', [])
                         // ASSIGNMENT OF MEMORY VARIABLES TO SCOPE FOR ACCESS IN TEMPLATES
 
                         // GLOBAL SOURCE DATA
+                        //_this.homeStream = applicationData.homeStream;
                         _this.sourceList = applicationData.sourceList;
                         _this.sourceTypes = applicationData.sourceTypes;
                         _this.sourceFilters = applicationData.sourceFilters;
@@ -191,7 +188,6 @@ angular.module('mycdc.controllers', [])
                         _this.templateMap = applicationData.templateMap;
                         _this.sourceMetaMap = applicationData.sourceMetaMap;
                         _this.langLabels = applicationData.langLabels;
-                        //_this.currentSourceCardList = currentSourceCardList;
 
                         // STATE SPECIFIC SOURCE & DETAIL DATA
                         _this.appState = Globals.get('appState');
@@ -249,9 +245,15 @@ angular.module('mycdc.controllers', [])
         }
     };
 
+    _this.goBack = function () {
+        $ionicHistory.goBack();
+    };
+    _this.goHome = function () {
+        $state.go('app.sourceIndex', {sourceName: $rootScope.homeStream});
+    };
     _this.changeSource = function (direction) {
-
-        if (direction) {
+        // DISABLING THIS AS I RECALL WE DITCHED THIS CONCEPT
+        if (direction && false) {
 
             // PROVIDE INDEX LOOKUP FOR SWIPE FUNCTIONALITY
             var sourceListIdxRef = [];
@@ -291,8 +293,8 @@ angular.module('mycdc.controllers', [])
     };
 
     _this.changeDetail = function (direction) {
-        // DISABLING THIS AS I RECALL WE DITCHED THIS CONCEPT
-        if (false && direction && _this.datas && !!_this.datas.length && _this.datas.length > 1) {
+
+        if (direction && _this.datas && !!_this.datas.length && _this.datas.length > 1) {
             var cardListIdxRef = [];
             angular.forEach(_this.datas, function (objCard, intIndex) {
                 cardListIdxRef.push(objCard.id);
@@ -398,6 +400,7 @@ angular.module('mycdc.controllers', [])
             //alert(data.stateParams.sourceDetail);
 
             Globals.set('appState', data.stateParams);
+            _this.appState = data.stateParams;
 
             $timeout(function (){
 
@@ -432,15 +435,10 @@ angular.module('mycdc.controllers', [])
 
         $timeout(function () {
 
-            var appState, updateIsReal;
+            _this.appState = Globals.get('appState');
+            var updateIsReal = true;
 
-            appState = Globals.get('appState');
-            updateIsReal = true;
-
-            console.log('2B... @@@@@@@@@@@@@@@@@@@@@@ APP STATE', appState);
-
-            // SET TITLE
-            $ionicNavBarDelegate.title('<span><img src="img/logo.png" /></span>');
+            console.log('2B... @@@@@@@@@@@@@@@@@@@@@@ APP STATE', _this.appState);
 
             // INIT ON NEW VISIT OR IF SOURCE HAS CHANGED
             _this.ctrlInit(updateIsReal).then(function(d){
@@ -465,10 +463,8 @@ angular.module('mycdc.controllers', [])
                     // SHOW POPOVER ON FIRST RUN (OR AFTER CLEAR)
                     _this.menuPopOver();
 
-                    var appState = Globals.get('appState');
-
                     // HIDE THE LOADER IF WE ARE LOOKING AT TEH STREAM VIEW (LOAD HIDE IS DELEGATED TO DETAIL LOADER FOR DETAIL VIEWS)
-                    if (!(appState.sourceDetail && appState.sourceDetail.length)) {
+                    if (!(_this.appState.sourceDetail && _this.appState.sourceDetail.length)) {
                         $rootScope.$broadcast('loading-complete');
                         //alert('stream mode?');
                     } else {
@@ -492,7 +488,13 @@ angular.module('mycdc.controllers', [])
     });
 }])
 
-.controller('CommonSourceCtrl', ['$scope', function ($scope) {
+.controller('CommonSourceCtrl', ['$scope', '$stateParams', function ($scope, $stateParams) {
+
+    $scope.global.sourceHome = function () {
+        $state.go('app.sourceIndex', {sourceName: $stateParams.sourceName});
+    }
+
+    $scope.global.showSourceHome = !!($stateParams.sourceName && ($stateParams.sourceName !== $scope.homeStream) && ($stateParams.sourceDetail && $stateParams.sourceDetail.length));
 
 }])
 
