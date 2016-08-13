@@ -37,9 +37,6 @@ angular.module('mycdc.services', ['ionic'])
 
         objAppHelpers.log(ageStoreKey + ' indicates corresponing data is ' + Math.floor(diff) + ' minutes old', -9999);
 
-        // TEMP
-        return true;
-
         // RETURN EXPIRED FLAG
         return diff >= objSettings.dataTimeoutInMinutes;
     };
