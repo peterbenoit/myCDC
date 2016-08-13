@@ -20,7 +20,8 @@ angular.module('mycdc', [
  * @param  {[type]}
  * @return {[type]}
  */
- .run(function($cordovaNetwork, $cordovaStatusbar, $ionicPlatform, $ionicBody, $ionicPopup, $state, $stateParams, $rootScope, $location, $timeout, $window, $http, $filter, $sce, $q, Device, iFrameReady, DataSourceInterface, AppUtil, Globals, Share) {
+ .run(function($cordovaNetwork, $cordovaStatusbar, $cordovaGlobalization, $ionicPlatform, $ionicPopup, $state, $rootScope, $filter, $q, Device, iFrameReady, DataSourceInterface, AppUtil, Globals, Share) {
+    //$ionicPlatform.ready(function () {
 
     var rs = $rootScope,
         href = window.location.href,
@@ -32,7 +33,7 @@ angular.module('mycdc', [
     rs.detailUrl = 'https://tools.cdc.gov/api/v2/resources/media/';
     //rs.detailUrl = 'https://prototype.cdc.gov/api/v2/resources/media/';
     rs.remoteCheck = 'http://www2c.cdc.gov/podcasts/checkurl.asp?url=';
-    rs.sourcesUrl = 'json/sources.json';
+    rs.sourcesUrl = 'json/en/online/sources.json';
     rs.deviceInfo = Device.Info();
     rs.Share = Share;
     rs.supportedLanguages = ['en','es'];
@@ -163,7 +164,7 @@ angular.module('mycdc', [
     };
 
     rs.goHome = function() {
-        $state.go('app.sourceIndex', { sourceName: 'mobileapphomestream' });
+            $state.go('app.sourceIndex', { sourceName: rs.homeStream });
     };
 
     // APP INIT
@@ -174,9 +175,12 @@ angular.module('mycdc', [
         // REFRESH REQUESTED?
         if (blnRefresh || !appInitialized || false) {
 
+                var nwsFolder, sourcesUrl, sourceListPromise;
+                nwsFolder = ((rs.isOnline) ? 'online' : 'offline'),
+                sourcesUrl = 'json/en/online/sources.json';
             // GET & SAVE THE SOURCE LIST PROMISE
-            var sourceListPromise = AppUtil.remoteApi({
-                url: rs.sourcesUrl
+                sourceListPromise = AppUtil.remoteApi({
+                    url: sourcesUrl
             });
 
             // CONTINUE PROMISE CHAIN
@@ -209,6 +213,10 @@ angular.module('mycdc', [
 
                     // GET THE CURRENT SOURCE
                     objSrc = objApp.sourceList[i];
+                        // CAPTURE HOMESTREAM IDENTIFIER
+                        if (objSrc.isHomeFeed) {
+                            rs.homeStream = objSrc.feedIdentifier;
+                        }
 
                     // MAP TEMPLATES TO feedIDENTIFIER
                     objApp.templateMap[objSrc.feedIdentifier] = objSrc.templates;
@@ -248,14 +256,12 @@ angular.module('mycdc', [
 
                 // SET DEFAULT APP STATE TO GLOBALS
                 Globals.set('appState', {
-                    sourceName : 'mobileapphomestream',
-                    sourceDetail : ''
+                        sourceName : rs.homeStream
                 });
 
                 // GO TO THE HOME STREAM ON LOAD / RELOAD
                 $state.go('app.sourceIndex', {
-                    sourceName : 'mobileapphomestream',
-                    sourceDetail : ''
+                        sourceName : rs.homeStream
                 })
 
                 // LOCALIZE THE DATA PROCESSOR (MAYBE REMOVE POINTER & ACCESS DIRECTLY IF NOT NEEDED LATER?)
@@ -264,14 +270,14 @@ angular.module('mycdc', [
                 // FLAG APP AS INITIALIZED
                 appInitialized = true;
 
-                // RESOLVE PROMISE WITH THE NEW DATA
-                defer.resolve(objApp);
+                    // RESOLVE PROMISE
+                    defer.resolve(true);
             });
 
         } else {
 
-            // RESOLVE PROMISE WITH THE NEW DATA
-            defer.resolve(rs.app);
+                // RESOLVE PROMISE
+                defer.resolve(true);
 
         }
 
@@ -348,5 +354,5 @@ angular.module('mycdc', [
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/source/mobileapphomestream');
+    $urlRouterProvider.otherwise('/app/source/default');
 });
