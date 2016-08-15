@@ -1,16 +1,18 @@
 <ion-view class="detail-embed">
     <ion-content scroll="true" overflow-scroll="true" class="iframe-wrapper">
-        <div ng-if="detailCard.nochrome" class="padding data civ embed">
-            <h1 class="title">{{detailCard.name}}</h1>
-            <div class="datepub">{{detailCard.datePublished}}</div>
-            <div class="source">{{detailCard.streamTitle}}</div>
-        </div>
-        <iframe data-tap-disabled="true" ng-src="detailData.frameUrl" id="contentframe" onload="frameready()"></iframe>
-        <div class="border scroll-footer">
-            <p class="padding">
-                <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>
-                <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="openLink(detailData.sourceUrl, 'html')">View on CDC.gov</button>
-            </p>
+        <div data-cdc-detail style="height:200px;">
+            <div ng-if="detailCard.nochrome" class="padding data civ embed">
+                <h1 class="title">{{detailCard.name}}</h1>
+                <div class="datepub">{{detailCard.datePublished}}</div>
+                <div class="source">{{detailCard.streamTitle}}</div>
+            </div>
+            <cdc-iframe src="detailData.frameUrl"></cdc-iframe>
+            <div class="border scroll-footer">
+                <p class="padding">
+                    <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>
+                    <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="openLink(detailData.sourceUrl, 'html')">View on CDC.gov</button>
+                </p>
+            </div>
         </div>
     </ion-content>
 </ion-view>

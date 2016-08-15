@@ -3,7 +3,7 @@
  */
 angular.module('mycdc.controllers', [])
 
-.controller('AppCtrl', ['$scope','$rootScope','$urlMatcherFactory','$location','$q','$timeout','$state','$stateParams','$filter','$ionicPlatform','$ionicPopup','$ionicLoading','$ionicPopover','$ionicHistory','$sce','$cordovaNetwork','$ionicScrollDelegate','$ionicNavBarDelegate','AppUtil','Device','Globals','DataSourceInterface', function($scope, $rootScope, $urlMatcherFactory, $location, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicLoading, $ionicPopover, $ionicHistory, $sce, $cordovaNetwork, $ionicScrollDelegate, $ionicNavBarDelegate, AppUtil, Device, Globals, DataSourceInterface) {
+.controller('AppCtrl', ['$scope','$rootScope','$urlMatcherFactory','$location','$q','$timeout','$state','$stateParams','$filter','$ionicPlatform','$ionicPopup','$ionicModal','$ionicLoading','$ionicPopover','$ionicHistory','$sce','$cordovaNetwork','$ionicScrollDelegate','$ionicNavBarDelegate','AppUtil','Device','Globals','DataSourceInterface', function($scope, $rootScope, $urlMatcherFactory, $location, $q, $timeout, $state, $stateParams, $filter, $ionicPlatform, $ionicPopup, $ionicModal, $ionicLoading, $ionicPopover, $ionicHistory, $sce, $cordovaNetwork, $ionicScrollDelegate, $ionicNavBarDelegate, AppUtil, Device, Globals, DataSourceInterface) {
 
     // THIS POINTER (_this & "CONTROLLER AS" FOR EASE IN TRANSITION TO NEXT ANGULAR VERSION)
     var _this = this;
@@ -27,7 +27,7 @@ angular.module('mycdc.controllers', [])
             if (_this.isHomeSource && !settingsHint) {
 
                 // Show the popover only on first load
-                $ionicPopover.fromTemplateUrl('templates/popover.html', {
+                $ionicPopover.fromTemplateUrl('templates/popover-first-run.html', {
                     scope: $scope,
                 }).then(function(popover) {
                     $scope.popover = popover;
@@ -43,6 +43,56 @@ angular.module('mycdc.controllers', [])
             }
         }, 250);
     };
+
+
+    // NAV MENU MODAL
+    $ionicModal.fromTemplateUrl('templates/modal-navigation-menu.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.navigationModal = modal;
+    });
+
+    _this.openNavigationModal = function() {
+        $scope.navigationModal.show();
+    };
+
+    _this.closeNavigationModal = function() {
+        $scope.navigationModal.hide();
+    };
+
+    // SETTINGS MENU MODAL
+    $ionicModal.fromTemplateUrl('templates/modal-settings-menu.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.settingsModal = modal;
+    });
+
+    _this.openSettingsModal = function() {
+        $scope.settingsModal.show();
+    };
+
+    _this.closeSettingsModal = function() {
+        _this.ctrlInit(true);
+        $scope.settingsModal.hide();
+    };
+
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.navigationModal.remove();
+        $scope.settingsModal.remove();
+    });
+
+    // // Execute action on hide modal
+    // $scope.$on('navigationModal.hidden', function() {
+    //     // Execute action
+    // });
+
+    // // Execute action on remove modal
+    // $scope.$on('navigationModal.removed', function() {
+    //     // Execute action
+    // });
 
     _this.getPageState = function (appState, blnIncrement) {
 
@@ -161,6 +211,8 @@ angular.module('mycdc.controllers', [])
 
         if (blnRefresh) {
 
+            alert('Yo!');
+
             // GET / REFRESH SCREEN STATE
             Device.ScreenState().then(function (objScreen) {
                 _this.screenState = objScreen;
@@ -196,8 +248,6 @@ angular.module('mycdc.controllers', [])
 
                         var haveSourceDetailId = (_this.appState.sourceDetail && _this.appState.sourceDetail.length);
 
-                        console.log('currentSourceCardList', currentSourceCardList);
-
                         if (!haveSourceDetailId && currentSourceCardList && currentSourceCardList.length == 1) {
                             _this.appState.sourceDetail = currentSourceCardList[0].id;
                             Globals.set('appState', _this.appState);
@@ -215,9 +265,13 @@ angular.module('mycdc.controllers', [])
                         // PASS / SAVE STATE SPECIFIC DETAILS NOT ALREADY SAVED TO GLOBALS
                         Globals.set('detailCard', _this.detailCard);
                         Globals.set('screenState', _this.screenState);
+                        // SET TITLE
+                        //$ionicNavBarDelegate.title(_this.sourceMeta.title);
 
                         // RESOLVE PROMISE
                         defer.resolve(currentSourceCardList);
+
+                        //_this.openNavigationModal();
                     });
                 }
             });

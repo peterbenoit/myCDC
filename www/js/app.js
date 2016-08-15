@@ -21,7 +21,6 @@ angular.module('mycdc', [
  * @return {[type]}
  */
  .run(function($cordovaNetwork, $cordovaStatusbar, $cordovaGlobalization, $ionicPlatform, $ionicPopup, $state, $rootScope, $filter, $q, Device, iFrameReady, DataSourceInterface, AppUtil, Globals, Share) {
-    //$ionicPlatform.ready(function () {
 
     var rs = $rootScope,
         href = window.location.href,
@@ -37,6 +36,14 @@ angular.module('mycdc', [
     rs.deviceInfo = Device.Info();
     rs.Share = Share;
     rs.supportedLanguages = ['en','es'];
+    rs.deferredLangValue = (function () {
+        var defer = $q.defer();
+        return defer;
+    } ());
+    rs.deferredOnlineStatus = (function () {
+        var defer = $q.defer();
+        return defer;
+    } ());
 
     // WINDOW.OPEN SHOULD USE INAPPBROWSER
     document.addEventListener("deviceready", hideStatusBar, false);
@@ -83,6 +90,8 @@ angular.module('mycdc', [
             deregisterOnlineListener();
             deregisterOfflineListener();
         });
+
+        rs.deferredOnlineStatus.resolve(true);
     }
 
     function setLangPref (langCode) {
@@ -109,6 +118,8 @@ angular.module('mycdc', [
                 rs.lang = setLangPref(langPref.value.split('-')[0]);
             }, console.log /* LOG ERROR ON FAIL */);
         }
+
+        rs.deferredLangValue.resolve(true);
     }
 
     function hideStatusBar() {
@@ -121,9 +132,18 @@ angular.module('mycdc', [
         }
     }
 
-    // NOTE: THIS ONLY WORKS ON A DEVICE
-    // frameready() is called in embed.html, when the iframe has loaded
-    window.frameready = iFrameReady;
+    $ionicPlatform.ready(function () {
+
+        if(!rs.deviceInfo.isRealMobileDevice()) {
+            rs.isOnline = true;
+            rs.lang = 'en';
+            rs.deferredOnlineStatus.resolve(true);
+            rs.deferredLangValue.resolve(true);
+        }
+        // NOTE: THIS ONLY WORKS ON A DEVICE
+        // frameready() is called in embed.html, when the iframe has loaded
+        window.frameready = iFrameReady;
+    });
 
     rs.log = AppUtil.log;
     rs.openLink = AppUtil.openLink;
@@ -172,114 +192,126 @@ angular.module('mycdc', [
 
         var defer = $q.defer();
 
-        // REFRESH REQUESTED?
-        if (blnRefresh || !appInitialized || false) {
+        $ionicPlatform.ready(function () {
 
-                var nwsFolder, sourcesUrl, sourceListPromise;
-                nwsFolder = ((rs.isOnline) ? 'online' : 'offline'),
-                sourcesUrl = 'json/en/online/sources.json';
-            // GET & SAVE THE SOURCE LIST PROMISE
-                sourceListPromise = AppUtil.remoteApi({
-                    url: sourcesUrl
-            });
+            // REFRESH REQUESTED?
+            if (blnRefresh || !appInitialized || false) {
 
-            // CONTINUE PROMISE CHAIN
-            sourceListPromise.then(function(d) {
+                rs.deferredOnlineStatus.promise.then(function() {
+                    rs.deferredLangValue.promise.then(function() {
+                        console.log("rs.lang: " + rs.lang + '\n' + "rs.isOnline: " + rs.isOnline);
 
-                var objApp = {
-                    // SET SOURCE TYPES
-                    sourceTypes: d.data.sourceTypes,
-                    // SET SOURCE LIST
-                    sourceList: d.data.sourceList,
-                    // Language Specific Labels (Enclosed in the sources json file)
-                    langLabels : d.data.langLabels,
-                    // DEFAULT EMPTY OBJECTS
-                    templateMap: {},
-                    sourceMetaMap: {},
-                    sourceFilters: {},
-                    sourceFilterLocks: {}
-                };
+                        var sourcesUrl, nwsFolder, sourceListPromise;
+                        nwsFolder = (rs.isOnline) ? 'online' : 'offline';
+                        sourcesUrl = 'json/' + rs.lang + '/' + nwsFolder + '/sources.json';
+                        // GET & SAVE THE SOURCE LIST PROMISE
+                            sourceListPromise = AppUtil.remoteApi({
+                                url: sourcesUrl
+                        });
 
-                window.objApp = objApp;
-                console.warn('objApp is available as window.objApp for ease of development only... DO NOT REFERENCE AS window.objApp IN CODE')
+                        // CONTINUE PROMISE CHAIN
+                        sourceListPromise.then(function(d) {
 
-                // LOCALS
-                var i = objApp.sourceList.length,
-                    objReturn = {},
-                    objSrc;
+                            var objApp = {
+                                // SET SOURCE TYPES
+                                sourceTypes: d.data.sourceTypes,
+                                // SET SOURCE LIST
+                                sourceList: d.data.sourceList,
+                                // Language Specific Labels (Enclosed in the sources json file)
+                                langLabels : d.data.langLabels,
+                                // DEFAULT EMPTY OBJECTS
+                                templateMap: {},
+                                sourceMetaMap: {},
+                                sourceFilters: {},
+                                sourceFilterLocks: {}
+                            };
 
-                // LOOP SOURCES
-                while (i--) {
+                            //window.objApp = objApp;
+                            //console.warn('objApp is available as window.objApp for ease of development only... DO NOT REFERENCE AS window.objApp IN CODE')
 
-                    // GET THE CURRENT SOURCE
-                    objSrc = objApp.sourceList[i];
-                        // CAPTURE HOMESTREAM IDENTIFIER
-                        if (objSrc.isHomeFeed) {
-                            rs.homeStream = objSrc.feedIdentifier;
-                        }
+                            // LOCALS
+                            var i = objApp.sourceList.length,
+                                objReturn = {},
+                                objSrc;
 
-                    // MAP TEMPLATES TO feedIDENTIFIER
-                    objApp.templateMap[objSrc.feedIdentifier] = objSrc.templates;
+                            // LOOP SOURCES
+                            while (i--) {
 
-                    // MAP TEMPLATES TO feedIDENTIFIER
-                    objApp.sourceMetaMap[objSrc.feedIdentifier] = objSrc;
+                                // GET THE CURRENT SOURCE
+                                objSrc = objApp.sourceList[i];
+                                    // CAPTURE HOMESTREAM IDENTIFIER
+                                    if (objSrc.isHomeFeed) {
+                                        rs.homeStream = objSrc.feedIdentifier;
+                                    }
 
-                    // MAP SOURCE FILTER DEFAULTS (LOCAL STORAGE WILL BE MERGED AND OVERRIDE THESE)
-                    if (!objApp.sourceFilters.hasOwnProperty(objSrc.typeIdentifier)) {
-                        // DEFAULT FEEDTYPE CONTAINER
-                        objApp.sourceFilters[objSrc.typeIdentifier] = {};
-                    }
-                    // FEEDTYPE > FEEDID > FEEDSETTINGS (FROM SOURCES.JSON)
-                    objApp.sourceFilters[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
-                        isEnabled: objSrc.showByDefault
-                    };
-                    // MAP SOURCE FILTER DEFAULTS (LOCAL STORAGE WILL BE MERGED AND OVERRIDE THESE)
-                    if (!objApp.sourceFilterLocks.hasOwnProperty(objSrc.typeIdentifier)) {
-                        // DEFAULT FEEDTYPE CONTAINER
-                        objApp.sourceFilterLocks[objSrc.typeIdentifier] = {};
-                    }
-                    objApp.sourceFilterLocks[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
-                        filterLocked: objSrc.filterLocked
-                    };
-                }
+                                // MAP TEMPLATES TO feedIDENTIFIER
+                                objApp.templateMap[objSrc.feedIdentifier] = objSrc.templates;
 
-                // TRY TO GET LOCAL SETTINGS OVERRIDES
-                var localFilters = AppUtil.getSimpleLocalStore('settings').get() || {};
+                                // MAP TEMPLATES TO feedIDENTIFIER
+                                objApp.sourceMetaMap[objSrc.feedIdentifier] = objSrc;
 
-                // IF WE FOUND LOCAL SETTINGS, MERGE THEM IN
-                if (localFilters) {
-                    objApp.sourceFilters = angular.extend(objApp.sourceFilters, localFilters);
-                }
+                                // MAP SOURCE FILTER DEFAULTS (LOCAL STORAGE WILL BE MERGED AND OVERRIDE THESE)
+                                if (!objApp.sourceFilters.hasOwnProperty(objSrc.typeIdentifier)) {
+                                    // DEFAULT FEEDTYPE CONTAINER
+                                    objApp.sourceFilters[objSrc.typeIdentifier] = {};
+                                }
+                                // FEEDTYPE > FEEDID > FEEDSETTINGS (FROM SOURCES.JSON)
+                                objApp.sourceFilters[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
+                                    isEnabled: objSrc.showByDefault
+                                };
+                                // MAP SOURCE FILTER DEFAULTS (LOCAL STORAGE WILL BE MERGED AND OVERRIDE THESE)
+                                if (!objApp.sourceFilterLocks.hasOwnProperty(objSrc.typeIdentifier)) {
+                                    // DEFAULT FEEDTYPE CONTAINER
+                                    objApp.sourceFilterLocks[objSrc.typeIdentifier] = {};
+                                }
+                                objApp.sourceFilterLocks[objSrc.typeIdentifier][objSrc.feedIdentifier] = {
+                                    filterLocked: objSrc.filterLocked
+                                };
+                            }
 
-                // SAVE APPLICATION DATA TO GLOBALS
-                Globals.set('applicationData', angular.copy(objApp));
+                            // TRY TO GET LOCAL SETTINGS OVERRIDES
+                            var localFilters = AppUtil.getSimpleLocalStore('settings').get() || {};
 
-                // SET DEFAULT APP STATE TO GLOBALS
-                Globals.set('appState', {
-                        sourceName : rs.homeStream
-                });
+                            // IF WE FOUND LOCAL SETTINGS, MERGE THEM IN
+                            if (localFilters) {
+                                objApp.sourceFilters = angular.extend(objApp.sourceFilters, localFilters);
+                            }
 
-                // GO TO THE HOME STREAM ON LOAD / RELOAD
-                $state.go('app.sourceIndex', {
-                        sourceName : rs.homeStream
+                            // SAVE APPLICATION DATA TO GLOBALS
+                            Globals.set('applicationData', angular.copy(objApp));
+
+                            // SET DEFAULT APP STATE TO GLOBALS
+                            Globals.set('appState', {
+                                    sourceName : rs.homeStream
+                            });
+
+                            // GO TO THE HOME STREAM ON LOAD / RELOAD
+                            $state.go('app.sourceIndex', {
+                                    sourceName : rs.homeStream
+                            })
+
+                            // LOCALIZE THE DATA PROCESSOR (MAYBE REMOVE POINTER & ACCESS DIRECTLY IF NOT NEEDED LATER?)
+                            dataProcessor = DataSourceInterface.dataProcessor;
+
+                            // FLAG APP AS INITIALIZED
+                            appInitialized = true;
+
+                            // RESOLVE PROMISE
+                            defer.resolve(true);
+                        });
+
+
+                    })
                 })
 
-                // LOCALIZE THE DATA PROCESSOR (MAYBE REMOVE POINTER & ACCESS DIRECTLY IF NOT NEEDED LATER?)
-                dataProcessor = DataSourceInterface.dataProcessor;
-
-                // FLAG APP AS INITIALIZED
-                appInitialized = true;
+            } else {
 
                     // RESOLVE PROMISE
                     defer.resolve(true);
-            });
 
-        } else {
+            }
 
-                // RESOLVE PROMISE
-                defer.resolve(true);
-
-        }
+        });
 
         // RETURN THE SOURCE LIST PROMISE
         return defer.promise;

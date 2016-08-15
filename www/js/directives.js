@@ -232,40 +232,45 @@ angular.module('mycdc.directives', [])
         } else {
 
             // CREATE NOCHROME URL
-            objTemp.sourceUrl = sourceCard.sourceUrl;
-            objTemp.filename = objTemp.sourceUrl.split('/').pop();
-            objTemp.noChromeUrl = objTemp.filename.split('.')[0] + '_nochrome.' + objTemp.filename.split('.')[1];
-            objTemp.noChromeUrl = objTemp.sourceUrl.replace(objTemp.filename, objTemp.noChromeUrl);
+            //objTemp.sourceUrl = sourceCard.sourceUrl;
+            // objTemp.filename = objTemp.sourceUrl.split('/').pop();
+            // objTemp.noChromeUrl = objTemp.filename.split('.')[0] + '_nochrome.' + objTemp.filename.split('.')[1];
+            // objTemp.noChromeUrl = objTemp.sourceUrl.replace(objTemp.filename, objTemp.noChromeUrl);
 
-            if (objTemp.noChromeUrl.indexOf('http') == -1) {
-                objTemp.noChromeUrl = window.location.protocol + '//' + objTemp.noChromeUrl;
-                alert('No Chrome URL FIXED!');
-                alert(objTemp.noChromeUrl);
-            }
+            // if (objTemp.noChromeUrl.indexOf('http') == -1) {
+            //     objTemp.noChromeUrl = window.location.protocol + '//' + objTemp.noChromeUrl;
+            //     alert('No Chrome URL FIXED!');
+            //     alert(objTemp.noChromeUrl);
+            // }
 
-            // URL CHECK NEEDED
-            AppUtil.remoteApi({
-                url : $rootScope.remoteCheck + objTemp.noChromeUrl
-            }).then(function(resp) {
-                var urlToUse;
-                // DETERMINE URL BASED ON SERVER STATUS RETURN
-                if (resp.data.status === '200') {
-                    urlToUse = objTemp.noChromeUrl;
-                } else {
-                    urlToUse = objTemp.sourceUrl;
-                }
-                //SAVE IT TO LOCAL
-                localStore.save(urlToUse);
-                // RESOLVE THE PROMISE WITH THE NEW DATA
-                defer.resolve(urlToUse);
-                return resp;
-            },
-            function(resp) {
-                // TEMP - SAVE IT TO LOCAL
-                localStore.save(objTemp.sourceUrl);
-                defer.resolve(objTemp.sourceUrl);
-                return resp;
-            });
+            // // URL CHECK NEEDED
+            // AppUtil.remoteApi({
+            //     url : $rootScope.remoteCheck + objTemp.noChromeUrl
+            // }).then(function(resp) {
+            //     var urlToUse;
+            //     // DETERMINE URL BASED ON SERVER STATUS RETURN
+            //     if (resp.data.status === '200') {
+            //         urlToUse = objTemp.noChromeUrl;
+            //     } else {
+            //         urlToUse = objTemp.sourceUrl;
+            //     }
+            //     //SAVE IT TO LOCAL
+            //     localStore.save(urlToUse);
+            //     // RESOLVE THE PROMISE WITH THE NEW DATA
+            //     defer.resolve(urlToUse);
+            //     return resp;
+            // },
+            // function(resp) {
+            //     // TEMP - SAVE IT TO LOCAL
+            //     localStore.save(objTemp.sourceUrl);
+            //     defer.resolve(objTemp.sourceUrl);
+            //     return resp;
+            // });
+
+            //SAVE IT TO LOCAL
+            localStore.save(sourceCard.sourceUrl);
+            // RESOLVE THE PROMISE WITH THE NEW DATA
+            defer.resolve(sourceCard.sourceUrl);
         }
         // RETURN THE PROMISE
         return defer.promise;
@@ -311,7 +316,7 @@ angular.module('mycdc.directives', [])
             }).then(function(d) {
 
                 if (d.data.meta.status == '400') {
-                    alert('Data Missing Or Unavailable For This Article!');
+                    $ionicPopup.alert('Data Missing Or Unavailable For This Article!');
                     defer.reject(d);
                 } else {
 
@@ -424,6 +429,8 @@ angular.module('mycdc.directives', [])
 
                     $scope.detailTemplateUrl = 'templates/ui-detail/' + objDetailCard.templates.detail + '.html';
 
+                    console.log('objDetailCard.detailType', objDetailCard.detailType);
+
                     // CALL SPECIFIED PROCESSOR
                     switch (objDetailCard.detailType) {
                         case 'iframe':
@@ -434,8 +441,12 @@ angular.module('mycdc.directives', [])
                             // GET NO CHROME URL
                             getSourceHtmlUrl(objDetailCard).then(function(iframeUrl){
 
+                                console.log('detailData.frameUrl', iframeUrl);
+
                                 // SET RESPONSE FOR USE BY HTML PARTIAL (AS IFRAME SRC)
                                 detailData.frameUrl = $sce.trustAsResourceUrl(iframeUrl);
+
+                                console.log('detailData.frameUrl', detailData.frameUrl);
 
                                 // RESOLVE PROMISE WITH THIS DATA
                                 defer.resolve(detailData);
@@ -565,6 +576,19 @@ angular.module('mycdc.directives', [])
         }
     }
 })
+.directive('cdcIframe', function () {
+    return {
+        restrict: 'E',
+        scope: {
+            src : '='
+        },
+        link: function(scope, element, attrs) {
+            console.log('scope.src', scope.src);
+        },
+        template: '<iframe id="contentframe" src="{{src}}" onload="frameready()" data-tap-disabled="true"></iframe>'
+    }
+})
+
 .directive("splitBy", function($rootScope) {
 
     var setDimensions = function (element, reference, columns, setRatio) {

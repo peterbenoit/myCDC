@@ -2,7 +2,7 @@
 <widget id="com.ionicframework.mycdc951183" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>CDC</name>
     <description>
-        A CDC Ionic Framework and Cordova project.
+        CDC Mobile Application
     </description>
     <author email="idk1@cdc.gov" href="http://www.cdc.gov/">
       CDC Innovations Team
@@ -14,7 +14,7 @@
     <!-- <allow-navigation href="*://*.cdc.gov/*" />
     <allow-navigation href="*://*.youtube.com/*" /> -->
     <!-- <allow-intent href="*://*.cdc.gov/*" /> -->
-    <allow-navigation href="https://*/*" />
+    <allow-navigation href="*://*/*" />
     <allow-intent href="*://*/*" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />

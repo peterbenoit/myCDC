@@ -1,0 +1,18 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title" style="left: 67px; right: 67px;">Content Menu</h1>
+		<button class="button button-clear button-primary" ng-click="global.closeNavigationModal()">Cancel</button>
+	</ion-header-bar>
+	<ion-content class="has-header">
+		<ion-list data-ng-repeat="sourceType in global.sourceTypes">
+			<ion-item class="cdc-blue primary">
+				{{sourceType.typeName}}
+			</ion-item>
+
+			<ion-item ng-repeat="source in global.sourceList | filter:{'typeIdentifier':sourceType.typeIdentifier} | orderBy:'displayOrder'" data-ng-if="global.sourceFilters[source.typeIdentifier][source.feedIdentifier].isEnabled" href="#app/source/{{source.feedIdentifier}}">
+				<a alt="{{source.title}}" href="#/app/source/{{source.feedIdentifier}}" data-ng-click="global.closeNavigationModal()">{{source.title}}</a>
+			</ion-item>
+
+		</ion-list>
+	</ion-content>
+</ion-modal-view>

@@ -519,7 +519,7 @@ angular.module('mycdc.services', ['ionic'])
 
                 // LOCAL DATA IS GOOD
                 // RESOLVE PROMISE WITH THE STORED DATA
-                AppUtil.log('Using Local Stream Data for ' + localData.name + ' (Still Fresh)', -1);
+                console.log('Using Local Stream Data for ' + localData.name + ' (Still Fresh)', -1);
                 defer.resolve(localData.data);
 
             } else {
@@ -533,14 +533,20 @@ angular.module('mycdc.services', ['ionic'])
                         url: objMetaData.url
                     }).then(function(d) {
 
+
+                        console.log('Using New Stream Data for ' + localData.name + ' (Refresh Requested)', -1);
+
+                        console.log('Original Data for : ' + objMetaData.url, d.data);
+
                         // NORMALIZE DATA BY SOURCE SPECS
                         var data = objPublicMethods.dataProcessor(d, objMetaData);
+
+                        console.log('Data post processing: ', data);
 
                         //SAVE IT TO LOCAL
                         localStore.save(data);
 
                         // RESOLVE WITH PROCESSED DATA
-                        AppUtil.log('Using New Stream Data for ' + localData.name + ' (Refresh Requested)', -1);
                         defer.resolve(data);
 
                     }, function(e) {
@@ -549,13 +555,13 @@ angular.module('mycdc.services', ['ionic'])
                         if (localData.data && localData.data.length) {
 
                             // FALLBACK TO SAVED DATA
-                            AppUtil.log('Using Local Stream Data for ' + localData.name + ' (Data Is Expired)', -1);
+                            console.log('Using Local Stream Data for ' + localData.name + ' (Data Is Expired)', -1);
                             defer.resolve(localData.data);
 
                         } else {
 
                             // ALL FAILED RETURN WHAT WE HAVE IN LOCAL STORAGE
-                            AppUtil.log('Could Not Find Any Data for ' + localData.name + '  (Local, Remote, or Default)', -1);
+                            console.log('Could Not Find Any Data for ' + localData.name + '  (Local, Remote, or Default)', -1);
                             defer.reject();
                         }
                     });
@@ -563,7 +569,7 @@ angular.module('mycdc.services', ['ionic'])
                 } else {
 
                     // LOCAL DATA IS OLD BUT URL UNAVAILABLE, RESOLVE PROMISE WITH THE STORED DATA
-                    AppUtil.log('Using Local Stream Data for ' + localData.name + ' (URL NOT DEFINED)', -1);
+                    console.log('Using Local Stream Data for ' + localData.name + ' (URL NOT DEFINED)', -1);
                     defer.resolve(data);
                 }
             }
@@ -571,11 +577,13 @@ angular.module('mycdc.services', ['ionic'])
             // SAVE RETURNED DATA (WHATEVER IT IS) AS THE SOURCE INDEX
             defer.promise.then(function(data) {
 
+                console.log('getSourceIndex resolved data', data);
+
                 // SAVE IT TO RS
                 Globals.set('sourceMeta', objMetaData);
                 Globals.set('sourceIndex', angular.copy(data));
 
-            });
+            }, console.log);
 
             return defer.promise;
         },
@@ -786,21 +794,21 @@ angular.module('mycdc.services', ['ionic'])
         // ONLY TRY TO PROCESS IFRAME LOGIC IF WE ARE REALLY ON A MOBILE DEVICE (OTHERWISE WE WONT HAVE PERMISSION & ERROR WILL OCCUR)
         if($rootScope.deviceInfo.isRealMobileDevice()) {
 
-            var iframe = $('#contentframe');
-            anchors = iframe.contents().find('#contentArea a'); // only anchors in the content area
+            var iframe, $anchors, $body;
 
-            //iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument
+            iframe = $('#contentframe');
+            $anchors = iframe.contents().find('#contentArea a'); // only $anchors in the content area
 
             // I RECENTLY COMMENTED THIS OUT AS IT WAS BREAKING THE APP (NOT JUST IFRAME CONTENT)
-            body = iframe.contents().find('body');
-            $(body).unbind("scroll");
-            //$(body).unbind("click");
+            $body = iframe.contents().find('body');
+            $body.unbind("scroll");
 
             // INLINE STYLES TO HIDE UNWANTED CHROME
-            body.append('<style>header, footer, #socialMediaShareContainer { display:none !important; }</style>')
+            //$(body).append('<style>#header, #footer, .socialmediabar, .breadcrumbs, #socialMediaShareContainer { display:none !important; }</style>');
+            $('#header, #footer, #socialMediaShareContainer, .breadcrumbs, .socialmediabar', $body).hide();
 
             // Capture any anchors clicked in the iframe document
-            anchors.on('click', function(e) {
+            $anchors.on('click', function(e) {
                 e.preventDefault();
 
                 var framesrc = iframe.attr('src'),
