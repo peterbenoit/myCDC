@@ -211,8 +211,6 @@ angular.module('mycdc.controllers', [])
 
         if (blnRefresh) {
 
-            alert('Yo!');
-
             // GET / REFRESH SCREEN STATE
             Device.ScreenState().then(function (objScreen) {
                 _this.screenState = objScreen;

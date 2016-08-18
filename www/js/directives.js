@@ -7,10 +7,6 @@ angular.module('mycdc.directives', [])
         restrict: 'E',
         link: function($scope, $element){
 
-            if ($scope.containerLoading === undefined) {
-                $scope.containerLoading = true;
-            }
-
             $scope.getContainerTemplate = function (blnLoader) {
 
                 var uiContainerTemplateUrl, screenState, sourceMeta;
@@ -28,8 +24,6 @@ angular.module('mycdc.directives', [])
                     uiContainerTemplateUrl = 'templates/ui-common/ui-loader.html';
                 }
 
-                $scope.containerLoading = false;
-
                 return uiContainerTemplateUrl;
             };
 
@@ -38,7 +32,6 @@ angular.module('mycdc.directives', [])
                 $scope.uiContainerInit = true;
                 $scope.$on('screen-state-update-started', function(event, args) {
                     $rootScope.log('UI CONTAINER DIRECTIVE RECEIVED screen-state-update-started', 2, 'EVENT-LISTENER:');
-                    $scope.containerLoading = true;
                 });
                 $scope.$on('screen-state-update-complete', function(event, args) {
                     $rootScope.log('UI CONTAINER DIRECTIVE RECEIVED screen-state-update-complete', 2, 'EVENT-LISTENER:');
@@ -580,15 +573,24 @@ angular.module('mycdc.directives', [])
     return {
         restrict: 'E',
         scope: {
-            src : '='
+            src : '=',
+            chromeAllotment : '@'
         },
         link: function(scope, element, attrs) {
             console.log('scope.src', scope.src);
+            scope.chromeAllotment = scope.chromeAllotment || '';
+            var allotment = scope.chromeAllotment.replace('px','');
+            //alert(allotment);
+            if (!isNaN(allotment)) {
+                var newHeight = window.innerHeight - allotment;
+              //  alert(newHeight);
+                //scope.newHeight = newHeight+ 'px';
+                //element[0].style.height = newHeight+ 'px';
+            }
         },
-        template: '<iframe id="contentframe" src="{{src}}" onload="frameready()" data-tap-disabled="true"></iframe>'
+        template: '<iframe id="contentframe" src="{{src}}" onload="frameready()" data-tap-disabled="true" style="width:100%;"></iframe>'//height: {{newHeight}}
     }
 })
-
 .directive("splitBy", function($rootScope) {
 
     var setDimensions = function (element, reference, columns, setRatio) {
