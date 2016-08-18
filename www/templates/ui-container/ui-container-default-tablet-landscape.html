@@ -1,51 +1,33 @@
-<ion-view><ion-pane>
-	<!-- <ion-nav-title>CDC</ion-nav-title> -->
-	<ion-content class="has-header has-footer">
+<!-- TABLET LANDSCAPE MODE -->
+<ion-view>
 
-		<!-- TABLET LANDSCAPE MODE -->
-		<div class="ui-default ui-tablet-landscape">
+	<!-- STREAM VIEW -->
+	<ion-pane data-ng-if="!global.appState.sourceDetail">
+		<ion-content class="has-header">
+			<div class="ui-default ui-tablet-landscape">
+				<div class="ui-list-view">
+					<ion-scroll direction="y" class="vertical-scroller stream" delegate-handle="streamScrollVertical">
+						<ion-refresher pulling-text="Pull to refresh..." on-refresh="global.doRefresh(true)"></ion-refresher>
+						<h3>{{global.sourceMeta.title}}</h3>
+						<ui-stream><!-- STREAM HANDLER --></ui-stream>
+						<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
+						<button class="button button-block button-positive cdc-blue selected border" ng-show="global.hasMoreItems('tabletLandscape')" ng-click="global.loadMore()" >
+							Show more
+						</button>
+					</ion-scroll>
+				</div><!-- ui-list-view -->
+			</div><!-- ui-tablet-landscape -->
+		</ion-content>
+	</ion-pane>
 
-			<!-- THE LIST VIEW -->
-			<div data-ng-if="!global.appState.sourceDetail" class="ui-list-view"><div>
-
-				<!-- STREAM VIEW -->
-				<ion-scroll direction="y" class="vertical-scroller stream stream-vertical" delegate-handle="streamScrollVertical">
-
-					<ion-refresher pulling-text="Pull to refresh..." on-refresh="global.doRefresh(true)"></ion-refresher>
-
-					<h3>{{global.sourceMeta.title}}</h3>
-
-					<ui-stream><!-- UI STREAM DIRECTIVE --></ui-stream>
-
-					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
-					<button class="button button-block button-positive cdc-blue selected border" ng-show="global.hasMoreItems('tabletLandscape')" ng-click="global.loadMore()" >
-						Show more
-					</button>
-
-				</ion-scroll>
-
-			</div></div><!-- ui-list-view -->
-
-			<!-- THE DETAIL VIEW -->
-			<div data-ng-if="global.appState.sourceDetail" class="ui-detail-view"><div>
-
-				<ui-detail data-source-meta="global.sourceMeta" data-detail-card="global.detailCard" data-app-state="global.appState">
-					<!-- UI DETAIL DIRECTIVE -->
-				</ui-detail>
-
-			</div></div><!-- ui-detail-view -->
-
-		</div><!-- ui-tablet-landscape -->
-
-	</ion-content>
-
-	<!-- <ion-footer-bar align-title="left" class="bar-assertive">
-		<div class="buttons">
-			<button class="button">Left Button</button>
-		</div>
-		<h1 class="title">Title!</h1>
-		<div class="buttons" ng-click="doSomething()">
-			<button class="button">Right Button</button>
-		</div>
-	</ion-footer-bar> -->
-</ion-pane></ion-view>
+	<!-- THE DETAIL VIEW -->
+	<ion-pane data-ng-if="global.appState.sourceDetail">
+		<ion-content>
+			<div class="ui-default ui-tablet-landscape">
+				<div class="ui-detail-view">
+					<ui-detail data-source-meta="global.sourceMeta" data-detail-card="global.detailCard" data-app-state="global.appState"><!-- UI DETAIL DIRECTIVE --></ui-detail>
+				</div><!-- ui-detail-view -->
+			</div><!-- ui-tablet-landscape -->
+		</ion-content>
+	</ion-pane>
+</ion-view>

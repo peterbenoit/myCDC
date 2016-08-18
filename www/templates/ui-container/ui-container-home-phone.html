@@ -1,27 +1,17 @@
+<!-- PHONE UNIVERSAL (PORTRAIT & LANDSCAPE) MODE -->
 <ion-view><ion-pane>
 	<ion-content class="has-header">
-
-		<!-- PHONE UNIVERSAL (PORTRAIT & LANDSCAPE) MODE -->
-		<div ng-if="!containerLoading" class="ui-phone ui-home">
-
-			<!-- THE LIST VIEW (IF NO DETAIL SELECTED) -->
-			<div class="ui-list-view" data-ng-if="!sourceDetail">
+		<div class="ui-phone ui-home">
+			<div class="ui-list-view">
 				<ion-scroll direction="y" class="vertical-scroller stream">
 					<ion-refresher pulling-text="Pull to refresh..." on-refresh="global.doRefresh(true)"></ion-refresher>
-					<ui-stream></ui-stream>
+					<ui-stream><!-- STREAM HANDLER --></ui-stream>
 					<!-- <ion-infinite-scroll ng-if="hasMoreItems()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll> -->
 					<button class="button button-block button-positive cdc-blue selected border" ng-show="global.hasMoreItems()" ng-click="global.loadMore()" >
 						Show more
 					</button>
 				</ion-scroll>
 			</div><!-- .ui-list-view -->
-
-			<!-- THE DETAIL VIEW (IF DETAIL SELECTED) -->
-			<div class="ui-detail-view" data-ng-if="sourceDetail">
-				<ui-detail data-source-meta="global.sourceMeta" data-detail-card="global.detailCard"></ui-detail>
-			</div><!-- .ui-detail-view -->
-
 		</div><!-- .ui-iphone -->
 	</ion-content>
-
 </ion-pane></ion-view>

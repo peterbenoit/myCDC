@@ -1,14 +1,6 @@
 UI_DETAIL_VIDEO
 <ion-view class="detail-video">
-    <ion-nav-buttons side="right">
-        <button alt="Heading Share Menu Button" class="button button-icon button-clear" ng-click="Share.share()" ng-class="{'ion-android-share-alt': deviceinfo.isAndroid || deviceinfo.isAndroidTablet,'ion-ios-upload-outline': deviceinfo.isIOS || deviceinfo.isIPad}"></button>
-    </ion-nav-buttons>
-    <ion-content class="iframe-wrapper">
-        <!-- <div class="video-paging">
-            <span class="sourcename">{{detailData.streamTitle}}</span>
-            <a alt="Next Button"class="button icon-right ion-chevron-right button-clear button-dark" ng-class="{'button-negative':!next.visible, 'button-dark':next.visible}" ng-disabled="!next.visible" href="#/app/YouTube/{{next.position}}">Next</a>
-            <a alt="Previous Button" class="button icon-left ion-chevron-left button-clear button-dark" ng-class="{'button-negative':!previous.visible, 'button-dark':previous.visible}" ng-disabled="!previous.visible" href="#/app/YouTube/{{previous.position}}">Prev</a>
-        </div> -->
+    <ion-content class="iframe-wrapper has-header">
         <div>
             <div class="padding data civ video">
                 <h1 class="title">{{detailData.name}}</h1>
@@ -21,10 +13,16 @@ UI_DETAIL_VIDEO
                 <p push-html="::detailData.description"></p>
             </div>
         </div>
-        <div class="border">
-            <p class="padding">
-                <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>
-            </p>
+        <div class="buttons">
+            <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>
+            <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="openLink(detailData.sourceUrl, 'html')">View on CDC.gov</button>
         </div>
     </ion-content>
+    <!-- USING INLINE VS FOOTER
+    <ion-footer-bar align-title="left">
+        <div class="buttons">
+            <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>
+            <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="openLink(detailData.sourceUrl, 'html')">View on CDC.gov</button>
+        </div>
+    </ion-footer-bar> -->
 </ion-view>
