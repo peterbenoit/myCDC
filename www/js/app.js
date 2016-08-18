@@ -20,7 +20,7 @@ angular.module('mycdc', [
  * @param  {[type]}
  * @return {[type]}
  */
- .run(function($cordovaNetwork, $cordovaStatusbar, $cordovaGlobalization, $ionicPlatform, $ionicPopup, $state, $rootScope, $filter, $q, Device, iFrameReady, DataSourceInterface, AppUtil, Globals, Share) {
+ .run(function($cordovaNetwork, $cordovaStatusbar, $cordovaGlobalization, $ionicPlatform, $ionicPopup, $state, $rootScope, $filter, $q, Device, iFrameReady, DataSourceInterface, AppUtil, Globals, Share, ImageRatioClasses) {
 
     var rs = $rootScope,
         href = window.location.href,
@@ -289,6 +289,8 @@ angular.module('mycdc', [
                             $state.go('app.sourceIndex', {
                                     sourceName : rs.homeStream
                             })
+
+                            ImageRatioClasses();
 
                             // LOCALIZE THE DATA PROCESSOR (MAYBE REMOVE POINTER & ACCESS DIRECTLY IF NOT NEEDED LATER?)
                             dataProcessor = DataSourceInterface.dataProcessor;

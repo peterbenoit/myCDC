@@ -201,6 +201,8 @@ angular.module('mycdc.services', ['ionic'])
                 'closebuttoncaption=Back to CDC'
             ];
 
+            console.log('Url Load Requested', url);
+
             if (ionic.Platform.isAndroid()) {
                 if (link_type) {
                     if (link_type.toLowerCase() !== 'html') {
@@ -940,6 +942,176 @@ angular.module('mycdc.services', ['ionic'])
                   // Nope
                 })
             })
+        }
+    }
+}])
+
+.service('ImageRatioClasses', ['$rootScope', 'Device', function($rootScope, Device) {
+
+    if (!$rootScope.hasOwnProperty('styleRegistry')) {
+        $rootScope.styleRegistry = {};
+    };
+
+    var getExpectedWidthByOrientation, ScreenSize, styleDefinitions;
+
+    getExpectedWidthByOrientation = function (orientation) {
+        // LANDSCAPE - ALWAYS RETURN GREATER DIMENSION
+        if (orientation == 'landscape') {
+            return (ScreenSize.height > ScreenSize.width) ? ScreenSize.height : ScreenSize.width;
+        }
+        // PORTRAIT (DEFAULT) - ALWAYS RETURN LESSER DIMENSION
+        return (ScreenSize.height < ScreenSize.width) ? ScreenSize.height : ScreenSize.width;
+    };
+
+    ScreenSize = Device.ScreenSize();
+
+    styleDefinitions = {
+        tablet: [
+            {
+                lookup : 'ui_tablet_portrait_card_image',
+                context : 'Table Portrait Stream View (2 cards across with 5px padding left & right) Card Image',
+                columns : 2,
+                horizontalPaddingInPx : 12,
+                ratio : '16:9',
+                cssRule : ".ui-tablet-portrait .item.item-image",
+                screenWidth : getExpectedWidthByOrientation('portrait')
+            },
+            {
+                lookup : 'ui_tablet_landscape_card_image',
+                context : 'Table Landscape Stream View (3 cards across with 5px padding left & right) Card Image',
+                columns : 3,
+                horizontalPaddingInPx : 12,
+                ratio : '16:9',
+                cssRule : ".ui-tablet-landscape .item.item-image",
+                screenWidth : getExpectedWidthByOrientation('landscape')
+            },
+            {
+                lookup : 'ui_tablet_portrait_detail_image_full',
+                context : 'Table Portrait Detail View Full Screen Detail Image',
+                columns : 1,
+                horizontalPaddingInPx : 12,
+                ratio : '16:9',
+                cssRule : ".ui-tablet-portrait .ui-detail-view .item-image",
+                screenWidth : getExpectedWidthByOrientation('portrait')
+            },
+            {
+                lookup : 'ui_tablet_landscape_card_image_full',
+                context : 'Table Landscape Detail View Full Screen Detail Image',
+                columns : 1,
+                horizontalPaddingInPx : 12,
+                ratio : '16:9',
+                cssRule : ".ui-tablet-landscape .ui-detail-view .item-image",
+                screenWidth : getExpectedWidthByOrientation('landscape')
+            }
+        ],
+        phone: [
+            {
+                lookup : 'ui_phone_card_image',
+                context : 'Phone Universal Stream View (1 cards across with 5px padding left & right) Card Image',
+                columns : 1,
+                horizontalPaddingInPx : 12,
+                ratio : '16:9',
+                cssRule : ".ui-phone .item.item-image",
+                screenWidth : getExpectedWidthByOrientation('portrait')
+            },
+            {
+                lookup : 'ui_phone_landscape_card_image',
+                context : 'Phone Landscape Stream View (1 cards across with 5px padding left & right) Card Image',
+                columns : 1,
+                horizontalPaddingInPx : 12,
+                ratio : '16:9',
+                cssRule : ".ui-phone-landscape .item.item-image",
+                screenWidth : getExpectedWidthByOrientation('landscape')
+            },
+            {
+                lookup : 'ui_phone_portrait_card_image',
+                context : 'Phone Portrait Stream View (1 cards across with 5px padding left & right) Card Image',
+                columns : 1,
+                horizontalPaddingInPx : 12,
+                ratio : '16:9',
+                cssRule : ".ui-phone-portrait .item.item-image",
+                screenWidth : getExpectedWidthByOrientation('portrait')
+            }
+        ]
+    };
+
+    // CREATE ALL STYLES FOR A SINGLE DEFINITION (RETURNED AS A CSS DEFINITION - STRING)
+    createStyles = function (definition) {
+        var aryStyles, imgWidth, aryArgs
+
+        aryStyles = [],
+        imgWidth = Math.floor(definition.screenWidth / definition.columns) - definition.horizontalPaddingInPx;
+        aryArgs = definition.ratio.split(':');
+
+        if (aryArgs.length == 2) {
+
+            var rW = aryArgs[0];
+            var rH = aryArgs[1];
+
+            // DETERMINE NEW RATION SPECIFIC HEIGHT
+            aryStyles.push('height:' + Math.floor((imgWidth / rW) * rH) + 'px !important');
+        }
+
+        return definition.cssRule + '{' + aryStyles.join(';') + '}';
+    };
+
+    getStyleTag = function (styleTagId) {
+
+        var styleTag = document.getElementById(styleTagId);
+
+        if (styleTag) {
+            return styleTag;
+        }
+
+        var head = document.head || document.getElementsByTagName('head')[0];
+        var style = document.createElement('style');
+
+        style.type = 'text/css';
+        style.id = styleTagId;
+        head.appendChild(style);
+
+        return style;
+    }
+
+    return function(deviceType) {
+
+        // DEFINE TABLE AS ANY DEVICE WITH A WIDTH OF 1024 OR GREATER
+        deviceType = deviceType || ((ScreenSize.height >= 1024 || ScreenSize.width >= 1024) ? 'tablet' : 'phone');
+
+        var aryStyles = [];
+
+        // CHECK FOR RULES FOR CURRENT DEVICE TYPE
+        if (styleDefinitions.hasOwnProperty(deviceType)) {
+
+            var style, css;
+
+            // IF DEFINED, LOOP THEM
+            angular.forEach(styleDefinitions[deviceType], function(definition, index) {
+
+                // VERIFY CURRENT DEFINITION HAS NOT ALREADY BEEN HANDLED
+                if (!$rootScope.styleRegistry.hasOwnProperty(definition.lookup)) {
+
+                    // HANDLE THE DEFINITION (PUSH RETURN TO STYLES ARRAY)
+                    aryStyles.push(createStyles(definition));
+
+                    // IF NOT, FLAG IT AS HANDLED
+                    $rootScope.styleRegistry[definition.lookup] = true;
+                }
+            });
+
+            // DID WE MAKE ANY STYLES?
+            if (aryStyles.length) {
+
+                // PUSH THEM TO THE STYLE TAG
+                style = getStyleTag('app-inline-styles');
+                css = aryStyles.join(' ');
+
+                if (style.styleSheet){
+                    style.styleSheet.cssText = css;
+                } else {
+                    style.appendChild(document.createTextNode(css));
+                }
+            }
         }
     }
 }]);
