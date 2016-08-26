@@ -34,7 +34,7 @@
     "title": "Home",
     "icon": "ion-checkmark-circled",
     "url": "http://www.cdc.gov/zika/cod7_public_test_data.json",
-    "processors": ["cardTemplateInjector", "stripHtml"],
+    "processors": ["cardTemplateInjector", "stripHtml","homestreamColumns"],
     "detailType": "default",
     "showByDefault": true,
     "showSourceLink": true,
@@ -42,7 +42,7 @@
     "filterLocked": true,
     "templates": {
       "containerSet": "ui-container-home",
-      "stream": "ui-stream-home",
+      "stream": "ui-stream-home-columns",
       "card": "ui-card-default",
       "homeCard": "ui-card-default",
       "detail": "ui-detail-article"

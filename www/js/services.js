@@ -325,8 +325,8 @@ angular.module('mycdc.services', ['ionic'])
                 obj1.templates = app.templateMap[obj1.feedIdentifier];
                 obj1.detailType = objSourceMeta.detailType;
                 obj1.contentType = objSourceMeta.contentType;
-                obj1.home = '#/app/source/' + obj1.feedIdentifier;
-                obj1.url = obj1.home + '/';
+                obj1.home = '#/app/source/' + obj1.feedIdentifier + '/';
+                obj1.url = obj1.home;
 
                 // SET STREAM TITLE
                 obj1.streamTitle = obj1.feedMeta.title;
@@ -353,7 +353,7 @@ angular.module('mycdc.services', ['ionic'])
                 //obj1.detailType = obj1.detailType || objSourceMeta.detailType;
                 //obj1.templates = obj1.templates || angular.extend({}, app.templateMap[obj1.feedIdentifier]);
                 obj1.home = obj1.home || '#/app/source/' + obj1.feedIdentifier;
-                obj1.url = obj1.url || obj1.home + '/';
+                obj1.url = obj1.url || obj1.home;
 
                 // IF NO META DATA OR TEMPLATES CAN BE FOUND, THE CONTENT GROUP IS INVALID, FLAG FOR DELETE
                 obj1.delete = !obj1.templates || !obj1.feedMeta;
@@ -465,6 +465,35 @@ angular.module('mycdc.services', ['ionic'])
             }
 
             return null;
+        },
+        homestreamColumns : function (d) {
+
+            // CARD LAYOUT DEFAULTS
+            var c2 = 0, c3 = 0;
+
+            // LOOP CARDS
+            angular.forEach(d, function (card, idx) {
+                // INCREMENT 2 ^ 3 CARD LAYOUT VARS
+                c2+= 1;
+                c3+= 1;
+
+                // SET CARD LAYOUT COLUMN ASSIGNMENTS
+                d[idx].phoneCol = 1;
+                d[idx].tabletPortraitCol = c2;
+                d[idx].tabletLandscapeCol = c3;
+
+                // RESET 2 CARD LAOUT ONCE 2 IS REACHED
+                if (c2 >= 2) {
+                    c2 = 0;
+                }
+                // RESET 3 CARD LAOUT ONCE 3 IS REACHED
+                if (c3 >= 3) {
+                    c3 = 0;
+                }
+            });
+
+            // RETURN ARRAY
+            return d;
         },
         defaultHandler: function() {
             return [];
@@ -651,6 +680,7 @@ angular.module('mycdc.services', ['ionic'])
                     // REVERSE LOOP THROUGH PROCESSORS
                     for (var i = objMetaData.processors.length - 1; i >= 0; i--) {
                         processor = objMetaData.processors[i];
+                        console.log('Applying: ' + processor)
                         data = processors[processor].call(this, data, objMetaData);
                     }
                 }
@@ -973,7 +1003,7 @@ angular.module('mycdc.services', ['ionic'])
                 columns : 2,
                 horizontalPaddingInPx : 12,
                 ratio : '16:9',
-                cssRule : ".ui-tablet-portrait .item.item-image",
+                cssRule : ".ui-tablet-portrait .item-image",
                 screenWidth : getExpectedWidthByOrientation('portrait')
             },
             {
@@ -982,7 +1012,7 @@ angular.module('mycdc.services', ['ionic'])
                 columns : 3,
                 horizontalPaddingInPx : 12,
                 ratio : '16:9',
-                cssRule : ".ui-tablet-landscape .item.item-image",
+                cssRule : ".ui-tablet-landscape .item-image",
                 screenWidth : getExpectedWidthByOrientation('landscape')
             },
             {
@@ -1011,7 +1041,7 @@ angular.module('mycdc.services', ['ionic'])
                 columns : 1,
                 horizontalPaddingInPx : 12,
                 ratio : '16:9',
-                cssRule : ".ui-phone .item.item-image",
+                cssRule : ".ui-phone .item-image",
                 screenWidth : getExpectedWidthByOrientation('portrait')
             },
             {
@@ -1020,7 +1050,7 @@ angular.module('mycdc.services', ['ionic'])
                 columns : 1,
                 horizontalPaddingInPx : 12,
                 ratio : '16:9',
-                cssRule : ".ui-phone-landscape .item.item-image",
+                cssRule : ".ui-phone-landscape .item-image",
                 screenWidth : getExpectedWidthByOrientation('landscape')
             },
             {
@@ -1029,7 +1059,7 @@ angular.module('mycdc.services', ['ionic'])
                 columns : 1,
                 horizontalPaddingInPx : 12,
                 ratio : '16:9',
-                cssRule : ".ui-phone-portrait .item.item-image",
+                cssRule : ".ui-phone-portrait .item-image",
                 screenWidth : getExpectedWidthByOrientation('portrait')
             }
         ]

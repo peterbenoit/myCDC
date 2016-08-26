@@ -710,3 +710,32 @@ angular.module('mycdc.directives', [])
         }
     };
 })
+.directive('cdcLoader', function($timeout, $interval, $rootScope, Device, appConfiguration) {
+    return {
+        scope : {},
+        link: function(scope, element, attrs) {
+            var icon = 'ios';
+            var delay = appConfiguration.loaderTimeout / 2;
+            if (Device.Info().isAndroid) {
+                icon = 'android';
+            }
+            scope.icon = icon;
+
+            scope.message = 'Loading...';
+            scope.countdownMessage = '';
+
+            $timeout(function (){
+                scope.message = 'Long Process Detected...';
+                var countdown = (delay/1000) - 1;
+                scope.countdownMessage = 'Loader will auto close in ' + countdown + ' seconds...'
+                $interval(function () {
+                    countdown--
+                    if (countdown >=0) {
+                        scope.countdownMessage = 'Loader will auto close in ' + countdown + ' seconds...'
+                    }
+                }, 1000, (delay/1000));
+            }, delay);
+        },
+        templateUrl : 'templates/ui-common/ui-transition-loader.html'
+    };
+})

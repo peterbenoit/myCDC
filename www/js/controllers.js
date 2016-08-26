@@ -126,6 +126,10 @@ angular.module('mycdc.controllers', [])
     // SETUP PAGINATION
     _this.paginationLimit = function(type) {
 
+        if (!type && _this.screenState && _this.screenState.viewType) {
+            type = _this.screenState.viewType + $filter('capitalize')(_this.screenState.viewOrientation);
+        }
+
         var intReturn = (_this.paginationLimits[type] || _this.paginationLimits.defaultLimit) * _this.page;
 
         console.log('paginationLimit for ' + type, intReturn);
@@ -139,8 +143,8 @@ angular.module('mycdc.controllers', [])
         var limit = _this.paginationLimits[type];
 
         // QUICK CHECK TO SEE IF ALL AVAILABLE CARDS ARE SHOWN
-        if (_this.datas) {
-            return (_this.page * limit) < _this.datas.length;
+        if (_this.sourceIndexData) {
+            return (_this.page * limit) < _this.sourceIndexData.length;
         }
         return false;
     };
@@ -160,6 +164,8 @@ angular.module('mycdc.controllers', [])
             //_this.page = _this.page + 1;
             _this.getPageState(appState, true);
 
+            _this.datas = $filter('limitTo')(_this.sourceIndexData, _this.paginationLimit());
+
             $scope.$broadcast('scroll.loadMore');
         });
     };
@@ -178,7 +184,8 @@ angular.module('mycdc.controllers', [])
             _this.getPageState(appState);
 
             // SET DATA TO "$scope.datas" SO DIRECTIVE WILL PICK IT UP & DISPLAY IT WITHIN ITS TEMPLATE(S)
-            _this.datas = d;
+            _this.sourceIndexData = d;
+            _this.datas = $filter('limitTo')(_this.sourceIndexData, _this.paginationLimit());
 
             AppUtil.log(_this.datas, 1, 'CURRENT SOURCE DATA');
 
@@ -288,13 +295,7 @@ angular.module('mycdc.controllers', [])
     };
 
     $rootScope.swipe = function (direction) {
-        if (_this.swipeMode == 'source') {
-            _this.changeSource(direction);
-        }
-
-        if (_this.swipeMode == 'detail') {
-            _this.changeDetail(direction);
-        }
+        _this.changeDetail(direction);
     };
 
     _this.goBack = function () {
@@ -303,53 +304,56 @@ angular.module('mycdc.controllers', [])
     _this.goHome = function () {
         $state.go('app.sourceIndex', {sourceName: $rootScope.homeStream});
     };
-    _this.changeSource = function (direction) {
-        // DISABLING THIS AS I RECALL WE DITCHED THIS CONCEPT
-        if (direction && false) {
+    // _this.changeSource = function (direction) {
+    //     // DISABLING THIS AS I RECALL WE DITCHED THIS CONCEPT
+    //     if (direction && false) {
 
-            // PROVIDE INDEX LOOKUP FOR SWIPE FUNCTIONALITY
-            var sourceListIdxRef = [];
-            angular.forEach(_this.sourceList, function (objSource, intIndex) {
-                if (_this.sourceFilters[objSource.typeIdentifier][objSource.feedIdentifier].isEnabled) {
-                    sourceListIdxRef.push(objSource.feedIdentifier);
-                }
-            });
+    //         // PROVIDE INDEX LOOKUP FOR SWIPE FUNCTIONALITY
+    //         var sourceListIdxRef = [];
+    //         angular.forEach(_this.sourceList, function (objSource, intIndex) {
+    //             if (_this.sourceFilters[objSource.typeIdentifier][objSource.feedIdentifier].isEnabled) {
+    //                 sourceListIdxRef.push(objSource.feedIdentifier);
+    //             }
+    //         });
 
-            console.log('sourceListIdxRef', sourceListIdxRef);
+    //         console.log('sourceListIdxRef', sourceListIdxRef);
 
-            if (sourceListIdxRef && sourceListIdxRef.length) {
-                var tmp = {};
-                tmp.currMax = sourceListIdxRef.length - 1;
-                tmp.currSource = _this.appState.sourceName;
-                tmp.currIdx = sourceListIdxRef.indexOf(tmp.currSource) || 0;
-                tmp.newIdx = null;
-                tmp.newSource = null;
+    //         if (sourceListIdxRef && sourceListIdxRef.length) {
+    //             var tmp = {};
+    //             tmp.currMax = sourceListIdxRef.length - 1;
+    //             tmp.currSource = _this.appState.sourceName;
+    //             tmp.currIdx = sourceListIdxRef.indexOf(tmp.currSource) || 0;
+    //             tmp.newIdx = null;
+    //             tmp.newSource = null;
 
-                if (direction == 'next') {
-                    tmp.newIdx = ((tmp.currIdx + 1) > tmp.currMax) ? 0 : tmp.currIdx + 1;
-                }
+    //             if (direction == 'next') {
+    //                 tmp.newIdx = ((tmp.currIdx + 1) > tmp.currMax) ? 0 : tmp.currIdx + 1;
+    //             }
 
-                if (direction == 'prev') {
-                    tmp.newIdx = (tmp.currIdx <= 0) ? tmp.currMax : tmp.currIdx - 1;
-                }
+    //             if (direction == 'prev') {
+    //                 tmp.newIdx = (tmp.currIdx <= 0) ? tmp.currMax : tmp.currIdx - 1;
+    //             }
 
-                if (tmp.newIdx !== null) {
-                    tmp.newSource = sourceListIdxRef[tmp.newIdx];
-                }
+    //             if (tmp.newIdx !== null) {
+    //                 tmp.newSource = sourceListIdxRef[tmp.newIdx];
+    //             }
 
-                $timeout(function(){
-                    $state.go('app.sourceIndex', {sourceName: tmp.newSource, sourceDetail : ''});
-                });
-            }
-        }
-    };
+    //             $timeout(function(){
+    //                 $state.go('app.sourceIndex', {sourceName: tmp.newSource, sourceDetail : ''});
+    //             });
+    //         }
+    //     }
+    // };
 
     _this.changeDetail = function (direction) {
 
+        //console.log('Swipe Requested', direction);
+
         if (direction && _this.datas && !!_this.datas.length && _this.datas.length > 1) {
+
             var cardListIdxRef = [];
             angular.forEach(_this.datas, function (objCard, intIndex) {
-                cardListIdxRef.push(objCard.id);
+                cardListIdxRef.push(objCard.id.toString());
             });
 
             if (cardListIdxRef && cardListIdxRef.length) {
@@ -371,6 +375,12 @@ angular.module('mycdc.controllers', [])
                 if (tmp.newIdx !== null) {
                     tmp.newCardId = cardListIdxRef[tmp.newIdx];
                 }
+
+                //console.log('tmp.currCardId', tmp.currCardId);
+                //console.log('cardListIdxRef',cardListIdxRef);
+                //console.log('tmp.currIdx', tmp.currIdx);
+                //console.log('tmp.newIdx', tmp.newIdx);
+                //console.log('tmp.newCardId', tmp.newCardId);
 
                 $timeout(function(){
                     $state.go('app.sourceDetail', {sourceName: _this.appState.sourceName, sourceDetail : tmp.newCardId});
@@ -413,32 +423,8 @@ angular.module('mycdc.controllers', [])
     var listeners = {};
 
     listeners.stateChangeStart = $scope.$on("$stateChangeStart", function(event, data){
-        var backButtonMode = 'hide';
-        switch(data.name) {
-            case 'app.sources':
-                backButtonMode = 'home';
-            break;
-            case 'app.sourceIndex':
-                backButtonMode = 'back';
-            break;
-            case 'app.sourceDetail':
-                backButtonMode = 'back';
-            break;
-            case 'app.settings':
-                backButtonMode = 'home';
-            break;
-        }
-        console.log('???',event,data,backButtonMode);
-        $rootScope.backButtonMode = backButtonMode;
-
         // TRIGGER INITIAL LOADER DISPLAY
-        $ionicLoading.show({
-            content: 'Loading',
-            animation: 'fade-in',
-            showBackdrop: true,
-            maxWidth: 200,
-            showDelay: 0
-        });
+        $ionicLoading.show();
     });
 
     // UPDATED LISTENERS FOR STATE CHANGE
@@ -468,7 +454,6 @@ angular.module('mycdc.controllers', [])
     listeners.appStateLoadComplete = $scope.$on('loading-complete', function () {
         $timeout(function () {
             // HIDE THE LOADER
-            //alert('called');
             $ionicLoading.hide();
         });
     });
@@ -547,7 +532,6 @@ angular.module('mycdc.controllers', [])
     }
 
     $scope.global.showSourceHome = !!($stateParams.sourceName && ($stateParams.sourceName !== $scope.homeStream) && ($stateParams.sourceDetail && $stateParams.sourceDetail.length));
-
 }])
 
 /**

@@ -70,6 +70,11 @@ angular.module('mycdc.filters', [])
         return input;
     };
 })
+.filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+})
 .filter('groupBy', function() {
     var mArr = null,
         mGroupBy = null,

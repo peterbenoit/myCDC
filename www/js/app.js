@@ -15,12 +15,26 @@ angular.module('mycdc', [
     'ngIOS9UIWebViewPatch'
 ])
 
+.constant('appConfiguration', {
+    loaderTimeout : 8000
+})
+
+.constant('$ionicLoadingConfig', {
+    content: 'Loading',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0,
+    template : '<cdc-loader></cdc-loader>',
+    duration : 8000
+})
+
 /**
  * @param  {[type]}
  * @param  {[type]}
  * @return {[type]}
  */
- .run(function($cordovaNetwork, $cordovaStatusbar, $cordovaGlobalization, $ionicPlatform, $ionicPopup, $state, $rootScope, $filter, $q, Device, iFrameReady, DataSourceInterface, AppUtil, Globals, Share, ImageRatioClasses) {
+ .run(function(appConfiguration, $cordovaNetwork, $cordovaStatusbar, $cordovaGlobalization, $ionicPlatform, $ionicPopup, $state, $rootScope, $filter, $q, Device, iFrameReady, DataSourceInterface, AppUtil, Globals, Share, ImageRatioClasses) {
 
     var rs = $rootScope,
         href = window.location.href,
@@ -49,6 +63,7 @@ angular.module('mycdc', [
     document.addEventListener("deviceready", hideStatusBar, false);
     document.addEventListener("deviceready", getLangPreference, false);
     document.addEventListener("deviceready", setNetworkListeners, false);
+    document.addEventListener("deviceready", initPushwoosh, false);
 
     function setNetworkListeners() {
         //console.log('Executing setNetworkListeners');
@@ -130,6 +145,25 @@ angular.module('mycdc', [
             StatusBar.styleDefault();
             return StatusBar.hide();
         }
+    }
+
+    function initPushwoosh() {
+        app.receivedEvent('deviceready');
+
+        var pushwoosh = cordova.require("pushwoosh-cordova-plugin.PushNotification");
+
+        // Should be called before pushwoosh.onDeviceReady
+        document.addEventListener('push-notification', function(event) {
+            var notification = event.notification;
+            // handle push open here
+        });
+
+        // Initialize Pushwoosh. This will trigger all pending push notifications on start.
+        pushwoosh.onDeviceReady({
+            appid: "PUSHWOOSH_APP_ID",
+            projectid: "GOOGLE_PROJECT_NUMBER",
+            serviceName: "MPNS_SERVICE_NAME"
+        });
     }
 
     $ionicPlatform.ready(function () {

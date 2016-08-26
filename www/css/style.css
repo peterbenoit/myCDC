@@ -1,94 +1,18 @@
-/**
- * NOTE: Platform specific styles are kept in /merges/PLATFORM/css/platform.css
- */
-
-
-
-/*
-.iframe-holder {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  top: 0;
-  -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
-}
-.iframe-holder {
-  height: 750px;
- -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
-}
-.iframe-holder iframe {
-  height: 100%;
-  width: 100%;
-}
-.iframe-issue {
-  -webkit-overflow-scrolling: touch !important;
-  overflow: scroll !important;
-}
-*/
-/*
-colors
- */
-
-
-/*
-.disabled.image-stream .ng-enter-stagger {
-  -webkit-animation-delay:100ms;
-  animation-delay:100ms;
-
-  -webkit-animation-duration:0;
-  animation-duration:0;
-}
-
-.disabled.image-stream .ng-enter {
-    -webkit-animation: fadeInLeft 1s;
-    animation: fadeInLeft 1s;
-}
-
-.disabled.stream .ng-enter-stagger {
-  -webkit-animation-delay:100ms;
-  animation-delay:100ms;
-
-  -webkit-animation-duration:0;
-  animation-duration:0;
-}
-.stream .ng-enter {
-    -webkit-animation: fadeInUp 1s;
-    animation: fadeInUp 1s;
-}
-*/
+/* NOTE: Platform specific styles are kept in /merges/PLATFORM/css/platform.css */
 
 .content-stable {
     background-color: #f8f8f8;
-    /*background: url(/img/card-placeholder.png)*/
 }
 
 /**
  * Images
  */
 
-/* make CIV of PHIL = 100% */
-
-
-
-/*.image-stream .item-image {
-    overflow:hidden;
-    background-position: center;
-    background-size: cover;
-}*/
-
 .settings .list {
     margin-bottom: 0;
 }
 
-/**
- * iframe
- */
-/*iframe:not(src*="youtube") {
-    width: 100%; min-height: 100%
-}*/
+/* IFRAME */
 
 .iframe-wrapper iframe {
    width: 100%;
@@ -102,10 +26,6 @@ colors
     overflow-y: scroll!important;
 }
 
-/**
- * random
- */
-
 
 .top-border {
     border-top: 1px solid #e0e0e0;
@@ -117,23 +37,6 @@ colors
 .bar .title {
     font-size: 24px;
 }
-
-/* content area adjustments */
-/*p.contentarea img {
-    float: left;
-    margin:0 10px 10px 0;
-    clear: right;
-}*/
-
-/*.scroll-content {
-    overflow: visible;
-}
-
-.padding {
-    outline:1px solid red;
-}*/
-
-/* stream */
 
 .paging {
     margin-bottom: 10px;
@@ -189,9 +92,6 @@ margin-bottom: -10px;
     box-shadow: none;
     border:1px solid #e0e0e0;
     padding-top: 0!important;
-/*    height: 300px;
-    background: url(/img/placeholder.png) no-repeat;
-    background-size: 100%;*/
 }
 
 a.item.item-footer {
@@ -383,96 +283,6 @@ ion-side-menu h4 {
     padding-left:14px;
 }
 
-/* hiding first heading in content area */
-/*.contentarea h1:first-child,
-.contentarea .h1:first-child,
-.contentarea h2:first-child,
-.contentarea .h2:first-child,
-.contentarea h3:first-child,
-.contentarea .h3:first-child {
-    display:none;
-}*/
-
-/*
-    hiding content
- */
-
-/*.civ table,
-.civ table + .caption,
-.civ .civ [class*="onthis"], .civ [id*="onthis"],
-.civ a[href="#"],
-.civ a[href^="#"],
-.civ .figure, .civ .figure-story,
-.civ .table, .civ .table-story,
-.civ .box-frieden,
-.civ [class*="table"], .civ [id*="table"],
-.civ [class*="figure"], .civ [id*="figure"],
-.civ [class*="comments"], .civ [id*="comments"],
-.civ .cat-links, .civ .tags-links,
-.civ hr {
-    display:none!important;
-}*/
-
-/*
-side menu wrap
-*/
-
-
-/* LIST VIEWS FOR PHONE, TABLET LANDSCAPE, TABLET PORTRAIT
-.ui-phone .ui-list-view,
-.ui-tablet-landscape .ui-list-view,
-.ui-tablet-portrait .ui-list-view {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #f8f8f8;
-}
-.ui-phone .ui-list-view {
-  top: 44px;
-  width: 100%;
-}
-.ui-tablet-landscape .ui-list-view {
-    width: 300px;
-    top: 44px;
-}
-
-.ui-tablet-portrait .ui-list-view {
-  height: 300px;
-  top: 44px;
-}
-.ui-tablet-portrait.has-list-header .ui-list-view {
-  height: 340px;
-}
-
-.ui-list-view .horizontal-scroller,
-.ui-list-view .vertical-scroller {
-  overflow: scroll;
-  white-space: nowrap;
-}
-.ui-list-view .vertical-scroller {
-  width: 100%;
-}
-.ui-tablet-landscape .ui-list-view .vertical-scroller {
-  width: 300px;
-}
-.ui-list-view .horizontal-scroller {
-  height: 300px;
-}
-
-// Could have styles the H#, but needed explicit handle for the H4 for JS, so uging the class to style as well
-.ui-list-view .scroll-header,
-.ui-detail-view .content-header {
-  height: 40px;
-}
-.ui-list-view h3,
-.ui-detail-view h3 {
-  margin: 8px;  // WARN: this is adjusting h3's in the content area!
-  white-space: normal;
-}
-*/
-
 .card {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -483,15 +293,6 @@ side menu wrap
   border: 3px solid #075290!important;;
 }
 
-
-
-/* STREAM VIEWS */
-/*
-.ui-tablet-portrait .stream-standard {
-  height: 300px;
-}
-*/
-
 /* CARD CONTAINERS */
 .card-container {
   margin: 0;
@@ -499,77 +300,6 @@ side menu wrap
   width: 100%;
   overflow: hidden;
 }
-
-/*
-.ui-tablet-portrait .ui-list-view .card-container {
-  width: 300px;
-  min-width: 300px;
-  min-height: 300px;
-}
-.ui-default.ui-tablet-portrait .ui-list-view .card-container {
-  overflow: hidden;
-}
-.stream-row {
-  font-size: 0; //* CSS FIX: https://css-tricks.com/fighting-the-space-between-inline-block-elements/
-}
-.stream-row .card-container {
-    display: -webkit-flex;
-    display: inline-block;
-    vertical-align: top;
-}
-.ui-default .card-container .card-container-pad {
-  -webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
-}
-*/
-
-
-/* HOME OVERLOADS
-.ui-home .stream-row {
-    overflow: visible;
-}
-.ui-home.ui-tablet-portrait .ui-list-view,
-.ui-home.ui-tablet-landscape .ui-list-view {
-    top: 0;
-    width: 100%;
-}
-.ui-home.ui-tablet-landscape .ui-list-view .vertical-scroller {
-  width: 100%;
-}*/
-
-/* DETAIL VIEW
-.ui-phone .ui-detail-view {
-  position: absolute;
-  top: 44px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-.ui-tablet-landscape .ui-detail-view {
-    position: absolute;
-    top: 44px;
-    right: 0;
-    bottom: 0;
-    left: 300px;
-}
-.ui-tablet-portrait .ui-detail-view {
-  position: absolute;
-  top: 344px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.ui-tablet-portrait.has-list-header .ui-detail-view {
-  top: 384px;
-}
-
-.ui-tablet-portrait.ui-iframe .ui-detail-view {
-  top: 44px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-*/
 
 .card-container .card {
   padding: 0;
@@ -590,16 +320,6 @@ side menu wrap
   padding: 0 5px 10px 5px;
 }
 
-.stream-home .card {
-  min-height: 325px;
-  overflow: auto;
-}
-
-/* PHONE SCROLLER */
-.ui-phone .has-header {
-    top: 0;
-}
-
 .ui-phone .ui-list-view .card {
   display: block;
   width: 100%;
@@ -611,31 +331,6 @@ side menu wrap
   max-width: 100%;
 }
 
-/* LANDSCAPE VERTICAL SCROLLER
-.card-container .card {
-    display: block;
-    white-space: normal;
+.bar.bar-footer .button {
+  margin-right: 5px;
 }
-
-.ui-tablet-landscape .card-container .card {
-    display: block;
-    max-height: 300px;
-    width: 100%;
-    white-space: normal;
-}
-
-.ui-tablet-landscape .card-container .card img {
-    max-width: 100%;
-} */
-
-
-
-/* IONIC SCOLL CSS FIX
-ion-scroll[direction=x] {
-  width: 100vw;
-}
-ion-scroll[direction=y] {
-  height: 100vh;
-}
-*/
-

@@ -210,6 +210,12 @@ body.platform-windowsphone {}
 	.ui-default,
 	.ui-iframe,
 	.ui-images {
+
+		// FIXED HEIGHT FOR STANDARD STREAMS
+		.item-body {
+			height: 150px;
+		}
+
 		&.ui-phone {
 			.ui-list-view,
 			.ui-detail-view {
@@ -225,9 +231,8 @@ body.platform-windowsphone {}
 
 						.item-image {
 							width: 100vw;
-							height: 56vw;
+							//height: 56vw;
 						}
-						padding-bottom: 45px;
 						min-height: inherit;
 					}
 				}
@@ -238,7 +243,7 @@ body.platform-windowsphone {}
 
 				.item-image {
 					display: block;
-					height: 39.37vw;
+					//height: 39.37vw;
 				}
 
 				.detail-video {
@@ -266,11 +271,11 @@ body.platform-windowsphone {}
 					width: 33.33vw;
 
 					.card {
-						height: 39.66vw;
+						//height: 39.66vw;
 
 						.item-image {
 							width: 33.33vw;
-							height: 18.55vw;
+							//height: 18.55vw;
 						}
 					}
 				}
@@ -280,7 +285,7 @@ body.platform-windowsphone {}
 
 				.item-image {
 					display: block;
-					height: 39.37vw;
+					//height: 39.37vw;
 				}
 
 				.detail-video {
@@ -303,36 +308,6 @@ body.platform-windowsphone {}
 			}
 
 			.ui-list-view {
-				// height: 25vh;
-				// overflow: scroll;
-				// white-space: nowrap;
-
-				// .stream-row {
-				// 	height: 18vh;
-				// 	font-size: 0; //* CSS FIX: https://css-tricks.com/fighting-the-space-between-inline-block-elements/
-				// }
-				// .stream-row .card-container {
-				// 	display: -webkit-flex;
-				// 	display: inline-block;
-				// 	vertical-align: top;
-				// }
-
-				// .card-container {
-				// 	height: 18vh;
-				// 	width: 33vw;
-
-				// 	.card {
-				// 		height: 18vh;
-				// 	}
-				// }
-
-				// .card-container {
-				// 	width: 44vw;
-
-				// 	.item-image {
-				// 		height: 25vw;
-				// 	}
-				// }
 
 				height: 100vh;
 
@@ -341,11 +316,11 @@ body.platform-windowsphone {}
 					width: 50vw;
 
 					.card {
-						height: 50vw;
+						//height: 50vw;
 
 						.item-image {
 							width: 50vw;
-							height: 28vw;
+							//height: 28vw;
 						}
 					}
 				}
@@ -356,7 +331,7 @@ body.platform-windowsphone {}
 
 				.item-image {
 					display: block;
-					height: 56.25vw;
+					//height: 56.25vw;
 				}
 
 				.detail-video {
@@ -393,7 +368,7 @@ body.platform-windowsphone {}
 				.card-container {
 					float: left;
 					width: 50vw;
-					height: 28.12vw;
+					//height: 28.12vw;
 
 					.card-container-pad {
 						padding: 0;
@@ -401,7 +376,7 @@ body.platform-windowsphone {}
 						.card {
 							.item-image {
 								width: 50vw;
-								height: 28.12vw;
+								//height: 28.12vw;
 							}
 						}
 					}
@@ -411,7 +386,7 @@ body.platform-windowsphone {}
 			.ui-detail-view {
 				.item-image {
 					width: 100vw;
-					height: 56vw;
+					//height: 56vw;
 				}
 			}
 		}
@@ -422,7 +397,7 @@ body.platform-windowsphone {}
 				.card-container {
 					float: left;
 					width: 15vw;
-					height: 8.43vw;
+					//height: 8.43vw;
 
 					.card-container-pad {
 						padding: 0;
@@ -430,7 +405,7 @@ body.platform-windowsphone {}
 						.card {
 							.item-image {
 								width: 15vw;
-								height: 8.43vw;
+								//height: 8.43vw;
 							}
 						}
 					}
@@ -458,6 +433,15 @@ body.platform-windowsphone {}
 	/* HOME STREAM */
 	.ui-home {
 
+		// MIN HEIGHT FOR HOME STREAM
+		.item-body {
+			min-height: 200px;
+		}
+
+		.card {
+			overflow: auto;
+		}
+
 		/* HOME STREAM - PHONE (PORTRAIT ONLY)*/
 		&.ui-phone {
 
@@ -475,7 +459,7 @@ body.platform-windowsphone {}
 
 						.item-image {
 							width: 100vw;
-							height: 56vw;
+							//height: 56vw;
 						}
 					}
 				}
@@ -493,11 +477,11 @@ body.platform-windowsphone {}
 					width: 50vw;
 
 					.card {
-						height: 50vw;
+						//height: 50vw;
 
 						.item-image {
 							width: 50vw;
-							height: 28vw;
+							//height: 28vw;
 						}
 					}
 				}
@@ -515,36 +499,17 @@ body.platform-windowsphone {}
 					width: 33.33vw;
 
 					.card {
-						height: 39.66vw;
+						//height: 39.66vw;
 
 						.item-image {
 							width: 33.33vw;
-							height: 18.55vw;
+							//height: 18.55vw;
 						}
 					}
 				}
 			}
 		}
 	}
-
-	/* CARD DEFAULTS
-	.ui-tablet-landscape .ui-list-view .card-container {
-		width: 29vw;
-	}
-	.ui-tablet-landscape .ui-list-view .card-container .card {
-		height: 34.8vw;
-	}
-	.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
-		width: 29vw;
-		height: 16.3vw;
-	} */
-
-	/*
-	.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
-		height: 21vw;
-		width: 11.25vw;
-	}
-	*/
 
 	/* TEST */
 	.stream-home .card-container {

@@ -1,0 +1,12 @@
+<!-- ui-stream-home-landscape -->
+<div class="stream-home">
+	<div class="card-container">
+		<ui-stream-card ng-repeat="data in global.datas | filter: {tabletLandscapeCol : 1}" data-card-data="data" data-app-state="global.appState"><!-- UI CARD DIRECTIVE --></ui-stream-card>
+	</div><!-- card-container -->
+	<div class="card-container">
+		<ui-stream-card ng-repeat="data in global.datas | filter: {tabletLandscapeCol : 2}" data-card-data="data" data-app-state="global.appState"><!-- UI CARD DIRECTIVE --></ui-stream-card>
+	</div><!-- card-container -->
+	<div class="card-container">
+		<ui-stream-card ng-repeat="data in global.datas | filter: {tabletLandscapeCol : 3}" data-card-data="data" data-app-state="global.appState"><!-- UI CARD DIRECTIVE --></ui-stream-card>
+	</div><!-- card-container -->
+</div><!-- stream-home -->

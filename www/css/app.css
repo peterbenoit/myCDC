@@ -72,23 +72,6 @@ dfn {
   /* END DIRECT PORTS FROM ORIGINAL */
   /* UI DEFAULTS (BY DEVICE / ORIENTATION) */
   /* HOME STREAM */
-  /* CARD DEFAULTS
-	.ui-tablet-landscape .ui-list-view .card-container {
-		width: 29vw;
-	}
-	.ui-tablet-landscape .ui-list-view .card-container .card {
-		height: 34.8vw;
-	}
-	.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
-		width: 29vw;
-		height: 16.3vw;
-	} */
-  /*
-	.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
-		height: 21vw;
-		width: 11.25vw;
-	}
-	*/
   /* TEST */
 }
 #ui-master .cdc-blue.primary {
@@ -182,6 +165,11 @@ dfn {
 #ui-master .ui-list-view h3 {
   margin: 12px;
 }
+#ui-master .ui-default .item-body,
+#ui-master .ui-iframe .item-body,
+#ui-master .ui-images .item-body {
+  height: 150px;
+}
 #ui-master .ui-default.ui-phone .ui-list-view,
 #ui-master .ui-iframe.ui-phone .ui-list-view,
 #ui-master .ui-images.ui-phone .ui-list-view,
@@ -198,14 +186,12 @@ dfn {
 #ui-master .ui-default.ui-phone .ui-list-view .card-container .card,
 #ui-master .ui-iframe.ui-phone .ui-list-view .card-container .card,
 #ui-master .ui-images.ui-phone .ui-list-view .card-container .card {
-  padding-bottom: 45px;
   min-height: inherit;
 }
 #ui-master .ui-default.ui-phone .ui-list-view .card-container .card .item-image,
 #ui-master .ui-iframe.ui-phone .ui-list-view .card-container .card .item-image,
 #ui-master .ui-images.ui-phone .ui-list-view .card-container .card .item-image {
   width: 100vw;
-  height: 56vw;
 }
 #ui-master .ui-default.ui-phone .ui-detail-view,
 #ui-master .ui-iframe.ui-phone .ui-detail-view,
@@ -216,7 +202,6 @@ dfn {
 #ui-master .ui-iframe.ui-phone .ui-detail-view .item-image,
 #ui-master .ui-images.ui-phone .ui-detail-view .item-image {
   display: block;
-  height: 39.37vw;
 }
 #ui-master .ui-default.ui-phone .ui-detail-view .detail-video iframe,
 #ui-master .ui-iframe.ui-phone .ui-detail-view .detail-video iframe,
@@ -244,16 +229,10 @@ dfn {
   float: left;
   width: 33.33vw;
 }
-#ui-master .ui-default.ui-tablet-landscape .ui-list-view .card-container .card,
-#ui-master .ui-iframe.ui-tablet-landscape .ui-list-view .card-container .card,
-#ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container .card {
-  height: 39.66vw;
-}
 #ui-master .ui-default.ui-tablet-landscape .ui-list-view .card-container .card .item-image,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-list-view .card-container .card .item-image,
 #ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
   width: 33.33vw;
-  height: 18.55vw;
 }
 #ui-master .ui-default.ui-tablet-landscape .ui-detail-view,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-detail-view,
@@ -264,7 +243,6 @@ dfn {
 #ui-master .ui-iframe.ui-tablet-landscape .ui-detail-view .item-image,
 #ui-master .ui-images.ui-tablet-landscape .ui-detail-view .item-image {
   display: block;
-  height: 39.37vw;
 }
 #ui-master .ui-default.ui-tablet-landscape .ui-detail-view .detail-video iframe,
 #ui-master .ui-iframe.ui-tablet-landscape .ui-detail-view .detail-video iframe,
@@ -292,16 +270,10 @@ dfn {
   float: left;
   width: 50vw;
 }
-#ui-master .ui-default.ui-tablet-portrait .ui-list-view .card-container .card,
-#ui-master .ui-iframe.ui-tablet-portrait .ui-list-view .card-container .card,
-#ui-master .ui-images.ui-tablet-portrait .ui-list-view .card-container .card {
-  height: 50vw;
-}
 #ui-master .ui-default.ui-tablet-portrait .ui-list-view .card-container .card .item-image,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-list-view .card-container .card .item-image,
 #ui-master .ui-images.ui-tablet-portrait .ui-list-view .card-container .card .item-image {
   width: 50vw;
-  height: 28vw;
 }
 #ui-master .ui-default.ui-tablet-portrait .ui-detail-view,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-detail-view,
@@ -312,7 +284,6 @@ dfn {
 #ui-master .ui-iframe.ui-tablet-portrait .ui-detail-view .item-image,
 #ui-master .ui-images.ui-tablet-portrait .ui-detail-view .item-image {
   display: block;
-  height: 56.25vw;
 }
 #ui-master .ui-default.ui-tablet-portrait .ui-detail-view .detail-video iframe,
 #ui-master .ui-iframe.ui-tablet-portrait .ui-detail-view .detail-video iframe,
@@ -330,30 +301,25 @@ dfn {
 #ui-master .ui-images.ui-phone .ui-list-view .card-container {
   float: left;
   width: 50vw;
-  height: 28.12vw;
 }
 #ui-master .ui-images.ui-phone .ui-list-view .card-container .card-container-pad {
   padding: 0;
 }
 #ui-master .ui-images.ui-phone .ui-list-view .card-container .card-container-pad .card .item-image {
   width: 50vw;
-  height: 28.12vw;
 }
 #ui-master .ui-images.ui-phone .ui-detail-view .item-image {
   width: 100vw;
-  height: 56vw;
 }
 #ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container {
   float: left;
   width: 15vw;
-  height: 8.43vw;
 }
 #ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container .card-container-pad {
   padding: 0;
 }
 #ui-master .ui-images.ui-tablet-landscape .ui-list-view .card-container .card-container-pad .card .item-image {
   width: 15vw;
-  height: 8.43vw;
 }
 #ui-master .ui-images.ui-tablet-portrait .ui-list-view .button-inline {
   display: inline-block;
@@ -364,6 +330,12 @@ dfn {
   /* HOME STREAM - TABLE PORTRAIT */
   /* HOME STREAM - TABLE LANDSCAPE */
 }
+#ui-master .ui-home .item-body {
+  min-height: 200px;
+}
+#ui-master .ui-home .card {
+  overflow: auto;
+}
 #ui-master .ui-home.ui-phone .ui-list-view .card-container {
   width: 100vw;
 }
@@ -373,29 +345,20 @@ dfn {
 }
 #ui-master .ui-home.ui-phone .ui-list-view .card-container .card .item-image {
   width: 100vw;
-  height: 56vw;
 }
 #ui-master .ui-home.ui-tablet-portrait .ui-list-view .card-container {
   float: left;
   width: 50vw;
 }
-#ui-master .ui-home.ui-tablet-portrait .ui-list-view .card-container .card {
-  height: 50vw;
-}
 #ui-master .ui-home.ui-tablet-portrait .ui-list-view .card-container .card .item-image {
   width: 50vw;
-  height: 28vw;
 }
 #ui-master .ui-home.ui-tablet-landscape .ui-list-view .card-container {
   float: left;
   width: 33.33vw;
 }
-#ui-master .ui-home.ui-tablet-landscape .ui-list-view .card-container .card {
-  height: 39.66vw;
-}
 #ui-master .ui-home.ui-tablet-landscape .ui-list-view .card-container .card .item-image {
   width: 33.33vw;
-  height: 18.55vw;
 }
 #ui-master .stream-home .card-container {
   float: left;
