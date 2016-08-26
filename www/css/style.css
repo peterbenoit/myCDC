@@ -271,9 +271,11 @@ body.platform-ios #popper {
     background-color:#fff!important;
 }
 
-.nav-bar-block .bar, .menu-left .bar {
+.nav-bar-block .bar, .menu-left .bar,
+.bar.bar-positive,
+.bar-positive .button {
     background-color:#075290!important;
-    border-color: #e3f2fe;
+    border-color: #075290;
 }
 
 ion-side-menu h4 {
