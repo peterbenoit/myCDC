@@ -2,7 +2,7 @@
  *  myCDC
  *  TODO: info.plist NSAppTransportSecurity key needs to be corrected before deployment
  */
-angular.module('mycdc', [
+var app = angular.module('mycdc', [
     'ngCordova',
     'ionic',
     'ngSanitize',
@@ -63,7 +63,7 @@ angular.module('mycdc', [
     document.addEventListener("deviceready", hideStatusBar, false);
     document.addEventListener("deviceready", getLangPreference, false);
     document.addEventListener("deviceready", setNetworkListeners, false);
-    document.addEventListener("deviceready", initPushwoosh, false);
+    //document.addEventListener("deviceready", initPushwoosh, false);
 
     function setNetworkListeners() {
         //console.log('Executing setNetworkListeners');
@@ -147,24 +147,24 @@ angular.module('mycdc', [
         }
     }
 
-    function initPushwoosh() {
-        app.receivedEvent('deviceready');
+    // function initPushwoosh() {
+    //     app.receivedEvent('deviceready');
 
-        var pushwoosh = cordova.require("pushwoosh-cordova-plugin.PushNotification");
+    //     var pushwoosh = cordova.require("pushwoosh-cordova-plugin.PushNotification");
 
-        // Should be called before pushwoosh.onDeviceReady
-        document.addEventListener('push-notification', function(event) {
-            var notification = event.notification;
-            // handle push open here
-        });
+    //     // Should be called before pushwoosh.onDeviceReady
+    //     document.addEventListener('push-notification', function(event) {
+    //         var notification = event.notification;
+    //         // handle push open here
+    //     });
 
-        // Initialize Pushwoosh. This will trigger all pending push notifications on start.
-        pushwoosh.onDeviceReady({
-            appid: "PUSHWOOSH_APP_ID",
-            projectid: "GOOGLE_PROJECT_NUMBER",
-            serviceName: "MPNS_SERVICE_NAME"
-        });
-    }
+    //     // Initialize Pushwoosh. This will trigger all pending push notifications on start.
+    //     pushwoosh.onDeviceReady({
+    //         appid: "PUSHWOOSH_APP_ID",
+    //         projectid: "GOOGLE_PROJECT_NUMBER",
+    //         serviceName: "MPNS_SERVICE_NAME"
+    //     });
+    // }
 
     $ionicPlatform.ready(function () {
 
