@@ -1,17 +1,11 @@
 <!-- HEADER BAR -->
-<ion-nav-bar class="bar-positive" align-title="center" animation="no-animation">
-
-    <ion-nav-buttons side="left">
-        <a id="nav-home" alt="Source List Button" class="button button-clear" data-ng-click="global.goHome()"><img src="./img/cdc_logo_sm.png"/></a>
-        <a id="nav-source-list" ng-if="global.appState.sourceName === homeStream" alt="Source List" class="button button-clear" data-ng-click="global.openNavigationModal()"><i class="icon ion-navicon"></i></a>
-        <!--<a id="nav-home" ng-if="global.appState.sourceName !== homeStream" alt="Home Button" class="button button-clear" data-ng-click="global.goHome()"><i class="icon ion-home"></i></a>-->
-        <a id="nav-source-home" ng-if="global.showSourceHome" alt="Source Home Button" class="button button-clear" ui-sref="app.sourceIndex({ sourceName : global.appState.sourceName})"><i class="ion-chevron-up"></i></a>
-    </ion-nav-buttons>
-
-    <ion-nav-buttons side="right">
-        <a id="settings-menu" ng-if="global.appState.sourceName === homeStream" alt="Settings Button" class="button button-clear" data-ng-click="global.openSettingsModal()"><i class="icon ion-gear-a"></i></a>
-    </ion-nav-buttons>
-</ion-nav-bar>
+<div class="bar bar-header bar-positive">
+	<a id="nav-source-list" alt="Source List" class="button button-clear" data-ng-click="global.openNavigationModal()"><i class="icon ion-navicon"></i></a>
+	<a id="nav-home" ng-if="global.appState.sourceName !== homeStream" alt="Source List Button" class="button button-clear" data-ng-click="global.goHome()"><i class="icon ion-home"></i></a>
+	<!-- <a id="nav-source-home" ng-if="global.showSourceHome" alt="Source Home Button" class="button button-clear" ui-sref="app.sourceIndex({ sourceName : global.appState.sourceName})"><i class="ion-chevron-up"></i></a> -->
+	<h1 class="title">CDC</h1>
+	<a id="settings-menu" alt="Settings Button" class="button button-clear" data-ng-click="global.openSettingsModal()"><i class="icon ion-gear-a"></i></a>
+</div>
 
 <ion-nav-view name="appContent"></ion-nav-view>
 <ion-nav-view name="appNavigation"></ion-nav-view>

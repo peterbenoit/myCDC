@@ -330,9 +330,6 @@ dfn {
   /* HOME STREAM - TABLE PORTRAIT */
   /* HOME STREAM - TABLE LANDSCAPE */
 }
-#ui-master .ui-home .item-body {
-  min-height: 200px;
-}
 #ui-master .ui-home .card {
   overflow: auto;
 }

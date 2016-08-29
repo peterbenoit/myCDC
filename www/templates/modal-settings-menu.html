@@ -1,9 +1,9 @@
 <ion-modal-view>
-    <ion-header-bar>
+    <ion-header-bar class="bar-positive">
         <h1 class="title" style="left: 67px; right: 67px;">Settings</h1>
-        <button class="button button-clear button-primary" ng-click="global.closeSettingsModal()">Cancel</button>
+        <button class="button button-clear" ng-click="global.closeSettingsModal()"><i class="icon ion-close"></i></button>
     </ion-header-bar>
-    <ion-content class="has-header has-footer content-stable settings">
+    <ion-content class="has-header content-stable settings">
         <ion-list data-ng-repeat="sourceType in global.sourceTypes">
             <ion-item class="cdc-blue primary">
                 {{sourceType.typeName}}

@@ -1,16 +1,16 @@
 <ion-view class="detail-articles">
-    <ion-content>
+    <ion-content class="has-header has-footer">
         <div ng-attr-id="{{viewId}}" class="padding data civ article">
             <h1 class="title">{{detailCard.name}}</h1>
             <div class="datepub">{{detailCard.datePublished}}</div>
             <div class="source">{{detailCard.streamTitle}}</div>
             <p class="contentarea" push-html="::detailData.content" managecontent></p>
-            <div class="border">
-                <p class="padding">
-                    <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>
-                    <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="openLink(detailData.sourceUrl, 'html')">View on CDC.gov</button>
-                </p>
-            </div>
         </div>
     </ion-content>
+     <ion-footer-bar align-title="left">
+        <div class="buttons">
+            <button alt="Footer Share Menu Button" class="button icon-right ion-share button-outline button-positive" ng-click="Share.share()">Share</button>
+            <button alt="View on CDC.gov Button" class="button icon-right ion-share button-outline button-positive" ng-click="openLink(detailCard.sourceUrl, 'html')">View on CDC.gov</button>
+        </div>
+    </ion-footer-bar>
 </ion-view>

@@ -200,11 +200,11 @@ a.item.item-footer {
 }
 
 .card .item-footer {
-  position: absolute;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  // position: absolute;
+  // top: auto;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
   margin: 0;
   padding: 10px;
   -webkit-box-shadow: 0px -10px 10px rgba(255, 255, 255, 0.75);
